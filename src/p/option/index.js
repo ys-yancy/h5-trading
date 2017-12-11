@@ -70,7 +70,7 @@ Base.extend(Option, PageBase, {
     this._initAttrs();
     this._configShare();
     this.configStatistics();
-
+    // new LiveSpeech();
     new Check();
     new Sound();
   },
@@ -613,7 +613,8 @@ Base.extend(Option, PageBase, {
         }
       }).then(function(data) {
         _self_op.streamlist = data.data;
-        _self_op.broadcast('get:streamlist', _self_op);
+        // 直播功能
+        // _self_op.broadcast('get:streamlist', _self_op);
       });
 
 
@@ -757,33 +758,6 @@ Base.extend(Option, PageBase, {
   },
 
   attrs: {
-    // HBTmpl: [
-    //     '<div class="dialog J_Dialog del-dialog " id="J_Dialog">',
-    //     '   <span class="wrapper-icon"><span class="icon"></span></span>',
-    //     '   <div class="dialog-content J_Content">',
-    //     '        <p>您有<%=data%>美元实盘资金红包, 是否领取?</p>',
-    //     '   </div>',
-    //     '   <div class="dialog-buttons clearfix">',
-    //     '       <span class="dialog-btn J_DialogClose">暂不领取</span>',
-    //     '       <span class="dialog-btn J_DialogConfirm">马上领取</span>',
-    //     '   </div>',
-    //     '</div>',
-    //     '<div class="dialog-mask J_DialogMask"></div>'
-    // ].join(''),
-
-    HBTmpl: [
-      '<div class="dialog J_Dialog lottery-dialog" id="J_Dialog">',
-      '   <div class="J_DialogText">',
-      '       注册即送 <span class="J_Hongbao">15</span> 美元 赚钱归你 赔钱我出',
-      '   </div>',
-      '   <div class="dialog-buttons clearfix">',
-      '       <span class="dialog-btn J_DialogConfirm"></span>',
-      '       <span class="dialog-btn J_DialogClose"></span>',
-      '   </div>',
-      '</div>',
-      '<div class="dialog-mask J_DialogMask"></div>'
-    ].join(''),
-
     headerEl: $('#J_Header'),
     listEl: $('#J_List'),
 

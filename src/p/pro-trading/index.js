@@ -16,23 +16,20 @@ var Sticky = require('../../common/sticky');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
 // var LiveSpeech = require('../../common/live-speech');
-
 var OptionBanner = require('./option-banner');
 var infoTmpl = require('./tpl/info.ejs');
 var symbolInfoTmpl = require('./tpl/symbol-info.ejs');
 var orderTmpl = require('./tpl/order.ejs');
 var footerTmpl = require('./tpl/footer.ejs');
 var navTmpl = require('./tpl/nav.ejs');
-
-var Investment = require('./invest/index');
 var Popup = require('./popup/index');
 var Attribute = require('./attribute/index');
-var Share = require('./share');
-// var Guide = require('./guide');
-
 const Sound = require('../../common/sound');
-
-require('./share');
+// 这些功能暂时不确定
+// var Investment = require('./invest/index');
+// var Share = require('./share');
+// var Guide = require('./guide');
+// require('./share');
 
 function ProTrading() {
   ProTrading.superclass.constructor.apply(this, arguments);
@@ -1069,7 +1066,7 @@ Base.extend(ProTrading, PageBase, {
 
       if (this.investnow) {
         this.investData = params;
-        new Investment();
+        // new Investment();
         return;
       }
 
@@ -1103,7 +1100,7 @@ Base.extend(ProTrading, PageBase, {
         if (self.isWeixin()) {
           var share;
           if (myshow) {
-            share = new Share({ ticket: data.ticket });
+            // share = new Share({ ticket: data.ticket });
           }
 
 
@@ -1111,7 +1108,7 @@ Base.extend(ProTrading, PageBase, {
 
           $('#J_Success .J_Share').on('click', $.proxy(function() {
             $('#J_InfoImg').css('display', 'block');
-            share && share.getInfo();
+            // share && share.getInfo();
           }, this));
 
           $('#J_InfoImg').on('click', $.proxy(function() {
@@ -1140,10 +1137,10 @@ Base.extend(ProTrading, PageBase, {
 
           $('#J_Success .J_Share').on('click', function() {
             var share;
-            if (myshow) {
-              share = new Share({ ticket: data.ticket });
-              share && share.getInfo();
-            }
+            // if (myshow) {
+            //   share = new Share({ ticket: data.ticket });
+            //   share && share.getInfo();
+            // }
           });
 
         } else {
