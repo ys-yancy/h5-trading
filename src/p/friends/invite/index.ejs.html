@@ -1,0 +1,33 @@
+<% data.forEach(function(cate) {%>
+<div class="list-wrapper">
+<h1>我的<%= cate.key %>级好友<span class="count"><%= cate.data.length %>人</span></h2>
+<ul>
+  <% cate.data.forEach(function(item) {%>
+  <li class="item clearfix">
+    <div class="img-wrapper-outer">
+      <div class="img-wrapper">
+        <img class="img" src="<%= item.avatar %>">
+      </div>
+    </div>
+    <div class="info">
+      <h2><%= item.nickname %></h2>
+      <p>
+        <span class="symbol">Ta邀请的好友 <%= item.invite_count %>人</span>
+      </p>
+    </div>
+    <span class="detail-wrapper">
+      <span class="trade <%= item.real_trade > 0 ? 'on': '' %>">交易</span>
+      <span class="get <%= item.equity > 100 ? 'on': '' %>">净值>100</span>
+    </span>
+  </li>
+  <%}); %>
+</ul>
+<% if (cate.data.length > 2) {%>
+<span class="fold"></span>
+<% } %>
+</div>
+<% }); %>
+
+<% if (data.length ==0) {%>
+<div class="empty">您当前还没有成功邀请好友，点击上方“+”去邀请好友</div>
+<%}%>

@@ -1,0 +1,37 @@
+<% data.data.forEach(function(item) {%>
+  <% var close_time_arr = item.openTime.split(' ') %>
+  <% var isFollow = item.follow ? true : false %>
+  <% var isUp = item.cmd.indexOf('buy') !== -1  %>
+<li class="order-item <%= item.isNowRender ? 'now' : '' %>" data-symbol="<%= item.symbol.replace(/\./g, '-') %>">
+  <a href="./order-share.html?invite=<%= item.invite_code %>&unit=<%= item.unit %>&symbol=<%= item.symbol %>&name=<%= item.symbolName %>&order=<%= item.ticket %>&nickname=<%= item.nickname %>&cmd=<%= item.cmd %>&unit=<%= item.min_quote_unit %>&from=<%= encodeURIComponent(location.href) %>">
+   <div class="user-info">
+       <div class="img-wrapper-outer">
+           <div class="img-wrapper">
+               <img class="img" src="<%= item.avatar %>">
+           </div>
+       </div>
+       <div class="name-attent">
+           <p class="name"><%= item.nickname %></p>
+           <p class="attent <%= !isFollow ? 'no' : '' %>">已关注</p>
+       </div>
+       <span class="desc-time">
+          <%= item.isShowDesc %>
+       </span>
+   </div>
+   <div class="symbol-info">
+        <span class="tag up"><%= isUp ? '买涨' : '买跌' %></span>
+        <p class="symbolName"><%= item.symbolName %> <%= item.symbol %></p>
+        <p class="create-time right"><%= item.openTime%></p>
+   </div>
+   <div class="price-info">
+       <p class="open-price left">开仓@ <span class="num J_OpenPrice"><%= item.openPrice %></span></p>
+       <p class="take-profit">止盈@ <span class="num J_TakeProfit"><%= item.takeProfit %></span></p>
+       <p class="stop-loss right">止损@ <span class="num J_StopLoss"><%= item.stopLoss %></span></p>
+   </div>
+  </a>
+</li>
+<%})%>
+
+<% if (data.data.length === 0) {%>
+  <li class="no-list">没有订单</li>
+<%}%>

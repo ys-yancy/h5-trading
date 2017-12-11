@@ -1,0 +1,19 @@
+<li class="item price-info">
+    <span class="tag <% if (data.profitInAll >= 0) { %> up <% } %>">
+        <%= data.profitInAll >= 0 ? '盈利' : '亏损'  %>
+    </span>
+    <div class="price-wrapper">
+        <!-- <span class="sign"></span> -->
+        <!-- <%= parseFloat(data.profit) < 0 ? '-' : '+' %><%= Math.abs(data.profit) %> -->
+        <%= data.profitInAll.toFixed(2) %>
+        <span class="currency">美元</span>
+    </div>
+</li>
+<li class="item price-info">
+    <span class="tag <% if (data.ror >= 0) { %> up <% } %>">
+        收益率
+    </span>
+    <div class="price-wrapper">
+        <%= data.ror.toFixed(2) %> %
+    </div>
+</li>

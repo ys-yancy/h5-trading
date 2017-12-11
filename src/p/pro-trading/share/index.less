@@ -1,0 +1,53 @@
+@import '../../../variable.less';
+.wrapper-share-money {
+  .mask {
+    z-index: 102;
+  }
+  .hd {
+    position: fixed;
+    .top(170);
+    .width(640);
+    .height(575);
+    z-index: 999999;
+    .padding-top(264);
+  }
+  .outer {
+    .width(416);
+    margin: 0 auto;
+    .inner {
+      .height(238);
+      background: #fff;
+      .border-radius(10);
+      .padding-top(39);
+      .wrapper-desc {
+        .margin-top(47);
+        .padding-left(18);
+        .font-size(24);
+        color: #666;
+        .line-height(36);
+        .count {
+          .font-size(36);
+          color: #bd160f;
+          font-style: italic;
+          /*font-weight: bold;*/
+        }
+      }
+      .amount {
+        .font-size(36);
+        color: #bd160f;
+      }
+      h2 {
+        .font-size(30);
+        color: #bd160f;
+        .line-height(36);
+        .padding-left(14);
+      }
+    }
+    .extra {
+      .font-size(20);
+      color: #f0d23a;
+      text-align: center;
+      .line-height(44);
+    }
+  }
+}

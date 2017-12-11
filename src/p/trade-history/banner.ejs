@@ -1,0 +1,22 @@
+<div class="bottom-banner">
+	<div class="switch-wrapper clearfix">
+		<% var demo = data.demo; %>
+		<% if (demo) {%>
+	    <a class="simulate active J_Switch" href="#">模拟</a>
+	    <a class="firm  J_Switch" href="#">实盘</a>
+	    <span class="switch" id="J_GetSwitch">
+	        <span class="desc">模拟</span>
+	        <span class="triangle"></span>
+	    </span>
+	    <% } else {%>
+	    <a class="simulate J_Switch" href="#">模拟</a>
+	    <a class="firm  J_Switch active" href="#">实盘</a>
+	    <span class="switch" id="J_GetSwitch">
+	        <span class="desc">实盘</span>
+	        <span class="triangle"></span>
+	    </span>
+	    <% } %>
+	</div>
+	<ul class="clearfix" id="J_DemoCount" style="display:<%= demo ? 'block' : 'none' %>"></ul>
+	<ul class="clearfix" id="J_Count" style="display:<%= demo ? 'none' : 'block' %>"></ul>
+</div>

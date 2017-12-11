@@ -1,0 +1,113 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+html,
+body {
+    background-color: #eff1f2;
+}
+
+.icon {
+    background: url(../../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .padding-top(342);
+    background: url(../../../../img/baibiao-bg.jpg) 0 0 no-repeat;
+    .background-size(640, 1136);
+    .desc {
+        .line-height(16);
+        .font-size(14);
+        text-align: center;
+        color: #83bb3c;
+    }
+    .form {
+        .width(500);
+        /*.height(150);*/
+        border: 1px solid #040000;
+        margin: 0 auto;
+        .margin-top(38);
+        background: #c7c9d2;
+        .wrapper {
+            position: relative;
+            .padding-left(2);
+            &:nth-child(2) {
+                .margin-top(2);
+                input {
+                    border: none;
+                    border-top: 1px solid #fff;
+                }
+            }
+            input {
+                .height(70);
+                .padding(25, 0);
+                .width(496);
+                .padding-left(28);
+                color: #afb1bf;
+                .font-size(18);
+                outline: 0;
+                border: none;
+                border-bottom: 1px solid #fff;
+                background: #dfe1ea;
+                -webkit-appearance: none;
+            }
+            &.error {
+                .err {
+                    display: block;
+                }
+            }
+            .err {
+                display: none;
+                .left(30);
+                position: absolute;
+                .top(48);
+                .line-height(28);
+                .font-size(18);
+                color: #ff564e;
+            }
+        }
+    }
+    .wrapper-btn {
+        .width(500);
+        margin: 0 auto;
+        .margin-top(39);
+        a {
+            display: block;
+            .line-height(60);
+            .font-size(18);
+            .border-radius(2);
+            color: #fff;
+            text-align: center;
+            text-shadow: -1px -2px 4px #6db13e;
+            background-image: -webkit-linear-gradient(to bottom, #98c63a, #6eb13e);
+            background-image: linear-gradient(to bottom, #98c63a, #6eb13e);
+            &.register {
+                text-shadow: -1px -2px 4px #276097;
+                background-image: -webkit-linear-gradient(to bottom, #477eb4, #265f96);
+                background-image: linear-gradient(to bottom, #477eb4, #265f96);
+            }
+            &.disable {
+                background: #ccc;
+            }
+        }
+    }
+    .login {
+        .margin-top(30);
+        text-align: center;
+        a {
+            display: block;
+            color: #296199;
+            .font-size(18);
+            .line-height(38);
+        }
+    }
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

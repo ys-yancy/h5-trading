@@ -1,0 +1,275 @@
+@import '../../variable.less';
+html {
+    background: #fff;
+}
+
+.icon {
+    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}
+
+input {
+    -webkit-appearance: none;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: normal;
+}
+
+header {
+    .width(640);
+    overflow: hidden;
+    .header-inner {
+        position: relative;
+        .height(88);
+        .line-height(88);
+        .font-size(36);
+        text-align: center;
+        background: #967bdc;
+        color: #fff;
+        .go-back {
+            position: absolute;
+            .left(18);
+            .top(22);
+            .width(49);
+            .height(44);
+            .icon {
+                display: block;
+                .width(23);
+                .height(40);
+                .background-position(0, -435);
+            }
+        }
+    }
+}
+
+.content {
+    .padding-bottom(100);
+    form {
+        .padding-top(24);
+        .width(520);
+        margin: 0 auto;
+    }
+    .wrapper {
+        position: relative;
+        .error-icon {
+            display: none;
+            position: absolute;
+            //.top(20);
+            .top(46);
+            .right(34);
+            .width(29);
+            .height(29);
+        }
+        .error {
+            position: relative;
+            clear: both;
+            p {
+                .padding-left(76);
+                .line-height(48);
+                .font-size(16);
+                color: #f9584a;
+            }
+            .icon {
+                position: absolute;
+                .top(14);
+                .left(25);
+                .width(29);
+                .height(21);
+                .background-position(0, -1258);
+            }
+        }
+        &.code-wrapper {
+            .error-icon {
+                .right(290);
+            }
+        }
+        .error {
+            display: none;
+        }
+        &.error {
+            .error {
+                display: block;
+            }
+            input {
+                border-color: #f9584a;
+                &.get-code {
+                    border-color: #6c6281;
+                }
+            }
+            .error-icon {
+                .background-position(0, -1219);
+                display: block;
+            }
+        }
+        &.success {
+            .error {
+                display: none;
+            }
+            .error-icon {
+                display: block;
+                .background-position(0, -1180);
+            }
+        }
+    }
+    .submit-wrapper {
+        &.error {
+            input {
+                border-color: #6c4db5;
+            }
+        }
+    }
+    input {
+        .width(520);
+        .height(70);
+        .padding(15, 0);
+        .padding-left(104);
+        .margin-top(26);
+        .border-radius(6);
+        .border(2px, solid, #967bdc);
+        .font-size(24);
+        color: #c8c7cf;
+        outline: 0;
+    }
+    .phone,
+    .lock {
+        position: absolute;
+        .left(28);
+        .top(46);
+        .width(21);
+        .height(32);
+        .background-position(0, -349);
+    }
+    .lock {
+        //.top(173);
+        .width(26);
+        .height(30);
+        .background-position(0, -309);
+    }
+    .code,
+    .get-code {
+        padding-left: 0;
+        float: left;
+        text-align: center;
+        .width(240);
+        .height(64);
+    }
+    .get-code {
+        float: right;
+        background-color: #7686b9;
+        padding: 0;
+        text-align: center;
+        .line-height(60);
+        border: none;
+        .border-bottom(4, solid, #5b6ca0);
+        .border-radius(4);
+        color: #fff;
+        &.disable {
+            background-color: #b5b1c0;
+            border-color: #6c6281;
+        }
+    }
+    .submit {
+        padding: 0;
+        .width(520);
+        .height(68);
+        .margin-top(42);
+        .line-height(64);
+        border: none;
+        .border-bottom(4, solid, #6c4db5);
+        .border-radius(4);
+        background-color: #967bdc;
+        text-align: center;
+        color: #fff;
+        &.disable {
+            background-color: #b5b1c0;
+            border-color: #6c6281;
+        }
+    }
+    .statement {
+        position: relative;
+        .margin-top(18);
+        text-align: center;
+        .line-height(40);
+        .font-size(24);
+        .p {
+            color: #c8c7cf;
+        }
+        a {
+            .margin-left(40);
+            color: #967adc;
+        }
+        .check {
+            position: absolute;
+            .top(8);
+            left: 0;
+            .width(24);
+            .height(24);
+            .border(3, solid, #967adc);
+            &.checked {
+                background: url(../../../img/register-checked.png) 0 0 no-repeat;
+                .background-size(24, 24);
+                border: none;
+            }
+        }
+        p {
+            display: none;
+        }
+        &.error {
+            p {
+                display: block;
+                line-height: 1.2rem;
+                font-size: .4rem;
+                color: #f9584a;
+            }
+        }
+    }
+}
+
+.bg-img-wrapper {
+    margin: 0 auto;
+    .width(116);
+    .img(116, 116);
+}
+
+footer {
+    position: fixed;
+    .height(98);
+    .width(640);
+    bottom: 0;
+    .bottom-nav();
+    background-color: #160e23;
+    .app-guide {
+        position: absolute;
+        .top(-100);
+        .height(100);
+        .width(640);
+        .padding-left(46);
+        .font-size(26);
+        .line-height(100);
+        color: #70687f;
+        background: #dadbdd;
+        .desc {
+            color: #706781;
+        }
+        .download {
+            float: right;
+            .margin-top(25);
+            .margin-right(23);
+            .width(140);
+            .height(54);
+            .line-height(50);
+            .border-bottom(4, solid, #694fb4);
+            text-align: center;
+            background: #957cda;
+            color: #fff;
+        }
+    }
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

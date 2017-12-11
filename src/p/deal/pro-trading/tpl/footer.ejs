@@ -1,0 +1,19 @@
+<% if (data.type === 'close') {%>
+<div class="market-close">
+	<p><%= data.reason %></p>
+	<p class="desc">下次开始时间 <%= data.start %></p>
+</div>
+<% } else if (data.type === 'more-money') {%>
+<div class="balance">余额不足</div>
+<% } else if (data.type === 'un-trade') {%>
+<div class="other-btn"><%= data.tag %></div>
+<% } else if(data.type === 'simulate' && data.accountType === 'real') {%>
+<div class="other-btn"><%= data.tag %></div>
+<% } else if (data.edit) {%>
+	<a class="action-edit J_SumitEdit" href="javascript:;">确认修改</a>
+	<a class="action-edit J_CancelEdit action-cancel" href="javascript:;">取消修改</a>
+<% } else { %>
+<a class="action buy-down" href="javascript:;">买跌</a>
+<a class="action buy-up" href="javascript:;">买涨</a>
+<% }%>
+

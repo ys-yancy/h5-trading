@@ -1,0 +1,13 @@
+<% data.forEach(function(item) {%>
+<div class="item">
+	<!--<a href="../my/profile.html?inviteCode=<%= item.invite_code %>&from=<%= encodeURIComponent(location.href) %>">-->
+  <div class="img-wrapper-outer">
+    <div class="img-wrapper">
+    	<img src="<%= item.avatar %>" class="img" id="J_Img" alt="头像">
+      	
+    </div>
+  </div>
+  <p class="name"><%= item.nickname %></p>
+  <!--</a>-->
+</div>
+<% }); %>

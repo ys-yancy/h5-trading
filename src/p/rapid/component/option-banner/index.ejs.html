@@ -1,0 +1,24 @@
+
+<h2><span class="txtIndent">盈亏</span><span class="float J_Float"><%= data.float.toFixed(2) %></span></h2>
+
+<% if (data.order.length) {%>
+<ul class="list">
+<% data.order.forEach(function(item) {%>
+  <li class="item-o item-<%= item.ticket %>" data-order="<%= item.ticket %>" data-symbol="<%= data.symbol %>">
+  <span class="tag <%= item.cmd.indexOf('buy') !== -1 ? 'up' : '' %>"></span>
+  <span class="float-p"><%= (data.floatOption[item.ticket]).toFixed(2) %></span>
+  <span class="progress-outer">
+    <span class="progress">
+      <span class="progress-inner" style="width: 50%;"></span>
+    </span>
+    <span class="desc">亏/盈</span>
+    </span>
+  <span class="J_CloseOrder close-order">平仓</span>
+  </li>
+<% }); %>
+</ul>
+<% } else {%>
+<p class="empty">暂无数据</p>
+<% } %>
+  <h2><span class="txtIndent">累计</span><span class="total J_Toal"><%= data.total.toFixed(2) %></span></h2>
+

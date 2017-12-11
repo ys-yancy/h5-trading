@@ -1,0 +1,208 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+.icon-weixin();
+.com-header();
+html,
+body {
+    /*background-color: #e1283e;*/
+}
+
+.content {
+    background: url('../../../../img/zhufeng-home-1.png') 0 0 no-repeat;
+    background-size: 100% auto;
+    .height(1007);
+    .padding-top(580);
+    .desc,
+    .extra {
+        color: #4988c2;
+    }
+    .desc {
+        .font-size(20);
+        .line-height(52);
+    }
+    .extra {
+        .font-size(18);
+        .line-height(50);
+        text-align: center;
+    }
+    .action-wrapper {
+        .margin-top(12);
+        .padding(0,
+        82);
+        input {
+            .height(60);
+            .width(476);
+            .border-radius(6);
+            text-align: center;
+            outline: 0;
+        }
+        .wrap {
+            .error {
+                display: none;
+            }
+            &.error {
+                .error {
+                    display: block;
+                    color: red;
+                    .line-height(40);
+                }
+            }
+        }
+        .tel {
+            .border(2,
+            solid,
+            #4988c2);
+            background: transparent;
+            .font-size(24);
+            color: #666666;
+            text-align: left;
+            .padding-left(60);
+            &::-webkit-input-placeholder {
+                color: #666666;
+            }
+        }
+        .wrapper {
+            .padding-top(22);
+            input {
+                background-color: transparent;
+                .width(254);
+                .border(2,
+                solid,
+                #4988c2);
+                .font-size(24);
+                color: #dcd3f6;
+                text-align: left;
+                .padding-left(60);
+                &::-webkit-input-placeholder {
+                    color: #666666;
+                }
+            }
+            .get-code {
+                float: right;
+                .width(188);
+                .line-height(60);
+                .padding-left(0);
+                border: none;
+                background: #6da0ce;
+                text-align: center;
+                color: #fff;
+                .border-radius(6);
+                &.disable {
+                    background: #a4c3e0;
+                }
+            }
+        }
+        .register {
+            .margin-top(18);
+            .line-height(60);
+            .font-size(34);
+            border: none;
+            background: #6da0ce;
+            color: #fff;
+        }
+        .login-wrapper {
+            display: block;
+            .margin-top(30);
+            text-align: center;
+        }
+        .login {
+            .font-size(20);
+            .line-height(36);
+            color: #6da0ce;
+            text-decoration: underline;
+        }
+    }
+    .detail {
+        background: url(../../../../img/zhufeng-h5-item.png) 0 -1rem no-repeat;
+        .background-size(110,
+        756);
+        .first {
+            .padding-left(134);
+            .width(576);
+            li {
+                .padding-top(58);
+            }
+            h2 {
+                .margin-top(17);
+                color: #666666;
+                .font-size(34);
+                .line-height(52);
+            }
+            p {
+                .margin-top(17);
+                color: #999999;
+                .font-size(28);
+                .line-height(42);
+            }
+            .item-wrapper {
+                .padding-top(14);
+            }
+            .item {
+                position: relative;
+                .line-height(42);
+                .font-size(28);
+                .padding-left(34);
+                color: #999999;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    .top(13);
+                    .left(3);
+                    .width(15);
+                    .height(15);
+                    .border-radius(50%);
+                    background: #189c53;
+                }
+            }
+        }
+    }
+    .statement-wrapper {
+        .margin-top(116);
+        .padding-bottom(32);
+        text-align: center;
+        h2 {
+            .font-size(34);
+            color: #666;
+            .line-height(84);
+        }
+        li {
+            color: #999;
+            .line-height(42);
+            .font-size(28);
+            text-align: center;
+        }
+    }
+    .bottom {
+        .line-height(92);
+        color: #4988c2;
+        text-align: center;
+    }
+}
+
+.dialog-new();
+.dialog-new-style {
+    &.dialog-error {
+        .dialog-inner {
+            .dialog-content {
+                .padding-top(130);
+            }
+            .dialog-btn {
+                display: block;
+                float: initial;
+                width: auto;
+            }
+        }
+    }
+    &.dialog-406 {
+        .dialog-inner {
+            .dialog-content {
+                /*.padding-top(156);*/
+            }
+            .dialog-btn {
+                display: block;
+                float: initial;
+                width: auto;
+            }
+        }
+    }
+}

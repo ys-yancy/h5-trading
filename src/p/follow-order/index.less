@@ -1,0 +1,230 @@
+@import '../../variable.less';
+html {
+    background: #fff;
+}
+
+.icon {
+    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}
+
+header {
+    .width(640);
+    overflow: hidden;
+    .header-inner {
+        position: relative;
+        .height(88);
+        .line-height(88);
+        .font-size(36);
+        text-align: center;
+        background: #967bdc;
+        color: #fff;
+        .go-back {
+            position: absolute;
+            .left(18);
+            .top(22);
+            .width(49);
+            .height(44);
+            .icon {
+                display: block;
+                .width(23);
+                .height(40);
+                .background-position(0, -435);
+            }
+        }
+        .share{
+            position: absolute;
+            .width(82);
+            .height(36);
+            .line-height(36);
+            .border(1, solid, #fff);
+            text-align: center;
+            .right(20);
+            .top(26);
+            .font-size(22);
+        }
+    }
+}
+
+.content{
+    width: 100%;
+    .font-size(26);
+    .follow-order-wrapper{
+        .width(640);
+        background: #fff;
+        color: #807691;
+        .hd{
+            .hd-header{
+                .padding(40);
+                overflow: hidden;
+                .img-wrapper-outer{
+                    .width(120);
+                    .height(120);
+                    .border-radius(50%);
+                    float: left;
+                    .margin-right(12);
+                    overflow: hidden;
+                    .img-wrapper,
+                    .img{
+                        width: 100%;
+                        height: 100%;
+                        .border-radius(50%);
+                    }
+                }
+                .desc-wrapper{
+                    .line-height(40);
+                    .name{
+                        .width(300);
+                        .line-hide();
+                    }
+                    .account{
+                        display: inline-block;
+                        .width(63);
+                        .height(30);
+                        .line-height(30);
+                        .font-size(24);
+                        text-align: center;
+                        color: #967BDC;
+                        .border(1, solid, #967BDC);
+                    }
+                    .num{
+                        color: #967BDC;
+                        .margin(0,5);
+                    }
+                }
+            }
+            .hd-body{
+                &>div{
+                    .height(100);
+                    .padding(10,0);
+                    .padding-left(60);
+                    .item{
+                        display: inline-block;
+                        width: 33%;
+                        .desc{
+                            .font-size(22);
+                        }
+                        .num{
+                            .font-size(26);
+                        }
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                    }
+                    .follow-amount,
+                    .average-thirty{
+                        .padding-left(10);
+                    }
+                    .follow-profit,
+                    .follow-total {
+                        .padding-left(16);
+                    }
+                    .left{
+                        float: left;
+                    }
+                    .right{
+                        float: right;
+                    }
+                }
+            }
+        }
+        nav{
+            background: #F2F3F7;
+            ul{
+                display: flex;
+                display: -webkit-flex;
+                justify-content: space-around;
+                align-items: center;
+                li{
+                    position: relative;
+                   .height(70);
+                   .line-height(70);
+                    &.active{
+                       color: #68449f;
+                        &:after{
+                            position: absolute;
+                            visibility: visible;
+                            .width(126);
+                            .height(4); 
+                            .bottom(0);
+                            .left(-16);
+                            background: #68449F;
+                        }
+                    }
+                }
+            }
+        }
+        .bd{
+            width: 100%;
+            .follow-content{
+                width: 100%;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                .loading{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    .font-size(28);
+                    .padding(50, 0);
+                }
+            }
+        }
+        .footer{
+            position: fixed;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255,255,255, .6);
+            .left(0);
+            .right(0);
+            .bottom(0);
+            .height(80);
+            .padding(10, 0);
+            .btn{
+                // .width(180);
+                // .height(50);
+                // .font-size(30);
+                // border: none;
+                // color: #fff;
+                // background: #3AB9E6;
+                .btn(180, 54, 50, 4, 4, 28,#3AB9E6);
+                .font-size(24);
+                &.J_Attention,
+                &.J_CancelAttention,
+                &.J_ReviseSetting {
+                    background:#7686ba;
+                    border-color: #5b6aa1;
+                }
+                &.J_Follow,
+                &.J_Following,
+                &.J_Pauseing,
+                &.J_KeepFollow,
+                &.J_PauseFollow {
+                    background: #FF8E32;
+                    border-color: #f06f05;
+                }
+                &.J_MoreData,
+                &.J_ReFollow,
+                &.J_CancelFollow {
+                    background: #6E8DCD;
+                }
+                &.hidden{
+                    display: none;
+                }
+                .other{
+                   .font-size(34);
+                }
+            }
+        }
+    }
+}
+.shareImg{
+    position: absolute;
+    display: none;
+    z-index: 200;
+    .top(00);
+    .right(0);
+    width: 100%;
+    .height(231);
+}

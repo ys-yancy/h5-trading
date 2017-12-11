@@ -1,0 +1,25 @@
+<ul style="height: <%= $(window).height() %>px;">
+	 <li class="item first">
+	 	<!-- <div class="first-wrapper"></div> -->
+    <p class="name"><%= data.name %></p>
+    <p class="symbol"><%= data.symbol %></p>
+    <span class="del J_Del <% if (data.optionAdd) {%> add <% } %>"></span>
+    <div class="action-wrapper <% if (data.optionAdd) {%> action-add <% } %>">
+    	<span class="J_AddOption add-option">添加</span>
+      <span class="J_DelOption del-option">移除</span>
+    	<span class="J_Cancel">取消</span>
+    </div>
+    </li>
+    <% $.each(data.list, function(index, item) {%>
+    <li class="item <%= item.policy.symbol === data.symbol ? 'J_Current' : '' %>">
+    	<% if (item.policy.symbol !== data.symbol) { %>
+    	<a class="link" href="./pro-trading.html?symbol=<%= item.policy.symbol %>&name=<%= item.policy.name %>&src=<%= encodeURIComponent(data.src) %>">
+        <p class="name"><%= item.policy.name %></p>
+        <p class="symbol"><%= item.policy.symbol %></p>
+      </a>
+    </li>
+    <% } %>
+    <% }); %>
+    <!--<li class="option-logo"></li>-->
+</ul>
+<!-- <div class="option-logo"></div> -->

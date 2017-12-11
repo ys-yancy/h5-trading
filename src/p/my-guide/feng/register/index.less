@@ -1,0 +1,307 @@
+@import '../../../../variable.less';
+@import '../../../../base.less';
+.first {
+  .padding-top(137);
+  background: url(../../../../../img/wl/feng/register-bg.png) 0 0 no-repeat;
+  .background-size(640, 1000);
+  .min-height(1000);
+}
+
+.head {
+  .height(160);
+  background: url(../../../../../img/my-guides-head.png) 0 0 no-repeat;
+  .background-size(640, 160);
+}
+
+.info {
+  .margin-top(260);
+  .height(270);
+}
+
+.img-wrapper-outer {
+  .width(130);
+  .height(130);
+  margin: 0 auto;
+  .border(5, solid, #cdecea);
+  .border-radius(50%);
+  .padding(5);
+  overflow: hidden;
+  background: #66c4bf;
+  .img(110, 110);
+  .img-wrapper {
+    .border-radius(50%);
+    overflow: hidden;
+  }
+}
+
+.name-wrapper {
+  color: #666666;
+  .font-size(36);
+  text-align: center;
+  .line-height(56);
+  .name {
+    color: #0ba29a;
+    .margin-left(10);
+    .margin-right(10);
+  }
+}
+
+.money {
+  .font-size(30);
+  .line-height(42);
+  .height(42);
+  color: #666666;
+  .padding-left(312);
+  .num-wrapper {
+    color: #ea5513;
+    .font-size(38);
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+
+/*position:absolute; right:50px;bottom:50px;font-size:35px;color:#0ba29a*/
+
+.register {
+  margin: 0 auto;
+  .width(353);
+  .height(103);
+  background: url(../../../../../img/my-guides-btn.png) 0 0 no-repeat;
+  background-size: 100% auto;
+}
+
+.popup-wrapper {
+  position: absolute;
+  width: 100%;
+  display: none;
+  .top(200);
+  .dialog();
+  .success-wrapper {
+    .width(600);
+    .height(400);
+    margin: 0 auto;
+    /*background: #fff;*/
+    .border-radius(10);
+    /*background: #fff url(../../../../../img/my-guides-popup.png) 0 0 no-repeat;*/
+    background-size: 100% auto;
+    z-index: 1002;
+    position: relative;
+    display: none;
+    .close {
+      z-index: 1;
+      position: absolute;
+      .width(52);
+      .height(52);
+      top: 0;
+      right: 0;
+    }
+    h3 {
+      .font-size(40);
+      .line-height(50);
+      background-color: #fff;
+      text-align: center;
+    }
+    .desc-wrapper {
+      .padding-top(30);
+      text-align: center;
+      background-color: #fff;
+      color: #000;
+      .font-size(28);
+      p {
+        .line-height(50);
+      }
+    }
+    .btn-wrapper {
+      .margin-top(50);
+      a {
+        .width(478);
+        .line-height(60);
+        .height(60);
+        background: #0fa39b;
+        .border-radius(6);
+        margin: 0 auto;
+        color: #fff;
+        .font-size(30);
+        display: block;
+        text-align: center;
+      }
+      .btm {
+        .margin-top(20px);
+        background:#989E9E;
+      }
+    }
+  }
+  .popup {
+    .width(600);
+    .height(500);
+    .padding-top(100);
+    margin: 0 auto;
+    /*background: #fff;*/
+    .border-radius(10);
+    background: #fff url(../../../../../img/my-guides-popup.png) 0 0 no-repeat;
+    background-size: 100% auto;
+    z-index: 1002;
+    position: relative;
+    .close {
+      z-index: 1;
+      position: absolute;
+      .width(52);
+      .height(52);
+      top: 0;
+      right: 0;
+    }
+    .wrapper {
+      position: relative;
+      .error {
+        position: absolute;
+        clear: both;
+        p {
+          .padding-left(65);
+          .padding-top(28);
+          .line-height(30);
+          .font-size(22);
+          color: #f9584a;
+        }
+      }
+      .error {
+        display: none;
+      }
+      &.error {
+        .error {
+          display: block;
+        }
+        input {
+          border-color: #f9584a;
+          &.get-code {
+            border-color: #6c6281;
+          }
+        }
+      }
+      &:nth-child(1) {
+        .width(456);
+        .margin-left(72);
+        border-bottom: 1px solid #ccc;
+        .padding-bottom(20);
+        .error {
+          position: absolute;
+          .top(40);
+        }
+      }
+      &:nth-child(2) {
+        position: relative;
+        .padding-top(48);
+        .margin-left(72);
+        .width(246);
+        border-bottom: 1px solid #ccc;
+        .padding-bottom(20);
+      }
+      &:nth-child(3) {
+        .padding-top(66);
+      }
+    }
+    .phone {
+      .height(40);
+      .line-height(40);
+      color: #8d8d8d;
+      .font-size(30);
+      .padding-left(65);
+      border: none;
+      outline: 0;
+      background: transparent;
+    }
+    .code {
+      .height(40);
+      .line-height(40);
+      .width(246);
+      color: #8d8d8d;
+      .font-size(30);
+      .padding-left(65);
+      border: none;
+      outline: 0;
+    }
+    .get-code {
+      position: absolute;
+      .left(280);
+      .top(50);
+      .width(190);
+      .height(60);
+      .line-height(60);
+      color: #fff;
+      text-align: center;
+      .font-size(30);
+      .border-radius(6);
+      background: -webkit-gradient(linear, 0 0, 100% 100%, from(#73b5e7), to(#1270b9));
+      background: -webkit-linear-gradient(top, #73b5e7, #1270b9);
+      background: -o-linear-gradient(top, #73b5e7, #1270b9);
+      &.disable {
+        background: #ccc;
+      }
+    }
+    .not-get-code {
+      a {
+        color:#0FA39B;
+      }
+    }
+    .submit {
+      .width(478);
+      .line-height(60);
+      .height(60);
+      background: #0fa39b;
+      .border-radius(6);
+      margin: 0 auto;
+      color: #fff;
+      .font-size(30);
+      display: block;
+      text-align: center;
+      &.disable {}
+    }
+  }
+}
+
+.arrow-down {
+  margin: 0 auto;
+  display: block;
+  .margin-top(26);
+  .width(78);
+  .height(39);
+  background: url(../../../../../img/my-guides-arrow-down.png) 0 0 no-repeat;
+  background-size: 100% auto;
+}
+
+.arrow-up {
+  margin: 0 auto;
+  display: block;
+  .margin-top(26);
+  .width(78);
+  .height(39);
+  background: url(../../../../../img/my-guides-arrow-down.png) 0 0 no-repeat;
+  background-size: 100% auto;
+}
+
+.go-login {
+  color: #0ba29a;
+  .font-size(20);
+  position: relative;
+  right: -12rem;
+  top: 1rem;
+}
+
+.first {
+  .height(1008);
+}
+
+.second {
+  background: url(../../../../../img/my-guides-second-bg.png) 0 0 no-repeat;
+  .height(1136);
+  background: 100% auto;
+  .padding-top(122);
+  .detail {
+    .width(600);
+    .height(990);
+    margin: 0 auto;
+    .border-radius(6);
+    background: #fff url(../../../../../img/my-guides-second-icon.png) 0 0 no-repeat;
+    .background-size(240, 220);
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+.icon-weixin();
+.com-header();
+.content {
+    .list {
+        .link {
+            position: relative;
+            display: block;
+            .padding-left(46);
+            .line-height(96);
+            .font-size(26);
+            border-bottom: 1px solid #d0cfd3;
+            color: @fontColor;
+            .guide {
+                position: absolute;
+                .top(35);
+                .right(35);
+                .width(20);
+                .height(20);
+                .border-radius(50%);
+                background: #d5caf1;
+                .triangle {
+                    position: absolute;
+                    .top(6);
+                    .left(9);
+                    .triangle(4, 3, transparent, transparent, transparent, #fff);
+                }
+            }
+        }
+    }
+}
+

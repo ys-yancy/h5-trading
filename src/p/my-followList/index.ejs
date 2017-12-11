@@ -1,0 +1,31 @@
+<% data.list.forEach(function(item, index) {%>
+	<li class="my-follow J_MyFollow" data-id='<%= item.expert_id %>'>
+	<a href='./my-followorder.html?expertId=<%= item.expert_id %>'>
+		<div class="follow-list">
+			<div class="img-wrapper-outer">
+				<div class="img-wrapper">
+					<img class="img" src="<%= item.img %>">
+				</div>
+			</div>
+			<span class="name"><%= item.name %></span>
+		</div>
+		<div class="follow-trade">
+			<p class="num"><%= item.follow_tickets_count %></p>
+			<p class="desc">跟单交易</p>
+		</div>
+		<div class="follow-profit <%= parseFloat(item.follow_tickets_profit_sum) > 0 ? 'up' : '' %>">
+			<p class="num"><%= parseFloat(item.follow_tickets_profit_sum).toFixed(2) %></p>
+			<p class="desc">跟单盈亏</p>
+		</div>
+		<div class="follow-time">
+			<p class="num"><%= item.follow_days %> 天</p>
+			<p class="desc">跟单时间</p>
+		</div>
+	</a>
+	</li>
+
+<%})%>
+
+<%if (data.list.length === 0) {%>
+	<li class="no-list">没有订单</li>
+<%}%>

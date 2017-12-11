@@ -1,0 +1,54 @@
+<%if (!data.edit) {%>
+<div class="center-item volume-wrapper">
+  <div class="wrapper J_VolumeFocus volume-input">
+    <p class="title">交易量(手)</p>
+    <div class="J_Minus minus"></div>
+    <div class="J_Add add"></div>
+    <input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" <% if (data.edit) { %> disabled <%}%>>
+  </div>
+  <p class="volume-err err" style="display:none;"></p>
+  <div class="volume-count-wrapper clearfix">
+    <p class="J_VolumeMoney volume-money">占用资金（$）<%= data.margin === undefined ? '' : parseFloat(parseFloat(data.margin).toFixed(2)) %></p>
+    <p class="volume volume-margin">最大可买（手）<span id="J_MaxVolumn"></span></p>
+    <span class="bar"></span>
+  </div>
+  <div class="J_Unfold fold">
+    <span class="text" id="J_UnfoldText">更多设置</span>
+  </div>
+</div>
+<%} %>
+
+<div class="center-item guadan-price" <% if (!data.guadan && !data.edit) {%> style="display:;"<%}%>>
+  <% if (!data.edit) { %>
+    <div class="slide-left">
+      <span class="icon J_Trusteeship <% if (!data.guadan) {%> close <% }%>"></span>
+    </div>
+    <div>
+      <p class="title">挂单开仓价</p>
+      <div class="minus"></div>
+      <div class="add"></div>
+      <input id="J_OpenPriceInput" class="J_Edit" placeholder="-- --" type="number" value="<%= data.openprice || (data.openPrice || data.price) %>"  disabled>
+    </div>
+  <% } else { %>
+    <!-- <div class="right">开仓价格：</div>
+    <div><input id="J_OpenPriceInput" class="J_Edit" type="number" data-value="<%= parseFloat(data.openPrice) %>" value="<%= parseFloat(data.openPrice) %>" readonly/>
+    </div>
+    <input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" style="display:none;"> -->
+  <% } %>
+</div>
+<li class="center-item li-item clearfix">
+    <div class="wrapper">
+        <p class="title">止盈价格</p>
+        <div class="minus"></div>
+        <div class="add"></div>
+        <input type="number" id="J_Profit" class="takeprofit" placeholder="" data-value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>">
+        <p>目标盈利（$）<span id="J_ProfitCount"></span></p>
+    </div>
+    <div class="wrapper">
+        <p class="title">止损价格</p>
+        <div class="minus"></div>
+        <div class="add"></div>
+        <input type="number" class="stoploss" id="J_Loss" data-value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" placeholder="">
+        <p>预期亏损（$）<span id="J_LossCount"></span></p>
+    </div>
+</li>

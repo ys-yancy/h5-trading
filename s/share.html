@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>邀请</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../src/lib/jweixin-1.0.0.js"></script>
+    <!-- {{add script tags begin}} -->
+    <script src="../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script type="text/javascript">
+        (function() {
+            function loadStyle(url) {
+                try{
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = url;
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(link);
+                } catch(e){}
+            }
+            
+            if (getAppUi()) {
+                var url = '../src/style/' + getAppUi();
+                loadStyle(url);
+            }     
+        })()
+    </script>
+    <link rel="stylesheet" href="../src/p/share/index.css">
+</head>
+
+<body>
+    <div style="display:none" id="J_Info">
+        <img src="../img/weixin-share-info.png" style="width:100%;position:absolute;z-index:11" alt="微信分享请点右上角"/>
+    </div>
+    <header class="header" >
+        <div class="header-inner" id="J_Header">
+            <a class="go-back" id="J_GoBack" href="./friend.html?">
+                <span class="icon arrow"></span>
+            </a>
+            <h1>邀请</h1>
+            <!--<span style="display:none" class="qrcode" id="J_QRCode_Link">二维码</span>-->
+        </div>
+    </header>
+    <div class="img-wrapper">
+      <div class="km-slider init-remove" id="slider">
+        <div class="km-slider-outer">
+          
+        </div>
+      </div>
+    </div>
+    <section class="content">
+        
+        <div class="bd">
+          <p>我的邀请码</p>
+          <p class="code"></p>
+          <!--<a href="./activity/festival-guide.html" class="activity">端午活动 领更多红包</a>-->
+        </div>
+        <div class="action-wrapper" id="J_ShareBtn">
+          <a class="share" id="J_ShowGuide" href="javascript:;">读取中...</span></a>
+        </div>
+        <div class="code-wrapper">
+          <a href="javascript:;"  id="J_Share">生成邀请二维码</a>
+        </div>
+       <!--  <div class="top-banner">
+            <span class="qrcode" id="J_Qrcode"></span>
+            <form method="post" id="J_Invite" autocomplete="off">
+                <input type="text" class="code" id="J_Code" placeholder="输入邀请码或兑换码" >
+                <input type="submit" class="submit" value="提交">
+            </form>
+        </div>
+        
+        <div class="desc-wrapper">
+            <p class="title">邀请朋友拿赠金：</p>
+            <ul>
+                <li>每邀请成功1人，可获得3美元奖励 (限5人)</li>
+                <li>邀请到15人，再送您20美元奖励</li>
+            </ul>
+            <p>您邀请的朋友实盘投资盈利，会赠送您一定数额的真实资金，支持多级邀请。</p>
+        </div> -->
+
+       <!--  <div class="action-wrapper" id="J_ShareBtn">
+            <a class="share" id="J_Share" href="javascript:;">我的二维码</span></a>
+            <p class="desc">点击分享告诉好朋友，对方通过该链接注册进行实盘交易，您就可以获得“朋友赚”奖金</p>
+        </div> -->
+        <!-- 
+        <div class="action-wrapper">
+            <div class="wrapper left" id="J_Share2Friends" style="display:none">
+                <div class="icon-wrapper"></div>
+                <p>发送给朋友</p>
+            </div>
+            <div class="wrapper" id="J_Share2Circle" style="display:none">
+                <div class="icon-wrapper"></div>
+                <p>分享到朋友圈</p>
+            </div>
+        </div>
+        -->
+    
+    </section>
+    <footer class="footer">
+       <!--  <ul class="clearfix bottom-nav">
+            <li class="">
+                <a class="trade" href="./option.html">
+                    <span class="icon"></span>
+                    <span class="name">交易</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="friend" href="./quan/discovery.html">
+                    <span class="icon"></span>
+                    <span class="name">发现</span>
+                </a>
+            </li>
+            <li>
+                <a class="my" href="./my.html">
+                    <span class="icon"></span>
+                     <span class="name">我</span>
+                </a>
+            </li>
+        </ul> -->
+    </footer>
+    <script src="../src/lib/zepto.js"></script>
+    <script src="../src/lib/qrcode.js"></script>
+    <!-- <script src="../src/lib/jquery.qrcode.min.js"></script> -->
+    <script src="../build/share.js"></script>
+</body>
+</html>

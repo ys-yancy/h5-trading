@@ -1,0 +1,111 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+.icon-weixin();
+.com-header();
+html,
+body {
+    /*background-color: #e1283e;*/
+}
+
+.content {
+    background: url('../../../../img/zhufeng-h5-bg.png') 0 0 no-repeat;
+    background-size: 100% auto;
+    .height(1007);
+    .padding-top(602);
+    .desc,
+    .extra {
+        color: #4988c2;
+    }
+    .desc {
+        .font-size(20);
+        .line-height(52);
+    }
+    .extra {
+        .margin-top(50);
+        .font-size(18);
+        .line-height(50);
+        text-align: center;
+        color: #376c9e;
+    }
+    .action-wrapper {
+        .margin-top(16);
+        .padding(0,
+        82);
+        input {
+            .padding-left(60);
+            .height(60);
+            .width(476);
+            .border-radius(6);
+            outline: 0;
+            &::-webkit-input-placeholder {
+                color: #666666;
+            }
+            .border(2,
+            solid,
+            #4988c2);
+        }
+        .wrapper {
+            .err {
+                display: none;
+            }
+            &.error {
+                .err {
+                    display: block;
+                    color: red;
+                    .line-height(40);
+                }
+            }
+        }
+        .tel {
+            background: transparent;
+            .font-size(24);
+            color: #666666;
+            text-align: left;
+            .padding-left(60);
+        }
+        .wrapper {
+            .padding-top(22);
+        }
+        /*.register {
+            .margin-top(18);
+            .line-height(60);
+            .font-size(34);
+            border: none;
+            background: #6da0ce;
+            color: #fff;
+        }*/
+        
+        .login {
+            background: #6da0ce;
+            .line-height(60);
+            .height(60);
+            .width(476);
+            .border-radius(6);
+            outline: 0;
+            display: block;
+            text-align: center;
+            .font-size(29);
+            color: #ffffff;
+        }
+    }
+}
+
+.recovery-wrapper {
+    .width(476);
+    margin: 0 auto;
+    .margin-top(20);
+    .recovery {
+        float: right;
+        .font-size(20);
+        .line-height(40);
+        /*.margin-right(60);*/
+        color: #4988c2;
+    }
+    .register {
+        float: left;
+        /*.margin-left(60);*/
+        .font-size(20);
+        .line-height(40);
+        color: #4988c2;
+    }
+}

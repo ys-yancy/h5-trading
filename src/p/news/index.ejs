@@ -1,0 +1,16 @@
+<% function formatHtml(str) { return str.replace(/\\/g,""); } %>
+<% data.list.forEach( function(item, index) {%>
+	<li class="item clearfix <%= item.isFirst && 'first' %>">
+		<p class="time"> <%= item.time.split(' ')[1] %> </p>
+
+		<div class="clearfix">
+
+			<div class="left"> <%= formatHtml(item.content) %> </div>
+			<div class="right"></div>
+			<div class="progress">
+				<span class="circle iconfont icon-icon-bar-chart-o"></span>
+			</div>
+
+		</div>
+	</li>
+<% }); %>

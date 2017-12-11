@@ -1,0 +1,17 @@
+<% data.forEach(function(item, index) {%>
+<div class="item clearfix down sort-<%= index + 1 %>">
+  <a href="javascript:;">
+    <div class="img-wrapper-outer">
+      <div class="img-wrapper">
+        <img class="img" src="<%= item.avatar %>" alt="">
+      </div>
+    </div>
+    <div class="symbol-wrapper">
+      <p class="name"><%= item.nickname %></p>
+    </div>
+    <span class="profit"><%= (item.month_rate_of_return* 100).toFixed(1) %><span class="small">%</span>
+    </span>
+  </a>
+</div>
+
+<% }); %>

@@ -1,0 +1,277 @@
+// 用于iphone6 => 750/10
+@base: 46.875;
+
+.width(@a) {
+  width: unit(@a/@base, rem);
+}
+
+.height(@a) {
+  height: unit(@a/@base, rem);
+}
+
+.left(@a) {
+  left: unit(@a/@base, rem);
+}
+
+.right(@a) {
+  right: unit(@a/@base, rem);
+}
+
+.top(@a) {
+  top: unit(@a/@base, rem);
+}
+
+.bottom(@a) {
+  bottom: unit(@a/@base, rem);
+}
+
+.max-height(@a) {
+  max-height: unit(@a/@base, rem);
+}
+
+.min-height(@a) {
+  min-height: unit(@a/@base, rem);
+}
+
+.min-width(@a) {
+  min-width: unit(@a/@base, rem);
+}
+
+.max-width(@a) {
+  max-width: unit(@a/@base, rem);
+}
+
+.line-height(@a) {
+  line-height: unit(@a/@base, rem);
+}
+
+.padding(@a, @b, @c, @d) {
+  padding: unit(@a/@base, rem) unit(@b/@base, rem) unit(@c/@base, rem) unit(@d/@base, rem);
+}
+
+.padding(@a, @b, @c) {
+  padding: unit(@a/@base, rem) unit(@b/@base, rem) unit(@c/@base, rem);
+}
+
+.padding(@a) {
+  padding: unit(@a/@base, rem);
+}
+
+.padding(@a, @b) {
+  padding: unit(@a/@base, rem) unit(@b/@base, rem);
+}
+
+.padding-left(@a) {
+  padding-left: unit(@a/@base, rem);
+}
+
+.padding-right(@a) {
+  padding-right: unit(@a/@base, rem);
+}
+
+.padding-top(@a) {
+  padding-top: unit(@a/@base, rem);
+}
+
+.padding-bottom(@a) {
+  padding-bottom: unit(@a/@base, rem);
+}
+
+.margin(@a, @b, @c, @d) {
+  margin: unit(@a/@base, rem) unit(@b/@base, rem) unit(@c/@base, rem) unit(@d/@base, rem);
+}
+
+.margin(@a, @b) {
+  margin: unit(@a/@base, rem) unit(@b/@base, rem);
+}
+
+.margin-left(@a) {
+  margin-left: unit(@a/@base, rem);
+}
+
+.margin-right(@a) {
+  margin-right: unit(@a/@base, rem);
+}
+
+.margin-top(@a) {
+  margin-top: unit(@a/@base, rem);
+}
+
+.margin-bottom(@a) {
+  margin-bottom: unit(@a/@base, rem);
+}
+
+.border-width(@a) {
+  border-width: unit(@a/@base, rem);
+}
+
+.border-width(@a, @b) {
+  border-width: unit(@a/@base, rem) unit(@b/@base, rem);
+}
+
+.border-width(@a, @b, @c, @d) {
+  border-width: unit(@a/@base, rem) unit(@b/@base, rem) unit(@c/@base, rem) unit(@d/@base, rem);
+}
+
+.border(@a, @b, @c) {
+  border: unit(@a/@base, rem) @b @c;
+}
+
+.border-top(@a, @b, @c) {
+  border-top: unit(@a/@base, rem) @b @c;
+}
+
+.border-bottom(@a, @b, @c) {
+  border-bottom: unit(@a/@base, rem) @b @c;
+}
+
+.border-left(@a, @b, @c) {
+  border-left: unit(@a/@base, rem) @b @c;
+}
+
+.border-right(@a, @b, @c) {
+  border-right: unit(@a/@base, rem) @b @c;
+}
+
+.box-shadow(@a, @b, @color) {
+  box-shadow: unit(@a/@base, rem) unit(@b/@base, rem) @color;
+}
+
+.text-shadow(@a, @b, @color) {
+  text-shadow: unit(@a/@base, rem) unit(@b/@base, rem) @color;
+}
+
+.font-size(@a) {
+  font-size: unit(@a/@base, rem);
+}
+
+.background-size (@x, @y) {
+  background-size: unit(@x/@base, rem) unit(@y/@base, rem);
+}
+
+.background-position (@x, @y) {
+  background-position: unit(@x/@base, rem) unit(@y/@base, rem);
+}
+
+// 文本只显示一行，超出部分隐藏
+.line-hide() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 删除app中的click背景
+.deleteOutline () {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  /* For some Androids */
+}
+
+.ellipsis() {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.border-radius(@a) when (ispercentage(@a)) {
+  -webkit-border-radius: @a;
+  -moz-border-radius: @a;
+  -ms-border-radius: @a;
+  -o-border-radius: @a;
+  border-radius: @a;
+}
+
+.border-radius(@a) when not (ispercentage(@a)) {
+  -webkit-border-radius: unit(@a/@base, rem);
+  -moz-border-radius: unit(@a/@base, rem);
+  -ms-border-radius: unit(@a/@base, rem);
+  -o-border-radius: unit(@a/@base, rem);
+  border-radius: unit(@a/@base, rem);
+}
+
+.border-top-right-radius(@a) {
+  -webkit-border-top-right-radius: unit(@a/@base, rem);
+  -moz-border-top-right-radius: unit(@a/@base, rem);
+  -ms-border-top-right-radius: unit(@a/@base, rem);
+  -o-border-top-right-radius: unit(@a/@base, rem);
+  border-top-right-radius: unit(@a/@base, rem);
+}
+
+.border-top-left-radius(@a) {
+  -webkit-border-top-left-radius: unit(@a/@base, rem);
+  border-top-left-radius: unit(@a/@base, rem);
+}
+
+.border-bottom-right-radius(@a) {
+  -webkit-border-bottom-right-radius: unit(@a/@base, rem);
+  -moz-border-bottom-right-radius: unit(@a/@base, rem);
+  -ms-border-bottom-right-radius: unit(@a/@base, rem);
+  -o-border-bottom-right-radius: unit(@a/@base, rem);
+  border-bottom-right-radius: unit(@a/@base, rem);
+}
+
+.border-bottom-left-radius(@a) {
+  -webkit-border-bottom-left-radius: unit(@a/@base, rem);
+  -moz-border-bottom-left-radius: unit(@a/@base, rem);
+  -ms-border-bottom-left-radius: unit(@a/@base, rem);
+  -o-border-bottom-left-radius: unit(@a/@base, rem);
+  border-bottom-left-radius: unit(@a/@base, rem);
+}
+
+// 图片垂直居中
+.img(@width, @height, @imgw, @imgH) {
+  .img-wrapper {
+    .width(@width);
+    .height(@height);
+    cursor: pointer;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    .img {
+      .width(@imgw);
+      .height(@imgH);
+      vertical-align: middle;
+    }
+  }
+}
+
+// 三角形
+.triangle(@a, @b, @topColor, @rightColor, @bottomColor, @leftColor) {
+  width: 0;
+  height: 0;
+  .border-width(@a, @b);
+  border-style: solid;
+  border-color: @topColor @rightColor @bottomColor @leftColor;
+}
+
+.linear-gradient(@a, @b) {
+  background: @b;
+  background: -moz-linear-gradient(top, @a, rgba(red(@b), green(@b), blue(@b), 1));
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(@a), to(rgba(red(@b), green(@b), blue(@b), 1)));
+  background: -o-linear-gradient(top, @a, rgba(red(@b), green(@b), blue(@b), 1));
+}
+
+.rotate(@a: 0) {
+  -webkit-transform: rotate(@a);
+  -moz-transform: rotate(@a);
+  transform: rotate(@a);
+}
+
+.transition(@a: all .3s ease) {
+  -webkit-transition: @a;
+  -moz-transition: @a;
+  transition: @a;
+}
+
+.transform(@a) {
+  -webkit-transform: @a;
+  -moz-transform: @a;
+  transform: @a;
+}
+
+.transform-origin(@a, @b) {
+  -webkit-transform-origin: unit(@a/@base, rem) unit(@b/@base, rem);
+  transform-origin: unit(@a/@base, rem) unit(@b/@base, rem);
+}

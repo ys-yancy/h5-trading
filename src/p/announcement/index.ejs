@@ -1,0 +1,6 @@
+<% $.each(data, function(index, item) { %>
+    <ul class='aMent_cont' data-id=<%=index%>>
+    	<li class="anMent_til"><%= item.title %></li>
+    	<li class="anMent_date"><%= item.start_time.split(' ')[0] %></li>
+    </ul>
+<% }); %>

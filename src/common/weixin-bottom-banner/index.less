@@ -1,0 +1,32 @@
+@import '../../variable.less';
+.weixin-bottom-banner {
+    position: fixed;
+    bottom: 0;
+    .width(640);
+    .height(100);
+    background: #453e4f;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    p {
+        .line-height(100);
+        .font-size(26);
+        color: #fff;
+        .padding-left(46);
+        .bottom-num,
+        .bottom-money {
+            .margin(0, 5);
+            .font-size(32);
+        }
+    }
+    a {
+        position: absolute;
+        .right(25);
+        .top(25);
+        .width(140);
+        .line-height(50);
+        .border-bottom(4, solid, #6c4db5);
+        background: #967bdc;
+        color: #fff;
+        text-align: center;
+    }
+}

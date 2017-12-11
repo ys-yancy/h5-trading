@@ -1,0 +1,72 @@
+<li class="item price-info">
+    <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+        <%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
+        <!-- <%= data.cmd === 'sell' ? '买跌' : (data.cmd === 'buy' ? '买涨' : '挂单' ) %> -->
+    </span>
+    <div class="price-wrapper">
+        <!--<%= parseFloat(data.profit) < 0 ? '-' : '+' %>--><span id="J_FloatProfit">--</span>
+        <span class="currency">美元</span>
+    </div>
+</li>
+<li class="item clearfix">
+    <div>
+        <p class="name">交易量（手）：</p>
+        <p><%= data.volume %></p>
+    </div>
+    <div>
+        <p class="name">交易利润（$）：</p>
+        <p><span id="J_FloatProfitTrading"></span></p>
+    </div>
+</li>
+<li class="item clearfix">
+    <div>
+        <p class="name">开仓价格：</p>
+        <p><%= data.openPrice %></p>
+    </div>
+    <div>
+            <p class="name">手续费（$）：</p>
+            <p><%= data.commission %></p>
+    </div>
+</li>
+<li class="" id="J_More" style="">
+    <ul>
+        <li class="item clearfix time-wrapper">
+            <div>
+                <p class="name">开仓时间：</p>
+                <p class="time"><%= data.openTime.split(' ')[0] %></p>
+                <p class="time"><%= data.openTime.split(' ')[1] %></p>
+            </div>
+            <div>
+                <p class="name">隔夜利息差（$）：</p>
+                <p><%= data.swap %></p>
+            </div>
+        </li>
+        <li class="item clearfix">
+            <div>
+                <p class="name">止盈价格：</p>
+                <p><%= parseFloat(data.takeProfit) === 0 ? '--' : data.takeProfit %></p>
+            </div>
+            <div>
+                <p class="name">止损价格：</p>
+                <p><%= parseFloat(data.stopLoss) === 0 ? '--' : data.stopLoss %></p>
+            </div>
+        </li>
+        
+        <li class="item clearfix"> 
+            <div>
+                <p class="name">订单号：</p>
+                <p><%= data.ticket %></p>
+            </div>
+            <div>
+                <p class="name">跟随自：</p>
+                <p>
+                    <% if (data.follow_from_ticket) { %>
+                        <a href="./my/profile.html?inviteCode=<%= data.follow_from_invite_code %>&from=<%=encodeURIComponent(location.href) %>"><%= data.follow_from_nickname %></a>
+                    <% } else { %>
+                        --
+                    <% } %>
+                </p>
+            </div> 
+        </li>
+    </ul>
+</li>

@@ -1,0 +1,22 @@
+<% data.forEach(function(item, index) {%>
+	<li class="user-follow J_UserFollow" data-id='<%= item.id %>'>
+	<a href="./follow-order.html?expertId=<%= item.id %>">
+		<div class="tradelist-user">
+			<div class="img-wrapper-outer">
+				<div class="img-wrapper">
+					<img class="img" src="<%= item.img %>">
+				</div>
+			</div>
+			<span class="name"><%= item.name %></span>
+		</div>
+		<div id="J_TradelistChart" class="tradelist-chart chart_index_<%= index %> J_TradelistChart"></div>
+		<div class="tradelist-profit <%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
+			<p class="profit"><%= parseFloat(item.yield_rate).toFixed(2) %> %</p>
+		</div>
+	</a>
+	</li>
+<%})%>
+
+<% if (data.length === 0) {%>
+	<li class="no-list">没有订单</li>
+<%}%>

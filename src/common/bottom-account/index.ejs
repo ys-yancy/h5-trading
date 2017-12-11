@@ -1,0 +1,261 @@
+<% function getMount(num, unit) {unit = unit || 2;return parseFloat(num).toFixed(unit).toString().split('.')[1];} %>
+<span class="arrow"></span>
+<span class="transition-l"></span>
+<span class="transition-r"></span>
+<% if (data.page === 'trade') {%>
+    <% if (data.type === 'demo') { %>
+    <div class="item-wrapper width-4">
+        <ul class="clearfix demo-account" id="J_DemoAccount">
+            <li>
+                <p class="desc">浮动盈亏($)</p>
+                <p class="J_FloatProfit">
+                    <span class="int">
+                        <% if (data.profit.toString().indexOf('.999') != -1) {%><% if (data.profit > 0) { %><%= parseInt(data.profit + 1) %><% } else { %><%= parseInt(data.profit - 1) %><% } %><% } else { %><%= parseInt(data.profit) %><% } %>.
+                    </span>
+                    <span class="small"><%= getMount(data.profit) %>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">可用保证金($)</p>
+                <p class="J_FreeMargin">
+                    <span class="int"><%= parseInt(data.freeMargin) %>.</span>
+                    <span class="small"><%= getMount(data.freeMargin) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">账户净值($)</p>
+                <p class="J_NetDeposit">
+                    <span class="int"><%= parseInt(data.netDeposit) %>.</span>
+                    <span class="small"><%= getMount(data.netDeposit)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金比例(%)</p>
+                <p class="J_Rate">
+                    <span class="int"><%= data.rate === '--' ? '--' : parseInt(data.rate) %><% if (data.rate !== '--') {%>.<% } %>
+                    </span>
+                    <span class="small"><%= data.rate === '--' ? '' : getMount(data.rate)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金赠金($)</p>
+                <p class="J_Bonus">
+                    <span class="int"><%= parseInt(data.bonus) %>.</span>
+                    <span class="small"><%= getMount(data.bonus)%></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+    <% if (data.type !== 'demo') { %>
+    <div class="item-wrapper width-4">
+        <ul class="clearfix real-account" id="J_Account">
+            <li>
+                <p class="desc">浮动盈亏($)</p>
+                <p class="J_FloatProfit">  
+                    <span class="int">
+                        <% if (data.profit.toString().indexOf('.999') != -1) {%><% if (data.profit > 0) { %><%= parseInt(data.profit + 1) %><% } else { %><%= parseInt(data.profit - 1) %><% } %><% } else { %><%= parseInt(data.profit) %><% } %>.
+                    </span>
+                    <span class="small"><%= getMount(data.profit) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">可用保证金($)</p>
+                <p class="J_FreeMargin">
+                    <span class="int"><%= parseInt(data.freeMargin) %>.</span>
+                    <span class="small"><%= getMount(data.freeMargin) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">账户净值($)</p>
+                <p class="J_NetDeposit">
+                    <span class="int"><%= parseInt(data.netDeposit) %>.</span>
+                    <span class="small"><%= getMount(data.netDeposit)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金比例(%)</p>
+                <p class="J_Rate">
+                    <span class="int"><%= data.rate === '--' ? '--' : parseInt(data.rate) %><% if (data.rate !== '--') {%>.<% } %>
+                    </span>
+                    <span class="small"><%= data.rate === '--' ? '' : getMount(data.rate)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金赠金($)</p>
+                <p class="J_Bonus">
+                    <span class="int"><%= parseInt(data.bonus) %>.</span>
+                    <span class="small"><%= getMount(data.bonus)%></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+<% } else if (data.page === 'history') {%>
+    <% if (data.type === 'demo') { %>
+    <div class="item-wrapper width-4 width-four">
+        <ul class="clearfix demo-account" id="J_DemoAccount">
+            <li>
+                <p class="desc">累积盈利($)</p>
+                <p class="J_Profits">
+                    <span class="int"><% if (data.total <0 && parseInt(data.total) == 0) { %>-<% } %><%= data.total !== undefined ? parseInt(data.total) : '--' %><% if (data.total) {%>.<%}%>
+                    </span>
+                    <span class="small"><%= data.total == 0 ? '' : getMount(data.total) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">累积交易(笔)</p>
+                <p class="J_TotalTrade"><%= data.totalTrade !== undefined ? data.totalTrade : '--' %></p>
+            </li>
+            <li>
+                <p class="desc">账户余额($)</p>
+                <p class="J_Balance">
+                    <span class="int"><%= parseInt(data.balance) %>.</span>
+                    <span class="small"><%= getMount(data.balance) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">账户净值($)</p>
+                <p class="J_NetDeposit">
+                    <span class="int"><%= parseInt(data.netDeposit) %>.</span>
+                    <span class="small"><%= getMount(data.netDeposit)%></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+    <% if (data.type !== 'demo') { %>
+    <div class="item-wrapper width-4 width-four">
+         <ul class="clearfix demo-account" id="J_DemoAccount">
+            <li>
+                <p class="desc">累积盈利($)</p>
+                <p class="J_Profits">
+                    <span class="int"><% if (data.total <0 && parseInt(data.total) == 0) { %>-<% } %><%= data.total !== undefined ? parseInt(data.total) : '--' %><% if (data.total) {%>.<%}%></span>
+                    <span class="small"><%= data.total == 0 ? '' : getMount(data.total) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">累积交易(笔)</p>
+                <p class="J_TotalTrade"><%= data.totalTrade !== undefined ? data.totalTrade : '--' %></p>
+            </li>
+            <li>
+                <p class="desc">账户余额($)</p>
+                <p class="J_Balance">
+                    <span class="int"><%= parseInt(data.balance) %>.</span>
+                    <span class="small"><%= getMount(data.balance) %></span>
+                </p>
+                
+            </li>
+            <li>
+                <p class="desc">账户净值($)</p>
+                <p class="J_NetDeposit">
+                    <span class="int"><%= parseInt(data.netDeposit) %>.</span>
+                    <span class="small"><%= getMount(data.netDeposit)%></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+<% } else { %>
+
+    <% if (data.type === 'demo') { %> <!--第一页-->
+    <div class="item-wrapper">
+        <ul class="clearfix demo-account" id="J_DemoAccount">
+            <li>
+                <p class="desc">可用保证金($)</p>
+                <p class="J_FreeMargin">
+                    <span class="int">
+                        <% if (data.profit.toString().indexOf('.999') != -1) {%><% if (data.profit > 0) { %><%= parseInt(data.profit + 1) %><% } else { %><%= parseInt(data.profit - 1) %><% } %><% } else { %><%= parseInt(data.profit) %><% } %>.
+                    </span>
+                    <span class="small">
+                        <%= getMount(data.profit) %>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">账户净值($)</p>
+                <p class="J_NetDeposit">
+                    <span class="int"><%= parseInt(data.netDeposit) %>.</span>
+                    <span class="small"><%= getMount(data.netDeposit)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">浮动盈亏($)</p>
+                <p class="J_FloatProfit">
+                    <span class="int">
+                        <% if (data.profit <0 && parseInt(data.profit) == 0) { %>-<% } %><%= parseInt(data.profit) %>.
+                    </span>
+                    <span class="small">
+                        <%= getMount(data.profit) %>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金比例(%)</p>
+                <p class="J_Rate">
+                    <span class="int"><%= data.rate === '--' ? '--' : parseInt(data.rate) %><% if (data.rate !== '--') {%>.<% } %>
+                    </span>
+                    <span class="small"><%= data.rate === '--' ? '' : getMount(data.rate)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金赠金($)</p>
+                <p class="J_Bonus">
+                    <span class="int"><%= parseInt(data.bonus) %>.</span>
+                    <span class="small"><%= getMount(data.bonus)%></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+    <% if (data.type !== 'demo') { %>
+    <div class="item-wrapper">
+        <ul class="clearfix real-account" id="J_Account">
+            <li>
+                <p class="desc">可用保证金($)</p>
+                <p class="J_FreeMargin">
+                    <span class="int">
+                        <% if (data.profit.toString().indexOf('.999') != -1) {%><% if (data.profit > 0) { %><%= parseInt(data.profit + 1) %><% } else { %><%= parseInt(data.profit - 1) %><% } %><% } else { %><%= parseInt(data.profit) %><% } %>.
+                    </span>
+                    <span class="small"><%= getMount(data.profit) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">账户净值($)</p>
+                <p class="J_NetDeposit">
+                    <span class="int"><%= parseInt(data.netDeposit) %>.</span>
+                    <span class="small"><%= getMount(data.netDeposit)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">浮动盈亏($)</p>
+                <p class="J_FloatProfit">
+                    <span class="int"><% if (data.profit < 0 && parseInt(data.profit) == 0) { %>-<% } %><%= parseInt(data.profit) %>.
+                    </span>
+                    <span class="small"><%= getMount(data.profit) %></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金比例(%)</p>
+                <p class="J_Rate">
+                    <span class="int"><%= data.rate === '--' ? '--' : parseInt(data.rate) %><% if (data.rate !== '--') {%>.<% } %></span>
+                    <span class="small"><%= data.rate === '--' ? '' : getMount(data.rate)%></span>
+                </p>
+            </li>
+            <li>
+                <p class="desc">保证金赠金($)</p>
+                <p class="J_Bonus">
+                    <span class="int"><%= parseInt(data.bonus) %>.</span>
+                    <span class="small"><%= getMount(data.bonus)%></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+<% } %>

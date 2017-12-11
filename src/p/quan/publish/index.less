@@ -1,0 +1,66 @@
+@import '../../../variable.less';
+@base: 750/16;
+
+/*@import '../../share/banner/index.less';*/
+
+.icon {
+  background: url(../../../../img/bg-icon.png) 0 0 no-repeat;
+  .background-size(400, 1500);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.quan-font();
+.quan-iconfont {
+  font-family: 'quan-iconfont';
+}
+
+.go-back {
+  .font-size(24);
+  color: #fff;
+  line-height: 1.1rem;
+}
+
+.publish {
+  position: absolute;
+  right: .45rem;
+  top: .55rem;
+  width: 1.225rem;
+  height: 1.1rem;
+  .font-size(24);
+  color: #fff;
+  line-height: 1.1rem;
+  &.disable {
+    color: #ccc;
+  }
+}
+
+.wrapper {
+  .line-height(60);
+  border-bottom: 1px solid #ccc;
+  input {
+    width: 16rem;
+    .padding(10, 20);
+    .line-height(40);
+    .font-size(24);
+    outline: 0;
+  }
+}
+
+textarea {
+  width: 16rem;
+  min-height: 10rem;
+  outline: 0;
+  .padding(20);
+  .line-height(40);
+  .font-size(24);
+}
+
+html {
+  /*background: #efeff4;*/
+}
+
+.com-build-header();

@@ -1,0 +1,17 @@
+<% if (data.edit) {%>
+<div class="item price-info">
+    <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+        <%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
+    </span>
+    <div class="price-wrapper">
+        <span id="J_FloatProfit">--</span>
+        <span class="currency">美元</span>
+    </div>
+</div>
+<% } else {%>
+<div class="detail clearfix">
+    <div class="leverage-wapper">杠杆：<span><span class="num"><%= data.leverage %></span>倍</span></div>
+    <div class="desc size-wrapper"><span class="unit">1</span>手 =<span><%= data.policy.lot_size %></span><%= data.policy.unit %></div>
+    <span class="attribute-trigger">属性详情</span>
+</div>
+<% } %>

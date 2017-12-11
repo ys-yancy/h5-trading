@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>个人中心</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../src/lib/jweixin-1.0.0.js"></script>
+    <!-- {{add script tags begin}} -->
+    <script src="../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script type="text/javascript">
+        (function() {
+            function loadStyle(url) {
+                try{
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = url;
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(link);
+                } catch(e){}
+            }
+            
+            if (getAppUi()) {
+                var url = '../src/style/' + getAppUi();
+                loadStyle(url);
+            }     
+        })()
+    </script>
+    <link rel="stylesheet" href="../src/p/my/index.css">
+</head>
+
+<body>
+    <header class="header" >
+        <div class="header-inner" id="J_Header">
+            <h1>我</h1>
+        </div>
+    </header>
+    <section class="content">
+        <div class="hd">
+            <a id="J_Profile" class="hd-link" href="">
+                <div class="img-wrapper-outer">
+                    <div class="img-wrapper">
+                        <img src="../img/avatar.png" class="img" id="J_Img" alt="头像">
+                    </div>
+                </div>
+                <div class="detail-wrapper" id="J_NotLogin">
+                    <p class="name" id="J_HDName"></p>
+                    <p>
+                        <span href="javascript:;">手机号：<span id="J_Phone"></span></span>
+                    </p>
+                    <p>
+                        <span href="javascript:;">邀请码：<span id="J_InviteCode"></span></span>
+                    </p>
+                </div>
+                <span class="arrow-right"></span>
+            </a>
+        </div>
+        <ul id="J_Rank" class="bd bd-first">
+            <li>
+                <a class="my-count J_VerifyLogin" href="./account.html">
+                    <span class="J_Account account">我的资产</span>
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            <li>
+                <a class="my-gift J_VerifyLogin" href="./lottery.html">我的红包
+                    <span class="num" id="J_LotterNum"  style="display:none;">1</span>
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            <!-- <li>
+                <a id="J_Modify_Profile" class="my-count" href="./weixin/profile.html">
+                    <span class="account">隐私设置</span>
+                    <span class="arrow-right"></span>
+                    <span class="desc-right">头像 昵称 隐私</span>
+                </a>
+            </li> -->
+            <!-- <li>
+                <a class="my-count " href="./weixin/trading-config.html">
+                    <span class="account">切换交易界面</span>
+                    <span class="arrow-right"></span>
+                    <span class="desc-right">专业交易 或 极速交易</span>
+                </a>
+            </li> -->
+           
+            <!--
+            <li>
+                <a class="my-gift J_VerifyLogin" href="./my/sort-month.html?header=true">
+                    <span>排行榜</span>
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            -->
+        </ul>
+        <ul class="bd bd-first">
+            <li class='auth'>
+                <a class="my-count " href="javascript:void(0);">
+                    <span class="account">切换交易界面</span>
+                    <!-- <span class="arrow-right"></span> -->
+                    <span class="desc-right my-desc-right">极速交易<span style="margin: 0 1.35rem"></span><span class="radio-wrapper J_Standard"></span>专业交易</span>
+                </a>
+            </li>
+            <li class='recovery-trade-password-link'>
+                <a class="recovery-trade-password" href="./recovery-trade-password.html?src=./my.html">修改交易密码
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            <li class='recovery-password-link'>
+                <a class="recovery-password" href="./recovery-password.html?src=./my.html">修改登录密码
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            <li>
+                <a class="J_Recharge" href="./recharge.html">入金
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+
+            <li>
+                <a class="H_Recharge" style="display:none;">入金
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+        </ul>
+        <ul class="bd bd-second">
+            
+            <li>
+                <a id="J_Modify_Profile" class="my-count" href="./weixin/profile.html">
+                    <span class="account">个人设置</span>
+                    <span class="arrow-right"></span>
+                    <span class="desc-right">头像 昵称 隐私</span>
+                </a>
+            </li>
+            <li class="useHelp" style="display:none">
+                <a href="">使用帮助
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            <!--
+            <li>
+                <a class="" href="./feedback.html">评分支持我们
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            -->
+           <!--  <li>
+                <a class="my-lootery J_VerifyLogin" href="http://m.invhero.com/61/lottery">抽奖
+                    <span class="arrow-right"></span>
+                </a>
+            </li> 
+            <li>
+                <a class="J_Msg J_VerifyLogin" href="./message.html">消息
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            -->
+         <!--    <li>
+                <a class="my-feedback J_VerifyLogin" href="./feedback.html">意见反馈
+                    <span class="arrow-right"></span>
+                </a>
+            </li> -->
+
+             <li>
+                <a class="my-feedback J_VerifyLogin" href="./announcement.html">系统公告
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            
+            <li>
+                <a class="aboutus" href="./myAbout.html">关于我们
+                    <span class="arrow-right"></span>
+                </a>
+            </li>
+            
+            <!--
+            <li>
+                <a id="J_Market" class="market J_VerifyLogin" href="http://m.invhero.com/shop">商城
+                    <span class="guide">            
+                        <span class="triangle"></span>        
+                    </span>
+                </a>
+            </li>
+            -->
+            <!-- <li>
+                <a class="market J_VerifyLogin" >版本: 0.9.8</a>
+            </li> -->
+        </ul>
+        <div class="logout-wrapper">
+            <a class="J_Logout logout" href="javascript:;">退出</a>
+        </div>
+
+    </section>
+    <footer class="footer">
+        <ul class="clearfix bottom-nav">
+            <li>
+                <a class="trade" href="./option.html">
+                    <span class="icon"></span>
+                    <span class="name">交易</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="social" href="./actual-order.html">
+                    <span class="icon"></span>
+                    <span class="name">实时</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="foolow" href="./trade-list.html">
+                    <span class="icon"></span>
+                    <span class="name">跟单</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="news" href="./news.html">
+                    <span class="icon"></span>
+                    <span class="name">资讯</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="my" href="./my.html">
+                    <span class="icon"></span>
+                     <span class="name">我</span>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <script src="../src/lib/zepto.js"></script>
+    <script src="../src/lib/underscore.js"></script>
+    <script src="../build/my.js"></script>
+</body>
+</html>

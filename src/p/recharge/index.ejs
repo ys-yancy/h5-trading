@@ -1,0 +1,14 @@
+<div class="item-wrapper clearfix">
+    <span class="title">赠金方案：</span>
+    <ul>
+    	<% for(var len = data.ratio.length - 1; len >= 0; len--){%>
+    	<% var item = data.ratio[len]; %>
+    		<% if(item.ratio !== 0){ %>
+        		<li>入金 ≥ <%= item.limit %>美元赠 <%= (item.ratio * 100).toFixed(2) %> %；</li>
+    		<% } %>
+        <% } %>
+    </ul>
+</div>
+<div class="item-wrapper clearfix">
+<span class="title">活动时间：</span><span class="time"><%= data.begin %>至<%= data.expire %></span>
+</div>

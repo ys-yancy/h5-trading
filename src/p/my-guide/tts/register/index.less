@@ -1,0 +1,187 @@
+@import '../../../../variable.less';
+@import '../../../../base.less';
+@base: 40;
+input {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.dialog-ios8();
+html {
+  background: #fae5ca;
+}
+
+.icon {
+  background: url(../../../../../img/guides-broker-icon.png) 0 0 no-repeat;
+  .background-size(90, 346);
+}
+
+body {
+  background: #05a292 url(../../../../../img/jintou-register.jpg) 0 0 no-repeat;
+  background-size: 100% auto;
+  .min-height(1136);
+  .padding-top(754);
+  .padding-bottom(70);
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #efefef;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #efefef;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #efefef;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #efefef;
+}
+
+.content {
+  form {
+    .width(360);
+    margin: 0 auto;
+    .input-wrapper {
+      .border-radius(2);
+      overflow: hidden;
+      input {
+        .padding-top(8);
+        .padding-bottom(8);
+        .line-height(30);
+        .height(56);
+        background: transparent;
+        .padding-left(90);
+        .width(360);
+        /*.padding-left(90);*/
+        .font-size(20);
+        color: #fff;
+        .border(1, solid, #fff);
+        .border-radius(5);
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill {
+          -webkit-text-fill-color: #fff !important;
+          -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      }
+      input.captcha-text {
+        ::-webkit-input-placeholder {
+          /* WebKit browsers */
+          color: @redColor;
+        }
+
+        :-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: @redColor;
+        }
+
+        ::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: @redColor;
+        }
+
+        :-ms-input-placeholder {
+          /* Internet Explorer 10+ */
+          color: @redColor;
+        }
+        border-color:@redColor;
+        color:@redColor;
+      }
+      .get-code {
+        position: absolute;
+        .top(0);
+        .right(0);
+        .width(140);
+        .height(56);
+        .line-height(56);
+        text-align: center;
+        // .border-bottom(4, solid, #005953);
+       background: #fff;
+        color: #005953;
+        .border-radius(4);
+        .font-size(20);
+      }
+      .code {
+        .width(205);
+        .padding-left(20);
+      }
+    }
+    .wrapper {
+      position: relative;
+      .height(80);
+      // border-bottom: 1px solid #c8b6a2;
+      /*&.first {
+        border-bottom-color: #88b2cf;
+      }
+      &.second {
+        border-top-color: #88b2cf;
+        border-bottom-color: #88b2cf;
+      }*/
+     
+      &.submit-wrapper {
+        .margin-top(10);
+        height: auto;
+        border: none;
+        line-height: normal;
+      }
+      &.error {
+        .err {
+          display: block;
+        }
+      }
+      .err {
+        display: none;
+        .left(90);
+        position: absolute;
+        .top(56);
+        .line-height(30);
+        .font-size(22);
+        color: #ff564e;
+      }
+    }
+    .submit {
+     .line-height(56);
+      .height(56);
+      .width(360);
+      .border-radius(6);
+      // .border-bottom(4, solid, #c93a3a);
+      background: #005953;
+      color: #fff;
+      .font-size(20);
+    }
+  }
+  .login-wrapper {
+    margin: 0 auto;
+    .width(602);
+    .margin-top(30);
+    text-align: center;
+    color: #999;
+    .font-size(20);
+    span {
+      color: #cfefff;
+    }
+    .login {
+      /*display: block;*/
+      /*text-align: left;*/
+      .line-height(40);
+      
+      color: #fff;
+    }
+  }
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  .left(74);
+}

@@ -1,0 +1,48 @@
+@import '../../variable.less';
+.dialog{
+	position: absolute;
+	z-index: 1000;
+	.width(538);
+	top: 35%;
+	left: 50%;
+	.margin-left(-250);
+	.padding(0, 30);
+	.border-radius(5);
+	box-shadow: 0 5px 16px #777777;
+	background: #fff;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: dialogScaleShow .4s ease;
+	.title{
+		.font-size(32);
+		.padding(34, 0);
+	}
+	.desc{
+		.line-height(50);
+		.font-size(26);
+	}
+	.dialog-buttons{
+		.height(120);
+		.line-height(120);
+		.font-size(32);
+		text-align: right;
+	}
+}
+.dialog-mask{
+	position: fixed;
+	z-index: 999;
+	.top(0);
+	.right(0);
+	.bottom(0);
+	.left(0);
+	background: rgba(0,0,0,.4);
+}
+
+@keyframes dialogScaleShow {
+    0% {
+      transform: scale(.4);
+    }
+    100%{
+      transform: scale(1);
+    }
+}

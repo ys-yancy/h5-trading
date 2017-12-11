@@ -1,0 +1,16 @@
+<div class="top-msg" id="J_TopMsg">
+	<div class="top-msg-inner">
+		<div class="gradient-left gradient"></div>
+		<div class="gradient-right gradient"></div>
+		<ul class="clearfix J_ItemWrapper">
+			<% data.forEach(function(item) {%>
+			  <% if (item.url) { %>
+			     <li class="J_Item"><span><a href="<%= './message-detail.html?src=' + encodeURIComponent(location.href) + '&goHref=' + encodeURIComponent(item.url) %>"><%= item.content %></a></span></li>
+			  <% } else { %>
+			      <li class="J_Item"><span><%= item.content %></span></li>
+			  <% } %>
+			<% }); %>
+		</ul>
+		<span class="msg-close" ><span></span></span>
+	</div>
+</div>

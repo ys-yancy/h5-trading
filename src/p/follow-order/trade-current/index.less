@@ -1,0 +1,84 @@
+@import '../../../variable.less';
+.trade-current-inner{
+	width: 100%;
+	.font-size(26);
+	.padding-bottom(120);
+	color: #807691;
+	table{
+		width: 100%;
+		tr{
+			td{
+				width: 21%;
+				.height(138);
+				.padding(10, 0);
+				.font-size(20);
+			}
+			&:nth-child(2n) {
+				background: #F2F3F7;
+			}
+			&:nth-child(2n+1) {
+				background: #fff;
+			}
+		}
+		.no-list{
+			.height(94);
+			text-align: center;
+			td{
+				.font-size(28);
+			}
+		}
+	}
+	.name-wrapper{
+		width: 32%;
+		.padding-left(50);
+		.padding-right(10);
+		.tag{
+			position: absolute;
+			.width(80);
+			.line-height(50);
+			.top(22);
+			.left(50);
+			.font-size(24);
+			color:#32d8a3;
+			&.up{
+				color: #f9594a;
+			}
+		}
+		.name{
+			.width(180);
+			.font-size(30);
+			.margin-top(30);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.symbol{
+			.font-size(20);
+		}
+	}
+	.detail,
+	.name-wrapper{
+		position: relative;
+		.trade-current-top,
+		.trade-current-bottom{
+			position: absolute;
+			&.trade-current-top{
+				.top(10);
+				.left(0);
+			}
+			&.trade-current-bottom{
+				.left(0);
+				.bottom(10);
+			}
+			.J_TradeCurrentProfit{
+				color: #6BA583;
+				&.up{
+					color: #D75442;
+				}
+			}
+			.desc{
+				.line-height(32);
+			}
+		}
+	}
+}

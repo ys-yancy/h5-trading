@@ -1,0 +1,514 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+body {
+  position: relative;
+}
+
+.arrow-up {
+  position: absolute;
+  .top(64);
+  .left(280);
+  /*display: block;*/
+  /*.margin-top(26);*/
+  .width(78);
+  .height(39);
+  background: url(../../../../img/my-guides-arrow-down.png) 0 0 no-repeat;
+  background-size: 100% auto;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.nc-h5-overlay{
+    // background: red;
+    div.info{
+        .height(70);
+        .font-size(24);
+        .line-height(50);
+    }
+    .stage>.textbox{
+        .height(70);
+        .input{
+            .height(40);
+            .line-height(40);
+            .top(14);
+            .left(70);
+            .font-size(26);
+        }
+        .placeholder{
+            .top(18);
+            .left(70);
+            .font-size(25);
+        }
+        .icon{
+            .top(17); 
+            .font-size(35);   
+        }
+        .code{
+            .width(190);
+            .height(32);
+            .top(22);
+            .right(60);
+        }
+        .clear{
+            .left(150);
+        }
+        .icon.refresh{
+            .right(20);
+        }
+    }
+    .stage>.ope{
+        .margin-top(20);
+        .btn-ok{
+            .height(70);
+            .font-size(30);
+        }
+        .tips{
+            .height(60);
+            .line-height(60);
+            .font-size(19);
+        }
+    }
+}
+
+.detail {
+  h2 {
+    .line-height(74);
+    .padding-left(32);
+    .font-size(24);
+    color: #666666;
+  }
+  p {
+    color: 666666;
+    .font-size(30);
+    .line-height(70);
+    .padding-left(268);
+    &.second {
+      .margin-top(10);
+    }
+  }
+  .hd {
+    position: relative;
+    z-index: 1;
+    .margin-top(16);
+    .height(93);
+    background: url(../../../../img/guides-detail-title-1.png) 0 0 no-repeat;
+    background-size: 100% auto;
+    &.month-2 {
+      background: url(../../../../img/guides-detail-title-2.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-3 {
+      background: url(../../../../img/guides-detail-title-3.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-4 {
+      background: url(../../../../img/guides-detail-title-4.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-5 {
+      background: url(../../../../img/guides-detail-title-5.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-6 {
+      background: url(../../../../img/guides-detail-title-6.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-7 {
+      background: url(../../../../img/guides-detail-title-7.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-8 {
+      background: url(../../../../img/guides-detail-title-8.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-9 {
+      background: url(../../../../img/guides-detail-title-9.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-10 {
+      background: url(../../../../img/guides-detail-title-10.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-11 {
+      background: url(../../../../img/guides-detail-title-11.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+    &.month-12 {
+      background: url(../../../../img/guides-detail-title-12.png) 0 0 no-repeat;
+      background-size: 100% auto;
+    }
+  }
+  .sort-hd {
+    .height(50);
+    background: url(../../../../img/guides-detail-title.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.list {
+  .width(582);
+  margin: 0 auto;
+  .border-radius(6);
+  border: 1px solid #cccccc;
+  .margin-top(-100);
+  .padding-top(114);
+  .padding-left(51);
+  .padding-right(51);
+  .item {
+    .height(110);
+    position: relative;
+    color: #473b61;
+    .font-size(30);
+    border-bottom: 1px solid #c8c7cc;
+    a {
+      /*.padding-top(31);*/
+      .padding-left(164);
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      &.icon-sort-1,
+      &.icon-sort-2,
+      &.icon-sort-3 {
+        background: url(../../../../img/my-sort-latest-icon.png) 0 0 no-repeat;
+        .background-size(321, 449);
+      }
+      &.icon-sort-2 {
+        .background-position(0, -150);
+      }
+      &.icon-sort-3 {
+        .background-position(0, -300);
+      }
+    }
+    &.down {
+      .img-wrapper-outer {
+        border-color: #d5f7ec;
+        background: #75e4c1;
+        .img-wrapper {
+          background: #33d7a3;
+        }
+      }
+    }
+    &.sort-1,
+    &.sort-2,
+    &.sort-3 {
+      background: url(../../../../img/my-sort-icon.png) 0 0 no-repeat;
+      .background-size(141*.75, 448*.75);
+      .background-position(4, 4);
+      .img-wrapper-outer {
+        border-color: transparent;
+        background: transparent;
+        .img-wrapper {
+          background: #75e4c1;
+        }
+      }
+    }
+    &.sort-2 {
+      .background-position(4, -150*.75 + 4);
+      .background-size(141*.75, 448*.75);
+    }
+    &.sort-3 {
+      .background-position(4, -300*.75 + 4);
+      .background-size(141*.75, 448*.75);
+    }
+    .img-wrapper-outer {
+      position: absolute;
+      .top(21);
+      .left(21);
+      .width(82);
+      .height(82);
+      .border(3, solid, #fde1e0);
+      .padding(3);
+      background: #fa9b96;
+      .border-radius(50%);
+      overflow: hidden;
+      .img(70, 70);
+      .img-wrapper {
+        background: #f55b54;
+        .border-radius(50%);
+        overflow: hidden;
+      }
+    }
+    .symbol {
+      .font-size(30);
+      color: #473b61;
+      .line-height(50);
+      .width(240);
+      .line-hide();
+    }
+    .name {
+      .font-size(24);
+      .padding-left(0);
+      color: #473b61;
+      .margin-top(2);
+      .line-height(110);
+      .height(110);
+      .line-hide();
+    }
+    .symbol-wrapper {
+      float: left;
+      .width(190);
+    }
+    .profit {
+      float: right;
+      .margin-right(18);
+      /*.margin-top(24);*/
+      .font-size(40);
+      .width(100);
+      .line-height(110);
+      .height(110);
+      text-align: right;
+      .small {
+        .font-size(24);
+        vertical-align: super;
+      }
+    }
+  }
+}
+
+.fix {
+  background: url(../../../../img/my-guides-detail-fix.png) 0 0 no-repeat;
+  .background-size(142, 108);
+  .width(142);
+  .height(108);
+  position: fixed;
+  .right(2);
+  .bottom(200);
+   p {
+    .margin-top(11);
+    .line-height(58);
+    .font-size(38);
+    color: #fcdc5b;
+    font-weight: bold;
+    text-align: center;
+   }
+}
+
+.popup-wrapper {
+  position: absolute;
+  width: 100%;
+  display: none;
+  .top(200);
+  .dialog();
+  .success-wrapper {
+    .width(600);
+    .height(400);
+    
+    margin: 0 auto;
+    /*background: #fff;*/
+    .border-radius(10);
+    /*background: #fff url(../../../../img/my-guides-popup.png) 0 0 no-repeat;*/
+    background-size: 100% auto;
+    z-index: 1002;
+    position: relative;
+    display: none;
+    .close {
+      z-index: 1;
+      position: absolute;
+      .width(52);
+      .height(52);
+      top: 0;
+      right: 0;
+    }
+    h3 {
+      .font-size(40);
+      .line-height(50);
+      background-color: #fff;
+      text-align: center;
+    }
+    .desc-wrapper {
+      .padding-top(30);
+      text-align: center;
+      background-color: #fff;
+      color: #000;
+      .font-size(28);
+      p {
+        .line-height(50);
+      }
+    }
+    .btn-wrapper {
+      .margin-top(50);
+      a {
+        .width(478);
+        .line-height(60);
+        .height(60);
+        background: #0fa39b;
+        .border-radius(6);
+        margin: 0 auto;
+        color: #fff;
+        .font-size(30);
+        display: block;
+        text-align: center;
+      }
+      .btm {
+        .margin-top(20px);
+        background:#989E9E;
+      }
+    }
+  }
+  .popup {
+    .width(600);
+    .height(500);
+    .padding-top(60);
+    margin: 0 auto;
+    /*background: #fff;*/
+    .border-radius(10);
+    background: #fff url(../../../../img/my-guides-popup.png) 0 0 no-repeat;
+    .background-position(0, -42);
+    background-size: 100% auto;
+    z-index: 1002;
+    position: relative;
+    .close {
+      z-index: 1;
+      position: absolute;
+      .width(52);
+      .height(52);
+      top: 0;
+      right: 0;
+    }
+    .wrapper {
+      position: relative;
+      .error {
+        position: absolute;
+        clear: both;
+        p {
+          .padding-left(65);
+          .padding-top(28);
+          .line-height(30);
+          .font-size(22);
+          color: #f9584a;
+        }
+      }
+      .error {
+        display: none;
+      }
+      &.error {
+        .error {
+          display: block;
+        }
+        input {
+          border-color: #f9584a;
+          &.get-code {
+            border-color: #6c6281;
+          }
+        }
+      }
+      &.nth-child-1{
+        .width(456);
+        .margin-left(72);
+        border-bottom: 1px solid #ccc;
+        .padding-bottom(20);
+        .error {
+          position: absolute;
+          .top(40);
+        }
+      }
+      &.nth-child-2{
+        position: relative;
+        .width(456);
+        .padding-top(48);
+        .margin-left(72);
+        border-bottom: 1px solid #ccc;
+        .padding-bottom(20);
+        .icon{
+          position: absolute;
+          .width(40);
+          .height(40);
+          .left(8);
+          background: url(../../../../img/my-guides-popup-password.png) no-repeat 0 0;
+          .background-size(35, 35);
+
+        }
+      }
+      &.nth-child-3{
+        .padding-top(36);
+      }
+    }
+    .phone, .password {
+      .height(40);
+      .line-height(40);
+      color: #8d8d8d;
+      .font-size(30);
+      .padding-left(65);
+      border: none;
+      outline: 0;
+      background: transparent;
+    }
+    .code {
+      .height(40);
+      .line-height(40);
+      .width(246);
+      color: #8d8d8d;
+      .font-size(30);
+      .padding-left(65);
+      border: none;
+      outline: 0;
+    }
+    .get-code {
+      position: absolute;
+      .left(280);
+      .top(50);
+      .width(190);
+      .height(60);
+      .line-height(60);
+      color: #fff;
+      text-align: center;
+      .font-size(30);
+      .border-radius(6);
+      background: -webkit-gradient(linear, 0 0, 100% 100%, from(#73b5e7), to(#1270b9));
+      background: -webkit-linear-gradient(top, #73b5e7, #1270b9);
+      background: -o-linear-gradient(top, #73b5e7, #1270b9);
+      &.disable {
+        background: #ccc;
+      }
+    }
+    .not-get-code {
+      a {
+        color:#0FA39B;
+      }
+    }
+    .submit {
+      .width(478);
+      .line-height(60);
+      .height(60);
+      background: #0fa39b;
+      .border-radius(6);
+      margin: 0 auto;
+      color: #fff;
+      .font-size(30);
+      display: block;
+      text-align: center;
+      &.disable {}
+    }
+    .ln2{
+        .width(478);
+        .margin-left(62);
+        .margin-top(50);
+        .slider,.label,.bg-green,.button,.bg-red{
+            .height(68);
+            .line-height(68);
+            .font-size(20);
+        }
+        .button{
+          .width(68);
+          .icon-slide-arrow,.icon-load-c,.icon-close{
+              .left(21);
+          }
+        }
+    }
+  }
+}
+
+body {
+  background: url(../../../../img/my-guides-second-bg.png) 0 0 no-repeat;
+  .height(1136);
+  background-size: 100% auto;
+  .padding-top(122);
+  .detail {
+    .width(600);
+    .height(990);
+    margin: 0 auto;
+    .border-radius(6);
+    background: #fff url(../../../../img/my-guides-second-icon.png) 0 0 no-repeat;
+    .background-size(240, 220);
+  }
+}

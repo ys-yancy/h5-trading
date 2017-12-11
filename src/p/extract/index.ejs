@@ -1,0 +1,94 @@
+<ul class="info">
+    <li class="item phone-wrapper clearfix" style="<% if(data.cards.length > 0){ %> display:none<% } %>">
+        <span class="warn">提示：</span>
+        <span class="wrapper warn-content">由于您是首次提交出金申请，需要补齐以下信息，请按提示操作。</span>
+    </li>
+    <li class="item clearfix">手机号码：
+        <span class="num"><%= data.phone %></span>
+    </li>
+    <li class="item clearfix">真实姓名：
+        <input type="text" class="J_CardName" value="<%= data.true_name %>" placeholder="真实姓名需要与您提交的身份证姓名一致">
+    </li>
+    <li class="item clearfix">身份证号：
+        <input type="text" class="J_CardId" value="<%= data.id_no %>" placeholder="请输入身份证号">
+    </li>
+    <% if (!data.id_no) {%>
+    <li class="item upload">
+        <ul>
+            <li class="upload-item">
+                <div class="detail">
+                    <span class="icon"></span>
+                    <p>身份证正面</p>
+                </div>
+                <div class="preview img-wrapper J_ImgWrapper J_CardFront">
+                    <!-- <img class="img" src=" + results.base64 + "> -->
+                </div>
+                <input type="file" class="upload-input">
+            </li>
+            <li class="upload-item">
+                <div class="detail">
+                    <span class="icon"></span>
+                    <p>身份证背面</p>
+                </div>
+                <div class="preview img-wrapper J_ImgWrapper J_CardBack"></div>
+                <input type="file" class="upload-input">
+            </li>
+        </ul>
+    </li>
+    <% }%>
+    <% if (data.cards.length > 0) {%>
+    <li class="item clearfix available">可用银行卡：
+        <select class="J_CardSelect">
+        <% $.each(data.cards, function(index, item) { %>
+            <option value="<%= item.bank_code %>"><%= item.bank_name %>(<%= item.card_no %>)</option>
+        <% }); %>
+            <option class="new" value="new">选择新的银行卡</option>
+        </select>
+    </li>
+    <li class="item clearfix" id="J_BankId" style="display:none">银行卡号：
+        <input type="text" class="J_BankId first" value="<%= data.cards[0].card_no %>" placeholder="需与身份证同名银行借记卡(暂不支持信用卡)">
+    </li>
+    <% } %>
+    <li>
+        <ul id="J_NewBankWrapper" style="<% if (data.cards.length > 0 ){ %>display:none;<% } %>">
+            <li class="item clearfix">开户银行：
+                <select class="J_BankSelect">
+                <% $.each(data.banks, function(index, item) { %>
+                    <option value="<%= item.code_name %>"><%= item.name %></option>
+                <% }); %>
+                </select>
+            </li>
+            <li class="item clearfix">银行卡号：
+                <input class="J_BankId" type="text" value="" placeholder="需与身份证同名银行借记卡(暂不支持信用卡)">
+            </li>
+            <li class="item upload bank">
+                <ul>
+                    <li class="upload-item">
+                        <div class="detail">
+                            <span class="icon"></span>
+                            <p>出金银行卡正面</p>
+                        </div>
+                        <div class="preview img-wrapper J_ImgWrapper J_BankFront"></div>
+                        <input type="file" class="upload-input">
+                    </li>
+                    <li class="upload-item">
+                        <div class="detail">
+                            <span class="icon"></span>
+                            <p>出金银行卡反面</p>
+                        </div>
+                        <div class="preview img-wrapper J_ImgWrapper J_BankBack"></div>
+                        <input type="file" class="upload-input">
+                    </li>
+                    <li class="desc-item">说明：以上个人信息仅限于<span id="J_Brand"></span>使用。</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li class="item last clearfix">
+        <ul>
+            <li class="num-wrapper">出金金额：$<input class="J_ExtractNum" type="text" value="<%= data.min_extract_amount%>"></li>
+            <li class="num-wrapper">可提余额：$<input class="J_AvaiableNum" type="text" value="<%= data.extractable_amount %>" disabled></li>
+        </ul>
+    </li>
+</ul>
+<p class="desc">可提金额为0,可能是因为持有未平仓实盘订单,请平仓后再次提交出金申请.为了保证服务质量,我们设置了最低出金额为100美元,出金会按当天汇率为您换算为人民币支付,申请后的1个工作日内处理,3个工作日内到账均属正常,节假日顺延,请注意查收通知.<span id='daheng'><span></p>

@@ -1,0 +1,310 @@
+{
+    "status": 200,
+    "page": 0,
+    "pageSize": 6,
+    "hasNextPage": true,
+    "data": [
+
+        {
+
+            "comment": "None",
+
+            "openPrice": "1.12559",
+
+            "longitude": "0",
+
+            "id": "2989",
+
+            "openTime": "2015-06-17 19:14:45",
+
+            "user_id": "706",
+
+            "stopLoss": "1.12759",
+
+            "profit": "-22.88",
+
+            "takeProfit": "1.12459",
+
+            "altitude": "0",
+
+            "account_mode": "demo",
+
+            "commission": "0.00",
+
+            "swap": "0.0",
+
+            "latitude": "0",
+
+            "broker_account": "50001922",
+
+            "clOrdId": "None",
+
+            "status": "open",
+
+            "symbol": "EURUSD",
+
+            "volume": "0.88",
+            "slippage": "5.00000",
+            "ticket": "2238199",
+            "leverage": "200.00",
+            "cmd": "sell stop",
+            "taxes": "0.00",
+            "ui": "4",
+            "expiration": "None",
+            "xseq": "1238200",
+            "symbolCategory": "FOREX",
+            "margin": "495.30"
+        },
+        {
+
+            "comment": "None",
+
+            "openPrice": "1.12559",
+
+            "longitude": "0",
+
+            "id": "2989",
+
+            "openTime": "2015-06-17 19:14:45",
+
+            "user_id": "706",
+
+            "stopLoss": "1.12759",
+
+            "profit": "-22.88",
+
+            "takeProfit": "1.12459",
+
+            "altitude": "0",
+
+            "account_mode": "demo",
+
+            "commission": "0.00",
+
+            "swap": "0.0",
+
+            "latitude": "0",
+
+            "broker_account": "50001922",
+
+            "clOrdId": "None",
+
+            "status": "open",
+
+            "symbol": "EURUSD",
+
+            "volume": "0.88",
+            "slippage": "5.00000",
+            "ticket": "2238199",
+            "leverage": "200.00",
+            "cmd": "sell stop",
+            "taxes": "0.00",
+            "ui": "4",
+            "expiration": "None",
+            "xseq": "1238200",
+            "symbolCategory": "FOREX",
+            "margin": "-495.30"
+        },
+        {
+
+            "comment": "None",
+
+            "openPrice": "1.12559",
+
+            "longitude": "0",
+
+            "id": "2989",
+
+            "openTime": "2015-06-17 19:14:45",
+
+            "user_id": "706",
+
+            "stopLoss": "1.12759",
+
+            "profit": "-22.88",
+
+            "takeProfit": "1.12459",
+
+            "altitude": "0",
+
+            "account_mode": "demo",
+
+            "commission": "0.00",
+
+            "swap": "0.0",
+
+            "latitude": "0",
+
+            "broker_account": "50001922",
+
+            "clOrdId": "None",
+
+            "status": "open",
+
+            "symbol": "EURUSD",
+
+            "volume": "0.88",
+            "slippage": "5.00000",
+            "ticket": "2238199",
+            "leverage": "200.00",
+            "cmd": "sell stop",
+            "taxes": "0.00",
+            "ui": "4",
+            "expiration": "None",
+            "xseq": "1238200",
+            "symbolCategory": "FOREX",
+            "margin": "495.30"
+        },
+        {
+
+            "comment": "None",
+
+            "openPrice": "1.12559",
+
+            "longitude": "0",
+
+            "id": "2989",
+
+            "openTime": "2015-06-17 19:14:45",
+
+            "user_id": "706",
+
+            "stopLoss": "1.12759",
+
+            "profit": "-22.88",
+
+            "takeProfit": "1.12459",
+
+            "altitude": "0",
+
+            "account_mode": "demo",
+
+            "commission": "0.00",
+
+            "swap": "0.0",
+
+            "latitude": "0",
+
+            "broker_account": "50001922",
+
+            "clOrdId": "None",
+
+            "status": "open",
+
+            "symbol": "EURUSD",
+
+            "volume": "0.88",
+            "slippage": "5.00000",
+            "ticket": "2238199",
+            "leverage": "200.00",
+            "cmd": "sell stop",
+            "taxes": "0.00",
+            "ui": "4",
+            "expiration": "None",
+            "xseq": "1238200",
+            "symbolCategory": "FOREX",
+            "margin": "495.30"
+        },
+        {
+
+            "comment": "None",
+
+            "openPrice": "1.12559",
+
+            "longitude": "0",
+
+            "id": "2989",
+
+            "openTime": "2015-06-17 19:14:45",
+
+            "user_id": "706",
+
+            "stopLoss": "1.12759",
+
+            "profit": "-22.88",
+
+            "takeProfit": "1.12459",
+
+            "altitude": "0",
+
+            "account_mode": "demo",
+
+            "commission": "0.00",
+
+            "swap": "0.0",
+
+            "latitude": "0",
+
+            "broker_account": "50001922",
+
+            "clOrdId": "None",
+
+            "status": "open",
+
+            "symbol": "EURUSD",
+
+            "volume": "0.88",
+            "slippage": "5.00000",
+            "ticket": "2238199",
+            "leverage": "200.00",
+            "cmd": "sell stop",
+            "taxes": "0.00",
+            "ui": "4",
+            "expiration": "None",
+            "xseq": "1238200",
+            "symbolCategory": "FOREX",
+            "margin": "495.30"
+        },
+        {
+
+            "comment": "None",
+
+            "openPrice": "1.12559",
+
+            "longitude": "0",
+
+            "id": "2989",
+
+            "openTime": "2015-06-17 19:14:45",
+
+            "user_id": "706",
+
+            "stopLoss": "1.12759",
+
+            "profit": "-22.88",
+
+            "takeProfit": "1.12459",
+
+            "altitude": "0",
+
+            "account_mode": "demo",
+
+            "commission": "0.00",
+
+            "swap": "0.0",
+
+            "latitude": "0",
+
+            "broker_account": "50001922",
+
+            "clOrdId": "None",
+
+            "status": "open",
+
+            "symbol": "EURUSD",
+
+            "volume": "0.88",
+            "slippage": "5.00000",
+            "ticket": "2238199",
+            "leverage": "200.00",
+            "cmd": "sell stop",
+            "taxes": "0.00",
+            "ui": "4",
+            "expiration": "None",
+            "xseq": "1238200",
+            "symbolCategory": "FOREX",
+            "margin": "495.30"
+        }
+
+    ]
+}

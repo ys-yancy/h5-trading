@@ -1,0 +1,52 @@
+@import '../../../variable.less';
+.pro-popup {
+  position: fixed;
+  .width(584);
+  .padding-bottom(16);
+  top: 20%;
+  left: 50%;
+  .margin-left(-292);
+  .padding(0, 30);
+  .border-radius(5);
+  box-shadow: 0 5px 15px #777777;
+  background: #fff;
+  z-index: 102;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  -webkit-transform: scale(.4);
+  transform: scale(.4);
+  &.show {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  .hd{
+    .line-height(88);
+  }
+  ul{
+    li{
+      .line-height(60);
+      .large{
+        float: right;
+      }
+    }
+  }
+  .dialog-buttons{
+    .font-size(28);
+    .dialog-btn{
+      .height(100);
+      .line-height(100);
+      
+      &.order,
+      &.share{
+        float: right;
+      }
+      &.share{
+        .margin-left(60);
+      }
+    }
+  }
+}
+
+.popup-mask {
+  z-index: 101;
+}

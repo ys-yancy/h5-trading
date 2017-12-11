@@ -1,0 +1,17 @@
+<li class="phone-wrapper">手机号码：
+   <span class="phone"><%= data.phone %><span>
+</li>
+<% $.each(data.ratio, function(index, item) {%>
+<li>
+    <span class="radio-wrapper J_Radio <%= index === 0 ? 'active' : '' %>">
+        <span class="radio ">
+            <span class="radio-inner"></span>
+        </span>
+    </span><%= item.coin %>美元
+    （<span class="rmb"><%= item.amount %></span>人民币
+    <% if (item.discount !== 1) {%>
+      <span class="discount"><%= item.discount * 100 + '折' %></span>
+    <% } %>
+      <span>）
+</li>
+<% }); %>

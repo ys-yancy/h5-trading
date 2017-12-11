@@ -1,0 +1,13 @@
+<ul>
+  <% data.forEach(function(item) {%> 
+  <li>
+    <% if (item.link) {%>
+    <a href="<%= item.link %>">
+      <img src="<%= item.image %>" alt="" class="img">
+    </a>
+    <% } else {%>
+   <img src="<%= item.image %>" alt="" class="img">
+   <% } %>
+  </li>
+  <% });%>
+</ul>

@@ -1,0 +1,31 @@
+<% if (data.tickets.length > 0) {%>
+  <% data.tickets.forEach(function(item, index) { %>
+    <% if (index > 2) { return;} %>
+    <li class="item">
+      <a class="go-link" href="./trade.html?inviteCode=<%= data.inviteCode %>&from=<%= encodeURIComponent(location.href) %>">
+        <span class="tag <%= item.cmd.indexOf('buy') !== -1 ? 'up' : '' %>"></span>
+        <p class="name"><%= item.symbolName %></p>
+        <p class="symbol"><%= item.symbol %></p>
+        <% if (item.status == 'pending') { %>
+        <p class="num pending">
+          <span class="profit">挂单</span>
+        </p>
+        <% } else { %>
+        <p class="num <%= item.profits > 0 ? 'up' : '' %>">
+          <span class="small">$</span>
+          <span class="profit"><%= (item.profits).toFixed(2) %></span>
+        </p>
+        <% } %>
+      </a>
+    </li>
+  <% }); %>
+  <li class="link">
+    <a href="./trade.html?inviteCode=<%= data.inviteCode %>&from=<%= encodeURIComponent(location.href) %>">
+      <span class="arrow-right"></span>
+    </a>
+  </li>
+<%} else {%>
+<li class="empty">
+  Ta当前无交易<a href="./trade-history.html?inviteCode=<%= data.inviteCode %>&from=<%= encodeURIComponent(location.href) %>">查看历史交易</a>
+</li>
+<%} %>

@@ -1,0 +1,114 @@
+<div class="follow-action-outer">
+<div class="follow-setting-inner">
+	<div class="hd">
+		<h2>跟单参数配置</h2>
+		<span class="close J_CloseFollow"></span>
+	</div>
+	<div class="bd">
+		<div class="set-wrapper capital-setting J_FollowMode 
+			<%= data.follow_mode == 'follow_amount_ratio' ? 'active' : '' %>">
+			<div class="title">
+				<span class="desc">按跟随资金下单</span>
+				<span class="radio-wrapper J_Radio <%= data.follow_mode == 'follow_amount_ratio' ? 'active' : '' %>">
+					<span class="radio">
+						<span class="radio-inner"></span>
+					</span>
+				</span>
+			</div>
+			<section>
+				<p>设置跟随该高手所使用的资金，您的跟随交易量会使用此资金和高手余额的比例进行等比计算.</p>
+				<p>左侧是该高手的最低起跟资金，右侧是您可以投入的跟随资金</p>
+			</section>
+			<div class="controller range-wrapper J_CapitalRange">
+				
+			</div>
+		</div>
+		<div class="set-wrapper fixed-multiple-setting J_FollowMode <%= data.follow_mode == 'fix_volume_ratio' ? 'active' : '' %>">
+			<div class="title">
+				<span class="desc">按固定倍数下单</span>
+				<span class="radio-wrapper J_Radio <%= data.follow_mode == 'fix_volume_ratio' ? ' active' : '' %>">
+					<span class="radio">
+						<span class="radio-inner"></span>
+					</span>
+				</span>
+			</div>
+			<section>
+				<p>设置跟随每单的交易量与Ta的每单交易量的关系</p>
+			</section>
+			<div class="controller">
+				<input class="text-input J_ValRatio" value="<%= data.vol_ratio %>" type="text" name="" 
+					<%= data.follow_mode == 'fix_volume_ratio' ? '' : 'disabled' %>>倍
+			</div>
+		</div>
+		<div class="set-wrapper risk-control-setting J_RiskControlSetting">
+			<div class="title">
+				<span class="desc">风险控制</span>
+				<!-- <span class="radio">
+					<span class="radio-inner"></span>
+				</span> -->
+			</div>
+			<section>
+				<p>当跟随订单的亏损总额高于跟随资金特定比例时，就触发强制平仓条件并暂停跟随，可到跟单详情页面开启跟随.</p>
+			</section>
+			<div class="controller range-wrapper J_RiskRange">
+				
+			</div>
+		</div>
+		<div class="set-wrapper slippage-setting J_SlippageSetting">
+			<div class="title">
+				<span class="desc">接受滑点</span>
+				<!-- <span class="radio">
+					<span class="radio-inner"></span>
+				</span> -->
+			</div>
+			<div class="controller">
+				<span class="slip-desc">设置跟随每单的成交价格与Ta的每单成交价格的关系 </span>
+				<input class="text-input J_Slippage" value="<%=data.slippage%>" type="text" name="">点
+			</div>
+		</div>
+		<div class="set-wrapper follow-direction-setting J_FollowDirectionSetting">
+			<div class="title">
+				<span class="desc">跟单方向</span>
+			</div>
+			<section>
+				<p>跟随下单的方向</p>
+			</section>
+			<div class="controller">
+				<input class="radio-input radio-same J_Reverse" value="0"  type="radio" name="followDirection" value="" <%= data.reverse == 0 ? 'checked' : '' %>>
+				<input class="radio-input radio-cross J_Reverse" value="1" type="radio" name="followDirection" value="" <%= data.reverse == 1 ? 'checked' : '' %>>
+			</div>
+		</div>
+		<div class="set-wrapper follow-account-setting J_FollowAccountSetting">
+			<div class="title">
+				<span class="desc">跟单账户</span>
+			</div>
+			<section>
+				<p>跟随下单到那个账户，目前仅限实盘</p>
+			</section>
+			<div class="controller">
+				<input class="radio-input radio-real J_AccountType" type="radio" value="real" checked="checked" name="followAccount" value="">
+			</div>
+		</div>
+		<div class="set-wrapper remind-wrapper">
+			<div class="remind-form-wrapper">
+				<input class="check-input J_OpenOrderWeixin" type="checkbox" name=""
+					<%= data.open_order_weixin_notify == 1 ? 'checked' : '' %>>
+				<span>跟随订单开仓提醒(微信模板消息)</span>
+			</div>
+			<div class="remind-form-wrapper">
+				<input class="check-input J_CloseOrderWeixin" type="checkbox" name=""
+					<%= data.close_order_weixin_notify == 1 ? 'checked' : '' %>>
+				<span>跟随订单平仓提醒(微信模板消息)</span>
+			</div>
+		</div>
+	</div>
+	<div class="ft">
+		<%if (data.isNoMonery) {%>
+			<a class="btn follow-recharge J_FollowRecharge" href="./recharge.html">马上增加资金</a>
+		<%} else {%>
+			<button class="btn J_FollowSettingSubmit">保存并继续跟随</button>
+		<%}%>
+		
+	</div>
+</div>
+</div>

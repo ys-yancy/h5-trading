@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>账户入金</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../src/lib/jweixin-1.0.0.js"></script>
+    <!-- {{add script tags begin}} -->
+    <script src="../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script type="text/javascript">
+        (function() {
+            function loadStyle(url) {
+                try{
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = url;
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(link);
+                } catch(e){}
+            }
+            
+            if (getAppUi()) {
+                var url = '../src/style/' + getAppUi();
+                loadStyle(url);
+            }     
+        })()
+    </script>
+    <link rel="stylesheet" href="../src/p/recharge/index.css">
+</head>
+
+<body>
+    <header class="header" id="deposit_header">
+        <div class="header-inner" id="J_Header">
+            <a class="go-back" href="./account.html?">
+                <span class="icon arrow"></span>
+            </a>
+            <h1>账户入金</h1>
+        </div>
+    </header>
+    <section class="content">
+        <div class="pay-type">
+            <h3>选择支付方式</h3>
+            <div class="pay-wrapper">
+                
+                <div class="pay-item  pay-itemWQ">
+                    <span class="radio-wrapper J_Radio ">
+                        <span class="radio ">
+                            <span class="radio-inner"></span>
+                        </span>
+                    </span>
+                    <p>微信扫码支付</p>
+                </div>
+
+                <div class="pay-item pay-itemZfu">
+                    <span class="radio-wrapper J_Radio">
+                        <span class="radio ">
+                            <span class="radio-inner"></span>
+                        </span>
+                    </span>
+                    <p>支付宝扫码支付</p>
+                </div>
+    
+                
+                <div id="J_OnlinePay" class="pay-item kuaijie">
+                    <span class="radio-wrapper J_Radio ">
+                        <span class="radio ">
+                            <span class="radio-inner"></span>
+                        </span>
+                    </span>
+                    <p>银联支付更方便</p>
+                </div>
+                <div id="J_OnlinePay-1" class="pay-item kuaijie_1">
+                    <span class="radio-wrapper J_Radio ">
+                        <span class="radio ">
+                            <span class="radio-inner"></span>
+                        </span>
+                    </span>
+                    <p>银联支付更方便</p>
+                </div>
+
+                <div id="J_OnlinePay" class="pay-item pcWangyin">
+                    <span class="radio-wrapper J_Radio ">
+                        <span class="radio ">
+                            <span class="radio-inner"></span>
+                        </span>
+                    </span>
+                    <p>网银支付</p>
+                </div>
+                
+                <div id="J_OnlinePay" class="pay-item pcPay">
+                    <span class="radio-wrapper J_Radio ">
+                        <span class="radio ">
+                            <span class="radio-inner"></span>
+                        </span>
+                    </span>
+                    <p>网页支付</p>
+                </div>
+                <span class="fold J_Fold"></span>
+            </div>
+        </div>
+
+        <!-- 微信支付 -->
+        <div class="tab-content">
+            <ul class="info">
+                <li class="phone-wrapper">手机号码：
+                   <span class="phone" id="J_Phone"><span>
+                </li>
+                <li class="dollar-wrapper">金额（$）：<input type="number" id="J_Charge" placeholder="" class="num" value=""></li>
+                <li class="transform">折合人民币<span class="num J_RateNum">-- --</span><p>由于汇率实时变动人民币数额可能存在误差</p></li>
+                <li><span>赠送（$）</span><span class="num J_Bonus" id="J_Bonus">-- --</span></li>
+            </ul>
+            <div  class="desc-wrapper">
+                <div class="desc-content" style="padding-top:0.5rem;">
+                    <!--<p class="desc">由第三方支付公司托管并支付，以确保您的资金安全。</p>-->
+                    <div id="J_Info">
+                    </div>
+                </div>
+            </div>
+            <ul class="extra" style="display: none;">
+                <li>说明：</li>
+               <!--  <li> 1)投资英豪实盘账户由ETGBroker提供。</li>
+                <li> 2)您账户中未用于投资的资金，可获得不低于您所在国家一年期活期存款利率的利息，隔
+       日清算，隔月支付。</li> -->
+                <li id="J_MobilePayText"></li>
+            </ul>
+            <div class="phone-wrapper-bottom" style="color:#967adc">
+              客服电话: 
+              <a class="J_SPhone" href=""></a>
+            </div>
+        </div>
+        
+        <!-- 支付宝支付 -->
+        <div class="tab-content" style="display: none;">
+            <ul class="info">
+                <li class="phone-wrapper">手机号码：
+                   <span class="phone" id="J_Phone"><span>
+                </li>
+                <li class="dollar-wrapper J_Charge2">金额（$）：<input type="number" id="J_Charge" placeholder="请输入金额, 如: 500" class="num" value=""></li>
+                <li class="transform">折合人民币<span class="num J_RateNum">-- --</span><p>由于汇率实时变动人民币数额可能存在误差</p></li>
+                <li><span>赠送（$）</span><span class="num J_Bonus" id="J_Bonus">-- --</span></li>
+            </ul>
+            <div  class="desc-wrapper">
+                <div class="desc-content" style="padding-top:0.5rem;">
+                    <!--<p class="desc">由第三方支付公司托管并支付，以确保您的资金安全。</p>-->
+                    <div id="J_Info" class="J_Info2">
+                    </div>
+                </div>
+            </div>
+            <ul class="extra" style="display: none;">
+                <li>说明：</li>
+               <!--  <li> 1)投资英豪实盘账户由ETGBroker提供。</li>
+                <li> 2)您账户中未用于投资的资金，可获得不低于您所在国家一年期活期存款利率的利息，隔
+       日清算，隔月支付。</li> -->
+                <li id="J_MobilePayText"></li>
+            </ul>
+            <div class="phone-wrapper-bottom" style="color:#967adc">
+              客服电话: 
+              <a class="J_SPhone" href=""></a>
+            </div>
+        </div>
+        
+
+        <!--快捷支付-->
+        <div class="tab-content" style="display: none;">
+            <ul class="info">
+                <li class="phone-wrapper">手机号码：
+                   <span class="phone" id="J_Phone"><span>
+                </li>
+                <li class="dollar-wrapper J_Charge3">金额（$）：<input type="number" id="J_Charge" placeholder="请输入金额, 如: 500" class="num Kj_pay" value=""></li>
+                <!-- <li class="transform">折合人民币<span class="num J_RateNum">-- --</span><p>由于汇率实时变动人民币数额可能存在误差</p></li> -->
+                <li><span>赠送（$）</span><span class="num J_Bonus" id="J_Bonus">-- --</span></li>
+            </ul>
+            <div  class="desc-wrapper">
+                <div class="desc-content" style="padding-top:0.5rem;">
+                    <div id="J_Info" class="J_Info3">
+                    </div>
+                </div>
+            </div>
+            <ul class="extra" style="display: none;">
+                <li>说明：</li>
+                <li id="J_MobilePayText"></li>
+            </ul>
+            <div class="phone-wrapper-bottom" style="color:#967adc">
+              客服电话: 
+              <a class="J_SPhone" href=""></a>
+            </div>
+        </div>
+
+        <!--快捷支付 -1    -->
+        <div class="tab-content" style="display: none;">
+            <ul class="info">
+                <li class="phone-wrapper">手机号码：
+                   <span class="phone" id="J_Phone"><span>
+                </li>
+                <li class="dollar-wrapper J_Charge3-1">金额（$）：<input type="number" id="J_Charge_1" placeholder="请输入金额, 如: 500" class="num Kj_pay_1" value=""></li>
+                <!-- <li class="transform">折合人民币<span class="num J_RateNum">-- --</span><p>由于汇率实时变动人民币数额可能存在误差</p></li> -->
+                <li><span>赠送（$）</span><span class="num J_Bonus" id="J_Bonus">-- --</span></li>
+            </ul>
+            <div  class="desc-wrapper">
+                <div class="desc-content" style="padding-top:0.5rem;">
+                    <div id="J_Info-1" class="J_Info3_1">
+                    </div>
+                </div>
+            </div>
+            <ul class="extra" style="display: none;">
+                <li>说明：</li>
+                <li id="J_MobilePayText"></li>
+            </ul>
+            <div class="phone-wrapper-bottom" style="color:#967adc">
+              客服电话: 
+              <a class="J_SPhone" href=""></a>
+            </div>
+        </div>
+
+        <!--pc网银-->
+        <div class="tab-content" style="display: none;">
+            <ul class="info">
+                <li class="phone-wrapper">手机号码：
+                   <span class="phone" id="J_Phone"><span>
+                </li>
+                <li>
+                    <select class="bank-list clearfix J_PcWpayName">
+                        <option value="">选择支付银行</option>
+                        <option value="9">工商银行</option>
+                        <option value="4">建设银行</option>
+                        <option value="67">交通银行</option>
+                        <option value="33">兴业银行</option>
+                        <option value="3">招商银行</option>
+                        <option value="14">平安银行</option>
+                        <option value="74">光大银行</option>
+                        <option value="69">浦发银行</option>
+                    </select>
+                </li>
+                <li class="dollar-wrapper J_Charge">金额（$）：<input type="number" class="num J_Charge4" id="J_Charge4" placeholder="请输入金额, 如: 500" class="num pcW_pay" value=""></li>
+                <li><span>赠送（$）</span><span class="num J_Bonus" id="J_Bonus">-- --</span></li>
+            </ul>
+            <div  class="desc-wrapper">
+                <div class="desc-content" style="padding-top:0.5rem;">
+                    <div id="J_Info" class="J_Info4">
+                    </div>
+                </div>
+            </div>
+            <ul class="extra" style="display: none;">
+                <li>说明：</li>
+                <li id="J_MobilePayText"></li>
+            </ul>
+            <div class="phone-wrapper-bottom" style="color:#967adc">
+              客服电话: 
+              <a class="J_SPhone" href=""></a>
+            </div>
+            <div class="pcW-btn-wrapper" style="color:#967adc">
+              <a class="pcW-btn J_PCwSubmit" href="javascript:;">确定入金</a>
+            </div>
+        </div>
+
+        <!-- pc支付 -->
+         <div class="tab-content web-content" style="display:none;">
+            <div class="margin-top"></div>
+            <div  class="desc-wrapper">
+                <div class="desc-content">
+                    <p><span class="name">支付网页：</span><span id="payurl"><span></p>
+                </div>
+            </div>
+            <ul class="extra">
+                <li>说明：</li>
+               <!--  <li> 1)投资英豪实盘账户由ETGBroker提供。</li>
+                <li> 2)您账户中未用于投资的资金，可获得不低于您所在国家一年期活期存款利率的利息，隔
+       日清算，隔月支付。</li> -->
+                <li> 请在电脑浏览器中打开以上网页，使用您的注册手机号登录并完成支付。支付成功后，赠金会一并冲入您的账户。</li>
+            </ul>
+            <div class="phone-wrapper-bottom" style="color:#967adc">
+              客服电话: 
+              <a class="J_SPhone" href=""></a>
+            </div>
+        </div>
+
+
+        <section class="weixinQR-mask" id="weixinQR-mask" style="display:none;">
+            <header class="Sm-header" style="background: transparent;">
+                <div class="header-inner" id="J_Header">
+                    <a class="go-back mygo-back" href="./recharge.html">
+                        <span class="icon arrow"></span>
+                    </a>
+                    <h1>扫码支付</h1>
+                </div>
+            </header>
+            <ul class="info info_mask">
+                <li class="info_name">商品名称：
+                    <span>账户入金<span>
+                </li>
+                <li class="phone-wrapper info_phone">订单金额(元):
+                    <span id="qrAmount"><span>
+                </li>
+                <li class="imgQR_wrapper">
+                    <img class="imgQR" src="" alt="">
+                    <p class="press">长按二维码进行支付</p>
+                    <img class="imgQR_mask" src="" alt="">
+                </li>
+            </ul>
+            <article class="pay_explain" style="background: #EFEFF4;">
+                <p class="pay_step pay_stepAsk"><span class="app_name"><!-- 微信 -->支付宝</span>支付步骤:</p>
+                <ul class="pay_ask pay_stepAsk other">
+                    <li>1.截图保存该二维码;</li>
+                    <li>2.打开<span class="app_name"><!-- 微信 -->支付宝</span>,点击扫一扫;</li>
+                    <li>3.点击右上角,选择相册,上传截图二维码.</li>
+                </ul>
+                <!-- ifbao定制微信 -->
+                <ul class="pay_ask pay_stepAsk1 ifbao" style="display: none;">
+                    <li>1.用其他手机扫码支付或者使用如下操作</li>
+                    <li>2.截图保存该二维码</li>
+                    <li>3.回到微信聊天界面</li>
+                    <li>4.点击右上角“+”选择扫一扫，再点击右上角选择从相册选择二维码，选择刚才截图的二维码</li>
+                </ul>
+            </article>
+        </section>
+    </section>
+
+    <footer>
+        <a class="buy J_Submit disable weixinQR" href="javascript:;">确定入金</a>
+    </footer>
+    
+    <script src="../src/lib/zepto.js"></script>
+    <script src="../build/recharge.js"></script>
+</body>
+</html>

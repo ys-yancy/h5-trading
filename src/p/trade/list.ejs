@@ -1,0 +1,109 @@
+<% $.each(data.normal, function(index, item) {%>
+<li class="item J_Item" data-symbol="<%= item.symbol %>">
+    <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
+        <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
+        <div class="name-wrapper">
+            <p class="name"><%= item.symbolName %></p>
+            <p><%= item.symbol %></p>
+        </div>
+        <ul class="detail">
+            <li>
+                <p class="name">盈亏</p>
+                <% var guandan = (item.status == 'pending'); %>
+                <p class="J_Formate <%= guandan ? '' : 'no-guadan' %>" data-order="<%= item.ticket %>" ><%= guandan ? '挂单' : '--' %></p>
+            </li>
+            <li>
+                <p class="name">当前价格</p>
+                <p class="J_Price J_Formate" data-symbol="<%= item.symbol %>" data-symbolname="<%= item.symbol.replace(/\./g, '--') %>" <% if(item.cmd.indexOf('buy') !== -1) {%>data-cmd="up"<%}%>>--</p>
+            </li>
+            <li>
+                <p class="name">开仓价格</p>
+                <p class="J_Formate"><%= item.openPrice %></p>
+            </li>
+            <!--
+           <li>
+                <p class="name">占用资金</p>
+                <p class="J_Formate"><%= item.margin %></p>
+            </li>
+            -->
+            <li>
+                <p class="name">交易量</p>
+                <p class="J_Formate"><%= item.volume %></p>
+            </li>
+            <li>
+                <p class="name">止盈价格</p>
+                <p class="J_Formate"><%= item.takeProfit %></p>
+            </li>
+            <li>
+                <p class="name">止损价格</p>
+                <p class="J_Formate"><%= item.stopLoss %></p>
+            </li>
+        </ul>
+        <span class="guide">
+            <span class="triangle"></span>
+        </span>
+    </a>
+</li>
+<% }); %>
+<% if (data.guadan.length > 0) {%>
+<li class="guadan">挂单</li>
+<% } %>
+<% $.each(data.guadan, function(index, item) {%>
+<li class="item J_Item" data-symbol="<%= item.symbol %>">
+    <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
+        <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
+        <div class="name-wrapper">
+            <p class="name"><%= item.symbolName %></p>
+            <p><%= item.symbol %></p>
+        </div>
+        <ul class="detail">
+            <li>
+                <p class="name">盈亏</p>
+                <% var guandan = (item.status == 'pending'); %>
+                <p class="J_Formate <%= guandan ? '' : 'no-guadan' %>" data-order="<%= item.ticket %>" ><%= guandan ? '挂单' : '--' %></p>
+            </li>
+            <li>
+                <p class="name">当前价格</p>
+                <p class="J_Price J_Formate" data-symbol="<%= item.symbol %>" data-symbolname="<%= item.symbol.replace(/\./g, '--') %>" <% if(item.status == 'pending') {%>data-status="pending"<%}%> <% if(item.cmd.indexOf('buy') !== -1) {%>data-cmd="up"<%}%> >--</p>
+            </li>
+            <li>
+                <p class="name">开仓价格</p>
+                <p class="J_Formate"><%= item.openPrice %></p>
+            </li>
+            <!--
+            <li>
+                <p class="name">占用资金</p>
+                <p class="J_Formate"><%= item.margin %></p>
+            </li>
+            -->
+            <li>
+                <p class="name">交易量</p>
+                <p class="J_Formate"><%= item.volume %></p>
+            </li>
+            <li>
+                <p class="name">止盈价格</p>
+                <p class="J_Formate"><%= item.takeProfit %></p>
+            </li>
+            <li>
+                <p class="name">止损价格</p>
+                <p class="J_Formate"><%= item.stopLoss %></p>
+            </li>
+        </ul>
+        <span class="guide">
+            <span class="triangle"></span>
+        </span>
+    </a>
+</li>
+<% }); %>
+<% if (data.normal.length === 0 && data.guadan.length === 0 && data.gendanlength === 0 && data.showqr) {%>
+<li class="empty">你还没有交易信息</li>
+<li class="qrcode">
+    <div class="img-wrapper">
+        <img class="img" src="<%= data.qrcode %>">
+    </div>
+    <p>关注公众号<%= data.weixin %>, 投资稳又赚</p>
+</li>
+<% } %>
+<% if (data.normal.length === 0 && data.guadan.length === 0 && data.gendanlength === 0 && !data.showqr) {%>
+<li class="empty">你还没有交易信息</li>
+<% } %>

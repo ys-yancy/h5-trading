@@ -1,0 +1,16 @@
+<div class="cur-wrapper">
+  <% var nan = isNaN(data.usePrice) || data.usePrice === undefined;%>
+    <p><%= nan ? '--' : data.usePrice %></p>
+    <span class="range"><%= nan ? '--' : (data.usePrice - data.close).toFixed(data.unit) %></span>
+    <span class="range-percent"><%= nan ? '--' : ((data.usePrice- data.close) /data.close * 100).toFixed(2) %>%</span>
+</div>
+<div class="detail-wrapper">
+    <div>
+        <span class="open-price">今开:<%= data.open %></span>
+        <span class="highest-price">最高:<%= data.high %></span>
+    </div>
+    <div>
+        <span class="close-price">昨收:<%= data.close %></span>
+        <span class="lowest-price">最低:<%= data.low %></span>
+    </div>
+</div>

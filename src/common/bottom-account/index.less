@@ -1,0 +1,55 @@
+@import '../../variable.less';
+#J_BottomBanner{
+	.item-wrapper{
+		.width(633);
+		.font-size(26);
+		overflow-x: scroll;
+		overflow-y: hidden;
+		background: #fff;
+		-webkit-overflow-scrolling : touch;
+		ul{
+			.width(1070);
+			.padding(25, 0);
+		}
+	}
+	li{
+		display: inline-block;
+		.width(205);
+		.height(80);
+		.padding-left(30);
+		overflow: hidden;
+		.desc{
+			.line-height(40);
+		}
+	}
+	.arrow{
+		position: absolute;
+		z-index: 2;
+	    .top(35);
+	    .right(14);
+	    .width(20);
+	    .height(60);
+	    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAA6CAYAAACEVrhXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMhJREFUeNpi/P//PwMpgImBRDCqYVTDqAYKNLDMaOsg2QYpIN4IxBJE2QDE+4BYHYjVgNgRiF8QsmERlK0BxPsJ2QTS0AbE1cRqgoUSSFMVMZqQg7WdGE3o8UBQE7aIw6sJV0yDNNWgaRLDpwEkrozEfw7EX3BpAInNAeJEKB9kug8Qf8OmAa9idA3MaIr3oStG1gBSPBtNsS+6YpgGohXDNBCtGKZBiVjFMA1eQNxJjGJYBgIpqiA2izKOVrujGkY1DGYNAAEGAA64MnRvROpLAAAAAElFTkSuQmCC) 0 0 no-repeat;
+	    .background-size(10, 58);
+	    &.end {
+		    -webkit-transform: rotate(180deg);
+		    transform: rotate(180deg);
+		    .background-position(10, 0);
+	    }
+	}
+	.transition-l,
+	.transition-r {
+	    position: absolute;
+	    z-index: 1;
+	    .top(0);
+	    .left(0);
+	    .height(130);
+	    .width(30);
+	    background: #fff;
+	}
+	.transition-r{
+		.width(50);
+		left: auto;
+		.right(0);
+	}
+}

@@ -1,0 +1,39 @@
+<% if (data.tip) {%>
+<!--
+<li>
+  <div class="top-msg" id="J_TopMsg">
+    <div class="top-msg-inner">
+      <a href="http://weixin.invhero.com/help/11" class="link">无法出金时请先确认是否有可提资金...</a>
+      <span class="msg-close" ><span></span></span>
+    </div>
+  </div>
+</li>
+-->
+<% } %>
+
+<% data.forEach(function(item, index) { %>
+<li class="item">
+  <% var len = item.update_at.length; %>
+  <p class="time"><%= item.update_at.substring(0, len - 3) %>
+    <span class="symbol-info"><%= item.trade_direction && item.trade_direction.indexOf('buy') !== -1 ? '买涨' : '买跌' %> <%= item.symbol_name %></span>
+  </p>
+  <div class="clearfix">
+    <div class="left">
+      <span class="tag">$</span>
+      <span class="num"><%= item.amountFormate %></span>
+    </div>
+    <div class="right">
+      <p class="desc"><%= item.desc %></p>
+    </div>
+    <div class="progress">
+      <span class="circle <% if (item.confirmed == 0 || item.confirmed == -1) {%> empty <%} %>"></span>
+    </div>
+    <p class="amount">名义交易量($)：<%= item.trade_notional_amount %></p>
+  </div>
+</li>
+<% }); %>
+
+<% if (data.length === 0) {%>
+<% var descArr = ['您还没有任何资金记录', '您还没有交易盈亏记录', '您还没有出金记录', '您还没有入金记录', '您还没有奖金记录', '您还没有朋友赚奖金记录', '您还没有佣金记录', '您还没有红包领取记录']; %>
+<li class="no-content"><%= descArr[data.indexVal] %></li>
+<% } %>

@@ -1,0 +1,14 @@
+<% $.each(data, function(index, item) {%>
+<li class="clearfix">
+    <a class="link" href="./detail-rank.html?symbol=<%= item.symbol %>&symbolName=<%= encodeURIComponent(item.symbolName) %>">
+        <div class="symbol-wrapper">
+            <p><%= item.symbolName %></p>
+            <p class="symbol"><%= item.symbol %></p>
+        </div>
+        <div class="num">
+            <span class="unit">$</span><%= item.profit %>
+        </div>
+    </a>
+    <a class="order " href="../pro-trading.html?symbol=<%= item.symbol %>&account=<%= data.type %>&name=<%= item.symbolName%>&fullRouter=<%= encodeURIComponent(location.href) %>">马上下单</a>
+</li>
+<% }); %>

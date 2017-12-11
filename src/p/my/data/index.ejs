@@ -1,0 +1,30 @@
+<li>平均盈利
+  <span class="number">
+    <span class="small">$</span><%= data.average_profit %>
+  </span>
+</li>
+<li>平均亏损
+  <span class="number">
+    <span class="small">$</span><%= data.average_lose %>
+  </span>
+</li>
+<li>最大盈利
+  <span class="number">
+    <span class="small">$</span><%= data.profit_tickets_max_profit %>
+  </span>
+</li>
+<li>最大亏损
+  <span class="number">
+    <span class="small">$</span><%= data.lose_tickets_max_lose %>
+  </span>
+</li>
+<li>最大回撤
+  <span class="number">
+    <span class="small"></span><%= (data.max_drawdown * 100).toFixed(2) %> %
+  </span>
+</li>
+<li>平均持仓时间
+  <span class="number">
+    <span class="small"></span><%= (data.tickets_average_hold_time / 3600).toFixed(1) %> 小时
+  </span>
+</li>

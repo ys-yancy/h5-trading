@@ -1,0 +1,24 @@
+<% data.forEach(function(item) {%>
+<div class="item clearfix <%= item.cmd.indexOf('buy') === -1 ? 'down' : '' %> sort-<%= item.month_ror_rank %> ">
+  <a href="../order-share.html?invite=<%= item.invite_code %>&unit=<%= item.unit %>&symbol=<%= item.symbol %>&name=<%= item.symbolName %>&order=<%= item.ticket %>&nickname=<%= item.nickname %>&cmd=<%= item.cmd %>&unit=<%= item.min_quote_unit %>&from=<%= encodeURIComponent(location.href) %>">
+    <div class="img-wrapper-outer">
+      <div class="img-wrapper">
+        <img class="img" src="../../img/my-sort-latest-<%= item.cmd.indexOf('buy') === -1 ? 'down' : 'up' %>.png" alt="">
+      </div>
+    </div>
+    <div class="symbol-wrapper">
+      <p class="symbol"><%= item.symbolName %></p>
+      <p class="name">
+        <%= item.nickname %>
+      </p>
+    </div>
+    <span class="time"><%= item.desc %></span>
+  </a>
+</div>
+<% }); %>
+
+<% if (data.length == 0) {%>
+  <p class="emtpy">暂无数据</p>
+<% } %>
+
+

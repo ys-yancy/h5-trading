@@ -1,0 +1,17 @@
+<div class="dialog J_Dialog dialog-trade cm-dialog " id="J_Dialog">
+   <div class="dialog-title">平仓成功</div>
+   <span class="wrapper-icon"><span class="icon"></span></span>
+   <div class="dialog-content J_Content">
+        <h2><%= data.name %></h2>
+        <ul>
+            <li class="content-bd clearfix">平仓价
+            <span class="num"><%= data.price %></span></li>
+            <li class="content-bd last clearfix">盈利
+            <span class="num"><%= data.profit %></span></li>
+        </ul>
+   </div>
+   <div class="dialog-buttons clearfix" id="J_CloseSuccess">
+       <a class="dialog-btn order J_Order" href="./trade-history.html">确定</a>
+   </div>
+</div>
+<div class="dialog-mask J_DialogMask"></div>

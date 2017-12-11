@@ -1,0 +1,117 @@
+@import '../../../variable.less';
+.option-banner {
+    position: absolute;
+    top: 0;
+    .left(640);
+    overflow: hidden;
+    .width(345);
+    background-color: #5a4984;
+    .loading {
+        .margin-top(20);
+        .line-height(60);
+        .font-size(24);
+        text-align: center;
+        color: #fff;
+    }
+    ul {
+        .width(345);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        z-index: 1;
+        .item {
+            position: relative;
+            border-top: 1px solid #705f9e;
+            &.first {
+                display: block;
+                .height(86);
+                .padding-top(12);
+                .padding-left(24);
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+                &.active {
+                    -webkit-transform: translateX(-5.5rem);
+                    transform: translateX(-5.5rem);
+                }
+            }
+            .link {
+                display: block;
+                .height(86);
+                .padding-top(12);
+                .padding-left(24);
+                &:hover {
+                    background-color: #7e66b9;
+                }
+            }
+            .name {
+                .line-height(34);
+                .font-size(24);
+                .line-hide();
+                color: #fff;
+            }
+            .symbol {
+                .line-height(30);
+                .font-size(18);
+                .line-hide();
+                color: #ada5c1;
+            }
+            .del {
+                position: absolute;
+                top: 0;
+                right: 0;
+                .width(44);
+                .height(86);
+                background: #5a4984 url(../../../img/del-icon.png) 0.05rem 0.7rem no-repeat;
+                .background-size(100, 100);
+                &.add {
+                    background: url(../../../img/friend-bg-icon.png) .3rem 0.65rem no-repeat;
+                    background-size: .625rem 3.5rem;
+                }
+            }
+            .action-wrapper {
+                position: absolute;
+                top: 0;
+                .right(-220);
+                .height(86);
+                &.action-add {
+                    span {
+                        &.add-option {
+                            display: block;
+                        }
+                        &.del-option {
+                            display: none;
+                        }
+                    }
+                }
+                span {
+                    float: left;
+                    .width(110);
+                    text-align: center;
+                    .line-height(86);
+                    color: #fff;
+                    background: #967bda;
+                    &:nth-child(3) {
+                        background-color: #7688b9;
+                    }
+                    &.add-option {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .option-logo {
+        /*position: absolute;
+        .bottom(70);
+        .left(120);*/
+        .margin-top(20);
+        .width(110);
+        .height(134);
+        .margin-left(118);
+        background: #5a4984 url(../../../img/option-logo.png) 0 0 no-repeat;
+        .background-size(110, 114);
+    }
+}

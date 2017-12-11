@@ -1,0 +1,44 @@
+<section class="attribute-wrapper" id="J_Attribute" style="display:none;">
+  <div class="attribute">
+    <div class="hd">
+      <h2><%= data.policy.name %></h2>
+      <span class="close"></span>
+    </div>
+    <div class="bd">
+      <p class="symobl">交易品种<span class="strong"><%= data.policy.name %></span></p>
+      <% if(data.isHasFixedMargin) {%>
+        <p>1手保证金<span class="strong"><%= data.policy.fixed_margin_ratio %></span>美元</p>
+      <%} else {%>
+        <p>杠杆<span class="strong"><%= data.leverage %></span>倍</p>
+      <% } %>
+      <!-- <p><span class="strong">1</span>标准手=<span class="strong"><%= data.policy.lot_size %></span><%= data.policy.unit %></p> -->
+      <p>交易时间<span class="strong">--  --</span></p>
+      <p>点差<span class="strong">--  --</span></p>
+      <p>最小交易量<span class="strong min"><%= data.policy.min_vol %></span></p>
+      <p>最大交易量<span class="strong max"><%= data.policy.max_vol %></span></p>
+      <!--手续费有两种建仓（ticketOpen）平仓(ticketClose)-->
+      <p>每标准手手续费<span class="strong">建仓(<%= data.ticketOpen %>)平仓(<%= data.ticketClose %>)</span></p>
+
+      <p>每标准手隔夜利息<span class="strong">买跌(
+        <%= data.policy.short_swap ? parseFloat(data.policy.short_swap).toFixed(2) : '无' %>)
+      买涨(<%= data.policy.long_swap ? parseFloat(data.policy.long_swap).toFixed(2) : '无' %>)</span></p>
+      <!-- <div class="wrapper time">
+        <p>最近休市时间</p>
+        <div class="clearfix">
+          <div class="left">
+            <p><span class="strong"><%= data.close_time[0] && data.close_time[0].start.split(' ')[0] %></span></p>
+            <p class="close-time"><span class="strong"><%= data.close_time[0] && data.close_time[0].start.split(' ')[1] %></span></p>
+          </div>
+          <div class="right">
+            <p><span class="strong"><%= data.close_time[0] && data.close_time[0].end.split(' ')[0] %></span></p>
+            <p><span class="strong"><%= data.close_time[0] && data.close_time[0].end.split(' ')[1] %></span></p>
+          </div>
+          <span class="arrow"></span>
+        </div>
+        </div>
+      </div>
+      <div class="ft">
+        <p><%= data.policy.delivery_time && data.future ? '该品种将于<span class="strong">' + data.policy.delivery_time + '</span>交割' : '该品种无需交割' %></p>
+     </div> -->
+  </div>
+</section>

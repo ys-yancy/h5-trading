@@ -1,0 +1,52 @@
+<% $.each(data.list, function(index, item) {%>
+<div class='table'>
+    <li class="item J_Item link link_all clearfix" id="kindList<%= index %>" data-symbol="<%= item.symbol %>">
+        <span class="tag kindTag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
+        <div class="name-wrapper">
+            <p class="name <% if(item.sumProfit<0) {%>down<%}else{%>up<%}%>"><%= item.sumProfit.toFixed(2) %></p>
+            <p class='symbolName'><%= item.symbolName %></p>
+        </div>
+        <ul class="detail">
+            <li>
+                <p class="name">当前价格</p>
+                <p class="J_Price J_Formate" data-symbol="<%= item.symbol %>" data-symbolname="<%= item.symbol.replace(/\./g, '--') %>" <% if(item.cmd.indexOf('buy') !== -1) {%>data-cmd="up"<%}%>>--</p>
+            </li>
+            <li>
+                <p class="name">平均价格</p>
+                <p class="J_Price J_Formate" data-symbol="<%= item.symbol %>"><%= item.averagePrice.toFixed(2) %></p>
+            </li>
+            <li>
+                <p class="name"></p>
+                <p class="J_Formate"><%= item.openPrice %></p>
+            </li>
+            <li>
+                <p class="name">单数</p>
+                <p class="J_Formate"><%= item.length %></p>
+            </li>
+            <li>
+                <p class="name">交易量</p>
+                <p class="J_Formate"><%= item.sumVolume.toFixed(2) %></p>
+            </li>
+            <li>
+                <p class="name"></p>
+                <p class="J_Formate"><%= item.stopLoss %></p>
+            </li>
+        </ul>
+        <span class="guideAll guide">
+            <span class="triangle triangleAll"></span>
+        </span>
+    </li>
+</div>
+<% }); %>
+<% if (data.list.length === 0 && data.showqr) {%>
+<li class="empty">你还没有历史交易信息</li>
+<li class="qrcode">
+    <div class="img-wrapper">
+        <img class="img" src="<%= data.qrcode %>">
+    </div>
+    <p>关注公众号<%= data.weixin %>, 历史一片红</p>
+</li>
+<% } %>
+<% if (data.list.length === 0 && !data.showqr) {%>
+<li class="empty">你还没有历史交易信息</li>
+<% } %>

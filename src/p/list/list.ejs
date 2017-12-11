@@ -1,0 +1,11 @@
+<% $.each(data, function(index, item) {%>
+<li class="item clearfix <% if(item.add){%> add <%}%>" data-symbol="<%= item.policy.symbol %>">
+    <a class="wrapper J_Link clearfix" href="./pro-trading.html?name=<%= encodeURIComponent(item.policy.name) %>&symbol=<%= item.policy.symbol %>&router=list&fullRouter=<%= encodeURIComponent(location.href) %>">
+        <p><span class="J_Marquee"><%= item.policy.symbol %></span></p>
+        <p class="name"><span class="J_Marquee"><%= item.policy.name %></span></p>
+    </a>
+    <a class="action" href="./order.html?action=add&symbol=<%= item.symbol %>">
+        <span class="icon"></span>
+    </a>
+</li>
+<% }); %>

@@ -1,0 +1,77 @@
+@import '../../variable.less';
+@import '../../base.less';
+.icon {
+    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}
+
+header {
+    .width(640);
+    overflow: hidden;
+    .header-inner {
+        position: relative;
+        .padding(16, 0);
+        .line-height(56);
+        .font-size(36);
+        text-align: center;
+        background: #967bdc;
+        color: #fff;
+        .go-back {
+            display: none;
+            position: absolute;
+            .left(18);
+            .top(22);
+            .width(49);
+            .height(44);
+            .icon {
+                display: block;
+                .width(23);
+                .height(40);
+                .background-position(0, -435);
+            }
+        }
+    }
+}
+
+.content {
+    position: absolute;
+    .margin(0, 15);
+    .padding-top(30);
+    textarea {
+        display: block;
+        .padding(12, 14);
+        .width(610);
+        .height(308);
+        .line-height(36);
+        .border(8, solid, #d9dde3);
+        .font-size(26);
+        outline: 0;
+        border: 1px solid #d9dde3;
+        color: #a9adbb;
+    }
+    input {
+        .margin-top(85);
+        .margin-left(45);
+        .width(520);
+        .height(70);
+        .line-height(66);
+        border: none;
+        .border-bottom(4, solid, #6b4db5);
+        .border-radius(8);
+        .font-size(34);
+        outline: 0;
+        background: #967adc;
+        text-align: center;
+        color: #fff;
+    }
+    .count {
+        position: absolute;
+        .left(540);
+        .top(282);
+        .width(80);
+        .line-height(50);
+        color: #473b61;
+    }
+}
+
+.dialog-ios8();

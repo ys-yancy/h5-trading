@@ -1,0 +1,303 @@
+@import '../../../../variable.less';
+@import '../../../../base.less';
+@base: 40;
+input {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.dialog-ios8();
+html {
+  background: rgb(38,18,69);
+}
+
+.icon {
+  background: url(../../../../../img/guides-broker-icon.png) 0 0 no-repeat;
+  .background-size(90, 346);
+}
+
+body {
+  background: rgb(38,18,69) url(../../../../../img/wl/jy168/jy-register-bg.jpg) 0 0 no-repeat;
+  background-size: 100% auto;
+  .min-height(1136);
+  .padding-top(754);
+  .padding-bottom(70);
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #a7a7a7;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #a7a7a7;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #a7a7a7;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #a7a7a7;
+}
+
+.content {
+  form {
+    .width(520);
+    margin: 0 auto;
+    .input-wrapper {
+      .border-radius(2);
+      overflow: hidden;
+      input {
+        .padding-top(8);
+        .padding-bottom(8);
+        .line-height(30);
+        .height(56);
+        background: transparent;
+        .padding-left(90);
+        .width(520);
+        /*.padding-left(90);*/
+        .font-size(28);
+        color: #a7a7a7;
+        .border(2, solid, #e4e4e4);
+        .border-radius(5);
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill {
+          -webkit-text-fill-color: #a7a7a7 !important;
+          -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      }
+      .tel,
+      .code{
+        background: #fff;
+      }
+      input.captcha-text {
+        color:@redColor;
+      }
+      .get-code {
+        position: absolute;
+        .top(0);
+        .right(0);
+        .width(140);
+        .height(56);
+        .line-height(56);
+        text-align: center;
+        // .border-bottom(4, solid, #005953);
+         background: rgb(14,199,248);
+        color: #fff;
+        .border-radius(4);
+        .font-size(20);
+      }
+      .code {
+        .width(360);
+        .padding-left(20);
+      }
+    }
+    .wrapper {
+      position: relative;
+      .height(80);
+      // border-bottom: 1px solid #c8b6a2;
+      /*&.first {
+        border-bottom-color: #88b2cf;
+      }
+      &.second {
+        border-top-color: #88b2cf;
+        border-bottom-color: #88b2cf;
+      }*/
+     
+      &.submit-wrapper {
+        .margin-top(10);
+        height: auto;
+        border: none;
+        line-height: normal;
+      }
+      &.error {
+        .err {
+          display: block;
+        }
+      }
+      .err {
+        display: none;
+        .left(90);
+        position: absolute;
+        .top(56);
+        .line-height(30);
+        .font-size(22);
+        color: #ff564e;
+      }
+    }
+    .submit {
+     .line-height(56);
+      .height(56);
+      .width(520);
+      .border-radius(6);
+      // .border-bottom(4, solid, #c93a3a);
+      background: -webkit-gradient(linear, 0 100%, 0% 100%, from(rgb(14,199,248)), to(rgb(14,199,248)));
+      background: -webkit-linear-gradient(top, rgb(14,199,248), rgb(14,199,248));
+      color: #fff;
+      .font-size(26);
+    }
+  }
+  .success-wrapper {
+    .width(600);
+    .height(480);
+    margin: 0 auto;
+    background: #fff;
+    .border-radius(10);
+    /*background: #fff url(../../../../img/my-guides-popup.png) 0 0 no-repeat;*/
+    background-size: 100% auto;
+    z-index: 1002;
+    position: absolute;
+    display: none;
+    .top(250);
+    .left(20);
+    .close {
+      z-index: 1;
+      position: absolute;
+      .width(52);
+      .height(52);
+      top: 0;
+      right: 0;
+    }
+    h3 {
+      .margin-top(40);
+      .font-size(40);
+      .line-height(50);
+      background-color: #fff;
+      text-align: center;
+    }
+    .desc-wrapper {
+      .padding-top(30);
+      text-align: center;
+      background-color: #fff;
+      color: #000;
+      .font-size(28);
+      p {
+        .line-height(50);
+      }
+    }
+    .btn-wrapper {
+      .margin-top(50);
+      a {
+        .width(478);
+        .line-height(60);
+        .height(60);
+        background: #0fa39b;
+        .border-radius(6);
+        margin: 0 auto;
+        color: #fff;
+        .font-size(28);
+        display: block;
+        text-align: center;
+      }
+      .btm {
+        .margin-top(40);
+        background:#989E9E;
+      }
+    }
+  }
+  .login-wrapper {
+    margin: 0 auto;
+    .width(602);
+    .margin-top(30);
+    text-align: center;
+    color: #999;
+    .font-size(20);
+    span {
+      color: #d5b27f;
+    }
+    .login {
+      /*display: block;*/
+      /*text-align: left;*/
+      .line-height(40);
+      
+      color: #6a9acb;
+    }
+  }
+  .ln2{
+     .width(541);
+     // margin: 0 auto;
+     .margin-left(50);
+     .border-radius(6); 
+     .margin-top(20);
+     .margin-bottom(110);
+     #dom_id{
+      .slider,.label,.bg-green,.button,.bg-red{
+          .height(62);
+          .line-height(62);
+          .font-size(20);
+          .border-radius(3); 
+      }
+      .button{
+          .width(68);
+          .icon-slide-arrow,.icon-load-c,.icon-close{
+              .left(21);
+          }
+      }
+     } 
+  }
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  .left(74);
+}
+
+.nc-h5-overlay._nc{
+  div.info{
+      .height(70);
+      .font-size(24);
+      .line-height(50);
+  }
+  .stage>.textbox{
+      .height(70);
+      .input{
+          .height(40);
+          .line-height(40);
+          .top(14);
+          .left(70);
+          .font-size(26);
+      }
+      .placeholder{
+          .top(18);
+          .left(70);
+          .font-size(25);
+      }
+      .icon{
+          .top(17); 
+          .font-size(35);   
+      }
+      .code{
+          .width(190);
+          .height(32);
+          .top(22);
+          .right(60);
+      }
+      .clear{
+          .left(150);
+      }
+      .icon.refresh{
+          .right(20);
+      }
+  }
+  .stage>.ope{
+      .margin-top(20);
+      .btn-ok{
+          .height(70);
+          .font-size(30);
+      }
+      .tips{
+          .height(60);
+          .line-height(60);
+          .font-size(19);
+      }
+  }
+}

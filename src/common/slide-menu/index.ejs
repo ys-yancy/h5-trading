@@ -1,0 +1,124 @@
+<div class="slide-menu-inner <%= data.page %>">
+	<div class="scroll-wrapper"><!-- detail and fn need scroll -->
+		<% var isDemo = data.type == 'demo' ? true : false; %>
+		<div class="user-details" id="J_UserDetails">
+			<div class="user-avatar">
+				<img class="img J_UserAvatar" src="">
+			</div>
+			<div class="user-name">
+				<span class="name J_UserName">用户昵称</span>
+				<span class="type J_Type"><%= isDemo ? '模拟' : '实盘' %></span>
+			</div>
+			<div class="user-phone">
+				<span class="desc">手机号:</span>
+				<span class="phone J_UserPhone"><%= data.phone %></span>
+			</div>
+			<div class="user-other">
+				<span class="cil J_">兑换码</span>	
+				<span class="cil J_">二维码</span>
+			</div>
+		</div>
+		<ul class="function-details">
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">账户充值</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">账户资产</span>
+					<span class="ft-rt num J_UserProfit">$1000.00</span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">我的好友</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">收件箱</span>
+					<span class="ft-rt"></span>
+				</a>
+			</li>
+
+			<li class="cut-line"></li>
+
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">投资分析</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item" href="javascript:void(0);">
+					<span class="icon"></span>
+					<span class="desc">切换账户</span>
+					<div class="ft-rt switch-account J_SwitchAccount clearfix">
+						<span class="lt">模拟</span>
+						<span class="cl J_Standard <%= isDemo  ? 'demo' : 'real' %>"></span>
+						<span class="rt">实盘</span>
+					</div>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item" href="javascript:void(0);">
+					<span class="icon"></span>
+					<span class="desc">切换交易页面</span>
+					<div class="ft-rt switch-tradeingUI J_SwitchTradeingUI clearfix">
+						<% var isRapd = data.tradingUI == 6; %>
+						<span class="lt">极速</span>
+						<span class="cl J_Standard <%= isRapd  ? 'off' : '' %>"></span>
+						<span class="rt">专业</span>
+					</div>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">修改密码</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+
+			<li class="cut-line"></li>
+
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">使用帮助</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">交易学堂</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">意见反馈</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item">
+					<span class="icon"></span>
+					<span class="desc">关于我们</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="account-details" id="J_BottomBanner"></div>
+</div>

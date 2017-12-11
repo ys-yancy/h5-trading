@@ -1,0 +1,225 @@
+@import '../../../../variable.less';
+@import '../../../../base.less';
+@base: 46.875;
+input {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.dialog-ios8();
+
+::-webkit-input-placeholder {
+  color: #fff;
+}
+
+html {
+  background: #4591bb;
+}
+
+.icon {
+  background: url(../../../../../img/guides-broker-icon.png) 0 0 no-repeat;
+  .background-size(90, 346);
+}
+
+body {
+  background: #4591bb url(../../../../../img/guides-bg.jpg) 0 0 no-repeat;
+  .background-size(750, 1334);
+  .min-height(1334);
+  .padding-top(616);
+}
+
+.content {
+  form {
+    .width(602);
+    margin: 0 auto;
+    .input-wrapper {
+      .border-radius(2);
+      overflow: hidden;
+      input {
+        .line-height(113);
+        background: transparent;
+        .margin-left(90);
+        .width(510);
+        /*.padding-left(90);*/
+        .font-size(30);
+        color: #fff;
+      }
+      
+      .icon {
+        position: absolute;
+        z-index: 1;
+        .width(90);
+        .height(114);
+        top: 0;
+        left: 0;
+        &.icon-phone {
+          .background-position(0, -116);
+        }
+        &.icon-code {
+          .background-position(0, -232);
+        }
+      }
+      .get-code {
+        position: absolute;
+        .top(27);
+        .right(22);
+        .width(178);
+        .height(60);
+        .line-height(56);
+        text-align: center;
+        .border-bottom(4, solid, #967bdc);
+        background: -webkit-gradient(linear, 0 100%, 0% 100%, from(#b5a2e6), to(#967bdc));
+        background: -webkit-linear-gradient(top, #b5a2e6, #967bdc);
+        color: #fff;
+        .border-radius(4);
+        .font-size(27);
+      }
+    }
+    .image-captcha {
+      line-height: 1rem;
+      #captcha-message{
+       .height(16);
+      }
+    }
+    input.captcha-text{
+      color:@mainColor;
+      .line-height(50);
+    }
+    .wrapper {
+      .wrapper {
+       border:none;
+      }
+      position: relative;
+      .height(115);
+      .line-height(113);
+      border: 1px solid #5390b5;
+      &.first {
+        border-bottom-color: #88b2cf;
+      }
+      &.second {
+        border-top-color: #88b2cf;
+        border-bottom-color: #88b2cf;
+      }
+      &.third {
+        border-top-color: #88b2cf;
+      }
+      &.submit-wrapper {
+        .margin-top(50);
+        height: auto;
+        border: none;
+        line-height: normal;
+      }
+      &.error {
+        .err {
+          display: block;
+        }
+      }
+      .err {
+        display: none;
+        .left(90);
+        position: absolute;
+        .top(90);
+        .line-height(30);
+        .font-size(22);
+        color: #ff564e;
+      }
+    }
+    .submit {
+      .line-height(90);
+      .height(94);
+      .width(602);
+      .border-radius(12);
+      .border-bottom(4, solid, #967bdc);
+      background: -webkit-gradient(linear, 0 100%, 0% 100%, from(#b5a2e6), to(#967bdc));
+      background: -webkit-linear-gradient(top, #b5a2e6, #967bdc);
+      color: #fff;
+      .font-size(43);
+    }
+  }
+  .login-wrapper {
+    .margin-top(50);
+    text-align: center;
+    .login {
+      display: inline-block;
+      .line-height(47);
+      .font-size(27);
+      color: #fff;
+    }
+  }
+
+  .ln2{
+     .width(541);
+     // margin: 0 auto;
+     .margin-left(50);
+     .border-radius(6); 
+     .margin-top(20);
+     .margin-bottom(110);
+     #dom_id{
+      .slider,.label,.bg-green,.button,.bg-red{
+          .height(70);
+          .line-height(70);
+          .font-size(20);
+          .border-radius(3); 
+      }
+      .button{
+          .width(68);
+          .icon-slide-arrow,.icon-load-c,.icon-close{
+              .left(21);
+          }
+      }
+     } 
+  }
+}
+
+.nc-h5-overlay._nc{
+  div.info{
+      .height(70);
+      .font-size(24);
+      .line-height(50);
+  }
+  .stage>.textbox{
+      .height(70);
+      .input{
+          .height(40);
+          .line-height(40);
+          .top(14);
+          .left(70);
+          .font-size(26);
+      }
+      .placeholder{
+          .top(18);
+          .left(70);
+          .font-size(25);
+      }
+      .icon{
+          .top(17); 
+          .font-size(35);   
+      }
+      .code{
+          .width(190);
+          .height(32);
+          .top(22);
+          .right(60);
+      }
+      .clear{
+          .left(150);
+      }
+      .icon.refresh{
+          .right(20);
+      }
+  }
+  .stage>.ope{
+      .margin-top(20);
+      .btn-ok{
+          .height(70);
+          .font-size(30);
+      }
+      .tips{
+          .height(60);
+          .line-height(60);
+          .font-size(19);
+      }
+  }
+}

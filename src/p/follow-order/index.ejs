@@ -1,0 +1,79 @@
+<div class="follow-order-wrapper" id="J_FollowOrder">
+	<div class="hd">
+		<div class="hd-header">
+			<div class="img-wrapper-outer">
+				<div class="img-wrapper">
+					<img class="img" src="<%= data.img %>">
+				</div>
+			</div>
+			<div class="desc-wrapper  clearfix">
+				<p class="name"><%= data.name %></p>
+				<p class="account">实盘</p>
+				<p class="years">
+					持续投资<span class="num J_Day"><%= data.trade_days %></span>天
+				</p>
+			</div>
+		</div>
+		<div class="hd-body">
+			<div>
+				<div class="item left follow-person">
+					<p class="desc">跟随Ta</p>
+					<p class="num J_FollowPersonNum"><%= data.follow_users %></p>
+				</div>
+				<div class="item center follow-amount">
+					<p class="desc">跟随资金($)</p>
+					<p class="num J_FollowAmount"><%= parseFloat(data.follow_funds).toFixed(2) %></p>
+				</div>
+				<div class="item right follow-profit">
+					<p class="desc">跟随盈利($)</p>
+					<p class="num J_FollowProfit"><%= parseFloat(data.follow_profits).toFixed(2) %></p>
+				</div>
+			</div>
+			<div>
+				<div class="item left average-seven">
+					<p class="desc">7日收益率</p>
+					<p class="num J_AverageSeven"><%= parseFloat(data.yield_rate_7days).toFixed(2) %> %</p>
+				</div>
+				<div class="item center average-thirty">
+					<p class="desc">30日收益率</p>
+					<p class="num J_AverageThirty"><%= parseFloat(data.yield_rate_30days).toFixed(2) %> %</p>
+				</div>
+				<div class="item right follow-total">
+					<p class="desc">累计收益率</p>
+					<p class="num J_AverageTotal"><%= parseFloat(data.yield_rate).toFixed(2) %> %</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% var isFollow = data.is_follow == 1, isPaused =  data.follow_paused == 1, isWatched = data.already_watched == 1; %>
+		<nav>
+			<ul class="tab-wrapper">
+				<li class="item clearfix J_Tab active">交易统计</li>
+				<li class="item clearfix J_Tab">当前交易</li>
+				<li class="item clearfix J_Tab">历史交易</li>
+			</ul>
+		</nav>
+		<div class="bd">
+			<div class="follow-content J_ContentFollow show" id="J_TradeCount">
+				<span class="loading">加载中...</span>
+			</div>
+			<div class="follow-content J_ContentFollow" id="J_TradeCurrent" style="display: none;">
+				<span class="loading">加载中...</span>
+			</div>
+			<div class="follow-content J_ContentFollow" id="J_TradeHistory" style="display: none;">
+				<span class="loading">加载中...</span>
+			</div>
+		</div>
+		<div class="footer btn-wrapper">
+			<button class="btn J_Attention <%= isWatched ? 'hidden' : '' %>">关注榜单</button>
+			<button class="btn J_CancelAttention <%= !isWatched ? 'hidden' : '' %>">取消关注</button>
+			
+			<button class="btn J_Follow <%= isFollow ? 'hidden' : '' %>">自动跟单</button>
+
+			<button class="btn J_Following <%= isFollow && !isPaused ? '' : 'hidden' %>" disabled>跟随中...</button>
+			<button class="btn J_Pauseing <%= isFollow && isPaused ? '' : 'hidden' %>" disabled>暂停中...</button>
+
+			<!-- <button class="btn J_MoreData">更多分析数据</button> -->
+		</div>
+	
+</div>

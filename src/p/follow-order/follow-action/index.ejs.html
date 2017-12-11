@@ -1,0 +1,30 @@
+<div class="follow-action-outer">
+	<div class="follow-action-inner">
+		<div class="hd">
+			<h2>设置跟随资金</h2>
+			<span class="close J_CloseFollow"></span>
+		</div>
+		<div class="bd">
+			<section>
+				<p>设置跟随该高手所使用的资金， 您的跟随交易量会使用此资金和高手余额的比例进行等比计算.</p>
+				<p>左侧是该高手的最低起跟资金，右侧是您可以投入的跟随资金.</p>
+				<!-- <p></p> -->
+			</section>
+			<div class="setValue-controller-wrapper">
+				
+			</div>
+			<section>
+				<p>跟单费用：5美金/标准手 (现特定品种， 详询客服)， 开仓收取.</p>
+				<p>设风险声明: 高手信号的真实交易者(们)的同步信号， 平台不能保证其盈利可能， 选择跟单即代表您已知晓该风险.</p>
+			</section>
+		</div>
+		<div class="ft">
+			<%if (data.isNoMonery) {%>
+				<a class="btn follow-recharge J_FollowRecharge" href="./recharge.html">马上增加资金</a>
+			<%} else {%>
+				<button class="btn start J_StartFollow">开始跟随</button>
+				<button class="btn more-set J_MoreSetting">更多设置</button>
+			<%}%>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,218 @@
+@import '../../../../variable.less';
+@import '../../../../base.less';
+@base: 40;
+input {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.dialog-ios8();
+html {
+  background: #D20000;
+}
+
+.icon {
+  // background: url(../../../../../img/guides-broker-icon.png) 0 0 no-repeat;
+  .background-size(90, 346);
+}
+
+body {
+  background: #D20000 url(../../../../../img/wl/yzgj/login-bg.jpg) 0 0 no-repeat;
+  background-size: 100% auto;
+  .min-height(1136);
+  .padding-top(525);
+  .padding-bottom(70);
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #E2DDD7;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #E2DDD7;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #E2DDD7;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #E2DDD7;
+}
+
+.content {
+  form {
+    .width(520);
+    margin: 0 auto;
+    .input-wrapper {
+      .border-radius(2);
+      overflow: hidden;
+      input {
+        .padding-top(8);
+        .padding-bottom(8);
+        .line-height(40);
+        .height(74);
+        .padding-left(40);
+        .width(520);
+        .font-size(28);
+        color: #F9E994;
+        .border(2, #202126, #5E0404);
+        .border-radius(5);
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill {
+          -webkit-text-fill-color: #F9E994 !important;
+          -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      }
+      .password,
+      .tel,
+      .code{
+        background: #5E0404;
+      }
+      input.captcha-text {
+        color:@redColor;
+      }
+      .get-code {
+        position: absolute;
+        .top(0);
+        .right(0);
+        .width(140);
+        .height(74);
+        .line-height(74);
+        text-align: center;
+        background: #e17900;
+        color: #fff;
+        .border-radius(4);
+        .font-size(20);
+      }
+      .code {
+        .width(360);
+        .padding-left(40);
+      }
+    }
+    .wrapper {
+      position: relative;
+      .height(110);
+      &.submit-wrapper {
+        .margin-top(10);
+        height: auto;
+        border: none;
+        line-height: normal;
+      }
+      &.error {
+        .err {
+          display: block;
+        }
+      }
+      .err {
+        display: none;
+        .left(90);
+        position: absolute;
+        .top(76);
+        .line-height(30);
+        .font-size(22);
+        color: #ff564e;
+      }
+    }
+    .submit {
+      .line-height(74);
+      .height(74);
+      .width(520);
+      .border-radius(6);
+      background: -webkit-gradient(linear, 0 100%, 0% 100%, from(#ffe495), to(#ffe495));
+      background: -webkit-linear-gradient(top, #ffe495, #ffe495);
+      color: #5D0600;
+      .font-size(26);
+    }
+  }
+   .success-wrapper {
+    .width(600);
+    .height(480);
+    margin: 0 auto;
+    background: #fff;
+    .border-radius(10);
+    /*background: #fff url(../../../../img/my-guides-popup.png) 0 0 no-repeat;*/
+    background-size: 100% auto;
+    z-index: 1002;
+    position: absolute;
+    display: none;
+    .top(250);
+    .left(20);
+    .close {
+      z-index: 1;
+      position: absolute;
+      .width(52);
+      .height(52);
+      top: 0;
+      right: 0;
+    }
+    h3 {
+      .margin-top(40);
+      .font-size(40);
+      .line-height(50);
+      background-color: #fff;
+      text-align: center;
+    }
+    .desc-wrapper {
+      .padding-top(30);
+      text-align: center;
+      background-color: #fff;
+      color: #000;
+      .font-size(28);
+      p {
+        .line-height(50);
+      }
+    }
+    .btn-wrapper {
+      .margin-top(50);
+      a {
+        .width(478);
+        .line-height(60);
+        .height(60);
+        background: #0fa39b;
+        .border-radius(6);
+        margin: 0 auto;
+        color: #fff;
+        .font-size(28);
+        display: block;
+        text-align: center;
+      }
+      .btm {
+        .margin-top(40);
+        background:#989E9E;
+      }
+    }
+  }
+  .login-wrapper {
+    margin: 0 auto;
+    .width(602);
+    .margin-top(30);
+    text-align: center;
+    color: #5F0304;
+    .font-size(20);
+    span {
+      color: #5F0304;
+    }
+    .login {
+      .line-height(40);
+      color: #5F0304;
+    }
+    .zhanghu{
+      color: #F2EB9A;
+    }
+  }
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  .left(74);
+}

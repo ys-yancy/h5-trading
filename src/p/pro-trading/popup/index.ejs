@@ -1,0 +1,16 @@
+<div class="pro-popup <% if(data.up){%> up <%}%> ">
+	<div class="hd">
+    <h2>下单成功 <%= data.name %></h2>
+  </div>
+  <ul class="clearfix">
+  	<li class="item clearfix">交易手数<span class="large"><%= data.volume %></span></li>
+  	<li class="item clearfix">开仓价格<span class="large"><%= parseFloat(data.openPrice).toFixed(data.minQuoteUnit) %></span><span class="bar"></span></li>
+  	<li class="item one clearfix">止盈/止损<span class="large"><%= data.takeProfit == 0 ? '--' : parseFloat(data.takeProfit).toFixed(data.minQuoteUnit)  %> / <%= data.stopLoss == 0 ? '--' : parseFloat(data.stopLoss).toFixed(data.minQuoteUnit)  %></span></li>
+  	<li class="item clearfix">占用资金<span class="large"><%= data.margin %></span></li>
+  	<li class="item clearfix">建仓方法<span class="large"><%= data.guadan ? '挂单' : '现价' %></span><span class="bar"></span></li>
+  </ul>
+  <div class="dialog-buttons clearfix" id="J_Success">
+       <a class="dialog-btn J_ClosePopup close-outer">返回</a>
+       <a class="dialog-btn order J_Order" href="./trade.html">查看</a>
+   </div>
+</div>

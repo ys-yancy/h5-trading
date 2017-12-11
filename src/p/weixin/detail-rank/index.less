@@ -1,0 +1,46 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+.icon-weixin();
+.com-header();
+.title {
+    position: relative;
+    .line-height(78);
+    .padding-left(48);
+    .font-size(30);
+    background: #967bdc;
+    color: #fff;
+    .switch {
+        position: absolute;
+        right: 0;
+        .line-height(56);
+        .top(12);
+        .width(118);
+        .font-size(20);
+        color: #7653af;
+    }
+}
+
+.content {
+    ul {
+        overflow: hidden;
+        background-color: #f4f1fc;
+    }
+    li {
+        .height(108);
+        .line-height(108);
+        .margin-bottom(10);
+        .padding-left(48);
+        .padding-right(42);
+        .font-size(30);
+        background: #fff;
+        color: @fontColor;
+        .num {
+            float: right;
+            .font-size(26);
+            .unit {
+                .font-size(20);
+            }
+        }
+    }
+    .loader-minix();
+}

@@ -1,0 +1,26 @@
+<li class="item price-info">
+    <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+        <%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
+        <!-- <%= data.cmd === 'sell' ? '买跌' : (data.cmd === 'buy' ? '买涨' : '挂单' ) %> -->
+    </span>
+    <div class="price-wrapper">
+        <!-- <span class="sign"></span> -->
+        <!-- <%= parseFloat(data.profit) < 0 ? '-' : '+' %><%= Math.abs(data.profit) %> -->
+        <span id="J_FloatProfit"><%= (parseFloat(data.profit) + parseFloat(data.swap) - parseFloat(data.commission)).toFixed(2) %></span>
+        <span class="currency">美元</span>
+    </div>
+</li>
+<li class="item clearfix">
+    <div>
+        <p class="name">开仓价格：</p>
+        <p><%= data.openPrice %></p>
+    </div>
+    <div>
+        <p class="name">止盈价格：</p>
+        <p><%= parseFloat(data.takeProfit) === 0 ? '--' : data.takeProfit %></p>
+    </div>
+    <div>
+        <p class="name">止损价格：</p>
+        <p><%= parseFloat(data.stopLoss) === 0 ? '--' : data.stopLoss %></p>
+    </div>
+</li>

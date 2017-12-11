@@ -1,0 +1,99 @@
+@import '../../variable.less';
+@import '../../base.less';
+.com-header();
+
+/*.icon {
+    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}*/
+
+.icon {
+    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}
+
+header .header-inner {
+    display: block;
+}
+
+nav {
+    .height(78);
+    border-top: 1px solid #ccbcfa;
+    color: #68449f;
+    background: #967bdc;
+    li {
+        position: relative;
+        float: left;
+        .width(160);
+        a {
+            display: block;
+            .height(77);
+            .line-height(77);
+            .font-size(26);
+            text-align: center;
+            color: #68449f;
+            &:hover {
+                color: #68449f;
+            }
+            &:visited {
+                color: #68449f;
+            }
+        }
+        &.active {
+            &:before {
+                position: absolute;
+                top: 0;
+                .left(25);
+                .width(110);
+                .height(4);
+                font-size: 0;
+                background: #68449f;
+                content: '';
+            }
+            a {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.content {
+    .list {
+        .padding-left(24);
+        .link {
+            position: relative;
+            .padding-top(24);
+            .padding-right(100);
+            .padding-bottom(16);
+            border-bottom: 1px solid #d3d2d6;
+            display: block;
+            .desc {
+                .font-size(28);
+                color: #817697;
+                .line-height(40);
+                max-height: 100%;
+            }
+            .time {
+                .font-size(18);
+                color: #a6a1b2;
+                .line-height(40);
+            }
+            .arrow-right {
+                position: absolute;
+                /*.top(50%);*/
+                top: 47%;
+                .right(24);
+                .width(18);
+                .height(26);
+                background: url(../../../img/arrow-right.png) 0 0 no-repeat;
+                .background-size(50, 50);
+            }
+        }
+    }
+    .empty {
+        .line-height(80);
+        text-align: center;
+        .font-size(30);
+        color: #a39db0;
+    }
+}

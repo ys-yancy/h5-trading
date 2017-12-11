@@ -1,0 +1,30 @@
+<div class="guide-wrapper step-2">
+  <div class="J_GuideMask mask"></div>
+  <div class="guide-content">
+    <div class="bg"></div>
+    <span id="TJ_NUL_STEP_2_CLOSE" class="J_Close close" ></span>
+    <span id="TJ_NUL_STEP_2_OK" class="J_Confirm confirm" ></span>
+    <div class="list">
+      <div class="item">
+        <p class="title">如果您关注白银价格变动</p>
+        <p class="desc">推荐：<span class="name">白银美元</span><span class="symbol">XAGUSD.MINI</span></p>
+        <a id="TJ_NUL_STEP_2_XAGUSD" href="./pro-trading.html?symbol=XAGUSD.MINI&fullRouter=<%= decodeURIComponent(location.href) %>" class="link <%= data.symbolStatus['XAGUSD.MINI'] ? 'status-close' : '' %>" >马上交易</a>
+      </div>
+      <div class="item">
+        <p class="title">如果您关注黄金价格变动</p>
+        <p class="desc">推荐：<span class="name">黄金美元</span><span class="symbol">XAUUSD.MINI</span></p>
+        <a id="TJ_NUL_STEP_2_XAUUSD" href="./pro-trading.html?symbol=XAUUSD.MINI&fullRouter=<%= decodeURIComponent(location.href) %>" class="link <%= data.symbolStatus['XAUUSD.MINI'] ? 'status-close' : '' %>" >马上交易</a>
+      </div>
+      <div class="item">
+        <p class="title">如果您关注石油价格变化</p>
+        <p class="desc">推荐：<span class="name">纽约原油</span><span class="symbol">XTIUSD</span></p>
+        <a id="TJ_NUL_STEP_2_XTIUSD" href="./pro-trading.html?symbol=XTIUSD&fullRouter=<%= decodeURIComponent(location.href) %>" class="link <%= data.symbolStatus['XTIUSD'] ? 'status-close' : '' %>">马上交易</a>
+      </div>
+      <div class="item">
+        <p class="title">如果您关注美元汇率</p>
+        <p class="desc">推荐：<span class="name">美元日元</span><span class="symbol">USDJPY</span></p>
+        <a id="TJ_NUL_STEP_2_USDJPY" href="./pro-trading.html?symbol=USDJPY&fullRouter=<%= decodeURIComponent(location.href) %>" class="link <%= data.symbolStatus['USDJPY'] ? 'status-close' : '' %>" >马上交易</a>
+      </div>
+    </div>
+  </div>
+</div>

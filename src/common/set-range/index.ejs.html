@@ -1,0 +1,34 @@
+
+<div class="setRangeControWrap" id="J_SetRangeControWrap">
+	<% if(data.isNoMonery) {%>
+		<p class="cur-value J_RangeValue no-Mon">可用资金离最低跟单要求差<%= data.minMonery %>美元</p>
+		<span class="item left">$<%= data.min %></span>
+		<input class="item setValue-controller J_SetController no-monery" type="range" 
+		value="<%= data.placeholder %>" min="<%= data.min %>" max="<%= data.max %>" step='<%= data.step %>' />
+		<span class="item right">----</span>			
+	<%} else {%>
+		<p class="cur-value J_RangeValue">
+			<% if(data.isSignBefore) {%>
+				<%= data.sign %> <%= data.placeholder %>
+			<%} else {%>
+				<%= data.placeholder %> <%= data.sign %>
+			<%}%>
+		</p>
+		<span class="item left">
+			<% if(data.isSignBefore) {%>
+				<%= data.sign %><%= data.min %>
+			<%} else {%>
+				<%= data.min %><%= data.sign %>
+			<%}%>
+		</span>
+		<input class="item setValue-controller J_SetController" type="range" 
+		value="<%= data.placeholder %>" min="<%= data.min %>" max="<%= data.max %>" step='<%= data.step %>' />
+	<span class="item right">
+		<% if(data.isSignBefore) {%>
+			<%= data.sign %><%= data.max %>
+		<%} else {%>
+			<%= data.max %><%= data.sign %>
+		<%}%>
+	</span>		
+	<%}%>		
+</div>

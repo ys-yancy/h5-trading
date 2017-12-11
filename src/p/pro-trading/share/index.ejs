@@ -1,0 +1,29 @@
+<div class="wrapper-share-money">
+  <div class="mask dialog-mask"></div>
+    <div class="icon-weinxin-share-money-bg hd">
+      <div class="outer">
+      <div class="inner">
+        <% if (data.result && data.type == 'order') {%>
+        <h2>本单</h2>
+        <h2>您已获得 <span class="amount"><%= data.amount %></span> 美元奖金</h2>
+        <div class="wrapper-desc">
+          <p class="desc"> 快去做单继续分享 获得更多机会吧！</p>
+        </div>
+        <% } else if (data.result) {%>
+        <h2>恭喜您获得 <span class="amount"><%= data.amount %></span> 美元</h2>
+        <div class="wrapper-desc">
+          <p class="desc">实盘奖金已充入您的账户</p>
+          <p class="desc">继续交易 分享还可以获得更多奖金</p>
+        </div>
+        <% } else {%>
+        <h2>分享实盘订单，单单有奖金！</h2>
+        <div class="wrapper-desc">
+          <p class="desc">分享任意订单到朋友圈</p>
+          <p class="desc">即可获得实盘资金最高<span class="count">100美元</span>！</p>
+        </div>
+        <% }%>
+      </div>
+      <div class="extra">每单每人只限一次分享奖金机会</div>
+    </div>
+  </div>
+</div>

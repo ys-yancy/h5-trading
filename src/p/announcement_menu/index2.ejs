@@ -1,0 +1,20 @@
+<div class="aMentDialod" id="J_Dialog">
+   <div class='anMentTitleCont'>
+      <div class='anMent_title'>
+        <span class='anMent_tz'>通知:</span><span class='anMentTitle_cont'><%=data.title%></span>
+      </div>
+
+      <div class='anMent_cont'>
+
+        <div class='anMent_alone'><%=data.content%></div>
+
+        <div class='anMent_date'>
+          <span class='company'><%=data.signature%></span>
+          <% var _date = data.publish_time.split(' ')[0]%>
+          <% _date = _date.replace(/-/,'年') %>
+          <% _date = _date.replace(/-/,'月') %>
+          <span class='date'><%=_date%>日</span>
+        </div>
+      </div>
+   </div>
+</div>

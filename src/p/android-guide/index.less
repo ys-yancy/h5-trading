@@ -1,0 +1,71 @@
+@import '../../variable.less';
+@import '../../base.less';
+html,
+body {
+    background-color: #867bcb;
+}
+
+.icon {
+    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
+    .background-size(400, 1500);
+}
+
+.hd {
+    margin-top: 15%;
+    .logo-wrapper {
+        .height(428);
+        background: transparent url(../../../img/android-login-hd.png) 0 0 no-repeat;
+        .background-size(474, 531);
+        .background-position(84, -63);
+    }
+}
+
+.ft {
+    position: fixed;
+    .bottom(14);
+    width: 100%;
+    .copyright {
+        .height(54);
+        background: transparent url(../../../img/copyright.png) 0 0 no-repeat;
+        .background-size(317, 54);
+        .background-position(161.5, 0);
+    }
+}
+
+body {
+    background: #867bcb url(../../../img/android-guide.png) 0 0 no-repeat;
+    .background-size(640,
+    1136);
+    position: absolute;
+    /*    height: 100%;
+    width: 100%;*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.action-wrapper {
+    // .padding-top(282);
+    // margin-top: 10%;
+    position:fixed;
+    bottom:8%;
+    width:100%;
+    a {
+        display: block;
+        margin: 0 auto;
+        .margin-bottom(30);
+        background-color: rgba(255, 255, 255, .2);
+        .width(480);
+        .border-radius(6);
+        .font-size(30);
+        color: #fff;
+        text-align: center;
+        .line-height(70);
+        &.annoymous {
+            color: #dddaf1;
+            background-color: rgba(255, 255, 255, .1);
+        }
+    }
+}

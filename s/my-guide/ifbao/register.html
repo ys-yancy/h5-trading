@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>注册页</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    <link rel="stylesheet" href="../../../src/p/my-guide/ifbao/register/index.css">
+    <script type="text/javascript" charset="utf‐8" src="//g.alicdn.com/sd/nch5/index.js?t=1486194731845"></script>
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../../../src/lib/jweixin-1.0.0.js"></script>
+    <!-- {{add script tags begin}} -->
+    <script src="../../../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script>
+        function getCookie(c_name)
+        {
+            if (document.cookie.length>0)
+            {
+                c_start=document.cookie.indexOf(c_name + "=");
+                if (c_start!=-1)
+                { 
+                    c_start=c_start + c_name.length+1 
+                    c_end=document.cookie.indexOf(";",c_start)
+                    if (c_end==-1) c_end=document.cookie.length
+                    return unescape(document.cookie.substring(c_start,c_end))
+                } 
+            }
+            return "";
+        }
+
+        if (getCookie('phone') && getCookie('token')) {
+            // fxbtg/s/my-guide/fxbtg2/register.html
+            var wl = window.location.pathname.substring(0, window.location.pathname.indexOf('/s/'));
+            window.location = window.location.origin + wl + '/s/option.html';
+            /*
+            // /s/my-guide/fxbtg/register.html
+            var start = window.location.pathname.indexOf('/my-guide/') + 9;
+            var end = window.location.pathname.indexOf('/register');
+            var wl = window.location.pathname.substring(start, end);
+            window.location = window.location.origin + wl + '/s/option.html';
+            */
+        }
+    </script>
+</head>
+
+<body>
+    <div style="display:none">
+        <img id="wxShare" src="">
+    </div>
+    <section class="content">
+      <form id="J_Form" name="form">
+        <div class="input-wrapper">
+          <!--
+          <div class="wrapper first">
+              <input class="name J_Validate" type="text" placeholder="姓名" name="name" >
+              <span class="icon-name icon"></span>
+          </div>
+          -->
+          <div class="wrapper first">
+              <input class="tel J_Validate" type="tel" placeholder="11位手机号" name="tel" >
+              <span class="icon icon-phone"></span>
+          </div>
+          <div class="wrapper second click-verify" style="display: none;">
+              <input class="inv_code J_Validate" type="text" placeholder="输入邀请码" name="code" >
+              <span class="icon icon-code"></span>
+          </div>
+          <div class="wrapper third code-wrapper click-verify" style="display: none;">
+              <input class="code J_Validate code-ipt"  disabled type="text" placeholder="手机验证码" name="code">
+              <span class="bar"></span>
+              <span class="icon-code icon"></span>
+              <span class="get-code">获取验证码</span>
+              <div class="err">获取验证码</div>
+          </div>
+        </div>
+          <div class="wrapper submit-wrapper click-verify" style="display: none;">
+            <input class="submit disable" type="submit" value="立即注册" />
+          </div>
+        </form>
+
+         <div class="success-wrapper">
+          <h3>您已注册成功</h3>
+          <div class="desc-wrapper">
+            <p>密码已通过短信发送至您的手机</p>
+            <p>请注意查收</p>
+          </div>
+          <div class="btn-wrapper">
+            <a class="optionUrl" href=''>马上进行交易>></a>
+          </div>
+        </div>
+
+        <!--  滑动验证  -->
+        <div class="ln2 slide-verify" style="display:block;">
+            <div id="dom_id"></div>
+        </div>
+
+        <input type='hidden' id='csessionid' name='csessionid'/>
+        <input type='hidden' id='sig' name='sig'/>
+        <input type='hidden' id='token' name='token'/>
+        <input type='hidden' id='scene' name='scene'/>
+
+        <div class="login-wrapper clearfix">
+          <span><a class="login" href="./login.html" >登录已有账户</a></span>
+        </div>
+        <!-- <div class="login-wrapper clearfix">
+          <a class="login" href="./login.html" >登录已有账户</a>
+        </div>
+        <div class="login-wrapper clearfix  fixed-bottom" style="">投资有风险入市需谨慎</div> -->
+    </section>
+    <script src="../../../src/lib/zepto.js"></script>
+    <script src="../../../build/my-guide/ifbao/register.js?_a=12fsdf234sadf"></script>
+</body>
+</html>

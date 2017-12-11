@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>添加自选</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../src/lib/jweixin-1.0.0.js"></script>
+    <!-- {{add script tags begin}} -->
+    <script src="../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script type="text/javascript">
+        (function() {
+            function loadStyle(url) {
+                try{
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = url;
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(link);
+                } catch(e){}
+            }
+            
+            if (getAppUi()) {
+                var url = '../src/style/' + getAppUi();
+                loadStyle(url);
+            }     
+        })()
+    </script>
+    <link rel="stylesheet" href="../src/p/list/index.css">
+</head>
+
+<body>
+    <header class="header" id="J_Header">
+        <div class="header-inner" id="J_Header" >
+            <a class="go-back" href="./cat.html?">
+                <span class="icon arrow"></span>
+            </a>
+            <h1 class="title" >搜索结果</h1>
+            <form class="search-wrapper clearfix" id="J_Form" style="display:none;">
+                <input type="submit" class="icon search" value="">
+                <input class="input-txt" type="text">
+                <span class="icon close J_CloseSearch"></span>
+            </form>
+        </div>
+    </header>
+    <section class="content">
+        <ul class="clearfix item-wrapper" id="J_Container">
+            <!-- <li class="loading">加载中...</li> -->
+            <!-- <li class="item clearfix add">
+                <a class="wrapper" href="././pro-trading.html">
+                    <p>XAUUSD</p>
+                    <p class="name">黄金/美元</p>
+                </a>
+                <a class="action" href="./order.html?action=add">
+                    <span class="icon"></span>
+                </a>
+            </li>
+             <li class="item clearfix">
+                <a class="wrapper" href="././pro-trading.html">
+                    <p>XAUUSD</p>
+                    <p class="name">黄金/美元</p>
+                </a>
+                <a class="action" href="./order.html?action=minus">
+                    <span class="icon"></span>
+                </a>
+            </li> -->
+        </ul>
+        <div class="loader ball-clip-rotate" id="J_Loading">
+            <div class="loader-inner"></div>
+            <div class="desc">加载中...</div>
+        </div>
+    </section>
+    <footer class="footer">
+        <ul class="clearfix bottom-nav">
+            <li class="active">
+                <a class="trade" href="./option.html">
+                    <span class="icon"></span>
+                    <span class="name">交易</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="social" href="./actual-order.html">
+                    <span class="icon"></span>
+                    <span class="name">实时</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="foolow" href="./trade-list.html">
+                    <span class="icon"></span>
+                    <span class="name">跟单</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="news" href="./news.html">
+                    <span class="icon"></span>
+                    <span class="name">资讯</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="my" href="./my.html">
+                    <span class="icon"></span>
+                     <span class="name">我</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bottom-banner" id="J_Banner">
+            <span class="close-wrapper J_CloseBanner">
+                <span class="close icon"></span>
+            </span>
+            <span class="desc">登录帐号交易更安全</span>
+            <a id="et_list_login" class="login J_Login" href="#">马上登录</a>
+        </div>
+    </footer>
+    <script src="../src/lib/zepto.js"></script>
+    <script src="../src/lib/underscore.js"></script>
+    <script src="../build/list.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="img-wrapper-outer">
+    <div class="img-wrapper">
+		<img class="J_Upload" src="<%= data.avatar ? data.avatar : '../../img/default-logo.png' %>">
+		<input type="file" class="upload-input" accept=".png,.jpeg">
+	</div>
+</div>
+<div class="name-wrapper">
+    <p><span class="nickname"><%= data.nickname %></span><span class="J_Edit edit profile-icon"></span></p>
+    <input type="text" value="<%= data.nickname %>"/>
+    <a class="save J_Save" href="javascript:;">确定</a>
+    <p class="error"></p>
+</div>

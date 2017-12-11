@@ -1,0 +1,29 @@
+<% $.each(data.list, function(index, item) {%>
+<div class='table'>
+    <li class="item J_Item link link_all clearfix" id="kindList<%= index %>" data-symbol="<%= item.symbol %>"
+     data-expertId='<%= item.follow_id %>'>
+        <%if(item.follow_id == 0) {%>
+            <h2 class="desc-name"><%=item.follow_name%></h2>
+        <%} else {%>
+            <h2 class="desc-name">跟单自 - <span class='name'>高手 <%=item.follow_name%></span></h2>
+        <%}%>
+        <ul class="detail">
+           <li class="item">
+               <span class="desc">交易</span>
+               <span class="num trade-count J_TradeCounts"><%= item.counts %></span>
+           </li>
+           <li class="item">
+               <span class="desc">盈亏</span>
+               <span class="num trade-profit J_TradeProfits <%= parseFloat(item.allprofits) > 0 ? 'up' : 'down' %>"><%= parseFloat(item.allprofits).toFixed(2) %></span>
+            </li>
+           <!--<li class="item">
+               <span class="desc">交易时间</span>
+               <span class="num trade-time J_TradeTime">1313天</span>
+           </li>-->
+        </ul>
+        <span class="guideAll guide">
+            <span class="triangle triangleAll"></span>
+        </span>
+    </li>
+</div>
+<% }); %>

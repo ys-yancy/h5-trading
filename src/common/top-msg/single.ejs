@@ -1,0 +1,5 @@
+<% if (data.url) { %>
+   <li class="J_Item"><a href="<%= './message-detail.html?src=' + encodeURIComponent(location.href) + '&goHref=' + encodeURIComponent(data.url) %>"><%= data.content %></a></li>
+<% } else { %>
+    <li class="J_Item"><%= data.content %></li>
+<% } %>

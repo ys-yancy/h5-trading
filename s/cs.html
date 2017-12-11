@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>客服中心</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+   
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../src/lib/jweixin-1.0.0.js"></script>
+    <!-- {{add script tags begin}} -->
+    <script src="../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script type="text/javascript">
+        (function() {
+            function loadStyle(url) {
+                try{
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = url;
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(link);
+                } catch(e){}
+            }
+            
+            if (getAppUi()) {
+                var url = '../src/style/' + getAppUi();
+                loadStyle(url);
+            }     
+        })()
+    </script>
+    <link rel="stylesheet" href="../src/p/cs/index.css">
+</head>
+
+<body>
+    <header class="header" >
+        <div class="header-inner" id="J_Header">
+            <a class="go-back" href="./my.html?">
+                <span class="icon arrow"></span>
+            </a>
+            <h1>客服中心</h1>
+        </div>
+    </header>
+    <section class="content">
+
+        <iframe id="J_Frame" style="width:100%;" src="http://www.sobot.com/chat/h5/index.html?sysNum=2a631392152146dfa0af9765936bd48d"></iframe>  
+
+    </section>
+    <script src="../src/lib/zepto.js"></script>
+    <script src="../src/lib/underscore.js"></script>
+    <script src="../build/cs.js"></script>
+</body>
+</html>

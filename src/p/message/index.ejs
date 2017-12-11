@@ -1,0 +1,16 @@
+<% data.forEach(function(item) {%>
+<li>
+    <a href="<%= item.url ? './message-detail.html?src=' + encodeURIComponent(location.href) + '&goHref=' + encodeURIComponent(item.url) : 'javascript:;'%>" class="link">
+        <p class="desc"><%= item.content %></p>
+        <p class="time"><%= item.start %></p>
+        <% if (item.url) {%>
+        <span class="arrow-right"></span>
+        <% } %>
+    </a>
+</li>
+<% }); %>
+<% if (data.length === 0) {%>
+  <p class="empty">什么也没有...</p>
+<% } else {%>
+  <p class="empty">没有更多了...</p>
+<% } %>

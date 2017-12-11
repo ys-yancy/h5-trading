@@ -1,0 +1,6 @@
+<% for (var i = 0,len = data.list.length; i < len; i++) {%>
+<li class="<%= i === len - 1 ? 'last' : '' %>">
+  <span class="name"><%= i === len - 1 && data.other? '其它' : data.symbols[i] %></span>
+  <span class="num"><%= (data.list[i] * 100).toFixed(1) %>%</span>
+</li>
+<%} %>

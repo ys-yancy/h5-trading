@@ -1,0 +1,24 @@
+<% data.forEach(function(cate) { %>
+<h1><%= cate.key %></h2>
+<ul>
+  <% cate.data.forEach(function(item) { %>
+  <li class="item clearfix">
+    <div class="img-wrapper-outer">
+      <div class="img-wrapper">
+        <img class="img" src="<%= item.avatar %>">
+      </div>
+    </div>
+    <div class="info">
+      <h2><%= item.nickname %> <span class="desc"><%= item.levelName %>级好友</span></h2>
+      <p>
+        <span class="type up"></span>
+        <span class="symbol"><%= item.symbolName %></span>
+      </p>
+    </div>
+    <span class="count-wrapper">
+      <span class="dollar">$</span><%= item.award %>
+    </span>
+  </li>
+  <% }); %>
+</ul>
+<% }); %>

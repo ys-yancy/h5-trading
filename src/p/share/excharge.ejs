@@ -1,0 +1,26 @@
+<div class=" dialog-new-style dialog-excharge <% if (data.status == 404) {%> dialog-error <% } else if (data.status == 200) {%> dialog-success dialog-error <% }  else { %> dialog-406 <% } %>" id="J_Dialog">
+	<div class="dialog-inner">
+   <span class="wrapper-icon"><span class="icon"></span></span>
+   <div class="dialog-content J_Content">
+   	<% if (data.status === 404) {%>
+      <p>邀请码或兑换码错误</p>
+      <p>请修改正确后重试！~</p>
+    <% } else if (data.status == 200) {%>
+       <% if (data.amount == 0) { %>
+       <p>提交兑换码成功</p>
+       <p>非常遗憾，您没有抽中美元奖励</p>
+       <% } else { %>
+       <p>提交兑换码成功</p>
+       <p>恭喜您获得<%= data.amount %>美元赠金奖励</p>
+       <% } %>
+    <% } else if (data.status == 405) { %>
+      <p>兑换码已过期，无法再使用</p>
+    <% } else {%>
+       <p>这个兑换码不能再使用了~</p>
+    <% } %>
+   </div>
+   <div class="dialog-buttons clearfix">
+   	   <span class="dialog-btn J_DialogConfirm">确认</span>
+   </div>
+  </div>
+</div>

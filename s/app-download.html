@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?759dbca285a3203d5e584db791b75200";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+    <body style="text-align: center;">
+        <div>
+            <img id="J_Info" style="width: 100%;" alt="请点击右上角 '在浏览器中打开'" src="../img/guide_open_browser_android.png">
+        </div>
+        <script>
+            var dl,
+                u = navigator.userAgent; 
+
+                // 在微信里
+                if (u.toLowerCase().match(/MicroMessenger/i) == 'micromessenger') {
+
+                    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+                        document.title = '投资英豪Android版下载';
+                        document.getElementById('J_Info').src = "../img/guide_open_browser_android.png?" + Math.random();
+                    }
+                    
+                    else if (u.indexOf('iPhone') > -1 || u.indexOf('iPad') > -1) {
+                        document.title = '投资英豪iOS版下载';
+                        document.getElementById('J_Info').src = "../img/guide_open_browser.png?" + Math.random();
+                    }
+                    
+                    
+                }
+                // 不在微信里
+                else {
+
+                    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+                        document.title = '投资英豪Android版下载';
+                        dl = 'https://m.invhero.com/static/android_app/InvHero_latest.apk';
+                    }
+                    
+                    else if (u.indexOf('iPhone') > -1 || u.indexOf('iPad') > -1) {
+                        document.title = '投资英豪iOS版下载';
+                        //dl = 'itms-services://?action=download-manifest&url=https://api.invhero.com/static/ios_app_plist/InvHero.plist';
+                        // app store 版本
+                        dl = 'https://appsto.re/cn/Ppo42.i';
+                    }
+                    
+                    document.getElementById('J_Info').style.display = "none";
+                    window.location.href = dl;
+                }
+            
+        </script>
+    </body>
+</html>
+

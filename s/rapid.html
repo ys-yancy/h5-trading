@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>极速交易</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- <script type="text/javascript">
+    if (location.host.indexOf('localhost') == -1) {
+        window.onerror = function(msg, url, linenumber, colnumber, error) {
+          console.log(msg, url, linenumber, colnumber, error);
+
+            var xmlhttp;
+
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.open("POST", 'https://api.invhero.com/client_error_report/h5/?msg='+msg+'&url='+url+'&linenumber='+linenumber+'&colnumber='+colnumber+'&error='+error, true);
+            xmlhttp.send();
+            return true;
+        }
+        }
+    </script> -->
+    <!-- {{add script tags begin}} -->
+    <script src="../resources/r.js"></script>
+    <!-- {{add script tags end}} -->
+    <script type="text/javascript">
+        (function() {
+            function loadStyle(url) {
+                try{
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = url;
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(link);
+                } catch(e){}
+            }
+            
+            if (getAppUi()) {
+                var url = '../src/style/' + getAppUi();
+                loadStyle(url);
+            }     
+        })()
+    </script>
+    <script>(function(a){function b(){var b=f.clientWidth,c="}";!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/16,/ZTE U930_TD/.test(navigator.userAgent)&&(a.rem=1.13*a.rem),h.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d,e,f=document.documentElement,g=document.querySelector('meta[name="viewport"]'),h=document.createElement("style"),c=a.devicePixelRatio||1;if(d=1/c,!g)return void console.warn('\u8bf7\u8bbe\u7f6e\u9ed8\u8ba4viewport\u4e3a\uff1a<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />');if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){var i=f.clientWidth;375===i&&g.setAttribute("content","user-scalable=no"),g.setAttribute("content","width="+c*i+",initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d+",user-scalable=no")}else{var j=navigator.userAgent.match(/Android[\S\s]+AppleWebkit\/?(\d{3})/i);!j||j&&j[1]>534?g.setAttribute("content","target-densitydpi=device-dpi,width=device-width, initial-scale="+d+",maximum-scale="+d+", minimum-scale="+d):c=1}f.firstElementChild.appendChild(h),f.setAttribute("data-dpr",c),a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),b()})(window);
+    </script>
+    <style>@charset 'UTF-8';html{color:#000;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}a,ins{text-decoration:none}html{-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}body{font-size:.6rem}.clearfix:after,.clearfix:before{content:' ';display:table}.clearfix:after{clear:both}
+    </style>
+    <link rel="stylesheet" href="../src/p/rapid/index.css">
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> --><script src="../src/lib/jweixin-1.0.0.js"></script>
+    
+</head>
+
+<body class="edit-model">
+    <div class="page" id="J_Page">
+    <header class="header rapidBackground">
+        <div style="display:none;position:fixed;z-index:99999;width:100%" id="J_InfoImg">
+            <img src="../img/lead.png" style="width:100%" alt="微信分享请点右上角"/>
+        </div>
+        <div class="header-inner" id="J_Header">
+            <a class="go-back" id="J_NavBack" href="./option.html?">
+                <span class="icon arrow"></span>
+            </a>
+            <h1 id="J_Title"></h1>
+            <div class="option-list J_OptionFold">
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+    <section class="top-message"></section>
+    <section class="content rapid-content">
+        <div id="J_Sticky">
+            <section class="hd" id="J_Info">
+            </section>
+        </div>
+        <div class="chart-wrapper" id="J_ChartWrapper">
+          <div class="chart" id="J_Chart" style="display:none;"></div>
+          <div class="chart-time" id="J_TimeChart"></div>
+          <div class="cur-price" id="J_CurPrice"></div>
+          <ul class="rangeSelector-wrapper clearfix">
+            <li class="range-selector active">分时图</li>
+            <li class="range-selector">1分钟</li>
+            <li class="range-selector">5分钟</li>
+            <li class="range-selector">15分钟</li>
+            <li class="range-selector ">30分钟</li>
+            <li class="range-selector">1小时</li>
+            <!-- <li class="range-selector">1天</li> -->
+          </ul>
+        </div>
+        <div class="account-wrapper clearfix">
+            <div class="item-c">
+              <p>可用资金($)</p>
+              <span class="J_NetDeposit">--</span>
+            </div>
+            <div class="item-c" style="visibility:hidden;">
+               <a href="./recharge.html" class="charge">入金</a>
+            </div>
+            <div class="item-c">
+              <p>潜在收益($)</p>
+              <span class="J_ProfitNum">--</span>
+            </div> 
+        </div>
+        <div class="order-wrapper">
+          <ul>
+            <li class="clearfix" style="display:none;"></li>
+            <li>
+            <p class="desc">投资($)</p>
+              <div class="invest-wrapper">
+                <span class="pre-desc" style="visibility:hidden">投资</span>
+                <span class="minus J_Minus"></span>
+                <input type="number" class="money J_InvestNum" id="money" value="0" clstag="pageclick|keycount|163_201508288|3" >
+                <span class="add J_Add"></span>
+                <!-- <span class="after-desc">元</span> -->
+              </div>
+              <div class="wrap-p">
+                <canvas id="ruleCot"></canvas>
+              </div>
+            </li>
+            <li class="fix">
+                <a href="javascript:;" class="action buy-down">买跌</a>
+                <a href="javascript:;" class="action buy-up">买涨</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <section class="bd" >
+            <div class="wrapper-account">
+                <div class="account-bottom-banner real" id="J_BottomBanner" style="display: block;"></div>
+            </div>
+
+            <form class="form" id="J_Form">
+               <div class="form-hd" id="J_FormHD"></div>
+               <ul class="form-bd" id="J_FormBD"></ul>
+            </form>
+            <div class="J_Unfold fold">
+                <span class="triangle icon"></span>
+            </div>
+        </section>
+        <section class="ft clearfix" id="J_Footer">
+        </section>
+    </section> -->
+    <footer class="footer">
+        <span class="tag">模拟</span>
+        <ul>
+        <li>盈亏($)&nbsp;&nbsp;<span class="J_Float float">--</span></li>
+        <li>开仓&nbsp;&nbsp;<span class="count J_Count">--</span></li>
+        <li class="J_OptionFold">订单</li>
+        </ul>
+
+        <span class="J_TotalTrade" style="display:none;"></span>
+        </footer>
+    <section class="option-banner" id="J_OptionBanner">
+        <p class="loading">加载中...</p>
+    </section>
+    <div class="dialog-mask J_OptionBannerMask" style="display:none;"></div>
+
+</div>
+
+<div class="dialog invest-dialog" id="J_InvestDialog" style="display:none;">
+        <div class="hd">
+            <h2>下单成功</h2>
+            <p>提取盈利请输入手机号</p>
+        </div>
+        <form id="J_FormInvest" name="form">
+          <div class="wrapper">
+              <input class="tel J_Validate" type="text" placeholder="请输入手机号" name="tel" >
+              <span class="icon phone"></span>
+              <span class="icon error-icon"></span>
+          </div>
+         
+          <div class="wrapper clearfix code-wrapper">
+              <input class="code J_Validate" type="text" placeholder="请输入验证码" name="code" disabled>
+              <input id="et_register_getcaptcha" class="get-code disable" type="button" value="获取邀请码" >
+              <span class="icon error-icon"></span>
+          </div>
+          <div class="wrapper submit-wrapper">
+            <input id="et_register_submit" class="submit disable" type="submit" value="确认" />
+          </div>
+          
+        </form>
+    </div>
+    <div class="dialog-mask popup-mask" id="J_PopupMask" style="display: none;"></div>
+    <script src="../src/lib/zepto.js"></script>
+    <script src="../src/lib/stocke.js"></script>
+    <script src="../build/rapid.js?t=2"></script>
+</body>
+</html>

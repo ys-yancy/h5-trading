@@ -1,0 +1,460 @@
+<!-- saved from url=(0045)http://api.shengpay.com/html5-gateway/pay.htm -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75, maximum-scale=1.5, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>收银台</title>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="stylesheet" id="linkStyle" type="text/css" href="css/base.css">
+  <script type="text/javascript" src='../../resources/r.js'></script>
+</head>
+
+<body class="">
+  <div id="page" class="page">
+    <div id="head" class="header" style="display: block;">
+      <a id="go-back" class="icon-back" href="javascript:void();" eventtag="back" style="display: block;"></a>
+      <span id="logo" class="icon-sft logo-sft" style="display: none;margin-left:2rem"></span>
+      <div id="title" class="title" style="display: block;margin-left:6.6rem;margin-left:4rem;"><span class="title_sp">收银台</span>
+          <div class="headSubInfo" style="margin-left: 6.2rem;padding: 0;">
+              <span id="productName" style="margin-left: -2rem;">账户充值:</span>
+              </span><span class="float-r" style="margin-right: -2.7rem;">美元</span><span id="orderAmount" class="float-r" style="color: red;">-- --</span>
+          </div>
+      </div>
+      <span id="divOtherPayment" class="other_Pay" eventtag="otherPayment" style="display:none;">其它支付方式</span>
+      <div id="changeOtherBank" class="changeOtherBank" eventtag="otherBank" style="display: none;" onclick="selectBankClicked();">重新选择银行</div>
+      </div>
+      <div id="stage" class="main" style="display: none;">
+        <div>
+          <p id="chooseBankHint" style="
+            padding-left: 10px;
+            margin-top: 10px;
+            height: 2.5rem;line-height: 2.5rem;">
+            <font style="font-size:1.5rem" color="#7F7F7F"> 请选择您所使用的银行</font>
+          </p>
+          <div id="bank" style="display: none;">
+            <p style="
+              margin-top: 5px;
+              background-color: #acacac;
+              padding-left: 10px;
+              padding-top: 0px;
+              height: 2.5rem;line-height: 2.5rem;">
+              <font style="font-size:1.5rem" color="#FFFFFF">借记卡</font>
+            </p>
+            <table style="width: 100%;">
+              <tr>
+                <td style="padding: 5px">
+                  <input type="button" value="招商银行" class='bank-button' onclick="bankClicked('DR', 'CMB', '招商银行')"></input>
+                </td>
+                <td style="padding: 5px" class='bank-td'>
+                  <input type="button" value="中国银行" class='bank-button' onclick="bankClicked('DR', 'BOC', '中国银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="建设银行" class='bank-button' onclick="bankClicked('DR', 'CCB', '建设银行')"></input>
+                </td>
+              </tr>
+
+              <tr>  
+                <td style="padding: 5px">
+                  <input type="button" value="兴业银行" class='bank-button' onclick="bankClicked('DR', 'CIB', '兴业银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="光大银行" class='bank-button' onclick="bankClicked('DR', 'CEB', '光大银行')"></input>
+                </td>
+                <td style="padding: 5px" class='bank-td'>
+                  <input type="button" value="平安银行" class='bank-button' onclick="bankClicked('DR', 'SZPAB', '平安银行')"></input>
+                </td>
+              </tr>
+              
+              <!-- 后来加的 -->
+              <tr>
+                <td style="padding: 5px">
+                  <input type="button" value="工商银行" class='bank-button' onclick="bankClicked('DR', 'ICBC', '工商银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="中信银行" class='bank-button' onclick="bankClicked('DR', 'CITIC', '中信银行')"></input>
+                </td>
+                <td style="padding: 5px" class='bank-td'>
+                  <input type="button" value="广发银行" class='bank-button' onclick="bankClicked('DR', 'GDB', '广发银行')"></input>
+                </td>
+              </tr>
+              
+
+              <tr>
+                <td style="padding: 5px">
+                  <input type="button" value="农业银行" class='bank-button' onclick="bankClicked('DR', 'ABC', '农业银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="民生银行" class='bank-button' onclick="bankClicked('DR', 'CMBC', '民生银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="交通银行" class='bank-button' onclick="bankClicked('DR', 'BCM', '交通银行')"></input>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding: 5px">
+                  <input type="button" value="邮储银行" class='bank-button' onclick="bankClicked('DR', 'PSBC', '邮储银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="北京银行" class='bank-button' onclick="bankClicked('DR', 'BOB', '北京银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="华夏银行" class='bank-button' onclick="bankClicked('DR', 'HXB', '华夏银行')"></input>
+                </td>
+              </tr>
+   
+              <tr>
+                <td style="padding: 5px">
+                  <input type="button" value="浦发银行" class='bank-button' onclick="bankClicked('DR', 'SPDB', '浦东发展银行')"></input>
+                </td>
+                <td style="padding: 5px">
+                  <input type="button" value="广州银行" class='bank-button' onclick="bankClicked('DR', 'BOG', '广州银行')"></input>
+                </td>
+                <td style="padding: 5px" class='bank-td'>
+                  <input type="button" value="广州农商行" class='bank-button' onclick="bankClicked('DR', 'GRC', '广州农商行')"></input>
+                </td>
+              </tr>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="creditBank" style="display: none;">
+        <p style="
+        margin-top: 5px;
+        background-color: #acacac;
+        padding-left: 10px;
+        padding-top: 0px;
+        height: 2.5rem;line-height: 2.5rem;">
+          <font style="font-size:1.5rem" color="#FFFFFF">信用卡</font>
+        </p>
+        <table style="width: 100%;">
+          <tr>
+            <td style="padding: 5px">
+              <input type="button" value="招商银行" class='bank-button' onclick="bankClicked('CR', 'CMB', '招商银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="建设银行" class='bank-button' onclick="bankClicked('CR', 'CCB', '建设银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="中国银行" class='bank-button' onclick="bankClicked('CR', 'BOC', '中国银行')"></input>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 5px" class='bank-td'>
+              <input type="button" value="交通银行" class='bank-button' onclick="bankClicked('CR', 'COMM', '交通银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="农业银行" class='bank-button' onclick="bankClicked('CR', 'ABC', '农业银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="工商银行" class='bank-button' onclick="bankClicked('CR', 'ICBC', '工商银行')"></input>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 5px">
+              <input type="button" value="民生银行" class='bank-button' onclick="bankClicked('CR', 'CMBC', '民生银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="中国邮储银行" class='bank-button' onclick="bankClicked('CR', 'PSBC', '中国邮储银行')"></input>
+            </td>
+           <!--  <td style="padding: 5px">
+              <input type="button" value="河北银行" class='bank-button' onclick="bankClicked('CR', 'HEB', '河北银行')"></input>
+            </td> -->
+            
+            <td style="padding: 5px">
+              <input type="button" value="光大银行" class='bank-button' onclick="bankClicked('CR', 'CEB', '光大银行')"></input>
+            </td>
+            
+          </tr>
+          <tr>
+            <td style="padding: 5px">
+              <input type="button" value="北京银行" class='bank-button' onclick="bankClicked('CR', 'BCCB', '北京银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="广发银行" class='bank-button' onclick="bankClicked('CR', 'GDB', '广发银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="兴业银行" class='bank-button' onclick="bankClicked('CR', 'CIB', '兴业银行')"></input>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 5px">
+              <input type="button" value="花旗银行" class='bank-button' onclick="bankClicked('CR', 'CITI', '花旗银行')"></input>
+            </td>
+           <!--  <td style="padding: 5px">
+              <input type="button" value="华夏银行" class='bank-button' onclick="bankClicked('CR', 'HXB', '华夏银行')"></input>
+            </td> -->
+            <!-- 下面有 -->
+            <td style="padding: 5px">
+              <input type="button" value="中信银行" class='bank-button' onclick="bankClicked('CR', 'CITIC', '中信银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="浦发银行" class='bank-button' onclick="bankClicked('CR', 'SPDB', '浦发银行')"></input>
+            </td>
+          </tr>
+          <tr>
+           <!--  <td style="padding: 5px">
+              <input type="button" value="中信银行" class='bank-button' onclick="bankClicked('CR', 'CITIC', '中信银行')"></input>
+            </td> -->
+           <!--  <td style="padding: 5px">
+              <input type="button" value="上海银行" class='bank-button' onclick="bankClicked('CR', 'BOS', '上海银行')"></input>
+            </td> -->
+            <td style="padding: 5px">
+              <input type="button" value="平安银行" class='bank-button' onclick="bankClicked('CR', 'SZPAB', '平安银行')"></input>
+            </td>
+          </tr>
+          <!-- <tr>
+            <td style="padding: 5px">
+              <input type="button" value="上海农商银行" class='bank-button' onclick="bankClicked('CR', 'SHRCB', '上海农商银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="江苏银行" class='bank-button' onclick="bankClicked('CR', 'JSB', '江苏银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="南京银行" class='bank-button' onclick="bankClicked('CR', 'NJCB', '南京银行')"></input>
+            </td>
+          </tr> -->
+         <!--  <tr>
+            <td style="padding: 5px" class='bank-td'>
+              <input type="button" value="东亚银行" class='bank-button' onclick="bankClicked('CR', 'HKBEA', '东亚银行')"></input>
+            </td>
+            <td style="padding: 5px" class='bank-td'>
+              <input type="button" value="南昌银行" class='bank-button' onclick="bankClicked('CR', 'NCC', '南昌银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="宁波银行" class='bank-button' onclick="bankClicked('CR', 'NBCB', '宁波银行')"></input>
+            </td>
+          </tr> -->
+          <!-- <tr>
+            <td style="padding: 5px">
+              <input type="button" value="包商银行" class='bank-button' onclick="bankClicked('CR', 'BSB', '包商银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="兰州银行" class='bank-button' onclick="bankClicked('CR', 'LZ', '兰州银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="潍坊银行" class='bank-button' onclick="bankClicked('CR', 'WFCCB', '潍坊银行')"></input>
+            </td>
+            
+          </tr> -->
+         <!--  <tr>
+            <td style="padding: 5px">
+              <input type="button" value="杭州银行" class='bank-button' onclick="bankClicked('CR', 'HCCB', '杭州银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="温州银行" class='bank-button' onclick="bankClicked('CR', 'WZCB', '温州银行')"></input>
+            </td>
+            <td style="padding: 5px">
+              <input type="button" value="上饶银行" class='bank-button' onclick="bankClicked('CR', 'SR', '上饶银行')"></input>
+            </td>
+          </tr> -->
+        </table>
+      </div>
+    </div>
+  
+    <div id="recordPage" class="recordPage" style="display:none;">
+
+      <div class="record_name recordPage_pub">
+        <span class="record_name_pet record_pet_pub">真实姓名：</span><span class="record_name_cnt"></span>
+      </div>
+      <div class="record_cord recordPage_pub">
+        <span class="record_cord_pet record_pet_pub">证件号码：</span><span class="record_cord_cnt"></span>
+      </div>
+      <div class="record_phone recordPage_pub">
+        <span class="record_phone_pet record_pet_pub" style="font-size: 1.4rem;">预留手机号：</span><span class="record_phone_cnt"></span>
+      </div>
+      <div class="record_bank recordPage_pub">
+        <span class="record_bank_pet record_pet_pub" style="width: 8.5rem;font-size: 1.4rem;">可用银行卡：</span>
+        <div style="display: inline-block;">
+            <div class="record_bank_cnt" style="display: inline-block;">
+                <!--有删除按钮之后width为14rem-->
+                <select class="record_bank_sec" style="margin-right: 1rem;width: 11.5rem;padding-left: 1rem;height: 24px;">
+                    <!-- <option class="secOtherBank">使用新卡付款<option/> -->
+                </select>
+            </div>
+            <input type="button" id="record_bank_cme" onclick="bankClicked()" value="编辑" style="vertical-align:middle;border:none;width:38px;height: 22px;margin-top:0;background-color: #6D80A4 ;color: #e0e0e0;">
+            <!-- <input type="button" id="record_bank_del"  value="删除" style="vertical-align:middle;border:none;width:38px;height: 22px;margin-top:0;background-color: #6D80A4 ;color: #e0e0e0;margin-left: 1.5rem;display:none;"> -->
+        </div>
+      </div>
+
+      <div class="input-wrapper recordPage_pub input-wrapper_b" style="display: none;">
+        <input id="CVV2Num_b" type="text" data-validate="/^\d{3}$/" class="J_Validate" data-message="错误的CVV2" placeholder="CVV2 (信用卡背面3位数字)" maxlength="3"/>
+        <div class="J_Tips tips">
+          <img src="../../img/bankcv2.png" alt="">
+        </div>
+      </div>
+      <div class="input-wrapper recordPage_pub input-wrapper_b" style="display: none;">
+      <!--data-validate="/^\d{2}\/\d{2}$/"-->
+        <input id="validThru_b" type="text"  class="J_Validate" data-message="错误的有效期" placeholder="有效期 (月份)" onkeyup="keyUpFunc(event);" maxlength="5"/>&nbsp;&nbsp;/
+        <input id="validThru_b2" type="text"  class="J_Validate" data-message="错误的有效期" placeholder="有效期 (年份)" onkeyup="keyUpFunc(event);" maxlength="5"/>
+        <div class="J_Tips tips">
+          <img src="../../img/bank-tip.png" alt="">
+        </div>
+      </div>
+      
+      <div class="record_vCode recordPage_pub input-wrapper code">
+          <span class="record_vCode_pet record_pet_pub" style="margin-left: 5px;">验证码：</span>
+          <input id="debitCardValidateCode_t" class="J_Validate" type="text" placeholder="验证码" data-message="错误的验证码" style="width:25%;height: 22px;font-size:1.5rem;margin-top:0px;" size="25%" maxlength="6"/>
+          <input id="getInfoCodeDebitCard" type="button" value="获取验证码" style="height: 22px;vertical-align: bottom;width:25%;background-color: #6D80A4 ;color: #e0e0e0;border:none;font-size:1.4rem;margin-top: 0px;margin-left: -0.4rem;" />
+      </div>
+      <div class="record_pay recordPage_pub">
+        <p class="record_pay_hint record_pet_pub" style="color: #4AAFF8; font-size: 1.2rem;text-indent: 1rem;">安全智能加密,保障你的用卡安全</p>
+        <input id="payCreditBtn_tt" type="button" onclick="recordPayBtnClicked();" value="确认付款" style="height: 35px; width: 89%;color: #e0e0e0;background-color: #7F7F7F;border:none;font-size:1.5rem;border-radius: none;" />
+      </div>
+  </div>
+    
+
+    <div id="dialog8229" style="display: none;">
+      <div class="dialog loading-dialog">
+        <div class="load-cont">
+          <h2>  
+            <span>
+              <div class="i-loading iPopup">
+                <div class="">
+                  <span>
+                    
+                  </span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><b>努力加载中</b></span></h2></div>
+      </div>
+    </div>
+    <div id="mask8229" class="mask160" style="display: none;"></div>
+  </div>
+
+  <form id="debitCardForm" style="padding-left: 20px ;display: none; margin-top: 15px; ">
+    <p id="debitBankName" class="bankName" style="height: 30px; color: #7F7F7F;font-size:1.5rem">银行卡信息</p>
+    <div class="input-wrapper">
+      <input id="debitCardNo" type="text" data-validate="bankId" class="J_Validate" placeholder="存储卡卡号" style="height: 30px;font-size:1.5rem" size="50%" data-message="错误的卡号" />
+    </div>
+    <div class="input-wrapper">
+      <input id="debitCardRealName" type="text" class="J_Validate" placeholder="持卡人姓名" style="height: 30px;font-size:1.5rem" size="50%" />
+    </div>
+    <div class="input-wrapper">
+      <input id="debitCardIDNo" type="text" placeholder="持卡人身份证号" style="height: 30px;font-size:1.5rem" data-validate="cardId" class="J_Validate" size="50%" data-message="错误的身份证号" maxlength="18"/>
+    </div>
+    <div class="input-wrapper">
+      <input id="debitCardMobileNo" data-validate="/^\d{11,}$/" class="J_Validate" type="text" placeholder="银行预留手机号码" style="height: 30px;font-size:1.5rem" data-message="错误的手机号" size="50%" maxlength="11"/>
+    </div>
+    <div class="input-wrapper code">
+      <input id="debitCardValidateCode" class="J_Validate" type="text" placeholder="验证码" data-message="错误的验证码" style="width:50%;height: 31px;font-size:1.5rem" size="25%" maxlength="6"/>
+      <input id="getValidateCodeDebitCard" type="button" value="获取验证码" style="height: 30px ; width: 33%;margin-left: 5px;background-color: #6D80A4 ;color: #e0e0e0;border:none;font-size:1.5rem;" />
+    </div>
+    <div class="input-wrapper check">
+      <div>
+        <input type="checkbox" id="chong" class="J_Radio radio active" style="width: 1.2rem;background: #fff;margin: 0px;padding: 0px;height: 1.2rem;margin-right: -26px;vertical-align: middle;position: relative;z-index: 1;" checked>
+        <span class="desc">同意 <a class="J_ShowProtocal">支付协议</a></span>
+      </div>
+    </div>
+    <div class="input-wrapper submit">
+      <input id="payDebitBtn" type="button" value="确认付款" onclick="payDebitBtnClicked();" style="height: 35px; width: 89%;color: #e0e0e0;background-color: #7F7F7F;border:none;font-size:1.5rem;" />
+      <p style="margin-top: 40px;font-size: 1.4rem;">注 ： 系统会保存首次提交的银行卡</p>
+    </div>
+  </form>
+  <form id="creditCardForm" style="padding-left: 20px; display: none; margin-top: 15px">
+    <p id="creditBankName" class="creditBankName" style="height: 30px; color: #7F7F7F;">银行卡信息</p>
+    <div class="input-wrapper">
+      <input id="creditNum" data-validate="bankId" class="J_Validate" type="text" placeholder="信用卡卡号" data-message="错误的卡号" style="" />
+    </div>
+    <div class="input-wrapper">
+      <input id="creditName" class="J_Validate" type="text" placeholder="持卡人姓名" />
+    </div>
+    <div class="input-wrapper">
+      <input id="creditPsnNum" data-validate="cardId" class="J_Validate" type="text" placeholder="持卡人身份证号" data-message="错误的身份证号" />
+    </div>
+    <div class="input-wrapper">
+      <input id="creditPhNum" data-validate="/^\d{11,}$/" class="J_Validate" type="text" placeholder="银行预留手机号码" data-message="错误的手机号" maxlength="11"/>
+    </div>
+    <div class="input-wrapper">
+      <input id="CVV2Num" type="text" data-validate="/^\d{3}$/" class="J_Validate" data-message="错误的CVV2" placeholder="CVV2 (信用卡背面3位数字)" maxlength="3"/>
+      <div class="J_Tips tips">
+        <img src="../../img/bankcv2.png" alt="">
+      </div>
+    </div>
+    <div class="input-wrapper"><!--data-validate="/^\d{2}\/\d{2}$/"-->
+      <input id="validThru" type="text"  class="J_Validate" data-message="错误的有效期" placeholder="有效期(月份)" onkeyup="keyUpFunc(event);" maxlength="5"/>&nbsp;/&nbsp;
+      <input id="validThru2" type="text"  class="J_Validate" data-message="错误的有效期" placeholder="有效期(年份)" onkeyup="keyUpFunc(event);" maxlength="5"/>
+      <div class="J_Tips tips">
+        <img src="../../img/bank-tip.png" alt="">
+      </div>
+    </div>
+    <div class="input-wrapper code">
+      <input id="creditCardValidateCode" class="J_Validate" type="text" style="width:50%;" placeholder="验证码" data-message="错误的验证码" maxlength="6"/>
+      <input id="getValidateCodeCreditCard" type="button" value="获取验证码" style="height: 30px; width: 37%;margin-left: 5px;background-color: #6D80A4 ;color: #e0e0e0;border:none;" />
+    </div>
+    <div class="input-wrapper check">
+      <div>
+        <input type="checkbox" id="chong" class="J_Radio radio active" style="width: 1.2rem;background: #fff;margin: 0px;padding: 0px;height: 1.2rem;margin-right: -28px;vertical-align: middle;position: relative;z-index: 1;" checked>
+        <span class="desc">同意 <a class="J_ShowProtocal">支付协议</a></span>
+      </div>
+    </div>
+    <div class="input-wrapper submit">
+      <input id="payCreditBtn" type="button" onclick="payCreditBtnClicked();" value="确认付款" style="border:none;" />
+      <p style="margin-top: 40px;font-size: 1.4rem;">注 ： 系统会保存首次提交的银行卡</p>
+    </div>
+  </form>
+  <div class="J_Load" style="display:none" id="J_Load">
+    <div class="load-wrapper">
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+      <div class="title">加载中</div>
+    </div>
+  </div>
+  <div id="J_Dialog" class="J_Dialog dialog" style="display:none;">
+    <div class="mask"></div>
+    <div class="main">
+      <div class="hd">提示</div>
+      <div class="bd"></div>
+      <div class="bd_deposit"></div>
+      <div class="ft">我知道了</div>
+    </div>
+  </div>
+  <div class="protocal" id="J_Protocal">
+    <div class="hd">
+      <h2>协议：</h2>
+      <span class="close J_HideProtocal"></span>
+    </div>
+    <div class="bd">
+      <h3>支付协议</h3>
+      <p>第三方支付服务协议（以下简称“本协议”）是中国银联（以下简称“银联”）与用户(以下简称“用户”或“您”)就第三方支付服务（以下简称“本服务”）的使用等相关事项所订立的有效合约。用户通过网络页面点击确认或以其他方式选择接受本协议，即表示用户与银联已达成协议并同意接受本协议的全部约定内容。</p>
+      <p>同时您的点击确认行为即表示您授权银行卡发卡行根据银联的指令划扣您相应银行卡账户中的相应款项。您理解并同意发卡行仅是依据银联的指令进行款项的划扣，除非发卡行执行指令错误，否则因此导致的所有纠纷均由您与银联之间协商解决，概与发卡行无关。</p>
+      在接受本协议之前，请您仔细阅读本协议的全部内容（特别是以粗体下划线标注的内容）。如果您不同意本协议的任意内容，或者无法准确理解银联对条款的解释，请不要进行后续操作。</p>
+      <p>第一条 您应确保您在使用本服务时的银行卡为您本人的银行卡，确保您使用银行卡的行为合法、有效，未侵犯任何第三方合法权益；否则因此造成银联、持卡人损失的，您应负责赔偿并承担全部法律责任，包括但不限于冻结您的银联账户及资金、从您的银联账户扣除相应的款项等。</p>
+      <p>第二条 您应妥善保管银行卡、卡号、密码以及银联帐号、密码等与银行卡或与银联账户有关的一切信息。如您遗失银行卡、泄露银联账户密码或相关信息的，您应及时通知发卡行及银联，以减少可能发生的损失。因泄露密码、丢失银行卡等所致损失需由您自行承担。</p>
+      <p>第三条 您不应将本服务用于任何非法的或违反本协议的目的。</p>
+      <p>第四条 您如使用本服务进行支付，应当在认真确认金额后输入密码进行支付。您认可和同意：输入密码即视为您确认交易和交易金额并已不可撤销地向银联发出指令，银联有权根据您的指令委托银行或第三方从银行卡中划扣资金给收款人。届时您不应以非本人意愿交易或其他任何原因要求银联退款或承担其他责任。</p>
+      <p>第五条 您在对使用本服务过程中发出指令的真实性及有效性承担全部责任；您承诺，银联依照您的指令进行操作的一切风险由您承担。 </p>您认可银联账户的使用记录数据、交易金额数据等均以银联系统平台记录的数据为准。</p>
+      <p>第六条 您授权银联有权留存您在银联网站填写的相应信息，以供后续向您持续性地提供相应服务（包括但不限于将本信息用于向您推广、提供其他更加优质的产品或服务）。</p>
+      <p>第七条 您同意并授权银联依据其自身判断对涉嫌欺诈或被他人控制并用于欺诈目的的银联账户采取相应的措施，上述措施包括但不限于冻结账户及资金、处置涉嫌欺诈的资金等。</p>
+      <p>第八条 出现下列情况之一的，银联有权立即终止您使用银联相关服务而无需承担任何责任：（1）违反本协议的约定；（2）违反银联或其他关联公司网站的条款、协议、规则、通告等相关规定，而被上述任一网站终止提供服务的；（3）银联认为向您提供本服务存在风险的；（4）您的银行卡有效期届满（如有）。</p>
+      <p>第九条 您同意，本协议适用中华人民共和国大陆地区法律。因银联与您就本协议的签订、履行或解释发生争议，双方应努力友好协商解决。如协商不成，银联和用户同意由银联驻所地法院管辖审理双方的纠纷或争议。</p>
+      <p>第十条 本协议内容包括协议正文及所有银联已经发布的或将来可能发布的银联服务的使用规则。所有规则为本协议不可分割的一部分，与协议正文具有相同法律效力。若您在本协议内容发生修订后，继续使用本服务的，则视为您同意最新修订的协议内容；否则您须立即停止使用本服务。</p>
+      <p>第十一条 本协议未尽事宜，您需遵守银联网站上公布的相关规则。</p>
+    </div>
+  </div>
+  <!-- <script type="text/javascript" src="http://t.invhero.com/src/lib/zepto.js"></script> -->
+  <script type="text/javascript" src='../../src/lib/zepto.js'></script>
+  <script type="text/javascript" src="src-static/indexFirst.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    initPage();
+  });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<% data.forEach(function(item) {%>
+  <% if (!item.hide) {%>
+  <div class="item">
+    <a href="../my/profile.html?inviteCode=<%= item.type=='follow' ? item.followedInviteCode : item.followerInviteCode %>&from=<%= decodeURIComponent(location.href) %>">
+      <div class="img-wrapper-outer">
+        <div class="img-wrapper">
+          <img src="<%= item.avatar %>" class="img" id="J_Img" alt="头像">
+        </div>
+      </div>
+    </a>
+    <div class="inner">
+      <div class="hd clearfix">
+        <p class="name"><%= item.nickname %></p>
+        <p class="date"><%= item.desc %></p>
+      </div>
+      <% if (item.type === 'user_publish') {%>
+      <div class="bd">
+        <p class="desc"><%= item.title %>
+        <% if (item.link) {%>
+        <a href="<%= item.link %>" class="all">查看全文</a>
+        <% } else if (item.content) { %>
+        <a href="./detail.html?id=<%= item.id %>&from=<%= encodeURIComponent(location.href) %>" class="all">查看全文</a>
+        <% } %>
+        </p>
+        <% if (item.images.length > 0) {%>
+        <img src="<%= item.images[0] %>" alt="">
+        <% } %>
+      </div>
+      <% } else if (item.types && item.types !== 'follow') { %>
+      <div class="bd">
+        <p class="desc"><%= item.typeName %></p>
+        <div class="order-wrapper">
+          <a href="../order-share.html?invite=<%= item.inviteCode %>&order=<%= item.ticket %>&symbol=<%= item.symbol %>&from=<%= decodeURIComponent(location.href) %>">
+            <div class="symbol-wrapper">
+              <div class="left">
+                <span class="tag <%= item.cmd.indexOf('buy') !== -1 ? 'up' : '' %>"></span>
+                <p class="name"><%= item.symbolName %></p>
+                <p class="symbol"><%= item.symbol %></p>
+                <p class="status"><%= item.typeStatus %></p>
+              </div>
+              <div class="right">
+                <% if (item.type == 'open') { %>
+                  <p class="title">开仓价格</p>
+                  <% var isNan = isNaN(item.openPrice); %>
+                  <% if (isNan) {%>
+                    <p class="profit no-allow" >
+                      <span class="">不可查看</span>
+                    </p>
+                  <% } else {%>
+                    <p class="open" >
+                      <span class="int"><%=item.openPrice%></span>
+                    </p>
+                  <% } %>
+                <%} else if (item.type == 'modify') {%>
+                    <p class="title">止损价格</p>
+                    <p class="stoploss <%= item.stopLoss > 0 ? '' : 'zero'%>" >
+                      <span class="int"><%= item.stopLoss > 0 ? item.stopLoss : '未设置'%></span>
+                    </p>
+              
+                    <p class="title">止盈价格</p>
+                    <p class="takeprofit <%= item.takeProfit > 0 ? '' : 'zero'%>" >
+                      <span class="int"><%= item.takeProfit > 0 ? item.takeProfit : '未设置' %></span>
+                    </p>
+                  
+                <%} else if (item.type == 'close' || item.type == 'margin_check' || item.type == 'takeprofit' || item.type == 'stoploss') {%>
+                  <p class="title">盈亏</p>
+                  <% var isNan = isNaN(item.profits); %>
+                  <% if (isNan) {%>
+                    <p class="profit no-allow" >
+                      <span class="">不可查看</span>
+                    </p>
+                  <% } else {%>
+                    <p class="profit <%= item.profits > 0 ? 'up' : '' %>" >
+                      <span class="dollar">$</span>
+                      <span class="int"><%= parseInt(item.profits) || '-0' %>.</span><span class="float"><%= (item.profits - parseInt(item.profits)).toFixed(2).split('.')[1] %></span>
+                    </p>
+                  <% } %>
+                <%} %>
+                
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <% } else if (item.types && item.types === 'follow') { %>
+      <div class="bd">
+        <p class="desc"><%= item.typeName %></p>
+        <div class="order-wrapper clearfix">
+          <a href="../my/profile.html?inviteCode=<%= item.type=='follow' ? item.followedInviteCode : item.followerInviteCode %>&from=<%= decodeURIComponent(location.href) %>">
+            <div class="left">
+              <div class="img-wrapper-outer">
+                <div class="img-wrapper">
+                  <img src="<%= item.avatar %>" class="img" id="J_Img" alt="头像">
+                </div>
+              </div>
+              <p class="nickname"><%= item.type !== 'follow' ? item.followedNickName : item.followerNickName %></p>
+            </div>
+            <div class="right">
+              <p class="title">月均收益率</p>
+              <p class="floats">
+                <span class="rate J_Rate" data-code="<%= item.type=='follow' ? item.followedInviteCode : item.followerInviteCode %>">--</span>
+                <span class="per">%</span>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <% } %>
+      <!-- <ul class="ft clearfix">
+        <li class="retweet">
+          <span class="count">8888</span>转发
+        </li>
+        <li>
+          <span class="count">8888</span>
+          <span class="icon-replay quan-iconfont">&#xe604;</span>
+        </li>
+        <li class="like">
+          <span class="count">8888</span>
+          <span class="icon-like quan-iconfont">&#xe605;</span>
+        </li>
+        <li>
+          <span class="icon-more quan-iconfont">&#xe600;</span>
+          <div class="action-wrapper clearfix">
+            <span class="retweet-btn">转发</span>
+            <span class="replay-btn">评论</span>
+            <span class="like-btn">赞</span>
+          </div>
+        </li>
+      </ul> -->
+    </div>
+  </div>
+  <%}%>
+<% });%>
+<div class="last">已加载全部动态</div>

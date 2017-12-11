@@ -1,0 +1,52 @@
+<% for (var key in data.gendanObj) {%>
+    <% data.gendanObj[key].forEach(function(item) {%>
+      <%if ( item.isTitle ) {%>
+        <li class="gendan-tr J_GendanTitle">
+          <div colspan="14" class="title"><p class="gendan-title-desc">
+            跟单自 - <span class="gendan-follow-name">高手 <%=item.followName%></span>
+            <span class="all-profit J_AllProfit" data-id='<%= item.expert_id %>'>123- -</span>
+          </p></div>
+        </li>
+      <%} else {%>
+        <li class="item J_Item" data-symbol="<%= item.symbol %>">
+            <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
+                <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
+                <div class="name-wrapper">
+                    <p class="name"><%= item.symbolName %></p>
+                    <p><%= item.symbol %></p>
+                </div>
+                <ul class="detail">
+                    <li>
+                        <p class="name">盈亏</p>
+                        <% var guandan = (item.status == 'pending'); %>
+                        <p class="J_Formate J_Profit <%= guandan ? '' : 'no-guadan' %>" data-order="<%= item.ticket %>" data-id='<%= item.expert_id %>'><%= guandan ? '挂单' : '--' %></p>
+                    </li>
+                    <li>
+                        <p class="name">当前价格</p>
+                        <p class="J_Price J_Formate" data-symbol="<%= item.symbol %>" data-symbolname="<%= item.symbol.replace(/\./g, '--') %>" <% if(item.cmd.indexOf('buy') !== -1) {%>data-cmd="up"<%}%>>--</p>
+                    </li>
+                    <li>
+                        <p class="name">开仓价格</p>
+                        <p class="J_Formate"><%= item.openPrice %></p>
+                    </li>
+                    <li>
+                        <p class="name">交易量</p>
+                        <p class="J_Formate"><%= item.volume %></p>
+                    </li>
+                    <li>
+                        <p class="name">止盈价格</p>
+                        <p class="J_Formate"><%= item.takeProfit %></p>
+                    </li>
+                    <li>
+                        <p class="name">止损价格</p>
+                        <p class="J_Formate"><%= item.stopLoss %></p>
+                    </li>
+                </ul>
+                <span class="guide">
+                    <span class="triangle"></span>
+                </span>
+            </a>
+        </li>
+        <%}%>
+    <%})%>
+<%}%>

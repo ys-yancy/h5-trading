@@ -1,0 +1,31 @@
+@import '../../../variable.less';
+@import '../../../base.less';
+.icon-weixin();
+.com-header();
+.content {
+    .part {
+        .padding(26, 54, 0, 54);
+        color: @fontColor;
+        h2 {
+            .font-size(30);
+            .line-height(62);
+        }
+        p {
+            .line-height(36);
+            .font-size(24);
+        }
+        .img-wrapper {
+            .padding(28, 0, 34, 0);
+            text-align: center;
+            img {
+                vertical-align: top;
+                .max-width(500);
+            }
+        }
+    }
+}
+
+html,
+body {
+    font-family: Microsoft YaHei, Helvetica, Arial, sans-serif;
+}

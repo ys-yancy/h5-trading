@@ -1,0 +1,331 @@
+{
+
+    "status": 200,
+
+    "lang": "zh-CN",
+
+    "message": "OK",
+
+    "data": [
+
+        {
+
+            "priority": 1,
+
+            "name": "FOREX",
+
+            "desc": "外汇"
+
+        },
+
+        {
+
+            "priority": 2,
+
+            "name": "STOCK_CHINA_A",
+
+            "desc": "沪深A股"
+
+        },
+
+        {
+
+            "priority": 3,
+
+            "name": "STOCK_US",
+
+            "desc": "美股"
+
+        },
+
+        {
+
+            "priority": 4,
+
+            "name": "STOCK_HK",
+
+            "desc": "港股"
+
+        },
+
+        {
+
+            "priority": 5,
+
+            "name": "METAL_GOLD",
+
+            "desc": "黄金"
+
+        },
+
+        {
+
+            "priority": 6,
+
+            "name": "METAL_SILVER",
+
+            "desc": "白银"
+
+        },
+
+        {
+
+            "priority": 7,
+
+            "name": "OIL",
+
+            "desc": "石油"
+
+        },
+
+        {
+
+            "priority": 8,
+
+            "name": "FUTURE_CHINA",
+
+            "desc": "国内期货"
+
+        },
+
+        {
+
+            "priority": 9,
+
+            "name": "DIGITALCURRENCY",
+
+            "desc": "数字货币"
+
+        },
+
+        {
+
+            "priority": 10,
+
+            "name": "STOCK_CHINA_A_SHANGHAI",
+
+            "desc": "上海A股。"
+
+        },
+
+        {
+
+            "priority": 11,
+
+            "name": "STOCK_CHINA_A_SHENZHEN",
+
+            "desc": "深圳A股。"
+
+        },
+
+        {
+
+            "priority": 12,
+
+            "name": "STOCK_INDEX",
+
+            "desc": "股指"
+
+        },
+
+        {
+
+            "priority": 13,
+
+            "name": "INDEX_CHINA_SHENZHEN",
+
+            "desc": "深圳指数"
+
+        },
+
+        {
+
+            "priority": 14,
+
+            "name": "FUND_CHINA_SHENZHEN",
+
+            "desc": "深圳基金"
+
+        },
+
+        {
+
+            "priority": 15,
+
+            "name": "REPOREVERSE_CHINA_SHENZHEN",
+
+            "desc": "深圳国债逆回购"
+
+        },
+
+        {
+
+            "priority": 16,
+
+            "name": "BOND_CHINA_SHENZHEN",
+
+            "desc": "深圳债券"
+
+        },
+
+        {
+
+            "priority": 17,
+
+            "name": "STOCK_CHINA_SBM",
+
+            "desc": "创业板"
+
+        },
+
+        {
+
+            "priority": 18,
+
+            "name": "STOCK_CHINA_B_SHENZHEN",
+
+            "desc": "深圳B股"
+
+        },
+
+        {
+
+            "priority": 19,
+
+            "name": "NATIONALDEBT_CHINA",
+
+            "desc": "沪深国债"
+
+        },
+
+        {
+
+            "priority": 20,
+
+            "name": "INDEX_CHINA_SHANGHAI",
+
+            "desc": "上海指数"
+
+        },
+
+        {
+
+            "priority": 21,
+
+            "name": "FUND_CHINA_SHANGHAI",
+
+            "desc": "上海基金"
+
+        },
+
+        {
+
+            "priority": 22,
+
+            "name": "REPOREVERSE_CHINA_SHANGHAI",
+
+            "desc": "上海国债逆回购"
+
+        },
+
+        {
+
+            "priority": 23,
+
+            "name": "BOND_CHINA_SHANGHAI",
+
+            "desc": "上海债券"
+
+        },
+
+        {
+
+            "priority": 24,
+
+            "name": "STOCK_CHINA_B_SHANGHAI",
+
+            "desc": "上海B股"
+
+        },
+
+        {
+
+            "priority": 25,
+
+            "name": "METAL",
+
+            "desc": "金属"
+
+        },
+
+        {
+
+            "priority": 28,
+
+            "name": "INDEX_CHINA",
+
+            "desc": "沪深指数"
+
+        },
+
+        {
+
+            "priority": 29,
+
+            "name": "INDEX_GLOBAL",
+
+            "desc": "全球股指"
+
+        },
+
+        {
+
+            "priority": 30,
+
+            "name": "STOCK_GLOBAL",
+
+            "desc": "全球股票"
+
+        },
+
+        {
+
+            "priority": 31,
+
+            "name": "FUTURE_GLOBAL",
+
+            "desc": "全球期货"
+
+        },
+
+        {
+
+            "priority": 32,
+
+            "name": "STOCK_CHINA_B",
+
+            "desc": "沪深B股"
+
+        },
+
+        {
+
+            "priority": 33,
+
+            "name": "BOND_CHINA",
+
+            "desc": "沪深债券"
+
+        },
+
+        {
+
+            "priority": 34,
+
+            "name": "FUND_CHINA",
+
+            "desc": "沪深基金"
+
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<div class="info-wrapper">
+  <div class="img-wrapper-outer">
+    <div class="img-wrapper">
+      <img src="<%= data.avatar %>" class="img" id="J_Img" alt="头像">
+    </div>
+  </div>
+  <p class="name"><%= data.nick_name %></p>
+</div>
+<div class="detail-wrapper">
+  <ul class="clearfix">
+    <li>
+      <a href="./fans.html?from=<%= encodeURIComponent(location.href) %>">
+        <p class="num"><%= data.follower_count %></p>
+        <p>粉丝</p>
+      </a>
+    </li>
+    <li>
+      <a href="./follow.html?from=<%= encodeURIComponent(location.href) %>">
+        <p class="num"><%= data.following_count %></p>
+        <p>关注</p>
+      </a>
+    </li>
+  </ul>
+</div>
