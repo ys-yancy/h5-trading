@@ -219,10 +219,7 @@ Base.extend(Option, PageBase, {
 
   _reject: function(data) {
     if (this.isDemo()) {
-      this.bottomAccount.destroy();
-      this.bottomAccount = new BottomAccount({ checkOut: true });
-      this.bottomAccount.show();
-      this.bottomAccount.interval();
+      this.slideMenu && this.slideMenu.resetBottomAccount();
       return;
     } else {
       this.cookie.set('type', 'demo');
@@ -725,7 +722,7 @@ Base.extend(Option, PageBase, {
 
   _requires: function() {
     if (this.cookie.get('phone')) {
-      new SildeMenu({
+      this.slideMenu = new SildeMenu({
         el: $('#J_SlideMenu'),
         page: 'option'
       })

@@ -163,10 +163,18 @@ export default class SlideMenu extends PageBase {
 		return this.initType != Cookie.get('type');
 	}
 
-	_requires() {
-		this.bottomAccount = new BottomAccount({checkOut: true, el: $('#J_BottomBanner')});
+	resetBottomAccount() {
+		this.bottomAccount.destroy();
+	    this.bottomAccount = new BottomAccount({ checkOut: true });
 	    this.bottomAccount.show();
 	    this.bottomAccount.interval();
+	}
+
+	_requires() {
+		this.bottomAccount = new BottomAccount({checkOut: true, page: this.page, el: $('#J_BottomBanner')});
+	    this.bottomAccount.show();
+	    this.bottomAccount.interval();
+	    this.fire('get:bottomAccount', this.bottomAccount);
 	}
 
 	_render() {

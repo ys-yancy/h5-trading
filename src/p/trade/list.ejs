@@ -1,8 +1,10 @@
 <% $.each(data.normal, function(index, item) {%>
 <li class="item J_Item" data-symbol="<%= item.symbol %>">
     <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
-        <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
         <div class="name-wrapper">
+            <p class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>">
+                <%= (item.cmd.indexOf('buy') !== -1) ? '买涨' : '买跌' %>
+            </p>
             <p class="name"><%= item.symbolName %></p>
             <p><%= item.symbol %></p>
         </div>
@@ -20,12 +22,6 @@
                 <p class="name">开仓价格</p>
                 <p class="J_Formate"><%= item.openPrice %></p>
             </li>
-            <!--
-           <li>
-                <p class="name">占用资金</p>
-                <p class="J_Formate"><%= item.margin %></p>
-            </li>
-            -->
             <li>
                 <p class="name">交易量</p>
                 <p class="J_Formate"><%= item.volume %></p>
@@ -39,9 +35,6 @@
                 <p class="J_Formate"><%= item.stopLoss %></p>
             </li>
         </ul>
-        <span class="guide">
-            <span class="triangle"></span>
-        </span>
     </a>
 </li>
 <% }); %>
@@ -51,8 +44,11 @@
 <% $.each(data.guadan, function(index, item) {%>
 <li class="item J_Item" data-symbol="<%= item.symbol %>">
     <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
-        <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
+        
         <div class="name-wrapper">
+            <p class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>">
+                <%= (item.cmd.indexOf('buy') !== -1) ? '买涨' : '买跌' %>
+            </p>
             <p class="name"><%= item.symbolName %></p>
             <p><%= item.symbol %></p>
         </div>
@@ -70,12 +66,6 @@
                 <p class="name">开仓价格</p>
                 <p class="J_Formate"><%= item.openPrice %></p>
             </li>
-            <!--
-            <li>
-                <p class="name">占用资金</p>
-                <p class="J_Formate"><%= item.margin %></p>
-            </li>
-            -->
             <li>
                 <p class="name">交易量</p>
                 <p class="J_Formate"><%= item.volume %></p>
@@ -89,9 +79,6 @@
                 <p class="J_Formate"><%= item.stopLoss %></p>
             </li>
         </ul>
-        <span class="guide">
-            <span class="triangle"></span>
-        </span>
     </a>
 </li>
 <% }); %>

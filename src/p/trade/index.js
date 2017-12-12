@@ -2,21 +2,25 @@
 
 var Base = require('../../app/base');
 var PageBase = require('../../app/page-base');
-var Cookie = require('../../lib/cookie');
-var Login = require('../../common/login');
 var Util = require('../../app/util');
 var Config = require('../../app/config');
 var Sticky = require('../../common/sticky');
-var BottomAccount = require('../../common/bottom-account');
-var CustomerService = require('../../common/customer-service');
-var TopMsg = require('../../common/top-msg');
-var listTmpl = require('./list.ejs');
+var Cookie = require('../../lib/cookie');
+var Login = require('../../common/login');
+var SildeMenu = require('../../common/slide-menu');
 var Check = require('../../common/check');
-const Sound = require('../../common/sound');
-var LiveSpeech = require('../../common/live-speech');
+var listTmpl = require('./list.ejs');
 var kindListTmpl = require('./kindList.ejs');
 var listTmpl2 = require('./list2.ejs');
 var gendanListTmpl = require('./gendanList.ejs');
+
+const Sound = require('../../common/sound');
+
+// var CustomerService = require('../../common/customer-service');
+// var TopMsg = require('../../common/top-msg');
+
+// var LiveSpeech = require('../../common/live-speech');
+
 
 function Trade() {
   Trade.superclass.constructor.apply(this, arguments);
@@ -46,15 +50,11 @@ Base.extend(Trade, PageBase, {
     this._requires();
     this._bind();
     this._initSticky();
-    this._setInterval();
     this.configStatistics();
-
-    // 临时解决订单当前价格问题
-    // this.curPrice = {};
     this.kindListData = {};
     this.list = {};
 
-    new LiveSpeech();
+    // new LiveSpeech();
   },
 
   _bind: function() {
@@ -63,12 +63,10 @@ Base.extend(Trade, PageBase, {
     this.subscribe('get:orderList', this._getOrderList, this);
     this.subscribe('remove:ticket', this.remove, this);
 
-    this.bottomAccount.on('get:realFloatMargin', this._getFloatMargin, this);
-    this.bottomAccount.on('toggle:account', this._toggleAccount, this);
-    this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
     doc.on('tap', '.link', $.proxy(this._link, this));
     doc.on('tap', '.J_Fn', $.proxy(this._fnListShow, this));
     doc.on('tap', '.getKindList', $.proxy(this._getKindList, this));
+
     $('#fnMask').on('click', _.bind(this._hideFn, this))
       .on('touchmove', (e) => {
         e.preventDefault();
@@ -86,21 +84,29 @@ Base.extend(Trade, PageBase, {
       this.setupWeiXinShare('default_invite');
     }
   },
+
+  _lazyBind: function() {
+    this.bottomAccount.on('get:realFloatMargin', this._getFloatMargin, this);
+    this.bottomAccount.on('toggle:account', this._toggleAccount, this);
+    this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
+  },
+
   _hideFn: function(e) {
     e.preventDefault();
     e.stopPropagation();
     //e.bubbles = false;
     return false;
   },
+
   _fnListShow: function() {
     $('#J_FnList').toggleClass('hide');
-    //$('#fnMask').toggleClass('hide');
     if ($('#J_FnList').hasClass('hide')) {
       $('#history_trade').attr('href', './trade-history.html');
     } else {
       $('#history_trade').attr('href', 'javascript:;');
     }
   },
+
   _getKindList: function(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -115,7 +121,7 @@ Base.extend(Trade, PageBase, {
       containerEl.addClass('kindList');
     }
     $('#J_FnList').toggleClass('hide');
-    //$('#fnMask').toggleClass('hide');
+
     if ($('#J_FnList').hasClass('hide')) {
       setTimeout(function() {
         $('#history_trade').attr('href', './trade-history.html');
@@ -409,10 +415,6 @@ Base.extend(Trade, PageBase, {
     }
   },
 
-  _initSticky: function() {
-    $('nav').sticky();
-  },
-
   _getCurPrice: function(list, containerEl, type) {
     var symbols = [];
 
@@ -440,7 +442,7 @@ Base.extend(Trade, PageBase, {
 
   _setInterval: function() {
     var self = this,
-      data = this.bottomAccount,
+      data = this.bottomAccount || this.cookie.get('type'),
       type = data.isDemo() ? 'demo' : 'real',
       typeTag = 'init-' + type;
 
@@ -448,19 +450,10 @@ Base.extend(Trade, PageBase, {
       self.getFloatingProfit(data.account, data.orderList.list, data.orderList.symbols).done(function(profit, floatOption, prices) {
         var equity = parseFloat(data.account[type].balance) + parseFloat(profit);
         var freeMargin = equity - parseFloat(data.orderList.margin);
-        // var rate = data.orderList.margin === 0 ? '--' : ((equity / parseFloat(data.orderList.margin)) * 100).toFixed(2);
-
-        // var rate = data.margin === 0 ? '--' : ((netDeposit / parseFloat(data.margin)) * 100).toFixed(2);
-        // 20170227 王曦修改, 更换新的计算公式
         var margin = parseFloat(data.account[type].margin);
         var bait = parseFloat(data.account[type].bait ? data.account[type].bait : 0);
         var bonus = parseFloat(data.account[type].bonus ? data.account[type].bonus : 0);
-        // var rate = data.margin === 0 ? '--' : ((freeMargin - bonus + margin) / margin * 100).toFixed(2);
   
-
-        // var rate = rate === '--' ? '--' : parseFloat(rate);
-
-        // 20170302 王曦修改公式
         var rate;
         if (data.margin == 0) {
           rate = '--';
@@ -490,9 +483,7 @@ Base.extend(Trade, PageBase, {
 
 
         self.bottomAccount.fire('get:realFloatMargin', floatOption);
-        // 上面的函数无效, 暂时改成下面的直接调用
-        // self._getFloatMargin(floatOption);
-
+  
         // 更新所有当前订单的当前价格
         var containerEl = self._getContainer();
         if (!prices) {
@@ -504,15 +495,15 @@ Base.extend(Trade, PageBase, {
           try {
             var priceEls = $('.J_Price[data-symbol=' + symbol + ']');
 
-            var linkPriceEls = $('.name[link-symbol=' + symbol + ']');
+            // var linkPriceEls = $('.name[link-symbol=' + symbol + ']');
 
-            var linkChildEls = $('.J_Formate[linkchild-symbol=' + symbol + ']');
+            // var linkChildEls = $('.J_Formate[linkchild-symbol=' + symbol + ']');
           } catch (e) {
             var priceEls = $('.J_Price[data-symbolname=' + symbol.replace(/\./g, '--') + ']');
 
-            var linkPriceEls = $('.name[link-symbol=' + symbol.replace(/\./g, '--') + ']');
+            // var linkPriceEls = $('.name[link-symbol=' + symbol.replace(/\./g, '--') + ']');
 
-            var linkChildEls = $('.J_Formate[linkchild-symbol=' + symbol.replace(/\./g, '--') + ']');
+            // var linkChildEls = $('.J_Formate[linkchild-symbol=' + symbol.replace(/\./g, '--') + ']');
           }
 
 
@@ -546,19 +537,19 @@ Base.extend(Trade, PageBase, {
           });
 
           //临时解决汇总订单数据不刷新问题
-          if (linkPriceEls && linkPriceEls.length && linkChildEls && linkChildEls.length) {
-            var linkPriceElsVal = 0;
-            try{
-              for ( var j = 0; j < linkChildEls.length; j++ ) {
-                var hm = $(linkChildEls[j]).text();
-                linkPriceElsVal += parseFloat(hm);
-              }
-              linkPriceEls.html(linkPriceElsVal.toFixed(2));
-            }catch(e) {
+          // if (linkPriceEls && linkPriceEls.length && linkChildEls && linkChildEls.length) {
+          //   var linkPriceElsVal = 0;
+          //   try{
+          //     for ( var j = 0; j < linkChildEls.length; j++ ) {
+          //       var hm = $(linkChildEls[j]).text();
+          //       linkPriceElsVal += parseFloat(hm);
+          //     }
+          //     linkPriceEls.html(linkPriceElsVal.toFixed(2));
+          //   }catch(e) {
 
-            }
+          //   }
             
-          };
+          // };
 
         }
 
@@ -569,17 +560,21 @@ Base.extend(Trade, PageBase, {
     }, self.getIntervalTime());
   },
 
+  _initSticky: function() {
+    $('nav').sticky();
+  },
+
   _requires: function() {
+    var self = this;
     this.login = new Login();
-
-    this.bottomAccount = new BottomAccount({
-      page: 'trade',
-      checkOut: true
+    this.slideMenu = new SildeMenu({
+      el: $('#J_SlideMenu'),
+      page: 'trade'
+    }).on('get:bottomAccount', function(bottomAccount) {
+      self.bottomAccount = bottomAccount;
+      self._lazyBind();
+      self._setInterval();
     });
-
-    // this.bottomAccount.on('get:realFloatMargin', () => {
-
-    // });
 
     // new CustomerService();
   },

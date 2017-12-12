@@ -115,7 +115,8 @@ export default class BottomAccount extends PageBase {
 		        let detail = this._getDetail();
 
 		        this._setBalance(this.account);
-		        this._checkBAStatus(data, rate, type);
+		        // 改变账户条颜色
+		        // this._checkBAStatus(data, rate, type);
 
 		        let tmplData = {
 			        netDeposit: netDeposit,
