@@ -133,14 +133,19 @@ nav {
   .status{
       position: absolute;
       .width(28);
-      .height(84);
+      .padding(6, 0);
       .left(11);
       .font-size(14);
       .line-height(18);
-      .padding-top(6);
       text-align: center;
       border: 1px solid #a09dab;
       color: #a09dab;
+      &.close{
+        .margin-top(20);
+      }
+      &.simulate{
+        .margin-top(10);
+      }
   }
   .name-wrapper{
     .font-size(24);

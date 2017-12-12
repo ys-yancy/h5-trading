@@ -5,8 +5,8 @@
     <div class="J_Minus minus"></div>
     <div class="J_Add add"></div>
     <input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" <% if (data.edit) { %> disabled <%}%>>
+    <p class="volume-err err" style="display:none;"></p>
   </div>
-  <p class="volume-err err" style="display:none;"></p>
   <div class="volume-count-wrapper clearfix">
     <p class="J_VolumeMoney volume-money">占用资金（$）<%= data.margin === undefined ? '' : parseFloat(parseFloat(data.margin).toFixed(2)) %></p>
     <p class="volume volume-margin">最大可买（手）<span id="J_MaxVolumn"></span></p>
@@ -38,13 +38,20 @@
 </div>
 <li class="center-item li-item clearfix">
     <div class="wrapper">
+        <div class="slide-left">
+          <span class="icon J_ThuTakeprofit <% if (!data.guadan) {%> close <% }%>"></span>
+        </div>
         <p class="title">止盈价格</p>
         <div class="minus"></div>
         <div class="add"></div>
         <input type="number" id="J_Profit" class="takeprofit" placeholder="" data-value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>">
         <p>目标盈利（$）<span id="J_ProfitCount"></span></p>
     </div>
+    
     <div class="wrapper">
+        <div class="slide-left">
+          <span class="icon J_ThuStopLoss <% if (!data.guadan) {%> close <% }%>"></span>
+        </div>
         <p class="title">止损价格</p>
         <div class="minus"></div>
         <div class="add"></div>

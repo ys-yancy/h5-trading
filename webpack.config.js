@@ -43,5 +43,8 @@ module.exports = {
       loader: "ejs-loader"
     }]
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  devServer: {
+    port: 9999
+  }
 };
