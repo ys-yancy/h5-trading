@@ -2120,7 +2120,8 @@ Base.extend(ProTrading, PageBase, {
         data.openprice = self.openprice;
       }
 
-      
+      if (data.status === 'open')
+        self.open = true;
 
       self._initFooter(self.symbolValue, self.account, {
         guadan: guadan,
