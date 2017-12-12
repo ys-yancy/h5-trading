@@ -38,24 +38,27 @@
 </div>
 <li class="center-item li-item clearfix">
     <div class="wrapper">
+        <%var hasTakeProfit = data.takeProfit ? parseFloat(data.takeProfit) !== 0 : data.hasTakeProfit%>
         <div class="slide-left">
-          <span class="icon J_ThuTakeprofit <% if (!data.guadan) {%> close <% }%>"></span>
+          <span id="J_ThuTakeprofit" class="icon J_ThuTakeprofit <% if (!hasTakeProfit) {%> close <% }%>"></span>
         </div>
         <p class="title">止盈价格</p>
         <div class="minus"></div>
         <div class="add"></div>
-        <input type="number" id="J_Profit" class="takeprofit" placeholder="" data-value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>">
-        <p>目标盈利（$）<span id="J_ProfitCount"></span></p>
+        <input type="number" id="J_Profit" class="takeprofit" placeholder="-- --" data-value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" <% if (!hasTakeProfit) { %> disabled <%}%>>
+        <p>目标盈利($)<span id="J_ProfitCount"></span></p>
     </div>
     
     <div class="wrapper">
+        <%var hasStopLoss = data.stopLoss ? parseFloat(data.stopLoss) !== 0 : data.hasStopLoss%>
         <div class="slide-left">
-          <span class="icon J_ThuStopLoss <% if (!data.guadan) {%> close <% }%>"></span>
+          <span id="J_ThuStopLoss" class="icon J_ThuStopLoss <% if (!hasStopLoss) {%> close <% }%>"></span>
         </div>
         <p class="title">止损价格</p>
         <div class="minus"></div>
         <div class="add"></div>
-        <input type="number" class="stoploss" id="J_Loss" data-value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" placeholder="">
-        <p>预期亏损（$）<span id="J_LossCount"></span></p>
+        <input type="number" class="stoploss" id="J_Loss" data-value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" placeholder="-- --"
+        <% if (!hasStopLoss) { %> disabled <%}%>>
+        <p>预期亏损($)<span id="J_LossCount"></span></p>
     </div>
 </li>

@@ -70,6 +70,10 @@ Base.extend(ProTrading, PageBase, {
 
     doc.on('click', '.J_Switch', $.proxy(this._switch, this));
     doc.on('tap', '.J_Trusteeship', $.proxy(this._switchTrust, this));
+
+    doc.on('tap', '.J_ThuTakeprofit', $.proxy(this._switchTakeprofit, this));
+    doc.on('tap', '.J_ThuStopLoss', $.proxy(this._switchStopLoss, this));
+
     doc.on('tap', '.action', $.proxy(this._action, this));
     doc.on('tap', '.option', $.proxy(this._option, this));
     doc.on('tap', '.J_RangeFn', $.proxy(this._showSelectRange, this));
@@ -885,6 +889,50 @@ Base.extend(ProTrading, PageBase, {
         $('a.action').removeClass('unactive');
       }
     } catch (e) {}
+  },
+
+  // 开启 | 关闭设置止盈
+  _switchTakeprofit: function(e) {
+    var curEl = $(e.currentTarget),
+      profitEl = $('#J_Profit'),
+      thuStopLossEl = $('#J_ThuStopLoss');
+
+    if (curEl.hasClass('close')) {
+      curEl.removeClass('close');
+      profitEl[0].removeAttribute('disabled');
+      profitEl.attr('placeholder', '');
+    } else {
+        curEl.addClass('close');
+        profitEl.attr('disabled', true);
+        profitEl.attr('placeholder', '-- --');
+        profitEl.val('');
+        this._hideError(profitEl);
+        // if (thuStopLossEl.hasClass('close')) {
+        //   $('a.action').removeClass('unactive');
+        // }   
+    }
+  },
+
+  // 开启 | 关闭设置止损
+  _switchStopLoss: function(e) {
+    var curEl = $(e.currentTarget),
+      lossEl = $('#J_Loss'),
+      thuTakeprofit = $('#J_ThuTakeprofit');
+
+    if (curEl.hasClass('close')) {
+      curEl.removeClass('close');
+      lossEl[0].removeAttribute('disabled');
+      lossEl.attr('placeholder', '');
+    } else {
+        curEl.addClass('close');
+        lossEl.attr('disabled', true);
+        lossEl.attr('placeholder', '-- --');
+        lossEl.val('');
+        this._hideError(lossEl);
+        // if (thuTakeprofit.hasClass('close')) {
+        //   $('a.action').removeClass('unactive');
+        // } 
+    }
   },
 
   _action: function(e) {
@@ -2237,7 +2285,7 @@ Base.extend(ProTrading, PageBase, {
 
         var p = (parseFloat(self.symbolValue.quote.ask_price[0]) + parseFloat(self.symbolValue.quote.bid_price[0])) / 2;
         p = p.toFixed(minUnit);
-        
+
         self.render(orderTmpl, {
           margin: margin,
           price: p, // self.price
@@ -2245,8 +2293,9 @@ Base.extend(ProTrading, PageBase, {
           takeProfit: self.takeprofit,
           guadan: self.initGuadan,
           // openprice: self.openprice,
-          openprice: self._isRecommend() ? self.openprice : undefined
-
+          openprice: self._isRecommend() ? self.openprice : undefined,
+          hasTakeProfit: false,
+          hasStopLoss: false
         }, $('#J_FormBD'));
 
         if (self.unfoldBd) {
