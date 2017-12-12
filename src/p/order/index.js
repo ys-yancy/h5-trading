@@ -526,11 +526,12 @@ Base.extend(Order, PageBase, {
           if (sta != 'open' || guadan) {
             return;
           }
-          
           return self.getFloatingProfit(self.account, [data.data], [data.data.symbol]);
         }).then(function(floatProfit) {
-          $('#J_FloatProfit').text(floatProfit.toFixed(2));
-          $('#J_FloatProfitTrading').text((floatProfit + commission).toFixed(2));
+          if (!isNaN(floatProfit)) {
+            $('#J_FloatProfit').text(floatProfit.toFixed(2));
+            $('#J_FloatProfitTrading').text((floatProfit + commission).toFixed(2));
+          }
         });
 
       });
