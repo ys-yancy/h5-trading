@@ -26,10 +26,12 @@ Base.extend(Chart, Base, {
       downPriceTxt = this.downPriceTxt || downPrice,
       upPrice = this.upPrice,
       upPriceTxt = this.upPriceTxt || upPrice,
-      afterSetExtremes = this.afterSetExtremes || function() {};
+      afterSetExtremes = this.afterSetExtremes || function() {},
+      height = this.height || '100%',
+      xLabelShow = this.xLabelShow;
     var plotLines, price = this.price;
     var self = this;
-    var width = this.width;
+
     if (this.up) {
       plotLines = this.upPlotLine;
     } else {
@@ -46,7 +48,7 @@ Base.extend(Chart, Base, {
         renderTo: 'J_Chart',
         className: 'stock-chart',
         backgroundColor: self.ui.background || '#fff',
-        height: width || '100%',
+        height: height,
 
         events: {
           redraw: function(event) {
@@ -171,7 +173,7 @@ Base.extend(Chart, Base, {
         gridLineWidth: 1,
         minRange: 3600 * 1000 * 24 * 50,
         labels: {
-          enabled: false
+          enabled: xLabelShow
         }
       },
 

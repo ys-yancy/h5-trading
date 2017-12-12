@@ -1,1 +1,1 @@
-login,
+login,home, order, trade, option, pro-trading

@@ -472,10 +472,7 @@ Base.extend(ProTrading, PageBase, {
       return;
     }
 
-
-
     if (val) {
-
       var type = this._checkFirst();
       if (type === 'stoploss') {
         if (this.bidPrice < val) {
@@ -1825,13 +1822,21 @@ Base.extend(ProTrading, PageBase, {
         return;
       }
 
+
+      var edit = self.edit ||  (new Uri().getParam('from') == 'edit');
+      var height = edit ? '70%' : '100%',
+        xLabelShow = edit ? true : false;
+
+      self._hideLoading();
       // create the chart
       self.chart = new Chart({
         data: list,
         price: self.price,
         up: false,
         stockName: self.name,
-        selectedIndex: self.types.indexOf(type)
+        selectedIndex: self.types.indexOf(type),
+        height: height,
+        xLabelShow: xLabelShow
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
@@ -1842,6 +1847,11 @@ Base.extend(ProTrading, PageBase, {
     var self = this;
 
     this._getCandle('m30');
+  },
+
+  _hideLoading: function() {
+    $('#J_Loading').remove();
+    $('#J_RangeContro').show();
   },
 
   _initSticky: function() {
@@ -2192,13 +2202,11 @@ Base.extend(ProTrading, PageBase, {
     } else {
       openPrice = this.price;
     }
-    // openPrice = this.guadan ? $('#J_OpenPriceInput').val() : this.price;
+
     stopLoss = $('#J_Loss').val();
     takeProfit = $('#J_Profit').val();
 
-
     this.calMoney(this.account, this.symbolValue, volume, openPrice, stopLoss, takeProfit).then(function(price) {
-      // var fixed = Math.round(1 / self.symbolValue.policy.min_quote_unit).toString().length - 1;
       // 目标和止损金额是2位小数
       var fixed = 2;
 

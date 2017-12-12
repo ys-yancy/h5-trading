@@ -52,23 +52,27 @@
         </div>
     </header>
     <section class="top-message"></section>
-    <section class="content" id="T_Page">
-    <div id="J_Sticky">
-        <section class="hd up" id="J_Info">
-
-            </section>
+    <section class="content">
+        <div id="J_Sticky">
+            <section class="hd up" id="J_Info"></section>
         </div>
 
         <section class="chart-wrapper" id="J_ChartWrapper">
             <div class="chart" id="J_Chart"></div>
-            <ul class="rangeSelector-wrapper clearfix">
-                <li class="range-selector">1分钟</li>
-                <li class="range-selector">5分钟</li>
-                <li class="range-selector ">15分钟</li>
-                <li class="range-selector active">30分钟</li>
-                <li class="range-selector">1小时</li>
-                <li class="range-selector">1天</li>
-            </ul>
+            <div class="rangeSelector-wrapper clearfix" id="J_RangeContro" style="display: none;">
+                <div class="J_RangeFn bar-wrapper">
+                    <span class="cur-range J_CurRange">30分钟</span>
+                    <span class="icon bar"></span>
+                </div>
+                <ul class="popup" id="J_RangeList">
+                    <li class="range-selector item">1分钟</li>
+                    <li class="range-selector item">5分钟</li>
+                    <li class="range-selector item">15分钟</li>
+                    <li class="range-selector item active">30分钟</li>
+                    <li class="range-selector item">1小时</li>
+                    <li class="range-selector item">1天</li>
+                </ul>
+            </div>
         </section>
         <section class="bd">
             <ul class="show container" id="J_Container">
@@ -78,13 +82,15 @@
             </div>
         </section>
         <section class="ft" id="footer">
-      <!--       <a class="action close" href="#">立即平仓</a>
-            <a class="action edit" href="./pro-trading.html?from=edit">修改订单</a> -->
         </section>
+        <div class="ui loading" id="J_Loading">
+            <span class="circel"></span>  
+            <span class="loading-text">加载中...</span> 
+        </div>
     </section>
     <div class="dialog-mask popup-mask" id="J_PopupMask" style="display: none;"></div>
     <script src="../src/lib/zepto.js"></script>
-    <script src="../src/lib/highstock.js"></script>
+    <script src="../src/lib/highstock-new.js"></script>
     <script src="../build/order.js"></script>
 </body>
 </html>

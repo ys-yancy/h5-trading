@@ -1,148 +1,48 @@
 @import '../../../variable.less';
-.popup {
-    position: fixed;
-    .width(640);
-    .padding-bottom(16);
-    bottom: 0;
-    left: 0;
-    background: #fff;
-    .padding(0, 30);
-    z-index: 102;
-    -webkit-transition: all .6s ease;
-    transition: all .6s ease;
-    -webkit-transform: translateY(15rem) translateZ(0);
-    transform: translateY(15rem) translateZ(0);
-    &.show {
-        -webkit-transform: translateY(0) translateZ(0);
-        transform: translateY(0) translateZ(0);
+.pro-popup {
+  position: fixed;
+  .width(584);
+  .padding-bottom(16);
+  top: 20%;
+  left: 50%;
+  .margin-left(-292);
+  .padding(0, 30);
+  .border-radius(5);
+  box-shadow: 0 5px 15px #777777;
+  background: #fff;
+  z-index: 102;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  -webkit-transform: scale(.4);
+  transform: scale(.4);
+  &.show {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  .hd{
+    .line-height(88);
+  }
+  ul{
+    li{
+      .line-height(60);
+      .large{
+        float: right;
+      }
     }
-    .wrapper-icon {
-        position: absolute;
-        .width(128);
-        .height(128);
-        .left(218);
-        .top(-64);
-        .border-radius(50%);
-        background-color: #473b61;
-        .icon {
-            position: absolute;
-            .width(72);
-            .height(70);
-            .left(27);
-            .top(29);
-            .background-position(0, -231);
-        }
+  }
+  .dialog-buttons{
+    .font-size(28);
+    text-align: right;
+    .dialog-btn{
+      .height(100);
+      .line-height(100);
+      &.share{
+        .margin-left(60);
+      }
     }
-
-    .close-outer {
-        position: absolute;
-        .width(51);
-        .height(51);
-        .top(0);
-        .right(2);
-        .padding(12);
-        .close {
-            display: block;
-            .width(35);
-            .height(35);
-        }
-    }
-    .warpper-icon-outer {
-        position: absolute;
-        .top(-46);
-        .left(20);
-        .border-radius(50%);
-        .padding(4);
-        background: #fff;
-        .width(136);
-        .height(136);
-    }
-    .wrapper-icon {
-        .left(4);
-        .top(4);
-    }
-    .hd {
-        border-bottom: 1px solid #d2d2da;
-        .padding-left(146);
-        .line-height(102);
-        .height(103);
-        .font-size(26);
-        color: #473b61;
-    }
-    li {
-        position: relative;
-        float: left;
-        .width(580);
-        border-bottom: 1px solid #d2d2da;
-        .line-height(86);
-        .font-size(20);
-        color: #473b61;
-       
-        &:nth-child(5) {
-            .large {
-                float: right;
-            }
-        }
-        .bar {
-            position: absolute;
-            left: 0;
-            .top(17);
-            .height(52);
-            width: 1px;
-            background: #d2d2da;
-        }
-        &.one {
-            .width(580);
-        }
-        .large {
-            float: right;
-            .font-size(18);
-            color: #473b61;
-            vertical-align: bottom;
-        }
-    }
-    .dialog-buttons {
-        text-align: center;
-        .padding-top(30);
-    }
-    .dialog-btn {
-        display: inline-block;
-        .width(478);
-        .height(60);
-        .line-height(56ewrtewrtq);
-        .margin-bottom(17);
-        .border-bottom(4px, solid, #7f64c5);
-        .font-size(24);
-        .border-radius(4);
-        background-color: #967adc;
-        color: #fff;
-        &.active {
-            border-color: #967bdc;
-        }
-        &.order {
-            background-color: #7686ba;
-            border-bottom-color: #5b6ba1;
-            &.active {
-                border-color: #7686ba;
-            }
-        }
-        &.list {
-            background-color: #6da4ca;
-            border-bottom-color: #5388ad;
-            &.active {
-                border-color: #6da4ca;
-            }
-        }
-        &.share {
-            background-color: #967abc;
-            border-bottom-color: #6b4db5;
-            &.active {
-                border-color: #967abc;
-            }
-        }
-    }
+  }
 }
 
 .popup-mask {
-    z-index: 101;
+  z-index: 101;
 }

@@ -4,11 +4,11 @@
 	<p class="desc">下次开始时间 <%= data.start %></p>
 </div>
 <% } else if(data.status === 'open') {%>
-	<a class="action close" href="javascript:;">立即平仓</a>
 	<% if (data.ui != 6) {%>
 		<a class="action edit" href="./pro-trading.html?from=edit&name=<%= data.name %>&symbol=<%= data.symbol%>&order=<%= data.order %>&router=order&price=<%= data.price %>&stoploss=<%= data.stoploss %>&takeprofit=<%= data.takeprofit %>&unit=<%= data.unit %>">修改订单</a>
 	<% } %>
+	<a class="action close" href="javascript:;">立即平仓</a>
 <% } else {%>
-	<a class="action close guadan" href="javascript:;">删除挂单</a>
 	<a class="action edit guadan" href="./pro-trading.html?from=edit&name=<%= data.name %>&symbol=<%= data.symbol%>&order=<%= data.order %>&router=order&price=<%= data.price %>&stoploss=<%= data.stoploss %>&takeprofit=<%= data.takeprofit %>&unit=<%= data.unit %>">修改挂单</a>
+	<a class="action close guadan" href="javascript:;">删除挂单</a>
 <% } %>

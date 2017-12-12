@@ -2,10 +2,19 @@
 <div class="item price-info">
     <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
         <%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
+        <%= data.symbolName %>
     </span>
     <div class="price-wrapper">
+        <span class="currency">$</span>
         <span id="J_FloatProfit">--</span>
-        <span class="currency">美元</span>
+    </div>
+</div>
+<div class="item clearfix">
+    <div class="left">
+        交易手数<input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" readonly/>
+    </div>
+    <div class="right">
+        开仓价格<input id="J_OpenPriceInput" class="J_Edit" type="number" data-value="<%= parseFloat(data.openPrice) %>" value="<%= parseFloat(data.openPrice) %>" readonly/>
     </div>
 </div>
 <% } else {%>

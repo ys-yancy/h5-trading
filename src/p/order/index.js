@@ -12,17 +12,17 @@ var Cookie = require('../../lib/cookie');
 var Config = require('../../app/config');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
+var Check = require('../../common/check');
+const Sound = require('../../common/sound');
+var Popup = require('./popup/index');
 var infoTmpl = require('./tpl/info.ejs');
 var orderTmpl = require('./tpl/order.ejs');
 var actionTmpl = require('./tpl/action.ejs');
 var closeTmpl = require('./tpl/close.ejs');
-var TopMsg = require('../../common/top-msg');
-var Share = require('../pro-trading/share');
-var Check = require('../../common/check');
-const Sound = require('../../common/sound');
 
-var Popup = require('./popup/index');
-var LiveSpeech = require('../../common/live-speech');
+// var TopMsg = require('../../common/top-msg');
+// var Share = require('../pro-trading/share');
+// var LiveSpeech = require('../../common/live-speech');
 
 
 function Order() {
@@ -36,13 +36,10 @@ function Order() {
       new Check();
       new Sound();
 
-      new TopMsg($.merge({
-        el: $('.top-message'),
-        // css: {
-        //   marginBottom: '.5rem'
-        // }
-        className: 'special',
-      }, Config.getBroadcastConfig('order')));
+      // new TopMsg($.merge({
+      //   el: $('.top-message'),
+      //   className: 'special',
+      // }, Config.getBroadcastConfig('order')));
 
     });
   });
@@ -56,21 +53,21 @@ Base.extend(Order, PageBase, {
     this._receiveCloseTime();
     this._initSticky();
     this._getOrder();
-    // this._getCurPrice();
     this.configStatistics();
-    new LiveSpeech();
+    // new LiveSpeech();
   },
 
   mix: [CandleRefresh, MarqueeTitle],
 
   _bind: function() {
     var doc = $(document);
+    this.on('receive:closeTime', this._receiveCloseTime, this);
 
-    doc.on('tap', '.J_Unfold', $.proxy(this._unfold, this));
     doc.on('tap', '.action', $.proxy(this._action, this));
+    doc.on('tap', '.J_RangeFn', $.proxy(this._showSelectRange, this));
     doc.on('tap', '.range-selector', $.proxy(this._selectRange, this));
 
-    this.on('receive:closeTime', this._receiveCloseTime, this);
+    // doc.on('tap', '.J_Unfold', $.proxy(this._unfold, this));
 
   },
 
@@ -82,45 +79,47 @@ Base.extend(Order, PageBase, {
     this._initChart();
   },
 
-  _unfold: function(e) {
-    var curEl = $(e.currentTarget);
-    // var this.containerEl = $('.bd');
+  // _unfold: function(e) {
+  //   var curEl = $(e.currentTarget);
+  //   if (curEl.hasClass('unfold')) {
+  //     curEl.removeClass('unfold');
+  //     this.containerEl.removeClass('unfold');
+  //   } else {
+  //     curEl.addClass('unfold');
+  //     this.containerEl.addClass('unfold');
 
-    if (curEl.hasClass('unfold')) {
-      curEl.removeClass('unfold');
-      this.containerEl.removeClass('unfold');
-      // this.chartContainerE.show();
-    } else {
-      curEl.addClass('unfold');
-      this.containerEl.addClass('unfold');
+  //     setTimeout(() => {
+  //       var height = this.containerEl.offset().top + this.containerEl.height() - $(window).height() + $('#footer').height() + 10;
+  //       window.scrollTo(0, height);
+  //     }, 300);
+  //   }
+  // },
 
-      setTimeout(() => {
-        var height = this.containerEl.offset().top + this.containerEl.height() - $(window).height() + $('#footer').height() + 10;
-        window.scrollTo(0, height);
-      }, 300);
+  _showSelectRange: function() {
+    var popupEl = $('#J_RangeList');
 
-      // this.chartContainerE.hide();
-    }
+    popupEl.show();
+    setTimeout(() => {
+      popupEl.addClass('show');
+    }, 0)
   },
 
   _selectRange: function(e) {
     var curEl = $(e.currentTarget),
-      index = curEl.index(),
-      buttonEls = document.getElementsByClassName('highcharts-button'),
-      buttonEl = $(buttonEls[index]);
+      parentEl = curEl.parents('.rangeSelector-wrapper'),
+      curValEl = $('.J_CurRange', parentEl),
+        index = curEl.index();
 
-    var types = ['m1', 'm5', 'm15', 'm30', 'h1', 'd1'];
+    var types = this.types;
     var type = types[index];
+
     this._getCandle(type, true);
 
-
-    this.chartInstance.showLoading();
-    // buttonEl.trigger('click');
-    // if (this.chart && this.chart.instance.rangeSelector.selected === index) {
+    this.chartInstance && this.chartInstance.showLoading();
     curEl.addClass('active');
     curEl.siblings().removeClass('active');
-    // }
-
+    curValEl.text(curEl.text());
+    this._hideSelectRange();
   },
 
   _action: function(e) {
@@ -234,18 +233,6 @@ Base.extend(Order, PageBase, {
       type: 'post',
       data: data
     }).then(function(data) {
-      // new Dialog({
-      //     isShow: true,
-      //     tmpl: self.render(closeTmpl, {
-      //         name: self.name,
-      //         profit: data.data.profit,
-      //         price: data.data.closePrice
-      //     }),
-
-      //     confirmCallback: function() {
-      //         location.href = './trade-history.html';
-      //     }
-      // });
       new Popup({
         name: self.name,
         profit: data.data.profit,
@@ -256,27 +243,26 @@ Base.extend(Order, PageBase, {
       // 更新订单数据
       self.orderObject.profit = data.data.profit;
 
-      var btnDesc = '分享此笔交易';
+      var btnDesc = '分享';
       var myshow = !self.isDemo() && !data.guadan && getUseNewShare();
 
-      if (myshow) {
-        btnDesc = '分享订单到朋友圈 100% 赢实盘资金';
-      }
+      // if (myshow) {
+      //   btnDesc = '分享订单到朋友圈 100% 赢实盘资金';
+      // }
 
       if (self.isWeixin()) {
         var doc = $(document);
         var share;
 
-        if (myshow) {
+        // if (myshow) {
+        //   share = new Share({ ticket: self.order, type: 'order' });
+        // }
 
-          share = new Share({ ticket: self.order, type: 'order' });
-        }
-
-        $('#J_Success').prepend('<a class="dialog-btn share J_Share" href="javascript:">' + btnDesc + '</a>');
+        $('#J_Success').append('<a class="dialog-btn share J_Share" href="javascript:">' + btnDesc + '</a>');
 
         doc.on('click', '#J_Success .J_Share', $.proxy(function() {
           $('#J_InfoImg').css('display', 'block');
-          share && share.getInfo();
+          // share && share.getInfo();
         }, this));
 
         doc.on('tap', '#J_InfoImg', $.proxy(function() {
@@ -300,14 +286,14 @@ Base.extend(Order, PageBase, {
         var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
         // 添加分享按钮
-        $('#J_Success').prepend('<a class="dialog-btn share J_Share" href="' + l + '">' + btnDesc + '</a>');
+        $('#J_Success').append('<a class="dialog-btn share J_Share" href="' + l + '">' + btnDesc + '</a>');
 
         $('#J_Success .share').on('click', function() {
           var share;
-          if (myshow) {
-            share = new Share({ ticket: self.order, type: 'order' });
-            share && share.getInfo();
-          }
+          // if (myshow) {
+          //   share = new Share({ ticket: self.order, type: 'order' });
+          //   share && share.getInfo();
+          // }
         });
       } else {
         $('.dialog-trade').css('height', '12rem');
@@ -343,25 +329,6 @@ Base.extend(Order, PageBase, {
     var displayTime = date.Format("yyyy-MM-dd HH:mm:ss").substring(0, 10);
 
     return displayTime;
-    // now = now || new Date();
-    // var displayTime = now.Format("yyyy-MM-dd HH:mm:ss").substring(0, 10);
-    /*
-    now = now ? new Date(now) : new Date();
-    var strTime = now.toLocaleString();
-    var strYear = now.getYear();
-    var strMonth = now.getMonth();
-    var strDay = now.getDay();
-
-    var displayTime = strYear + "/" + strMonth + "/" + strDay;
-
-    if (strTime.substring(5, 6) < 10) {
-        displayTime = strTime.substring(0, 4) + "-0" + strTime.substring(5, 6) + "-" + strTime.substring(7, 9);
-    } else {
-
-        displayTime = strTime.substring(0, 4) + "-" + strTime.substring(5, 7) + "-" + strTime.substring(8, 10)
-    };
-    */
-    return displayTime;
   },
 
   _getOrder: function(type) {
@@ -394,7 +361,7 @@ Base.extend(Order, PageBase, {
       self.guadan = sta == 'pending';
 
 
-      // 20161018 王曦调整, 读到订单数据就先显示按钮, 之后再根据状态调整
+      //读到订单数据就先显示按钮, 之后再根据状态调整
 
       self.render(actionTmpl, {
         name: data.data.symbolName,
@@ -412,69 +379,63 @@ Base.extend(Order, PageBase, {
         ifAllowModify: getAllowModify()
       }, $('#footer'));
 
+      // 添加分享按钮的
+      // if (self.isWeixin()) {
+      //   var doc = $(document);
+      //   var share;
 
+      //   var myshow = !self.isDemo() && !self.guadan && getUseNewShare();
+      //   if (myshow) {
+      //     // share = new Share({ ticket: self.order, type: 'order' });
+      //   }
 
+      //   var html = '<span class="option share J_HeadShare">分享</span>';
+      //   $('#J_Header').append(html);
+      //   $('.J_HeadShare').on('click', $.proxy(function() {
+      //     $('#J_InfoImg').css('display', 'block');
+      //     // !self.guadan && new Share({ ticket: self.order, type: 'order' });
+      //     // share && share.getInfo();
+      //   }, this));
+      //   $('#J_InfoImg').on('click', $.proxy(function() {
+      //     $('#J_InfoImg').css('display', 'none');
+      //   }, this));
 
-      if (self.isWeixin()) {
-        var doc = $(document);
-        var share;
+      // } else if (Config.isAndroidAPK()) {
 
-        var myshow = !self.isDemo() && !self.guadan && getUseNewShare();
-        if (myshow) {
-          share = new Share({ ticket: self.order, type: 'order' });
-        }
+      //   var nick = '我买';
+      //   self.getAccount().then( function ( account ) {
+      //     nick = account.nickname;
+      //   } )
 
-        var html = '<span class="option share J_HeadShare">分享订单</span>';
-        $('#J_Header').append(html);
-        $('.J_HeadShare').on('click', $.proxy(function() {
-          $('#J_InfoImg').css('display', 'block');
-          // !self.guadan && new Share({ ticket: self.order, type: 'order' });
-          share && share.getInfo();
-        }, this));
-        $('#J_InfoImg').on('click', $.proxy(function() {
-          $('#J_InfoImg').css('display', 'none');
-        }, this));
-        // self.setupWeiXinShare('order');
-      } else if (Config.isAndroidAPK()) {
+      //   var title = nick + (self.orderObject.cmd.indexOf('buy') != -1 ? '涨' : '跌') + self.orderObject.symbolName + ', 你怎么看?'; // 分享标题
+      //   var desc = getWXCurrentDesWL();
+      //   var imgUrl = getWXIconWL();
 
-        var nick = '我买';
-        self.getAccount().then( function ( account ) {
-          nick = account.nickname;
-        } )
+      //   var wlUrl = '/s/order-share.html?order=',wl = Cookie.get('wl');
 
-        var title = nick + (self.orderObject.cmd.indexOf('buy') != -1 ? '涨' : '跌') + self.orderObject.symbolName + ', 你怎么看?'; // 分享标题
-        var desc = getWXCurrentDesWL(); //'点击查看详情';
-        var imgUrl = getWXIconWL(); //Config.getAndroidSharePrefix() + '/img/share.jpg';
+      //   if (  wl != 'tzyh365' ) {
+      //       wlUrl ='/' + wl + '/s/order-share.html?order=';
+      //   }
 
-        var wlUrl = '/s/order-share.html?order=',wl = Cookie.get('wl');
+      //   var link = Config.getAndroidSharePrefix() + wlUrl + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + self.orderObject.symbolName + '&invite=' + Cookie.get('inviteCode') + '&nickname=我&cmd=' + self.orderObject.cmd; // 分享链接
 
-        if (  wl != 'tzyh365' ) {
-            wlUrl ='/' + wl + '/s/order-share.html?order=';
-        }
+      //   var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
-        var link = Config.getAndroidSharePrefix() + wlUrl + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + self.orderObject.symbolName + '&invite=' + Cookie.get('inviteCode') + '&nickname=我&cmd=' + self.orderObject.cmd; // 分享链接
+      //   // 添加分享按钮
+      //   var html = '<a class="option share" href="' + l + '">分享</a>';
+      //   $('#J_Header').append(html);
 
-        var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
-
-        // 添加分享按钮
-        var html = '<a class="option share" href="' + l + '">分享订单</a>';
-        $('#J_Header').append(html);
-
-        $('#J_Header .share').on('click', function() {
-          var share;
-          if (!self.isDemo() && !self.guadan) {
-            share = new Share({ ticket: self.order, type: 'order' });
-            share && share.getInfo();
-          }
-        });
-      }
-
-
+      //   $('#J_Header .share').on('click', function() {
+      //     var share;
+      //     if (!self.isDemo() && !self.guadan) {
+      //       // share = new Share({ ticket: self.order, type: 'order' });
+      //       // share && share.getInfo();
+      //     }
+      //   });
+      // }
 
       var guadan = sta === 'pending' ? true : false;
       self.guadan = guadan;
-
-
 
       return self.ajax({
         url: '/v3/' + type + '/symbols6/',
@@ -490,8 +451,6 @@ Base.extend(Order, PageBase, {
         } catch (e) {
           self.minUnit = symbolValue.policy.min_quote_unit;
         }
-
-
 
         // self.unit = self.minUnit;
 
@@ -523,7 +482,7 @@ Base.extend(Order, PageBase, {
             }
             */
 
-            // 20161018 王曦调整, 读到订单数据就先显示按钮, 之后再根据状态调整
+            //读到订单数据就先显示按钮, 之后再根据状态调整
 
 
 
@@ -765,20 +724,11 @@ Base.extend(Order, PageBase, {
 
       curPriceInfo.usePrice = curPriceInfo.price;
 
-      // curPriceInfo.usePrice = up ? curPriceInfo.askPrice : curPriceInfo.bidPrice;
-
       self.render(infoTmpl, curPriceInfo, infoEl);
       up ? infoEl.addClass('up') : infoEl.removeClass('up');
 
       self.priceInfo = curPriceInfo;
-      /*
-      if (!self.open) {
-          openPriceInputEl.val(self.openPrice);
-          self._priceValidate({
-              currentTarget: openPriceInputEl
-          });
-      }
-      */
+
       if (self.chart) {
         self.chart.updatePlotLine(curPriceInfo.usePrice, up);
       }
@@ -794,7 +744,6 @@ Base.extend(Order, PageBase, {
       lastData[4] = curPrice;
 
       if (self.hasStatus()) {
-        // self.chart.addPoint(lastData);
         var data = self.chart.addPoint(lastData);
 
         if (data) {
@@ -822,9 +771,6 @@ Base.extend(Order, PageBase, {
       self.askPrice = price.ask_price;
       self.bidPrice = price.bid_price;
       self.price = price.bid_price;
-
-      // self.cur_price.ask_price = 
-      // self._getCloseTime();
     });
   },
 
@@ -861,10 +807,6 @@ Base.extend(Order, PageBase, {
       type = this.candleType;
     }
 
-    // if (!this.startTime) {
-    //     this._getCloseTime();
-    // }
-
     var indexMap = {
       m1: 0,
       m5: 1,
@@ -900,7 +842,6 @@ Base.extend(Order, PageBase, {
       data = data.data;
 
       var list = [];
-      // $.each(data.price, function(index, item) {
       for (var i = data.price.length - 1, count = 0; i > 0; i--) {
         var item = data.price[i];
         ++count;
@@ -922,9 +863,6 @@ Base.extend(Order, PageBase, {
       });
 
       self.lastData = list[list.length - 1];
-      // });
-
-      // console.log(list)
 
       if (self.chart) {
         var chart = self.chartInstance;
@@ -941,13 +879,17 @@ Base.extend(Order, PageBase, {
         return;
       }
 
+      // hide loding
+      self._hideLoading();
       // create the chart
       self.chart = new Chart({
         data: list,
         price: self.price,
         up: false,
         stockName: self.name,
-        selectedIndex: self.types.indexOf(type)
+        selectedIndex: self.types.indexOf(type),
+        height: '70%',
+        xLabelShow: true
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
@@ -955,29 +897,17 @@ Base.extend(Order, PageBase, {
   },
 
   _initChart: function() {
-    var self = this;
-
     this._getCandle('m30');
+  },
 
-    // setInterval(function() {
-    //     self.chartInstance.series[0].addPoint()
-    // }, 1000);
-
-    // $.getJSON('http://www.hcharts.cn/datas/jsonp.php?filename=new-intraday.json&callback=?', function(data) {
-
-
-    //create the chart
-    // self.chart = new Chart({
-    //     data: data,
-    //     upPrice: '422.33123',
-    //     downPrice: '419.79123'
-    // });
-    // });
+  _hideLoading: function() {
+    $('#J_Loading').remove();
+    $('#J_RangeContro').show();
   },
 
   _showLoad: function(curEl) {
     curEl.attr('data-name', curEl.text());
-    curEl.html('<span>处理中<span class="dialog-load"></span></span>');
+    curEl.html('<span class="loading-wrapper">处理中<span class="dialog-load"></span></span>');
   },
 
   attrs: {
@@ -989,7 +919,7 @@ Base.extend(Order, PageBase, {
       '<div class="dialog J_Dialog del-dialog " id="J_Dialog">',
       '   <span class="wrapper-icon"><span class="icon"></span></span>',
       '   <div class="dialog-content J_Content">',
-      '        <p>确认删除挂单？</p>',
+      '        <p class="title">确认删除挂单？</p>',
       '   </div>',
       '   <div class="dialog-buttons clearfix">',
       '       <span class="dialog-btn J_DialogClose">取消</span>',
@@ -1004,9 +934,3 @@ Base.extend(Order, PageBase, {
 });
 
 new Order();
-
-
-$(function() {
-  // return;
-
-});
