@@ -9,6 +9,8 @@ var entryAll = {
     'option': './src/p/option/index',
     'trade': './src/p/trade/index',
     'pro-trading': './src/p/pro-trading/index',
+    'pro-chart': './src/p/pro-chart/index',
+    'pro-list': './src/p/pro-list/index',
     'order': './src/p/order/index'
 };
 

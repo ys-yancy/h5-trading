@@ -10,34 +10,40 @@ var Util = require('../../app/util');
 export default class ChartArea extends Base {
   constructor(config) {
     super(config);
-
     this._initChart();
   }
 
   _initChart() {
     var data = this.data;
-
-    // data = this._last(data);
     this.instance = new Highcharts.StockChart({
       chart: {
-        renderTo: this.renderTo || 'J_Chart', /*this.renderTo || 'J_Chart'*/
+        renderTo: this.renderTo,
         className: 'stock-chart-area',
-        backgroundColor: '#150d22',
-        reflow: true,
-        pinchType: 'x',
-        zoomType: '',
-        panning: true
+        backgroundColor: '#fff',
+        height: '30%'
       },
 
       xAxis: {
-        // gridLineColor: '#20182d',
-        // gridLineWidth: 1,
-
-        // type: 'datetime',
-        // max: Date.now() + 3600 * 1000
-        minRange: 3600 * 1000 * 24 * 50
+        endOnTick: true,
+        gridLineColor: '#F5F5F5',
+        gridLineWidth: 1,
+        minRange: 3600 * 1000 * 24 * 50,
+        labels: {
+          enabled: false
+        }
       },
 
+      yAxis: {
+        gridLineColor: '#F5F5F5',
+        endOnTick: true,
+        gridLineWidth: 1,
+        labels: {
+          enabled: true,
+          style: {
+            fontSize: '18px',
+          }
+        }
+      },
 
       rangeSelector: {
         buttons: [{
@@ -70,7 +76,12 @@ export default class ChartArea extends Base {
           text: 'All'
         }],
         gapSize: 100,
-        selected: this.selectedIndex
+        selected: this.selectedIndex,
+        buttonTheme: {
+          style: {
+            display: 'none',
+          }
+        }
       },
 
       title: {
@@ -78,7 +89,6 @@ export default class ChartArea extends Base {
           display: 'none'
         }
       },
-      colors: ['#2dcea4'],
 
       credits: {
         enabled: false
@@ -88,38 +98,22 @@ export default class ChartArea extends Base {
       },
       navigator: {
         enabled: false
-          // series: {
-          //     data: data
-          // },
-          // adaptToUpdatedData: false
       },
-      plotOptions: {
-        candlestick: {
-          lineColor: '#27c1a7',
-          upLineColor: '#f74b47',
-          color: '#27c1a7',
-          upColor: '#f74b47',
-        }
+      scrollbar: {
+        enabled: false,
+        liveRedraw: false
       },
       series: [{
         name: 'AAPL Stock Price',
         data: data,
         type: 'area',
-        color: '#e4b52b',
+        color: '#000',
         threshold: null,
         tooltip: {
           valueDecimals: 2,
-          backgroundColor: '#dc9702'
+          backgroundColor: '#fff'
         },
         tickPixelInterval: 100,
-        // dataLabels: {
-        //     enabled: true,
-        //     borderRadius: 5,
-        //     backgroundColor: 'rgba(252, 255, 197, 0.7)',
-        //     borderWidth: 1,
-        //     borderColor: '#AAA',
-        //     y: -6
-        // },
         fillColor: {
           linearGradient: {
             x1: 0,
@@ -128,14 +122,14 @@ export default class ChartArea extends Base {
             y2: 1
           },
           stops: [
-            [0, '#2a155c'], //Highcharts.getOptions().colors[0]],
-            [1, '#160e23'] //Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            [0, '#fff'],
+            [1, '#fff']
           ]
         }
       }],
       tooltip: {
+        enabled: false,
         useHTML: true,
-        //xDateFormat: '%Y-%m-%d %H:%M:%S',
         formatter: function(e) {
           return '<p>' + this.points[0].point.y + '</p>'
         },
@@ -159,26 +153,7 @@ export default class ChartArea extends Base {
     var date = new Date(point[0]);
     var now = Date.now();
 
-    // if (now - this.prevTime < 1000) {
-    //   return;
-    // }
-
-    // self.count = self.count || 1;
-    // self.count++;
-
-
     this.prevTime = now;
-
-    // console.log(data.length, date.getMinutes(), lastDate.getMinutes())
-
-    // if (self.count % 20 !== 1) {
-    //   return;
-    // }
-    // point[0] = lastData.category + 5 * 60 * 1000;
-    // add();
-    // return;
-    // // console.log(1);
-    // // }
 
     switch (this.selectedIndex) {
       case 0:
@@ -206,17 +181,11 @@ export default class ChartArea extends Base {
     function update() {
       point[0] = lastData.x;
 
-      // console.log(lastData.y, point[1])
       lastData.update(point, true);
     }
 
     function add() {
       console.log('add', new Date().getMinutes())
-        // if (self.selectedIndex == 0 && data.length !== 99) {
-        //   // console.log(data.length)
-        //   return;
-        //   // $('.range-selector.active').trigger('tap');
-        // }
       try {
         self.instance.series[0].addPoint(point);
         self.instance.redraw();
@@ -225,61 +194,14 @@ export default class ChartArea extends Base {
 
       }
     }
-
-    // window._add = function(data) {
-    //   add(data);
-    // }
-
-    // function update() {
-    //   lastData.update(point);
-    // }
-
-    // function add() {
-    //   // [x, open, high, low, close]
-    //   var newPoint = [point];
-    //   try {
-    //     self.instance.get('dataseries').addPoint(point, false, true);
-    //     self.instance.redraw();
-
-    //     return newPoint;
-    //   } catch (e) {
-    //     console.log(e);
-
-    //   }
-    // }
   }
 
   update(list) {
-    // list = this._last(list);
-
     this.instance.series[0].setData(list);
     this.instance.hideLoading();
   }
 
   _last(data) {
-    // var last = data[data.length - 1];
-
-    // data[data.length - 1] = {
-    //     dataLabels: {
-    //         enabled: true,
-    //         align: 'right',
-    //         style: {
-    //             fontWeight: 'bold'
-    //         },
-    //         color: '#fff',
-    //         backgroundColor: 'rgba(207,151,2, .6)',
-    //         verticalAlign: 'middle',
-    //         overflow: true,
-    //         crop: false,
-    //         borderWidth: 2,
-    //         padding: 5,
-    //         textShadow: 'none'
-
-    //     },
-    //     x: last[0],
-    //     y: last[1]
-    // };
-
-    return data;
+  return data;
   }
 }

@@ -156,7 +156,6 @@ Base.extend(Chart, Base, {
             display: 'none'
         },
       },
-
       plotOptions: {
         candlestick: {
           lineColor: this.ui.downColor || '#5C9F34',
