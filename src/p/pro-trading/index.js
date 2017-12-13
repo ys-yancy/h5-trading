@@ -96,6 +96,12 @@ Base.extend(ProTrading, PageBase, {
     doc.on('tap', '.J_Add', $.proxy(this._addVolume, this));
     doc.on('tap', '.J_Minus', $.proxy(this._minusVolume, this));
 
+    doc.on('tap', '.J_AddTakeprofit', $.proxy(this._addTakeprofit, this));
+    doc.on('tap', '.J_MinusTakeprofit', $.proxy(this._minusTakeprofit, this));
+
+    doc.on('tap', '.J_AddStopLoss', $.proxy(this._addStopLoss, this));
+    doc.on('tap', '.J_MinusStopLoss', $.proxy(this._minusStopLoss, this));
+
     doc.on('tap', '.J_Unfold', $.proxy(this._unfold, this));
 
     doc.on('tap', $.proxy((e) => {
@@ -150,6 +156,114 @@ Base.extend(ProTrading, PageBase, {
 
     this.volumeEl.val(volume);
     this._updateMargin(volume);
+  },
+
+  _addTakeprofit: function(e) {
+    var profitEl = $('#J_Profit');
+    var curVal = parseFloat(profitEl.val());
+
+    if (isNaN(curVal)) {
+      return
+    }
+
+    var askPrice = this.symbolValue.quote.ask_price[0]
+    var unit = this._getSmNumLen(askPrice);
+
+    curVal = curVal.toFixed(unit);
+
+    var pip = this._getNumPip(curVal);
+    var val = Big(curVal).plus(pip);
+    profitEl.val(val.toFixed(unit));
+    profitEl.trigger('be:change');
+  },
+
+  _minusTakeprofit: function() {
+    var profitEl = $('#J_Profit');
+    var curVal = parseFloat(profitEl.val());
+
+    if (isNaN(curVal)) {
+      return
+    }
+
+    var askPrice = this.symbolValue.quote.ask_price[0]
+    var unit = this._getSmNumLen(askPrice);
+
+    curVal = curVal.toFixed(unit);
+
+    var pip = this._getNumPip(curVal);
+
+    var val = Big(curVal).minus(pip);
+    profitEl.val(val.toFixed(unit));
+    profitEl.trigger('be:change');
+  },
+
+  _addStopLoss: function() {
+    var lossEl = $('#J_Loss');
+    var curVal = parseFloat(lossEl.val());
+
+    if (isNaN(curVal)) {
+      return
+    }
+
+    var askPrice = this.symbolValue.quote.ask_price[0]
+    var unit = this._getSmNumLen(askPrice);
+
+    curVal = curVal.toFixed(unit);
+
+    var pip = this._getNumPip(curVal);
+
+    var val = Big(curVal).plus(pip);
+
+    lossEl.val(val.toFixed(unit));
+    lossEl.trigger('be:change');
+  },
+
+  _minusStopLoss: function() {
+    var lossEl = $('#J_Loss');
+    var curVal = parseFloat(lossEl.val());
+    if (isNaN(curVal)) {
+      return
+    }
+
+    var askPrice = this.symbolValue.quote.ask_price[0]
+    var unit = this._getSmNumLen(askPrice);
+
+    curVal = curVal.toFixed(unit);
+
+    var pip = this._getNumPip(curVal);
+
+    var val = Big(curVal).minus(pip);
+    lossEl.val(val.toFixed(unit));
+    lossEl.trigger('be:change');
+  },
+
+  _getNumPip: function(curVal) {
+    try {
+      var curStr = curVal.toString(),
+        smNum = curStr.split('.')[1],
+        smNumLen = smNum.length;
+
+      var basePip = '1';
+      for (var i = 0; i < smNumLen; i++) {
+        basePip += '0';
+      }
+
+      var pip = 1 / parseInt(basePip);
+      return pip;
+    } catch (e) {
+      return 0.01;
+    }
+  },
+
+  _getSmNumLen: function(curVal) {
+    var curStr = curVal.toString(),
+      smNum = curStr.split('.')[1];
+
+    if (smNum) {
+      return smNum.length;
+    }
+
+    return 2;
   },
 
   _unfold(e) {
@@ -544,8 +658,8 @@ Base.extend(ProTrading, PageBase, {
     }
 
     val = parseFloat(val);
-
-    if (Math.abs(price - val) < minOpenPriceGap * pip) {
+    // 在这里统一保留六位
+    if (parseFloat(Math.abs(price - val).toFixed(6)) < minOpenPriceGap * pip) {
       this._showError(curEl, '最小价差小于' + minOpenPriceGap);
       return;
     }
@@ -682,7 +796,8 @@ Base.extend(ProTrading, PageBase, {
 
     val = parseFloat(val);
 
-    if (Math.abs(price - val) < minOpenPriceGap * pip) {
+    // 统一保留六位
+    if (parseFloat(Math.abs(price - val).toFixed(6)) < minOpenPriceGap * pip) {
       this._showError(curEl, '最小价差小于' + minOpenPriceGap);
       return;
     }
@@ -901,6 +1016,7 @@ Base.extend(ProTrading, PageBase, {
       curEl.removeClass('close');
       profitEl[0].removeAttribute('disabled');
       profitEl.attr('placeholder', '');
+      this._setDefaultTakeprofit(profitEl);
     } else {
         curEl.addClass('close');
         profitEl.attr('disabled', true);
@@ -923,6 +1039,7 @@ Base.extend(ProTrading, PageBase, {
       curEl.removeClass('close');
       lossEl[0].removeAttribute('disabled');
       lossEl.attr('placeholder', '');
+      this._setDefaultStopLoss(lossEl);
     } else {
         curEl.addClass('close');
         lossEl.attr('disabled', true);
@@ -932,6 +1049,98 @@ Base.extend(ProTrading, PageBase, {
         // if (thuTakeprofit.hasClass('close')) {
         //   $('a.action').removeClass('unactive');
         // } 
+    }
+  },
+
+  _setDefaultTakeprofit: function(profitEl) {
+    var up = true,
+        minOpenPriceGap = this.symbolValue.policy.min_open_price_gap,
+        pip = this.symbolValue.policy.pip,
+        price = $('#J_OpenPriceInput').val(),
+        value;
+
+    var min = parseFloat(minOpenPriceGap * pip);
+    //  如果不是修改订单 默认买涨
+    if (!this.edit) {
+      price = this.guadan ? $('#J_OpenPriceInput').val() : (up ? this.askPrice : this.bidPrice);
+    }
+
+    value = parseFloat(price) + parseFloat(minOpenPriceGap * pip);
+
+    if (this.edit && this.orderObject && this.orderObject.status === 'open') {
+      if ($('.tag').length > 0 && $('.tag').text().indexOf('买跌') !== -1) {
+        up = false
+      }
+
+      if (up) {
+        price = this.bidPrice;
+        value = parseFloat(price) + min;
+      } else {
+        price = this.askPrice;
+        value = price - min;
+      }
+    }
+
+    if (this.edit && this.orderObject && this.orderObject.status === 'pending') {
+      up = this.cmd.indexOf('buy') !== -1;
+      if (up) {
+        value = parseFloat(price) + min;
+      } else {
+        value = price - min;
+      }
+    }
+
+    var unit = this._getSmNumLen(price)
+
+    if (value) {
+      profitEl.val(value.toFixed(unit));
+      profitEl.trigger('be:change');
+    }
+
+  },
+
+  _setDefaultStopLoss: function(lossEl) {
+    var up = false,
+      minOpenPriceGap = this.symbolValue.policy.min_open_price_gap,
+      pip = this.symbolValue.policy.pip,
+      price = $('#J_OpenPriceInput').val(),
+      value;
+
+    //  如果不是修改订单 默认买跌
+    if (!this.edit) {
+      price = this.guadan ? $('#J_OpenPriceInput').val() : (up ? this.askPrice : this.bidPrice);
+    }
+
+    value = parseFloat(price) - parseFloat(minOpenPriceGap * pip);
+
+    if (this.edit && this.orderObject && this.orderObject.status === 'open') {
+      if ($('.tag').length > 0 && $('.tag').text().indexOf('买涨') !== -1) {
+        up = true
+      }
+      if (up) {
+        price = this.bidPrice;
+        value = price - minOpenPriceGap * pip;
+      } else {
+        price = this.askPrice;
+        
+        value = parseFloat(price) + parseFloat(minOpenPriceGap * pip);
+      }
+    }
+
+    if (this.edit && this.orderObject && this.orderObject.status === 'pending') {
+      up = this.cmd.indexOf('buy') !== -1;
+      if (up) {
+        value = parseFloat(price) - parseFloat(minOpenPriceGap * pip);
+      } else {
+        value = parseFloat(price) + parseFloat(minOpenPriceGap * pip);
+      }
+    }
+
+    var unit = this._getSmNumLen(price)
+
+    if (value) {
+      lossEl.val(value.toFixed(unit));
+      lossEl.trigger('be:change');
     }
   },
 
