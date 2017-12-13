@@ -67,6 +67,15 @@ Base.extend(Order, PageBase, {
     doc.on('tap', '.J_RangeFn', $.proxy(this._showSelectRange, this));
     doc.on('tap', '.range-selector', $.proxy(this._selectRange, this));
 
+    doc.on('tap', $.proxy((e) => {
+      let curEl = $(e.target),
+        parentEl = curEl.parents('.bar-wrapper');
+      
+      if (curEl.hasClass('bar-wrapper') || parentEl.length > 0) {} else {
+        this._hideSelectRange();
+      }
+    }, this))
+    
     // doc.on('tap', '.J_Unfold', $.proxy(this._unfold, this));
 
   },
