@@ -24,6 +24,7 @@ export default class ChartArea extends Base {
       },
 
       xAxis: {
+        crosshair: false,
         gridLineColor: '#F5F5F5',
         endOnTick: false,
         gridLineWidth: 0,
