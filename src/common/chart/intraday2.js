@@ -24,9 +24,9 @@ export default class ChartArea extends Base {
       },
 
       xAxis: {
-        endOnTick: true,
         gridLineColor: '#F5F5F5',
-        gridLineWidth: 1,
+        endOnTick: false,
+        gridLineWidth: 0,
         minRange: 3600 * 1000 * 24 * 50,
         labels: {
           enabled: false
@@ -35,10 +35,10 @@ export default class ChartArea extends Base {
 
       yAxis: {
         gridLineColor: '#F5F5F5',
-        endOnTick: true,
+        endOnTick: false,
         gridLineWidth: 1,
         labels: {
-          enabled: true,
+          enabled: false,
           style: {
             fontSize: '18px',
           }
@@ -109,11 +109,7 @@ export default class ChartArea extends Base {
         type: 'area',
         color: '#000',
         threshold: null,
-        tooltip: {
-          valueDecimals: 2,
-          backgroundColor: '#fff'
-        },
-        tickPixelInterval: 100,
+        // tickPixelInterval: 100,
         fillColor: {
           linearGradient: {
             x1: 0,
@@ -197,7 +193,7 @@ export default class ChartArea extends Base {
   }
 
   update(list) {
-    this.instance.series[0].setData(list);
+    this.instance.series[0].setData(list, true);
     this.instance.hideLoading();
   }
 

@@ -47,7 +47,6 @@ Base.extend(ProChart, PageBase, {
     this._initAttrs();
     this._bind();
     this._initChart();
-    this._initTimeChart();
     this._initSticky();
     this._getCurPrice();
     this._getSymbol();
@@ -421,7 +420,10 @@ Base.extend(ProChart, PageBase, {
           chart.series[0].setData(list);
           chart.hideLoading();
           self.chart.selectedIndex = indexMap[type];
-
+          self.broadcast('update:chart:seriess', {
+            list: list,
+            selectedIndex: indexMap[type]
+          });
           if (refresh && self.curState == 'close') {
             self.refresh = false;
             self._getData();
@@ -439,11 +441,12 @@ Base.extend(ProChart, PageBase, {
         up: false,
         stockName: self.name,
         selectedIndex: self.types.indexOf(type),
-        height: '100%',
+        height: '110%',
         xLabelShow: false
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
+      self._initTimeChart(list, self.price, self.types.indexOf(type));
     });
   },
 
@@ -457,10 +460,12 @@ Base.extend(ProChart, PageBase, {
     this._getCandle('m30');
   },
 
-  _initTimeChart: function() {
+  _initTimeChart: function(list, price, selectedIndex) {
     this.timeChart = new TimeChart({ 
-      el: $('#J_TimeChart'), 
       parent: this, 
+      list: list,
+      price: price,
+      selectedIndex: selectedIndex,
       symbol: this.symbol, 
       unit: this.unitQuote || 2
     });

@@ -169,7 +169,7 @@ Base.extend(Chart, Base, {
         // crosshair: true,
         gridLineColor: '#F5F5F5',
         endOnTick: false,
-        gridLineWidth: 1,
+        gridLineWidth: 0,
         minRange: 3600 * 1000 * 24 * 50,
         labels: {
           enabled: xLabelShow
