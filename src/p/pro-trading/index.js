@@ -2111,7 +2111,7 @@ Base.extend(ProTrading, PageBase, {
     $('#J_RangeContro').show();
   },
 
-  _initSticky: function() {
+  _initSticky: function(search) {
     var stickyEl =$('#J_Sticky');
     // 导致浏览器crash
     if (this.edit) {
@@ -2119,7 +2119,7 @@ Base.extend(ProTrading, PageBase, {
       return;
     }
     
-    this.render(navTmpl, {}, stickyEl)
+    this.render(navTmpl, window.location.search, stickyEl)
     stickyEl.sticky();
   },
 

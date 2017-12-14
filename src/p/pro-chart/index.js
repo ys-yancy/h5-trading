@@ -479,7 +479,7 @@ Base.extend(ProChart, PageBase, {
   _initSticky: function() {
     var stickyEl =$('#J_Sticky');
     
-    this.render(navTmpl, {}, stickyEl)
+    this.render(navTmpl, window.location.search, stickyEl)
     stickyEl.sticky();
   },
 
