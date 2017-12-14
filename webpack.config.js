@@ -7,11 +7,13 @@ var entryAll = {
     'guides': './src/p/guides/index',
     'home': './src/p/home/index',
     'option': './src/p/option/index',
-    'trade': './src/p/trade/index',
     'pro-trading': './src/p/pro-trading/index',
     'pro-chart': './src/p/pro-chart/index',
     'pro-list': './src/p/pro-list/index',
-    'order': './src/p/order/index'
+    'trade': './src/p/trade/index',
+    'order': './src/p/order/index',
+    'trade-history': './src/p/trade-history/index',
+    'order-history': './src/p/order-history/index'
 };
 
 module.exports = {

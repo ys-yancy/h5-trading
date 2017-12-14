@@ -7,14 +7,13 @@ var Cookie = require('../../lib/cookie');
 var Login = require('../../common/login');
 var Util = require('../../app/util');
 var Sticky = require('../../common/sticky');
-var BottomAccount = require('../../common/bottom-account');
 var CustomerService = require('../../common/customer-service');
-
+var SildeMenu = require('../../common/slide-menu');
 var listTmpl = require('./list.ejs');
 var kindListTmpl = require('./kindList.ejs');
 var timeListTmpl = require('./timeList.ejs');
 var followListTmpl = require('./followList.ejs')
-var LiveSpeech = require('../../common/live-speech');
+// var LiveSpeech = require('../../common/live-speech');
 
 
 function TradeHistory() {
@@ -35,7 +34,6 @@ Base.extend(TradeHistory, PageBase, {
     this._requires();
     this._bind();
     this._initSticky();
-    this._setInterval();
     this.configStatistics();
 
     this.prevType = this.isDemo();
@@ -47,16 +45,14 @@ Base.extend(TradeHistory, PageBase, {
   _bind: function() {
     var doc = $(document);
 
-    // this.subscribe('get:orderList', this._getOrderList, this);
-
-    this.bottomAccount.on('toggle:account', this._toggleAccount, this);
-    this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
     doc.on('tap', '.link', $.proxy(this._linkColl, this));
     doc.on('tap', '.J_Fn', $.proxy(this._fnListShow, this));
-    // doc.on('tap', '.getKindList', $.proxy(this._getKindList, this));
-    // doc.on('tap', '.getTimeList', $.proxy(this._getTimeList, this));
     doc.on('tap', '.getFollowList', $.proxy(this._getFollowList, this));
     doc.on('tap', '.getOrderList', $.proxy(this._removeList, this));
+
+    // this.subscribe('get:orderList', this._getOrderList, this);
+    // doc.on('tap', '.getKindList', $.proxy(this._getKindList, this));
+    // doc.on('tap', '.getTimeList', $.proxy(this._getTimeList, this));
     // doc.on('tap', '.getOrderList', $.proxy(this._removeList, this));
     // $('#fnMask').on('click', _.bind(this._hideFn, this))
     //   .on('touchmove', (e) => {
@@ -88,14 +84,37 @@ Base.extend(TradeHistory, PageBase, {
       }
     });
   },
+
+  _lazyBind: function() {
+    this.bottomAccount.on('toggle:account', this._toggleAccount, this);
+    this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
+  },
+
   _hideFn: function(e) {
     e.preventDefault();
     e.stopPropagation();
     return false;
   },
+
   _fnListShow: function() {
-    $('#J_FnList').toggleClass('hide');
+    var popupEl = $('#J_FnList');
+
+    popupEl.show();
+
+    setTimeout(() => {
+      popupEl.addClass('show');
+    }, 0)
   },
+
+  _fnListHide: function() {
+    var popupEl = $('#J_FnList');
+
+    popupEl.removeClass('show');
+    setTimeout(() => {
+      popupEl.hide();
+    }, 50);
+  },
+
   _getKindList: function(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -133,7 +152,8 @@ Base.extend(TradeHistory, PageBase, {
       return;
     }
 
-    $('#J_FnList').toggleClass('hide').addClass('Kind');
+    $('#J_FnList').addClass('Kind');
+    this._fnListHide();
 
     if ( curEl.children().length > 0 ) {
       curEl.children().text('取消分组');
@@ -141,7 +161,6 @@ Base.extend(TradeHistory, PageBase, {
       curEl.text('取消分组');
     }
     
-    // $('#fnMask').toggleClass('hide');
     var containerEl = this._getContainer();
     containerEl.removeClass('timeList');
     containerEl.removeClass('kindList');
@@ -512,20 +531,6 @@ Base.extend(TradeHistory, PageBase, {
       });
     }
 
-    // $('.J_Formate.no-guadan', listEl).each(function(index, item) {
-    //     item = $(item);
-    //     var order = item.attr('data-order');
-    //     var n = 0;
-
-    //     // 发现floatMargin[order]可能为空, 另外没理解这里为什么要两个值 &&
-    //     if (floatMargin[order]) {
-    //         n = floatMargin[order].toFixed(2);
-    //     } else {
-    //         n = '--';
-    //     }
-    //     item.text(n);
-    // });
-
     this.broadcast('get:orderHistoryDetail', {
       totalTrade: totalTrade,
       total: total
@@ -731,17 +736,10 @@ Base.extend(TradeHistory, PageBase, {
       self.getFloatingProfit(data.account, data.orderList.list, data.orderList.symbols).done(function(profit, floatOption) {
         var equity = parseFloat(data.account[type].balance) + parseFloat(profit);
         var freeMargin = equity - parseFloat(data.orderList.margin);
-
-        // var rate = data.orderList.margin === 0 ? '--' : ((equity / parseFloat(data.orderList.margin)) * 100).toFixed(2);
-        // 20170227 王曦修改, 更换新的计算公式
         var margin = parseFloat(data.account[type].margin);
         var bait = parseFloat(data.account[type].bait ? data.account[type].bait : 0);
         var bonus = parseFloat(data.account[type].bonus ? data.account[type].bonus : 0);
-        // var rate = data.margin === 0 ? '--' : ((freeMargin - bonus + margin) / margin * 100).toFixed(2);
-
-        // var rate = rate === '--' ? '--' : parseFloat(rate);
-
-        // 20170302 王曦修改公式
+       
         var rate;
         if (data.margin == 0) {
           rate = '--';
@@ -774,12 +772,17 @@ Base.extend(TradeHistory, PageBase, {
     }, self.getIntervalTime());
   },
   _requires: function() {
+    var self = this;
     // this.login = new Login();
 
-    this.bottomAccount = new BottomAccount({
+    this.slideMenu = new SildeMenu({
+      el: $('#J_SlideMenu'),
       page: 'history'
+    }).on('get:bottomAccount', function(bottomAccount) {
+      self.bottomAccount = bottomAccount;
+      self._lazyBind();
+      self._setInterval();
     });
-
     // new CustomerService();
   },
 

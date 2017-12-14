@@ -4,8 +4,10 @@
         <% if(item.closeType && item.closeType.indexOf('margin_check') !== -1) {%>
         <span class="margin_checkItem">强制平仓</span>
         <%}%>
-        <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
         <div class="name-wrapper">
+            <p class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>">
+                <%= (item.cmd.indexOf('buy') !== -1) ? '买涨' : '买跌' %>
+            </p>
             <p class="name"><%= item.symbolName %></p>
             <p><%= item.symbol %></p>
         </div>
