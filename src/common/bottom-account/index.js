@@ -311,6 +311,7 @@ export default class BottomAccount extends PageBase {
 	    	this._render(data);
 	    	return;
 	    }
+	    
 		this.renderX(this.floatProfitEl, data.profit);
 	    this.renderX(this.freeMarginEl, data.freeMargin);
 	    this.renderX(this.rateEl, data.rate);
