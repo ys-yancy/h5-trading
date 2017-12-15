@@ -11,12 +11,23 @@ export default class Chart extends PageBase {
   constructor(config) {
     super(config);
 
-    this._getCandle('m5');
+    this._getCandle('m30');
     this._bind();
   }
 
   _bind() {
-    this.el.on('click', '.range-selector', $.proxy(this._selectRange, this));
+
+    this.el.on('tap', '.J_RangeFn', $.proxy(this._showSelectRange, this));
+    this.el.on('tap', '.range-selector', $.proxy(this._selectRange, this));
+
+    $(document).on('tap', $.proxy((e) => {
+      let curEl = $(e.target),
+        parentEl = curEl.parents('.bar-wrapper');
+      
+      if (curEl.hasClass('bar-wrapper') || parentEl.length > 0) {} else {
+        this._hideSelectRange();
+      }
+    }, this))
 
     this.subscribe('update:chart', (priceInfo) => {
       var up = priceInfo.askPrice / 2 + priceInfo.bidPrice / 2 - this.getClose() > 0 ? true : false;
@@ -38,26 +49,38 @@ export default class Chart extends PageBase {
 
   _selectRange(e) {
     var curEl = $(e.currentTarget),
-      index = curEl.index(),
-      buttonEls = document.getElementsByClassName('highcharts-button'),
-      buttonEl = $(buttonEls[index]);
-    if (curEl.hasClass('active') || index === 0) {
-      return;
-    }
+      parentEl = curEl.parents('.rangeSelector-wrapper'),
+      curValEl = $('.J_CurRange', parentEl),
+        index = curEl.index();
 
     var types = this.types;
-    var type = types[index - 1];
+    var type = types[index];
 
-    try {
-      this.chartInstance && this.chartInstance.showLoading();
-    } catch (e) {
-      console.log(e);
-      this.chart = null;
-    }
     this._getCandle(type, true);
 
+    this.chartInstance && this.chartInstance.showLoading();
     curEl.addClass('active');
     curEl.siblings().removeClass('active');
+    curValEl.text(curEl.text());
+    this._hideSelectRange();
+  }
+
+  _showSelectRange() {
+    var popupEl = $('#J_RangeList');
+
+    popupEl.show();
+    setTimeout(() => {
+      popupEl.addClass('show');
+    }, 0)
+  }
+
+  _hideSelectRange() {
+    var popupEl = $('#J_RangeList');
+
+    popupEl.removeClass('show');
+    setTimeout(() => {
+      popupEl.hide();
+    }, 50);
   }
 
   _getCandle(type, refresh) {
@@ -190,7 +213,7 @@ export default class Chart extends PageBase {
   defaults() {
     return {
       symbol: 'XTICNH',
-      types: ['m1', 'm5', 'm15', 'm30', 'h1'] //['m1', 'm5', 'm15', 'm30', 'h1', 'd1']
+      types: ['m1', 'm5', 'm15', 'm30', 'h1', 'd1']
     };
   }
 }
