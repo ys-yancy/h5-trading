@@ -5,7 +5,7 @@ var Config = require('../../../../app/config');
 var Toast = require('../../../../common/toast');
 var CountP = require('./progress');
 var N = Config.getStep();
-
+require('./range.js');
 export default class Progress extends Base {
   constructor(config) {
     super();
@@ -23,21 +23,25 @@ export default class Progress extends Base {
 
 
     this.countP._progress(per);
+    this.initSingleSlider(defaultCon)
+  }
 
-    // progress.option.defaultMon = defaultCon;
-    // progress.init();
+  initSingleSlider(defaultCon) {
+    $('.single-slider').jRange({
+      from: 0,
+      to: 1000,
+      step: 5,
+      width: '12rem',
+      showLabels: false,
+      showScale: false,
+      onstatechange: this.setVal
+    });
+
+    $('.single-slider').jRange('setValue', 500);
   }
 
   setVal(p) {
-    progress.option.stopDraw = false;
-    progress.reDraw(p);
-  }
-
-  getProgress(val) {
-    this.countP._progress(val);
-
-    progress.option.dMaxMoney = this.countP.getMax2();
-    progress.reDraw(parseInt($('#money').val(), 5));
+   console.log(p)
   }
 
   investNum() {
