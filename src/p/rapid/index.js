@@ -70,8 +70,9 @@ class Rapid extends Base {
   _bind() {
     this.subscribe('account:did:update', (e) => {
       $('.J_NetDeposit').text(e.netDeposit.toFixed(2) + '' || '--');
+
       if (!this.accountData) {
-        this.progress = new Progress({ freeMargin: e.freeMargin });
+        this.progress = new Progress({ freeMargin: e.freeMargin, netDeposit: e.netDeposit });
       }
       this.accountData = e;
 

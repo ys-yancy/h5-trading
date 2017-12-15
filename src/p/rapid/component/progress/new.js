@@ -5,14 +5,14 @@ var Config = require('../../../../app/config');
 var Toast = require('../../../../common/toast');
 var CountP = require('./progress');
 var N = Config.getStep();
-require('./range.js');
+var Slider = require('../../../../common/range-slider/new.js');
 export default class Progress extends Base {
   constructor(config) {
     super();
 
     this.countP = new CountP({
       parent: this,
-      freeMargin: 17765 //config.freeMargin,
+      freeMargin: config.netDeposit,
     });
 
     var defaultCon = Config.getRapidDefaultInv();
@@ -20,28 +20,25 @@ export default class Progress extends Base {
     var min = this.countP.getMin2();
     var per = (defaultCon - min) / (max - min);
 
-
-
     this.countP._progress(per);
-    this.initSingleSlider(defaultCon)
+    this.initSingleSlider(defaultCon, config.netDeposit)
   }
 
-  initSingleSlider(defaultCon) {
-    $('.single-slider').jRange({
-      from: 0,
-      to: 1000,
-      step: 5,
-      width: '12rem',
-      showLabels: false,
-      showScale: false,
-      onstatechange: this.setVal
-    });
-
-    $('.single-slider').jRange('setValue', 500);
+  initSingleSlider(defaultCon, netDeposit) {
+    netDeposit = parseInt(netDeposit);
+    this.slider = new Slider({
+      el: $('.single-slider'),
+      valEl: $('#money'),
+      defaultVal: defaultCon,
+      config: {
+        to: netDeposit,
+        step: N
+      }
+    })
   }
 
   setVal(p) {
-   console.log(p)
+   this.slider.setVal(p);
   }
 
   investNum() {

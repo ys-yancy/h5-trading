@@ -1,4 +1,4 @@
-require('./data.js');
+require('./zepto-data.js');
 (function($, window, document, undefined) {
 	'use strict';
 
