@@ -149,6 +149,7 @@ export default class Chart extends PageBase {
         return;
       }
 
+      $('#J_Loading').remove();
       // create the chart
       self.chart = new CandleChart({
         data: list,

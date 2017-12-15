@@ -478,8 +478,13 @@ Base.extend(ProChart, PageBase, {
 
   _initSticky: function() {
     var stickyEl =$('#J_Sticky');
-    
-    this.render(navTmpl, window.location.search, stickyEl)
+    var isRapid = Cookie.get('tradingUI') == 6;
+    var chartUrl = isRapid ? './rapid.html' : 'pro-trading.html';
+    this.render(navTmpl, {
+      search: window.location.search,
+      source: window.location.pathname,
+      chartUrl: chartUrl
+    }, stickyEl)
     stickyEl.sticky();
   },
 
