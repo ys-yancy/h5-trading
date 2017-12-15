@@ -2,18 +2,19 @@
 
 var Base = require('../../app/base');
 var PageBase = require('../../app/page-base');
-
-var Chart = require('../../common/chart/index');
-var Sticky = require('../../common/sticky');
 var Uri = require('../../app/uri');
 var Util = require('../../app/util');
 var Config = require('../../app/config');
+var Chart = require('../../common/chart/index');
+var Sticky = require('../../common/sticky');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
+// var LiveSpeech = require('../../common/live-speech');
+
 var infoTmpl = require('./info.ejs');
 var orderTmpl = require('./order.ejs');
-var LiveSpeech = require('../../common/live-speech');
-var Share = require('../pro-trading/share');
+
+// var Share = require('../pro-trading/share');
 
 
 function OrderHistory() {
@@ -35,7 +36,7 @@ Base.extend(OrderHistory, PageBase, {
     this._checkStatus();
     this.configStatistics();
 
-    new LiveSpeech();
+    // new LiveSpeech();
   },
 
   mix: [CandleRefresh, MarqueeTitle],
@@ -43,8 +44,19 @@ Base.extend(OrderHistory, PageBase, {
   _bind: function() {
     var doc = $(document);
 
-    doc.on('tap', '.J_Unfold', $.proxy(this._unfold, this));
+    // doc.on('tap', '.J_Unfold', $.proxy(this._unfold, this));
+
+    doc.on('tap', '.J_RangeFn', $.proxy(this._showSelectRange, this));
     doc.on('tap', '.range-selector', $.proxy(this._selectRange, this));
+
+    doc.on('tap', $.proxy((e) => {
+      let curEl = $(e.target),
+        parentEl = curEl.parents('.bar-wrapper');
+      
+      if (curEl.hasClass('bar-wrapper') || parentEl.length > 0) {} else {
+        this._hideSelectRange();
+      }
+    }, this))
     
     // 添加默认微信分享
     if (this.isWeixin()) {
@@ -53,62 +65,61 @@ Base.extend(OrderHistory, PageBase, {
 
   },
 
-  _unfold: function(e) {
-    var curEl = $(e.currentTarget);
+  // _unfold: function(e) {
+  //   var curEl = $(e.currentTarget);
 
-    if (curEl.hasClass('unfold')) {
-      curEl.removeClass('unfold');
-      this.containerEl.removeClass('unfold');
-      //this.chartContainerEl.show();
-    } else {
-      curEl.addClass('unfold');
-      this.containerEl.addClass('unfold');
-      //this.chartContainerEl.hide();
-    }
+  //   if (curEl.hasClass('unfold')) {
+  //     curEl.removeClass('unfold');
+  //     this.containerEl.removeClass('unfold');
+  //     //this.chartContainerEl.show();
+  //   } else {
+  //     curEl.addClass('unfold');
+  //     this.containerEl.addClass('unfold');
+  //     //this.chartContainerEl.hide();
+  //   }
+  // },
+
+  _showSelectRange: function() {
+    var popupEl = $('#J_RangeList');
+
+    popupEl.show();
+    setTimeout(() => {
+      popupEl.addClass('show');
+    }, 0)
+  },
+
+  _hideSelectRange: function() {
+    var popupEl = $('#J_RangeList');
+
+    popupEl.removeClass('show');
+    setTimeout(() => {
+      popupEl.hide();
+    }, 50);
   },
 
   _selectRange: function(e) {
     var curEl = $(e.currentTarget),
-      index = curEl.index(),
-      buttonEls = document.getElementsByClassName('highcharts-button'),
-      buttonEl = $(buttonEls[index]);
+      parentEl = curEl.parents('.rangeSelector-wrapper'),
+      curValEl = $('.J_CurRange', parentEl),
+        index = curEl.index();
 
-    var types = ['m1', 'm5', 'm15', 'm30', 'h1', 'd1'];
+    var types = this.types;
     var type = types[index];
-    this._getCandle(type);
 
+    this._getCandle(type, true);
 
-    this.chartInstance.showLoading();
-    // buttonEl.trigger('click');
-    // if (this.chart && this.chart.instance.rangeSelector.selected === index) {
+    this.chartInstance && this.chartInstance.showLoading();
     curEl.addClass('active');
     curEl.siblings().removeClass('active');
-    // }
-
-  },
-
-  _initAttrs: function() {
-    var doc = $(document);
-    var params = new Uri().getParams();
-
-    this.name = params.name;
-    this.symbol = params.symbol;
-    this.price = parseFloat(params.price);
-    this.order = params.order;
-    this.unit = params.unit ? params.unit : params.price;
-
-
-    this.setTitle(this.name);
-
-    // 是否绘制开仓平仓价格线
-    this.drawPriceLines = false;
+    curValEl.text(curEl.text());
+    this._hideSelectRange();
   },
 
   _shareOrder: function() {
 
     // 显示隐藏的图片
     $('#J_InfoImg').css('display', 'block');
-    new Share({ ticket: this.order, type: 'order' });
+    // new Share({ ticket: this.order, type: 'order' });
   },
 
   _checkStatus: function() {
@@ -198,9 +209,10 @@ Base.extend(OrderHistory, PageBase, {
         }
         price.unit = unit;
 
+        self._setCacheCurPrice(price);
         // 定时刷新逻辑
         if (interval) {
-          self._setCacheCurPrice(price);
+          // self._setCacheCurPrice(price);
           return price;
         }
 
@@ -229,29 +241,6 @@ Base.extend(OrderHistory, PageBase, {
       }
     });
   },
-
-  // _getData: function() {
-  //     var self = this,
-  //         symbol = this.symbol,
-  //         date = this._getNowDateFormate(self.closeTime);
-
-  //     this.ajax({
-  //         url: 'http://price.invhero.com/v1/price/candle?',
-  //         data: {
-  //             id: symbol,
-  //             tf: 'd1',
-  //             start_time: date
-  //         },
-  //         unjoin: true
-  //     }).then(function(data) {
-  //         data = data.data;
-  //         try {
-  //             var price = data.price[0];
-  //             price.price = self.price;
-  //             self.render(infoTmpl, price, $('#J_Info'));
-  //         } catch (e) {}
-  //     });
-  // },
 
   // 实时刷新价格
   _getCurPrice: function(interval) {
@@ -480,7 +469,7 @@ Base.extend(OrderHistory, PageBase, {
           if (myshow) {
             desc = '分享订单';
 
-            share = new Share({ ticket: self.order, type: 'order' });
+            // share = new Share({ ticket: self.order, type: 'order' });
           }
 
           var html = '<span class="option share">分享订单</span>';
@@ -490,7 +479,7 @@ Base.extend(OrderHistory, PageBase, {
             // 显示隐藏的图片
             $('#J_InfoImg').css('display', 'block');
             // myshow && new Share({ ticket: self.order, type: 'order' });
-            share && share.getInfo();
+            // share && share.getInfo();
           });
           $('#J_InfoImg').on('click', $.proxy(function() {
             $('#J_InfoImg').css('display', 'none');
@@ -526,8 +515,8 @@ Base.extend(OrderHistory, PageBase, {
           $('#J_Header .share').on('click', function() {
             var share;
             if (myshow) {
-              share = new Share({ ticket: self.order, type: 'order' });
-              share && share.getInfo();
+              // share = new Share({ ticket: self.order, type: 'order' });
+              // share && share.getInfo();
             }
           });
         }
@@ -537,9 +526,9 @@ Base.extend(OrderHistory, PageBase, {
       data.data.allProfit = parseFloat(data.data.profit) + parseFloat(data.data.swap || 0) - parseFloat(data.data.commission || 0);
 
       self.render(orderTmpl, data.data, $('#J_Container'));
-      if(data.data.closeType === '强制平仓'){
-        $('#J_Info').before('<div class="margin_checkItem">该订单被强制平仓，由于交易过程中您账户保证金比例低于100%</div>'); 
-      }
+      // if(data.data.closeType === '强制平仓'){
+      //   $('#J_Info').before('<div class="margin_checkItem">该订单被强制平仓，由于交易过程中您账户保证金比例低于100%</div>'); 
+      // }
     });
   },
 
@@ -628,24 +617,12 @@ Base.extend(OrderHistory, PageBase, {
         return a[0] > b[0] ? 1 : -1;
       });
       self.lastData = list[list.length - 1];
-      // $.each(data.price, function(index, item) {
-      //     list.push([
-      //         new Date(item.beijing_time).getTime(),
-      //         item.open,
-      //         item.high,
-      //         item.low,
-      //         item.close
-      //     ]);
-      // });
-
-      // console.log(list)
 
       if (self.chart) {
         var chart = self.chartInstance;
 
 
         // chart.series
-
         chart.series[0].setData(list);
 
         chart.hideLoading();
@@ -654,12 +631,16 @@ Base.extend(OrderHistory, PageBase, {
         return;
       }
 
+      // hide loding
+      self._hideLoading();
       // create the chart
       self.chart = new Chart({
         data: list,
         price: self.price,
         up: false,
-        stockName: self.name
+        stockName: self.name,
+        height: '70%',
+        xLabelShow: true
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
@@ -670,21 +651,28 @@ Base.extend(OrderHistory, PageBase, {
     var self = this;
 
     this._getCandle('m30');
+  },
 
-    // setInterval(function() {
-    //     self.chartInstance.series[0].addPoint()
-    // }, 1000);
+  _hideLoading: function() {
+    $('#J_Loading').remove();
+    $('#J_RangeContro').show();
+  },
 
-    //$.getJSON('http://www.hcharts.cn/datas/jsonp.php?filename=new-intraday.json&callback=?', function(data) {
+  _initAttrs: function() {
+    var doc = $(document);
+    var params = new Uri().getParams();
+
+    this.name = params.name;
+    this.symbol = params.symbol;
+    this.price = parseFloat(params.price);
+    this.order = params.order;
+    this.unit = params.unit ? params.unit : params.price;
 
 
-    //create the chart
-    // self.chart = new Chart({
-    //     data: data,
-    //     upPrice: '422.33123',
-    //     downPrice: '419.79123'
-    // });
-    //});
+    this.setTitle(this.name);
+
+    // 是否绘制开仓平仓价格线
+    this.drawPriceLines = false;
   },
 
   attrs: {

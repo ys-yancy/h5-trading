@@ -1,19 +1,19 @@
-<div class="cur-wrapper">
+<!-- <div class="cur-wrapper">
     <p id="J_CurPrice">
         <% if (data.usePrice || data.price) { %>
-            <%= data.usePrice || data.price  %><!-- / <%= data.askPrice %> -->
+            <%= data.usePrice || data.price  %>
         <% } else { %> -- <% } %>
     </p>
     <span class="range" id="J_Range"><%= data.price === undefined ? '--' :  (data.price - data.close).toFixed(data.unit) %></span>
     <span class="range-percent" id="J_RangePercent"><%= data.price === undefined ? '--' : ((data.price- data.close) /data.close * 100).toFixed(2) %>%</span>
-</div>
+</div> -->
 <div class="detail-wrapper">
-    <div>
-        <span class="open-price">今开:<%= data.open === undefined ? '--' : data.open.toFixed(data.unit) %></span>
+    <div class="item">     
         <span class="highest-price" id="J_Highest">最高:<%= data.high === undefined ? '--' : data.high.toFixed(data.unit)  %></span>
-    </div>
-    <div>
-        <span class="close-price">昨收:<%= data.close === undefined ? '--' : data.close.toFixed(data.unit)  %></span>
         <span class="lowest-price" id="J_Lowest">最低:<%= data.low === undefined ? '--' : data.low.toFixed(data.unit)  %></span>
+    </div>
+    <div class="item">
+        <span class="close-price">昨收:<%= data.close === undefined ? '--' : data.close.toFixed(data.unit)  %></span>
+        <span class="open-price">今开:<%= data.open === undefined ? '--' : data.open.toFixed(data.unit) %></span>
     </div>
 </div>

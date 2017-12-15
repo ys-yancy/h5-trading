@@ -113,6 +113,15 @@ Base.extend(Order, PageBase, {
     }, 0)
   },
 
+  _hideSelectRange: function() {
+    var popupEl = $('#J_RangeList');
+
+    popupEl.removeClass('show');
+    setTimeout(() => {
+      popupEl.hide();
+    }, 50);
+  },
+
   _selectRange: function(e) {
     var curEl = $(e.currentTarget),
       parentEl = curEl.parents('.rangeSelector-wrapper'),

@@ -1,109 +1,115 @@
 <li class="item price-info">
-    <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+    <div>
+        <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
         <%= data.status === 'rejected' ? '失败' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
-        <!-- <%= data.cmd === 'sell' ? '买跌' : (data.cmd === 'buy' ? '买涨' : '挂单' ) %> -->
+        <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+            <%= data.symbolName %>
+        </span>
     </span>
-    <div class="price-wrapper">
-        <!-- <span class="sign"></span> -->
-        <!-- <%= parseFloat(data.allProfit) < 0 ? '-' : '+' %><%= Math.abs(data.allProfit) %> -->
-        <%= parseFloat(data.allProfit).toFixed(2) %>
-        <span class="currency">美元</span>
+    </div>
+    <div class="right price-wrapper">
+        <span class="currency">$</span>
+        <span id="J_FloatProfit"><%= parseFloat(data.allProfit).toFixed(2) %></span>
     </div>
 </li>
 <li class="item clearfix">
     <div>
-        <p class="name">交易量（手）：</p>
-        <p><%= data.volume %></p>
+        <span class="name">交易手数</span>
+        <span><%= data.volume %></span>
     </div>
-    <div>
-        <p class="name">交易利润（$）：</p>
-        <p><%= parseFloat(data.profit).toFixed(2) %></p>
+    <div class="right">
+        <span class="name">交易利润($)</span>
+        <span><span id="J_FloatProfitTrading"><%= parseFloat(data.profit).toFixed(2) %></span></span>
     </div>
 </li>
 <li class="item clearfix">
     <div>
-        <p class="name">开仓价格：</p>
-        <p><%= data.openPrice %></p>
+        <span class="name">开仓价格</span>
+        <span><%= data.openPrice %></span>
     </div>
-    <div>
-        <p class="name">平仓价格：</p>
+    <div class="right">
+        <span class="name">平仓价格：</span>
         
         <% if(data.closePrice) { %>   
-            <p><%= data.closePrice %></p>
+            <span><%= data.closePrice %></span>
         <% } else { %>
-            <p>--</p>
+            <span>--</span>
         <% } %>
     </div>
 </li>
 <li class="" id="J_More" style="">
     <ul>
-        <li class="item clearfix time-wrapper">
-            <div>
-                <p class="name">开仓时间：</p>
-                <p class="time"><%= data.openTime.split(' ')[0] %></p>
-                <p class="time"><%= data.openTime.split(' ')[1] %></p>
-            </div>
-            <div class="">
-                <p class="name">平仓时间：</p>
-                <% if(data.closeTime) { %>   
-                    <p class="time"><%= data.closeTime.split(' ')[0] %></p>
-                    <p class="time"><%= data.closeTime.split(' ')[1] %></p>
-                <% } else { %>
-                    <p>--</p>
-                <% } %>
-            </div>
-        </li>
         <li class="item clearfix">
             <div>
-                <p class="name">止盈价格：</p>
-                <p><%= parseFloat(data.takeProfit) === 0 ? '--' : data.takeProfit %></p>
+                <span class="name">隔夜利息($)</span>
+                <span><%= data.swap %></span>
             </div>
-            <div>
-                <p class="name">止损价格：</p>
-                <p><%= parseFloat(data.stopLoss) === 0 ? '--' : data.stopLoss %></p>
-            </div>
-        </li>
-        
-        <li class="item clearfix">
-            <div>
-                <p class="name">订单号：</p>
-                <p><%= data.ticket %></p>
-            </div>
-            <div>
-                <p class="name">平仓方式：</p>
-                <% if (data.status == 'rejected') { %> 
-                    <p>挂单失败取消</p>
-                <% } else { %> 
-                    <p><%= data.closeType %></p>
-                <% } %>
+            <div class="right">
+                <span class="name">手续费($)</span>
+                <span><%= data.commission %></span>
             </div>
         </li>
 
         <li class="item clearfix">
             <div>
-                <p class="name">隔夜利息差（$）：</p>
-                <p><%= data.swap %></p>
+                <span class="name">止盈价格</span>
+                <span><%= parseFloat(data.takeProfit) === 0 ? '--' : data.takeProfit %></span>
             </div>
-            <div>
-                <p class="name">手续费（$）：</p>
-                <p><%= data.commission %></p>
+            <div class="right">
+                <span class="name">止损价格</span>
+                <span><%= parseFloat(data.stopLoss) === 0 ? '--' : data.stopLoss %></span>
             </div>
         </li>
+
         <li class="item clearfix">
             <div>
-                <p class="name">跟随自：</p>
-                <p>
+                <span class="name">订单号</span>
+                <span><%= data.ticket %></span>
+            </div>
+            <div class="right">
+                <span class="name">平仓方式</span>
+                <% if (data.status == 'rejected') { %> 
+                    <span>挂单失败取消</span>
+                <% } else { %> 
+                    <span><%= data.closeType %></span>
+                <% } %>
+            </div>
+        </li>
+
+        <li class="item clearfix time-wrapper">
+            <div>
+                <span class="name">开仓时间</span>
+                <span class="time"><%= data.openTime.split(' ')[0] %></span>
+                <span class="time"><%= data.openTime.split(' ')[1] %></span>
+            </div>
+        </li>
+
+        <li class="item clearfix time-wrapper">
+            <div>
+                <span class="name">平仓时间</span>
+                <% if(data.closeTime) { %>   
+                    <span class="time"><%= data.closeTime.split(' ')[0] %></span>
+                    <span class="time"><%= data.closeTime.split(' ')[1] %></span>
+                <% } else { %>
+                    <span>--</span>
+                <% } %>
+            </div>
+        </li>
+       <!--  <li class="item clearfix">
+            <div>
+                <span class="name">跟随自：</span>
+                <span>
                     <% if (data.follow_from_ticket) { %>
                         <a href="./my/profile.html?inviteCode=<%= data.follow_from_invite_code %>&from=<%=encodeURIComponent(location.href) %>"><%= data.follow_from_nickname %></a>
                     <% } else { %>
                         --
                     <% } %>
-                </p>
+                </span>
             </div>
             <div>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
             </div>
-        </li>
+        </li> -->
     </ul>
 </li>
