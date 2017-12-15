@@ -2,8 +2,9 @@
 
 var PageBase = require('../../../../app/page-base');
 var Util = require('../../../../app/util');
-var CandleChart = require('../../../../common/chart/new');
+var CandleChart = require('../../../../common/chart');
 var CandleRefresh = require('../../../../common/candle-refresh');
+var TimeChart = require('./time-new.js');
 
 @Util.mixin(CandleRefresh)
 export default class Chart extends PageBase {
@@ -30,36 +31,9 @@ export default class Chart extends PageBase {
       this.lastData[2] = this.lastData[2] < curPrice ? curPrice : this.lastData[2];
       this.lastData[3] = this.lastData[3] > curPrice ? curPrice : this.lastData[3];
       this.lastData[4] = curPrice;
-
       this.chart.addPoint(this.lastData);
+      this.broadcast('update:time:new:chart', priceInfo);
     });
-
-
-    this.subscribe('addpoint:chart', (lastData) => {
-      this.chart.addPoint(lastData);
-    });
-
-    this.subscribe('switch:symbol', (e) => {
-      if (e.symbol !== this.symbol) {
-        // this.chart = null;
-        // $('#J_Chart').html('')
-        this.change(e.symbol);
-      }
-    });
-  }
-
-  change(symbol, askPrice, bidPrice) {
-    this.symbol = symbol;
-
-    this._getCandle('m5', true).then(() => {
-      var up = askPrice / 2 + bidPrice / 2 - this.getClose() > 0 ? true : false;
-      this.chart && this.chart.updatePlotLine(bidPrice, up, this.chartInstance);
-    });
-
-    $('.range-selector', this.el).removeClass('active');
-    $($('.range-selector', this.el)[0]).addClass('active');
-
-
   }
 
   _selectRange(e) {
@@ -71,8 +45,6 @@ export default class Chart extends PageBase {
       return;
     }
 
-
-
     var types = this.types;
     var type = types[index - 1];
 
@@ -83,10 +55,6 @@ export default class Chart extends PageBase {
       this.chart = null;
     }
     this._getCandle(type, true);
-
-    // if (this.chart) {
-    //   this.chart.selectedIndex = index;
-    // }
 
     curEl.addClass('active');
     curEl.siblings().removeClass('active');
@@ -110,7 +78,7 @@ export default class Chart extends PageBase {
       m15: 15 * 60,
       m30: 30 * 60,
       h1: 60 * 60,
-      // d1: 24 * 60 * 60
+      d1: 24 * 60 * 60
     };
 
     var indexMap = {
@@ -119,7 +87,7 @@ export default class Chart extends PageBase {
       m15: 2,
       m30: 3,
       h1: 4,
-      // d1: 5
+      d1: 5
     };
 
     return this.ajax({
@@ -127,7 +95,6 @@ export default class Chart extends PageBase {
       dateType: 'jsonp',
       data: {
         id: this.symbol,
-        //start_time: Util.formateTime((this.startTime || Date.now()) - (map[type] * 1000 * 50), "yyyy-MM-dd HH:mm:ss"),
         tf: type,
         group_name: Cookie.get('type') == 'real' ? Cookie.get('real_group') : Cookie.get('demo_group')
       },
@@ -159,14 +126,7 @@ export default class Chart extends PageBase {
       });
 
       self.chartData = list;
-      // list = list.slice()
-      // if (list.length <= 50) {
-      //   list = list;
-      // } else {
-      //   list = list.slice(list.length - 50);
-      // }
-
-
+    
       self.lastData = list[list.length - 1];
 
 
@@ -177,10 +137,12 @@ export default class Chart extends PageBase {
           chart.series[0].setData(list);
           chart.hideLoading();
           self.chart.selectedIndex = indexMap[type];
-
+          self.broadcast('update:chart:seriess', {
+            list: list,
+            selectedIndex: indexMap[type]
+          });
           if (refresh && self.curState == 'close') {
             self.refresh = false;
-            // self._getData();
           }
         } catch (e) {}
 
@@ -193,12 +155,26 @@ export default class Chart extends PageBase {
         price: self.price,
         up: false,
         stockName: self.name,
-        selectedIndex: self.types.indexOf(type)
+        selectedIndex: self.types.indexOf(type),
+        height: '90%',
+        xLabelShow: false
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
 
       self.chart.updatePlotLine(self.bidPrice, self.up);
+      self._initTimeChart(list, self.price, self.types.indexOf(type));
+    });
+  }
+
+  _initTimeChart(list, price, selectedIndex) {
+    this.timeChart = new TimeChart({ 
+      parent: this, 
+      list: list,
+      price: price,
+      selectedIndex: selectedIndex,
+      symbol: this.symbol, 
+      unit: this.unitQuote || 2
     });
   }
 

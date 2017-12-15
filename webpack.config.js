@@ -7,6 +7,7 @@ var entryAll = {
     'guides': './src/p/guides/index',
     'home': './src/p/home/index',
     'option': './src/p/option/index',
+    'rapid': './src/p/rapid/index',
     'pro-trading': './src/p/pro-trading/index',
     'pro-chart': './src/p/pro-chart/index',
     'pro-list': './src/p/pro-list/index',

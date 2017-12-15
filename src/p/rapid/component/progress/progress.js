@@ -9,25 +9,13 @@ export default class Progress extends Base {
   constructor(config) {
     super(config);
 
-    // this.progressInnerEl = $('.J_ProgressInner');
-    // this.width = this.progressInnerEl.width();
-    // this.offsetLeft = $('.J_Progress').offset().left;
-    // this.parentWidth = this.progressInnerEl.parent().width();
-    // this.investNumEl = $('.J_InvestNum');
-    // this.investMaxEl = $('.J_InvestMax');
     this.investProfitEl = $('.J_ProfitNum');
 
-    // this.policy = config.policy;
-    // this.price = config.price;
-
     this._bind();
-    // this._setProgress(.5);
   }
 
   _bind() {
     var doc = $(document);
-
-    // doc.on('touchmove', '.J_ProgressInner', $.proxy(this._update, this));
 
     doc.on('touchstart', '.J_Add', $.proxy(this._add, this));
     doc.on('touchstart', '.J_Minus', $.proxy(this._minus, this));
@@ -52,16 +40,10 @@ export default class Progress extends Base {
       if (this.freeMargin < 5) {
         this.investProfitEl.text('--');
       } else {
-        //var a = e.detail * (1 - Config.getConmissionRate()) % 1 == 0 ? e.detail * (1 - Config.getConmissionRate()) + ".0" : e.detail * (1 - Config.getConmissionRate());
         this.investProfitEl.text(e.detail);
         $('#money').val(e.detail);
       }
-      // console.log(this.curPer);
     });
-
-    // this.investProfitEl.on('blur', (e) => {
-    //   this.change($(e.currentTarget).val());
-    // })
   }
 
   change(val) {
@@ -90,10 +72,6 @@ export default class Progress extends Base {
       val = val - val % Config.getStepX();
     }
 
-    // console.log(val);
-
-
-
     var per = (val - min) / (max - min);
     if (!per && per !== 0) {
       per = 1;
@@ -101,10 +79,6 @@ export default class Progress extends Base {
 
     this._progress(per);
     this.parent.setVal(parseInt(this.investNum, 10));
-    // this.investProfitEl.text(parseInt(this.investNum, 10));
-    // this.parent.setVal(count);
-    // this._setProgress(per);
-
   }
 
   _add(e) {
@@ -113,15 +87,13 @@ export default class Progress extends Base {
 
 
     if (invest.num + Config.getStepX() <= invest.max) {
-      // var per = (invest.num + Config.getStepX() - invest.min) / (invest.max - invest.min);
       this.curPer = (invest.num + Config.getStepX() - invest.min) / (invest.max - invest.min);
 
       var count = invest.num + Config.getStepX();
       this.investNum = count;
 
-      // this._setProgress(per);
       this.parent.setVal(count);
-      //this.investProfitEl.text(count);
+
     } else {
       new Toast('超过最大投资金额');
     }
@@ -135,9 +107,9 @@ export default class Progress extends Base {
       this.curPer = (invest.num - Config.getStepX() - invest.min) / (invest.max - invest.min);
       var count = invest.num - Config.getStepX();
       this.investNum = count;
-      // this._setProgress(per);
+
       this.parent.setVal(count);
-      // this.investProfitEl.text(count);
+
     } else {
       new Toast('小于最小投资金额');
     }
@@ -153,19 +125,6 @@ export default class Progress extends Base {
     var min = this.getMin2();
 
     var investNum = +(((max - min) * this.curPer + min).toFixed(2));
-    // var N = 5;
-    // var x = Math.floor(this.investNum / 5);
-    // var y = this.investNum % 5;
-    // var x = Math.floor(this.investNum / N);
-    // var y = this.investNum / N;
-
-    // if (y < 2.5) {
-    //   var investNum = x * N;
-    // } else {
-    //   var investNum = (x + 1) * N;
-    // }
-
-
 
     return {
       num: investNum,
@@ -207,28 +166,7 @@ export default class Progress extends Base {
     var min = this.getMin2();
     this.curPer = per;
 
-    // if (per === 1) {
-    //   this.investMaxEl.parent().show();
-    // } else {
-    //   this.investMaxEl.parent().hide();
-    // }
-
     this.investNum = ((max - min) * per + min).toFixed(2);
-
-   
-    // console.log(max, min, per, (max - min) * per + min);
-    // // 每次步长为N
-    // var N = Config.getStepX();
-    // var x = Math.floor(this.investNum / Config.getStepX());
-    // var y = this.investNum % Config.getStepX();
-
-    // if (y < 2.5) {
-    //   this.investNum = x * N;
-    // } else {
-    //   this.investNum = (x + 1) * N;
-    // }
-
-    // this.investMaxEl.text(max.toFixed(2));
 
     if (this.freeMargin < 5) {
 

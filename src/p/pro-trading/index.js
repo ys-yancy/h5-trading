@@ -2119,7 +2119,7 @@ Base.extend(ProTrading, PageBase, {
       return;
     }
     
-    this.render(navTmpl, window.location.search, stickyEl)
+    this.render(navTmpl, window.location.search, $('#J_Sticky'))
     stickyEl.sticky();
   },
 
