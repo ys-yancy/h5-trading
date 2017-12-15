@@ -36,7 +36,6 @@ export default class Progress extends Base {
 
       this.curPer = (e.detail - invest.min) / (invest.max - invest.min);
       this.investNum = e.detail;
-
       if (this.freeMargin < 5) {
         this.investProfitEl.text('--');
       } else {

@@ -21,7 +21,7 @@ class RangeSilder extends Base {
 
 	setVal(val) {
 		this.curVal = val;
-		this.el.jRange('setValue', val)
+		this.el.jRange('setValue', val);
 	}
 
 	updateRange(vals) {
@@ -33,8 +33,13 @@ class RangeSilder extends Base {
 	}
 
 	_setVal(val) {
-		this.curVal = val;
-		this.valEl && this.valEl.val(val);
+		// this.curVal = val;
+		// this.valEl && this.valEl.val(val);
+		var event = new CustomEvent('change:investnum', {
+      		detail: val
+    	});
+
+    	document.dispatchEvent(event);
 	}
 
 	defaults() {

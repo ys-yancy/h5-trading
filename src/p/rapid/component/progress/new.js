@@ -38,7 +38,7 @@ export default class Progress extends Base {
   }
 
   setVal(p) {
-   this.slider.setVal(p);
+    this.slider.setVal(p);
   }
 
   investNum() {

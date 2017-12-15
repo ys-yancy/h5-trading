@@ -89,7 +89,7 @@ export default class Order extends Base {
       askPrice: parseFloat(this.props.askPrice),
       bidPrice: parseFloat(this.props.bidPrice)
     }, up);
-
+    
     // getParams2 需要单独计算volume
     var self = this;
     this.getPipValue(this.props.symbolValue.policy, {
