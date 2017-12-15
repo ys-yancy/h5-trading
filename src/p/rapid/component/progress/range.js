@@ -102,7 +102,7 @@ require('./data.js');
 		},
 		onDrag: function(pointer, e) {
 			e.stopPropagation();
-			e.preventDefault();
+			// e.preventDefault();
 
 			if (e.touches && e.touches.length) {
 				e = e.touches[0];
