@@ -7,6 +7,7 @@ var Base = require('../../app/base');
 var Config = require('../../app/config');
 var Cookie = require('../../lib/cookie');
 var Sticky = require('../../common/sticky');
+var SildeMenu = require('../../common/slide-menu');
 var CreateMiniChart = require('./chart/mini-line');
 var tmpl = require('./index.ejs.html');
 
@@ -25,6 +26,10 @@ Base.extend(MasterList, Base, {
     this._bind();
     this._initSticky();
 		this._getData();
+    new SildeMenu({
+      el: $('#J_SlideMenu'),
+      page: 'option'
+    })
 	},
 
   _bind: function() {

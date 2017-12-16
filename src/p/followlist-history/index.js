@@ -4,6 +4,7 @@ var Base = require('../../app/base');
 var Config = require('../../app/config');
 var Cookie = require('../../lib/cookie');
 var Sticky = require('../../common/sticky');
+var SildeMenu = require('../../common/slide-menu');
 var tmpl = require('./index.ejs');
 
 function FollowList() {
@@ -19,6 +20,10 @@ Base.extend(FollowList, Base, {
 	_init: function() {
 		this._initSticky();
 		this._getData();
+    new SildeMenu({
+      el: $('#J_SlideMenu'),
+      page: 'option'
+    })
 	},
 
     _updateGendanList: function() {
