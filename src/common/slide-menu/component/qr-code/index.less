@@ -1,0 +1,57 @@
+@import '../../../../variable.less';
+.selfQrCode-dialog{
+	.width(690);
+	.margin-left(-345);
+	top: 15%;
+	.us-info{
+		.font-size(38);
+		.padding(30, 0);
+		.us-img-wrapper{
+			.width(170);
+			.height(170);
+			float: left;
+			.border-radius(50%);
+			.margin-right(30);
+			overflow: hidden;
+			.us-img{
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+		}
+		.us-name{
+			.margin-top(20);
+		}
+	}
+	.us-code-wrapper{
+		position: relative;
+		.padding(30, 0, 0, 0);
+		.us-qrcode-inner{
+			position: relative;
+			.width(500);
+			.height(500);
+			margin: 0 auto;
+			overflow: hidden;
+			.us-qr-img{
+				width: 100%;
+				height: 100%;
+			}
+			.us-dialog-load{
+				position: absolute;
+				margin: auto;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				border-color: #ccc;
+				border-bottom-color: transparent;
+			}
+		}
+		.us-qr-desc{
+			.line-height(100);
+			text-align: center;
+			.font-size(26);
+			.margin-top(50);
+		}
+	}
+}

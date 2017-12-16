@@ -1,0 +1,15 @@
+<div class="dialog J_Dialog selfQrCode-dialog " id="J_Dialog">
+   <div class="us-info clearfix">
+     <div class="us-img-wrapper">
+        <img class="us-img" src="<%= data.avatar %>">
+     </div>
+     <p class="us-name"><%= data.name %></p>
+   </div>
+   <div class="us-code-wrapper">
+     <div class="us-qrcode-inner" id="J_UsQrcodeWrap">
+        <span class="us-dialog-load dialog-load"></span>
+     </div>
+     <p class="us-qr-desc">微信扫描二维码,接受用户<span><%= data.name %></span>的邀请</p>
+   </div>
+</div>
+<div class="dialog-mask J_DialogMask" id="J_USQrCodeMask"></div>

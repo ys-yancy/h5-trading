@@ -6,6 +6,7 @@ import PageBase from '../../app/page-base';
 import Dialog from '../dialog';
 import BottomAccount from '../bottom-account';
 import RedeemCode from './component/redeem-code';
+import UsQrCode from './component/qr-code';
 import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
 	constructor(config) {
@@ -148,6 +149,10 @@ export default class SlideMenu extends PageBase {
 			nameEl.text(account.nickname);
 			phoneEl.text(account.phone);
 			avatarEl.prop('src', avatarUrl);
+			new UsQrCode({
+				avatar: avatarUrl,
+				name: account.nickname
+			})
 		})
 	}
 
