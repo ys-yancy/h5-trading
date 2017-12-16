@@ -14,7 +14,9 @@ var entryAll = {
     'trade': './src/p/trade/index',
     'order': './src/p/order/index',
     'trade-history': './src/p/trade-history/index',
-    'order-history': './src/p/order-history/index'
+    'order-history': './src/p/order-history/index',
+    'master-list': './src/p/master-list/index',
+    'my-followlist': './src/p/my-followlist/index'
 };
 
 module.exports = {
