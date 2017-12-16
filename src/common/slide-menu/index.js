@@ -5,6 +5,7 @@ import Config from '../../app/config';
 import PageBase from '../../app/page-base';
 import Dialog from '../dialog';
 import BottomAccount from '../bottom-account';
+import RedeemCode from './component/redeem-code';
 import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
 	constructor(config) {
@@ -175,6 +176,8 @@ export default class SlideMenu extends PageBase {
 	    this.bottomAccount.show();
 	    this.bottomAccount.interval();
 	    this.fire('get:bottomAccount', this.bottomAccount);
+
+	    new RedeemCode();
 	}
 
 	_render() {
