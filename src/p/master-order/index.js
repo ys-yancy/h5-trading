@@ -280,7 +280,7 @@ Base.extend(FollowOrder, PageBase, {
          
           var html = '<span class="followOrder share">分享</span>';
 
-          $('#J_Header').append(html);
+          // $('#J_Header').append(html);
 
           self.setupWeiXinShare('superior');
           
@@ -308,7 +308,7 @@ Base.extend(FollowOrder, PageBase, {
 
           // 添加分享按钮
           var html = '<a class="option share" href=' + l + '>分享</a>';
-          $('#J_Header').append(html);
+          // $('#J_Header').append(html);
         }
       });
 	},

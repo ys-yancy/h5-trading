@@ -1,11 +1,13 @@
 <div class="follow-action-outer">
 	<div class="follow-action-inner">
-		<div class="hd">
+		<div class="hd ui header-inner">
+			<span class="go-back"></span>
 			<h2>设置跟随资金</h2>
 			<span class="close J_CloseFollow"></span>
 		</div>
 		<div class="bd">
 			<section>
+				<h3 class="title">设置跟随资金</h3>
 				<p>设置跟随该高手所使用的资金， 您的跟随交易量会使用此资金和高手余额的比例进行等比计算.</p>
 				<p>左侧是该高手的最低起跟资金，右侧是您可以投入的跟随资金.</p>
 				<!-- <p></p> -->
@@ -22,8 +24,8 @@
 			<%if (data.isNoMonery) {%>
 				<a class="btn follow-recharge J_FollowRecharge" href="./recharge.html">马上增加资金</a>
 			<%} else {%>
-				<button class="btn start J_StartFollow">开始跟随</button>
 				<button class="btn more-set J_MoreSetting">更多设置</button>
+				<button class="btn start J_StartFollow">开始跟随</button>
 			<%}%>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <div class="follow-setting-inner">
-	<div class="hd">
+	<div class="hd ui header-inner">
 		<h2>跟单参数配置</h2>
 		<span class="close J_CloseFollow"></span>
 	</div>
@@ -34,7 +34,7 @@
 			<section>
 				<p>设置跟随每单的交易量与Ta的每单交易量的关系</p>
 			</section>
-			<div class="controller">
+			<div class="controller center-contro">
 				<input class="text-input J_ValRatio" value="<%= data.vol_ratio %>" type="text" name="" 
 					<%= data.follow_mode == 'fix_volume_ratio' ? '' : 'disabled' %>>倍
 			</div>
@@ -62,7 +62,9 @@
 			</div>
 			<div class="controller">
 				<span class="slip-desc">设置跟随每单的成交价格与Ta的每单成交价格的关系 </span>
-				<input class="text-input J_Slippage" value="<%=data.slippage%>" type="text" name="">点
+				<p class="center-contro">
+					<input class="text-input J_Slippage" value="<%=data.slippage%>" type="text" name="">点
+				</p>
 			</div>
 		</div>
 		<div class="set-wrapper follow-direction-setting J_FollowDirectionSetting">

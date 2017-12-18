@@ -304,7 +304,7 @@ class FollowAction extends PageBase {
 			defaultCon.isNoMonery = false;
 			defaultCon.minMonery = 0;
 		}
-
+		defaultCon.isNoMonery = false;
 		defaultCon.freeMargin = freeMargin;
 	    defaultCon.min = this.follower_balance_threshold;
 		this.config_follow_action = defaultCon;

@@ -7,8 +7,10 @@
 				</div>
 			</div>
 			<div class="desc-wrapper  clearfix">
-				<p class="name"><%= data.name %></p>
-				<p class="account">实盘</p>
+				<div class="name-account">
+					<p class="name"><%= data.name %></p>
+					<p class="account">实盘</p>
+				</div>
 				<p class="years">
 					持续投资<span class="num J_Day"><%= data.trade_days %></span>天
 				</p>
@@ -17,7 +19,7 @@
 		<div class="hd-body">
 			<div>
 				<div class="item left follow-person">
-					<p class="desc">跟随Ta</p>
+					<p class="desc">跟随人数</p>
 					<p class="num J_FollowPersonNum"><%= data.follow_users %></p>
 				</div>
 				<div class="item center follow-amount">
@@ -65,7 +67,7 @@
 			</div>
 		</div>
 		<div class="footer btn-wrapper">
-			<button class="btn J_Attention <%= isWatched ? 'hidden' : '' %>">关注榜单</button>
+			<!-- <button class="btn J_Attention <%= isWatched ? 'hidden' : '' %>">关注榜单</button> -->
 			<button class="btn J_CancelAttention <%= !isWatched ? 'hidden' : '' %>">取消关注</button>
 			
 			<button class="btn J_Follow <%= isFollow ? 'hidden' : '' %>">自动跟单</button>
