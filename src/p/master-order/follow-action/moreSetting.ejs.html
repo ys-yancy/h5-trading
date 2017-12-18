@@ -9,9 +9,9 @@
 			<div class="title">
 				<span class="desc">按跟随资金下单</span>
 				<span class="radio-wrapper J_Radio <%= data.follow_mode == 'follow_amount_ratio' ? 'active' : '' %>">
-					<span class="radio">
+					<!-- <span class="radio">
 						<span class="radio-inner"></span>
-					</span>
+					</span> -->
 				</span>
 			</div>
 			<section>
@@ -26,9 +26,9 @@
 			<div class="title">
 				<span class="desc">按固定倍数下单</span>
 				<span class="radio-wrapper J_Radio <%= data.follow_mode == 'fix_volume_ratio' ? 'active' : '' %>">
-					<span class="radio">
+					<!-- <span class="radio">
 						<span class="radio-inner"></span>
-					</span>
+					</span> -->
 				</span>
 			</div>
 			<section>
@@ -92,14 +92,14 @@
 		</div>
 		<div class="set-wrapper remind-wrapper">
 			<div class="remind-form-wrapper">
+				<span>跟随订单开仓提醒(微信模板消息)</span>
 				<input class="check-input J_OpenOrderWeixin" type="checkbox" name=""
 					<%= data.open_order_weixin_notify == 1 ? 'checked' : '' %>>
-				<span>跟随订单开仓提醒(微信模板消息)</span>
 			</div>
 			<div class="remind-form-wrapper">
+				<span>跟随订单平仓提醒(微信模板消息)</span>
 				<input class="check-input J_CloseOrderWeixin" type="checkbox" name=""
 					<%= data.close_order_weixin_notify == 1 ? 'checked' : '' %>>
-				<span>跟随订单平仓提醒(微信模板消息)</span>
 			</div>
 		</div>
 	</div>
