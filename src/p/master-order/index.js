@@ -296,10 +296,10 @@ Base.extend(FollowOrder, PageBase, {
           var desc = getWXHistoricalDesWL(); //'点击查看详情'; 
           var imgUrl = self.profileObject.avatar || getWXIconWL(); 
           var wl = Cookie.get('wl'),
-          	wl_url = '/s/follow-order.html?expertId=';
+          	wl_url = '/s/master-order.html?expertId=';
 
           if ( wl != 'tzyh365' ) {
-              wl_url = '/' + wl + '/s/follow-order.html?expertId=';
+              wl_url = '/' + wl + '/s/master-order.html?expertId=';
           }
 
           var link = Config.getAndroidSharePrefix() + wl_url + self.profileObject.expertId; // 分享链接

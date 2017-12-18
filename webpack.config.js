@@ -16,6 +16,7 @@ var entryAll = {
     'trade-history': './src/p/trade-history/index',
     'order-history': './src/p/order-history/index',
     'master-list': './src/p/master-list/index',
+    'master-order': './src/p/master-order/index',
     'followlist': './src/p/followlist/index',
     'followlist-history': './src/p/followlist-history/index'
 };

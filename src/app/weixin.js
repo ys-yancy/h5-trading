@@ -257,7 +257,7 @@ module.exports = {
             i = avatar || getWXIconWL();
             t = '我是高手详情';
             d = '我是高手详情';
-            l = getWXDomainWL() + '/s/follow-order.html?expertId=' + self.profileObject.expertId;
+            l = getWXDomainWL() + '/s/master-order.html?expertId=' + self.profileObject.expertId;
         }
 
         // 邀请好友页面
