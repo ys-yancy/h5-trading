@@ -18,6 +18,7 @@ var entryAll = {
     'master-list': './src/p/master-list/index',
     'master-order': './src/p/master-order/index',
     'followlist': './src/p/followlist/index',
+    'follow-order': './src/p/follow-order/index',
     'followlist-history': './src/p/followlist-history/index'
 };
 

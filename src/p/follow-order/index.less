@@ -1,53 +1,42 @@
+@import '../../base.less';
 @import '../../variable.less';
-html, 
-body {
-    background: #fff;
+.rotateanimate();
+.reset-placeholder();
+
+header{
+  .width(750);
+  background: #F2F2F2;
+  .header-inner{
+    position: relative;
+      .height(88);
+      .line-height(88);
+      .font-size(38);
+      text-align: center;
+      position: relative;
+      .go-back,
+      .attribute-trigger {
+        position: absolute;
+        .width(44);
+        .height(44);
+        .top(22);
+        background: red;
+      }
+      .go-back{
+        .left(30);
+      }
+      .attribute-trigger{
+        .right(30);
+      }
+  }
 }
-
-.dialog-ios8();
-
-.icon {
-    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
-    .background-size(400, 1500);
-}
-
-header {
-    .width(640);
-    overflow: hidden;
-    .header-inner {
-        position: relative;
-        .height(88);
-        .line-height(88);
-        .font-size(36);
-        text-align: center;
-        background: #967bdc;
-        color: #fff;
-        .go-back {
-            position: absolute;
-            .left(18);
-            .top(22);
-            .width(49);
-            .height(44);
-            .icon {
-                display: block;
-                .width(23);
-                .height(40);
-                .background-position(0, -435);
-            }
-        }
-    }
-}
-
 .content{
     width: 100%;
-    .font-size(26);
+    .font-size(28);
     .follow-order-wrapper{
-        .width(640);
-        background: #fff;
-        color: #807691;
+        .width(750);
         .hd{
-           .hd-header{
-                .padding(40);
+            .hd-header{
+                .padding(30);
                 overflow: hidden;
                 .img-wrapper-outer{
                     .width(120);
@@ -65,40 +54,39 @@ header {
                 }
                 .desc-wrapper{
                     .line-height(40);
+                    .name-account{
+                        .margin(12, 0);
+                    }
                     .name{
-                        .width(300);
+                        display: inline-block;
+                        .width(130);
+                        .font-size(32);
                         .line-hide();
+                        vertical-align: middle;
                     }
                     .account{
                         display: inline-block;
                         .width(63);
                         .height(30);
                         .line-height(30);
-                        .font-size(24);
                         text-align: center;
-                        color: #967BDC;
-                        border: 1px solid #967BDC;
+                        vertical-align: middle;
+                        .border(1, solid, #967BDC);
                     }
                     .num{
-                        color: #967BDC;
                         .margin(0,5);
                     }
                 }
             }
             .hd-body{
+                .padding-bottom(20);
                 &>div{
                     .height(100);
                     .padding(10, 0);
-                    .padding-left(60);
+                    .padding-left(50);
                     .item{
                         display: inline-block;
                         width: 32%;
-                        .num{
-                            // .font-size(26);
-                        }
-                        .desc{
-                            .font-size(22);
-                        }
                     }
                     .left{
                         float: left;
@@ -109,30 +97,32 @@ header {
                 }
             }
         }
-        nav{
-            background: #F2F3F7;
-            ul{
-                display: flex;
-                display: -webkit-flex;
-                justify-content: space-around;
-                align-items: center;
-                li{
-                    position: relative;
-                   .height(70);
-                   .line-height(70);
-                    &.active{
-                        color: #68449f;
-                        &:after{
-                            position: absolute;
-                            visibility: visible;
-                            .width(126);
-                            .height(4); 
-                            .bottom(0);
-                            .left(-12);
-                            background: #68449f;
-                        }
-                    }
-                }
+        nav {
+            .width(750);
+            .height(78);
+            background: #F2F2F2;
+            border-bottom: 1px solid #E6E6E6;
+            li {
+              position: relative;
+              float: left;
+              .width(375);
+              display: block;
+              .height(78);
+              .line-height(78);
+              .font-size(32);
+              text-align: center;
+              &.active {
+                  &:before {
+                      position: absolute;
+                      bottom: 0;
+                      .left(0);
+                      .width(375);
+                      .height(4);
+                      font-size: 0;
+                      background: #3583DE;
+                      content: '';
+                  }
+              }
             }
         }
         .bd{
@@ -141,12 +131,6 @@ header {
                 width: 100%;
                 overflow-x: hidden;
                 overflow-y: scroll;
-                .loading{
-                    display: block;
-                    width: 100%;
-                    text-align: center;
-                    .padding(50, 0);
-                }
             }
         }
         .footer{
@@ -168,8 +152,8 @@ header {
                 // border: none;
                 // color: #fff;
                 // background: #3AB9E6;
-                 .btn(180, 54, 50, 4, 4, 28,#3AB9E6);
-                .font-size(24);
+                 // .btn(180, 54, 50, 4, 4, 28,#3AB9E6);
+                .font-size(32);
                 &.J_Attention,
                 &.J_CancelAttention,
                 &.J_ReviseSetting {
@@ -203,7 +187,7 @@ header {
                     .line-height(24);
                     .bottom(0);
                     .left(0);
-                   .font-size(18);
+                   .font-size(24);
                 }
                 .pau{
                     position: absolute;
