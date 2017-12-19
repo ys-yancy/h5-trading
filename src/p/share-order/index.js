@@ -344,7 +344,7 @@ class ShareOrder extends PageBase {
           var inv = new Uri().getParams().invite;
 
           // var desc = inv ? '查看投资人信息' : '查看更多订单';
-          var desc = inv ? '查看投资人信息' : '马上交易';
+          var desc = inv ? '查看投资人信息' : '马上跟投';
 
 
 
@@ -383,9 +383,9 @@ class ShareOrder extends PageBase {
           var per = profit < 0 ? 0 : (profit / (2 * this.margin));
           per = per >= 2 ? 1 : per;
 
-          $('.profit-margin').css({
-            width: per * 100 + '%'
-          });
+          // $('.profit-margin').css({
+          //   width: per * 100 + '%'
+          // });
         }
       });
     }).fail(function() {});
