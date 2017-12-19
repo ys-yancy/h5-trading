@@ -117,6 +117,7 @@ class ShareOrder extends PageBase {
       }
       $('#J_Img').attr('src', avatar);
       if (data.month_rate_of_return === undefined && data.gross_profit === undefined) {
+        $('#J_BtData').hide()
         $('.J_ProfitNum').hide().siblings('.title').append('<p style="color:#01BDF1">Ta不想让别人看到</p>');
       }
       $('.J_ProfitNum').text(parseInt(data.month_rate_of_return * 100) + '%');
