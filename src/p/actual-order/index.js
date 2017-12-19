@@ -3,6 +3,8 @@ var Base = require('../../app/base');
 var Cookie = require('../../lib/cookie');
 var Config = require('../../app/config');
 var Util = require('../../app/util');
+var sticky = require('../../common/sticky');
+var SildeMenu = require('../../common/slide-menu');
 var tmpl = require('./index.ejs');
 
 function ActualOrder() {
@@ -15,7 +17,12 @@ function ActualOrder() {
 Base.extend(ActualOrder, Base, {
 	_init: function() {
 		this._bind();
+		this._initSticky();
 		this._getData();
+		new SildeMenu({
+	      el: $('#J_SlideMenu'),
+	      page: 'option'
+	    })
 	},
 
 	_bind: function() {
@@ -215,6 +222,10 @@ Base.extend(ActualOrder, Base, {
 			type: this.curIndex ? 'all' : 'follow',
 			limit: 8
 		}
+	},
+
+	_initSticky: function() {
+		$('#J_Header').sticky()
 	},
 
 	defaults: function() {
