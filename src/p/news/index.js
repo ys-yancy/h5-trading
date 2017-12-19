@@ -2,6 +2,7 @@
 'use strict';
 var Base = require('../../app/base');
 var Util = require('../../app/util');
+var SildeMenu = require('../../common/slide-menu');
 var Sticky = require('../../common/sticky');
 var tmpl = require('./index.ejs');
 function News() {
@@ -17,6 +18,10 @@ Base.extend(News, Base, {
 		this._getData();
 		this._setInterval();
 		this._initSticky();
+		new SildeMenu({
+	      el: $('#J_SlideMenu'),
+	      page: 'option'
+	    })
 	},
 
 	_bind: function() {
