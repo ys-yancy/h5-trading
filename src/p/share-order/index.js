@@ -47,16 +47,13 @@ class ShareOrder extends PageBase {
         herfUrl = getNewShareWl() + uid;
       }
       // 邀请注册的链接白标化
-      $('.bottom .link').attr('href', herfUrl).text('马上注册, 就可以跟投Ta赚钱');
-      // this.getToken('', true).then(() => {
+      $('.bottom .link').attr('href', herfUrl).text('马上注册 跟投赚钱');
       this._init();
-      // });
     } else {
       this.anony = false;
       this._init();
     }
 
-    // this._getProfit();
   }
 
   _init() {
@@ -76,7 +73,6 @@ class ShareOrder extends PageBase {
 
   _bind() {
     var doc = $(document);
-
     doc.on('tap', '.tab-nav', $.proxy(this._switch, this));
   }
 
@@ -87,13 +83,11 @@ class ShareOrder extends PageBase {
     var tabNavContainerEls = $('.tab-nav');
 
     if (index === 0) {
-      // $('.active').removeClass('second');
       $(tabNavContainerEls[0]).addClass('active');
       $(tabNavContainerEls[1]).removeClass('active');
       $(tabContentEls[0]).show();
       $(tabContentEls[1]).hide();
     } else {
-      // $('.active').addClass('second');
       $(tabNavContainerEls[0]).removeClass('active');
       $(tabNavContainerEls[1]).addClass('active');
       $(tabContentEls[0]).hide();
@@ -110,7 +104,6 @@ class ShareOrder extends PageBase {
         access_token: this.cookie.get('token') || ''
       }
     }).then((data) => {
-      console.log(data);
       data = data.data;
 
       $('#J_Name').text(data.nick_name);
@@ -147,30 +140,9 @@ class ShareOrder extends PageBase {
 
       this.takeProfit = parseFloat(data.takeProfit);
       this.stopLoss = parseFloat(data.stopLoss);
-      // if (!takeProfit) {
-      //   this._takeProfit(takeProfit);
-      // }
-
-      // $('.J_Price').text(data.openPrice);
       self.unit = data.mini_quote_unit;
       this.margin = data.margin;
       self._setInterval();
-
-      // // // 增加微信分享
-      // // if (self.isWeixin()) {
-      // //   var doc = $(document);
-
-      // //   var html = '<a class="option share">分享订单</a>';
-      // //   $('#J_Header').append(html);
-
-      // //   doc.on('tap', '#J_Header .share', $.proxy(function() {
-      // //     $('#J_InfoImg').css('display', 'block');
-      // //   }, this));
-
-      // //   doc.on('tap', '#J_InfoImg', $.proxy(function() {
-      // //     $('#J_InfoImg').css('display', 'none');
-      // //   }, this));
-      // }
 
       // 已平仓订单
       if (data.status == 'closed') {
@@ -254,7 +226,6 @@ class ShareOrder extends PageBase {
       else if (data.status == 'open' || data.status == 'pending') {
         // 我也要下单
         // $('#J_Open').css('display', 'block');
-        console.log(data)
         self.render(orderTmpl, data, $('#container-hd'));
 
         if (self.isWeixin()) {
@@ -296,7 +267,7 @@ class ShareOrder extends PageBase {
             self.setupWeiXinShare('order');
           });
         }
-        // 王曦代码位置
+
         this._getProfit();
       }
 
@@ -304,9 +275,9 @@ class ShareOrder extends PageBase {
 
       setTimeout(() => {
         if (this.orderObject.status !== 'pending') {
-          $('.margin-progress').css({
-            width: '50%'
-          });
+          // $('.margin-progress').css({
+          //   width: '50%'
+          // });
         }
 
       }, 300);
@@ -394,14 +365,6 @@ class ShareOrder extends PageBase {
   }
 
   _takeProfit(volume) {
-
-
-
-    // this.core.getOrder().then((data) => {
-    //   console.log(data);
-    // });
-
-
     this._getSymbol().then((symbolValue) => {
       return this.calMoney(session.get('group'), symbolValue, parseFloat(this.orderObject.volume), this.orderObject.openPrice, this.stopLoss, this.takeProfit).then((price) => {
         // var fixed = Math.round(1 / self.symbolValue.policy.min_quote_unit).toString().length - 1;
@@ -419,13 +382,6 @@ class ShareOrder extends PageBase {
 
           }
           $('.link').text(desc);
-          // if (!this.anony) {
-          //   $('.link').text(desc);
-          // } else {
-          //   $('.link').text(' 有机会盈利')
-          // }
-
-
 
           var per = profit < 0 ? 0 : (profit / (2 * this.margin));
           per = per >= 2 ? 1 : per;
@@ -459,10 +415,10 @@ class ShareOrder extends PageBase {
       var per = floatProfit < 0 ? 0 : (floatProfit / (2 * this.margin));
       per = per >= 2 ? 2 : per;
 
-      $('.float-profit').css({
-        width: per * 100 + '%'
-      })
-      console.log($('.J_FloatProfit'))
+      // $('.float-profit').css({
+      //   width: per * 100 + '%'
+      // })
+
       $('.J_FloatProfit').text(floatProfit.toFixed(2))
         // console.log(floatProfit);
 
@@ -513,9 +469,9 @@ class ShareOrder extends PageBase {
         var per = floatProfit < 0 ? 0 : (floatProfit / (2 * this.margin));
         per = per > 2 ? 2 : per;
 
-        $('.float-profit').css({
-          width: per * 100 + '%'
-        });
+        // $('.float-profit').css({
+        //   width: per * 100 + '%'
+        // });
       });
 
       if (self._getCacheCurPrice()) {
@@ -595,21 +551,8 @@ class ShareOrder extends PageBase {
         var up = price.price - price.close > 0 ? true : false;
 
         self.priceInfo = price;
-        // self.render(infoTmpl, price, infoEl);
-        // up ? infoEl.addClass('up') : infoEl.removeClass('up');
 
         self.orderObject && self._setInterval();
-      }
-
-      // 当天无价格
-      if (!price && yesterdayPrice) {
-        // var up = true; // 默认上涨
-        // self.render(infoTmpl, {
-        //   close: yesterdayPrice.close,
-        //   up: true
-        // }, infoEl);
-
-        // up ? infoEl.addClass('up') : infoEl.removeClass('up');
       }
     });
   }
@@ -619,16 +562,6 @@ class ShareOrder extends PageBase {
     var displayTime = date.Format("yyyy-MM-dd HH:mm:ss").substring(0, 10);
 
     return displayTime;
-  }
-
-
-  _setUser(account) {
-    // $('#J_Name').text(account.nickname);
-
-    // if (account.avatar) {
-    //   var avatar = Config.getAvatarPrefix(account.avatar);
-    //   $('#J_Img').attr('src', avatar);
-    // }
   }
 
   _initAttrs() {
@@ -645,13 +578,6 @@ class ShareOrder extends PageBase {
     this.inviteCode = params.invite;
 
     var linkEl = $('#J_ProfileLink');
-
-    /*
-    if (params.from) {
-      $('.go-back').attr('href', params.from);
-      $('#J_Header').show();
-    }
-    */
 
     if (!this.inviteCode) {
       return;

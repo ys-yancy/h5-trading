@@ -28,8 +28,8 @@ export default class ChartArea extends Base {
         zoomType: '',
         panning: true,
         spacing: [10, 10, 10, 10],
-        width: $(window).width(),
-        height: parseFloat($('html').css('font-size')) * 8
+        width: '100%',//$(window).width(),
+        height: '100%'//parseFloat($('html').css('font-size')) * 8
           // width: $(window).width(),
           // height: 150
           // height: this.height

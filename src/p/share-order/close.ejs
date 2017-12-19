@@ -1,33 +1,35 @@
  <div class="hd<% if(data.status === 'closed') {%> has-close <%}%>">
+  <p>
    <% if(data.status === 'closed') {%>
      <span class="close">已平仓</span>
    <% } %>
    <span class="tag <% if (data.status === 'pending') {%> guadan <%}%><% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>"><%= data.status === 'pending' ? (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') + '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
   </span>
-  <h2><span><%= data.symbolName %></span></h2>
+  <span><%= data.symbolName %></span>
+  </p>
   <!--<span class="category"><%= data.symbolCategory %></span>-->
 </div>
 <% goal = parseFloat(data.takeProfit) ; %>
 <div class="status-wrapper">
     <span class="sign">$</span>
     <span class="num"><%= data.profitInAll %></span>
-    <span class="status">盈利</span>
+    <!-- <span class="status">盈利</span> -->
 </div>
 
 <div class="order-status clearfix">
-  <div class="left">
+  <div class="right">
     <div class="progress" id="J_CircleProgress"></div>
   </div>
-  <div class="right">
+  <div class="left">
     <ul>
       <li class="item clearfix">
-        <span class="title">开仓时间：</span>
-        <p><%= data.openTime.split(' ')[0] %></p>
-        <p><%= data.openTime.split(' ')[1] %></p>
+        <span class="title">开仓时间</span>
+        <span><%= data.openTime.split(' ')[0] %></span>
+        <span><%= data.openTime.split(' ')[1] %></span>
       </li>
       <li class="item clearfix second">
-        <span class="title">持仓时间：</span>
-        <p><%= data.day %>天<%= data.hour %>时</p>
+        <span class="title">持仓时间</span>
+        <span><%= data.day %>天<%= data.hour %>时</span>
       </li>
     </ul>
   </div>

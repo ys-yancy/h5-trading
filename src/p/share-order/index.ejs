@@ -1,25 +1,26 @@
  <div class="hd ">
-   
-   <span class="tag <% if (data.status === 'pending') {%> guadan <%}%><% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>"><%= data.status === 'pending' ? (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') + '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
-  </span>
-  <h2><span><%= data.symbolName %></span></h2>
+   <p>
+     <span class="tag <% if (data.status === 'pending') {%> guadan <%}%><% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>"><%= data.status === 'pending' ? (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') + '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
+    </span>
+    <span><%= data.symbolName %></span>
+  </p>
   <!--<span class="category"><%= data.symbolCategory %></span>-->
 </div>
 <% goal = parseFloat(data.takeProfit) && data.status === 'pending' ; %>
 <div class="status-wrapper">
     <span class="sign">$</span>
     <span class="num <%= goal ? 'J_ProfitCount' : 'J_FloatProfit' %>">--</span>
-    <span class="status"><%= goal ? '目标盈利' : '当前盈利' %></span>
+    <!-- <span class="status"><%= goal ? '目标盈利' : '当前盈利' %></span> -->
 </div>
 
 <div class="progress-wrapper">
   <div class="wrapper clearfix">
-    <span class="title">当前盈利</span>
+    <span class="title">当前盈利($)</span>
     <div class="progress-outer">
       <div class="progress">
         <div class="progress-inner float-profit">
           <span class="desc">
-            <span class="sign">$ </span>
+            <span class="sign"></span>
             <span class="J_FloatProfit">--</span>
           </span>
         </div>
@@ -28,7 +29,7 @@
   </div>
 
   <% if (parseFloat(data.takeProfit)) {%>
-  <div class="wrapper clearfix">
+  <!-- <div class="wrapper clearfix">
     <span class="title">目标盈利</span>
     <div class="progress-outer">
       <div class="progress">
@@ -40,17 +41,17 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <% } %>
   
   <div class="wrapper clearfix">
-    <span class="title">投入资金</span>
+    <span class="title">投入资金($)</span>
     <div class="progress-outer">
       <div class="progress">
         <div class="progress-inner margin-progress" style="">
           <span class="desc">
-            <span class="sign">$ </span><%= data.margin %>
+            <span class="sign"></span><%= data.margin %>
           </span>
         </div>
         
