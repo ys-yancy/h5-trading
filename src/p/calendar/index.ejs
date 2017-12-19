@@ -16,33 +16,35 @@
         </li>
     <%} else {%>
         <li class="<%= item.curValue ? 'cur-value' : '' %> <%= className %>">
-            <span class="date clearfix">
-                <p class="desc"><%= item.time.split(' ')[1].substring(0, 5) %></p>
-                <span class="icon">
+            <div class="flag">
+                <div class="img-wrapper">
                     <img class="img" src="<%= 'http://cdn2.jin10.com/news/wx/img/flag/' + item.countryName + '.png' %>">
-                </span>
-            </span>
-            <div class="effect">
-                <% var AD_GGZ = item.AD_GGZ.split(' ')[0] %>
-                <% if (item.AD_GGZ) {%>
-                    <p class="top <%= AD_GGZ.indexOf('空') !== -1 ? '' : 'up' %>">
-                        <span class="eff-desc"><%= AD_GGZ %></span>    
-                    </p>
-                <%}%> 
+                </div>
             </div>
-            <span class="publish clearfix">
+            <div class="desc-wrapper">
+                <% var AD_GGZ = item.AD_GGZ.split(' ')[0] %>
+                <p class="dete-eff <%= AD_GGZ.indexOf('空') !== -1 ? '' : 'up' %>">
+                   <span class="time"><%= item.time.split(' ')[1].substring(0, 5) %></span>
+                   <% if (item.AD_GGZ) {%>
+                    <span class="eff-desc"><%= AD_GGZ %></span>    
+                <%}%>     
+                </p>
                 <p class="pub-desc"><%= item.countryName %> <%= item.content %></p>
-                <span class="num-desc">公布值：</span>
-                <span class="num J_Pub"><%= item.currentValue ? item.currentValue : '未公布' %></span>
-            </span>
-            <span class="forecast">
-                <span class="num-desc">预测值：</span>
-                <span class="num J_Fore"><%= item.predict ? item.predict : '- -' %></span>
-            </span>
-            <span class="slip">
-                <span class="num-desc">前值：</span>
-                <span class="num J_Slip"><%= item.previous ? item.previous : '- -' %></span>
-            </span>
+                <div class="kind">
+                    <p>
+                       <span class="num-desc">公布值：</span>
+                        <span class="num J_Pub"><%= item.currentValue ? item.currentValue : '未公布' %></span> 
+                    </p>
+                    <p>
+                        <span class="num-desc">预测值：</span>
+                        <span class="num J_Fore"><%= item.predict ? item.predict : '- -' %></span>
+                    </p>
+                    <p>
+                        <span class="num-desc">前值：</span>
+                        <span class="num J_Slip"><%= item.previous ? item.previous : '- -' %></span>
+                    </p>
+                </div>
+            </div>
         </li>
     <%}%>
 <%})%>

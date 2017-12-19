@@ -3,6 +3,7 @@
 var Base = require('../../app/base');
 var Util = require('../../app/util');
 var Sticky = require('../../common/sticky');
+var SildeMenu = require('../../common/slide-menu');
 var tmpl = require('./index.ejs');
 function Calendar() {
 	Calendar.superclass.constructor.apply(this, arguments);
@@ -15,6 +16,10 @@ Base.extend(Calendar, Base, {
 		this._getData();
         this._initAttrs();
 		// this._initSticky();
+        new SildeMenu({
+          el: $('#J_SlideMenu'),
+          page: 'option'
+        }) 
 	},
 
 	_getData: function() {
