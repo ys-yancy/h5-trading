@@ -60,12 +60,11 @@ class ShareOrder extends PageBase {
     this._initAttrs();
     this._bind();
     this.core.getOrderInfo().then(() => {
-    this._getData();
-    this._getOrder();
+      this._getData();
+      this._getOrder();
     });
 
     this._userInfo();
-
     this.configStatistics();
   }
 
@@ -147,8 +146,6 @@ class ShareOrder extends PageBase {
 
       // 已平仓订单
       if (data.status == 'closed') {
-        // $('.tab-nav-wrapper').hide();
-
         var time = Util.getTime(data.closeTime) - Util.getTime(data.openTime);
         var day = parseInt(time / (24 * 1000 * 60 * 60));
         var hour = parseInt((time - day * (24 * 1000 * 60 * 60)) / (60 * 1000 * 60));
@@ -209,7 +206,6 @@ class ShareOrder extends PageBase {
               access_token: self.cookie.get('token')
             }
           }).then((data) => {
-            console.log(data);
             data = data.data;
 
             if (!self.profileObject) {
@@ -256,7 +252,6 @@ class ShareOrder extends PageBase {
               access_token: self.cookie.get('token')
             }
           }).then((data) => {
-            console.log(data);
             data = data.data;
 
             if (!self.profileObject) {
@@ -271,8 +266,6 @@ class ShareOrder extends PageBase {
 
         this._getProfit();
       }
-
-
 
       setTimeout(() => {
         if (this.orderObject.status !== 'pending') {
@@ -329,7 +322,7 @@ class ShareOrder extends PageBase {
         takeProfit: this.takeProfit
       });
 
-      // 投资英豪用户看到的内容
+      //用户看到的内容
       if (!self.anony) {
         var url;
 
@@ -350,14 +343,17 @@ class ShareOrder extends PageBase {
 
           var inv = new Uri().getParams().invite;
 
-          var desc = inv ? '查看投资人信息' : '查看更多订单';
+          // var desc = inv ? '查看投资人信息' : '查看更多订单';
+          var desc = inv ? '查看投资人信息' : '马上交易';
 
 
 
           if (inv) {
             $('.link').attr('href', './my/profile.html?inviteCode=' + inv + '&from=' + encodeURIComponent(location.href));
           } else {
-            $('.link').attr('href', './my/sort-latest.html?from=' + encodeURIComponent(location.href));
+            // $('.link').attr('href', './my/sort-latest.html?from=' + encodeURIComponent(location.href));
+            var url = "./pro-trading.html?symbol=" + self.orderObject.symbol + "&unit=" + self.orderObject.mini_quote_unit + "&name=" + encodeURIComponent(self.orderObject.symbolName) + "&fullRouter=" + encodeURIComponent(location.href);
+            $('.link').attr('href', url);
           }
           $('.link').text(desc);
         }
