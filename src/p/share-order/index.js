@@ -405,10 +405,6 @@ class ShareOrder extends PageBase {
 
     return this.getFloatingProfit(session.get('group'), [this.orderObject], [this.orderObject.symbol]).then((floatProfit) => {
 
-     
-
-      console.log(this.margin);
-
       var per = floatProfit < 0 ? 0 : (floatProfit / (2 * this.margin));
       per = per >= 2 ? 2 : per;
 
