@@ -1,6 +1,5 @@
 "use strict";
 
-//require('./index.css');
 var PageBase = require('../../../../app/page-base');
 var Util = require('../../../../app/util');
 var Dialog = require('../../../../common/dialog');
@@ -15,7 +14,6 @@ class SyncInfo extends PageBase {
     }
 
     _bind() {
-        // this.el.on('tap', '.J_Sync', $.proxy(this._getWeixinUrl, this));
         this.el.on('tap', '.J_Sync', $.proxy(this._sync, this));
     }
 
