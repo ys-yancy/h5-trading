@@ -309,6 +309,13 @@ Base.extend(Option, PageBase, {
       $('.J_BidPrice', itemEl).text(bidPrice);
       oldSymbol.bidPrice = bidPrice;
     }
+
+    if (askPrice && bidPrice) {
+      var spread = Math.abs(askPrice - bidPrice);
+      spread = spread.toFixed(minUnit);
+      $('.J_Spread', itemEl).text(spread);
+      oldSymbol.spread = spread;
+    }
     //});
   },
 
@@ -352,7 +359,6 @@ Base.extend(Option, PageBase, {
         self.render(tmpl, data, self.listEl);
         self._saveOptionData(data);
 
-
         if (Util.supportWebsocket()) {
           // this.stomp = new Stomp({
           //    symbols: this.symbols
@@ -391,7 +397,6 @@ Base.extend(Option, PageBase, {
       } else {
         data.tradeUI = './rapid.html?deal=investnow&';
       }
-
 
       self.render(tmpl, data, self.listEl);
       self._saveOptionData(data);
@@ -488,6 +493,13 @@ Base.extend(Option, PageBase, {
           bidPrice = parseFloat(bidPrice).toFixed(minUnit);
           $('.J_BidPrice', itemEl).text(bidPrice);
           oldSymbol.bidPrice = bidPrice;
+        }
+
+        if (askPrice && bidPrice) {
+          var spread = Math.abs(askPrice - bidPrice);
+          spread = spread.toFixed(minUnit);
+          $('.J_Spread', itemEl).text(spread);
+          oldSymbol.spread = spread;
         }
       });
 
