@@ -192,6 +192,7 @@ export default class SlideMenu extends PageBase {
 				type: this.initType,
 				phone: Cookie.get('phone'),
 				tradingUI: this.tradingUI,
+				inviteCode: Cookie.get('inviteCode'),
 				page: this.page
 			}, this.el);
 			resolve();

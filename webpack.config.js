@@ -23,7 +23,8 @@ var entryAll = {
     'actual-order': './src/p/actual-order/index',
     'news': './src/p/news/index',
     'calendar': './src/p/calendar/index',
-    'share-order': './src/p/share-order/index'
+    'share-order': './src/p/share-order/index',
+    'my/profile/index': './src/p/my/profile/index'
 };
 
 module.exports = {
