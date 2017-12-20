@@ -56,10 +56,6 @@ export default class Info extends PageBase {
           $('#J_Data').remove();
         }
 
-        
-
-
-
         // 配置分享信息
         if (self.isWeixin()) {
           self.profileObject = data;

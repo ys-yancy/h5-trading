@@ -105,7 +105,6 @@ header{
   }
   .ticket-content{
     .width(750);
-    .min-height(227);
     overflow-y: hidden;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
@@ -114,6 +113,8 @@ header{
     &.history{
       display: none;
     }
+    position: relative;
+    .min-height(227);
     .margin-top(26);
     .padding-bottom(34);
     .padding-left(24);
@@ -149,6 +150,18 @@ header{
           color: #967adc;
           text-decoration: underline;
         }
+      }
+      &.loading{
+        position: absolute;
+        .width(750);
+        .loading(60, 120, #ccc, #fff);
+        top: 0;
+        height: auto;
+        margin-top: 0;
+        text-align: center;
+        background: transparent;
+        border: none;
+        box-shadow: none;
       }
       &.empty {
         .padding-left(142);

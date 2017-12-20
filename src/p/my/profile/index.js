@@ -99,11 +99,8 @@ class Profile extends PageBase {
         }
       });
 
-    });
-
-    
+    }); 
   }
-
 
   _requires() {
     new Info({

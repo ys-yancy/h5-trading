@@ -9,10 +9,10 @@ var historyTmpl = require('./history.ejs');
 export default class Info extends PageBase {
   constructor(config) {
     super(config);
-    this._bind();
     this.configStatistics();
-    this._getData();
+    this._bind();
     this.core = new Core();
+    this._getData();
     this._getHistoryList();
     this.core.inviteCode = this.inviteCode;
   }
