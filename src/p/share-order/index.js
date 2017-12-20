@@ -179,7 +179,7 @@ class ShareOrder extends PageBase {
         // circle.animate(0.7)
 
 
-        if (self.isWeixin()) {
+        if (!self.isWeixin()) {
           var doc = $(document);
 
           self.profileObject = data;
@@ -188,7 +188,7 @@ class ShareOrder extends PageBase {
           // 当前订单所有人的邀请码
           self.profileObject.inviteCode = self.inviteCode;
 
-          var html = '<a class="option share">分享订单</a>';
+          var html = '<a class="ui common share"></a>';
           $('#J_Header').append(html);
 
           doc.on('tap', '#J_Header .share', $.proxy(function() {
