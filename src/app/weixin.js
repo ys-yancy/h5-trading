@@ -1,18 +1,9 @@
 var Toast = require('../common/toast');
 
 module.exports = {
-  // 老生产服
-
-  // credentialUrl: 'http://weixin.invhero.com/weixin/get_sign_package',
-  // 新生产服
-  credentialUrl: getCredentialUrl(),  //修改之后
-  // 测试服获取数据接口
-  // credentialUrl: 'http://apitest.invhero.com/v1/weixin/share/package/',  //修改之后
-
+  credentialUrl: getCredentialUrl(),
   getPersonalInfoUrl: getPersonalInfoUrl(),
-
   recommendUrl: getRecommendUrl(),
-
   isWeixin: function() {
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/MicroMessenger/i) == "micromessenger") {
@@ -25,7 +16,6 @@ module.exports = {
   onShareSuccess: function (shareKind) {
       // alert('window.shareSuccess');
       // console.log('window.shareSuccess');
-      
       this.notifyShareBehavior(shareKind);
       // new Toast('test!');
       window.shareSuccess && window.shareSuccess();
@@ -72,9 +62,8 @@ module.exports = {
     }
 
     this.ajax({
-      url: this.credentialUrl, //getWXCredentialUrl() || ,
+      url: this.credentialUrl,
       data: {
-        // 'wl': getWXWL(),
         'wl': Cookie.get('wl'),
         'url': url || window.location.href
       },
@@ -236,7 +225,6 @@ module.exports = {
             t = t.replace(/%s/, nick);
           }
         }
-
         //系统公告
         else if (shareKind === 'announcement') {
           i = getWXIconWL();
@@ -244,7 +232,6 @@ module.exports = {
           d = '系统公告';
           l = window.location.href;
         }
-
         // 高手详情
         else if (shareKind === 'superior') {
             if(self.profileObject) {
@@ -259,7 +246,6 @@ module.exports = {
             d = '我是高手详情';
             l = getWXDomainWL() + '/s/master-order.html?expertId=' + self.profileObject.expertId;
         }
-
         // 邀请好友页面
         else {
           if (self.profileObject) {           
