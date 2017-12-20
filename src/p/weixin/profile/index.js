@@ -199,7 +199,7 @@ class Profile extends PageBase {
   _requires() {
     new Header();
     $('header').sticky();
-    if (!this.isWeixin() && getUserInfoWX()) {
+    if (this.isWeixin() && getUserInfoWX()) {
       $('.syncWrapper').show();
       new SyncInfo({
         el: $('.syncWrapper')
