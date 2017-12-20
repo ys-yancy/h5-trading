@@ -90,7 +90,7 @@ export default class Info extends PageBase {
       // $('.J_TotalProfit').text(parseInt(results.total) || 0);
 
       setTimeout(() => {
-        // this._render();
+        this._render();
       }, Config.getInterval());
     });
 
