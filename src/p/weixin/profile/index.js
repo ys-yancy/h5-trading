@@ -1,34 +1,24 @@
 "use strict";
 
-// require('../../../lib/zepto');
 var Header = require('../../../common/header');
 var PageBase = require('../../../app/page-base');
 var Util = require('../../../app/util');
 var Config = require('../../../app/config');
-
 var Toast = require('../../../common/toast');
 var Sticky = require('../../../common/sticky');
 var Dialog = require('../../../common/dialog');
-
 var SyncInfo = require('./sync-info/index');
 var photoTmpl = require('./tpl/photo.ejs');
 var logoutTmpl = require('./tpl/logout.ejs');
 
-require('../../my/common/header');
-
-// var tmpl = require('./index.ejs');
-
 class Profile extends PageBase {
   constructor() {
     super();
-
     this._preBind();
-
     this.login().then(function() {
       this.getAccount().then(function(account) {
         this._render(account);
         this._requires();
-        this._initAttrs();
         this._bind();
         this.configStatistics();
         this._getAuth();
@@ -46,13 +36,11 @@ class Profile extends PageBase {
 
   _register(e) {
     var curEl = $(e.currentTarget);
-
     curEl.attr('href', '../register.html?src=' + encodeURIComponent(location.href));
   }
 
   _getPassword(e) {
     var curEl = $(e.currentTarget);
-
     curEl.attr('href', '../recovery-password.html?src=' + encodeURIComponent(location.href));
   }
 
@@ -61,33 +49,22 @@ class Profile extends PageBase {
     doc.on('change', '.upload-input', $.proxy(this._preview, this));
     doc.on('tap', '.J_Edit', $.proxy(this._editNickname, this));
     doc.on('tap', '.J_Save', $.proxy(this._saveNickname, this));
+    doc.on('tap', '.J_ShwoAuthContent', $.proxy(this._shwoAuthContent, this));
     doc.on('tap', '.J_Logout', $.proxy(this._logout, this));
-    // doc.on('tap', '.J_Quan', $.proxy(this._quan, this));
-
     $('.J_Data').on('click', $.proxy(this._setData, this));
     $('.J_Order').on('click', $.proxy(this._setOrder, this));
     $('.J_History').on('click', $.proxy(this._setHistory, this));
     $('.J_Quan').on('click', $.proxy(this._setQuan, this));
+
     // 添加默认微信分享
     if (this.isWeixin()) {
-      this.setupWeiXinShare('default_invite');
-      if ( getUserInfoWX() ) {
-        $('.syncWrapper').show();
-        new SyncInfo({
-          el: $('.syncWrapper')
-        });
-      }else{
-        $('.syncWrapper').hide();
-      }
-    }else{
-      $('.syncWrapper').hide();
+      this.setupWeiXinShare('profile');
     }
   }
 
   _editNickname(e) {
     var curEl = $(e.currentTarget);
     var parentEl = curEl.parent().parent('.name-wrapper');
-
     parentEl.addClass('editable');
   }
 
@@ -116,6 +93,18 @@ class Profile extends PageBase {
     });
   }
 
+  _shwoAuthContent(e) {
+    var curEl = $(e.currentTarget),
+      bdEl = $('.auth-bd');
+    if (curEl.hasClass('show')) {
+      curEl.removeClass('show');
+      bdEl.removeClass('show');
+      return
+    }
+    curEl.addClass('show');
+    bdEl.addClass('show');
+  }
+
   _render(account) {
     account.avatar = account.avatar ? Config.getAvatarPrefix(account.avatar) : getDefaultIconWL();
     this.render(photoTmpl, account, $('#J_HD'));
@@ -128,8 +117,6 @@ class Profile extends PageBase {
 
   _preview(e) {
     var self = this;
-    // var preivewEl = $(e.currentTarget).siblings('.preview');
-    //self._changeAvatar(e.currentTarget.files[0])
 
     // android webview使用一个单独的版本
     if (Config.isAndroidAPK()) {
@@ -186,11 +173,12 @@ class Profile extends PageBase {
       Cookie.expire('inviteCode');
       Cookie.expire('token');
 
-      if (Config.isAndroidAPK()) {
-        window.location = '../android-login.html';
-      } else {
-        window.location = '../option.html';
-      }
+      window.location = '../option.html';
+      // if (Config.isAndroidAPK()) {
+      //   window.location = '../android-login.html';
+      // } else {
+      //   window.location = '../option.html';
+      // }
     }
   }
 
@@ -209,17 +197,16 @@ class Profile extends PageBase {
   }
 
   _requires() {
-    // var header = new Header();
-    // header.show();
     new Header();
-
     $('header').sticky();
-
-  }
-
-  _initAttrs() {
-    // this.containerEl = $('#J_List');
-    // this.url = '//weixin.invhero.com/api/today_recommend';
+    if (!this.isWeixin() && getUserInfoWX()) {
+      $('.syncWrapper').show();
+      new SyncInfo({
+        el: $('.syncWrapper')
+      });
+    }else{
+      $('.syncWrapper').remove();
+    }
   }
 
   _getData() {
@@ -274,16 +261,12 @@ class Profile extends PageBase {
     });
   }
 
-
-
   _setData(e) {
     var curEl = $(e.currentTarget);
     if (curEl.attr('data-permission') == 1) {
       return
     }
     curEl.attr('data-permission', 1);
-
-
     var permission = curEl.hasClass('off') ? 1 : 0;
     this.ajax({
       url: '/v1/user/profile/permission/data',
@@ -327,8 +310,6 @@ class Profile extends PageBase {
       return
     }
     curEl.attr('data-permission', 1);
-
-
     var permission = curEl.hasClass('off') ? 1 : 0;
     this.ajax({
       url: '/v1/user/profile/permission/history_order',
@@ -379,7 +360,6 @@ class Profile extends PageBase {
       return data.data.permission;
     });
   }
-
 }
 
 new Profile();

@@ -24,7 +24,8 @@ var entryAll = {
     'news': './src/p/news/index',
     'calendar': './src/p/calendar/index',
     'share-order': './src/p/share-order/index',
-    'my/profile/index': './src/p/my/profile/index'
+    'my/profile/index': './src/p/my/profile/index',
+    'weixin/profile': './src/p/weixin/profile/index'
 };
 
 module.exports = {
