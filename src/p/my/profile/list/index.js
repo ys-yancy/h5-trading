@@ -52,7 +52,7 @@ export default class Info extends PageBase {
       this._render();
     }, (data) => {
       if (data.status == 403) {
-        $('#J_List').html('<li class="auth">Ta的当前交易不允许别人查看</li>')
+        $('#J_ListCurrent').html('<li class="auth">Ta的当前交易不允许别人查看</li>')
       }
     });
 
@@ -77,7 +77,7 @@ export default class Info extends PageBase {
 
   _render() {
     return this.core.getRealTimeOrder(this.core.parseOrder(this.data)).then((results) => {
-      console.log(results);
+      // console.log(results);
       this.render(currentTmpl, {
         tickets: results.profitTickets,
         // profitList: profitList,

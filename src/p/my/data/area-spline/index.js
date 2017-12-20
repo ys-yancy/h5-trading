@@ -45,7 +45,7 @@ export default class TopBanner extends PageBase {
         access_token: this.cookie.get('token')
       }
     }).then((data) => {
-      console.log(data);
+      // console.log(data);
 
       data = data.data;
 
@@ -96,7 +96,7 @@ export default class TopBanner extends PageBase {
   }
 
   _initChart() {
-    console.log(JSON.stringify(this.my), this.my.length, JSON.stringify(this.other), this.other.length);
+    // console.log(JSON.stringify(this.my), this.my.length, JSON.stringify(this.other), this.other.length);
     
     this.my.sort(function(v1, v2) {
       return v1[0] - v2[0];

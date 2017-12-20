@@ -114,7 +114,6 @@ header{
     &.history{
       display: none;
     }
-    background: #fff;
     .margin-top(26);
     .padding-bottom(34);
     .padding-left(24);
@@ -139,13 +138,13 @@ header{
         display: block;
       }
       &.auth {
+        .width(750);
         .line-height(122);
-        float: none;
-        color: #473b61;
+        .font-size(28);
         text-align: center;
-        border: none;
-        width: auto;
         background: transparent;
+        border: none;
+        box-shadow: none;
         a {
           color: #967adc;
           text-decoration: underline;
@@ -199,6 +198,12 @@ header{
 .data{
   .padding-bottom(128);
   .font-size(28);
+  .data-title{
+    .height(85);
+    .line-height(85);
+    .padding-left(30);
+    background: #ccc;
+  }
   .chart{
     .min-height(400);
   }
