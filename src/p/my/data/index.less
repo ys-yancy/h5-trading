@@ -1,28 +1,11 @@
 @import '../../../variable.less';
 @import '../../../base.less';
 .com-header();
-.icon {
-  background: url(../../../../img/bg-icon.png) 0 0 no-repeat;
-  .background-size(400, 1500);
-}
 
 body {
-  background: #160e23;
-  /*.padding-bottom(100);*/
+  background: #fff;
 }
 
-header {
-  .height(88);
-  .line-height(88);
-  .font-size(36);
-  text-align: center;
-  background: #160e23;
-  color: #fff;
-  .header-inner {
-    display: block;
-    background: #160e23;
-  }
-}
 .my {
   display: none;
 }
@@ -35,34 +18,27 @@ header {
 }
 
 .profits {
+  .font-size(28);
   h2 {
-    .font-size(20);
+    .font-size(32);
     color: #807691;
-    .line-height(44);
-    .padding-left(26);
-    border-top: 1px solid #3e364d;
-    border-bottom: 1px solid #3e364d;
-    background: #1f1a2d;
-  }
-  ul {
-    background: #160e23;
+    .line-height(78);
+    .padding-left(30);
+    background: #ccc;
   }
   li {
     .line-height(85);
-    .margin-left(25);
-    .border-bottom(2px, solid, #2f263d);
-    .font-size(26);
+    .padding-left(30);
+    .border-bottom(1px, solid, #ccc);
     color: #90879f;
     &:last-child {
       border-bottom: none;
     }
     .number {
       float: right;
-      .font-size(30);
       color: #7c64b7;
       .margin-right(25);
       .small {
-        .font-size(18);
         vertical-align: top;
         .margin-right(4);
       }
@@ -79,14 +55,11 @@ header {
     position: absolute;
     .top(72);
     right: 0;
-    .width(216);
+    .padding-right(30);
     li {
       position: relative;
       .line-height(26);
       .margin-top(24);
-      /*.padding-left(42);*/
-      color: #f9584a;
-      .font-size(22);
       .num {
         .margin-left(8);
       }
@@ -95,22 +68,16 @@ header {
         display: inline-block;
         .line-hide();
       }
-      &:nth-child(2) {
-        /*&:before {*/
-        color: #ffc000;
-        /*}*/
-      }
-      &:nth-child(3) {
-        /*&:before {*/
-        color: #67b2e1;
-        /*}*/
-      }
-      &.last,
-      &:nth-child(4) {
-        /*&:before {*/
-        color: #25b9a8;
-        /*}*/
-      }
+      // &:nth-child(2) {
+      //   color: #ffc000;
+      // }
+      // &:nth-child(3) {
+      //   color: #67b2e1;
+      // }
+      // &.last,
+      // &:nth-child(4) {
+      //   color: #25b9a8;
+      // }
       /* &:before {
         position: absolute;
         top: 0;
@@ -124,12 +91,10 @@ header {
     }
   }
   .chart-area {
-    .height(304);
-    .width(304);
+    .height(290);
+    .width(290);
     .highcharts-data-labels {
-      /*tspan {*/
       display: none;
-      /*}*/
     }
     .highcharts-tooltip {
       display: none;
