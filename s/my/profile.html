@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>个人资料</title>
+    <title>个人投资记录</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,53 +44,59 @@
       <div style="display:none;position:fixed;z-index:99999;width:100%" id="J_InfoImg">
         <img src="../../img/lead.png" style="width:100%" alt="微信分享请点右上角"/>
       </div>
-       <div class="header-inner" id="J_Header">
-          <a class="go-back" href="./../my.html?">
+       <div class="header-inner ui common" id="J_Header">
+          <a class="go-back" href="./../option.html">
               <span class="icon arrow"></span>
           </a>
-          <h1 id="J_Title">个人资料</h1>
+          <h1 id="J_Title">个人投资记录</h1>
         </div>
     </header>
     <section class="info" id="J_Info">
-      <div class="img-wrapper-outer">
-        <div class="img-wrapper">
-          <img class="img" src="" alt="">
-        </div>
-      </div>
-      <h2 class="name">--</h2>
-      <div class="detail-wrapper">
-        <div class="left">
-          <p>
-            <span class="small">$</span>
-            --
-          </p>
-          <p class="desc">全时收益</p>
-        </div>
-        <div class="right">
-          <p>-- <span class="small">%</span></p>
-          <p class="desc">月均收益率</p>
-        </div>
-        <a href="" class="link">数据分析</a>
-      </div>
-    </section>
-    <section class="list">
-      <div class="hd">Ta的交易</div>
-      <ul class="clearfix" id="J_List">
-        
-      </ul>
     </section>
 
-    <section class="sort">
+    <section class="list">
+      <nav class="ui nav common">
+        <a class="nav-item active">当前交易</a>
+        <a class="nav-item">历史交易</a>
+      </nav>
+      <div class="ticket-content J_TicketContent">
+        <ul class="clearfix current J_List" id="J_ListCurrent">
+        
+        </ul>
+        <ul class="clearfix history J_List" id="J_ListHistory">
+          
+        </ul>
+      </div>
+    </section>
+
+    <section class="data" id="J_Data">
+      <div class="chart">
+       <!--  <div class="detail">
+          <p class="other">Ta的收益率 <span id="J_OtherRate">--</span>%</p>
+          <p class="my">我的收益率 <span id="J_MyRate">--</span>%</p> 
+        </div> -->
+        <div id="J_ChartSpline" class="spline-chart"></div>
+      </div>
+      <div class="profits">
+        <ul class="profits-ul" id="J_Detail">
+        </ul>
+      </div>
+      <div class="chart-container clearfix">
+        <div class="chart-area" id="J_ChartArea"></div>
+        <ul id="J_List">
+        </ul>
+      </div>
+    </section>
+    <!-- <section class="sort">
       <h2><a id="J_Rank_Link" href="./sort-month.html">Ta的榜单排名
         <span class="number"><span id="J_Rank"></span></span>
         <span class="link">
           <span class="arrow-right"></span>
         </span></a>
       </h2>
-    </section>
-   <section class="other"></section>
+    </section> -->
 
-   <!--  <footer>
+  <!--   <footer>
       <p>Ta正在跟随隔壁老李</p>
       <p>已产生收益 
         <span class="number-wrapper">
@@ -100,9 +106,10 @@
       </p>
       <a href="" class="link">查看</a>
     </footer> -->
-    <!-- <a href="./guides.html" class="register">注册即获赠金<span id="J_Bonus"></span> 与Ta一起投资</a>-->
+     <a href="./guides.html" class="register">注册即获赠金<span id="J_Bonus"></span> 与Ta一起投资</a>
     <script src="../../src/lib/zepto.js"></script>
     <script src="../../src/lib/lrz.js"></script>
+    <script src="../../src/lib/highstock.min.js"></script>
     <script src="../../build/my/profile/index.js"></script>
     
 </body>

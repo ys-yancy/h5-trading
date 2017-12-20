@@ -3,15 +3,40 @@
 var PageBase = require('../../../../app/page-base');
 var Config = require('../../../../app/config');
 var Core = require('../../common/core');
-var tmpl = require('./index.ejs');
+var currentTmpl = require('./current.ejs');
+var historyTmpl = require('./history.ejs');
 
 export default class Info extends PageBase {
   constructor(config) {
     super(config);
+    this._bind();
     this.configStatistics();
     this._getData();
     this.core = new Core();
+    this._getHistoryList();
     this.core.inviteCode = this.inviteCode;
+  }
+
+  _bind() {
+    var doc = $(document);
+
+    doc.on('tap', '.nav-item', $.proxy(this._switch, this));
+  }
+
+  _switch(e) {
+    var currentEl = $(e.target),
+      parentEl = currentEl.parents('.list'),
+      listEls = $('.J_List', parentEl),
+      index = currentEl.index();
+    
+    if (currentEl.hasClass('active')) {
+      return
+    }
+
+    currentEl.siblings().removeClass('active');
+    currentEl.addClass('active');
+    listEls.hide();
+    $(listEls[index]).show();
   }
 
   _getData() {
@@ -23,58 +48,37 @@ export default class Info extends PageBase {
       }
     }).then((data) => {
       data = data.data;
-      // var symbols = [];
-      // var total = 0;
-      // var tickets = [];
-      // data.tickets.forEach((item) => {
-      //   if (symbols.indexOf(item.symbol) == -1) {
-      //     symbols.push(item.symbol)
-      //   }
-      // });
-
-      // this.symbols = symbols;
-
-      // // 模拟账户信息
-      // this.account = {
-      //   demo: {
-      //     currency: data.currency.demo,
-      //     group_name: data.group_name.demo
-      //   },
-      //   real: {
-      //     currency: data.currency.real,
-      //     group_name: data.group_name.real
-      //   }
-      // };
-
-      // this.tickets = data.tickets;
       this.data = data;
-
       this._render();
-
-      // this._interval();
-
-      // $('#J_List').html('<li class="auth">Ta的当前交易不允许别人查看 <a href="./trade-history.html">查看历史交易</a></li>');
-
-      // $('#J_Total').text((total).toFixed(2));
-      // });
     }, (data) => {
       if (data.status == 403) {
-        this.core.getHistory().then((data) => {
-          $('#J_List').html('<li class="auth">Ta的当前交易不允许别人查看 <a href="./trade-history.html?inviteCode=' + this.inviteCode + '">查看历史交易</a></li>');
-        }, (data) => {
-          if (data.status == 403) {
-            $('#J_List').html('<li class="auth">Ta的当前交易不允许别人查看</li>')
-          }
-        });
+        $('#J_List').html('<li class="auth">Ta的当前交易不允许别人查看</li>')
       }
     });
 
   }
 
+  _getHistoryList() {
+    this.core.getHistory().then((data) => {
+        if (data.tickets > 100) {
+          data.tickets = 100;
+        }
+
+        this.render(historyTmpl, {
+          tickets: data.tickets
+        }, this.historyEl);
+
+    }, (data) => {
+      if (data.status == 403) {
+        $('#J_List').html('<li class="auth">Ta的历史交易不允许别人查看</li>')
+      }
+    });
+  }
+
   _render() {
     return this.core.getRealTimeOrder(this.core.parseOrder(this.data)).then((results) => {
-      // console.log(results);
-      this.render(tmpl, {
+      console.log(results);
+      this.render(currentTmpl, {
         tickets: results.profitTickets,
         // profitList: profitList,
         inviteCode: this.inviteCode
@@ -83,7 +87,7 @@ export default class Info extends PageBase {
       // $('.J_TotalProfit').text(parseInt(results.total) || 0);
 
       setTimeout(() => {
-        this._render();
+        // this._render();
       }, Config.getInterval());
     });
 
@@ -114,7 +118,5 @@ export default class Info extends PageBase {
 
     //   $('.J_TotalProfit').text(parseInt(total) || 0);
     // });
-
-
   }
 }

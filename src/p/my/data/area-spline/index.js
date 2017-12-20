@@ -116,7 +116,7 @@ export default class TopBanner extends PageBase {
         spacingBottom: 0,
         spacingLeft: 0,
         spacingRight: 0,
-        backgroundColor: '#160e23',
+        backgroundColor: 'transparent',
         // height: $('#J_ChartSpline').height()
       },
       credits: {

@@ -5,6 +5,7 @@ var Uri = require('../../../app/uri');
 require('../common/header');
 var Info = require('./info');
 var List = require('./list');
+var Data = require('./data');
 var Header = require('../../../common/header');
 var Dialog = require('../../../common/dialog');
 var Toast = require('../../../common/toast');
@@ -111,9 +112,15 @@ class Profile extends PageBase {
     });
 
     new List({
-      el: $('#J_List'),
+      el: $('#J_ListCurrent'),
+      historyEl: $('#J_ListHistory'),
       inviteCode: this.inviteCode
     });
+
+    new Data({
+      el: $('#J_Data'),
+      inviteCode: this.inviteCode
+    })
   }
 
   _isAllow() {

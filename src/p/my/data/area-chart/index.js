@@ -2,17 +2,13 @@
 
 var PageBase = require('../../../../app/page-base');
 var Util = require('../../../../app/util');
-// var Highcharts = require('../../../../lib/highstock');
-// var Config = require('../../../../app/config');
 var tmpl = require('./index.ejs');
 
 export default class Info extends PageBase {
   constructor(config) {
     super(config);
 
-    // this._getData();
     this._bind();
-    // this._initChart();
   }
 
   _bind() {
@@ -25,16 +21,12 @@ export default class Info extends PageBase {
     var names = {};
 
     $.each(data, (key, val) => {
-      // if (val.profit_proportion > 0) {
-
-
       if (obj[key]) {
         obj[key] += val.profit_proportion;
       } else {
         obj[key] = val.profit_proportion;
         names[key] = val.name;
       }
-      // }
     });
 
     var keys = Object.keys(obj).sort(function(a, b) {
@@ -67,38 +59,8 @@ export default class Info extends PageBase {
       });
     }
 
-    // console.log(other, total, data)
-
-
-
-
-    //   data.forEach(function(val, index) {
-    //     data[index] = val / total;
-    //   });
-
-    //   this._initChart(data);
-    // }
-
     var cateNames = [];
 
-    // return this.ajax({
-    //    url: '/v1/symbol/category/',
-    //    data: {
-    //      access_token: this.cookie.get('token')
-    //    }
-    //  }).then((cate) => {
-    //    cate = cate.data;
-    //    // console.log(data);
-    //    keys.forEach((key) => {
-    //      cate.forEach((item) => {
-    //        if (item.name == key) {
-    //          cateNames.push(item.desc);
-    //        }
-    //      });
-    //    });
-
-
-    //  }).then(() => {
     var cateNames = [];
 
     keys.forEach((key) => {
@@ -109,10 +71,6 @@ export default class Info extends PageBase {
 
     this.render(tmpl, { list: data, symbols: cateNames, other: !!other }, $('#J_List'));
 
-    // });
-
-
-    // console.log(obj, keys)
   }
 
   _initChart(data) {
@@ -129,7 +87,7 @@ export default class Info extends PageBase {
         spacingBottom: 0,
         spacingLeft: 0,
         spacingRight: 0,
-        backgroundColor: '#160e23'
+        backgroundColor: 'transparent'
       },
       credits: {
         enabled: false
@@ -139,20 +97,15 @@ export default class Info extends PageBase {
       },
       navigator: {
         enabled: false
-          // series: {
-          //     data: data
-          // },
-          // adaptToUpdatedData: false
       },
       title: {
         text: '利润占比',
         align: 'center',
         verticalAlign: 'middle',
-        // y: 40,
         useHTML: true,
         style: {
           color: '#90879f',
-          fontSize: '.75rem'
+          fontSize: '.65rem'
         }
       },
       colors: colors,
@@ -181,18 +134,6 @@ export default class Info extends PageBase {
         name: '利润占比',
         innerSize: '65%',
         data: data
-          // [
-          //   // ['Firefox', 10.38],
-          //   // ['IE', 56.33],
-          //   // ['Chrome', 24.03],
-          //   // ['Safari', 5.68], {
-          //   //   name: 'Proprietary or Undetectable',
-          //   //   y: 0.2,
-          //   //   dataLabels: {
-          //   //     enabled: false
-          //   //   }
-          //   // }
-          // ]
       }]
     });
 

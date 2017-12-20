@@ -1,0 +1,21 @@
+<% if (data.tickets.length > 0) {%>
+  <% data.tickets.forEach(function(item, index) { %>
+    <li class="item">
+      <a class="go-link" href="javascript:void(0);">
+        <p class="tag <%= item.cmd.indexOf('buy') !== -1 ? 'up' : '' %>">
+          <%= item.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌' %>
+        </p>
+        <p class="name"><%= item.symbolName %></p>
+        <p class="symbol"><%= item.symbol %></p>
+        <p class="num <%= item.profit > 0 ? 'up' : '' %>">
+          <span class="small">$</span>
+          <span class="profit"><%= parseFloat(item.profit).toFixed(2) %></span>
+        </p>
+      </a>
+    </li>
+  <% }); %>
+<%} else {%>
+<li class="empty">
+  没有当前订单
+</li>
+<%} %>
