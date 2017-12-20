@@ -9,11 +9,9 @@ var historyTmpl = require('./history.ejs');
 export default class Info extends PageBase {
   constructor(config) {
     super(config);
-    this.configStatistics();
     this._bind();
-    this.core = new Core();
     this._getData();
-    this._getHistoryList();
+    this.core = new Core();
     this.core.inviteCode = this.inviteCode;
   }
 
@@ -31,6 +29,11 @@ export default class Info extends PageBase {
     
     if (currentEl.hasClass('active')) {
       return
+    }
+
+    if (currentEl.hasClass('no-load')) {
+      currentEl.removeClass('no-load');
+      this._getHistoryList();
     }
 
     currentEl.siblings().removeClass('active');
@@ -70,7 +73,7 @@ export default class Info extends PageBase {
 
     }, (data) => {
       if (data.status == 403) {
-        $('#J_List').html('<li class="auth">Ta的历史交易不允许别人查看</li>')
+        $('#J_ListHistory').html('<li class="auth">Ta的历史交易不允许别人查看</li>')
       }
     });
   }

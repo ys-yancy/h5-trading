@@ -16,16 +16,13 @@ export default class Data extends PageBase {
 	      data: {
 	        invite_code: this.inviteCode,
 	        access_token: this.cookie.get('token') || ''
-	      }
+	      },
+	      noToast: true
 	    }).then((data) => {
 	      data = data.data;
-
 	      this.render(detailTmpl, data, $('#J_Detail'));
-
 	      // $('#J_OtherRate').text((data.average_month_rate_of_return * 100).toFixed(2));
-
 	      this.broadcast('get:analysis', { data: data.month_rate_of_return });
-
 	      this.broadcast('get:stat', { data: data.category_stat });
 	    });
 	}

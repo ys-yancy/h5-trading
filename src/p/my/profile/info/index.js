@@ -7,7 +7,6 @@ var tmpl = require('./index.ejs');
 export default class Info extends PageBase {
   constructor(config) {
     super(config);
-    this.configStatistics();
     this._getData();
   }
 

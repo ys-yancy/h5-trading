@@ -29,7 +29,6 @@ class Profile extends PageBase {
       this.repostInviteCode = this.repostInviteCode.substr(0, 6);
     }
 
-
     // 匿名用户访问此页, 需要显示注册入口
     if (!this.cookie.get('token')) {
       var hrefUrl = getWXInviteUrlWL() + (this.repostInviteCode ? this.repostInviteCode : this.inviteCode) + '&source=profile';
@@ -64,13 +63,6 @@ class Profile extends PageBase {
       });
     }
 
-    /* 
-    this.getToken('../login.html').then(() => {
-      return this._requires();
-    });
-    */
-
-    // this._getData(); 
     this._requires();
     this._bind();
   }
@@ -140,7 +132,6 @@ class Profile extends PageBase {
         access_token: this.cookie.get('token')
       }
     }).then((data) => {
-      // console.log(data.data);
       return data.data.following;
     });
   }
@@ -164,9 +155,7 @@ class Profile extends PageBase {
         },
         type: 'DELETE'
       })
-
     }
-
   }
 
   _getData() {
