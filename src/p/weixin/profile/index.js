@@ -191,7 +191,8 @@ class Profile extends PageBase {
       },
       type: 'put'
     }).then(function(data) {
-      $('.J_Upload').attr('src', img.substring);
+      $('.J_Upload').attr
+      ('src', img.substring);
       new Toast('头像更新成功！');
     });
   }

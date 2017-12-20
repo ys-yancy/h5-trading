@@ -2,7 +2,7 @@
 	<div class="scroll-wrapper"><!-- detail and fn need scroll -->
 		<% var isDemo = data.type == 'demo' ? true : false; %>
 		<div class="user-details" id="J_UserDetails">
-			<a href="./weixin/profile.html?from=<%= encodeURIComponent(location.href)%> ">
+			<a href="./weixin/profile.html?from=<%= encodeURIComponent(location.href)%>">
 				<div class="user-avatar">
 					<img class="img J_UserAvatar" src="">
 				</div>
@@ -53,7 +53,7 @@
 			<li class="cut-line"></li>
 
 			<li class="li-item clearfix">
-				<a class="link-item">
+				<a class="link-item" href="./my/data.html?inviteCode=<%= data.inviteCode %>&from=<%= encodeURIComponent(location.href)%> ">
 					<span class="icon"></span>
 					<span class="desc">投资分析</span>
 					<span class="ft-rt num"></span>

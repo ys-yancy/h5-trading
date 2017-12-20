@@ -25,6 +25,7 @@ var entryAll = {
     'calendar': './src/p/calendar/index',
     'share-order': './src/p/share-order/index',
     'my/profile/index': './src/p/my/profile/index',
+    'my/data/index': './src/p/my/data/index',
     'weixin/profile': './src/p/weixin/profile/index'
 };
 
