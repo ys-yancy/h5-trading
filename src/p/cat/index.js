@@ -3,6 +3,7 @@ var PageBase = require('../../app/page-base');
 var Banner = require('../../common/banner/index');
 var Uri = require('../../app/uri');
 var Cookie = require('../../lib/cookie');
+var Flipsnap = require('../../lib/flipsnap');
 var CustomerService = require('../../common/customer-service'); 
 
 function Cat() {
@@ -34,6 +35,8 @@ Base.extend(Cat, PageBase, {
             this.headerEl.removeClass('unfold');
         }, this));
 
+        doc.on('tap', '.J_Type', $.proxy(this._select, this));
+
         formEl.on('submit', $.proxy(this._search, this));
 
         // 添加默认微信分享
@@ -53,6 +56,14 @@ Base.extend(Cat, PageBase, {
         // new CustomerService();
     },
 
+    _select: function(e) {
+        var curEl =$(e.currentTarget);
+        var index = curEl.index();
+        // flipsnap.toNext();
+        //flipsnap.toPrev();
+        // this.flipsnap.moveToPoint(index < 3 ? 0 : index - 5);
+    },
+
     _getData: function() {
         var self = this,
             token = Cookie.get('token');
@@ -63,7 +74,9 @@ Base.extend(Cat, PageBase, {
                 access_token: token
             }
         }).then(function(data) {
-            self.render(self.tmpl, data.data, self.listEl);
+            self.render(self.tmpl, data.data, self.navListEl);
+            self.render(self.contentTmpl, data.data, self.contentEl);
+            self._initFlipsnap(parseInt(data.data.length / 2));
         });
     },
 
@@ -82,6 +95,11 @@ Base.extend(Cat, PageBase, {
         location.href = './list.html?kw=' + encodeURIComponent(val);
     },
 
+    _initFlipsnap: function(maxPoint) {
+        this.flipsnap = Flipsnap('.flipsnap');
+        window.flipsnap = this.flipsnap;
+    },
+
     _initTopbar: function(e) {
         var q = new Uri().getParam('q');
 
@@ -95,11 +113,21 @@ Base.extend(Cat, PageBase, {
 
         listEl: $('#J_List'),
 
+        navListEl: $('#J_NavList'),
+
+        contentEl: $('.content'),
+
         tmpl: [
             '<% $.each(data, function(index, item) {%>',
-            '    <li>',
-            '        <a class="link" href="./list.html?category=<%= item.name %>&title=<%= encodeURIComponent(item.desc) %>"><%= item.desc %></a>',
+            '    <li class="J_Type">',
+            '        <span class="link" data-category="<%= item.name %>"><%= item.desc %></span>',
             '    </li>',
+            '<% }); %>'
+        ].join(''),
+
+        contentTmpl: [
+            '<% $.each(data, function(index, item) {%>',
+            '    <ul class="clearfix cat-wrapper J_List" style="display:none"></ul>',
             '<% }); %>'
         ].join('')
     }
