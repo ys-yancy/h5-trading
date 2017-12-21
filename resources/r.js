@@ -1,3 +1,23 @@
+/**
+ * 支付配置相关
+ */
+
+// 默认支付方式
+function getDefaultPayWay() {
+
+}
+
+// 显示哪几种支付方式
+function getShowPayWay() {
+
+}
+
+// 支付地址 在recharge 把url渲染到元素中去 然后直接在元素中拿
+function getPayUrl() {
+	return {
+
+	}
+}
 
 //选择引用那套皮肤
 function getAppUi() {
@@ -18,7 +38,6 @@ function getChartUi() {
 		tooltipBackground: false
 	}
 }
-
 
 // 是否只显示模拟
 function getSimulatePlate() {

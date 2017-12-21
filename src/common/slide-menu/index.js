@@ -1,12 +1,12 @@
 "use strict";
 import './index.css';
-import Base from '../../app/page-base';
 import Config from '../../app/config';
 import PageBase from '../../app/page-base';
-import Dialog from '../dialog';
+import Util from '../../app/util.js';
 import BottomAccount from '../bottom-account';
 import RedeemCode from './component/redeem-code';
 import UsQrCode from './component/qr-code';
+import Dialog from '../dialog';
 import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
 	constructor(config) {
@@ -179,6 +179,19 @@ export default class SlideMenu extends PageBase {
 
 	_checkOnly() {
 		var isDemo = this.isDemo();
+		if( Util.isWeixin() && getIsShowOptionWeinixnGuide() ) {
+		    // new OptionWeixinGuide();
+		    return;
+		}
+
+		if (Util.isWeixin() && !getWeiXinIsHasReal()) {
+		    Cookie.set('type', 'demo');
+		    return;
+		} else if(getIsOnlyShowReal()){
+		    Cookie.set('type', 'real');
+		    return;
+		}
+
 		if (getSimulatePlate() && !isDemo) {
 			Cookie.expire('goType');
 			Cookie.expire('real_token');
@@ -205,7 +218,7 @@ export default class SlideMenu extends PageBase {
 				tradingUI: this.tradingUI,
 				inviteCode: Cookie.get('inviteCode'),
 				page: this.page,
-				isHasReal: getSimulatePlate()
+				isSwtp: getSimulatePlate() || getIsOnlyShowReal()
 			}, this.el);
 			resolve();
 		})
