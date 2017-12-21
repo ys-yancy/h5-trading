@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>我的账户</title>
+    <title>账户资产</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,25 +41,28 @@
 
 <body>
     <header class="header">
-        <div class="header-inner" id="J_Header">
+        <div class="header-inner ui common" id="J_Header">
             <a class="go-back" href="./my.html?">
                 <span class="icon arrow"></span>
             </a>
-            <ul class="clearfix" style="display:none;">
-              <li class="J_Switch">实盘</li>
-              <li class="J_Switch demo">模拟</li>
-            </ul>
-            <a href="./account/pocket.html" class="pocket">记账簿</a>
+            <h2>账户资产</h2>
+            <a href="./account/pocket.html" class="pocket"></a>
         </div>
     </header>
+    <nav class="ui common nav">
+        <ul class="clearfix" style="display:none;">
+          <li class="J_Switch">实盘</li>
+          <li class="J_Switch demo">模拟</li>
+        </ul>
+    </nav>
     <section class="content">
         <ul class="J_Content" id="J_List" style="display:none">
         </ul>
         <ul class="demo J_Content" id="J_DemoList" style="display:none;">
         </ul>
-        <div class="loader ball-clip-rotate" id="J_Loading">
-            <div class="loader-inner"></div>
-            <div class="desc">加载中...</div>
+        <div class="ui loading" id="J_Loading">
+            <span class="circel"></span>  
+            <span class="loading-text">加载中...</span> 
         </div>
     </section>
     <footer class="footer">

@@ -8,20 +8,20 @@ var Util = require('../../app/util');
 var Config = require('../../app/config');
 var Cookie = require('../../lib/cookie');
 var Sticky = require('../../common/sticky');
-var CustomerService = require('../../common/customer-service');
 var tmpl = require('./index.ejs');
+// var CustomerService = require('../../common/customer-service');
 
 function Account() {
     Account.superclass.constructor.apply(this, arguments);
-
     var self = this;
+
     this.login().then(function() {
         if (self.cookie.get('goType')) {
             self.cookie.set('type', 'real');
         }
         self.init();
     }, function() {
-        location.href = './my.html';
+        location.href = './option.html';
     });
 
     //  在微信中是否是现实实盘：getSimulatePlate()是之前配置的有无模拟盘
@@ -50,21 +50,6 @@ Base.extend(Account, PageBase, {
         doc.on('tap', '.J_Switch', $.proxy(this._switch, this));
         this.subscribe('reject:realToken', this._rejectRealToken, this);
 
-       
-        // 如果是Android内置webview就不显示下载条和抽奖入口
-        if (!Config.isAndroidAPK() && getIfShowDLinkWL()) {
-            // $('.my-lootery').parent().remove();
-            // $('#J_Banner').remove();
-            $('.footer').append('<div class="bottom-banner" id="J_Banner">\
-                <span class="close-wrapper J_CloseBanner">\
-                    <span class="close icon"></span>\
-                </span>\
-                <span class="desc">详细资产流水请登录APP</span>\
-                <a class="login J_Login" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.invhero.android">下载APP</a>\
-                </div>');
-        }
-
-
         // 添加默认微信分享
         if (this.isWeixin()) {
           this.setupWeiXinShare('default_invite');
@@ -78,13 +63,16 @@ Base.extend(Account, PageBase, {
             return;
         }
 
+        curEl.siblings().removeClass('active');
+        curEl.addClass('active');
+
         if (curEl.hasClass('demo')) {
             Cookie.set('type', getSimulatePlate() ? 'demo' : 'real', {
-                 expires: Infinity
+                expires: Infinity
             });
         } else {
             Cookie.set('type', 'real', {
-                 expires: Infinity
+                expires: Infinity
             });
         }
 
@@ -93,7 +81,7 @@ Base.extend(Account, PageBase, {
 
     _rejectRealToken: function() {
         Cookie.set('type', getSimulatePlate() ? 'demo' : 'real', {
-             expires: Infinity
+            expires: Infinity
         });
 
         this._setStyle();
@@ -107,20 +95,21 @@ Base.extend(Account, PageBase, {
             demoActionEl = $('#J_DemoAction');
 
         if ( type == 'demo' ) {
-            $('.J_Switch', 'header').removeClass('active');
-            $('.J_Switch.demo', 'header').addClass('active');
+            $('.J_Switch', 'nav').removeClass('active');
+            $('.J_Switch.demo', 'nav').addClass('active');
 
             listEl.hide();
             actionEl.hide();
             demoListEl.show();
             demoActionEl.show();
         } else {
-            $('.J_Switch', 'header').addClass('active');
-            $('.J_Switch.demo', 'header').removeClass('active');
+            $('.J_Switch', 'nav').addClass('active');
+            $('.J_Switch.demo', 'nav').removeClass('active');
 
             listEl.show();
             demoListEl.hide();
-            if ( getWXWL() == 'kstj' ) {
+
+            if ( false ) { // 测试盘
                 actionEl.hide();
             } else {
                 actionEl.show();
@@ -157,24 +146,7 @@ Base.extend(Account, PageBase, {
                 var untriggeredBonus = parseFloat(self.account[type].untriggered_bonus ? self.account[type].untriggered_bonus : 0);
                 var triggered_bonus = parseFloat(self.account[type].triggered_bonus ? self.account[type].triggered_bonus : 0);
                 var expired_bonus = parseFloat(self.account[type].expired_bonus ? self.account[type].expired_bonus : 0);
-                // var rate = data.margin === 0 ? '--' : ((netDeposit / parseFloat(data.margin)) * 100).toFixed(2);
-                // 20160928 王曦修改, 更换新的计算公式
-                //  var rate = data.margin === 0 ? '--' : ((freeMargin - bonus + margin) / margin * 100).toFixed(2);
-
-                // var rate = rate === '--' ? '--' : parseFloat(rate);
-
-                // 20170302 王曦修改公式
-                // var rate;
-                // if (data.margin == 0) {
-                //   rate = '--';
-                // }
-                // else if (bonus < margin) {
-                //   rate = ((freeMargin + margin) / margin * 100).toFixed(2);
-                // }
-                // else if (bonus >= margin) {
-                //   rate = ((freeMargin + margin * 2 - bonus)/margin * 100).toFixed(2);
-                // }
-                //20170727 杨帅修改
+               
                 var rate;
                 if (data.margin == 0) {
                   rate = '--';
@@ -212,9 +184,18 @@ Base.extend(Account, PageBase, {
     },
 
     _requires: function() {
-        // new CustomerService();
-
         $('header').sticky();
+
+        // 如果是Android内置webview就不显示下载条和抽奖入口
+        if (!Config.isAndroidAPK() && getIfShowDLinkWL()) {
+            $('.footer').append('<div class="bottom-banner" id="J_Banner">\
+                <span class="close-wrapper J_CloseBanner">\
+                    <span class="close icon"></span>\
+                </span>\
+                <span class="desc">详细资产流水请登录APP</span>\
+                <a class="login J_Login" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.invhero.android">下载APP</a>\
+                </div>');
+        }
     },
 });
 
