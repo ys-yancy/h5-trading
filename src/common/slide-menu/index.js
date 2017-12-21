@@ -19,6 +19,7 @@ export default class SlideMenu extends PageBase {
 	_init() {
 		this._bind();
 		this._requires();
+		this._checkOnly();
 		this._updateUserInfo();
 	}
 
@@ -176,6 +177,16 @@ export default class SlideMenu extends PageBase {
 	    this.bottomAccount.interval();
 	}
 
+	_checkOnly() {
+		var isDemo = this.isDemo();
+		if (getSimulatePlate() && !isDemo) {
+			Cookie.expire('goType');
+			Cookie.expire('real_token');
+	    	Cookie.set('type', 'demo');
+	    	window.location.reload();
+	    }
+	}
+
 	_requires() {
 		this.bottomAccount = new BottomAccount({checkOut: true, page: this.page, el: $('#J_BottomBanner')});
 	    this.bottomAccount.show();
@@ -193,7 +204,8 @@ export default class SlideMenu extends PageBase {
 				phone: Cookie.get('phone'),
 				tradingUI: this.tradingUI,
 				inviteCode: Cookie.get('inviteCode'),
-				page: this.page
+				page: this.page,
+				isHasReal: getSimulatePlate()
 			}, this.el);
 			resolve();
 		})

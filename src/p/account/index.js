@@ -28,6 +28,7 @@ function Account() {
 Base.extend(Account, PageBase, {
     init: function() {
         this._setStyle();
+        this._checkOnly();
         this._bind();
         this._requires();
         this._getAccount();
@@ -173,19 +174,26 @@ Base.extend(Account, PageBase, {
         });
     },
 
-    _requires: function() {
-        $('nav').sticky();
-
-         //  在微信中是否是现实实盘：getSimulatePlate()是之前配置的有无模拟盘
-        if (Util.isWeixin() && getWeiXinIsHasReal()) { //getSimulatePlate()
+    _checkOnly: function() {
+        var navEl = $('nav');
+        //  在微信中是否是现实实盘
+        if (Util.isWeixin() && getWeiXinIsHasReal()) { 
             if (getIsOnlyShowReal()) {
-                $('.clearfix').hide();
+                navEl.hide();
             } else {
-                $('.clearfix').show(); 
+                navEl.show(); 
             } 
         } else {
-            $('.clearfix').show(); 
+            navEl.show(); 
         }
+
+        if (getSimulatePlate()) {
+            navEl.hide();
+        }
+    },
+
+    _requires: function() {
+        $('nav').sticky();
         
         // 如果是Android内置webview就不显示下载条和抽奖入口
         if (!Config.isAndroidAPK() && getIfShowDLinkWL()) {

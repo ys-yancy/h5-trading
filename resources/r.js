@@ -1,10 +1,10 @@
-// invhero.com
 
-// ui
+//选择引用那套皮肤
 function getAppUi() {
 	return 'index.css';
 }
 
+// highcharts 的 ui
 function getChartUi() {
 	return { // 默认
 		background: false,
@@ -19,36 +19,10 @@ function getChartUi() {
 	}
 }
 
-function getRuleCotBackground() {
-	return false
-}
-function getRuleCotColor() {
-	return false
-}
-// function getChartUi() {
-// 	return {
-// 		background: '#282828', //背景 默认：#150d22
-// 		gridLineColor: '#2E2E2E', //默认：#20182d
-// 		upColor: '#DE5744', //默认：#f74b47
-// 		downColor: '#69A583',//默认：#27c1a7
-// 		upPlotLinebackground: '#DE5744',
-// 		upPlotLinebackground: '#69A583',
-// 		openPlotLineBackground: '#39B7E7',
-// 		closePlotLineBackground: '#7695B2',
-// 		tooltipBackground: 'rgba(40,40,40,0.85)',
-// 	}
-// }
 
-// function getRuleCotBackground() {
-// 	return '#282828'
-// }
-// function getRuleCotColor() {
-// 	return '#20A8F6'
-// }
-
-//有无模拟盘 现在不用了
+// 是否只显示模拟
 function getSimulatePlate() {
-	return true;
+	return false;
 }
 
 // 是否只显示实盘
@@ -63,38 +37,6 @@ function getWeiXinIsHasReal() {
 
 // 是否显示在浏览器打开提示
 function getIsShowOptionWeinixnGuide() {
-	return false;
-}
-
-//微信支付通道
-function getWeiXinPayWay() {
-	return 'zhihui';
-}
-
-//支付配置 
-//1支付宝 快捷 网页 2微信 快捷 网页 3 微信 支付宝 网页 4 快捷 网页 5 网页
-function getShowPayWay() {
-	return 4;
-}
-
-// 默认支付配置 //wxpay, zfpay, kjpay, pcpay,
-function getDefaultPayment() {
-	return 'kjpay';
-}
-
-// 有无网银
-function getEcurrencyPayment() {
-	return false;
-}
-
-
-//银联快捷支付  有无信用卡
-function getHasCreditBank() {
-	return false;
-}
-
-// 是否为Jiupa快捷
-function getIsjiuPaKuaiJie() {
 	return false;
 }
 
@@ -398,19 +340,6 @@ function getDefaultTradingUI() {
 // 急速交易默认品种
 function getDefaultRapidSymbols() {
 	return ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'XAGUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO'];
-}
-
-//是否显示客服微信  电话和微信只显示一个
-function showServiceWeixin() {
-	return false;
-}
-
-function getServiceWeixin() {
-	return '';
-}
-
-function getServiceQr() {
-	return '';
 }
 
 //是否显示客服电话
