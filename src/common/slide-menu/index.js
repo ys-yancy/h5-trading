@@ -217,7 +217,7 @@ export default class SlideMenu extends PageBase {
 				tradingUI: this.tradingUI,
 				inviteCode: Cookie.get('inviteCode'),
 				page: this.page,
-				isSwtp: getSimulatePlate() || getIsOnlyShowReal()
+				isSwtp: !getSimulatePlate() || getIsOnlyShowReal()
 			}, this.el);
 			resolve();
 		})

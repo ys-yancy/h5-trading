@@ -168,7 +168,7 @@ Base.extend(Account, PageBase, {
             });
         }, function() {
             Cookie.set('type', getSimulatePlate() ? 'demo' : 'real', {
-                 expires: Infinity
+                expires: Infinity
             });
             self._getAccount();
         });
@@ -187,8 +187,8 @@ Base.extend(Account, PageBase, {
             navEl.show(); 
         }
 
-        if (getSimulatePlate()) {
-            navEl.hide();
+        if (!getSimulatePlate()) {
+            navEl.show();
         }
     },
 

@@ -39,9 +39,9 @@ function getChartUi() {
 	}
 }
 
-// 是否只显示模拟
+// 有无模拟盘 true 代表有
 function getSimulatePlate() {
-	return false;
+	return true;
 }
 
 // 是否只显示实盘
