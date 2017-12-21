@@ -30,11 +30,13 @@ header {
             transform: translateX(-16rem);
         }
         .search {
+          -webkit-appearance: none;
             position: absolute;
             .top(22);
             .right(20);
             .width(44);
             .height(44);
+            border-radius: 0;
             background: red;
         }
         .search-wrapper {
@@ -54,14 +56,16 @@ header {
                 border: none;
             }
             .input-txt {
+              -webkit-appearance: none;
                 border: none;
                 .width(600);
                 .height(48);
                 .padding(10, 54);
                 .font-size(28);
-                border-bottom: 1px solid red;
+                border-bottom: 1px solid green;
                 background: inherit;
                 outline: 0;
+                border-radius: 0;
             }
             .close-wrapper {
                 position: absolute;
@@ -116,28 +120,62 @@ nav {
 }
 
 .content {
+    position: relative;
     margin: 0 auto;
-    .width(640);
-    .padding-top(16);
-    .padding-bottom(198);
-    /*background: #f4f3fb;*/
-    .loading {
-        text-align: center;
-        .height(98);
-        .line-height(98);
+    .width(750);
+    .font-size(24);
+    .item {
+      position: relative;
+      .padding-left(30);
+      .padding-top(36);
+      .padding-bottom(36);
+      .border-bottom(1, solid, #ccc);
+      .wrapper {
+        display: block;
+      }
+      p{
+        &.name{
+          .font-size(34);
+          .margin-bottom(6);
+        }
+      }
+      .action {
+        position: absolute;
+        .top(55);
+        .right(30);
+        .width(44);
+        .height(44);
+        background: green;
+        .icon {
+          position: absolute;
+          .top(0);
+          .left(0);
+          .width(44);
+          .height(44);
+        }
+      }
+      &.add {
+        .action {
+          background: red;
+          .icon {
+          }
+        }
+      }
     }
-    .link {
-        float: left;
-        .width(160);
-        .height(50);
-        .line-height(48);
-        border: 1px solid #c0afea;
-        .border-radius(4);
-        color: #653e91;
-        .margin-left(40);
-        .margin-bottom(19);
-        text-align: center;
-        .font-size(24);
-        overflow: hidden;
+    .empty{
+      .padding(30);
+      text-align: center;
+    }
+    .loading{
+      position: absolute;
+      .width(120);
+      .loading(60, 120, #ccc, #fff);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      .margin-top(120);
+      text-align: center;
     }
 }
