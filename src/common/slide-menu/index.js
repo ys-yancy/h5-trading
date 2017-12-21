@@ -193,10 +193,9 @@ export default class SlideMenu extends PageBase {
 		}
 
 		if (getSimulatePlate() && !isDemo) {
-			Cookie.expire('goType');
 			Cookie.expire('real_token');
 	    	Cookie.set('type', 'demo');
-	    	window.location.reload();
+	    	// window.location.reload();
 	    }
 	}
 

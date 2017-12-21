@@ -310,7 +310,7 @@ Base.extend(PageBase, Base, {
           if (!realAccount.trade_password) {
             login.showSetup();
           } else if (login.isExpire() || login.isFirst()) {
-            if ( !getSimulatePlate() ) {
+            if (getSimulatePlate()) {
               window.location = getLoginWL();
             } else {
               login.showTrade(showCancel);
