@@ -1,10 +1,8 @@
 var webpack = require('webpack');
-//var underscore = require('underscore');
-//var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var entryAll = {
     'login': './src/p/login/index',
-    'guides': './src/p/guides/index',
+    'register': './src/p/register/index',
     'home': './src/p/home/index',
     'option': './src/p/option/index',
     'rapid': './src/p/rapid/index',
@@ -54,7 +52,6 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
-        // loader: ExtractTextPlugin.extract("style-loader", "css-loader")
     }, {
       test: /\.ejs\.html$/,
       loader: "ejs-loader"
