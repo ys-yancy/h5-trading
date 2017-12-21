@@ -39,18 +39,29 @@
     <link rel="stylesheet" href="../../src/p/account/pocket/index.css">
 </head>
 
-<body class="page" id="J_Page">
+<body class="page">
     <header class="header" >
-
-        <div class="header-inner" id="J_Header">
-            <a class="go-back" href="../account.html?">
-                <span class="icon arrow"></span>
-            </a>
-            <h1 id="J_Title">记账簿</h1>
-            <div class="J_Filter filter"></div>
+        <div class="header-inner ui header" id="J_Header">
+            <div class="left">
+                <a class="go-back" href="../account.html?">
+                    <span class="icon arrow"></span>
+                </a>
+                <h1 id="J_Title">记账簿</h1>
+                <div class="J_Filter filter"></div>
+            </div>
+            
+            <div class="filters right">
+                <div class="wrapper">
+                    <input type="text" class="J_FilterTime time-first" placeholder="请输入日期">
+                </div>
+                <div class="wrapper">
+                    <input type="text" class="J_FilterTime time-second" placeholder="请输入日期">
+                </div>
+                <a href="javascript:;" class="submit J_Submit"></a>
+            </div>
         </div>
     </header>
-    <nav id="op-nav">
+    <nav class="ui nav common">
         <ul class="clearfix flipsnap">
             <li class="active J_Type">
                 <a href="javascript:;">全部</a>
@@ -84,38 +95,10 @@
           <div class="desc">加载中...</div>
         </div>
         <ul class="J_List list" id="J_List">
-          
+            
         </ul>
 
     </section>
-
-    <section class="filter-wrapper" id="J_OptionBanner">
-        <div class="quick-filter filters">
-            <h2>快捷筛选</h2>
-            <div class="bg"></div>
-            <ul class="clearfix">
-                <li class="J_FilterAction active">全部</li>
-                <li class="J_FilterAction">今天</li>
-                <li class="J_FilterAction">当月</li>
-                <li class="J_FilterAction">近7天</li>
-            </ul>
-        </div>
-        <div class="filters">
-            <h2>区间筛选</h2>
-            <div class="bg"></div>
-            <div class="wrapper first">
-                <p>起始日期</p>
-                <input type="text" class="J_FilterTime time-first" placeholder="请输入日期">
-            </div>
-            <div class="wrapper">
-                <p>截止日期</p>
-                <input type="text" class="J_FilterTime time-second" placeholder="请输入日期">
-                <p class="desc">输入格式为年-月-日 如2015-11-20</p>
-            </div>
-            <a href="javascript:;" class="submit J_Submit">确定</a>
-        </div>
-    </section>
-    <div class="dialog-mask J_OptionBannerMask" style="display:none;"></div>
     <footer>
       <p class="normal"><span id="J_BottomName" class="name"></span>合计($)：<span id="total"></span></p>
       <div class="profit-total">

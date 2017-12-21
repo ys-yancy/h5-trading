@@ -13,22 +13,16 @@ class Pocket extends PageBase {
   constructor(config) {
     super(config);
 
-    // this.render(tmpl, {}, this.el);
-
     var params = new Uri().getParams();
-
     if (params.header == 'noBack') {
       $('.go-back').hide();
     }
-
     if (params.header == 'no') {
       $('#J_Header').hide();
     }
-
     if (params.from) {
       $('.go-back').attr('href', params.from);
     }
-
 
     this.flipsnap = Flipsnap('.flipsnap', {
       maxPoint: 4,
@@ -47,7 +41,7 @@ class Pocket extends PageBase {
     $('nav').sticky();
 
     this.filter = new Filter({
-      el: $('#J_OptionBanner')
+      el: $('.filters')
     });
 
     $('#J_List').css('min-height', $(window).height() - $('header').height() - $('nav').height());
@@ -64,8 +58,6 @@ class Pocket extends PageBase {
     $(window).on('scroll', window, $.proxy(this._showTopbtn,this));
     this.subscribe('get:data', this._filter, this);
 
-    // this.el.on('click', '.J_FilterAction', $.proxy(this._quickFilter, this));
-    // this.el.on('click', '.J_Submit', $.proxy(this._submit, this));
     $('.J_FilterAction,.J_Submit').on('click',$.proxy(function () {
       this.list = [];
       this.pageNum = 0;
@@ -75,8 +67,6 @@ class Pocket extends PageBase {
   }
 
   _filter(e) {
-    console.log(e);
-
     this._getData(this.index, e)
   }
 
@@ -87,6 +77,7 @@ class Pocket extends PageBase {
           this.onlyOne = false;
           var index = $('.active').index();
           self.pageNum+=1;
+          console.log(111111111)
           this._getData(index, self.requestData);
         }
       }
@@ -211,7 +202,6 @@ class Pocket extends PageBase {
       if ( data.data.records.length<30 ) {
         self.repeatAjax = false;
       }
-      // console.log(data);
       data = data.data;
       // records 
       this.allData = data;
@@ -307,7 +297,6 @@ class Pocket extends PageBase {
       if (this.getFilter(index, item)) {
         total += item.amount;
 
-        // item.amountFormate = numeral(item.amount).format('0,0.00');
         if (item.trade_notional_amount) {
           amount += item.trade_notional_amount;
           item.trade_notional_amount = numeral(item.trade_notional_amount).format('0,0');
@@ -333,27 +322,7 @@ class Pocket extends PageBase {
     this.render(tmpl, this.list, $('#J_List'));
     this._pos();
 
-    if ($('body').hasClass('profit-type')) {
-      // var total = 0;
-      // var amount = 0;
-      // result.forEach(function(item) {
-      //   if (item.confirmed == 1 && item.reason == 3001) {
-      //     total += item.amount;
-      //     amount += item.trade_notional_amount;
-      //     item.trade_notional_amount = numeral(item.trade_notional_amount).format('0,0');
-      //   }
-      // });
-      // $('#J_ProfitTotal').text(numeral(total).format('0,0.00'));
-
-      // var desc = '';
-      // // console.log(amount);
-      // num = amount > 10000 ? (desc = '万', amount / 10000) : amount;
-      // var num = numeral(num).format('0,0.00');
-
-      // num = desc ? num + desc : num;
-
-      // $('#J_AmountTotal').text(num);
-    } else {
+    if ($('body').hasClass('profit-type')) {} else {
       $('#J_BottomName').text(requestData.desc);
     }
 
@@ -363,7 +332,6 @@ class Pocket extends PageBase {
       $('footer').removeClass('region');
     }
 
-    // window.scrollTo(0, 0);
     this.index = index;
   }
 

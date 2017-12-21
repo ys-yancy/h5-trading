@@ -14,9 +14,7 @@
 <% data.forEach(function(item, index) { %>
 <li class="item">
   <% var len = item.update_at.length; %>
-  <p class="time"><%= item.update_at.substring(0, len - 3) %>
-    <span class="symbol-info"><%= item.trade_direction && item.trade_direction.indexOf('buy') !== -1 ? '买涨' : '买跌' %> <%= item.symbol_name %></span>
-  </p>
+  <p class="time"><%= item.update_at.substring(0, len - 3) %></p>
   <div class="clearfix">
     <div class="left">
       <span class="tag">$</span>
@@ -28,7 +26,9 @@
     <div class="progress">
       <span class="circle <% if (item.confirmed == 0 || item.confirmed == -1) {%> empty <%} %>"></span>
     </div>
-    <p class="amount">名义交易量($)：<%= item.trade_notional_amount %></p>
+    <p class="amount clearfix">名义交易量($)：<%= item.trade_notional_amount %>
+      <span class="symbol-info"><%= item.trade_direction && item.trade_direction.indexOf('buy') !== -1 ? '买涨' : '买跌' %> <%= item.symbol_name %></span>
+    </p>
   </div>
 </li>
 <% }); %>

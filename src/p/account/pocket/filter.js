@@ -10,34 +10,18 @@ export default class OptionBanner extends PageBase {
   constructor(config) {
     super(config);
 
-
-    this._setHeight();
     this._bind();
-
-
-    // $('.J_FilterTime').val(Util.formateTime(Date.now(), 'yyyy-MM-dd'));
   }
 
   _bind() {
     var doc = $(document);
 
     $('.J_Filter').on('click', $.proxy(this._fold, this));
-    $('.J_OptionBannerMask').on('click', $.proxy(this._fold, this));
 
-    this.el.on('click', '.J_FilterAction', $.proxy(this._quickFilter, this));
-
-
-    // document.body.addEventListener('touchstart', function() {}, true);
-    $('.J_OptionBannerMask').on('touchmove', $.proxy(this._preventTouch, this));
-    $('#J_OptionBanner').on('touchmove', $.proxy(this._preventTouch, this));
     $('.J_FilterTime').on('blur', $.proxy(this._blur, this));
 
     this.el.on('click', '.J_Submit', $.proxy(this._submit, this));
-
-    document.addEventListener('focusout', function(e) {
-      window.scrollTo(0, 0)
-    });
-
+    this.el.on('click', '.J_FilterAction', $.proxy(this._quickFilter, this));
   }
 
   _blur(e) {
@@ -96,6 +80,7 @@ export default class OptionBanner extends PageBase {
     });
 
     if (!pass) {
+      this._fold();
       return;
     }
 
@@ -107,8 +92,7 @@ export default class OptionBanner extends PageBase {
       date_end: Util.formateTime(Util.getTime(end, 'YYYY-MM-DD'), 'yyyy-MM-dd') //+ 24 * 1000 * 60 * 60
     }
 
-    // $('#J_OptionBanner').attr('data-kind','all');
-    $('#J_OptionBanner').attr({
+    $('.filters').attr({
       'data-desc': start + '至' + end,
       'data-startTime': params.date_start,
       'data-endTime': params.date_end
@@ -165,15 +149,12 @@ export default class OptionBanner extends PageBase {
         type = 'month';
         break;
       case 3:
-        // var time = Date.now() - 7 * 24 * 60 * 60 * 1000;
-        // params.date = Util.formateTime(time, 'yyyy-MM-dd');
-        // params.period = 7;
         type = 7;
         desc = '最近7天';
         break;
     }
 
-    $('#J_OptionBanner').removeAttr('data-startTime data-endTime','')
+    $('.filters').removeAttr('data-startTime data-endTime','')
     .attr({
       'data-kind': type,
       'data-desc': desc
@@ -190,74 +171,15 @@ export default class OptionBanner extends PageBase {
     this._fold();
   }
 
-
-
-  _setHeight() {
-    var height = $(window).height();
-
-    this.el.height(height);
-  }
-
   _fold(e) {
-    var bodyEl = $('#J_Page'),
-      htmlEl = $('html'),
-      footerEl = $('footer');
+    var hdContentEl = $('#J_Header');
 
-    if (bodyEl.hasClass('move-x')) {
-      //htmlEl.removeClass('move-x');
-      $('body').removeClass('unfold');
-
-      footerEl.hide();
-
-      setTimeout(() => {
-        this.el.hide();
-       
-      }, 300);
-
-      this.el.css({
-        top: 0
-      });
-      $('.J_OptionBannerMask').css({
-        top: 0
-      })
-      bodyEl.removeClass('move-x');
-
-      $('.J_OptionBannerMask').hide();
-      bodyEl.css({
-        height: 'auto'
-      });
-
-     setTimeout(()=>{
-       footerEl.show();
-     },500);
-
-
-
-    } else {
-      this.el.show();
-      $('body').addClass('unfold');
-      var scrollTop = $(window).scrollTop();
-      this.el.css({
-        top: scrollTop
-      });
-      $('.J_OptionBannerMask').css({
-          top: scrollTop
-        })
-        //htmlEl.addClass('move-x');
-
-      // setTimeout(() => {
-      bodyEl.addClass('move-x');
-
-      bodyEl.css({
-        height: $(window).height(),
-        //  'overflow': 'hidden'
-      });
-      $('.J_OptionBannerMask').show();
-      //}, 150);
-
-      footerEl.hide();
+    if (hdContentEl.hasClass('move-x')) {
+      hdContentEl.removeClass('move-x');
+      return;
     }
 
+    hdContentEl.addClass('move-x');
   }
 
   _showError(curEl, message) {
@@ -268,7 +190,7 @@ export default class OptionBanner extends PageBase {
       curEl.after('<p class="err">' + message + '</p>');
     } else {
       messageEl.text(message);
-      messageEl.show();
+      // messageEl.show();
     }
     parent.addClass('error');
   }

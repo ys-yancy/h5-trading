@@ -23,16 +23,6 @@ function Account() {
     }, function() {
         location.href = './option.html';
     });
-
-    //  在微信中是否是现实实盘：getSimulatePlate()是之前配置的有无模拟盘
-    if ( !Util.isWeixin() || getWeiXinIsHasReal() ) { //getSimulatePlate()
-        if (getIsOnlyShowReal()) {
-            $('.clearfix').hide();
-        } else {
-        $('.clearfix').show(); 
-        }
-        
-    }
 }
 
 Base.extend(Account, PageBase, {
@@ -184,8 +174,19 @@ Base.extend(Account, PageBase, {
     },
 
     _requires: function() {
-        $('header').sticky();
+        $('nav').sticky();
 
+         //  在微信中是否是现实实盘：getSimulatePlate()是之前配置的有无模拟盘
+        if (Util.isWeixin() && getWeiXinIsHasReal()) { //getSimulatePlate()
+            if (getIsOnlyShowReal()) {
+                $('.clearfix').hide();
+            } else {
+                $('.clearfix').show(); 
+            } 
+        } else {
+            $('.clearfix').show(); 
+        }
+        
         // 如果是Android内置webview就不显示下载条和抽奖入口
         if (!Config.isAndroidAPK() && getIfShowDLinkWL()) {
             $('.footer').append('<div class="bottom-banner" id="J_Banner">\
