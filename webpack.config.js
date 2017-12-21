@@ -28,7 +28,8 @@ var entryAll = {
     'my/data/index': './src/p/my/data/index',
     'weixin/profile': './src/p/weixin/profile/index',
     'account': './src/p/account/index',
-    'account/pocket': './src/p/account/pocket/index'
+    'account/pocket': './src/p/account/pocket/index',
+    'cat': './src/p/cat/index'
 };
 
 module.exports = {
