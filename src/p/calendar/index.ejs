@@ -23,7 +23,7 @@
             </div>
             <div class="desc-wrapper">
                 <% var AD_GGZ = item.AD_GGZ.split(' ')[0] %>
-                <p class="dete-eff up">
+                <p class="dete-eff">
                    <span class="time"><%= item.time.split(' ')[1].substring(0, 5) %></span>
                    <% if (item.AD_GGZ) {%>
                     <span class="eff-desc <%= AD_GGZ.indexOf('空') !== -1 ? 'down' : 'up' %>"><%= AD_GGZ %></span>   
