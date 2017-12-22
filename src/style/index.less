@@ -17,6 +17,27 @@
 @smBdColor: red;
 @smBgColor: #fff;
 
+//sm-bd-ipt
+@smBdIptColor: red;
+@smBdIptBdColor: red;
+@smBdIptBgColor: #ccc;
+//sm-bd-ipt disabled
+@smBdIptDisColor: #ccc;
+@smBdIptDisBdColor: #cc;
+@smBdIptDisBgColor: #ccc;
+
+//.ui.sm-bd-rdo
+@smBdRdoColor: red;
+@smBdRdoBdColor: red;
+@smBdRdoBgColor: #ccc;
+@smBdRdoCheckColor: green;
+@smBdRdoCheckBdColor: green;
+@smBdRdoCheckBgColor: #ccc;
+
+//slider-contro-trunk
+@sliderControTrunkBgColor: #8DC7F6;
+@sliderControTrunkActiveColor: #2196F3;
+
 // tab page header
 @headerColor: #252525;
 @headerBgColor: #f1f1f1;
@@ -58,47 +79,17 @@ html, body{
 	color: @contentColor;
 }
 
+.ui.icon{
+	background: red;
+}
+
 .popup{
 	// background: @popupBgColor;
-}
-
-.ui.sm-bd{
-	color: @smColor;
-	background-color: @smBgColor;
-	border-color: @smBdColor !important;
-}
-
-.ui.sm-bd-ipt{
-	color: @smColor;
-	background-color: @smBgColor;
-	border-color: @smBdColor !important;
-	&:disabled{
-		background-color: #ccc;
-	}
 }
 
 .ui.common.header-inner{
 	color: @headerColor;
 	background: @headerBgColor;
-}
-
-.ui.common.nav{
-	background: @navBgColor;
-	border-color: @navBdColor;
-	.color{
-		color: @navColor;
-	}
-	.active:before{
-		color: @activeColor;
-		background: @activeColor;
-	};
-}
-
-.ui.common.tab-nav{
-	background: @tab-navBgColor;
-	.color{
-		color: @tab-navColor;
-	}
 }
 
 .ui.common.content-color{
@@ -133,39 +124,28 @@ html, body{
 	}
 }
 
-.ui.tl-color{
-	color: red;
+
+
+/*
+ * nav,tab-nav相关
+ */
+.ui.common.nav{
+	background: @navBgColor;
+	border-color: @navBdColor;
+	.color{
+		color: @navColor;
+	}
+	.active:before{
+		color: @activeColor;
+		background: @activeColor;
+	};
 }
 
-.ui.radio-w{
-	background-color: red;
-	&:before{
-		background-color: green
+.ui.common.tab-nav{
+	background: @tab-navBgColor;
+	.color{
+		color: @tab-navColor;
 	}
-}
-.ui.radio-ipt{
-	&:after{
-		background-color: #8DC7F6;
-	}
-	&:before{
-		background-color: #2196F3;
-	}
-}
-
-.ui.sm-bd-rdo{
-	&:before{
-		color: green;
-		border: 1px solid green;
-		background: #fff;
-	}
-	&:checked:before{
-		color: #ccc;
-		background: red;
-	}
-}
-
-.ui.icon{
-	background: red;
 }
 
 .ui.common.bottom-nav{
@@ -177,6 +157,63 @@ html, body{
 	}
 }
 
+
+// 小标题（主要跟单）
+.ui.tl-color{
+	color: red;
+}
+
+// 小的边关
+.ui.sm-bd{
+	color: @smColor;
+	background-color: @smBgColor;
+	border-color: @smBdColor !important;
+}
+/*
+ * 跟单中的ui（主要）
+ */
+.ui.sm-bd-ipt{
+	color: @smBdIptColor;
+	background-color: @smBdIptBgColor;
+	border-color: @smBdIptBdColor !important;
+	&:disabled{
+		color: @smBdIptDisColor;
+		background-color: @smBdIptDisBdColor;
+		border-color: @smBdIptDisBgColor !important;
+	}
+}
+
+.ui.radio-w{
+	background-color: @sliderControTrunkBgColor;
+	&:before{
+		background-color: @sliderControTrunkActiveColor;
+	}
+}
+.ui.radio-ipt{
+	&:after{
+		background-color: @sliderControTrunkBgColor;
+	}
+	&:before{
+		background-color: @sliderControTrunkActiveColor;
+	}
+}
+
+.ui.sm-bd-rdo{
+	&:before{
+		color: @smBdRdoColor;
+		border: 1px solid @smBdRdoBdColor;
+		background: @smBdRdoBgColor;
+	}
+	&:checked:before{
+		color: @smBdRdoCheckColor;
+		border: 1px solid @smBdRdoCheckBdColor;
+		background: @smBdRdoCheckBgColor;
+	}
+}
+
+/*
+ * 按钮相关
+ */
 .ui.btn-default{
 	background-color: @buttonDefaultBgColor;
 }
