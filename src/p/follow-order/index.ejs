@@ -47,7 +47,7 @@
 			</div>
 			<div>
 				<div class="item left average-ticket">
-					<% var _duration = parseFloat(data.avg_ticket_time || 0),_durationDesc = '分钟'; %>
+					<% var _duration = parseInt(data.avg_ticket_time || 0),_durationDesc = '分钟'; %>
 					<% _duration = _duration ? _duration / 60 : _duration; %>
 					<% if(_duration > 60 * 24 * 365) { %>
 						<% _duration = parseInt(_duration/(60 * 24 * 365));_durationDesc = '年'; %>
@@ -57,7 +57,7 @@
 						<% _duration = parseInt(_duration / 60);_durationDesc = '小时'; %>
 					<% } %>
 					<p class="desc">平均持仓</p>
-					<p class="num J_Averageduration"><%= _duration %> <%= _durationDesc %></p>
+					<p class="num J_Averageduration"><%= parseInt(_duration) %> <%= _durationDesc %></p>
 				</div>
 				<div class="item center average-ticket-volume">
 					<p class="desc">平均交易量</p>
