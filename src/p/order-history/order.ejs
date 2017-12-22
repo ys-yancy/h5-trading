@@ -2,10 +2,10 @@
     <div>
         <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
         <%= data.status === 'rejected' ? '失败' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
-        <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+        </span>
+        <span class="tag">
             <%= data.symbolName %>
         </span>
-    </span>
     </div>
     <div class="right price-wrapper">
         <span class="currency">$</span>

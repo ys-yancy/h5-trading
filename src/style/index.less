@@ -41,13 +41,16 @@
 @buttonDownBgColor: #40997D;
 @buttonUnactiveBgColor: #494258;
 @buttonDisBgColor: #494258;
+@buttonDelBgColor: pink;
+@buttonEditOrderBgColor: #9B9B9B;
+@buttonCloseOrderBgColor: #2196F3;
 
 //footer
 @footerNameColor: #868686;
 @import '../variable.less';
 
 html, body{
-	color: #666;
+	color: @contentColor;
 }
 
 .popup{
@@ -145,4 +148,16 @@ html, body{
 
 .ui.btn-dis{
 	background-color: @buttonDisBgColor;
+}
+
+.ui.btn-del{
+	background-color: @buttonDelBgColor;
+}
+
+.ui.btn-order-edit{
+	background-color: @buttonEditOrderBgColor;
+}
+
+.ui.btn-order-close{
+	background-color: @buttonCloseOrderBgColor;
 }

@@ -1,6 +1,6 @@
 <li class="item price-info">
     <div>
-        <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+        <span class="tag default-down<% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
             <%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
         </span>
         <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
