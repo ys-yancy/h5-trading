@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>我邀请到的朋友</title>
+    <title>我的好友</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,21 +41,20 @@
 <body>
     <header class="header">
         <div class="header-inner" id="J_Header">
-            <a class="go-back" href="./../option.html?">
+            <a class="go-back ui icon" href="./../option.html?">
                 <span class="icon arrow"></span>
             </a>
-            <h1 id="J_Title">我邀请到的朋友</h1>
-            <a href="../share.html" class="add J_Add"></a>
+            <h1 id="J_Title">我的好友</h1>
+            <a href="../share.html" class="ui icon add J_Add"></a>
 
         </div>
     </header>
     <section class="content">
-       
         <section class="list">
-           <div class="loader ball-clip-rotate" id="J_Loading">
-            <div class="loader-inner"></div>
-            <div class="desc">加载中...</div>
-          </div>
+           <div class="ui loading" id="J_Loading">
+                <span class="circel"></span>  
+                <span class="loading-text">加载中...</span> 
+            </div>
         </section>
     </section>
     <script src="../../src/lib/zepto.js"></script>

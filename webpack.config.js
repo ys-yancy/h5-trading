@@ -25,6 +25,8 @@ var entryAll = {
     'my/profile/index': './src/p/my/profile/index',
     'my/data/index': './src/p/my/data/index',
     'weixin/profile': './src/p/weixin/profile/index',
+    'friends/invite': './src/p/friends/invite/index',
+    'share': './src/p/share/index',
     'account': './src/p/account/index',
     'account/pocket': './src/p/account/pocket/index',
     'cat': './src/p/cat/index',
