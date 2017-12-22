@@ -42,7 +42,7 @@ class FollowAction extends PageBase {
 
 		this.el.on('click', '.J_FollowSettingSubmit', $.proxy(this._SubmitFollow, this));
 
-		if ( getWXWL() == "kstj" ) {
+		if ( false ) {
 			this.el.on('click', '.J_FollowRecharge', (e) => {
 				e.preventDefault(); 
 				e.stopPropagation();
