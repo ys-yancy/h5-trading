@@ -68,6 +68,15 @@ html, body{
 	border-color: @smBdColor !important;
 }
 
+.ui.sm-bd-ipt{
+	color: @smColor;
+	background-color: @smBgColor;
+	border-color: @smBdColor !important;
+	&:disabled{
+		background-color: #ccc;
+	}
+}
+
 .ui.common.header-inner{
 	color: @headerColor;
 	background: @headerBgColor;
@@ -124,6 +133,36 @@ html, body{
 	}
 }
 
+.ui.tl-color{
+	color: red;
+}
+
+.ui.radio-w{
+	background-color: red;
+	&:before{
+		background-color: green
+	}
+}
+.ui.radio-ipt{
+	&:after{
+		background-color: #8DC7F6;
+	}
+	&:before{
+		background-color: #2196F3;
+	}
+}
+
+.ui.sm-bd-rdo{
+	&:before{
+		color: green;
+		border: 1px solid green;
+		background: #fff;
+	}
+	&:checked:before{
+		color: #ccc;
+		background: red;
+	}
+}
 
 .ui.icon{
 	background: red;
