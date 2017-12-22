@@ -11,7 +11,7 @@
            </div>
        </div>
        <div class="name-attent">
-           <p class="name"><%= item.nickname %></p>
+           <p class="name l1-color"><%= item.nickname %></p>
            <p class="attent <%= !isFollow ? 'no' : '' %>">已关注</p>
        </div>
        <span class="desc-time">
@@ -19,7 +19,7 @@
        </span>
    </div>
    <div class="symbol-info">
-        <span class="tag up"><%= isUp ? '买涨' : '买跌' %></span>
+        <span class="tag <%= isUp ? 'up' : 'down' %>"><%= isUp ? '买涨' : '买跌' %></span>
         <p class="symbolName"><%= item.symbolName %> <%= item.symbol %></p>
         <p class="create-time right"><%= item.openTime%></p>
    </div>
