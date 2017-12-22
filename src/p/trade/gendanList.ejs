@@ -10,10 +10,10 @@
       <%} else {%>
         <li class="item J_Item" data-symbol="<%= item.symbol %>">
             <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
-                <span class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>"></span>
+                <span class="tag default-down <% if(item.cmd.indexOf('buy') !== -1) {%>up <%}%>"></span>
                 <div class="name-wrapper">
-                    <p class="name"><%= item.symbolName %></p>
-                    <p><%= item.symbol %></p>
+                    <p class="name l1-color"><%= item.symbolName %></p>
+                    <p class="l2-color"><%= item.symbol %></p>
                 </div>
                 <ul class="detail">
                     <li>

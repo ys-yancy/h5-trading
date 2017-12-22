@@ -40,39 +40,35 @@
 
 <body>
     <header class="header" >
-        <div class="ui header-inner" id="J_Header">
-            <span class="app icon show-slide-menu J_ShowSlideMenu"></span>
+        <div class="ui common header-inner" id="J_Header">
+            <span class="ui icon menu show-slide-menu J_ShowSlideMenu"></span>
             <h1>交易</h1>
-            <div class="fn">
-                <div class="J_Fn bar-wrapper">
-                    <a href="./cat.html?q=" class="app icon bar"></a>
-                </div>
-            </div>
+            <a href="./cat.html?q=" class="fn ui icon add"></a>
         </div>
     </header>
-    <nav class="ui option nav">
+    <nav class="ui common nav">
         <ul class="clearfix">
             <li class="active">
-                <a href="./option.html">自选</a>
+                <a class="color" href="./option.html">自选</a>
             </li>
             <li>
-                <a href="./trade.html">当前交易</a>
+                <a class="color" href="./trade.html">当前交易</a>
             </li>
             <li>
-                <a href="./trade-history.html">历史交易</a>
+                <a class="color" href="./trade-history.html">历史交易</a>
             </li>
         </ul>
     </nav>
     <section class="top-message"></section>
     <section class="content">
-        <div class="list-header clearfix">
+        <div class="list-header ui common tab-nav clearfix">
             <span class="hd-item">交易品种</span>
             <span class="hd-item">买涨</span>
             <span class="hd-item">点差</span>
             <span class="hd-item">买跌</span>
             <span class="hd-item">涨跌幅</span>
         </div>
-        <ul class="" id="J_List">
+        <ul class="ui common content-color" id="J_List">
             <li class="ui loading">
                 <span class="circel"></span>  
                 <span class="loading-text">加载中...</span> 
@@ -82,7 +78,7 @@
     <div class="slide-menu J_SlideMenu" id="J_SlideMenu" style="display:none;"></div>
     <div class="slide-menu-mask" id="J_SlideMenuMask" style="display:none;"></div>
     <footer class="footer">
-        <ul class="clearfix bottom-nav">
+        <ul class="clearfix bottom-nav ui common">
             <li class="active">
                 <a class="trade" href="./home.html">
                     <span class="icon"></span>

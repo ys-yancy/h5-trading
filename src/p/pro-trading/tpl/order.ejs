@@ -2,8 +2,8 @@
 <div class="center-item volume-wrapper">
   <div class="wrapper J_VolumeFocus volume-input">
     <p class="title">交易量(手)</p>
-    <div class="J_Minus minus"></div>
-    <div class="J_Add add"></div>
+    <div class="J_Minus minus ui icon"></div>
+    <div class="J_Add add ui icon"></div>
     <input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" <% if (data.edit) { %> disabled <%}%>>
     <p class="volume-err err" style="display:none;"></p>
   </div>
@@ -25,8 +25,8 @@
     </div>
     <div class="err-wrapper">
       <p class="title">挂单开仓价</p>
-      <div class="minus"></div>
-      <div class="add"></div>
+      <div class="minus ui icon"></div>
+      <div class="add ui icon"></div>
       <input id="J_OpenPriceInput" class="J_Edit" placeholder="-- --" type="number" value="<%= data.openprice || (data.openPrice || data.price) %>"  disabled>
     </div>
   <% } else { %>
@@ -43,8 +43,8 @@
           <span id="J_ThuTakeprofit" class="icon J_ThuTakeprofit <% if (!hasTakeProfit) {%> close <% }%>"></span>
         </div>
         <p class="title">止盈价格</p>
-        <div class="J_MinusTakeprofit minus"></div>
-        <div class="J_AddTakeprofit add"></div>
+        <div class="J_MinusTakeprofit minus ui icon"></div>
+        <div class="J_AddTakeprofit add ui icon"></div>
         <input type="number" id="J_Profit" class="takeprofit" placeholder="-- --" data-value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" value="<%= parseFloat(data.takeProfit) === 0 ? '' : data.takeProfit %>" <% if (!hasTakeProfit) { %> disabled <%}%>>
         <p>目标盈利($)<span id="J_ProfitCount"></span></p>
     </div>
@@ -55,8 +55,8 @@
           <span id="J_ThuStopLoss" class="icon J_ThuStopLoss <% if (!hasStopLoss) {%> close <% }%>"></span>
         </div>
         <p class="title">止损价格</p>
-        <div class="J_MinusStopLoss minus"></div>
-        <div class="J_AddStopLoss add"></div>
+        <div class="J_MinusStopLoss minus ui icon"></div>
+        <div class="J_AddStopLoss add ui icon"></div>
         <input type="number" class="stoploss" id="J_Loss" data-value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" value="<%= parseFloat(data.stopLoss) === 0 ? '' : data.stopLoss %>" placeholder="-- --"
         <% if (!hasStopLoss) { %> disabled <%}%>>
         <p>预期亏损($)<span id="J_LossCount"></span></p>

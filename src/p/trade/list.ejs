@@ -1,12 +1,12 @@
 <% $.each(data.normal, function(index, item) {%>
 <li class="item J_Item" data-symbol="<%= item.symbol %>">
-    <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
+    <a class="link bd-color clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
         <div class="name-wrapper">
-            <p class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>">
+            <p class="tag default-down <% if(item.cmd.indexOf('buy') !== -1) {%> up <%}%>">
                 <%= (item.cmd.indexOf('buy') !== -1) ? '买涨' : '买跌' %>
             </p>
-            <p class="name"><%= item.symbolName %></p>
-            <p><%= item.symbol %></p>
+            <p class="name l1-color"><%= item.symbolName %></p>
+            <p class="l2-color"><%= item.symbol %></p>
         </div>
         <ul class="detail">
             <li>
@@ -46,11 +46,11 @@
     <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
         
         <div class="name-wrapper">
-            <p class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>">
+            <p class="tag default-down <% if(item.cmd.indexOf('buy') !== -1) {%> up <%}%>">
                 <%= (item.cmd.indexOf('buy') !== -1) ? '买涨' : '买跌' %>
             </p>
-            <p class="name"><%= item.symbolName %></p>
-            <p><%= item.symbol %></p>
+            <p class="name l1-color"><%= item.symbolName %></p>
+            <p class="l2-color"><%= item.symbol %></p>
         </div>
         <ul class="detail">
             <li>

@@ -6,8 +6,8 @@
     <% var price = (bidPrice + askPrice) / 2; %>
     <% var unit = (item.policy.min_quote_unit.toString().length - 2) >= 0 ? item.policy.min_quote_unit.toString().length - 2 : 0; %>
 
-<li class="item <% if(isUp){%> up <%}%>" data-symbol="<%= item.policy.symbol %>" data-symbolname="<%= item.policy.symbol.replace(/\./g, '--') %>">
-    <a class="link link-item clearfix" href= "<%= data.tradeUI %>symbol=<%= item.policy.symbol %>&name=<%= item.policy.name %>&price=<%= (price).toFixed(5) %>&unit=<%= item.policy.min_quote_unit %>&fullRouter=<%= encodeURIComponent(location.href) %>">
+<li class="item default-down <% if(isUp){%> up <%}%>" data-symbol="<%= item.policy.symbol %>" data-symbolname="<%= item.policy.symbol.replace(/\./g, '--') %>">
+    <a class="link bd-color link-item clearfix" href= "<%= data.tradeUI %>symbol=<%= item.policy.symbol %>&name=<%= item.policy.name %>&price=<%= (price).toFixed(5) %>&unit=<%= item.policy.min_quote_unit %>&fullRouter=<%= encodeURIComponent(location.href) %>">
         <!-- status 默认是余额不足， break表示违规，simulate表示限模拟，close表示休市 -->
         <% if (item.tag) {%>
         <span class="status <%= item.className %>" data-symbol="<%= item.policy.symbol %>" data-symbolname="<%= item.policy.symbol.replace(/\./g, '--') %>"><%= item.tag %></span>
@@ -15,8 +15,8 @@
         <span class="status" data-symbol="<%= item.policy.symbol %>" data-symbolname="<%= item.policy.symbol.replace(/\./g, '--') %>" style="visibility: hidden">余额不足</span>
         <% } %>
         <div class="lt-item name-wrapper">
-            <p class="name J_SymbolName"><%= item.policy.name %></p>
-            <p><%= item.policy.symbol %></p>
+            <p class="name l1-color J_SymbolName"><%= item.policy.name %></p>
+            <p class="l2-color"><%= item.policy.symbol %></p>
         </div>
         <span class="lt-item price J_BidPrice"><%= bidPrice === '--' ? '--' : bidPrice.toFixed(unit) %></span>
         <span class="lt-item spread J_Spread"><%=Math.abs(askPrice - bidPrice).toFixed(unit)%></span>

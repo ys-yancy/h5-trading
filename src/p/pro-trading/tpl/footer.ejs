@@ -1,23 +1,23 @@
 <% if (data.type === 'close') {%>
-<div class="market-close">
+<div class="market-close ui btn-dis">
 	<p><%= data.reason %></p>
 	<p class="desc">下次开始时间 <%= data.start %></p>
 </div>
 <% } else if (data.type === 'more-money') {%>
-<div class="balance">余额不足</div>
+<div class="balance ui btn-dis">余额不足</div>
 <% } else if (data.type === 'un-trade') {%>
-<div class="other-btn"><%= data.tag %></div>
+<div class="other-btn ui btn-other"><%= data.tag %></div>
 <% } else if(data.type === 'simulate' && data.accountType === 'real') {%>
-<div class="other-btn"><%= data.tag %></div>
+<div class="other-btn ui"><%= data.tag %></div>
 <% } else if (data.edit) {%>
-<a class="action-edit J_SumitEdit" href="javascript:;">确认修改</a>
-<a class="action-edit J_CancelEdit action-cancel" href="javascript:;">取消修改</a>
+<a class="action-edit ui J_SumitEdit btn-edit" href="javascript:;">确认修改</a>
+<a class="action-edit ui J_CancelEdit action-cancel btn-subEdit" href="javascript:;">取消修改</a>
 <% } else { %>
-<a class="action buy-down" href="javascript:;">
+<a class="action buy-down ui btn-down" href="javascript:;">
 	<p class="bid-name">买跌</p>
   	<p class="bid-price">—— ——</p>
 </a>
-<a class="action buy-up" href="javascript:;">
+<a class="action buy-up ui btn-up" href="javascript:;">
   <p class="ask-name">买涨</p>
   <p class="ask-price">—— ——</p>
 </a>

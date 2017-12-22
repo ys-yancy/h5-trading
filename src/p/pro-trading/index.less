@@ -20,7 +20,6 @@ header{
         .width(44);
         .height(44);
         .top(22);
-        background: red;
       }
       .go-back{
         .left(30);
@@ -35,7 +34,7 @@ nav {
   .width(750);
     .height(78);
     background: #F2F2F2;
-    border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid transparent;
     li {
       position: relative;
       float: left;
@@ -59,7 +58,6 @@ nav {
               .width(250);
               .height(4);
               font-size: 0;
-              background: #3583DE;
               content: '';
           }
       }
@@ -137,7 +135,6 @@ nav {
         .height(40);
         .left(150);
         .border-radius(50%);
-        background: green;
         &.add{
           left: auto;
           .right(150);
@@ -166,7 +163,6 @@ nav {
           .width(77);
           .height(44);
           .border-radius(50);
-          background: #8DC7F6;
           &:before{
             display: inline-block;
             position: absolute;
@@ -176,7 +172,6 @@ nav {
             .width(44);
             .height(44);
             .border-radius(50);
-            background: #2196F3;
           }
           &.close:before{
             left: 0;
@@ -192,7 +187,6 @@ nav {
           width: 100%;
           text-align: center;
           .font-size(16);
-          color: red;
         }
         .volume-err{
            .bottom(10);
@@ -268,10 +262,6 @@ nav {
       .border-radius(5);
       .font-size(32);
       color: #fff;
-      background: #2196F3;
-      &.J_SumitEdit{
-        background: #9B9B9B;
-      }
       .loading-wrapper{
         .padding-top(25);
       }
@@ -288,16 +278,6 @@ nav {
       .ask-price,
       .bid-price{
         .font-size(28);
-      }
-      &.buy-up{
-        background: red;
-      }
-      &.buy-down{
-        background: green;
-      }
-      &.unactive{
-        background: #494258;
-        border-color: #494258;
       }
     }
     .loading-wrapper{
@@ -318,7 +298,6 @@ nav {
       .line-height(64);
       .border-radius(5);
      .font-size(28);
-      background-color: #ccc;
       color: #fff;
     }
     .market-close{

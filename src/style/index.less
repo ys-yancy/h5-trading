@@ -13,12 +13,37 @@
 @popupBgColor: #ccc;
 
 // tab page header
-@headerColor: #383838;
+@headerColor: #252525;
 @headerBgColor: #f1f1f1;
 
 // nav 
+@navColor: #676767;
 @navBgColor: #F1F1F1;
+@navBdColor: #E7E7E7;
+@activeColor: #3583DE;
 
+//tab-nav
+@tab-navColor: #555555;
+@tab-navBgColor: #EDEDED;
+
+@contentColor: #626262;
+@contentL1Color: #626262;
+@contentL2Color: #979797;
+@contentUpColor: #CD0610;
+@contentDownColor: #3C977A;
+@contentItemBtColor: #EBEBEB;
+
+// button
+@buttonDefaultBgColor: #ccc;
+@buttonEditBgColor: #2196F3;
+@buttonSubEditBgColor: #9B9B9B;
+@buttonUpBgColor: #D0021B;
+@buttonDownBgColor: #40997D;
+@buttonUnactiveBgColor: #494258;
+@buttonDisBgColor: #494258;
+
+//footer
+@footerNameColor: #868686;
 @import '../variable.less';
 
 html, body{
@@ -29,15 +54,95 @@ html, body{
 	// background: @popupBgColor;
 }
 
-.ui.header-inner{
+.ui.common.header-inner{
 	color: @headerColor;
 	background: @headerBgColor;
 }
 
-.ui.nav{
+.ui.common.nav{
 	background: @navBgColor;
+	border-color: @navBdColor;
+	.color{
+		color: @navColor;
+	}
+	.active:before{
+		color: @activeColor;
+		background: @activeColor;
+	};
 }
 
-.app.icon{
+.ui.common.tab-nav{
+	background: @tab-navBgColor;
+	.color{
+		color: @tab-navColor;
+	}
+}
+
+.ui.common.content-color{
+	color: @contentColor;
+	a{
+		color: @contentColor;
+	}
+	.l1-color{
+		color: @contentL1Color;
+	}
+	.l2-color{
+		color: @contentL2Color;
+	}
+	.default-up,
+	.default-up a{
+		color: @contentUpColor;
+	}
+	.default-down,
+	.default-down a{
+		color: @contentDownColor;
+	}
+	.up,
+	.up a{
+		color: @contentUpColor;
+	}
+	.down,
+	.down a{
+		color: @contentDownColor;
+	}
+	.bd-color{
+		border-color: @contentItemBtColor;
+	}
+}
+
+
+.ui.icon{
 	background: red;
+}
+
+.ui.common.bottom-nav{
+	.icon{
+		background: #4A4A4A;
+	}
+	.name{
+		color: @footerNameColor;
+	}
+}
+
+.ui.btn-default{
+	background-color: @buttonDefaultBgColor;
+}
+.ui.btn-up{
+	background-color: @buttonUpBgColor;
+}
+.ui.btn-down{
+	background-color: @buttonDownBgColor;
+}
+.ui.btn-edit{
+	background-color: @buttonEditBgColor;
+}
+.ui.btn-subEdit{
+	background-color: @buttonSubEditBgColor;
+}
+.ui.btn-un{
+	background-color: @buttonUnactiveBgColor;
+}
+
+.ui.btn-dis{
+	background-color: @buttonDisBgColor;
 }

@@ -8,7 +8,7 @@
     <span class="range-percent" id="J_RangePercent"><%= data.price === undefined ? '--' : ((data.price- data.close) /data.close * 100).toFixed(2) %>%</span>
 </div> -->
 
-<div class="detail-wrapper">
+<div class="detail-wrapper ui content-color common">
     <div class="item">
         <span class="highest-price" id="J_Highest">最高:<%= data.high === undefined ? '--' : data.high.toFixed(data.unit)  %></span>
         <span class="lowest-price" id="J_Lowest">最低:<%= data.low === undefined ? '--' : data.low.toFixed(data.unit)  %></span>
