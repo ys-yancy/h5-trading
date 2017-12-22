@@ -84,10 +84,9 @@ nav {
   .list{
     li{
       position: relative;
-      color: #807691;
       background: #fff;
       .padding(30);
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid transparent;
       &.cur-value{
         border-bottom-color: red;
       }
@@ -150,13 +149,7 @@ nav {
           text-align: center;
           border-style: solid;
           border-width: 1px;
-          border-color: red;
           vertical-align: middle;
-          &.up{
-            .eff-desc{
-              border-color: green;
-            }
-          }
         }
         .kind{
           p{

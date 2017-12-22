@@ -12,10 +12,17 @@
 
 @popupBgColor: #ccc;
 
+// 全局趋向颜色
+@setUiColor: #5A9DF7;
+
 // ui sm-bd
 @smColor: red;
 @smBdColor: red;
 @smBgColor: #fff;
+
+// ui progress
+@progressBgColor: #5A9DF7;
+@progressLineColor: #D6E9FF;
 
 //sm-bd-ipt
 @smBdIptColor: red;
@@ -208,6 +215,18 @@ html, body{
 		color: @smBdRdoCheckColor;
 		border: 1px solid @smBdRdoCheckBdColor;
 		background: @smBdRdoCheckBgColor;
+	}
+}
+
+// other
+.ui.set-ui{
+	color: @setUiColor;
+}
+
+.ui.common.progress {
+	background-color: @progressLineColor;
+	.circle{
+		background-color: @progressBgColor;
 	}
 }
 
