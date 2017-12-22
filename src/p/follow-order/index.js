@@ -251,15 +251,20 @@ Base.extend(FollowOrder, Base, {
 	},
 
 	attrs: {
-		tmpl: ['<div class="dialog-ios8 J_Dialog" id="J_Dialog">',
-	        '   <div class="dialog-title-ios8">重要提示</div>',
-	        '   <div class="dialog-content-ios8 J_Content">取消跟随后，当前交易中的订单不再跟随高手信号平仓！！</div>',
-	        '   <div class="dialog-buttons-ios8">',
-	        '       <span class="dialog-btn J_DialogClose" data-idx="alert0">我知道了</span>',
-	        '   </div>',
-	        '</div>',
-	        '<div class="dialog-mask J_DialogMask"></div>'
-	    ].join(''),
+	    tmpl: [
+	    	'<div class="dialog J_Dialog password-dialog " id="J_Dialog">',
+		    '   <div class="dialog-content J_Content">',
+		    '       <p class="title">重要提示</p>',
+		    '       <p>',
+		    '          取消跟随后，当前交易中的订单不再跟随高手信号平仓！！ ',
+		    '       </p>',
+		    '   </div>',
+		    '   <div class="dialog-buttons clearfix">',
+		    '       <span class="dialog-btn J_DialogClose" id="J_DialogSetupCancel">我知道了</span>',
+		    '   </div>',
+		    '</div>',
+		    '<div class="dialog-mask J_DialogMask"></div>'
+	    ].join('')
 	}
 })
 

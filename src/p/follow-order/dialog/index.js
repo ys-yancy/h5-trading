@@ -2,6 +2,7 @@
 
 require('./index.css');
 var Base = require('../../../app/base');
+var Dialog = require('../../../common/dialog');
 var tmpl = require('./index.ejs.html');
 
 export default class CancelFollowOrderDialog extends Base {
@@ -25,10 +26,20 @@ export default class CancelFollowOrderDialog extends Base {
 	}
 
 	show() {
-		this.el = this.renderTo(tmpl, {}, $('body'));
+		this.dialog.show();
 	}
 
 	hide() {
-		this.el.remove();
+		this.dialog.hide()
+	}
+
+	initDialog() {
+		this.dialog = new Dialog({
+	      isShow: false,
+	      tmpl: tmpl,
+	      confirmCallback: ()=> {},
+
+	      cancleCallback:()=> {}
+	    });
 	}
 }

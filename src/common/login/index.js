@@ -625,7 +625,7 @@ Base.extend(Login, Base, {
     passwordTmpl: [
       '<div class="dialog J_Dialog password-dialog " id="J_Dialog">',
       '   <div class="dialog-content J_Content">',
-      '       <p class="title">为保证您的实盘账户资金安全,请输入交易密码',
+      '       <p class="title">为保证您的实盘账户资金安全,请输入交易密码</p>',
       '       <div class="input-wrapper">',
       '           <input id="J_TradePassword" type="tel" placeholder="请输入交易密码">',
       '       </div>',
@@ -642,7 +642,7 @@ Base.extend(Login, Base, {
       '<div class="dialog J_Dialog setup-dialog " id="J_Dialog">',
       '   <span class="wrapper-icon"><span class="icon"></span></span>',
       '   <div class="dialog-content J_Content">',
-      '       <p class="title">为保证您的实盘账户资金安全，',
+      '       <p class="title">为保证您的实盘账户资金安全，</p>',
       '       <p class="title">请设置交易密码并妥善保存</p>',
       '       <div class="input-wrapper">',
       '           <input type="password" class="first" placeholder="请输入交易密码">',
