@@ -4,8 +4,8 @@ var PageBase = require('../../../app/page-base');
 var config = require('../../../app/config');
 var util = require('../../../app/util');
 var indexTmpl = require('./index.ejs.html');
+var newTmpl = require('./new-list.ejs');
 require('../../my/common/header');
-// require('../index/header.css');
 
 class Friends extends PageBase {
   constructor() {
@@ -44,7 +44,6 @@ class Friends extends PageBase {
         access_token: this.cookie.get('token')
       }
     }).then((data) => {
-      console.log(data);
       data = data.data;
       var cate = {};
       // var categodry = [];
@@ -71,8 +70,9 @@ class Friends extends PageBase {
         }
 
       });
+      // this.render(indexTmpl, category, this.listEl);
 
-      this.render(indexTmpl, category, this.listEl);
+      this.render(newTmpl, data, this.listEl)
     });
   }
 
@@ -80,7 +80,7 @@ class Friends extends PageBase {
 
   defaults() {
     return {
-      listEl: $('.list')
+      listEl: $('.new-list')
     }
   }
 }

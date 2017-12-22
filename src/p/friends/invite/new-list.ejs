@@ -1,0 +1,23 @@
+<ul class="">
+  <% data.forEach(function(item) {%>
+  <li class="item clearfix">
+    <div class="img-wrapper-outer">
+      <div class="img-wrapper">
+        <img class="img" src="<%= item.avatar %>">
+      </div>
+    </div>
+    <div class="info">
+      <h2><%= item.nickname %></h2>
+      <p>
+        <span class="lev"><%= item.level %></span>
+        <span class="is-recharge">已入金</span>
+      </p>
+    </div>
+    <duv class="detail-wrapper">
+      <p class="desc">近30天贡献佣金</p>
+      <p class="num">$100</p>
+    </div>
+  </li>
+  <%}); %>
+</ul>
+

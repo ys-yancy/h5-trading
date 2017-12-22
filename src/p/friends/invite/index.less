@@ -46,7 +46,59 @@ header{
   .font-size(24);
   text-align: center;
 }
-
+.new-list{
+  li{
+    .padding(20, 30);
+    .border-bottom(1, solid, #ccc);
+  }
+  .font-size(26);
+  .img-wrapper-outer{
+    display: inline-block;
+    float: left;
+    .img-wrapper{
+      .height(98);
+      .width(98);
+      border-radius: 50%;
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+  }
+  .info{
+    display: inline-block;
+    float: left;
+    .height(98);
+    .width(230);
+    .padding-left(20);
+    .padding-top(3);
+    .font-size(32);
+    h2{
+      .line-hide();
+    }
+    .lev,
+    .is-recharge{
+      .font-size(18);
+      .padding(5, 12);
+      text-align: center;
+      .border(1, solid, red);
+      .border-radius(3);
+      .margin-right(20);
+    }
+  }
+  .detail-wrapper{
+    display: inline-block;
+    float: right;
+    .height(98);
+    .padding-top(3);
+    text-align: right;
+    .num{
+      .font-size(38);
+      .margin-top(10);
+    }
+  }
+}
 // .list {
 //   h1 {
 //     background: #efeff4;
