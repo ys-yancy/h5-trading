@@ -68,12 +68,12 @@
 		</div>
 		<div class="footer btn-wrapper">
 			<!-- <button class="btn J_Attention <%= isWatched ? 'hidden' : '' %>">关注榜单</button> -->
-			<button class="btn J_CancelAttention <%= !isWatched ? 'hidden' : '' %>">取消关注</button>
+			<button class="btn J_CancelAttention ui ft-btn-cancelAttention <%= !isWatched ? 'hidden' : '' %>">取消关注</button>
 			
-			<button class="btn J_Follow <%= isFollow ? 'hidden' : '' %>">自动跟单</button>
+			<button class="btn J_Follow ui btn-follow <%= isFollow ? 'hidden' : '' %>">自动跟单</button>
 
-			<button class="btn J_Following <%= isFollow && !isPaused ? '' : 'hidden' %>" disabled>跟随中...</button>
-			<button class="btn J_Pauseing <%= isFollow && isPaused ? '' : 'hidden' %>" disabled>暂停中...</button>
+			<button class="btn J_Following ui btn-following <%= isFollow && !isPaused ? '' : 'hidden' %>" disabled>跟随中...</button>
+			<button class="btn J_Pauseing ui btn-pauseing <%= isFollow && isPaused ? '' : 'hidden' %>" disabled>暂停中...</button>
 
 			<!-- <button class="btn J_MoreData">更多分析数据</button> -->
 		</div>
