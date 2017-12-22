@@ -1,48 +1,53 @@
-@import '../../variable.less';
 @import '../../base.less';
-.icon-weixin();
-.com-header();
-.icon {
-    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
-    .background-size(400, 1500);
-}
-
-header {
-    .header-inner {
-        display: block;
-    }
+@import '../../variable.less';
+.rotateanimate();
+header{
+  .width(750);
+  .header-inner{
+    position: relative;
+      .height(88);
+      .line-height(88);
+      .font-size(38);
+      text-align: center;
+      position: relative;
+      .go-back{
+        position: absolute;
+        .width(44);
+        .height(44);
+        .top(22);
+        .left(30);
+        background: red;
+      }
+  }
 }
 
 .content {
     .padding-bottom(44);
-    .border-bottom(2, solid, #e5e5e8);
-    background: #efeff4;
-    .hd {
-        .margin-bottom(44);
-        .height(474);
-        .padding-top(44);
-        .border-bottom(2, solid, #e5e5e8);
-        background: #fff;
-        .hd-bg {
-            .height(365);
-            background: url(../../../img/about-hd.png) 0 0 no-repeat;
-            .background-size(640, 365);
+    .hd{
+        .font-size(28);
+        background: #ccc;
+        .padding-bottom(20);
+        p{
+            .line-height(90);
+            .padding-left(30);
+            .padding-right(30);
+            background: #fff;
+            span{
+                float: right;
+            }
         }
     }
     .bd {
+        .font-size(28);
         background: #fff;
         border-bottom: 1px solid #d0cfd5;
-        .padding(0, 22, 0, 28);
         &.bd-first,
         &.bd-second {
             border-top: 1px solid #d0cfd5;
         }
         li {
-            &:first-child {
-                a {
-                    border: none;
-                }
-            }
+            .padding(0, 30, 0, 30);
+            border-top: 1px solid #d0cfd5;
         }
         a {
             position: relative;
@@ -51,28 +56,6 @@ header {
             .padding-top(3);
             .line-height(90);
             .height(91);
-            .font-size(24);
-            border-top: 1px solid #d0cfd5;
-            color: #807691;
-        }
-        .arrow-right {
-            position: absolute;
-            .top(32);
-            .right(22);
-            .width(16);
-            .height(26);
-            background: url(../../../img/arrow-right.png) 0 0 no-repeat;
-            .background-size(50, 50);
-        }
-        .version {
-            float: right;
-        }
-        p {
-            .line-height(41);
-            .font-size(25);
-            max-height: 100%;
-            color: #473b61;
-            text-align: left;
         }
     }
 }

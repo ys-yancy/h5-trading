@@ -27,7 +27,10 @@ var entryAll = {
     'weixin/profile': './src/p/weixin/profile/index',
     'account': './src/p/account/index',
     'account/pocket': './src/p/account/pocket/index',
-    'cat': './src/p/cat/index'
+    'cat': './src/p/cat/index',
+    'feedback': './src/p/feedback/index',
+    'client-agreement': './src/p/client-agreement/index',
+    'risk-message': './src/p/risk-message/index'
 };
 
 module.exports = {

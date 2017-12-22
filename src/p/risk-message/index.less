@@ -1,83 +1,46 @@
-@import '../../variable.less';
 @import '../../base.less';
-.icon-weixin();
-.com-header();
-.icon {
-    background: url(../../../img/bg-icon.png) 0 0 no-repeat;
-    .background-size(400, 1500);
-}
-
-header {
-    display: block;
-    .header-inner {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
+@import '../../variable.less';
+.rotateanimate();
+.reset-placeholder();
+header{
+  .width(750);
+  background: #F2F2F2;
+  .header-inner{
+    position: relative;
+      .height(88);
+      .line-height(88);
+      .font-size(38);
+      text-align: center;
+      position: relative;
+      .go-back{
+        position: absolute;
+        .width(44);
+        .height(44);
+        .top(22);
+        background: red;
+      }
+      .go-back{
+        .left(30);
+      }
+  }
 }
 
 .content {
-    margin-top: 2.2rem;
+    .padding-top(20);
     .padding-bottom(44);
-    .border-bottom(2, solid, #e5e5e8);
-    background: #efeff4;
+    .font-size(28);
     .hd {
         .margin-bottom(44);
         .height(474);
         .padding-top(44);
-        .border-bottom(2, solid, #e5e5e8);
         background: #fff;
-        .hd-bg {
-            .height(365);
-            background: url(../../../img/about-hd.png) 0 0 no-repeat;
-            .background-size(640, 365);
-        }
     }
     .bd {
         background: #fff;
-        border-bottom: 1px solid #d0cfd5;
-        .padding(0, 22, 0, 28);
-        &.bd-first,
-        &.bd-second {
-            border-top: 1px solid #d0cfd5;
-        }
-        li {
-            &:first-child {
-                a {
-                    border: none;
-                }
-            }
-        }
-        a {
-            position: relative;
-            display: block;
-            .padding-left(4);
-            .padding-top(3);
-            .line-height(90);
-            .height(91);
-            .font-size(24);
-            border-top: 1px solid #d0cfd5;
-            color: #807691;
-        }
-        .arrow-right {
-            position: absolute;
-            .top(32);
-            .right(22);
-            .width(16);
-            .height(26);
-            background: url(../../../img/arrow-right.png) 0 0 no-repeat;
-            .background-size(50, 50);
-        }
-        .version {
-            float: right;
-        }
+        .padding(0, 30, 0, 30);
         p {
             .line-height(41);
-            .font-size(25);
             max-height: 100%;
-            color: #473b61;
             text-align: justify;
         }
     }

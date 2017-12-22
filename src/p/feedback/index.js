@@ -76,7 +76,7 @@ class Feedback extends PageBase {
             new Toast('反馈成功');
 
             setTimeout(function() {
-                location.href = './my.html';
+                location.href = './option.html';
             }, 2000);
         });
     }
