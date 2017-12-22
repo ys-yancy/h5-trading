@@ -7,25 +7,25 @@
 						<img class="img" src="<%= item.img %>">
 					</div>
 				</div>
-				<span class="name"><%= item.name %></span>
+				<span class="name l1-color"><%= item.name %></span>
 			</div>
 			<div class="tradelist-info">
 				<div id="J_TradelistChart" class="item chart_index_<%= index %> J_TradelistChart"></div>
 				<div class="item">
-					<p>收益率</p>
-					<p class="profit<%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
+					<p class="l2-color">收益率</p>
+					<p class="profit <%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
 						<%= parseFloat(item.yield_rate).toFixed(2) %> %
 					</p>
 				</div>
 				<div class="item">
-					<p>跟随人数</p>
-					<p class="profit<%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
+					<p class="l2-color">跟随人数</p>
+					<p class="pel">
 						<%= parseFloat(item.yield_rate).toFixed(2) %> %
 					</p>
 				</div>
 				<div class="item">
-					<p>交易笔数</p>
-					<p class="profit<%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
+					<p class="l2-color">交易笔数</p>
+					<p class="ticket">
 						<%= parseFloat(item.yield_rate).toFixed(2) %> %
 					</p>
 				</div>

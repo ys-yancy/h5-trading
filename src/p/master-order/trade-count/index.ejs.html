@@ -2,17 +2,23 @@
 	<div class="data-bd">
 		<div class="hd-body">
 			<div>
-				<div class="item left trade-profit <%= parseFloat(data.trades_profit)>0 ? 'up' : '' %>">
+				<div class="item left trade-profit">
 					<p class="desc">交易盈亏($)</p>
-					<p class="num J_TradeProfit"><%= parseFloat(data.trades_profit).toFixed(2) %></p>
+					<p class="num J_TradeProfit <%= parseFloat(data.trades_profit)>0 ? 'up' : 'down' %>">
+						<%= parseFloat(data.trades_profit).toFixed(2) %>
+					</p>
 				</div>
-				<div class="item center max-trade-profit <%= parseFloat(data.max_trade_profit)>0 ? 'up' : '' %>">
+				<div class="item center max-trade-profit">
 					<p class="desc">最大单笔盈利</p>
-					<p class="num J_MaxTradeProfit"><%= parseFloat(data.max_trade_profit).toFixed(2) %></p>
+					<p class="num J_MaxTradeProfit <%= parseFloat(data.max_trade_profit)>0 ? 'up' : 'down' %>">
+						<%= parseFloat(data.max_trade_profit).toFixed(2) %>
+					</p>
 				</div>
-				<div class="item right max-trade-loss <%= parseFloat(data.max_trade_loss)>0 ? 'up' : '' %>">
+				<div class="item right max-trade-loss">
 					<p class="desc">最大单笔亏损</p>
-					<p class="num J_MaxTradeLoss"><%= parseFloat(data.max_trade_loss).toFixed(2) %></p>
+					<p class="num J_MaxTradeLoss <%= parseFloat(data.max_trade_loss)>0 ? 'up' : 'down' %>">
+						<%= parseFloat(data.max_trade_loss).toFixed(2) %>
+					</p>
 				</div>
 			</div>
 			<div>

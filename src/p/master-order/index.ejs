@@ -9,7 +9,7 @@
 			<div class="desc-wrapper  clearfix">
 				<div class="name-account">
 					<p class="name"><%= data.name %></p>
-					<p class="account">实盘</p>
+					<p class="account ui sm-bd">实盘</p>
 				</div>
 				<p class="years">
 					持续投资<span class="num J_Day"><%= data.trade_days %></span>天
@@ -48,7 +48,7 @@
 		</div>
 	</div>
 	<% var isFollow = data.is_follow == 1, isPaused =  data.follow_paused == 1, isWatched = data.already_watched == 1; %>
-		<nav>
+		<nav class="ui common nav">
 			<ul class="tab-wrapper">
 				<li class="item clearfix J_Tab active">交易统计</li>
 				<li class="item clearfix J_Tab">当前交易</li>
