@@ -34,7 +34,9 @@ var entryAll = {
     'cat': './src/p/cat/index',
     'feedback': './src/p/feedback/index',
     'client-agreement': './src/p/client-agreement/index',
-    'risk-message': './src/p/risk-message/index'
+    'risk-message': './src/p/risk-message/index',
+    'recharge': './src/p/recharge/index',
+    'extract': './src/p/extract/index'
 };
 
 module.exports = {
