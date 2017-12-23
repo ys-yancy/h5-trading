@@ -382,8 +382,9 @@ Base.extend(RecoveryTradePassword, PageBase, {
         location.href = self.linkHref;
       }, 1500);
     }, function(data) {
-      var parent = submitEl.parent('.wrapper');
-      self.showError(parent, data.message);
+      new Toast(data.message);
+      // var parent = submitEl.parent('.wrapper');
+      // self.showError(parent, data.message);
     });
   },
 
