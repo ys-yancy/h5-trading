@@ -462,6 +462,7 @@ Base.extend(RecoveryPassword, PageBase, {
 
         this.linkHref = src;
         $('.go-back').attr('href', src);
+        $('.J_TradeHtmlLink').attr('href', '././recovery-trade-password.html?src=' + src);
     },
 
     _requires: function() {
