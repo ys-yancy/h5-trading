@@ -41,17 +41,15 @@
 
 <body>
     <header class="header" >
-        <div class="header-inner" id="J_Header">
-            <a class="go-back" href="./option.html?" style="display:block">
-                <span class="icon arrow"></span>
-            </a>
+        <div class="header-inner ui common" id="J_Header">
+            <a class="go-back ui icon" href="./option.html?" style="display:block"></a>
             <h1>意见反馈</h1>
         </div>
     </header>
-    <section class="content">
+    <section class="content ui common content-color">
        <textarea id="J_Txt" placeholder="请留下您的宝贵意见：" autofocus maxlength="200"></textarea>
        <input type="text" class="phone" id="J_Phone" placeholder="请输入您的手机号">
-       <input id="J_Submit" class="submit" type="button" value="确认提交">
+       <input id="J_Submit" class="submit ui common btn-setUi" type="button" value="确认提交">
        <span class="count" id="J_Count">200</span>
     </section>
     <script src="../build/feedback.js"></script>

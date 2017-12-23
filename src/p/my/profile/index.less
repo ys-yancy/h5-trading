@@ -16,14 +16,12 @@ header{
         .width(44);
         .height(44);
         .top(22);
-        background: red;
       }
       .go-back{
         .left(30);
       }
       .share{
         .right(30);
-        background: red;
       }
   }
 }
@@ -92,12 +90,11 @@ header{
     }
     .active {
       position: relative;
-      &:after{
+      &:before{
         position: absolute;
         content: '';
         .width(375);
         .height(4);
-        background: #01bdf1;
         .bottom(-20);
         .left(0);
       }
@@ -164,19 +161,18 @@ header{
         box-shadow: none;
       }
       &.empty {
-        .padding-left(142);
         background: transparent;
         border: none;
         float: none;
         .margin-top(8);
         .line-height(56);
         .font-size(28);
-        color: #473b61;
+        .margin-left(260);
         width: auto;
         height: auto;
+        box-shadow: none;
         a {
           .margin-left(37);
-          color: #967adc;
         }
       }
       .name {
@@ -184,10 +180,8 @@ header{
         .line-height(40);
         .width(160);
         .line-hide();
-        color: #473b61;
       }
       .symbol {
-        color: #473b61;
         .line-height(24);
         .width(160);
         .line-hide();
@@ -216,7 +210,6 @@ header{
     .height(85);
     .line-height(85);
     .padding-left(30);
-    background: #ccc;
   }
   .chart{
     .min-height(400);
@@ -234,7 +227,6 @@ header{
     }
   }
   .chart-container{
-    background: #ccc;
     .padding(50, 30);
     .chart-area{
       .width(290);
@@ -332,7 +324,6 @@ footer {
 .allow {
   .width(690);
   .height(88);
-  background: green;
   color: #fff;
   .font-size(28);
   .border-radius(8);

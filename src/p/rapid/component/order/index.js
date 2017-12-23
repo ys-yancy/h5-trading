@@ -41,7 +41,7 @@ export default class Order extends Base {
           // self._getData();
           self.curState = 'close';
 
-          var str = `<div class="market-close">
+          var str = `<div class="market-close ui btn-dis">
             <p>休市</p>
             <p class="desc">下次开始时间 ${data.start}</p>
           </div>`;

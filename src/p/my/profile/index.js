@@ -35,7 +35,7 @@ class Profile extends PageBase {
       if ( getIsNewShareWl() ) {
         hrefUrl = getNewShareWl() + uid;
       }
-      $(document.body).append('<a href="' + hrefUrl + '" class="register">注册即获赠金<span id="J_Bonus"></span> 与Ta一起投资</a> ');
+      $(document.body).append('<a href="' + hrefUrl + '" class="register ui common btn-setUi">注册即获赠金<span id="J_Bonus"></span> 与Ta一起投资</a> ');
 
       $('#J_Bonus').text('$' + (getRegBonus() + getInviteRegBonus()));
     } else {
@@ -43,7 +43,7 @@ class Profile extends PageBase {
       this._isAllow().then((allow) => {
         // 不允许跟随
         if (!allow) {
-          $(document.body).append('<span class="allow">Ta不希望被别人关注</span>');
+          $(document.body).append('<span class="allow ui common btn-setUi">Ta不希望被别人关注</span>');
         } 
         // 允许跟随
         else {
@@ -52,9 +52,9 @@ class Profile extends PageBase {
           return this._ifFollowing().then((following) => {
             var span;
             if (!following) {
-              span = '<span class="allow J_Follow">关注Ta，获取Ta的交易动态</span>';
+              span = '<span class="allow J_Follow ui common btn-setUi">关注Ta，获取Ta的交易动态</span>';
             } else {
-              span = '<span class="allow J_UnFollow">已关注</span>';
+              span = '<span class="allow J_UnFollow ui btn-default">已关注</span>';
             }
 
             $(document.body).append(span);
@@ -84,7 +84,7 @@ class Profile extends PageBase {
         confirmCallback: () => {
           this._setFollow(true).then(() => {
             new Toast('取消关注成功');
-            $(e.currentTarget).replaceWith('<span class="allow J_Follow">关注Ta，获取Ta的交易动态</span>');
+            $(e.currentTarget).replaceWith('<span class="allow J_Follow ui common btn-setUi">关注Ta，获取Ta的交易动态</span>');
             dialog.destroy();
             $('.J_DialogMask').hide();
           });

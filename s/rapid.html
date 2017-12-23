@@ -45,22 +45,20 @@
         <div style="display:none;position:fixed;z-index:99999;width:100%" id="J_InfoImg">
             <img src="../img/lead.png" style="width:100%" alt="微信分享请点右上角"/>
         </div>
-        <div class="header-inner" id="J_Header">
-            <a class="go-back" id="J_NavBack" href="./option.html?">
-                <span class="icon arrow"></span>
-            </a>
+        <div class="header-inner ui common" id="J_Header">
+            <a class="go-back ui icon" id="J_NavBack" href="./option.html?"></a>
             <h1 id="J_Title"></h1>
             <div class="option-list J_OptionFold">
                 <span class="bar"></span>
             </div>
         </div>
     </header>
-    <nav class="rapid nav" id="J_Sticky"></nav>
+    <nav class="rapid nav ui common" id="J_Sticky"></nav>
     <section class="top-message"></section>
     <section class="content rapid-content">
         <section class="hd" id="J_Info">
         </section>
-        <div class="chart-wrapper" id="J_ChartWrapper">
+        <div class="chart-wrapper ui common content-color" id="J_ChartWrapper">
             <div class="ui loading" id="J_Loading">
                 <span class="circel"></span>  
             </div>
@@ -83,13 +81,13 @@
             </div>
         <div class="bd order-wrapper">
           <ul>
-            <li class="center-item">
+            <li class="center-item ui common content-color">
                 <div class="desc">
                     <p class="desc">投资</p>
                     <input type="number" class="money J_InvestNum" id="money" value="0" clstag="pageclick|keycount|163_201508288|3" >
                 </div>
             </li>
-            <li class="center-item">
+            <li class="center-item ui common content-color">
                 <div class="invest-wrapper">
                     <span class="minus J_Minus"></span>
                     <div class="proContro">
@@ -98,7 +96,7 @@
                     <span class="add J_Add"></span>
                 </div>
             </li>
-            <li class="center-item">
+            <li class="center-item ui common content-color">
                 <div class="item-c">
                   <span >可用资金($)</span>
                   <span class="J_NetDeposit">--</span>
@@ -109,8 +107,8 @@
                 </div>  -->
             </li>
             <li class="fix">
-                <a href="javascript:;" class="action buy-down">买跌</a>
-                <a href="javascript:;" class="action buy-up">买涨</a>
+                <a href="javascript:;" class="action ui btn-down buy-down">买跌</a>
+                <a href="javascript:;" class="action ui btn-up buy-up">买涨</a>
             </li>
           </ul>
         </div>

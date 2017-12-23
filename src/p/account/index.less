@@ -29,7 +29,7 @@ header{
 nav {
   .width(750);
     .height(78);
-    border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid transparent;
     li {
       position: relative;
       float: left;
@@ -46,7 +46,6 @@ nav {
           .width(375);
           .height(4);
           font-size: 0;
-          background: #3583DE;
           content: '';
         }
       }
@@ -59,7 +58,7 @@ nav {
   .item {
     .padding(25, 30);
     .font-size(28);
-    border-bottom: 1px solid #e7e6eb;
+    border-bottom: 1px solid transparent;
     .num {
       float: right;
       span {
@@ -104,14 +103,9 @@ footer {
       .border-radius(5);
       .font-size(32);
       text-align: center;
-      background-color: red;
       color: #fff;
-      &.extract {
-        border-color: green;
-      }
       &.recharge-demo {
         .width(690);
-        background: red;
       }
     }
   }

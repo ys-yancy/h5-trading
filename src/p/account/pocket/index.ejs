@@ -16,14 +16,14 @@
   <% var len = item.update_at.length; %>
   <p class="time"><%= item.update_at.substring(0, len - 3) %></p>
   <div class="clearfix">
-    <div class="left">
+    <div class="left l1-color">
       <span class="tag">$</span>
       <span class="num"><%= item.amountFormate %></span>
     </div>
     <div class="right">
       <p class="desc"><%= item.desc %></p>
     </div>
-    <div class="progress">
+    <div class="progress ui common">
       <span class="circle <% if (item.confirmed == 0 || item.confirmed == -1) {%> empty <%} %>"></span>
     </div>
     <p class="amount clearfix">名义交易量($)：<%= item.trade_notional_amount %>

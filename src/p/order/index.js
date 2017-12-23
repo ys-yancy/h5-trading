@@ -531,7 +531,7 @@ Base.extend(Order, PageBase, {
             // 如果是休市 无需刷新价格
             if (data.type === 'close') {
 
-              $('#footer').empty().append('<div class="market-close"><p>' + (data.reason || '休市') + '</p><p class="desc">下次开始时间 ' + data.start + '</p></div>');
+              $('#footer').empty().append('<div class="market-close ui btn-dis"><p>' + (data.reason || '休市') + '</p><p class="desc">下次开始时间 ' + data.start + '</p></div>');
               // 减1天
               self.closeTime = Util.getTime(data.closeTime) - 60 * 60 * 24 * 1000;
               self._getData();
