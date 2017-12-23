@@ -152,8 +152,7 @@ Base.extend(Register, PageBase, {
         }
         var html = [
             '<div class="error">',
-            '   <span class="icon"></span>',
-            '   <p>' + message + '</p>',
+            '   <p  class="err">' + message + '</p>',
             '</div>'
         ].join('');
 
@@ -169,8 +168,8 @@ Base.extend(Register, PageBase, {
             if (curEl.hasClass('disable')) {
                 return;
             }
-             this.imageCap._show();
-$('.captcha-text').focus();
+            this.imageCap._show();
+            $('.captcha-text').focus();
         }
 
          if (curEl.hasClass('get-captcha')) {
@@ -179,7 +178,7 @@ $('.captcha-text').focus();
         $('#captcha-message').html('验证码错误!');
         $('#J_ImageCaptcha .captcha-text').val('');
         this.imageCap._show();
-$('.captcha-text').focus();
+        $('.captcha-text').focus();
       }else{
         var _this=this;
         curEl.addClass('disable');
@@ -198,7 +197,7 @@ $('.captcha-text').focus();
             $('#captcha-message').html('验证码错误!');
             $('#J_ImageCaptcha .captcha-text').val('');
             _this.imageCap._show();
-$('.captcha-text').focus();
+            $('.captcha-text').focus();
             curEl.removeClass('disable');
           }else{
             $('#captcha-message').html('短信已发送!');
@@ -210,19 +209,12 @@ $('.captcha-text').focus();
               _this._countdown($('.get-code'));
             }, 1000);
           }
-            //$('#captcha-message').html('短信已发送!');
-            //curEl.addClass('disable');
-            //$('.code').removeAttr('disabled');
-            //setTimeout(function(){
-            //  $('#get-captcha').removeClass('disable');
-            //  _this.imageCap._hide();
-            //  _this._countdown($('.get-code'));
-            //}, 1000);
+           
         }).fail(function(data){
             $('#captcha-message').html('验证码错误!');
             $('#J_ImageCaptcha .captcha-text').val('');
             _this.imageCap._show();
-$('.captcha-text').focus();
+            $('.captcha-text').focus();
             curEl.removeClass('disable');
         });
       }
@@ -267,16 +259,6 @@ $('.captcha-text').focus();
         if (submitEl.hasClass('disable')) {
             return false;
         }
-        /*
-        var statementEl = $('.J_StatementCheck');
-
-        if (statementEl.hasClass('checked')) {
-            statementEl.parent().removeClass('error');
-        } else {
-            statementEl.parent().addClass('error');
-            return;
-        }
-        */
 
         var password = $('.password').val(),
             phone = $('.tel').val(),
@@ -400,40 +382,6 @@ $('.captcha-text').focus();
                 self.showError(parent, data.message);
                 submitEl.val('注册');
             });
-
-            /*
-            // H5版本绑定手机号, 不需要更新token等信息
-            this.ajax({
-                url: '/v1/user/phone/',
-                type: 'put',
-                data: {
-                    password: password,
-                    phone: phone,
-                    vcode: vcode,
-                    cc: 86,
-                    access_token: token,
-                    invite_code: Cookie.get('referCode')
-                }
-            }).then(function(data) {
-                Cookie.set('phone', $('.tel').val(), {
-                    expires: Infinity
-                });
-
-                new Toast('注册成功');
-                setTimeout(function() {
-                    if (self.url) {
-                        location.href = self.url;
-                        return;
-                    }
-                    location.href = './option.html';
-                }, 1500);
-                submitEl.val('注册');
-            }, function(data) {
-                var parent = submitEl.parent('.wrapper');
-                self.showError(parent, data.message);
-                submitEl.val('注册');
-            });
-            */
         }
     },
 

@@ -64,7 +64,6 @@ export default class ImageCaptcha extends Base {
     _show() {
         $('#J_ImageCaptcha').show();
 
-        // var tel = '13810157999'; 
         var tel = $('.tel').val();
         var getCodeEl = $('.get-captcha');
 
@@ -88,7 +87,6 @@ export default class ImageCaptcha extends Base {
     }
 
     _refresh() {
-        // var tel = '13810157999'; 
         var tel = $('.tel').val();
         var getCodeEl = $('.get-captcha');
 
@@ -106,39 +104,5 @@ export default class ImageCaptcha extends Base {
 
     _getCaptcha() {
         return this.captchaVal;
-    }
-
-    _changeClass(c) {
-        // 为 guides 页面定制
-        if (c == 'guides') {
-            $('#J_ImageCaptcha').addClass('image-captcha-guides');
-            $('#J_ImageCaptcha .wrapper').removeClass('wrapper');
-        }
-        else if (c == 'tycoon') {
-            $('#J_ImageCaptcha').removeClass('image-captcha');
-            $('#J_ImageCaptcha').addClass('image-captcha-tycoon');
-            $('#J_ImageCaptcha .wrapper').removeClass('wrapper');
-        }
-        else if (c == 'haoxin') {
-            $('#J_ImageCaptcha').removeClass('image-captcha');
-            $('#J_ImageCaptcha').addClass('image-captcha-haoxin');
-            $('#J_ImageCaptcha .wrapper').removeClass('wrapper');
-        }
-        else if (c == 'xwjr') {
-            $('#J_ImageCaptcha').removeClass('image-captcha');
-            $('#J_ImageCaptcha').addClass('image-captcha-xwjr');
-            $('#J_ImageCaptcha .wrapper').removeClass('wrapper');
-        }
-        else if (c == 'tts') {
-            $('#J_ImageCaptcha').removeClass('image-captcha');
-            $('#J_ImageCaptcha').addClass('image-captcha-tts');
-            $('#J_ImageCaptcha .wrapper').removeClass('wrapper');
-        }
-        else if (c == 'fxbtg') {
-            $('#J_ImageCaptcha').removeClass('image-captcha');
-            $('#J_ImageCaptcha').addClass('image-captcha-fxbtg');
-            $('#J_ImageCaptcha .wrapper').removeClass('wrapper');
-        }
-
     }
 }
