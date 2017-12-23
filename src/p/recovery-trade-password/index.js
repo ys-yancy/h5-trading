@@ -30,19 +30,10 @@ Base.extend(RecoveryTradePassword, PageBase, {
   _bind: function() {
     var doc = $(document);
 
-    if ( Config.isAndroidAPK() ) {
-      $('.click-verify').show();
-      $('.slide-verify').hide();
-    } else {
-      $('.click-verify').hide();
-      $('.slide-verify').show();
-      this._slideVerify();
-    }
-
     $('.J_Validate').on('change blur', $.proxy(this._change, this));
     $('form').on('submit', $.proxy(this._submit, this));
-    doc.on('tap', '.get-code', $.proxy(this._getCode, this));
-    doc.on('tap', '.get-captcha', $.proxy(this._getCode, this));
+    doc.on('click', '.get-code', $.proxy(this._getCode, this));
+    doc.on('click', '.get-captcha', $.proxy(this._getCode, this));
 
     // 添加默认微信分享
     if (this.isWeixin()) {
@@ -90,9 +81,6 @@ Base.extend(RecoveryTradePassword, PageBase, {
     var error;
     var getCodeEl = $('.get-code');
     var submitEl = $('.submit');
-
-    // this.formEl.submit();
-    // return;
 
     if (curEl.hasClass('tel')) {
       error = validator.validateField({
@@ -277,7 +265,6 @@ Base.extend(RecoveryTradePassword, PageBase, {
       }   
 
     } else {
-
       this.ajax({
            url: '/v1/aliyun_captcha/' + telEl + '/?',
            type: 'post',
@@ -321,7 +308,6 @@ Base.extend(RecoveryTradePassword, PageBase, {
 
   _countdown: function(el) {
     var count = 60;
-
     coundown();
     el.val(count);
     el.addClass('disable');
@@ -329,15 +315,12 @@ Base.extend(RecoveryTradePassword, PageBase, {
     function coundown() {
       setTimeout(function() {
         var val = el.val();
-
         if (val == 0) {
           el.val('重新获取');
           el.removeClass('disable');
         } else {
           val -= 1;
           el.val(val);
-
-
           coundown();
         }
       }, 1000);
@@ -346,7 +329,6 @@ Base.extend(RecoveryTradePassword, PageBase, {
 
   hideError: function(wrapperEl) {
     wrapperEl.removeClass('error').addClass('success');
-
   },
 
   _submit: function(e) {
@@ -444,6 +426,16 @@ Base.extend(RecoveryTradePassword, PageBase, {
   _requires: function() {
     // new CustomerService();
     this.imageCap = new ImageCaptcha();
+
+    if ( Config.isAndroidAPK() ) {
+      $('.click-verify').show();
+      $('.slide-verify').hide();
+    } else {
+      $('.click-verify').hide();
+      $('.slide-verify').show();
+      this._slideVerify();
+    }
+
   },
 
   attrs: {

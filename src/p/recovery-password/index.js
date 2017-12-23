@@ -12,10 +12,7 @@ var ImageCaptcha = require('../../common/image-captcha');
 
 function RecoveryPassword() {
     RecoveryPassword.superclass.constructor.apply(this, arguments);
-     var self = this;
-    // this.getToken().then(function() {
-        self.init();
-    // });
+    this.init();
 }
 
 Base.extend(RecoveryPassword, PageBase, {
@@ -25,28 +22,14 @@ Base.extend(RecoveryPassword, PageBase, {
         this._bind();
         this._requires();
         this.configStatistics();
-        if ( getSimulatePlate() ) {} else {
-            $('nav').remove();
-        }
     },
 
     _bind: function() {
         var doc = $(document);
-        
-        if ( Config.isAndroidAPK() ) {
-            $('.click-verify').show();
-            $('.slide-verify').hide();
-        } else {
-            $('.click-verify').hide();
-            $('.slide-verify').show();
-            this._slideVerify();
-        }
-
-        
         $('.J_Validate').on('change blur', $.proxy(this._change, this));
         $('form').on('submit', $.proxy(this._submit, this));
-        doc.on('touchend', '.get-code', $.proxy(this._getCode, this));
-        doc.on('touchend', '.get-captcha', $.proxy(this._getCode, this));
+        doc.on('click', '.get-code', $.proxy(this._getCode, this));
+        doc.on('click', '.get-captcha', $.proxy(this._getCode, this));
 
         // 添加默认微信分享
         if (this.isWeixin()) {
@@ -97,9 +80,6 @@ Base.extend(RecoveryPassword, PageBase, {
         var error;
         var getCodeEl = $('.get-code');
         var submitEl = $('.submit');
-
-        // this.formEl.submit();
-        // return;
 
         if (curEl.hasClass('tel')) {
             error = validator.validateField({
@@ -226,104 +206,104 @@ Base.extend(RecoveryPassword, PageBase, {
             $('.captcha-text').focus();
         }
 
-      if ( Config.isAndroidAPK() ) {
-        if (curEl.hasClass('get-captcha')) {
-          var captInput = $('#J_ImageCaptcha .captcha-text' );
-          if (captInput.val().length!==4){
-            $('#captcha-message').html('验证码错误!');
-            $('#J_ImageCaptcha .captcha-text').val('');
-            this.imageCap._show();
-            $('.captcha-text').focus();
-          }else{
+        if ( Config.isAndroidAPK() ) {
+            if (curEl.hasClass('get-captcha')) {
+            var captInput = $('#J_ImageCaptcha .captcha-text' );
+            if (captInput.val().length!==4){
+                $('#captcha-message').html('验证码错误!');
+                $('#J_ImageCaptcha .captcha-text').val('');
+                this.imageCap._show();
+                $('.captcha-text').focus();
+            }else{
+                curEl.addClass('disable');
+                this.ajax({
+                    url: '/v1/captcha/' + telEl,
+                    type: 'post',
+                    data: {
+                        cc: 86,
+                        captcha: $('#J_ImageCaptcha .captcha-text' ).val(),
+                        wl: getWXWL(),
+                        _r: Math.random()
+                            //phone: telEl
+                    }
+                }).then(function(data) { 
+                if(data.data==="image_vcode error"){
+                    $('#captcha-message').html('验证码错误!');
+                    $('#J_ImageCaptcha .captcha-text').val('');
+                    _this.imageCap._show();
+                    $('.captcha-text').focus();
+                    curEl.removeClass('disable');
+                }else{
+                    $('#captcha-message').html('短信已发送!');
+                    curEl.addClass('disable');
+                    $('.code').removeAttr('disabled');
+                    setTimeout(function(){
+                    $('#get-captcha').removeClass('disable');
+                    _this.imageCap._hide();
+                    _this._countdown($('.get-code'));
+                    }, 1000);
+                }
+                    //$('#captcha-message').html('短信已发送!');
+                    //curEl.addClass('disable');
+                    //$('.code').removeAttr('disabled');
+                    //setTimeout(function(){
+                    //  $('#get-captcha').removeClass('disable');
+                    //  _this.imageCap._hide();
+                    //  _this._countdown($('.get-code'));
+                    //}, 1000);
+                }).fail(function(data){
+                    $('#captcha-message').html('验证码错误!');
+                    $('#J_ImageCaptcha .captcha-text').val('');
+                    _this.imageCap._show();
+                    $('.captcha-text').focus();
+                    curEl.removeClass('disable');
+                });
+            }
+            }   
+
+        } else {
             curEl.addClass('disable');
             this.ajax({
-                url: '/v1/captcha/' + telEl,
+                url: '/v1/aliyun_captcha/' + telEl + '/?',
                 type: 'post',
                 data: {
                     cc: 86,
                     captcha: $('#J_ImageCaptcha .captcha-text' ).val(),
                     wl: getWXWL(),
-                    _r: Math.random()
-                        //phone: telEl
+                    _r: Math.random(),
+                    csessionid:document.getElementById('csessionid').value,
+                    sig:document.getElementById('sig').value,
+                    token:document.getElementById('token').value,
+                    scene:document.getElementById('scene').value
                 }
             }).then(function(data) { 
-              if(data.data==="image_vcode error"){
-                $('#captcha-message').html('验证码错误!');
-                $('#J_ImageCaptcha .captcha-text').val('');
-                _this.imageCap._show();
-                $('.captcha-text').focus();
-                curEl.removeClass('disable');
-              }else{
+                if ( data.data === false ) {
+                    new Toast('短信发送失败,检查手机号后重试！');
+                    _this._slideVerify();
+                    curEl.removeClass('disable');
+                    setTimeout(function () {
+                    $('.click-verify').hide();
+                    $('.slide-verify').show();
+                    },3000)   
+                }else {
                 $('#captcha-message').html('短信已发送!');
-                curEl.addClass('disable');
                 $('.code').removeAttr('disabled');
                 setTimeout(function(){
-                  $('#get-captcha').removeClass('disable');
-                  _this.imageCap._hide();
-                  _this._countdown($('.get-code'));
-                }, 1000);
-              }
-                //$('#captcha-message').html('短信已发送!');
-                //curEl.addClass('disable');
-                //$('.code').removeAttr('disabled');
-                //setTimeout(function(){
-                //  $('#get-captcha').removeClass('disable');
-                //  _this.imageCap._hide();
-                //  _this._countdown($('.get-code'));
-                //}, 1000);
-            }).fail(function(data){
-                $('#captcha-message').html('验证码错误!');
-                $('#J_ImageCaptcha .captcha-text').val('');
-                _this.imageCap._show();
-                $('.captcha-text').focus();
-                curEl.removeClass('disable');
-            });
-          }
-        }   
-
-      } else {
-        curEl.addClass('disable');
-        this.ajax({
-            url: '/v1/aliyun_captcha/' + telEl + '/?',
-            type: 'post',
-            data: {
-                cc: 86,
-                captcha: $('#J_ImageCaptcha .captcha-text' ).val(),
-                wl: getWXWL(),
-                _r: Math.random(),
-                csessionid:document.getElementById('csessionid').value,
-                sig:document.getElementById('sig').value,
-                token:document.getElementById('token').value,
-                scene:document.getElementById('scene').value
+                $('#get-captcha').removeClass('disable');
+                _this._countdown($('.get-code'));
+                }, 0);
             }
-        }).then(function(data) { 
-            if ( data.data === false ) {
-                new Toast('短信发送失败,检查手机号后重试！');
-                _this._slideVerify();
-                curEl.removeClass('disable');
-                setTimeout(function () {
-                  $('.click-verify').hide();
-                  $('.slide-verify').show();
+                
+            }).fail(function(data){
+                    curEl.removeClass('disable');
+                    _this._slideVerify();
+                    setTimeout(function () {
+                    $('.click-verify').hide();
+                    $('.slide-verify').show();
                 },3000)   
-            }else {
-            $('#captcha-message').html('短信已发送!');
-            $('.code').removeAttr('disabled');
-            setTimeout(function(){
-              $('#get-captcha').removeClass('disable');
-              _this._countdown($('.get-code'));
-            }, 0);
-          }
-            
-        }).fail(function(data){
-                curEl.removeClass('disable');
-                _this._slideVerify();
-                setTimeout(function () {
-                $('.click-verify').hide();
-                $('.slide-verify').show();
-            },3000)   
-        });
-    }
-},
+            });
+        }
+    },
 
     _countdown: function(el) {
         var count = 60;
@@ -335,15 +315,12 @@ Base.extend(RecoveryPassword, PageBase, {
         function coundown() {
             setTimeout(function() {
                 var val = el.val();
-
                 if (val == 0) {
                     el.val('重新获取');
                     el.removeClass('disable');
                 } else {
                     val -= 1;
                     el.val(val);
-
-
                     coundown();
                 }
             }, 1000);
@@ -352,7 +329,6 @@ Base.extend(RecoveryPassword, PageBase, {
 
     hideError: function(wrapperEl) {
         wrapperEl.removeClass('error').addClass('success');
-
     },
 
     _submit: function(e) {
@@ -382,15 +358,6 @@ Base.extend(RecoveryPassword, PageBase, {
                 wl: getWXWL()
             }
         }).then(function(data) {
-
-            // 找回密码并不会下行token, 所以不能记录phone
-            /*
-            Cookie.set('phone', $('.tel').val(), {
-                expires: Infinity
-            });
-            */
-
-
             // 调整33接口, 下行修改密码的那个用户的token, 这里可以记录用户登录状态
             
             if(data.data.token) {
@@ -399,8 +366,6 @@ Base.extend(RecoveryPassword, PageBase, {
                 Cookie.set('inviteCode', data.data.invite_code);
                 Cookie.set('uuid', data.data.uuid);
             }
-            
-
 
             new Toast('修改密码成功！');
             setTimeout(function() {
@@ -432,7 +397,6 @@ Base.extend(RecoveryPassword, PageBase, {
         }], function(errors, e) {
             if (errors.length > 0) {
                 e.preventDefault();
-                // console.log(errors);
                 if ($('.submit').hasClass('disable')) {
                     return;
                 }
@@ -469,6 +433,19 @@ Base.extend(RecoveryPassword, PageBase, {
     _requires: function() {
         // new CustomerService();
         this.imageCap = new ImageCaptcha();
+
+        if ( getSimulatePlate() ) {} else {
+            $('nav').remove();
+        }
+
+        if ( Config.isAndroidAPK() ) {
+            $('.click-verify').show();
+            $('.slide-verify').hide();
+        } else {
+            $('.click-verify').hide();
+            $('.slide-verify').show();
+            this._slideVerify();
+        }
     },
 
     attrs: {
