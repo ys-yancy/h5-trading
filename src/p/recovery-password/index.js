@@ -25,10 +25,8 @@ Base.extend(RecoveryPassword, PageBase, {
         this._bind();
         this._requires();
         this.configStatistics();
-        if ( getSimulatePlate() ) {
-            $('#J_Header h1').text('重置登录密码');
-        } else {
-            $('#J_Header h1').text('重置交易密码');
+        if ( getSimulatePlate() ) {} else {
+            $('nav').remove();
         }
     },
 

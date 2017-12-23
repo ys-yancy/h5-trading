@@ -3,6 +3,8 @@ var webpack = require('webpack');
 var entryAll = {
     'login': './src/p/login/index',
     'register': './src/p/register/index',
+    'recovery-password': './src/p/recovery-password/index',
+    'recovery-trade-password': './src/p/recovery-trade-password/index',
     'home': './src/p/home/index',
     'option': './src/p/option/index',
     'rapid': './src/p/rapid/index',
