@@ -1,24 +1,21 @@
-<div class=" dialog-new-style <% if (data.fail) {%> dialog-fail <% } else if (data.success) {%> dialog-success <% }  else { %> dialog-error <% } %>" id="J_Dialog">
-	<div class="dialog-inner">
-   <span class="wrapper-icon"><span class="icon"></span></span>
+<div class="dialog J_Dialog <% if (data.fail) {%> dialog-fail <% } else if (data.success) {%> dialog-success <% }  else { %> dialog-error <% } %>"" id="J_Dialog">
    <div class="dialog-content J_Content">
-   	<% if (data.fail) {%>
-       <p>照片提交失败</p>
-       <p>请重新上传银行卡照片和身份证照片</p>
-       <p>后重试</p>
-    <% } else if (data.success) {%>
-       <p>出金成功</p>
-       <p>您的出金申请将在提交后的1个工作日</p>
-       <p>内得到处理，请注意查收。您实际收到</p>
-       <p>的人民币金额将按当前汇率进行换算。</p>
-    <% } else { %>
-       <p>邀请码错误</p>
-       <p>请重新填写正确的</p>
-       <p>邀请码后重试！</p>
-    <% } %>
+       <p class="title">提示</p>
+       <% if (data.fail) {%>
+         <p>出金失败，请重试！</p>
+      <% } else if (data.success) {%>
+         <p>出金成功</p>
+         <p>您的出金申请将在提交后的1个工作日</p>
+         <p>内得到处理，请注意查收。您实际收到</p>
+         <p>的人民币金额将按当前汇率进行换算。</p>
+      <% } else { %>
+         <p>邀请码错误</p>
+         <p>请重新填写正确的</p>
+         <p>邀请码后重试！</p>
+      <% } %>
    </div>
    <div class="dialog-buttons clearfix">
-   	   <span class="dialog-btn J_DialogConfirm">确认</span>
+       <span class="dialog-btn J_DialogConfirm">确认</span>
    </div>
-  </div>
 </div>
+<div class="dialog-mask J_DialogMask"></div>

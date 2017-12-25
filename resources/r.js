@@ -346,7 +346,7 @@ function getIfShowDepositBtn() {
 
 // 最低出金金额
 function getMinWithdrawWL() {
-	return 100;
+	return 0;
 }
 
 // 默认交易 UI

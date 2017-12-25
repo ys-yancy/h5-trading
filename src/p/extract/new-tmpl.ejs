@@ -1,0 +1,28 @@
+<div class="info">
+    <ul>
+        <li class="item bd-color">
+            <span class="name">手机号</span>
+            <input type="text" class="ipt-item" value="<%= data.phone %>" disabled>
+        </li>
+        <li class="item bd-color">
+            <span class="name">真实姓名</span>
+            <input type="text" class="ipt-item" value="<%= data.true_name %>" disabled>
+        </li>
+        <li class="item bd-color">
+            <span class="name">身份证号</span>
+            <input type="text" class="ipt-item" value="<%= data.id_no %>" disabled>
+        </li>
+        <li class="item bd-color">
+            <span class="name">出金银行卡</span>
+            <input type="text" class="ipt-item" value="<%= data.bank_no %>" disabled>
+        </li>
+        <li class="item bd-color">
+            <span class="name">出金金额($)</span>
+            <input type="text" id="J_ExtractIpt" class="ipt-item J_ExtractNum" placeholder="请输入出金金额">
+        </li>
+        <li class="item bd-color">
+            <span class="name">可提余额</span>
+            <input type="text" class="ipt-item J_AvaiableNum" value="<%= data.extractable_amount %>" disabled>
+        </li>
+    </ul>
+</div>

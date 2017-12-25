@@ -41,92 +41,20 @@
 
 <body>
     <header class="header">
-        <div class="header-inner" id="J_Header">
-            <a class="go-back" href="./account.html?">
-                <span class="icon arrow"></span>
-            </a>
+        <div class="header-inner ui common" id="J_Header">
+            <a class="go-back ui icon" href="./account.html?"></a>
             <h1>提取资金</h1>
         </div>
     </header>
-    <section class="content" id="J_Content">
-        <div class="loader ball-clip-rotate" id="J_Loading">
-            <div class="loader-inner"></div>
-            <div class="desc">加载中...</div>
+    <section class="content ui common content-color" id="J_Content">
+        <div class="ui loading" id="J_Loading">
+            <span class="circel"></span>  
+            <span class="loading-text">加载中...</span> 
         </div>
-
-       <!--  <ul class="info">
-            <li class="item phone-wrapper clearfix"><span class="warn">提示：</span>
-                <span class="wrapper warn-content">由于您是首次提交出金申请，需要补齐以下信息，请按提示操作。</span>
-            </li>
-            <li class="item clearfix">手机号码：
-                <span class="num"></span>
-            </li>
-            <li class="item clearfix">真实姓名：
-                <input type="text" value="真实姓名需要与您提交的身份证姓名一致">
-            </li>
-            <li class="item upload">
-                <ul>
-                    <li class="upload-item">
-                        <div class="detail">
-                            <span class="icon"></span>
-                            <p>身份证正面</p>
-                        </div>
-                        <div class="preview img-wrapper"></div>
-                        <input type="file" class="upload-input" accept="*/*">
-                    </li>
-                    <li class="upload-item">
-                        <div class="detail">
-                            <span class="icon"></span>
-                            <p>身份证背面</p>
-                        </div>
-                        <div class="preview img-wrapper"></div>
-                        <input type="file" class="upload-input">
-                    </li>
-                </uL>
-            </li>
-            <li class="item clearfix">开户银行：
-                <select>
-                  <option value="volvo">工商银行</option>
-                  <option value="saab">中国银行</option>
-                  <option value="mercedes">招商银行</option>
-                  <option value="audi">建设银行</option>
-                </select>
-            </li>
-            <li class="item clearfix">银行卡号：
-                <input type="text" value="需与身份证同名银行借记卡(暂不支持信用卡)">
-            </li>
-            <li class="item upload bank">
-                <ul>
-                    <li class="upload-item">
-                        <div class="detail">
-                            <span class="icon"></span>
-                            <p>出金银行卡正面</p>
-                        </div>
-                        <div class="preview img-wrapper"></div>
-                        <input type="file" class="upload-input">
-                    </li>
-                    <li class="upload-item">
-                        <div class="detail">
-                            <span class="icon"></span>
-                            <p>出金银行卡反面</p>
-                        </div>
-                        <div class="preview img-wrapper"></div>
-                        <input type="file" class="upload-input">
-                    </li>
-                    <li class="desc-item"></li>
-                </uL>
-            </li>
-            <li class="item last clearfix">
-                <div>出金金额：$<input type="text" value=""></div>
-                <div>可提余额：$<input type="text" value=""></div>
-            </li>
-        </ul>
-        <p class="desc">可提金额为0,可能是因为您的实盘账户持有未平仓订单,请平仓后再次提交出金申请.为了保证服务质量,我们设置了最低出金额为$100,出金会按当天汇率为您换算为人民币支付.由于用户量较大,我们会尽量在您提交申请后的1个工作日内处理支付并通过短信通知到您,请注意查收.</p> -->
-
     </section>
     
     <footer>
-        <a class="buy J_Submit" href="javascript:;">提取</a>
+        <a class="buy J_Submit ui common btn-setUi" href="javascript:;">提取</a>
     </footer>
     
     <script src="../src/lib/zepto.js"></script>

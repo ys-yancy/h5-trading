@@ -7,7 +7,7 @@ var Sticky = require('../../common/sticky');
 var Dialog = require('../../common/dialog');
 var validateIdCard = require('../../lib/validate-idcard');
 var CustomerService = require('../../common/customer-service');
-var tmpl = require('./index.ejs');
+var tmpl = require('./new-tmpl.ejs');
 var Config = require('../../app/config');
 var dialogTmpl = require('./dialog.ejs');
 
@@ -17,7 +17,7 @@ function Extract() {
   this.login().then(function() {
     self.init();
   }, function() {
-    location.href = './my.html';
+    location.href = './option.html';
   });
 }
 
@@ -25,31 +25,23 @@ Base.extend(Extract, PageBase, {
   init: function() {
     this._bind();
     this._requires();
-    
     this._getData();
     this.configStatistics();
+    // this._getServicePhone();
+
     this.onlyOne = false;
-    this._getServicePhone();
   },
 
   _bind: function() {
     var doc = $(document);
 
-    doc.on('change', '.upload-input', $.proxy(this._preview, this));
-
-    doc.on('blur', '.J_CardName', $.proxy(this._vaildateCardName, this));
-    doc.on('blur', '.J_CardId', $.proxy(this._vaildateCardId, this));
-    doc.on('blur', '.J_BankId', $.proxy(this._vaildateBankId, this));
-    // doc.on('change', '.J_BankId', $.proxy(this._vaildateBankId, this));
-    doc.on('blur', '.J_ExtractNum', $.proxy(this._validateNum, this));
-    doc.on('tap', '.J_Submit', $.proxy(this._submit, this));
-    doc.on('change', '.J_CardSelect', $.proxy(this._cardSelect, this));
+    doc.on('blur', '#J_ExtractIpt', $.proxy(this._validateNum, this));
+    doc.on('click', '.J_Submit', $.proxy(this._submit, this));
 
     // 添加默认微信分享
     if (this.isWeixin()) {
       this.setupWeiXinShare('default_invite');
     }
-    
   },
 
   _vaildateCardName: function(e) {
@@ -93,7 +85,7 @@ Base.extend(Extract, PageBase, {
         return;
       }
       //暂时处理一下
-       else if ( val!='M0581927601' && !validateIdCard(val)) {
+       else if ( !validateIdCard(val)) {
         this._showError(curEl, '身份证号码错误');
         return;
       }
@@ -172,25 +164,6 @@ Base.extend(Extract, PageBase, {
     messageEl.hide();
   },
 
-  _cardSelect: function(e) {
-    var curEl = $(e.currentTarget),
-      optionEl = $('option', '.J_CardSelect').not(function() {
-        return !this.selected
-      });
-
-    if (optionEl.hasClass('new')) {
-      $('.J_BankId').val('');
-      $('#J_NewBankWrapper').show();
-      $('#J_BankId').hide();
-      this.newBank = true;
-    } else {
-      $('#J_NewBankWrapper').hide();
-      var str = optionEl.html().split('(')[1].split(')')[0];
-      $('.J_BankId').val(str);
-      this.newBank = false;
-    }
-  },
-
   _submit: function(e) {
     var self = this;
     var curEl = $(e.currentTarget);
@@ -198,34 +171,7 @@ Base.extend(Extract, PageBase, {
       return;
     }
 
-    
-
     var params = this._getParams();
-    if ($('.J_CardFront').length > 0 && !params.id_front){
-      new Toast('请上传身份证正面照片');
-      return;
-    }
-    if ($('.J_CardBack').length > 0 && !params.id_back){
-      new Toast('请上传身份证背面照片');
-      return;
-    }
-    console.log(('.J_CardFront').length);
-    if ($('.J_CardFront').length > 0 && !params.card_front){
-      new Toast('请上传出金银行卡正面照片');
-      return;
-    }
-    if ($('.J_CardFront').length > 0 && !params.card_back){
-      new Toast('请上传出金银行卡背面照片');
-      return;
-    }
-    if ($('#J_NewBankWrapper').css('display') !== 'none' && !params.card_front){
-      new Toast('请上传出金银行卡正面照片');
-      return;
-    }
-    if ($('#J_NewBankWrapper').css('display') !== 'none' && !params.card_back){
-      new Toast('请上传出金银行卡背面照片');
-      return;
-    }
 
     this._showLoad(curEl);
     if(!this.onlyOne){
@@ -241,16 +187,8 @@ Base.extend(Extract, PageBase, {
           data: params,
           type: 'post'
         }).then((data) => {
-          //new Toast('出金成功');
           this._showDialog('success');
-  
-          // setTimeout(function() {
-          //     location.href = './account.html';
-          // }, 2000);
-  
-  
         }).fail((data) => {
-          // new Toast('出金错误');
           this._showDialog('fail');
         });
       });
@@ -258,58 +196,20 @@ Base.extend(Extract, PageBase, {
   },
 
   _getParams: function() {
-    var defaultBank = $('.J_CardSelect').val();
-    if (defaultBank === 'new' || !defaultBank) {
-      var bankEl = $('option', '.J_BankSelect').not(function() {
-        return !this.selected
-      });
-    } else {
-      var select = $('.J_CardSelect')[0];
-      var bankEl = $(select.options[select.selectedIndex]);
-    }
-
-    var card_no = $('.J_BankId')[$('.J_BankId').length-1].value || $('.J_BankId').val() || $('#J_BankId').val()|| this.cardNo ;
-    return {
-      bank_name: bankEl.text(),
-      bank_code: bankEl.val(),
-      //card_no: this.cardNo || $('.J_BankId').val(),
-      card_no: $('.J_BankId')[$('.J_BankId').length-1].value || $('.J_BankId').val() || $('#J_BankId').val()|| this.cardNo ,
-      amount: $('.J_ExtractNum').val(),
-      card_front: $('img', '.J_BankFront').attr('src'),
-      card_back: $('img', '.J_BankBack').attr('src'),
-      id_front: $('img', '.J_CardFront').attr('src'),
-      id_back: $('img', '.J_CardBack').attr('src'),
-      id_no: $('.J_CardId').val(),
-      true_name: $('.J_CardName').val()
-    }
+    
   },
 
   _validates: function() {
     var self = this;
-    var els = ['.J_CardName', '.J_CardId', '.J_BankId', '.J_ExtractNum', '.J_ImgWrapper'];
-    var types = ['empty', 'cardId', 'bankId', 'compareTotal', 'img'];
+    var els = ['.J_ExtractNum'];
+    var types = ['compareTotal'];
     var pass = true;
 
     for (var i = 0, len = els.length; i < len; i++) {
       var el = $(els[i]);
       $.each(el, function(index, item) {
         item = $(item);
-        if (item.hasClass('new') && self.newBank && i === 2) {
-          return;
-        }
-
-        if (item.hasClass('J_BankId')) {
-
-          if (!self.newBank) {
-            if (index === 1) {
-              return;
-            }
-          }
-        }
-
         var result = self._validate(item, types[i]);
-        console.log(result, types[i])
-
         if (!result) {
           pass = false;
         }
@@ -340,12 +240,8 @@ Base.extend(Extract, PageBase, {
       data = data.data;
       data.phone = self.cookie.get('phone');
       data.min_extract_amount = getMinWithdrawWL();
-
       self.cardNo = data.card_no;
       self.render(tmpl, data, $('#J_Content'));
-      $('#J_Brand')[0].innerHTML = getWLName();
-      $('#daheng')[0].innerHTML = getDaheng();
-      console.log(data)
     })
   },
 
@@ -444,81 +340,13 @@ Base.extend(Extract, PageBase, {
                 var dataUrl = canvas.toDataURL('image/jpeg');
                 console.log('resized image length = ' + dataUrl.length);
                 var resizedImage = self._dataURLToBlob(dataUrl);
-                /*
-                $.event.trigger({
-                    type: "imageResized",
-                    blob: resizedImage,
-                    url: url
-                });
-                */
                 preivewEl.html('<img class="img" src="' + dataUrl + '">');
                 self._hideError(preivewEl);
             }
             image.src = readerEvent.target.result;
-            // preivewEl.html('<img class="img" src="' + readerEvent.target.result + '">');
-            // self._hideError(preivewEl);
         }
         reader.readAsDataURL(file);
     }
-
-    /*
-    // if (Config.isAndroidAPK()) {
-      var reader = new FileReader();
-      console.log("reader: " + reader);
-      reader.onloadend = function() {
-        var dataUrl = reader.result;
-        console.log("dataUrl.length = " + dataUrl.length);
-        if (reader.error != null) {
-          console.log("input_img_error reader.error.code=" + reader.error.code);
-          var debug_url = 'https://p.invhero.com/debug/android/input_img_error/?error_code=' + this.error.code + "&access_token=" + Cookie.get('token');
-          console.log("debug_url: " + debug_url);
-          self.ajax({
-            url: debug_url,
-            type: 'post',
-            unjoin: true,
-            data: {}
-          }).then(function(data) {
-            console.log("input_img_error debug done.");
-          });
-        } else {
-          console.log("input_img_ok.");
-        }
-        var index = 0;
-        while (index + 512 < dataUrl.length) {
-          var res = dataUrl.substring(index, index + 512);
-          console.log(res);
-          index += 512;
-        }
-        preivewEl.html('<img class="img" src="' + dataUrl + '">');
-        self._hideError(preivewEl);
-      }
-      reader.readAsDataURL(e.currentTarget.files[0]);
-    */
-    // } else {
-
-
-    //   lrz(e.currentTarget.files[0], {
-    //     // 压缩开始
-    //     before: function() {
-    //       console.log('压缩开始');
-    //     },
-    //     // 压缩失败
-    //     fail: function(err) {
-    //       console.error(err);
-    //     },
-    //     // 压缩结束（不论成功失败）
-    //     always: function() {
-    //       console.log('压缩结束');
-    //     },
-    //     // 压缩成功
-    //     done: function(results) {
-    //       // 你需要的数据都在这里，可以以字符串的形式传送base64给服务端转存为图片。
-    //       preivewEl.html('<img class="img" src="' + results.base64 + '">');
-
-    //       self._hideError(preivewEl);
-    //     }
-    //   });
-    // }
   },
 
   _showDialog: function(type) {
@@ -555,7 +383,6 @@ Base.extend(Extract, PageBase, {
   },
 
   _requires: function() {
-    // new CustomerService();
     $('header').sticky();
   }
 });
