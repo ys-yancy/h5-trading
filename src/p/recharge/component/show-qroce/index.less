@@ -1,0 +1,53 @@
+@import '../../../../variable.less';
+.qr-code-wrapper-outer{
+	position: fixed;
+	z-index: 2002;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #ece9e9;
+	.header-inner{
+		position: relative;
+		.width(750);
+		.height(88);
+		.line-height(88);
+		.font-size(38);
+		text-align: center;
+		position: relative;
+		.go-back{
+		  position: absolute;
+		  .width(44);
+		  .height(44);
+		  .top(22);
+		  .left(30);
+		}
+	}
+	.qr-content{
+		.qr-img-wrapper-outer{
+			background: #fff;
+			.padding(80);
+		}
+		.qr-img-wrapper{
+			.width(312);
+			.height(312);
+			margin: 0 auto;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		li{
+			border-bottom: 1px solid #ccc;
+			.padding(0, 30);
+			.line-height(78);
+			.name{
+				display: inline-block;
+				.width(180);
+			}
+		}
+		.qr-desc{
+			.padding(30);
+		}
+	}
+}

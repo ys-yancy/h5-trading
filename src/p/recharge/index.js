@@ -10,20 +10,21 @@ var Dialog = require('../../common/dialog');
 var Sticky = require('../../common/sticky');
 var tmpl = require('./index.ejs');
 var dialogTmpl = require('./dialog.ejs');
+var payTypeTmpl = require('./pat-type.ejs');
 var dialogErrorTmpl = require('./dialog-error.ejs');
 var CustomerService = require('../../common/customer-service');
 var Config = require('../../app/config');
 var qrcode = require('../../lib/qrcode');
+var ShowQrCode = require('./component/show-qroce');
 
 function Recharge() {
     Recharge.superclass.constructor.apply(this, arguments);
-    var self = this;
     var self = this;
     this.login().then(function() {
         self.init();
     }, function() {
         var src = new Uri().getParam('src');
-        src = src ? src : './my.html';
+        src = src ? src : './option.html';
         location.href = src;
     });
 }
@@ -31,55 +32,28 @@ function Recharge() {
 Base.extend(Recharge, PageBase, {
     init: function() {
         this._initAttrs();
-        // this._getRate();
         this._bind();
         this._requires();
         this._getData();
         this._getServicePhone();
         this.configStatistics();
         this.onlyOne = true;
-        // this.channel = 'weixin';
-        this. _payController();
     },
 
     _bind: function() {
         var doc = $(document);
-        // doc.on('click', '.J_Radio', $.proxy(this._select, this));
-        doc.on('tap', '.J_Submit', $.proxy(this._submit, this));
-        
-        doc.on('click', '.J_PCwSubmit', $.proxy(this._pcWsubmit, this));
-        //doc.on('click', '.J_Fold', $.proxy(this._fold, this));
-        $('.J_Fold').on('click', $.proxy(this._fold, this))
 
-        $('#J_Charge,.J_Charge,.J_Charge4,.Kj_pay_1').on('blur', $.proxy(this._inputBlur, this));
+        doc.on('click', '.J_Fold', $.proxy(this._fold, this));
+        doc.on('tap', '.J_Submit', $.proxy(this._submit, this));   
+        $('#J_Charge').on('blur', $.proxy(this._inputBlur, this));       
 
-        $('#J_MobilePayText').html(getMobilePayTextWL());
-
-        var pul = getPayUrlWL();
-        if (pul != '') {
-            $('#payurl').html(pul);
+        // 添加默认微信分享
+        if (this.isWeixin()) {
+          this.setupWeiXinShare('default_invite');
         }
-        else {
-            $('#J_OnlinePay').remove();
-        }
+    },
 
-        if ( !Util.isWeixin() || getWXWL() == 'ifbao' ) {
-            $('.press').hide();
-        }
-
-        if ( Util.isWeixin() && getWXWL() != 'ifbao' ) {
-            $('.pay_stepAsk').hide();
-        }
-
-        $('#J_Charge').attr('placeholder', '请输入金额, 如: 500');
-
-        if ( getWXWL() == 'hwbj' ) {
-            var H_El = $('.kuaijie');
-            H_El.addClass('qq-pay');
-            $('p', H_El).text('QQ钱包支付')
-        }
-
-
+    _lazyBind: function() {
         $('.pay-item').on('click', (e) => {
             var curEl = $(e.currentTarget);
             if ($(e.target).hasClass('J_Radio')) {
@@ -91,183 +65,15 @@ Base.extend(Recharge, PageBase, {
             if (radioEl.hasClass('active')) {
 
             } else {
-                // radioEl.trigger('click');
                 this._select({
                     currentTarget: $('.J_Radio', curEl)
                 })
             }
             $('.J_Fold').trigger('click');
         });
-
-        // 添加默认微信分享
-        if (this.isWeixin()) {
-          this.setupWeiXinShare('default_invite');
-        }
-
-    },
-
-    _payController: function() {
-        this._showPayWay();
-        this._defaultPayment();
-    },
-
-    _defaultPayment: function () {
-        var kjEl = $('.kuaijie'),
-            kjEl_1 = $('.kuaijie_1'),
-            wxEl = $('.pay-itemWQ'),
-            zfEl = $('.pay-itemZfu'),
-            footerEl = $('footer'),
-            contentEl = $('.tab-content');
-
-        // 银联快捷
-        if (getDefaultPayment() == 'kjpay') {
-            contentEl.hide()
-            $(contentEl[2]).show();
-            kjEl.addClass('active');
-            $('.J_Radio', kjEl).addClass('active');
-            $('.weixinQR').removeClass('weixinQR');
-        }
-        // 银联快捷 -1
-        if (getDefaultPayment() == 'kjpay_1') {
-            contentEl.hide()
-            $(contentEl[3]).show();
-            kjEl_1.addClass('active');
-            $('.J_Radio', kjEl_1).addClass('active');
-            $('.weixinQR').removeClass('weixinQR');
-        }
-        // 支付宝
-        else if ( Util.isZhifubao() || getDefaultPayment() == 'zfpay') {
-            this.channel = 'zhifubao';
-            contentEl.hide();
-            $(contentEl[1]).show();
-            zfEl.addClass('active');
-            $('.pay_stepAsk').show();
-            $('.J_Radio', zfEl).addClass('active');
-        } 
-
-        //网银
-        else if (getDefaultPayment() == 'pcWy') {
-            footerEl.hide();
-            contentEl.hide();
-            $(contentEl[3]).show();
-            $('.pcWangyin').addClass('active');
-            $('.pcWangyin .J_Radio').addClass('active');
-        }
-        // 网页
-        else if( getDefaultPayment() == 'pcpay' ) {
-            footerEl.hide();
-            contentEl.hide();
-            $(contentEl[4]).show();
-            $('.pcPay').addClass('active');
-            $('.pcPay .J_Radio').addClass('active');
-        }
-        // 微信
-        else { 
-            this.channel = 'weixin';
-            wxEl.addClass('active');
-            $('.app_name').html('微信');
-            $('.J_Radio', wxEl).addClass('active');
-        }
-    },
-
-    _showPayWay: function() {
-        var WqEl = $('.pay-itemWQ'),
-            ZfEl = $('.pay-itemZfu'),
-            pcEl = $('.pcPay'),
-            KjEl = $('.kuaijie'),
-            KjEl_1 = $('.kuaijie_1'),
-            pcWEl = $('.pcWangyin');
-        /**
-        **  @1  支付宝，快捷，网页
-        **  @2  微信， 快捷， 网页
-        **  @3  微信，支付宝，网页  
-        **  @4  快捷， 网页
-        **  @5  网页
-        **  @6  微信, 网页
-        **  @7  支付宝, 网页
-        *   @8  网银, 网页
-        *   @9  网银
-        *   @10 网银, 网页 快捷
-        *   @11 快捷, 快捷-1, 网银, 网页 
-        **/
-
-        switch( getShowPayWay() ) {
-            case 1:
-                WqEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 2: 
-                ZfEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 3: 
-                KjEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 4: 
-                WqEl.hide();
-                ZfEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 5: 
-                KjEl.hide();
-                ZfEl.hide();
-                WqEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 6: 
-                ZfEl.hide();
-                KjEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 7: 
-                KjEl.hide();
-                WqEl.hide();
-                pcWEl.hide();
-                KjEl_1.hide();
-                break;
-            case 8:
-                KjEl.hide();
-                ZfEl.hide();
-                WqEl.hide();
-                KjEl_1.hide();
-                break;
-            case 9:
-                KjEl.hide();
-                ZfEl.hide();
-                WqEl.hide();
-                pcEl.hide();
-                KjEl_1.hide();
-                break;
-            case 10:
-                ZfEl.hide();
-                WqEl.hide();
-                KjEl_1.hide();
-                break;
-            case 11:
-                ZfEl.hide();
-                WqEl.hide();
-                break;
-            default:
-                break;
-        }
     },
 
     _getServicePhone: function(token) {
-
-        if (showServiceWeixin()) {
-            $('.phone-wrapper-bottom').html(
-                '客服微信:<a>' +getServiceWeixin()+'</a>'
-            )
-
-            return
-        }
         var self = this;
         return this.ajax({
           url: '/v1/customer_call',
@@ -309,97 +115,46 @@ Base.extend(Recharge, PageBase, {
 
     _select: function(e) {
         this.onlyOne = true;
-        $('.J_RateNum,.J_Bonus').html('-- --');
-        $(".J_Charge1>input").val('');
-        $(".J_Charge2>input").val('');
         var curEl = $(e.currentTarget),
+            parentEl = curEl.parent(),
             index = curEl.parent().index();
-        // e.stopPropagation();
 
         if (curEl.hasClass('active')) {
             return;
         }
 
+        $("#J_Charge").val('');
+        $('#J_Bonus').html('-- --');
+        
         $('.J_Radio').removeClass('active');
         $('.pay-item').removeClass('active');
+
         curEl.addClass('active');
-        curEl.parent().addClass('active');
+        parentEl.addClass('active');
 
         var tabContentEls = $('.tab-content');
         var footerEl = $('footer');
 
         tabContentEls.hide();
-        $(tabContentEls[index]).show();
-
-        if ( index === 0 || index === 1) {
-            $('.J_Submit').addClass('weixinQR');
-        } else {
-            $('.J_Submit').removeClass('weixinQR');
-        }
-        if ( index === 0 ) {
-            this.channel = 'weixin';
-            $('.app_name').html('微信');
-            if ( getWXWL() == 'ifbao' ) {
-                $('.other').hide();
-                $('ifbao').show();
-            }
-        } else if ( index === 1 ) {
-            this.channel = 'zhifubao';
-            $('.app_name').html('支付宝');
-        }
-
-        if (index === 0 || index === 1 || index === 2 || index == 3) {
-            footerEl.show();
-        } else {
+        if (parentEl.hasClass('pay-pc')) {
+            $('#J_PcContent').show();
             footerEl.hide();
-        }
-
-        if( index == 3 ) { // 快捷支付-1
-            $('.J_Submit').addClass('isKj_1');
         } else {
-            $('.J_Submit').removeClass('isKj_1');
+            $('#J_CommonContent').show();
+            footerEl.show();
         }
-
-        if ( !Util.isWeixin() ) {
-            $('.press').hide();
-        }
-
-
-        //如果在微信且是IOS就不显示支付引导，如果在微信且是安卓，支付宝支付显示引导流程，微信不显示，
-        //其他情况都显示
-        //2017 3.31   ifbao都要显示说明
-        if ( Util.isIOS()&&Util.isWeixin()&&getWXWL() != 'ifbao' ) {
-            // $('.pay_stepAsk').hide();
-            $('.pay_stepAsk').show();
-        } else if ( Util.isAndroid()&&Util.isWeixin()&&getWXWL() != 'ifbao' ) {
-            if ( index === 0 ) {
-                $('.pay_stepAsk').hide();
-            } else if ( index === 1 ) {
-                $('.pay_stepAsk').show();
-                $('.press').hide();
-            }
-        } else {
-            $('.pay_stepAsk').show();
-            if ( getWXWL() == 'ifbao' && index === 0 ) {
-                $('.other').hide();
-                $('.ifbao').show();
-            } else {
-                $('.other').show();
-                $('.ifbao').hide();
-            }
-            
-        }
-
+        
+        var pay = parentEl.attr('data-pay');
+        $('.J_Submit').attr('data-pay', pay);
     },
 
     _inputBlur: function(e) {
         var curEl = $(e.currentTarget),
             val = curEl.val(),
             bonusEl = $('#J_Bonus');
-
+        
         if (!this._validate(curEl)) {
             bonusEl.text('-- --');
-            $('.J_RateNum').text('-- --');
             $('.J_Submit').addClass('disable');
             return;
         }
@@ -407,9 +162,8 @@ Base.extend(Recharge, PageBase, {
         $('.J_Submit').removeClass('disable');
 
         var bonus = this._getBonus(val);
-        bonusEl.text(bonus);
-        $('.J_Bonus').html(bonus)
-        this._getRate(val);
+        bonusEl.val(bonus);
+        // this._getRate(val);
     },
 
     _getBonus: function(val) {
@@ -520,134 +274,102 @@ Base.extend(Recharge, PageBase, {
     _submit: function() {
         var self = this;
         var submitEl = $('.J_Submit');
-        var chargeEl = $('#J_Charge,.J_Charge');
+        var chargeEl = $('#J_Charge');
+
         chargeEl.trigger('blur');
+
         if (!this._validate()) {
             return;
         }
-        var rateVal = parseFloat($('.J_RateNum').text());
+
+        var rateVal = chargeEl.val();
         if (isNaN(rateVal)) {
-            rateVal = this.rate * parseFloat(chargeEl.val());
+            rateVal = parseFloat(rateVal);
         }
 
-        if (rateVal > 1400000&&getPayUrlWL()) {
+        if (rateVal > 2000) {
             this._showMax();
             return;
         }
 
-        var amount = $('#J_Charge').val() || $('.J_Charge').val() || $('.J_Charge2>input').val();
-        if (this.onlyOne) {
-            var data = {
-                access_token: this.cookie.get('token'),
-                amount: amount,
-                channel: this.channel
-            }
+        var amount = chargeEl.val();
 
-            $('.J_Submit').addClass('disable');
-            if ( submitEl.hasClass('weixinQR') ) {
-
-                if ( getWeiXinPayWay() == 'hui' && this.channel == 'weixin' ) {
-                    self._subZhiPayWay(data);
-                    return;
-                } else if ( getWeiXinPayWay() == 'zhihui' ) {
-                    self._subWeiXinQrPayWay(data);
-                    return;
-                }
-            } else {
-                if ( getEcurrencyPayment() && getWXWL() == 'hwbj' ) {
-                    data.channel = 'qq_wallet';
-                    data.amount = $('.J_Charge3>#J_Charge').val();
-                    self._subWeiXinQrPayWay(data, 'express');
-                    return;
-                }
-
-                // yzgj
-                if (getEcurrencyPayment() && getWXWL() == 'yzgj') {
-                    data.type = 'express';
-                    data.amount = $('.J_Charge3>#J_Charge').val();
-                    self._subWeiXinQrPayWay(data, 'express');
-                    return;
-                }
-
-                var amountK = $('.J_Charge3>#J_Charge').val();
-                var amount_data = 'amount=' + amountK;
-
-                var url,
-                    back_url = location.href;
-                // android机型需要将用户token传递给本地代码
-                if ( Config.isAndroidAPK() ) {
-                    //url = location.origin + '/s/stf-kuaijie-pay/index1.html?'+ amount_data + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url) + "&from=androidapp";
-                    url = location.origin + '/s/stf-kuaijie-pay/cyber.html?'+ amount_data + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url) + "&from=androidapp";
-                    window.cookie && window.cookie.updateToken(self.cookie.get('token'));
-                } 
-                //0701 尝试解决白标客户跳转支付链接没有token的问题
-                else {
-                    var wl = '';
-                    if (location.pathname.indexOf('/s/') != 0) {
-                        wl = location.pathname.substring(1, location.pathname.indexOf('/s/'));
-                    }
-                    //url = location.origin + '/' + wl + '/s/stf-kuaijie-pay/index1.html?'+ amount_data + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url);
-                    url = location.origin + '/' + wl + '/s/stf-kuaijie-pay/cyber.html?'+ amount_data + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url);
-                }
-
-                if ( getIsjiuPaKuaiJie() && !$('.J_Submit').hasClass('isKj_1')) {
-                    // jiupai支付
-                    url = location.origin + '/' + wl + '/s/stf-kuaijie-pay/jiupapay.html?'+ amount_data + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url);
-                }
-
-                window.location.href = url; 
-            }
-        }
-    },
-
-    _pcWsubmit: function() {
-        var bankCode = $('.J_PcWpayName').val();
-        var amount = $('#J_Charge4').val();
-        if (!bankCode || !amount) {
+        if (!this.onlyOne) {
             return;
         }
 
-        if ( amount < getMinDepositWL() ) {
-            return;
-        }
         var data = {
             access_token: this.cookie.get('token'),
-            amount: amount,
-            type: 'direct'
+            amount: amount
         }
 
-        if ( getEcurrencyPayment() ) {
-            this._subWeiXinQrPayWay(data, 'express', bankCode);
+        submitEl.addClass('disable');
+        var pay = submitEl.attr('data-pay');
+        if (!pay) {
+            return
         }
+
+        var _SubmitFn = '_submit_' + pay;
+
+        this[_SubmitFn](data);
     },
 
-    _subZhiPayWay: function(data) {
-        var self = this;
-        // data.access_token = 'token5609';
-        data.appType = data.channel;
-        var param = {
-            access_token: '8bc6fa76-274f-4bd3-b08a-7745731ddc90',
-            appType: data.channel,
-            amount: data.amount
+    _submit_weixin: function(data) {
+        var self = this,
+            qrel = $('#J_Qr'),
+            url = getPayUrl()['weixin'];
+
+        self.onlyOne = false;
+        qrel.show();
+        // self.ajax({
+        //     url: url,
+        //     data: data,
+        //     type: 'POST'
+        // }).then(function(data) {
+        //     self.onlyOne = true;
+        // },function (data) {
+        //     self.onlyOne = true;
+        //     return;
+        // });
+        setTimeout(() => {
+            var url = getWXInviteUrlWL();
+            var imgUrl = this._createQrcode(url, 5, 'Q');
+            this._inieQrConponent(imgUrl, 'weixin')
+        }, 2000)
+    },
+
+    _submit_zhifubao: function(data) {
+        console.log(data)
+    },
+
+    _submit_kuaijie: function(data) {
+        var amount_param = 'amount=' + data.amount;
+
+        var url,
+            back_url = location.href;
+        // android机型需要将用户token传递给本地代码
+        if ( Config.isAndroidAPK() ) {
+            url = location.origin + '/s/stf-kuaijie-pay/index.html?'+ amount_param + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url) + "&from=androidapp";
+            window.cookie && window.cookie.updateToken(self.cookie.get('token'));
+        } 
+        //0701 尝试解决白标客户跳转支付链接没有token的问题
+        else {
+            var wl = '';
+            if (location.pathname.indexOf('/s/') != 0) {
+                wl = location.pathname.substring(1, location.pathname.indexOf('/s/'));
+            }
+            url = location.origin + '/' + wl + '/s/stf-kuaijie-pay/index.html?'+ amount_param + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url);
         }
-        this.ajax({
-            url: 'https://api.51aishanghui.com/v1/user/pay/deposit_3xmtapay/',
-            type: 'POST',
-            data: param,
-            unjoin: true,
-        })
-        .then(function( data ) {
-            self.onlyOne = true;
-            var url = data.data.post_url + '?' + data.data.post_data;
-            self.postURL(url);
-        },function( err ) {
-            // self.onlyOne = true;
-            // var dialog = self.dialog;
-            // dialog.setContent(data.message);
-            // dialog.show();
-            // return;
-        })
-            
+
+        window.location.href = url; 
+    },
+
+    _submit_wangyin: function(data) {
+        console.log(data)
+    },
+
+    _submit_pc: function(data) {
+        
     },
 
     _subWeiXinQrPayWay: function(data, way, bankCode) {
@@ -696,11 +418,17 @@ Base.extend(Recharge, PageBase, {
         });
     },
 
+    _inieQrConponent: function(url, source) {
+        new ShowQrCode({
+            el: $('#J_QrContent'),
+            qrUrl: url,
+            source: source
+        })
+    },
+
     _getData: function() {
         var self = this;
-
         this.ajax({
-            // url: '/v1/config',
             url: '/v1/deposit_bonus/config',
             data: {
                 access_token: this.cookie.get('token')
@@ -710,11 +438,6 @@ Base.extend(Recharge, PageBase, {
             var params = config.deposit_bonus.real;
             if(params.ratio[0].ratio!==0 || params.ratio[1].ratio!==0 || params.ratio[2].ratio!==0 ){
                 self.render(tmpl, params, $('#J_Info'));
-                self.render(tmpl, params, $('.J_Info'));
-                self.render(tmpl, params, $('.J_Info2'));
-                self.render(tmpl, params, $('.J_Info3'));
-                self.render(tmpl, params, $('.J_Info3_1'));
-                self.render(tmpl, params, $('.J_Info4'));
             }
             self.depositBonus = params.ratio.sort(function(val1, val2) {
                 if (val1.limit > val2.limit) {
@@ -728,37 +451,15 @@ Base.extend(Recharge, PageBase, {
         });
     },
 
-    _getPayUrl: function(way, channel) {
-        var url = '/v1/user/pay/deposit_chinagpay_saoma/';
-        if (way == 'express' && getWXWL() == 'yzgj') {
-            url = '/v1/user/pay/deposit_payease/';
-        }
-        else if(way == 'express' && getWXWL() == 'ifbao') {
-            url = 'v1/user/pay/deposit_payease/';
-        }
-        else if ( way == 'express' ) {
-            url = '/v1/user/pay/deposit_superstarpay_order/';
-        }
-        else if (getWXWL() == 'hwbj') {
-            url = '/v1/user/pay/deposit_superstarpay_saoma/';
-        }
-        else if (getWXWL() == 'ytqs' && channel == 'zhifubao') {
-            url = '/v1/user/pay/deposit_alipay_saoma/request_pay/';
-        }
-
-        return url;
-    },
-
     _initAttrs: function() {
-        var phone = this.cookie.get('phone');
-        $('#J_Phone,.J_Phone').text(phone);
-
         var url = new Uri().getParam('src');
 
         if (url) {
             $('.go-back').attr('href', url);
-            $('.mygo-back').attr('href', './recharge.html');
         }
+
+        $('.J_Submit').attr('data-pay', getDefaultPayWay());
+
         // 需要隐藏表头
         if (window.location.href.indexOf('from=iphoneapp') != -1 || window.location.href.indexOf('from=androidApp') != -1) {
             $('#J_Header').parent().css("display","none");
@@ -766,10 +467,18 @@ Base.extend(Recharge, PageBase, {
     },
 
     _requires: function() {
-        // new CustomerService();
-        // $('header').sticky();
-        //修改之后
-        $('#deposit_header').sticky();
+        var phone = this.cookie.get('phone');
+
+        if (getPayUrlWL()) {
+            $('J_PcUrl').html(getPayUrlWL());
+        }
+
+        $('.J_UserPhone').val(phone);
+
+        $('#J_Header').sticky();
+
+        this.renderTo(payTypeTmpl, getShowPayWay(), $('.select-content'));
+        this._lazyBind(); 
     },
 
     _showDialogError: function(msg, next) {

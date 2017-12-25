@@ -4,18 +4,21 @@
 
 // 默认支付方式
 function getDefaultPayWay() {
-
+	return 'zhifubao'
 }
 
 // 显示哪几种支付方式
 function getShowPayWay() {
-
+	return ['weixin', 'zhifubao', 'kuaijie', 'pc']
 }
 
 // 支付地址 在recharge 把url渲染到元素中去 然后直接在元素中拿
 function getPayUrl() {
 	return {
-
+		weixin: '11111',
+		zhifubao: '222222',
+		kuaijie: '333333',
+		pc: '555555'
 	}
 }
 
