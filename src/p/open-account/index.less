@@ -1,0 +1,125 @@
+@import '../../base.less';
+@import '../../variable.less';
+.rotateanimate();
+header{
+  .width(750);
+  .header-inner{
+    position: relative;
+      .height(88);
+      .line-height(88);
+      .font-size(38);
+      text-align: center;
+      position: relative;
+      .go-back {
+        position: absolute;
+        .width(44);
+        .height(44);
+        .top(22);
+        .left(30);
+      }
+  }
+}
+
+.content{
+    .font-size(28);
+    .padding-bottom(130);
+    h3{
+        .height(78);
+        .line-height(78);
+        .font-size(32);
+        .padding-left(30);
+        background: #EDEDED;
+    }
+    .wrapper{
+        position: relative;
+        .padding(30);
+        border-bottom: 1px solid;
+        &.bank,
+        &.id{
+            border: none;
+        }
+        input{
+            -webkit-appearance: none;
+        }
+        .right{
+            float: right;
+            border: none;
+            outline: 0;
+            text-align: right;
+        }
+        .upload-item{
+            position: relative;
+            display: inline-block;
+            .width(330);
+            .height(200);
+            .border(1, solid, #ccc);
+            &:nth-of-type(1){
+                .margin-right(20);
+            }
+            .detail,
+            .preview,
+            input{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            .detail{
+                z-index: 7;
+                .padding(30);
+                text-align: center;
+                .icon{
+                    display: inline-block;
+                    .width(64);
+                    .height(51);
+                    .margin-bottom(40);
+                    background: green;
+                }
+            }
+            .preview{
+                display: block;
+                z-index: 8;
+                overflow:hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            input{
+                z-index: 9;
+                opacity: 0;
+            }
+            .err{
+                .bottom(6);
+                .right(0);
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .err{
+            position: absolute;
+            .right(30);
+            .font-size(18);
+            color: red;
+        }
+    }
+}
+
+footer{
+    position: fixed;
+    z-index: 10;
+    .padding(20, 30);
+    .right(0);
+    .bottom(0);
+    .left(0);
+    background: rgba(255,255,255,.8);
+    .submit{
+        display: inline-block;
+        .width(690);
+        .height(88);
+        .line-height(88);
+        .font-size(34);
+        text-align: center;
+        .border-radius(5);
+        color: #fff;
+    }
+}

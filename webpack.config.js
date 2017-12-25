@@ -36,7 +36,8 @@ var entryAll = {
     'client-agreement': './src/p/client-agreement/index',
     'risk-message': './src/p/risk-message/index',
     'recharge': './src/p/recharge/index',
-    'extract': './src/p/extract/index'
+    'extract': './src/p/extract/index',
+    'open-account': './src/p/open-account/index'
 };
 
 module.exports = {
