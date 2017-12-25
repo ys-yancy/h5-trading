@@ -217,11 +217,7 @@ Base.extend(Recharge, PageBase, {
 
     _validate: function(curEl) {
         curEl = curEl || $('#J_Charge');
-        var val = curEl.val() || 
-            $('.J_Charge>#J_Charge').val() || 
-            $('.J_Charge2>#J_Charge').val() || 
-            $('.J_Charge3>#J_Charge').val() || 
-            $('#J_Charge_1').val();
+        var val = curEl.val();
 
         if (!val) {
             this._showError(curEl, '充值金额不能为空');
@@ -372,45 +368,6 @@ Base.extend(Recharge, PageBase, {
         
     },
 
-    _subWeiXinQrPayWay: function(data, way, bankCode) {
-        var self = this;
-        self.onlyOne = false;
-        self.ajax({
-            url: self._getPayUrl(way, data.channel),
-            data: data,
-            type: 'POST'
-        }).then(function(data) {
-            if (bankCode) {
-                var url = data.data.post_url + "?" + data.data.post_data + '&v_pmode=' + bankCode;
-                self.postURL(url)
-                return
-            }
-
-            if ( way == 'express' ) {
-                var url = data.data.post_url + "?" + data.data.post_data;
-                self.postURL(url)
-                return
-            }
-            
-            self.onlyOne = true;
-            $('.J_Submit').removeClass('disable');
-            $('.J_Submit').text("确定入金").addClass('disable');
-            $('#deposit_header').hide();
-            $('.weixinQR-mask').css("display","block");
-            $("#qrAmount").text($('.J_RateNum').html());
-            var img = self._createQrcode(data.data.qr_code, 5, 'Q');
-            $('.imgQR')[0].src = img;
-            $('.imgQR_mask')[0].src = img;
-        },function (data) {
-            self.onlyOne = true;
-            $('.J_Submit').removeClass('disable');
-            var dialog = self.dialog;
-            dialog.setContent(data.message);
-            dialog.show();
-            return;
-        })
-    },
-
     _showMax: function() {
         var dialog = new Dialog({
             isShow: true,
@@ -437,7 +394,10 @@ Base.extend(Recharge, PageBase, {
             var config = data.data.config;
             var params = config.deposit_bonus.real;
             if(params.ratio[0].ratio!==0 || params.ratio[1].ratio!==0 || params.ratio[2].ratio!==0 ){
-                self.render(tmpl, params, $('#J_Info'));
+                $.each($('.J_Extra'), function(idx,item) {
+                    item = $(item);
+                    self.render(tmpl, params, item);
+                });
             }
             self.depositBonus = params.ratio.sort(function(val1, val2) {
                 if (val1.limit > val2.limit) {
