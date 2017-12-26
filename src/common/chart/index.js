@@ -49,7 +49,6 @@ Base.extend(Chart, Base, {
         className: 'stock-chart',
         backgroundColor: self.ui.background || '#fff',
         height: height,
-
         events: {
           redraw: function(event) {
             if (this.xAxis) {
@@ -182,8 +181,11 @@ Base.extend(Chart, Base, {
         plotLines: [plotLines],
         endOnTick: false,
         labels: {
+          align: 'left',
+          // x: 20,
+          reserveSpace: true,
           style: {
-            fontSize: '18px',
+            fontSize: '18px'
           }
         }, 
       },
