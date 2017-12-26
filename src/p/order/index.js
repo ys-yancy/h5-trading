@@ -35,7 +35,6 @@ function Order() {
 
       new Check();
       new Sound();
-
       // new TopMsg($.merge({
       //   el: $('.top-message'),
       //   className: 'special',
