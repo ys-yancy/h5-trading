@@ -502,6 +502,11 @@ Base.extend(ProChart, PageBase, {
           var profitEl = $('.J_Profit', item);
           var ticket = item.attr('data-ticket');
           profitEl.text(profitOption[ticket].toFixed(2));
+          if (profitOption[ticket] > 0) {
+            item.removeClass('down').addClass('up');
+          } else {
+            item.removeClass('up').addClass('down');
+          }
         });
 
         if (order && self.orderObject) {
