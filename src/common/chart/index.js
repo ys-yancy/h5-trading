@@ -324,6 +324,25 @@ Base.extend(Chart, Base, {
     this.instance.yAxis[0].addPlotLine(plotLines);
   },
 
+  updateProfitPlotLine: function(profit, price, ticket) {
+    var plotLines,
+        className = 'down';
+    if (profit > 0) {
+      plotLines = this.upPlotLine;
+      className = 'up';
+    } else {
+      plotLines = this.downPlotLine;
+      className = 'down';
+    }
+
+    plotLines.value = price;
+    plotLines.label.text = '<span class="own-chart-prifit '+ className +'">'+ profit +'</span>' + '<span class="own-chart-desc J_CloseOrder" data-ticket="'+ ticket +'">平仓</span>';
+    this.instance.yAxis[0].removePlotLine(this.plotLinesId);
+    this.instance.yAxis[0].addPlotLine(plotLines);
+
+    this.plotLinesId = plotLines.id;
+  },
+
   attrs: {
     data: null,
     downPrice: 0.0,

@@ -1,0 +1,9 @@
+<% data.forEach(function(item) { %>
+    <%if (item.status == 'open') { %>
+        <% var isUp = item.cmd.indexOf('buy') !== -1 %>
+        <li class="item ui common circle-list J_Item <%= isUp ? 'up' : 'down' %>" data-symbol="<%= item.symbol %>" data-ticket="<%= item.ticket %>">
+            <p class="J_Profit"><%= item.profit %></p>
+            <p class="cmd"><%= isUp ? '买涨' : '买跌' %></p>
+        </li>
+    <% } %>
+<% }) %>

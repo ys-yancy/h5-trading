@@ -129,6 +129,25 @@ html, body{
 	.bd-color{
 		border-color: @contentItemBtColor;
 	}
+	.ui.common.circle-list{
+		.cmd{color: @contentColor;}
+		&.up{
+			.border(2, solid, @contentUpColor);
+		}
+		&.down{
+			.border(2, solid, @contentDownColor);
+		}
+		&.active.up{
+			color: #fff;
+			background-color: @contentUpColor;
+			.cmd{color: #fff;}
+		}
+		&.active.down{
+			color: #fff;
+			background-color: @contentDownColor;
+			.cmd{color: #fff;}
+		}
+	}
 }
 
 

@@ -38,49 +38,50 @@
     <link rel="stylesheet" href="../src/p/pro-list/index.css">
 </head>
 
-<body class="edit-model">
-    <div class="page" id="J_Page">
-        <header class="header" id="proHeader">
-            <div class="header-inner" id="J_Header">
-                <a class="go-back" id="J_NavBack" href="./trade.html?">
-                    <span class="icon arrow"></span>
-                </a>
-                <h1 id="J_Title"></h1>
-                <span class="icon attribute-trigger"></span>
-            </div>
-        </header>
-        <nav class="pro nav" id="J_Sticky"></nav>
-        <section class="top-message"></section>
-        <section class="content">
-            <div>
-                <section class="hd" id="J_Info">
-                </section>
-            </div>
-            <section class="chart-wrapper" id="J_ChartWrapper">
-                <div class="chart" id="J_Chart"></div>
-                <div class="rangeSelector-wrapper clearfix" id="J_RangeContro" style="display: none;">
-                    <div class="J_RangeFn bar-wrapper">
-                        <span class="cur-range J_CurRange">30分钟</span>
-                        <span class="icon bar"></span>
-                    </div>
-                    <ul class="popup" id="J_RangeList" style="display:;">
-                        <li class="range-selector item">1分钟</li>
-                        <li class="range-selector item">5分钟</li>
-                        <li class="range-selector item">15分钟</li>
-                        <li class="range-selector item active">30分钟</li>
-                        <li class="range-selector item">1小时</li>
-                        <li class="range-selector item">1天</li>
-                    </ul>
-                </div>
+<body>
+    <header class="header" id="proHeader">
+        <div class="header-inner ui common" id="J_Header">
+            <a class="go-back ui icon" id="J_NavBack" href="./trade.html?"></a>
+            <h1 id="J_Title"></h1>
+            <span class="icon ui desc attribute-trigger"></span>
+        </div>
+    </header>
+    <nav class="pro nav ui common" id="J_Sticky"></nav>
+    <section class="top-message"></section>
+    <section class="content ui common content-color">
+        <div>
+            <section class="hd" id="J_Info">
             </section>
-            <div class="ui loading" id="J_Loading">
-                <span class="circel"></span>  
-                <span class="loading-text">加载中...</span> 
+        </div>
+        <section class="chart-wrapper" id="J_ChartWrapper">
+            <div class="chart" id="J_Chart"></div>
+            <div class="chart" id="J_TimeChart"></div>
+            <div class="rangeSelector-wrapper clearfix" id="J_RangeContro" style="display: none;">
+                <div class="J_RangeFn bar-wrapper">
+                    <span class="cur-range J_CurRange">30分钟</span>
+                    <span class="icon bar"></span>
+                </div>
+                <ul class="popup" id="J_RangeList" style="display:;">
+                    <li class="range-selector item">1分钟</li>
+                    <li class="range-selector item">5分钟</li>
+                    <li class="range-selector item">15分钟</li>
+                    <li class="range-selector item active">30分钟</li>
+                    <li class="range-selector item">1小时</li>
+                    <li class="range-selector item">1天</li>
+                </ul>
             </div>
         </section>
+        <div class="list-wrapper">
+            <ul class="J_List">
 
-    </div>
-    <div class="dialog-mask popup-mask" id="J_PopupMask" style="display: none;"></div>
+            </ul>
+        </div>
+        <div class="ui loading" id="J_Loading">
+            <span class="circel"></span>  
+            <span class="loading-text">加载中...</span> 
+        </div>
+    </section>
+    
     <script src="../src/lib/zepto.js"></script>
     <script src="../src/lib/highstock-new.js"></script>
     <script src="../build/pro-list.js?t=2"></script>
