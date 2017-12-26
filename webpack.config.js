@@ -37,7 +37,8 @@ var entryAll = {
     'risk-message': './src/p/risk-message/index',
     'recharge': './src/p/recharge/index',
     'extract': './src/p/extract/index',
-    'open-account': './src/p/open-account/index'
+    'open-account': './src/p/open-account/index',
+    'inbox': './src/p/inbox/index'
 };
 
 module.exports = {
