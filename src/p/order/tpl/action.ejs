@@ -7,7 +7,7 @@
 	<% if (data.ui != 6) {%>
 		<a class="action edit btn-order-edit ui" href="./pro-trading.html?from=edit&name=<%= data.name %>&symbol=<%= data.symbol%>&order=<%= data.order %>&router=order&price=<%= data.price %>&stoploss=<%= data.stoploss %>&takeprofit=<%= data.takeprofit %>&unit=<%= data.unit %>">修改订单</a>
 	<% } %>
-	<a class="action close btn-order-close ui" href="javascript:;">立即平仓</a>
+	<a class="action close btn-order-close ui tradeui-<%=data.ui%>" href="javascript:;">立即平仓</a>
 <% } else {%>
 	<a class="action edit guadan btn-order-edit ui" href="./pro-trading.html?from=edit&name=<%= data.name %>&symbol=<%= data.symbol%>&order=<%= data.order %>&router=order&price=<%= data.price %>&stoploss=<%= data.stoploss %>&takeprofit=<%= data.takeprofit %>&unit=<%= data.unit %>">修改挂单</a>
 	<a class="action close guadan btn-del ui" href="javascript:;">删除挂单</a>
