@@ -37,14 +37,13 @@ export default class Info extends PageBase {
         data.inviteCode = self.inviteCode;
 
         self.render(tmpl, data, self.el);
-        if (!data.month_ror_rank || data.month_ror_rank == 0) {
-          $('#J_Rank').text('无');
-        } else {
-          $('#J_Rank').text(data.month_ror_rank + ' 名');
-        }
-
-        var h = $('#J_Rank_Link').attr('href');
-        $('#J_Rank_Link').attr('href', h + '?from=' + encodeURIComponent(location.href));
+        // if (!data.month_ror_rank || data.month_ror_rank == 0) {
+        //   $('#J_Rank').text('无');
+        // } else {
+        //   $('#J_Rank').text(data.month_ror_rank + ' 名');
+        // }
+        // var h = $('#J_Rank_Link').attr('href');
+        // $('#J_Rank_Link').attr('href', h + '?from=' + encodeURIComponent(location.href));
 
         if (!('month_rate_of_return' in data) && ! ('gross_profit' in data)) {
           $('.detail-wrapper').html('<p class="no-auth">Ta的投资数据不允许别人查看</p>');
@@ -57,7 +56,7 @@ export default class Info extends PageBase {
           // 当前访问页面的用户的inviteCode, 为销售准备
           self.profileObject.repostInviteCode = self.cookie.get('inviteCode');
 
-          var html = '<span class="option share J_HeadShare"></span>';
+          var html = '<span class="ui icon share J_HeadShare"></span>';
           $('#J_Header').append(html);
           $('.J_HeadShare').on('click', $.proxy(function() {
             $('#J_InfoImg').css('display', 'block');
@@ -76,7 +75,7 @@ export default class Info extends PageBase {
           var l = 'invhero-android:shareProfile?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
           // 添加分享按钮
-          var html = '<a class="option share" href="' + l + '"></a>';
+          var html = '<a class="ui icon share" href="' + l + '"></a>';
           $('#J_Header').append(html);
         }
       });

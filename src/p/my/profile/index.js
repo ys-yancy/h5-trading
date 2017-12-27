@@ -43,7 +43,7 @@ class Profile extends PageBase {
       this._isAllow().then((allow) => {
         // 不允许跟随
         if (!allow) {
-          $(document.body).append('<span class="allow ui common btn-setUi">Ta不希望被别人关注</span>');
+          $(document.body).append('<span class="allow ui common btn-default">Ta不希望被别人关注</span>');
         } 
         // 允许跟随
         else {

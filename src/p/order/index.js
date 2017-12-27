@@ -223,8 +223,6 @@ Base.extend(Order, PageBase, {
       p = this.askPrice;
     }
 
-
-
     var self = this,
       data = {
         access_token: Cookie.get('token'),
@@ -256,16 +254,11 @@ Base.extend(Order, PageBase, {
         price: data.data.closePrice
       });
 
-
       // 更新订单数据
       self.orderObject.profit = data.data.profit;
 
       var btnDesc = '分享';
       var myshow = !self.isDemo() && !data.guadan && getUseNewShare();
-
-      // if (myshow) {
-      //   btnDesc = '分享订单到朋友圈 100% 赢实盘资金';
-      // }
 
       if (self.isWeixin()) {
         var doc = $(document);
@@ -294,7 +287,7 @@ Base.extend(Order, PageBase, {
         var imgUrl = getWXIconWL(); //Config.getAndroidSharePrefix() + '/img/share.jpg';
 
         var wl = Cookie.get('wl'),wl_url = '/s/order-share.html?order=';
-        if ( wl != 'tzyh365' ) {
+        if ( wl != 'firstbroker' ) {
             wl_url = '/' + wl + '/s/order-share.html?order=';
         }
 
@@ -305,13 +298,13 @@ Base.extend(Order, PageBase, {
         // 添加分享按钮
         $('#J_Success').append('<a class="dialog-btn share J_Share" href="' + l + '">' + btnDesc + '</a>');
 
-        $('#J_Success .share').on('click', function() {
-          var share;
+        // $('#J_Success .share').on('click', function() {
+          // var share;
           // if (myshow) {
           //   share = new Share({ ticket: self.order, type: 'order' });
           //   share && share.getInfo();
           // }
-        });
+        // });
       } else {
         $('.dialog-trade').css('height', '12rem');
       }
@@ -396,60 +389,61 @@ Base.extend(Order, PageBase, {
         ifAllowModify: getAllowModify()
       }, $('#footer'));
 
-      // 添加分享按钮的
-      // if (self.isWeixin()) {
-      //   var doc = $(document);
-      //   var share;
+      //添加分享按钮的
+      if (self.isWeixin()) {
+        var doc = $(document);
+        var share;
 
-      //   var myshow = !self.isDemo() && !self.guadan && getUseNewShare();
-      //   if (myshow) {
-      //     // share = new Share({ ticket: self.order, type: 'order' });
-      //   }
+        var myshow = !self.isDemo() && !self.guadan && getUseNewShare();
+        // if (myshow) {
+        // share = new Share({ ticket: self.order, type: 'order' });
+        // }
 
-      //   var html = '<span class="option share J_HeadShare">分享</span>';
-      //   $('#J_Header').append(html);
-      //   $('.J_HeadShare').on('click', $.proxy(function() {
-      //     $('#J_InfoImg').css('display', 'block');
-      //     // !self.guadan && new Share({ ticket: self.order, type: 'order' });
-      //     // share && share.getInfo();
-      //   }, this));
-      //   $('#J_InfoImg').on('click', $.proxy(function() {
-      //     $('#J_InfoImg').css('display', 'none');
-      //   }, this));
+        var html = '<span class="ui icon share J_HeadShare"></span>';
+        $('#J_Header').append(html);
 
-      // } else if (Config.isAndroidAPK()) {
+        $('.J_HeadShare').on('click', $.proxy(function() {
+          $('#J_InfoImg').show();
+          // !self.guadan && new Share({ ticket: self.order, type: 'order' });
+          // share && share.getInfo();
+        }, this));
+        $('#J_InfoImg').on('click', $.proxy(function() {
+          $('#J_InfoImg').hide();
+        }, this));
 
-      //   var nick = '我买';
-      //   self.getAccount().then( function ( account ) {
-      //     nick = account.nickname;
-      //   } )
+      } else if (Config.isAndroidAPK()) {
 
-      //   var title = nick + (self.orderObject.cmd.indexOf('buy') != -1 ? '涨' : '跌') + self.orderObject.symbolName + ', 你怎么看?'; // 分享标题
-      //   var desc = getWXCurrentDesWL();
-      //   var imgUrl = getWXIconWL();
+        var nick = '我买';
+        self.getAccount().then( function ( account ) {
+          nick = account.nickname;
+        } )
 
-      //   var wlUrl = '/s/order-share.html?order=',wl = Cookie.get('wl');
+        var title = nick + (self.orderObject.cmd.indexOf('buy') != -1 ? '涨' : '跌') + self.orderObject.symbolName + ', 你怎么看?'; // 分享标题
+        var desc = getWXCurrentDesWL();
+        var imgUrl = getWXIconWL();
 
-      //   if (  wl != 'tzyh365' ) {
-      //       wlUrl ='/' + wl + '/s/order-share.html?order=';
-      //   }
+        var wlUrl = '/s/order-share.html?order=',wl = Cookie.get('wl');
 
-      //   var link = Config.getAndroidSharePrefix() + wlUrl + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + self.orderObject.symbolName + '&invite=' + Cookie.get('inviteCode') + '&nickname=我&cmd=' + self.orderObject.cmd; // 分享链接
+        if (  wl != 'firstbroker' ) {
+          wlUrl ='/' + wl + '/s/order-share.html?order=';
+        }
 
-      //   var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
+        var link = Config.getAndroidSharePrefix() + wlUrl + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + self.orderObject.symbolName + '&invite=' + Cookie.get('inviteCode') + '&nickname=我&cmd=' + self.orderObject.cmd; // 分享链接
 
-      //   // 添加分享按钮
-      //   var html = '<a class="option share" href="' + l + '">分享</a>';
-      //   $('#J_Header').append(html);
+        var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
-      //   $('#J_Header .share').on('click', function() {
-      //     var share;
-      //     if (!self.isDemo() && !self.guadan) {
-      //       // share = new Share({ ticket: self.order, type: 'order' });
-      //       // share && share.getInfo();
-      //     }
-      //   });
-      // }
+        // 添加分享按钮
+        var html = '<a class="ui icon share" href="' + l + '"></a>';
+        $('#J_Header').append(html);
+
+        $('#J_Header .share').on('click', function() {
+          // var share;
+          // if (!self.isDemo() && !self.guadan) {
+            // share = new Share({ ticket: self.order, type: 'order' });
+            // share && share.getInfo();
+          // }
+        });
+      }
 
       var guadan = sta === 'pending' ? true : false;
       self.guadan = guadan;
