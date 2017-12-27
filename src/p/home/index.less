@@ -1,7 +1,8 @@
 @import '../../base.less';
 @import '../../variable.less';
 body{
-  .padding-bottom(100);
+  .padding-bottom(110);
+  background: #F7F7F7;
 }
 header{
   .width(750);
@@ -34,16 +35,19 @@ header{
 }
 
 .content-inner{
-  .width(750);
+  .width(690);
   .height(390);
   .margin-top(40);
+  .margin-left(30);
+  box-shadow: 0 1px 5px #E4E5E5;
+  background: #fff;
   .tl,
   .ft{
     .height(88);
     .line-height(88);
     .padding(0, 30);
     .font-size(28);
-    background: #ccc;
+    // background: #ccc;
   }
   .ft{
     text-align: center;
@@ -52,7 +56,7 @@ header{
     .item{
       float: left;
       display: inline-block;
-      .width(375);
+      .width(345);
       .height(214);
       .font-size(26);
       .padding(10, 0);
