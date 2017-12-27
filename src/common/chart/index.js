@@ -157,16 +157,16 @@ Base.extend(Chart, Base, {
       },
       plotOptions: {
         candlestick: {
-          lineColor: this.ui.downColor || '#5C9F34',
-          upLineColor: this.ui.upColor || '#F64843',
-          color: this.ui.downColor || '#5C9F34',
-          upColor: this.ui.upColor || '#F64843',
+          lineColor: this.ui.downColor || '#77D28B',
+          upLineColor: this.ui.upColor || '#F7756A',
+          color: this.ui.downColor || '#77D28B',
+          upColor: this.ui.upColor || '#F7756A',
         }
       },
 
       xAxis: {
         // crosshair: true,
-        gridLineColor: '#F5F5F5',
+        gridLineColor: this.ui.gridLineColor || '#F5F5F5',
         endOnTick: false,
         gridLineWidth: 0,
         minRange: 3600 * 1000 * 24 * 50,
@@ -177,7 +177,7 @@ Base.extend(Chart, Base, {
 
       yAxis: {
         // crosshair: true,
-        gridLineColor: '#F5F5F5',
+        gridLineColor: this.ui.gridLineColor || '#F5F5F5',
         plotLines: [plotLines],
         endOnTick: false,
         labels: {
@@ -217,7 +217,7 @@ Base.extend(Chart, Base, {
         },
 
         backgroundColor: self.ui.tooltipBackground || 'rgba(22,14,27,0.85)',
-        borderColor: self.ui.background || '#2f2543'
+        borderColor: '#2f2543'
       }
     });
 
@@ -418,7 +418,7 @@ Base.extend(Chart, Base, {
         align: 'center',
         useHTML: true,
         style: {
-          backgroundColor: getChartUi().downPlotLinebackground || '#24bba8',
+          backgroundColor: getChartUi().downPlotLinebackground || '#77D28B',
           color: '#fff',
           border: '1px solid #1d6b6b',
           '-webkitBorderRadius': '.05rem',
@@ -444,7 +444,7 @@ Base.extend(Chart, Base, {
         useHTML: true,
         align: 'center',
         style: {
-          backgroundColor: getChartUi().upPlotLinebackground || '#f44846',
+          backgroundColor: getChartUi().upPlotLinebackground || '#F7756A',
           color: '#fff',
           border: '1px solid #8d2c37',
           '-webkitBorderRadius': '.05rem',

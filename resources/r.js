@@ -30,15 +30,15 @@ function getAppUi() {
 // highcharts 的 ui
 function getChartUi() {
 	return { // 默认
-		background: false,
-		gridLineColor: false,
-		upColor: false, 
-		downColor: false,
-		upPlotLinebackground: false,
-		upPlotLinebackground: false,
+		background: '#fff',
+		gridLineColor: '#F5F5F5',
+		upColor: '#F7756A', 
+		downColor: '#77D28B',
+		upPlotLinebackground: '#F7756A',
+		downPlotLinebackground: '#77D28B',
 		openPlotLineBackground: false,
 		closePlotLineBackground: false,
-		tooltipBackground: false
+		tooltipBackground: 'rgba(22,14,27,0.85)'
 	}
 }
 
