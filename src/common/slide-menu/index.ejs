@@ -2,11 +2,11 @@
 	<div class="scroll-wrapper"><!-- detail and fn need scroll -->
 		<% var isDemo = data.type == 'demo' ? true : false; %>
 		<div class="user-details" id="J_UserDetails">
-			<a href="./weixin/profile.html?from=<%= encodeURIComponent(location.href)%>">
 				<div class="user-avatar">
+						<a href="./weixin/profile.html?from=<%= encodeURIComponent(location.href)%>">
 					<img class="img J_UserAvatar" src="">
+					</a>
 				</div>
-			</a>
 			<div class="user-name">
 				<span class="name J_UserName">用户昵称</span>
 				<span class="type J_Type"><%= isDemo ? '模拟' : '实盘' %></span>
