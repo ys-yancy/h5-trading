@@ -74,7 +74,7 @@ function getWXDomainAodWL () {
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'http://t.invhero.com/img/share.jpg';
+	return 'http://t.invhero.com/img/firstbrk/share.jpg';
 }
 
 // 微信每日推荐分享标题
@@ -94,7 +94,7 @@ function getWXRecommendLinkWL () {
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'http://t.invhero.com/img/share.jpg'
+	return 'http://t.invhero.com/img/firstbrk/share.jpg'
 }
 
 // 微信邀请好友标题
@@ -164,12 +164,12 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'http://t.invhero.com/img/wl/invhero_avatar.png';
+	return 'http://t.invhero.com/img/firstbrk/firstbrk_avatar.png';
 }
 
 // 是否显示下载链接
 function getIfShowDLinkWL () {
-	return true;
+	return false;
 }
 
 // 是否显示官微二维码
@@ -299,7 +299,7 @@ function getUseNewGuide () {
 
 // 新用户引导 - 官微二维码
 function getNewGuideQRCode () {
-	return '../img/option.jpg';
+	return '../img/firstbrk/no-order.jpg';
 }
 
 // 注册赠金
@@ -456,7 +456,7 @@ function getLotteryUrl() {
 
 //发现页IMG
 function getBannerImgUrl() {
-	return 'http://t.invhero.com/img/banner.png';
+	return 'http://t.invhero.com/img/firstbrk/banner.png';
 }
 
 //pc登录地址
