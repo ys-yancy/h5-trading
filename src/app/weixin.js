@@ -184,13 +184,6 @@ module.exports = {
           }
            // 分享链接  
         }
-        // 中秋活动
-        else if (shareKind == 'autumn') {
-          i = getWXIconWL(); // window.location.origin + '/img/autumn_share_icon.png';
-          t = '我已备好放“粽”大礼 等你来领!';
-          d = '过节天天领红包, 还有粽子礼盒等你拿!'; // 分享描述'
-          l = url;
-        }
         // 转发邀请, 使用当前链接
         else if (shareKind == 'origin_share') {
           i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
@@ -201,13 +194,6 @@ module.exports = {
           if(t.indexOf('%s') != -1 ) {
             t = t.replace(/%s/, '我');
           }
-        }
-        // 发红包页面
-        else if (shareKind === '1111') {
-          i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
-          t = '抢红包！'; // 分享标题
-          d = '--助力投资者，为投资加油，为你撒钱...'; // 分享描述
-          l = location.origin + '/s/weixin/1111.html?refer=' + inviteCode; // 分享链接
         }
         // 默认邀请页面
         else if (shareKind == 'default_invite') {
@@ -224,13 +210,6 @@ module.exports = {
           if(t.indexOf('%s') != -1 && nick && nick != undefined ) {
             t = t.replace(/%s/, nick);
           }
-        }
-        //系统公告
-        else if (shareKind === 'announcement') {
-          i = getWXIconWL();
-          t = "系统公告";
-          d = '系统公告';
-          l = window.location.href;
         }
         // 高手详情
         else if (shareKind === 'superior') {

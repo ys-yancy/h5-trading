@@ -933,16 +933,7 @@ Base.extend(PageBase, Base, {
       if (data.data.nickname === '') {
         login._setNickname();
       }
-      if (data.data.hb_is_first == 1 && Cookie.get('hbalert') != '1' && self._initGetHbDialog !== undefined && getIfShowFirstHBWL()) {
-        Cookie.set('hbalert', '1', {
-          expires: Infinity
-        });
-        if (!self.getGBDialog) {
-          var a = data.data.hb_amount_available == undefined ? 15 : data.data.hb_amount_available;
-          self._initGetHbDialog(a);
-        }
-        self.getGBDialog.show();
-      }
+  
       console.log("set globalCachedAccount.");
       globalCachedAccount = data.data;
       var arrayLength = globalGetAccountDefers.length;

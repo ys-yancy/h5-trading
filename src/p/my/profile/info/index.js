@@ -12,11 +12,7 @@ export default class Info extends PageBase {
 
   _getData() {
     var self = this;
-
-    if (getIfUseRanking()) {
-      $('.sort').show();
-    }
-
+    
     this.ajax({
       url: '/v1/rank/config/',
       data: {

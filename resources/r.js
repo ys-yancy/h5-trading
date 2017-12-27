@@ -212,11 +212,6 @@ function getMinDepositWL() {
 	return 100;
 }
 
-// 是否弹出首次领取红包引导框
-function getIfShowFirstHBWL() {
-	return false;
-}
-
 // 获取客服电话
 function getSPhone() {
 	return "4009992553";
@@ -259,14 +254,9 @@ function getWLName () {
 	return '壹号金融';
 }
 
-//是否影藏根账户
-function showRootAccount() {
-	return false;
-}
-
 // option页面左上角的帮助链接 
 function getHelpLink () {
-	return 'http://weixin.invhero.com/help';
+	return '';
 }
 
 // 分享流程官微签名链接
@@ -303,7 +293,7 @@ function getNewGuideQRCode () {
 }
 
 // 注册赠金
-function getRegBonus () {
+function getRegBonus() {
 	return 5;
 }
 
@@ -317,21 +307,6 @@ function getDefaultVolume() {
 	return .1;
 }
 
-// 临时活动分享页面 涉及到share.html
-function getUseActivity () {
-	return false;
-}
-
-// 是否开启排行榜功能
-function getIfUseRanking () {
-	return true;
-}
-
-// 月度榜单奖金
-function getMonthRankingBonus () {
-	return 2360;
-}
-
 // 默认昵称前缀, 要带一个空格
 function getDefaultNicknamePrefix () {
 	return '壹号金融_';
@@ -340,11 +315,6 @@ function getDefaultNicknamePrefix () {
 // 官微 profile 页面 ID
 function getWXIDWL () {
 	return 'MzA5NTMzMjU5NA==';
-}
-
-// 是否显示入金按钮
-function getIfShowDepositBtn() {
-	return true;
 }
 
 // 最低出金金额

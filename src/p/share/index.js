@@ -72,20 +72,14 @@ Base.extend(Share, PageBase, {
       
       var url = location.href;
 
-      if (getUseActivity()) { 
-        // 0531活动页面修改
-        this.setupWeiXinShare('autumn', url);
-      }
-      else {
-        this.getAccount().then(function(account) {
-          if (! self.profileObject) {
-            self.profileObject = new Object ();
-          }
-          self.profileObject.avatar = account.avatar ? Config.getAvatarPrefix(account.avatar) : '';
-          self.profileObject.nickname = account.nickname;
-          self.setupWeiXinShare('invite');
-        });
-      }
+      this.getAccount().then(function(account) {
+        if (! self.profileObject) {
+          self.profileObject = new Object ();
+        }
+        self.profileObject.avatar = account.avatar ? Config.getAvatarPrefix(account.avatar) : '';
+        self.profileObject.nickname = account.nickname;
+        self.setupWeiXinShare('invite');
+      });
 
       var url = location.href.replace('share', 'activity/festival');
       var params = 'inviteCode=' + this.cookie.get('inviteCode');
