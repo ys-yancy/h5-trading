@@ -426,7 +426,7 @@ Base.extend(OrderHistory, PageBase, {
       url: '/v1/order/' + this.order,
       data: data
     }).then(function(data) {
-      console.log(data);
+
       self.orderObject = data.data;
 
       switch (data.data.closeType) {
@@ -464,25 +464,25 @@ Base.extend(OrderHistory, PageBase, {
         self.profileObject.nickname = account.nickname;
 
         if (self.isWeixin()) {
-          var share;
-
-          if (myshow) {
-            desc = '分享订单';
-
+          var HeadEl = $('#J_Header'),
+            shareGuideEl = $('#J_InfoImg'),
+            html = '<span class="icon ui share"></span>';
+          // var share;
+          // if (myshow) {
+          //   desc = '分享订单';
             // share = new Share({ ticket: self.order, type: 'order' });
-          }
+          // }
 
-          var html = '<span class="option share">分享订单</span>';
-          $('#J_Header').append(html);
+          HeadEl.append(html);
 
           $('#J_Header .share').on('click', function() {
             // 显示隐藏的图片
-            $('#J_InfoImg').css('display', 'block');
+            shareGuideEl.show();
             // myshow && new Share({ ticket: self.order, type: 'order' });
             // share && share.getInfo();
           });
-          $('#J_InfoImg').on('click', $.proxy(function() {
-            $('#J_InfoImg').css('display', 'none');
+          shareGuideEl.on('click', $.proxy(function() {
+            $('#J_InfoImg').hide();
           }, this));
 
           self.setupWeiXinShare('history');
@@ -500,7 +500,7 @@ Base.extend(OrderHistory, PageBase, {
           var desc = getWXHistoricalDesWL(); //'点击查看详情'; 
           var imgUrl = avatar || getWXIconWL(); // Config.getAndroidSharePrefix() + '/img/share.jpg';
           var wl = Cookie.get('wl'),wl_url = '/s/order-share.html?order=';
-          if ( wl != 'tzyh365' ) {
+          if ( wl != 'firstbroker' ) {
               wl_url = '/' + wl + '/s/order-share.html?order=';
           }
 
@@ -509,16 +509,15 @@ Base.extend(OrderHistory, PageBase, {
           var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
           // 添加分享按钮
-          var html = '<a class="option share" href=' + l + '>分享订单</a>';
+          var html = '<a class="ui icon share" href=' + l + '></a>';
           $('#J_Header').append(html);
-
-          $('#J_Header .share').on('click', function() {
-            var share;
-            if (myshow) {
+          // $('#J_Header .share').on('click', function() {
+            // var share;
+            // if (myshow) {
               // share = new Share({ ticket: self.order, type: 'order' });
               // share && share.getInfo();
-            }
-          });
+            // }
+          // });
         }
       });
 
