@@ -12,6 +12,7 @@ var Big = require('../../lib/big');
 var Dialog = require('../../common/dialog');
 var Toast = require('../../common/toast');
 var Chart = require('../../common/chart');
+var TimeChart = require('../rapid/component/chart/time-new');
 var Sticky = require('../../common/sticky');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
@@ -1772,7 +1773,7 @@ Base.extend(ProTrading, PageBase, {
 
         if (self.hasStatus()) {
           var data = self.chart.addPoint(lastData);
-
+          self.timeChart && self.broadcast('update:time:new:chart', lastData);
           if (data) {
             self.lastData = data;
           }
@@ -2070,6 +2071,11 @@ Base.extend(ProTrading, PageBase, {
           chart.hideLoading();
           self.chart.selectedIndex = indexMap[type];
 
+          self.timeChart && self.broadcast('update:chart:seriess', {
+            list: list,
+            selectedIndex: indexMap[type]
+          });
+
           if (refresh && self.curState == 'close') {
             self.refresh = false;
             self._getData();
@@ -2097,6 +2103,8 @@ Base.extend(ProTrading, PageBase, {
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
+
+      !self._isEdit() && self._initTimeChart(list, self.price, self.types.indexOf(type));
     });
   },
 
@@ -2104,6 +2112,21 @@ Base.extend(ProTrading, PageBase, {
     var self = this;
 
     this._getCandle('m30');
+  },
+
+  _initTimeChart: function(list, price, selectedIndex) {
+    this.timeChart = new TimeChart({ 
+      parent: this, 
+      list: list,
+      price: price,
+      selectedIndex: selectedIndex,
+      symbol: this.symbol, 
+      unit: this.unitQuote || 2
+    });
+  },
+
+  _isEdit: function() {
+    return new Uri().getParam('from') === 'edit';
   },
 
   _hideLoading: function() {
