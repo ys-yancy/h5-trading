@@ -172,7 +172,7 @@ export default class SlideMenu extends PageBase {
 
 	resetBottomAccount() {
 		this.bottomAccount.destroy();
-	    this.bottomAccount = new BottomAccount({ checkOut: true });
+	    this.bottomAccount = new BottomAccount({checkOut: true, page: this.page, el: $('#J_BottomBanner')});//new BottomAccount({ checkOut: true });
 	    this.bottomAccount.show();
 	    this.bottomAccount.interval();
 	}
