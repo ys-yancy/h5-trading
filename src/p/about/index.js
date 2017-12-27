@@ -52,7 +52,7 @@ Base.extend(About, PageBase, {
             $('.content').html(content);
         }
         else {
-            $('.content').html('<div class="hd"><div class="hd-bg"></div></div><ul class="bd bd-first"><li><a class="my-count" href="./privacy.html"><span class="J_Account account">隐私条款</span><span class="arrow-right"></span></a></li><li><a class="my-gift" href="./about-me.html">关于投资英豪<span class="arrow-right"></span></a></li><li><a class="" >版本<span class="version">1.0.1</span></a></li></ul>');
+            $('.content').html('<div class="hd"><div class="hd-bg"></div></div><ul class="bd bd-first"><li><a class="my-count" href="./privacy.html"><span class="J_Account account">隐私条款</span><span class="arrow-right"></span></a></li><li><a class="my-gift" href="./about-me.html">关于壹号金融<span class="arrow-right"></span></a></li><li><a class="" >版本<span class="version">1.0.1</span></a></li></ul>');
         }
     },
 

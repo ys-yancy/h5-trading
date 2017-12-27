@@ -148,7 +148,7 @@ module.exports = {
 
           i = avatar || getWXIconWL(); // window.location.origin + '/img/share.jpg';
           t = (nick || '我') + '在' + getWLName() + '使用 极速交易, 捕捉行情稳准狠!'; // 分享标题
-          d = getWXInviteDesWL(); // '投资英豪新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
           l = getWXInviteUrlWL() + inviteCode; //window.location.origin + '/i/' + inviteCode; // 分享链接
 
           if ( getIsNewShareWl() ) {
@@ -165,7 +165,7 @@ module.exports = {
           var myDate = new Date();
           i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
           t = getWXRecommendTitleWL() + (myDate.getMonth() + 1) + '月' + myDate.getDate() + '日'; // 分享标题
-          d = getWXRecommendDesWL(); // '投资英豪为您汇总最优秀的交易信号, 助您投资收益迅速翻番!'; // 分享描述
+          d = getWXRecommendDesWL(); // '--为您汇总最优秀的交易信号, 助您投资收益迅速翻番!'; // 分享描述
           l = getWXRecommendLinkWL(); // self.recommendUrl; // 分享链接
         }
         // 个人详情页面
@@ -195,7 +195,7 @@ module.exports = {
         else if (shareKind == 'origin_share') {
           i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
           t = getWXInviteTitleWL(); // '新用户24小时赚多少提多少 免费提现!'; // 分享标题
-          d = getWXInviteDesWL(); // '投资英豪新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
           l = location.href; // 分享链接
 
           if(t.indexOf('%s') != -1 ) {
@@ -206,14 +206,14 @@ module.exports = {
         else if (shareKind === '1111') {
           i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
           t = '抢红包！'; // 分享标题
-          d = '投资英豪助力投资者，为投资加油，为你撒钱...'; // 分享描述
+          d = '--助力投资者，为投资加油，为你撒钱...'; // 分享描述
           l = location.origin + '/s/weixin/1111.html?refer=' + inviteCode; // 分享链接
         }
         // 默认邀请页面
         else if (shareKind == 'default_invite') {
           i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
           t = getWXInviteTitleWL(); // '新用户24小时赚多少提多少 免费提现!'; // 分享标题
-          d = getWXInviteDesWL(); // '投资英豪新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
           l = getWXInviteUrlWL() + self.cookie.get('inviteCode') + '&source=default_invite'; // 分享链接
           
           if ( getIsNewShareWl() ) {
@@ -258,7 +258,7 @@ module.exports = {
 
           i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
           t = getWXInviteTitleWL(); // '新用户24小时赚多少提多少 免费提现!'; // 分享标题
-          d = getWXInviteDesWL(); // '投资英豪新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
           l = getWXInviteUrlWL() + inviteCode; //window.location.origin + '/i/' + inviteCode; // 分享链接
 
           if ( getIsNewShareWl() ) {

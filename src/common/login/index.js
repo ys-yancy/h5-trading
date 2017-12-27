@@ -291,7 +291,7 @@ Base.extend(Login, Base, {
     var second = date.getSeconds();
     var millsecond = date.getMilliseconds();
 
-    var nickname = '英豪_' + minite + '' + second + '' + millsecond;
+    var nickname = '壹号金融_' + minite + '' + second + '' + millsecond;
 
     return nickname;
   },
