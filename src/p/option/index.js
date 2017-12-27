@@ -626,8 +626,6 @@ Base.extend(Option, PageBase, {
         // _self_op.broadcast('get:streamlist', _self_op);
       });
 
-
-
       // 如果没有weixin.openID且在微信里, 就获取openID
       var hasWeixin = false;
       if (account.sns && account.sns.length != 0) {
@@ -644,7 +642,7 @@ Base.extend(Option, PageBase, {
       }
 
       // 添加获取微信openID 或者 显示授权获取头像&昵称
-      if (self.isWeixin() && (getUserInfoWX() || !hasWeixin)) {
+      if (self.isWeixin() && getUserInfoWX() && !hasWeixin) {
 
         var last = self.weixinUrlLast;
         // 显示授权获取头像&昵称&openID (前提是该白标的 r 文件中开启了getUserInfoWX)

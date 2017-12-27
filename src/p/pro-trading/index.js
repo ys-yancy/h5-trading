@@ -276,11 +276,11 @@ Base.extend(ProTrading, PageBase, {
       bdEl.toggleClass('unfold');
 
       if (bdEl.hasClass('unfold')) {
-        curEl.text('取消');
-        var height = bdEl.offset().top + bdEl.height() - $(window).height() + $('#J_Footer').height() + 10;
-        window.scrollTo(0, height);
+        curEl.text('取消').removeClass('ui set-ui');
+        // var height = bdEl.offset().top + bdEl.height() - $(window).height() + $('#J_Footer').height() + 10;
+        // window.scrollTo(0, height);
       } else {
-        curEl.text('更多设置');
+        curEl.text('更多设置').addClass('ui set-ui');
       }
     }
   },
@@ -2632,8 +2632,8 @@ Base.extend(ProTrading, PageBase, {
 
     delTmpl: [
       '<div class="dialog J_Dialog del-dialog " id="J_Dialog">',
-      '   <span class="wrapper-icon"><span class="icon"></span></span>',
       '   <div class="dialog-content J_Content">',
+      '        <p class="title">提示</p>',
       '        <p>放弃操作将清除您的设置确定要放弃？</p>',
       '   </div>',
       '   <div class="dialog-buttons clearfix">',
