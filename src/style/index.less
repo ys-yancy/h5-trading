@@ -358,11 +358,22 @@ html, body{
  * dialog ui
 */
 .dialog{
-	.dialog-btn{
+	.dialog-btn,
+	a.dialog-btn{
 		color: @setUiColor;
 		&.close,
 		&.J_DialogClose{
 			color: @contentColor;
+		}
+	}
+}
+.pro-popup{
+	.dialog-btn,
+	a.dialog-btn{
+		color: @contentColor;
+		&.share,
+		&.order{
+			color: @setUiColor;
 		}
 	}
 }
