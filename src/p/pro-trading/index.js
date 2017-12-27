@@ -1773,7 +1773,7 @@ Base.extend(ProTrading, PageBase, {
 
         if (self.hasStatus()) {
           var data = self.chart.addPoint(lastData);
-          self.timeChart && self.broadcast('update:time:new:chart', lastData);
+          // self.timeChart && self.broadcast('update:time:new:chart', lastData);
           if (data) {
             self.lastData = data;
           }
