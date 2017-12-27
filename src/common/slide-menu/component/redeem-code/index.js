@@ -20,7 +20,7 @@ export default class RedeemCode extends Base {
   _bind() {
     var doc = $(document);
 
-    doc.on('click', '.J_ShowRedeemCode', $.proxy(this.showDialog, this));
+    doc.on('tap', '.J_ShowRedeemCode', $.proxy(this.showDialog, this));
 
     // this.subscribe('get:myaccount', (e) => {
     //   if (e.refer_code) {
