@@ -298,7 +298,7 @@ Base.extend(FollowOrder, PageBase, {
           var wl = Cookie.get('wl'),
           	wl_url = '/s/master-order.html?expertId=';
 
-          if ( wl != 'tzyh365' ) {
+          if ( wl != 'firstbroker' ) {
               wl_url = '/' + wl + '/s/master-order.html?expertId=';
           }
 

@@ -157,13 +157,13 @@ Base.extend(PageBase, Base, {
     var wl = window.location.pathname.substring(1, window.location.pathname.indexOf('/s/'));
 
     if (wl == '' || wl == '/') {
-      wl = 'tzyh365';
+      wl = 'firstbroker';
     }
     // 客户 Cookie 里保存的白标信息, 在 v4/user 下行里更新
     var wl_cookie = Cookie.get('wl');
 
     if (wl_cookie != undefined && wl_cookie != '' && wl_cookie != wl) {
-      if (wl_cookie == 'tzyh365') {
+      if (wl_cookie == 'firstbroker') {
         wl_cookie = '';
       }
 

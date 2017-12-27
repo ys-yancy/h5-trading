@@ -64,17 +64,17 @@ function getIsShowOptionWeinixnGuide() {
 
 // 微信分享域名
 function getWXDomainWL () {
-	return 'http://t.invhero.com/';
+	return 'https://t.firstbkr.com/';
 }
 
 //安卓分享域名
 function getWXDomainAodWL () {
-	return 'http://t.invhero.com/';
+	return 'https://t.firstbkr.com/';
 }
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'http://t.invhero.com/img/firstbrk/share.jpg';
+	return 'https://t.firstbkr.com/img/firstbkr/share.jpg';
 }
 
 // 微信每日推荐分享标题
@@ -89,12 +89,12 @@ function getWXRecommendDesWL () {
 
 // 微信每日推荐分享链接
 function getWXRecommendLinkWL () {
-	return 'http://t.invhero.com/s/weixin/recommend.html';
+	return 'https://t.firstbkr.com/s/weixin/recommend.html';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'http://t.invhero.com/img/firstbrk/share.jpg'
+	return 'https://t.firstbkr.com/img/firstbkr/share.jpg'
 }
 
 // 微信邀请好友标题
@@ -111,14 +111,14 @@ function getWXInviteDesWL () {
 
 //安卓中微信邀请好友链接, 把source写死在链接里, 只需要提供refer
 function getWXInviteUrlAodWL () {
-	return 'http://t.invhero.com/s/my/guides.html?inviteCode=';
+	return 'https://t.firstbkr.com/s/my/guides.html?inviteCode=';
 }
 
 // 微信邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	// return 'http://t.invhero.com/i/';
-	return 'http://t.invhero.com/s/my/guides.html?inviteCode=';
+	// return 'https://t.firstbkr.com/i/';
+	return 'https://t.firstbkr.com/s/my/guides.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
@@ -127,7 +127,7 @@ function getIsNewShareWl() {
 }
 // 新的邀请链接
 function getNewShareWl() {
-	return 'http://dkdr.tonglingdi.cn/subscribe?uid=';
+	return 'https://dkdr.tonglingdi.cn/subscribe?uid=';
 }
 
 // 微信转发标题
@@ -164,7 +164,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'http://t.invhero.com/img/firstbrk/firstbrk_avatar.png';
+	return 'https://t.firstbkr.com/img/firstbkr/firstbkr_avatar.png';
 }
 
 // 是否显示下载链接
@@ -179,7 +179,7 @@ function getIfShowWXCodeWL () {
 
 // 官方微信-个人中心
 function getWeiXinWL () {
-	return 'tzyh365';
+	return 'firstbroker';
 }
 
 // 官方微信公第二个号-个人中心
@@ -194,12 +194,12 @@ function getWebsiteWL () {
 
 // 白标标识
 function getWXWL() {
-	return 'tzyh365';
+	return 'firstbroker';
 }
 
 // pc支付页面
 function getPayUrlWL() {
-	return 'https://p.invhero.com';
+	return 'https://p.firstbkr.com';
 }
 
 // 移动支付页面说明
@@ -261,7 +261,7 @@ function getHelpLink () {
 
 // 分享流程官微签名链接
 function getWXCredentialUrl () {
-	return 'https://api.invhero.com/v1/weixin/share/package/';
+	return 'https://api.firstbkr.com/v1/weixin/share/package/';
 }
 //配置appid
 function getWXAppid () {
@@ -289,7 +289,7 @@ function getUseNewGuide () {
 
 // 新用户引导 - 官微二维码
 function getNewGuideQRCode () {
-	return '../img/firstbrk/no-order.jpg';
+	return '../img/firstbkr/no-order.jpg';
 }
 
 // 注册赠金
@@ -341,117 +341,117 @@ function showServicePhone() {
 
 //正式环境
 function getFormalEnvironmentUrl() {
-	return 'http://api.invhero.com';
+	return 'https://api.firstbkr.com';
 }
 
 //生产服
 function getProduClothedUrl() {
-	return 'http://newapi.invhero.com';
+	return 'https://api.firstbkr.com';
 }
 
 //邀请链接
 function getInviteUrl() {
-	return 'http://t.invhero.com/i/';
+	return 'https://t.firstbkr.com/i/';
 }
 
 //安卓分享前缀
 function getAndroidSharePrefixUrl() {
-	return 'http://t.invhero.com';
+	return 'https://t.firstbkr.com';
 }
 
 //非微信同步头像前缀
 function getAndroidAvatarUrl() {
-	return 'http://static.invhero.com/'
+	return 'https://static.firstbkr.com/'
 }
 
 //本地(其他)头像前缀
 function getNativePlaceUrl() {
-	return '//static.invhero.com/';
+	return '//static.firstbkr.com/';
 }
 
 //获取价格（group  v1）
 function getGroupPriceUrl() {
-	return 'http://price.invhero.com/v1/price/current';
+	return 'https://price.firstbkr.com/v1/price/current';
 }
 
 //获取价格(v2)
 function getPriceUrl() {
-	return 'http://price.invhero.com/v2/price/current';
+	return 'https://price.firstbkr.com/v2/price/current';
 }
 
 //蜡烛图url
 function getCandleUrl() {
-	return 'http://price.invhero.com/v3/price/candle';
+	return 'https://price.firstbkr.com/v3/price/candle';
 }
 
 //获取Symbols
 function getSymbolUrl() {
-	return 'http://price.invhero.com/v2/symbol/snapshot?'
+	return 'https://price.firstbkr.com/v2/symbol/snapshot?'
 }
 
 //stomp 报价Url
 function getRtpriceSompUrl() {
-	return 'ws://rtprice.invhero.com:61613/stomp';
+	return 'ws://rtprice.firstbkr.com:61613/stomp';
 }
 
 //微信credentialUrl
 function getCredentialUrl() {
-	return 'http://newapi.invhero.com/v1/weixin/share/package/';
+	return 'https://api.firstbkr.com/v1/weixin/share/package/';
 }
 
 //微信PersonalInfoUrl
 function getPersonalInfoUrl() {
-	return 'http://weixin.invhero.com/api/user/info?openid=';
+	return 'https://weixin.firstbkr.com/api/user/info?openid=';
 }
 
 //微信recommendUrl
 function getRecommendUrl() {
-	return 'http://t.invhero.com/s/weixin/recommend.html';
+	return 'https://t.firstbkr.com/s/weixin/recommend.html';
 }
 
 //weixin.js => notifyShareBehavior 中url
 function getIfyShareBehaviorUrl() {
-	return 'http://t.invhero.com/s/weixin/share_counter';
+	return 'https://t.firstbkr.com/s/weixin/share_counter';
 }
 
 //frame.js => 147
 function getIndexOfUrl() {
-	return 't.invhero.com';
+	return 't.firstbkr.com';
 }
 
 //抽奖链接(p => activity => autumn => index.ejs)
 function getLotteryUrl() {
-	return 'http://m.invhero.com/61/lottery';
+	return 'https://m.firstbkr.com/61/lottery';
 }
 
 //发现页IMG
 function getBannerImgUrl() {
-	return 'http://t.invhero.com/img/firstbrk/banner.png';
+	return 'https://t.firstbkr.com/img/firstbkr/banner.png';
 }
 
 //pc登录地址
 function getPcLoginUrl() {
-	return 'http://p.invhero.com';
+	return 'https://p.firstbkr.com';
 }
 
 //帮助详情页链接
 function getHelpHtmlUrl() {
-	return 'http://weixin.invhero.com/help.html';
+	return 'https://weixin.firstbkr.com/help.html';
 }
 
 //微信每日推荐
 function getWxTodayRecommendUrl() {
-	return '//weixin.invhero.com/api/today_recommend/add';
+	return '//weixin.firstbkr.com/api/today_recommend/add';
 }
 
 // \p\weixin\vip\index.js => 103
 function getWxTodayRed_vipUrl() {
-	return '//weixin.invhero.com/api/today_recommend?is_vip=1';
+	return '//weixin.firstbkr.com/api/today_recommend?is_vip=1';
 }
 
 // 微信授权 weixinUrlFirst
 function getWeixinUrlFirst() {
-	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=https%3a%2f%2fapi.invhero.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
+	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=https%3a%2f%2fapi.firstbkr.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
 }
 
 //百度统计代码
