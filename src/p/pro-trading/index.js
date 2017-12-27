@@ -2093,7 +2093,7 @@ Base.extend(ProTrading, PageBase, {
         stockName: self.name,
         selectedIndex: self.types.indexOf(type),
         height: height,
-        xLabelShow: xLabelShow
+        xLabelShow: false//xLabelShow
       });
       self.type = 'up';
       self.chartInstance = self.chart.getInstance();
