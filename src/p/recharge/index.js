@@ -5,7 +5,6 @@ var Base = require('../../app/base');
 var PageBase = require('../../app/page-base');
 var Uri = require('../../app/uri');
 var Util = require('../../app/util.js');
-var Charge = require('../../common/charge');
 var Dialog = require('../../common/dialog');
 var Sticky = require('../../common/sticky');
 var tmpl = require('./index.ejs');
