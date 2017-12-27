@@ -79,7 +79,8 @@
 @buttonCloseOrderBgColor: #2196F3;
 
 //footer
-@footerNameColor: #868686;
+@footerNameColor: #62676C;
+@footerActiveColor: #fff;
 @import '../variable.less';
 
 html, body{
@@ -175,11 +176,20 @@ html, body{
 }
 
 .ui.common.bottom-nav{
+	background: #222C34;
 	.icon{
 		background: #4A4A4A;
 	}
 	.name{
 		color: @footerNameColor;
+	}
+	.active{
+		.icon{
+			background: #fff;
+		}
+		.name{
+			color: @footerActiveColor;
+		}	
 	}
 }
 
