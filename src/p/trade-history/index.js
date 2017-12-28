@@ -54,8 +54,8 @@ Base.extend(TradeHistory, PageBase, {
       e.preventDefault();
       e.stopPropagation();
       var curEl = $(e.target);
-      console.log(curEl.parent('.fn').length < 0, !curEl.hasClass('fn'))
-      if (curEl.parent('.fn').length < 0 && !curEl.hasClass('fn')) {
+      
+      if (curEl.parents('.fn').length <= 0 && !curEl.hasClass('fn')) {
         this._fnListHide();
       }
     })
