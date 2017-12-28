@@ -479,7 +479,6 @@ Base.extend(Order, PageBase, {
             self.setupWeiXinShare('order');
           }
 
-
           self.checkStatus(symbolValue, self.account).then(function(data) {
             data.accountType = type;
 
@@ -494,9 +493,6 @@ Base.extend(Order, PageBase, {
             */
 
             //读到订单数据就先显示按钮, 之后再根据状态调整
-
-
-
 
             /*
             self.render(actionTmpl, {
@@ -515,9 +511,6 @@ Base.extend(Order, PageBase, {
               ifAllowModify: getAllowModify()
             }, $('#footer'));
             */
-
-
-
 
             self.curState = '';
 
@@ -542,6 +535,11 @@ Base.extend(Order, PageBase, {
           if (!isNaN(floatProfit)) {
             $('#J_FloatProfit').text(floatProfit.toFixed(2));
             $('#J_FloatProfitTrading').text((floatProfit + commission).toFixed(2));
+            if (floatProfit > 0) {
+              $('#J_FloatProfit').parent('.price-wrapper').addClass('up').removeClass('down');
+            } else if (floatProfit < 0) {
+              $('#J_FloatProfit').parent('.price-wrapper').addClass('down').removeClass('up');
+            }
           }
         });
 
@@ -585,6 +583,11 @@ Base.extend(Order, PageBase, {
           $('#J_FloatProfit').text(floatProfit.toFixed(2));
           var swap = parseFloat(self.orderObject.swap) || 0;
           $('#J_FloatProfitTrading').text((floatProfit + commission - swap).toFixed(2));
+          if (floatProfit > 0) {
+            $('#J_FloatProfit').parent('.price-wrapper').addClass('up').removeClass('down');
+          } else if (floatProfit < 0) {
+            $('#J_FloatProfit').parent('.price-wrapper').addClass('down').removeClass('up');
+          }
         });
       }
 
