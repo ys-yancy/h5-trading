@@ -41,10 +41,6 @@ Base.extend(Register, PageBase, {
         doc.on('tap', '.get-captcha', $.proxy(this._getCode, this));
         // doc.on('tap', '.J_StatementCheck', $.proxy(this._checkStatement, this));
 
-        if (Config.isAndroidAPK() || !getIfShowDLinkWL()) {
-            $('#J_Banner').remove();
-        }
-
         // 添加默认微信分享
         if (this.isWeixin()) {
           this.setupWeiXinShare('default_invite');

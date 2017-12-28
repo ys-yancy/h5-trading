@@ -16,7 +16,9 @@
 				<span class="phone J_UserPhone"><%= data.phone %></span>
 			</div>
 			<div class="user-other">
-				<span class="cil J_ShowRedeemCode">兑换码</span>	
+				<% if (getRedemption()) { %>
+					<span class="cil J_ShowRedeemCode">兑换码</span>	
+				<% } %>
 				<span class="cil J_ShowSelfQrCode">二维码</span>
 			</div>
 		</div>
@@ -93,14 +95,15 @@
 			</li>
 
 			<li class="cut-line"></li>
-
-			<li class="li-item clearfix">
-				<a class="link-item">
-					<span class="icon"></span>
-					<span class="desc">使用帮助</span>
-					<span class="ft-rt num"></span>
-				</a>
-			</li>
+			<% if (getHelpLink()) { %>
+				<li class="li-item clearfix">
+					<a class="link-item" href="<%= getHelpLink() %>">
+						<span class="icon"></span>
+						<span class="desc">使用帮助</span>
+						<span class="ft-rt num"></span>
+					</a>
+				</li>
+			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item">
 					<span class="icon"></span>

@@ -182,10 +182,6 @@ function getWeiXinWL () {
 	return 'firstbroker';
 }
 
-// 官方微信公第二个号-个人中心
-function getWeiXin2WL () {
-	return '';
-}
 
 // 官方网站-个人中心
 function getWebsiteWL () {
@@ -254,9 +250,9 @@ function getWLName () {
 	return '壹号金融';
 }
 
-// option页面左上角的帮助链接 
+// 
 function getHelpLink () {
-	return '';
+	return '1212';
 }
 
 // 分享流程官微签名链接
