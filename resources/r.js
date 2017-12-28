@@ -331,7 +331,7 @@ function getDefaultTradingUI() {
 }
 // 急速交易默认品种
 function getDefaultRapidSymbols() {
-	return ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'XAGUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO'];
+	return ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO']; //'XAGUSD.MICRO'
 }
 
 //是否显示客服电话
