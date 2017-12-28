@@ -185,7 +185,8 @@ Base.extend(Chart, Base, {
           // x: 20,
           reserveSpace: true,
           style: {
-            fontSize: '18px'
+            fontSize: '20px',
+            color: '#575D62'
           }
         }, 
       },
@@ -366,7 +367,7 @@ Base.extend(Chart, Base, {
         style: {
           backgroundColor: getChartUi().openPlotLineBackground || 'rgba(150,122,220,1)',
           color: '#fff',
-          border: '1px solid #967abc',
+          border: '1px solid transparent',
           '-webkitBorderRadius': '.05rem',
           borderRadius: '.05rem',
           fontSize: '.45rem',
@@ -393,7 +394,7 @@ Base.extend(Chart, Base, {
         style: {
           backgroundColor: getChartUi().closePlotLineBackground || 'rgba(109,164,202,1)',
           color: '#fff',
-          border: '1px solid #6da4ca',
+          border: '1px solid transparent',
           '-webkitBorderRadius': '.05rem',
           borderRadius: '.05rem',
           fontSize: '.45rem',
@@ -411,7 +412,7 @@ Base.extend(Chart, Base, {
       //value: downPrice,
       value: 0,
       id: 'down',
-      color: '#1e6466',
+      color: '#D4D5D8',
       width: 2,
       label: {
         text: '', //downPriceTxt,
@@ -420,7 +421,7 @@ Base.extend(Chart, Base, {
         style: {
           backgroundColor: getChartUi().downPlotLinebackground || '#77D28B',
           color: '#fff',
-          border: '1px solid #1d6b6b',
+          border: '1px solid #ccc',
           '-webkitBorderRadius': '.05rem',
           borderRadius: '.05rem',
           fontSize: '.45rem',
@@ -437,7 +438,7 @@ Base.extend(Chart, Base, {
     upPlotLine: {
       value: 0,
       id: 'up',
-      color: '#862b34',
+      color: '#D4D5D8',
       width: 2,
       label: {
         text: '',
@@ -446,7 +447,7 @@ Base.extend(Chart, Base, {
         style: {
           backgroundColor: getChartUi().upPlotLinebackground || '#F7756A',
           color: '#fff',
-          border: '1px solid #8d2c37',
+          border: '1px solid #ccc',
           '-webkitBorderRadius': '.05rem',
           borderRadius: '.05rem',
           fontSize: '.45rem',

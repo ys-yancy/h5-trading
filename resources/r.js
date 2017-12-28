@@ -36,8 +36,8 @@ function getChartUi() {
 		downColor: '#77D28B',
 		upPlotLinebackground: '#F7756A',
 		downPlotLinebackground: '#77D28B',
-		openPlotLineBackground: false,
-		closePlotLineBackground: false,
+		openPlotLineBackground: '#548DEB',
+		closePlotLineBackground: '#F7CB38',
 		tooltipBackground: 'rgba(22,14,27,0.85)'
 	}
 }

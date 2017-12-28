@@ -1,13 +1,13 @@
 <li class="item price-info">
     <div>
-        <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
+        <span class="tag <% if (data.cmd.indexOf('buy') !== -1) { %> up <% } else { %> down <% } %>">
         <%= data.status === 'rejected' ? '失败' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
         </span>
         <span class="tag">
             <%= data.symbolName %>
         </span>
     </div>
-    <div class="right price-wrapper">
+    <div class="right price-wrapper <%= parseFloat(data.allProfit) > 0 ? 'up' : 'down' %>">
         <span class="currency">$</span>
         <span id="J_FloatProfit"><%= parseFloat(data.allProfit).toFixed(2) %></span>
     </div>
