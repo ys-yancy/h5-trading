@@ -1,8 +1,8 @@
 <% if (data.edit) {%>
 <div class="item price-info ui content-color common">
-    <span class="tag default-down<% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>">
-        <%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
-        <%= data.symbolName %>
+    <span class="tag">
+        <span class="default-down<% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>"><%= data.status === 'pending' ? '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %></span>
+        <span><%= data.symbolName %></span> 
     </span>
     <div class="price-wrapper">
         <span class="currency">$</span>
