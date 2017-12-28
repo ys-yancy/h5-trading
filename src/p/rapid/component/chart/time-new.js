@@ -42,7 +42,7 @@ export default class Chart extends Base {
       type = this.candleType;
       chartType = chartType;
     }
-    console.log()
+
     this.lastData = this.list[this.list.length - 1];
 
     // create the chart

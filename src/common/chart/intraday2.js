@@ -108,7 +108,7 @@ export default class ChartArea extends Base {
         name: 'AAPL Stock Price',
         data: data,
         type: 'area',
-        color: '#000',
+        color: '#F7CB38',
         threshold: null,
         // tickPixelInterval: 100,
         fillColor: {
