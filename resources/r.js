@@ -366,7 +366,7 @@ function getAndroidAvatarUrl() {
 
 //本地(其他)头像前缀
 function getNativePlaceUrl() {
-	return '//static.firstbkr.com/';
+	return 'https://static.firstbkr.com/';
 }
 
 //获取价格（group  v1）
