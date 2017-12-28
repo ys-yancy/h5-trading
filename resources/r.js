@@ -279,12 +279,12 @@ function getSelfAppid () {
 
 // 是否使用显示授权
 function getUserInfoWX () {
-	return true;
+	return false;
 }
 
 // 是否使用新用户引导
 function getUseNewGuide () {
-	return true;
+	return false;
 }
 
 // 新用户引导 - 官微二维码
