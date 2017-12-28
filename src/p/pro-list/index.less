@@ -3,23 +3,24 @@
 .rotateanimate();
 .reset-placeholder();
 
-.list-wrapper::-webkit-scrollbar-thumb{  
+.list-inner::-webkit-scrollbar-thumb{  
     background-color: transparent;  
     height:0;  
+    width: 0;
     outline-offset:0;  
-    outline: solidtransparent;  
-    -webkit-border-radius:0;  
-    border: 0 solidtransparent;  
+    outline: 0;  
+    border: none;  
  }
 
- .list-wrapper::-webkit-scrollbar{  
+ .list-inner::-webkit-scrollbar{  
     width:0;  
-    height:0;  
+    height:0;
+    background-color: transparent;
+    color: transparent;
  }
 
- .list-wrapper::-webkit-scrollbar-track-piece{  
-    background-color:transparent;  
-    -webkit-border-radius:0;  
+ .list-inner::-webkit-scrollbar-track-piece{  
+    background-color:transparent;   
  }
  
 header{
@@ -134,15 +135,24 @@ nav {
     }
   }
   .list-wrapper{
+    position: absolute;
+    .top(110);
+    .bottom(130);
+    .left(0);
+    .width(139);
+    overflow: hidden;
+  }
+  .list-inner{
       position: absolute;
-      .top(110);
-      .bottom(130);
+      .top(0);
+      .bottom(0);
       .left(0);
       .padding-left(30);
+      .padding-right(10);
       background: rgba(255,255,255,.8);
       -webkit-overflow-scrolling: touch;
       overflow-x: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
       .item{
           .width(109);
           .height(109);

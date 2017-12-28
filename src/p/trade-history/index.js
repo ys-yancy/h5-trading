@@ -50,6 +50,15 @@ Base.extend(TradeHistory, PageBase, {
     doc.on('tap', '.getFollowList', $.proxy(this._getFollowList, this));
     doc.on('tap', '.getOrderList', $.proxy(this._removeList, this));
 
+    doc.on('tap', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      var curEl = $(e.target);
+      console.log(curEl.parent('.fn').length < 0, !curEl.hasClass('fn'))
+      if (curEl.parent('.fn').length < 0 && !curEl.hasClass('fn')) {
+        this._fnListHide();
+      }
+    })
     // this.subscribe('get:orderList', this._getOrderList, this);
     // doc.on('tap', '.getKindList', $.proxy(this._getKindList, this));
     // doc.on('tap', '.getTimeList', $.proxy(this._getTimeList, this));

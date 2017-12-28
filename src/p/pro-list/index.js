@@ -84,7 +84,7 @@ Base.extend(ProChart, PageBase, {
         list = list.list;
 
         self.render(orderListTmpl, list, $('.J_List'));
-
+        
         self._cacheList = self._cacheList || {};
         for (var i = 0, len = list.length; i < len; i++) {
             var item = list[i],
