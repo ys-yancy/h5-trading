@@ -228,7 +228,9 @@ Base.extend(Cat, PageBase, {
             }
         }).then(function(data) {
             self.render(self.tmpl, data.data, self.navListEl);
+            self._setNavWidth();
             // self.render(self.contentTmpl, data.data, self.contentEl);
+            
             self._initFlipsnap(parseInt(data.data.length / 2));
             setTimeout(() => {
                 $('.J_Type').eq(0).trigger('tap').addClass('active');
@@ -381,6 +383,22 @@ Base.extend(Cat, PageBase, {
           callback: function() {
           }
         });
+    },
+
+    _setNavWidth: function() {
+      var winWidth = $(window).width();
+      var navWidth = this.navListEl.width();
+      var minuWidth = winWidth - navWidth;
+      if (minuWidth > 0) {
+        var itemEls = $('li', this.navListEl);
+        var addWidth = minuWidth / itemEls.length;
+        for (var i = 0, len = itemEls.length; i < len; i++) {
+          var item = $(itemEls[i]);
+          item.width(
+            parseFloat(item.width()) + addWidth
+          )
+        }
+      }
     },
 
     _initFlipsnap: function(maxPoint) {
