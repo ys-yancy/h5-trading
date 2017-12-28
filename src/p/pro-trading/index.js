@@ -1592,6 +1592,11 @@ Base.extend(ProTrading, PageBase, {
       if (!self.guadan && self.orderObject) {
         self.getFloatingProfit(self.account, [self.orderObject], [self.orderObject.symbol]).then(function(floatProfit) {
           $('#J_FloatProfit').text(floatProfit.toFixed(2));
+          if (floatProfit > 0) {
+            $('#J_FloatProfit').parent('.price-wrapper').addClass('up').removeClass('down');
+          } else if (floatProfit < 0) {
+            $('#J_FloatProfit').parent('.price-wrapper').addClass('down').removeClass('up');
+          }
         });
       }
 
@@ -2436,7 +2441,12 @@ Base.extend(ProTrading, PageBase, {
       }
 
       self.getFloatingProfit(self.account, [data], [data.symbol]).then(function(floatProfit) {
-        $('#J_FloatProfit').text(floatProfit.toFixed(2))
+        $('#J_FloatProfit').text(floatProfit.toFixed(2));
+        if (floatProfit > 0) {
+          $('#J_FloatProfit').parent('.price-wrapper').addClass('up').removeClass('down');
+        } else if (floatProfit < 0) {
+          $('#J_FloatProfit').parent('.price-wrapper').addClass('down').removeClass('up');
+        }
       })
     });
   },
