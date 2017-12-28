@@ -11,10 +11,10 @@
 </div>
 <div class="item clearfix">
     <div class="left">
-        交易手数<input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" readonly/>
+        交易手数<input type="number" class="J_Edit" id="J_Volumn" value="<%= data.volume %>" disabled/>
     </div>
     <div class="right">
-        开仓价格<input id="J_OpenPriceInput" class="J_Edit" type="number" data-value="<%= parseFloat(data.openPrice) %>" value="<%= parseFloat(data.openPrice) %>" readonly/>
+        开仓价格<input id="J_OpenPriceInput" class="J_Edit" type="number" data-value="<%= parseFloat(data.openPrice) %>" value="<%= parseFloat(data.openPrice) %>" disabled/>
     </div>
 </div>
 <% } else {%>

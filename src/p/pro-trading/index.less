@@ -227,7 +227,12 @@ nav {
         input{
           display: inline-block;
           .width(200);
+          .padding-left(18);
           border: none;
+          &:disabled{
+            color: #000;
+            background: inherit;
+          }
         }
         .price-wrapper{
           float: right;
