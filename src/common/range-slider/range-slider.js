@@ -22,9 +22,9 @@ require('./zepto-data.js');
 		},
 		template: '<div class="slider-container">\
 			<div class="back-bar">\
-                <div class="selected-bar"></div>\
-                <div class="pointer low"></div><div class="pointer-label low">123456</div>\
-                <div class="pointer high"></div><div class="pointer-label high">456789</div>\
+                <div class="selected-bar ui common"></div>\
+                <div class="pointer ui common low"></div><div class="pointer-label low">123456</div>\
+                <div class="pointer ui common high"></div><div class="pointer-label high">456789</div>\
                 <div class="clickable-dummy"></div>\
             </div>\
             <div class="scale"></div>\
