@@ -12,7 +12,8 @@
 @disColor: #C8C8C9;
 @editColor: #f6ca35; // 修改按钮的颜色
 @defaultColor: #65696E; // 次要按钮的颜色
-
+@otherColor: #9EA4A7; // 二级tab  tab-nav spread(ooption)
+@otherBgColor: #f8f8f8; // 二级tab  tab-nav spread(ooption)
 
 
 // dialog
@@ -70,8 +71,8 @@
 @activeColor: #3583DE;
 
 //tab-nav
-@tab-navColor: #9EA4A7;
-@tab-navBgColor: #f8f8f8;
+@tab-navColor: @otherColor;
+@tab-navBgColor: @otherBgColor;
 
 @contentColor: @fontColor;
 @contentL1Color: @fontL1Color;
@@ -179,8 +180,11 @@ html, body{
 			.cmd{color: #fff;}
 		}
 	}
+	.ui.common.spread-content{
+		color: @otherColor;
+		background: @otherBgColor;
+	}
 }
-
 
 
 /*

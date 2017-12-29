@@ -19,7 +19,9 @@
             <p class="l2-color"><%= item.policy.symbol %></p>
         </div>
         <span class="lt-item price J_BidPrice"><%= bidPrice === '--' ? '--' : bidPrice.toFixed(unit) %></span>
-        <span class="lt-item spread J_Spread"><%=Math.abs(askPrice - bidPrice).toFixed(unit)%></span>
+        <!--<%=Math.abs(askPrice - bidPrice).toFixed(unit)%>-->
+        <!-- <span class="lt-item spread J_Spread">8.0</span> -->
+        <span class="lt-item spread"><span class="spread-content ui common J_Spread">8.0</span></span>
         <span class="lt-item price J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></span>
         <span class="lt-item percent <%if(rate > 0){%>up <%}%> J_Percent" data-range="<%= isNaN(price) ? '--' :  (price - item.close_price).toFixed(unit) %>"><%= rate %>%</span>
         <div class="action-wrapper clearfix" >
