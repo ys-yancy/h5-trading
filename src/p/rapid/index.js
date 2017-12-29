@@ -95,6 +95,7 @@ class Rapid extends Base {
 
     this.subscribe('stomp:price:update', (e) => {
       if (this.query.symbol === e.symbol) {
+        // 暂时去掉之后需要再打开
         this.broadcast('update:chart', e);
         this.priceInfo = e;
         this.askPrice = e.askPrice;
