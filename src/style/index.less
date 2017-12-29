@@ -14,8 +14,9 @@
 @defaultColor: #65696E; // 次要按钮的颜色
 @otherColor: #9EA4A7; // 二级tab  tab-nav spread(ooption)
 @otherBgColor: #f8f8f8; // 二级tab  tab-nav spread(ooption)
+@slideTunkColor: #eae6e6; // 开关滑块背景
 
-
+//----------------
 // dialog
 @dialogBgColor: #fff;
 @dialogBdColor: #ccc;
@@ -41,8 +42,8 @@
 
 //sm-bd-ipt
 @smBdIptColor: @fontColor;
-@smBdIptBdColor: #eae6e6;
-@smBdIptBgColor: #eae6e6;
+@smBdIptBdColor: @borderColor;
+@smBdIptBgColor: @otherBgColor;
 //sm-bd-ipt disabled
 @smBdIptDisColor: @fontColor;
 @smBdIptDisBdColor: @disColor;
@@ -50,14 +51,14 @@
 
 //.ui.sm-bd-rdo
 @smBdRdoColor: #fff;
-@smBdRdoBdColor: #eae6e6;
-@smBdRdoBgColor: #eae6e6;
+@smBdRdoBdColor: @slideTunkColor;
+@smBdRdoBgColor: @slideTunkColor;
 @smBdRdoCheckColor: #fff;
 @smBdRdoCheckBdColor: @appColor;
 @smBdRdoCheckBgColor: @appColor;
 
 //slider-contro-trunk
-@sliderControTrunkBgColor: #eae6e6;
+@sliderControTrunkBgColor: @slideTunkColor;
 @sliderControTrunkActiveColor: @appColor;
 
 // tab page header
@@ -245,7 +246,7 @@ html, body{
 .ui.sm-bd-ipt{
 	color: @smBdIptColor;
 	background-color: @smBdIptBgColor;
-	border-color: @smBdIptBdColor !important;
+	border: 1px solid @smBdIptBdColor !important;
 	&:disabled{
 		color: @smBdIptDisColor;
 		background-color: @smBdIptDisBdColor;
@@ -296,6 +297,12 @@ html, body{
 .ui.pointer.common,
 .ui.selected-bar.common{
 	background: @setUiColor !important;
+}
+
+.ui.setValue-controller{
+	&::-webkit-slider-thumb{
+		background: @setUiColor !important;
+	}
 }
 
 .ui.line-w.common{
