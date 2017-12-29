@@ -134,13 +134,15 @@ export default class ChartArea extends Base {
           return '<p>' + this.points[0].point.y + '</p>'
         },
 
-        backgroundColor: 'rgba(0,0,0,0.6)',
+        backgroundColor: 'rgba(0,0,0,.5)',
+        borderWidth: 0,
+        borderRadius: 0,
+        shadow: false,
         style: {
           color: '#fff',
-          fontSize: '.55rem'
-        },
-        borderRadius: 4,
-        borderWidth: 0
+          padding: 10,
+          fontSize: '.6rem'
+        }
       },
     });
   }
