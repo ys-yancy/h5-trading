@@ -186,6 +186,8 @@ Base.extend(ProChart, PageBase, {
       self.askPrice = priceInfo.ask_price[0];
       self.bidPrice = priceInfo.bid_price[0];
 
+      self.price = priceInfo.bidPrice || self.bidPrice;
+
       if (self.hasStatus()) {
         self.shouldChartUpdate(priceInfo);
       }

@@ -320,6 +320,8 @@ Base.extend(ProChart, PageBase, {
       self.askPrice = priceInfo.ask_price[0];
       self.bidPrice = priceInfo.bid_price[0];
 
+      self.price = priceInfo.bidPrice || self.bidPrice;
+
       if (self.hasStatus()) {
         self.shouldChartUpdate(priceInfo);
       }
@@ -422,6 +424,7 @@ Base.extend(ProChart, PageBase, {
 
       // 绘图用bidPrice
       var up = self.price - self.priceInfo.close > 0 ? true : false;
+
       var infoEl = $('#J_Info');
 
       // 把bidPrice和askPrice传给info条
