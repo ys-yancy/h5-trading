@@ -194,8 +194,7 @@ Base.extend(Option, PageBase, {
 
   _swipeLeft: function(e) {
     var curEl = $(e.currentTarget);
-
-
+    
     if (e.type === 'swipeLeft') {
       curEl.addClass('unfold');
       this.swipeTouch = true;
