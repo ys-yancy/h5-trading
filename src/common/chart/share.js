@@ -99,7 +99,7 @@ export default class ChartArea extends Base {
         // pointRange: 100,''
         tooltip: {
           valueDecimals: 2,
-          backgroundColor: '#548DEB'
+          backgroundColor: getChartUi().otherChartColor
         },
         marker: {
           enabled: true,
@@ -134,7 +134,7 @@ export default class ChartArea extends Base {
           return '<p>' + this.points[0].point.y + '</p>'
         },
 
-        backgroundColor: '#548DEB',
+        backgroundColor: 'rgba(0,0,0,0.6)',
         style: {
           color: '#fff',
           fontSize: '.55rem'
