@@ -105,8 +105,7 @@ export default class TopBanner extends PageBase {
     this.other.sort(function(v1, v2) {
       return v1[0] - v2[0];
     });
-
-
+   
     this.chart = new Highcharts.Chart({
       chart: {
         renderTo: 'J_ChartSpline',
@@ -192,10 +191,10 @@ export default class TopBanner extends PageBase {
         name: 'John',
         data: this.my,
         fillColor: {
-          linearGradient: [0, 0, 0, 300],
+          // linearGradient: [0, 0, 0, 300],
           stops: [
-            [0, '#24173f'],
-            [1, '#160e23']
+            [0, getChartUi().areaColor],
+            [1, getChartUi().areaColor]
           ]
         }
       }, {
@@ -204,8 +203,8 @@ export default class TopBanner extends PageBase {
         fillColor: {
           linearGradient: [0, 0, 0, 300],
           stops: [
-            [0, 'rgba(0,0,0,0)'],
-            [1, 'rgba(0,0,0,0)']
+            [0, getChartUi().otherChartColor],
+            [1, getChartUi().otherChartColor]
           ]
         }
       }]
