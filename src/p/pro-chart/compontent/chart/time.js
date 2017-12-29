@@ -42,7 +42,7 @@ export default class Chart extends Base {
       type = this.candleType;
       chartType = chartType;
     }
-    console.log()
+
     this.lastData = this.list[this.list.length - 1];
 
     // create the chart
@@ -79,10 +79,13 @@ export default class Chart extends Base {
 
     var curPrice = parseFloat(priceInfo.bidPrice);
 
-    this.lastData[0] = Date.now();
-    this.lastData[1] = curPrice;
-
-    var data = this.chart.addPoint(this.lastData);
+    var lastData = [];
+    lastData[0] = Date.now();;
+    lastData[1] = curPrice;
+    // this.lastData[0] = Date.now();
+    // this.lastData[1] = curPrice;
+    
+    var data = this.chart.addPoint(lastData);
 
     return;
   }

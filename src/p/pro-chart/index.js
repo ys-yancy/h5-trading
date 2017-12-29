@@ -188,7 +188,6 @@ Base.extend(ProChart, PageBase, {
 
       if (self.hasStatus()) {
         self.shouldChartUpdate(priceInfo);
-        this.broadcast('update:chart', priceInfo);
       }
 
       if (self._getCacheCurPrice()) {
@@ -315,7 +314,7 @@ Base.extend(ProChart, PageBase, {
         self.chart && self.chart.updatePlotLine(self.bidPrice, up);
 
         var lastData = self.lastData;
-
+        
         // 绘图使用bidPrice
         var curPrice = parseFloat(self.bidPrice);
 
@@ -329,6 +328,8 @@ Base.extend(ProChart, PageBase, {
         if (self.hasStatus()) {
           var data = self.chart.addPoint(lastData);
 
+          //  暂时先去掉 之后有需要再打开 
+          // self.broadcast('update:chart', curPriceInfo);
           if (data) {
             self.lastData = data;
           }
