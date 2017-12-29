@@ -70,8 +70,8 @@ Base.extend(CreateColumnBasisc, Base, {
 
         plotOptions: {
           series: {
-            color: '#BCAAEA',
-            negativeColor: '#FF8E32'
+            color: getChartUi().otherChartColor,
+            negativeColor: getChartUi().areaColor,
           }
         },
 

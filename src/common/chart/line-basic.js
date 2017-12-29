@@ -111,7 +111,7 @@ Base.extend(CreateColumnBasisc, Base, {
         series: [{ 
           name: chartName,
           data: data,
-          color: '#FF8D30'
+          color: getChartUi().areaColor
         }]
     })
   }

@@ -45,7 +45,7 @@ Base.extend(CreateAreaBasisc, Base, {
             }
         },
 
-          colors: ['#2dcea4'],
+        colors: ['#2dcea4'],
 
         credits: {
             enabled: false
@@ -70,13 +70,13 @@ Base.extend(CreateAreaBasisc, Base, {
 
         plotOptions: {
           series: {
-            lineColor: '#9E86DF',
+            lineColor: getChartUi().otherChartColor,
             marker: {
               lineWidth: 2,
               radius: 3,
               symbol: 'circle',
                   fillColor: 'white',
-                  lineColor: '#9E86DF'
+                  lineColor: getChartUi().otherChartColor
               }
           }
         },
@@ -125,8 +125,8 @@ Base.extend(CreateAreaBasisc, Base, {
                   y2: 1
               },
               stops: [
-                  [0, 'rgba(150,123,220,.4)'], //Highcharts.getOptions().colors[0]],
-                  [1, 'rgba(150,123,220,.4)'] //Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                  [0, getChartUi().otherChartColor], //Highcharts.getOptions().colors[0]],
+                  [1, getChartUi().otherChartColor] //Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
               ]
           } 
         }]
