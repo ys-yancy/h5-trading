@@ -17,8 +17,8 @@
 @setUiColor: #548DEB;
 
 // ui sm-bd
-@smColor: red;
-@smBdColor: red;
+@smColor: #548DEB;
+@smBdColor: #548DEB;
 @smBgColor: #fff;
 
 // ui progress
@@ -26,25 +26,25 @@
 @progressLineColor: #D6E9FF;
 
 //sm-bd-ipt
-@smBdIptColor: red;
-@smBdIptBdColor: red;
+@smBdIptColor: #548DEB;
+@smBdIptBdColor: #548DEB;
 @smBdIptBgColor: #ccc;
 //sm-bd-ipt disabled
-@smBdIptDisColor: #ccc;
-@smBdIptDisBdColor: #ccc;
-@smBdIptDisBgColor: #ccc;
+@smBdIptDisColor: #65696E;
+@smBdIptDisBdColor: #65696E;
+@smBdIptDisBgColor: #65696E;
 
 //.ui.sm-bd-rdo
-@smBdRdoColor: red;
-@smBdRdoBdColor: red;
-@smBdRdoBgColor: #ccc;
-@smBdRdoCheckColor: green;
-@smBdRdoCheckBdColor: green;
-@smBdRdoCheckBgColor: #ccc;
+@smBdRdoColor: #fff;
+@smBdRdoBdColor: #eae6e6;
+@smBdRdoBgColor: #eae6e6;
+@smBdRdoCheckColor: #fff;
+@smBdRdoCheckBdColor: #548DEB;
+@smBdRdoCheckBgColor: #548DEB;
 
 //slider-contro-trunk
-@sliderControTrunkBgColor: #eae6e6;// #8DC7F6;
-@sliderControTrunkActiveColor: #2196F3;
+@sliderControTrunkBgColor: #eae6e6;
+@sliderControTrunkActiveColor: #548DEB;
 
 // tab page header
 @headerColor: #252525;
@@ -68,16 +68,16 @@
 @contentItemBtColor: #EBEBEB;
 
 // button
-@buttonDefaultBgColor: #ccc;
-@buttonEditBgColor: #2196F3;
-@buttonSubEditBgColor: #9B9B9B;
+@buttonDefaultBgColor: #65696E;
+@buttonEditBgColor: #548DEB;
+@buttonSubEditBgColor: #65696E;
 @buttonUpBgColor: #F7756A;
 @buttonDownBgColor: #71d286;
 @buttonUnactiveBgColor: #C8C8C9;
-@buttonDisBgColor: #494258;
-@buttonDelBgColor: pink;
-@buttonEditOrderBgColor: #9B9B9B;
-@buttonCloseOrderBgColor: #2196F3;
+@buttonDisBgColor: #C8C8C9;
+@buttonDelBgColor: #65696E;
+@buttonEditOrderBgColor: #F7CB38;
+@buttonCloseOrderBgColor: #548DEB;
 
 //footer
 @footerNameColor: #62676C;
@@ -332,29 +332,31 @@ html, body{
 .ui.btn-cancelAttention,
 .ui.btn-reviseSetting {
 	color: #fff;
-    background:#7686ba;
-    border-color: #5b6aa1;
+    background: @buttonEditOrderBgColor;
+    border-color: @buttonEditOrderBgColor;
 }
 .ui.btn-follow,
 .ui.btn-following,
 .ui.btn-pauseing,
 .ui.btn-keepFollow,
 .ui.btn-pauseFollow {
-    background: #FF8E32;
-    border-color: #f06f05;
+    background: @setUiColor;
+    border-color: @setUiColor;
 }
 .ui.btn-moreSet,
 .ui.btn-ReFollow,
 .ui.btn-cancelFollow {
-    background: #6E8DCD;
+    background: @buttonDefaultBgColor;
 }
 
 .ui.btn-followSettingSubmit{
-	background-color: red;
+	color: #fff;
+	background-color: @setUiColor;
 }
 
 .ui.btn-start{
-	background-color: red;
+	color: #fff;
+	background-color: @setUiColor;
 }
 
 .ui.btn-follow-recharge{
