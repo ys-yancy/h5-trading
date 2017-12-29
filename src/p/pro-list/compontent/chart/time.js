@@ -79,8 +79,12 @@ export default class Chart extends Base {
 
     var curPrice = parseFloat(priceInfo.bidPrice);
 
-    this.lastData[0] = Date.now();
-    this.lastData[1] = curPrice;
+    var lastData = [];
+    lastData[0] = Date.now();
+    lastData[1] = curPrice;
+
+    // this.lastData[0] = Date.now();
+    // this.lastData[1] = curPrice;
 
     var data = this.chart.addPoint(this.lastData);
 

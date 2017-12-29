@@ -322,7 +322,6 @@ Base.extend(ProChart, PageBase, {
 
       if (self.hasStatus()) {
         self.shouldChartUpdate(priceInfo);
-        this.broadcast('update:chart', priceInfo);
       }
 
       if (self._getCacheCurPrice()) {
@@ -463,6 +462,8 @@ Base.extend(ProChart, PageBase, {
         if (self.hasStatus()) {
           var data = self.chart.addPoint(lastData);
 
+          // 之后有需要再打开 更新timeChart
+          self.broadcast('update:chart', curPriceInfo);
           if (data) {
             self.lastData = data;
           }
