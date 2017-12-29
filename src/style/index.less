@@ -1,50 +1,62 @@
 /**
  * ui 管理整个程序所用的的颜色
  */
+@fontColor: #575D62;
+@fontL1Color:#575D62;
+@fontL2Color: #979797;
+@appColor: #548DEB;
+@redColor: #F7756A;
+@greenColor: #71d286;
+@borderColor: #EBEBEB;
+@disColor: #C8C8C9;
+@editColor: #F7CB38; // 修改按钮的颜色
+@defaultColor: #65696E; // 次要按钮的颜色
+
+
 
 // dialog
 @dialogBgColor: #fff;
 @dialogBdColor: #ccc;
 @dialogShadowColor: #ccc;
 @dialogBtnBdColor: #ccc;
-@dialogComBtnBgColor: #548DEB;
+@dialogComBtnBgColor: @appColor;
 @dialogCelBtnBgColor: #ccc;
 
 @popupColor: #626262;
 @popupBgColor: #ccc;
 
 // 全局趋向颜色
-@setUiColor: #548DEB;
+@setUiColor: @appColor;
 
 // ui sm-bd
-@smColor: #548DEB;
-@smBdColor: #548DEB;
+@smColor: @appColor;
+@smBdColor: @appColor;
 @smBgColor: #fff;
 
 // ui progress
-@progressBgColor: #548DEB;
-@progressLineColor: #D6E9FF;
+@progressBgColor: @appColor;
+@progressLineColor: @appColor;
 
 //sm-bd-ipt
-@smBdIptColor: #575D62;
+@smBdIptColor: @fontColor;
 @smBdIptBdColor: #eae6e6;
 @smBdIptBgColor: #eae6e6;
 //sm-bd-ipt disabled
-@smBdIptDisColor: #575D62;
-@smBdIptDisBdColor: #C8C8C9;
-@smBdIptDisBgColor: #C8C8C9;
+@smBdIptDisColor: @fontColor;
+@smBdIptDisBdColor: @disColor;
+@smBdIptDisBgColor: @disColor;
 
 //.ui.sm-bd-rdo
 @smBdRdoColor: #fff;
 @smBdRdoBdColor: #eae6e6;
 @smBdRdoBgColor: #eae6e6;
 @smBdRdoCheckColor: #fff;
-@smBdRdoCheckBdColor: #548DEB;
-@smBdRdoCheckBgColor: #548DEB;
+@smBdRdoCheckBdColor: @appColor;
+@smBdRdoCheckBgColor: @appColor;
 
 //slider-contro-trunk
 @sliderControTrunkBgColor: #eae6e6;
-@sliderControTrunkActiveColor: #548DEB;
+@sliderControTrunkActiveColor: @appColor;
 
 // tab page header
 @headerColor: #252525;
@@ -60,32 +72,32 @@
 @tab-navColor: #9EA4A7;
 @tab-navBgColor: #F7F7F8;
 
-@contentColor: #575D62;
-@contentL1Color: #575D62;
-@contentL2Color: #979797;
-@contentUpColor: #F7756A;
-@contentDownColor: #71d286;
-@contentItemBtColor: #EBEBEB;
+@contentColor: @fontColor;
+@contentL1Color: @fontL2Color;
+@contentL2Color: @fontL2Color;
+@contentUpColor: @redColor;
+@contentDownColor: @greenColor;
+@contentItemBtColor: @borderColor;
 
 // button
 // 下单
-@buttonUpBgColor: #F7756A;
-@buttonDownBgColor: #71d286;
-@buttonUnactiveBgColor: #C8C8C9;
+@buttonUpBgColor: @redColor;
+@buttonDownBgColor: @greenColor;
+@buttonUnactiveBgColor: @disColor;
 
 // 修改订单
-@buttonEditBgColor: #548DEB;
-@buttonSubEditBgColor: #65696E;
+@buttonEditBgColor: @appColor;
+@buttonSubEditBgColor: @defaultColor;
 
 // 次要按钮
-@buttonDefaultBgColor: #65696E;
+@buttonDefaultBgColor: @defaultColor;
 
-@buttonDisBgColor: #C8C8C9;
-@buttonDelBgColor: #65696E;
+@buttonDisBgColor: @disColor;
+@buttonDelBgColor: @defaultColor;
 
 // 当前订单详情
-@buttonEditOrderBgColor: #F7CB38;
-@buttonCloseOrderBgColor: #548DEB;
+@buttonEditOrderBgColor: @editColor;
+@buttonCloseOrderBgColor: @appColor;
 
 //footer
 @footerNameColor: #62676C;
