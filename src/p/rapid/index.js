@@ -11,6 +11,9 @@ var Progress = require('./component/progress/new');
 var Check = require('../../common/check');
 var navTmpl = require('./nav.ejs');
 var infoTmpl = require('../pro-trading/tpl/info.ejs');
+
+var Attribute = require('../pro-trading/attribute');
+
 class Rapid extends Base {
   constructor() {
     super();
@@ -68,11 +71,19 @@ class Rapid extends Base {
   }
 
   _bind() {
+    $(document).on('tap', '.attribute-trigger', $.proxy(this._showAttribtue, this));
+
     this.subscribe('account:did:update', (e) => {
       $('.J_NetDeposit').text(e.netDeposit.toFixed(2) + '' || '--');
 
       if (!this.accountData) {
         this.progress = new Progress({ freeMargin: e.freeMargin, netDeposit: e.netDeposit });
+
+        var leverage = this._getLeverage(this.symbolValue, e);
+        var data = $.extend({}, this.symbolValue, true);
+        data.leverage = leverage;
+     
+        this.attribute = new Attribute(data);
       }
       this.accountData = e;
 
@@ -187,6 +198,23 @@ class Rapid extends Base {
         up ? infoEl.addClass('up') : infoEl.removeClass('up');
       }
     });
+  }
+
+  _getLeverage(symbol, account) {
+    var max_leverage = this.isDemo() ? symbol.policy.demo_max_leverage : symbol.policy.real_max_leverage;
+    var trading_leverage = account.leverage * symbol.policy.leverage_multiplier;
+    max_leverage = parseFloat(max_leverage);
+    trading_leverage = parseFloat(trading_leverage);
+
+    trading_leverage = trading_leverage < max_leverage ? trading_leverage : max_leverage;
+
+    return trading_leverage;
+  }
+
+  _showAttribtue(e) {
+    if (this.attribute) {
+      this.attribute.show();
+    }
   }
 
   _initSticky(search) {
