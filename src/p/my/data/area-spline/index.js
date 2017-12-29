@@ -140,6 +140,7 @@ export default class TopBanner extends PageBase {
         lineColor: '#352d43',
 
         type: 'datetime',
+  
         // max: Date.now() + 3600 * 1000
         // minRange: 3600 * 1000 * 24 * 50
       },
@@ -160,14 +161,14 @@ export default class TopBanner extends PageBase {
         },
 
         backgroundColor: 'rgba(0,0,0,.5)',
+        borderWidth: 0,
+        borderRadius: 0,
+        shadow: false,
         style: {
           color: '#fff',
-          fontSize: '.55rem',
-          lineHeight: '.8rem'
-        },
-        borderRadius: 4,
-        borderWidth: 1,
-        borderColor: '#34294c'
+          padding: 10,
+          fontSize: '.56rem'
+        }
       },
       plotOptions: {
         size: '100%',
