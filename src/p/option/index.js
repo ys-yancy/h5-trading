@@ -77,7 +77,7 @@ Base.extend(Option, PageBase, {
 
   _bind: function() {
     var doc = $(document);
-    doc.on('click', '.J_Percent', $.proxy(this._switchView, this));
+    // doc.on('click', '.J_Percent', $.proxy(this._switchView, this));
     doc.on('swipeLeft swipeRight', '.link', $.proxy(this._swipeLeft, this));
     doc.on('touchstart', '.link', $.proxy(this._touchLink, this));
     doc.on('click', '.J_UpSymbol', $.proxy(this._upSymbol, this));
