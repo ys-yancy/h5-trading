@@ -22,7 +22,6 @@ header{
       }
       .share{
         .right(30);
-        background: red;
       }
   }
 }
@@ -45,10 +44,6 @@ header{
     .tag {
       .line-height(36);
       text-align: center;
-      color: green;
-      &.up {
-        color: red;
-      }
       &.guadan {
         // .width(106);
         // .left(10)
@@ -163,7 +158,7 @@ header{
         left: 0;
         .line-height(30);
         .font-size(22);
-        color: #01bdf1;
+        // color: #01bdf1;
         .padding-left(22);
         .open-price,
         .profit-wrapper,
@@ -183,15 +178,15 @@ header{
             text-align: center;
           }
         }
-        .profit-wrapper {
-          color: #25b9a8;
-        }
-        .stoploss-wrapper {
-          color: #ff6b6b;
-        }
-        .open-price {
-          color: #01bdf1;
-        }
+        // .profit-wrapper {
+        //   color: #25b9a8;
+        // }
+        // .stoploss-wrapper {
+        //   color: #ff6b6b;
+        // }
+        // .open-price {
+        //   color: #01bdf1;
+        // }
       }
       .open-price {
         /*position: absolute;
@@ -289,22 +284,22 @@ header{
         display: none;
         visibility: hidden;
       }
-      .highcharts-grid {
-        path {
-          border-color: #1f172c;
-        }
-      }
-      .highcharts-axis {
-        path {
-          stroke: #4b425a;
-          stroke-width: 2;
-        }
-      }
-      .highcharts-grid {
-        path {
-          stroke: #43496a;
-        }
-      }
+      // .highcharts-grid {
+      //   path {
+      //     border-color: #1f172c;
+      //   }
+      // }
+      // .highcharts-axis {
+      //   path {
+      //     stroke: #4b425a;
+      //     stroke-width: 2;
+      //   }
+      // }
+      // .highcharts-grid {
+      //   path {
+      //     stroke: #43496a;
+      //   }
+      // }
       .highcharts-tracker {
         path {
           stroke-width: 3;
@@ -329,14 +324,14 @@ header{
     .padding(20, 0, 20, 0);
     background: rgba(255,255,255, 0.9);
     z-index: 111;
+    color: #fff;
     a {
       .font-size(32);
-      color: #fff;
+      color: #fff !important;
       display: block;
       .width(690);
       .line-height(88);
       margin: 0 auto;
-      background: green;
       text-align: center;
     }
     .desc {
@@ -388,6 +383,11 @@ header{
 }
 .highcharts-range-selector-buttons {
   display: none;
+}
+.highcharts-grid {
+  path {
+    stroke: transparent;
+  }
 }
 
 inpt {

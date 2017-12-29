@@ -1,6 +1,6 @@
  <div class="hd ">
    <p>
-     <span class="tag <% if (data.status === 'pending') {%> guadan <%}%><% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>"><%= data.status === 'pending' ? (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') + '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
+     <span class="tag default-down <% if (data.status === 'pending') {%> guadan <%}%><% if (data.cmd.indexOf('buy') !== -1) { %> up <% } %>"><%= data.status === 'pending' ? (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') + '挂单' : (data.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌') %>
     </span>
     <span><%= data.symbolName %></span>
   </p>

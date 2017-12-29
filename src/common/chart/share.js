@@ -22,14 +22,14 @@ export default class ChartArea extends Base {
       chart: {
         renderTo: 'J_Chart',
         className: 'stock-chart-area',
-        backgroundColor: '#43496a',
+        backgroundColor: 'transparent',
         reflow: true,
         pinchType: 'x',
         zoomType: '',
         panning: true,
         spacing: [10, 10, 10, 10],
         width: $(window).width(),
-        height: parseFloat($('html').css('font-size')) * 8
+        height: parseFloat($('html').css('font-size')) * 10
           // width: $(window).width(),
           // height: 150
           // height: this.height
@@ -74,7 +74,7 @@ export default class ChartArea extends Base {
         range: 6 * 3600 * 1000,
         labels: {
           style: {
-            color: '#fff'
+            color: '#575D62'
           }
         }
       },
@@ -82,7 +82,7 @@ export default class ChartArea extends Base {
       yAxis: {
         labels: {
           style: {
-            color: '#fff'
+            color: '#575D62'
           }
         }
         // gridLineColor: '#f60'
@@ -99,7 +99,7 @@ export default class ChartArea extends Base {
         // pointRange: 100,''
         tooltip: {
           valueDecimals: 2,
-          backgroundColor: '#dc9702'
+          backgroundColor: '#548DEB'
         },
         marker: {
           enabled: true,
@@ -122,8 +122,8 @@ export default class ChartArea extends Base {
             y2: 1
           },
           stops: [
-            [0, '#2c3053'], //Highcharts.getOptions().colors[0]],
-            [1, '#2e355e'] //Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            [0, getChartUi().otherChartColor], //Highcharts.getOptions().colors[0]],
+            [1, getChartUi().otherChartColor] //Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
           ]
         }
       }],
@@ -134,7 +134,7 @@ export default class ChartArea extends Base {
           return '<p>' + this.points[0].point.y + '</p>'
         },
 
-        backgroundColor: '#dc9702',
+        backgroundColor: '#548DEB',
         style: {
           color: '#fff',
           fontSize: '.55rem'
