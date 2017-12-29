@@ -7,7 +7,7 @@
 @dialogBdColor: #ccc;
 @dialogShadowColor: #ccc;
 @dialogBtnBdColor: #ccc;
-@dialogComBtnBgColor: blue;
+@dialogComBtnBgColor: #548DEB;
 @dialogCelBtnBgColor: #ccc;
 
 @popupColor: #626262;
@@ -68,14 +68,22 @@
 @contentItemBtColor: #EBEBEB;
 
 // button
-@buttonDefaultBgColor: #65696E;
-@buttonEditBgColor: #548DEB;
-@buttonSubEditBgColor: #65696E;
+// 下单
 @buttonUpBgColor: #F7756A;
 @buttonDownBgColor: #71d286;
 @buttonUnactiveBgColor: #C8C8C9;
+
+// 修改订单
+@buttonEditBgColor: #548DEB;
+@buttonSubEditBgColor: #65696E;
+
+// 次要按钮
+@buttonDefaultBgColor: #65696E;
+
 @buttonDisBgColor: #C8C8C9;
 @buttonDelBgColor: #65696E;
+
+// 当前订单详情
 @buttonEditOrderBgColor: #F7CB38;
 @buttonCloseOrderBgColor: #548DEB;
 
@@ -360,7 +368,8 @@ html, body{
 }
 
 .ui.btn-follow-recharge{
-
+	color: #fff;
+	background-color: @setUiColor;
 }
 
 .ui.common.btn-extract{
