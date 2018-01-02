@@ -41,8 +41,8 @@ class SetRange extends Base {
 		var $el = $('.J_SetController', this.el),
 			$step;
 
-		$step = Math.abs(value / this.default.max);
-		if (parseFloat(this.default.max) <= parseFloat(this.default.placeholder)) {
+		$step = Math.abs(value / this.default.max) * 100;
+		if (parseFloat(this.default.max) <= parseFloat(value)) {
 			$step = $el.attr('step') / (this.default.max) * 100;
 		}
 
