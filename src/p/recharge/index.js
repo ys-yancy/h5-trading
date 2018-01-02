@@ -428,9 +428,9 @@ Base.extend(Recharge, PageBase, {
 
     _requires: function() {
         var phone = this.cookie.get('phone');
-
+        
         if (getPayUrlWL()) {
-            $('J_PcUrl').html(getPayUrlWL());
+            $('.J_PcUrl').html(getPayUrlWL());
         }
 
         $('.J_UserPhone').val(phone);
