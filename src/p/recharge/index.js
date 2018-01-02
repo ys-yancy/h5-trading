@@ -123,6 +123,7 @@ Base.extend(Recharge, PageBase, {
         }
 
         $("#J_Charge").val('');
+        $('#J_Bonus').val('');
         $('#J_Bonus').html('-- --');
         
         $('.J_Radio').removeClass('active');
