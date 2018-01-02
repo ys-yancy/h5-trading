@@ -44,7 +44,9 @@ Base.extend(Recharge, PageBase, {
 
         doc.on('click', '.J_Fold', $.proxy(this._fold, this));
         doc.on('tap', '.J_Submit', $.proxy(this._submit, this));   
-        $('#J_Charge').on('blur', $.proxy(this._inputBlur, this));       
+        $('#J_Charge').on('blur', $.proxy(this._inputBlur, this));
+        $('#J_UserPhone').on('blur', $.proxy(this._validatePhone, this));
+        $('#J_UserName').on('blur', $.proxy(this._validateName, this));
 
         // 添加默认微信分享
         if (this.isWeixin()) {
@@ -246,6 +248,39 @@ Base.extend(Recharge, PageBase, {
         return true;
     },
 
+    _validatePhone: function(curEl) {
+        curEl = $('#J_UserPhone');
+        curEl.trigger('blur');
+        var val = curEl.val();
+
+        if (!val) {
+            this._showError(curEl, '不能为空');
+            return;
+        }
+
+        if (!/^1[3|4|5|8][0-9]\d{8}$/.test(val)) {
+            this._showError(curEl, '手机号错误');
+            return;
+        }
+
+        this._hideError(curEl);
+        return true;
+    },
+
+    _validateName: function(curEl) {
+        curEl = $('#J_UserName');
+        curEl.trigger('blur');
+        var val = curEl.val();
+
+        if (!val) {
+            this._showError(curEl, '不能为空');
+            return;
+        }
+
+        this._hideError(curEl);
+        return true;
+    },
+
     _showError: function(curEl, message) {
         var parent = curEl.parent('li');
         var messageEl = curEl.siblings('.err');
@@ -274,7 +309,7 @@ Base.extend(Recharge, PageBase, {
 
         chargeEl.trigger('blur');
 
-        if (!this._validate()) {
+        if (!this._validatePhone() || !this._validateName() || !this._validate()) {
             return;
         }
 
@@ -428,7 +463,7 @@ Base.extend(Recharge, PageBase, {
 
     _requires: function() {
         var phone = this.cookie.get('phone');
-        
+
         if (getPayUrlWL()) {
             $('.J_PcUrl').html(getPayUrlWL());
         }
