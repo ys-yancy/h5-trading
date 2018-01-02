@@ -182,10 +182,13 @@ class FollowAction extends PageBase {
 		return this.ajax({
 			url: '/v1/follow/follower/expert/'+ this.id +'/config/',
 			data: params,
-			type: 'POST'
+			type: 'POST',
+			noToast: true
 		}).then((data) => {
 			this.broadcast('update:gendan:list');
 			return data
+		}, (data) => {
+			new Toast(data.message);
 		})
 	}
 
