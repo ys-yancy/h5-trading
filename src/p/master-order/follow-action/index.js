@@ -202,6 +202,7 @@ class FollowAction extends PageBase {
 			data: params,
 			type: 'POST'
 		}).then((data) => {
+			new Toast(data.message);
 			return data
 		})
 	}
