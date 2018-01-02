@@ -165,7 +165,7 @@ Base.extend(Chart, Base, {
       },
 
       xAxis: {
-        // crosshair: true,
+        crosshair: true,
         gridLineColor: this.ui.gridLineColor || '#F5F5F5',
         endOnTick: false,
         gridLineWidth: 0,
@@ -176,7 +176,7 @@ Base.extend(Chart, Base, {
       },
 
       yAxis: {
-        // crosshair: true,
+        crosshair: true,
         gridLineColor: this.ui.gridLineColor || '#F5F5F5',
         plotLines: [plotLines],
         endOnTick: false,
@@ -205,6 +205,7 @@ Base.extend(Chart, Base, {
       }],
 
       tooltip: {
+        enabled: false,
         useHTML: true,
         formatter: function(e) {
           return [
