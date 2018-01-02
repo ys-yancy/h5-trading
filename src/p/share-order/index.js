@@ -578,6 +578,13 @@ class ShareOrder extends PageBase {
     this.inviteCode = params.invite;
 
     var linkEl = $('#J_ProfileLink');
+    var goBackEl = $('#go-back');
+
+    if (params.from) {
+      goBackEl.attr('href', params.from);
+    } else {
+      goBackEl.remove();
+    }
 
     if (!this.inviteCode) {
       return;
