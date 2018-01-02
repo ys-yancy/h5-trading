@@ -2,6 +2,7 @@
 
 require('./index.css');
 var Base = require('../../app/base');
+var Cookie = require('../../lib/cookie');
 
 function FloatMsg() {
     FloatMsg.superclass.constructor.apply(this, arguments);
@@ -14,11 +15,14 @@ Base.extend(FloatMsg, Base, {
     },
 
     show: function() {
-
+        var isNewMsg = Cookie.get('new_msg');
+        if (isNewMsg && 1) {
+            this._show();
+        }
     },
 
     hide: function() {
-
+        this._hide();
     },
 
     _show: function() {
@@ -33,10 +37,14 @@ Base.extend(FloatMsg, Base, {
         msgEl.appendChild(iconEl);
         msgEl.appendChild(newMsgEl);
         document.body.appendChild(msgEl);
+
+        this.msgEl = msgEl;
     },
 
     _hide: function() {
-
+        if (this.msgEl) {
+            $(this.msgEl).remove();
+        }
     }
 });
 
