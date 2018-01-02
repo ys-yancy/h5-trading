@@ -225,7 +225,7 @@ Base.extend(ActualOrder, Base, {
 	},
 
 	_initSticky: function() {
-		$('#J_Header').sticky()
+		$('#J_Header').sticky();
 	},
 
 	defaults: function() {

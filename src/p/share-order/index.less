@@ -173,10 +173,14 @@ header{
         }
         .stoploss-wrapper,
         .profit-wrapper {
+          text-align: center;
           &.single {
             .width(365);
             text-align: center;
           }
+        }
+        .cur-price{
+          text-align: right;
         }
         // .profit-wrapper {
         //   color: #25b9a8;
@@ -231,6 +235,7 @@ header{
           .line-height(64);
           .font-size(38);
           text-align: center;
+          .line-hide();
         }
       }
       .right-wrapper {
