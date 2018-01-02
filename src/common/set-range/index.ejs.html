@@ -9,7 +9,7 @@
 	<%} else {%>
 		<p class="cur-value J_RangeValue">
 			<% if(data.isSignBefore) {%>
-				<% if (parseFloat(data.placeholder) > parseFloat(data.max)) {data.placeholder = data.max} %>
+				<% if (parseFloat(data.placeholder) > parseFloat(data.max)) {data.placeholder = data.step} %>
 				<%= data.sign %> <%= data.placeholder %>
 			<%} else {%>
 				<%= data.placeholder %> <%= data.sign %>
