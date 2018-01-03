@@ -14,11 +14,9 @@ module.exports = {
   },
 
   onShareSuccess: function (shareKind) {
-      // alert('window.shareSuccess');
-      // console.log('window.shareSuccess');
-      this.notifyShareBehavior(shareKind);
-      // new Toast('test!');
-      window.shareSuccess && window.shareSuccess();
+    this.notifyShareBehavior(shareKind);
+    // new Toast('test!');
+    window.shareSuccess && window.shareSuccess();
       
   },
 
@@ -57,6 +55,7 @@ module.exports = {
     var self = this,
       lo = window.location.href;
     this.debug = false;
+
     if (lo.indexOf('waibao') != -1 || lo.indexOf('localhost') != -1) {
       self.debug = true;
     }
@@ -100,14 +99,15 @@ module.exports = {
             nick = self.profileObject.nickname;
           }
 
-          i = avatar || getWXIconWL(); // window.location.origin + '/img/share.jpg';
+          i = avatar || getWXIconWL();
           t = (nick || '我') + ' 买' + (self.orderObject.cmd.indexOf('buy') != -1 ? '涨' : '跌') + self.orderObject.symbolName + ', 快来跟我买一起赚!'; // 分享标题
           d = getWXCurrentDesWL(); // 分享描述
-          l = getWXDomainWL() /*window.location.origin*/ + '/s/order-share.html?order=' + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + encodeURIComponent(self.orderObject.symbolName) + '&invite=' + inviteCode  + '&nickname=' + encodeURIComponent((nick || '我')) + '&cmd=' + encodeURIComponent(self.orderObject.cmd) + '&uid=' + uid; // 分享链接  
+          l = getWXDomainWL() + '/s/order-share.html?order=' + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + encodeURIComponent(self.orderObject.symbolName) + '&invite=' + inviteCode  + '&nickname=' + encodeURIComponent((nick || '我')) + '&cmd=' + encodeURIComponent(self.orderObject.cmd) + '&uid=' + uid; // 分享链接  
           if (self.profileObject && self.profileObject.repostInviteCode) {
             l += '&repostInviteCode=' + self.profileObject.repostInviteCode;
           }
         }
+
         // 分享历史订单
         else if (shareKind == 'history') {
           
@@ -124,14 +124,15 @@ module.exports = {
           }
 
           var allProfit = parseFloat(self.orderObject.profit) + parseFloat(self.orderObject.swap) - parseFloat(self.orderObject.commission);
-          i = avatar || getWXIconWL(); // window.location.origin + '/img/share.jpg';
+          i = avatar || getWXIconWL(); 
           t = (nick || '我') + ' 买' + (self.orderObject.cmd.indexOf('buy') != -1 ? '涨' : '跌') + self.orderObject.symbolName + ', ' + (allProfit >= 0 ? '赚' : '亏') + '了' + allProfit.toFixed(2) + '美元, 收益率' + (allProfit / self.orderObject.margin * 100).toFixed(2) + '%, 快来跟我一起赚!'; // 分享标题
-          d = getWXHistoricalDesWL(); //'点击查看详情, 新用户注册可获赠金!'; // 分享描述
-          l = getWXDomainWL() /*window.location.origin*/ + '/s/order-share.html?order=' + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + encodeURIComponent(self.orderObject.symbolName) + '&invite=' + inviteCode + '&nickname=' + encodeURIComponent((nick || '我')) + '&cmd=' + encodeURIComponent(self.orderObject.cmd) + '&uid=' + uid; // 分享链接  
+          d = getWXHistoricalDesWL();
+          l = getWXDomainWL() + '/s/order-share.html?order=' + self.orderObject.ticket + '&symbol=' + self.orderObject.symbol + '&name=' + encodeURIComponent(self.orderObject.symbolName) + '&invite=' + inviteCode + '&nickname=' + encodeURIComponent((nick || '我')) + '&cmd=' + encodeURIComponent(self.orderObject.cmd) + '&uid=' + uid; // 分享链接  
           if (self.profileObject && self.profileObject.repostInviteCode) {
             l += '&repostInviteCode=' + self.profileObject.repostInviteCode;
           }
         }
+
         // 分享极速交易
         else if (shareKind == 'rapid') {
          
@@ -146,10 +147,10 @@ module.exports = {
             nick = self.profileObject.nickname;
           }
 
-          i = avatar || getWXIconWL(); // window.location.origin + '/img/share.jpg';
+          i = avatar || getWXIconWL();
           t = (nick || '我') + '在' + getWLName() + '使用 极速交易, 捕捉行情稳准狠!'; // 分享标题
-          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
-          l = getWXInviteUrlWL() + inviteCode; //window.location.origin + '/i/' + inviteCode; // 分享链接
+          d = getWXInviteDesWL();
+          l = getWXInviteUrlWL() + inviteCode;
 
           if ( getIsNewShareWl() ) {
             l = getNewShareWl() + uid;
@@ -160,14 +161,16 @@ module.exports = {
             i = avatar || getWXIconWL();
           }
         }
+
         // 每日分享
         else if (shareKind == 'recommend') {
           var myDate = new Date();
-          i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
+          i = getWXIconWL();
           t = getWXRecommendTitleWL() + (myDate.getMonth() + 1) + '月' + myDate.getDate() + '日'; // 分享标题
-          d = getWXRecommendDesWL(); // '--为您汇总最优秀的交易信号, 助您投资收益迅速翻番!'; // 分享描述
-          l = getWXRecommendLinkWL(); // self.recommendUrl; // 分享链接
+          d = getWXRecommendDesWL();
+          l = getWXRecommendLinkWL();
         }
+
         // 个人详情页面
         else if (shareKind == 'profile') {
           // 以 // 开头的情况
@@ -175,31 +178,32 @@ module.exports = {
           if (ava && ava.indexOf('http') == -1) {
             ava = "http:" + ava;
           }
-          i = ava; // getWXIconWL(); // window.location.origin + '/img/share.jpg';
+          i = ava;
           t = '我伙呆! ' + self.profileObject.nick_name + '的投资收益率达到了...'; // 分享标题
           d = '全时盈利: ' + self.profileObject.gross_profit + '美元, 月均收益率: ' + (self.profileObject.month_rate_of_return * 100).toFixed(2) + '%';
-          l = getWXDomainWL() /*window.location.origin*/ + '/s/my/profile.html?inviteCode=' + self.profileObject.inviteCode + '&uid=' + uid;
+          l = getWXDomainWL() + '/s/my/profile.html?inviteCode=' + self.profileObject.inviteCode + '&uid=' + uid;
           if (self.profileObject.repostInviteCode) {
             l += '&repostInviteCode=' + self.profileObject.repostInviteCode;
           }
-           // 分享链接  
         }
+
         // 转发邀请, 使用当前链接
         else if (shareKind == 'origin_share') {
-          i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
-          t = getWXInviteTitleWL(); // '新用户24小时赚多少提多少 免费提现!'; // 分享标题
-          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          i = getWXIconWL(); 
+          t = getWXInviteTitleWL();
+          d = getWXInviteDesWL();
           l = location.href; // 分享链接
 
           if(t.indexOf('%s') != -1 ) {
             t = t.replace(/%s/, '我');
           }
         }
+
         // 默认邀请页面
         else if (shareKind == 'default_invite') {
-          i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
-          t = getWXInviteTitleWL(); // '新用户24小时赚多少提多少 免费提现!'; // 分享标题
-          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          i = getWXIconWL();
+          t = getWXInviteTitleWL();
+          d = getWXInviteDesWL();
           l = getWXInviteUrlWL() + self.cookie.get('inviteCode') + '&source=default_invite'; // 分享链接
           
           if ( getIsNewShareWl() ) {
@@ -211,6 +215,7 @@ module.exports = {
             t = t.replace(/%s/, nick);
           }
         }
+
         // 高手详情
         else if (shareKind === 'superior') {
             if(self.profileObject) {
@@ -221,10 +226,11 @@ module.exports = {
             }
 
             i = avatar || getWXIconWL();
-            t = '我是高手详情';
-            d = '我是高手详情';
+            t = '高手详情';
+            d = '高手详情';
             l = getWXDomainWL() + '/s/master-order.html?expertId=' + self.profileObject.expertId;
         }
+
         // 邀请好友页面
         else {
           if (self.profileObject) {           
@@ -235,9 +241,9 @@ module.exports = {
             nick = self.profileObject.nickname;
           }
 
-          i = getWXIconWL(); // window.location.origin + '/img/share.jpg';
-          t = getWXInviteTitleWL(); // '新用户24小时赚多少提多少 免费提现!'; // 分享标题
-          d = getWXInviteDesWL(); // '--新用户注册即送15美金, 24小时内赚多少提多少, 不收手续费!'; // 分享描述
+          i = getWXIconWL();
+          t = getWXInviteTitleWL();
+          d = getWXInviteDesWL();
           l = getWXInviteUrlWL() + inviteCode; //window.location.origin + '/i/' + inviteCode; // 分享链接
 
           if ( getIsNewShareWl() ) {
