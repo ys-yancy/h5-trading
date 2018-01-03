@@ -83,24 +83,10 @@ Base.extend(Option, PageBase, {
     doc.on('click', '.J_UpSymbol', $.proxy(this._upSymbol, this));
     doc.on('click', '.J_DelSymbol', $.proxy(this._delSymbol, this));
 
-    doc.on('tap', '.J_OpenSearch', $.proxy(function(e) {
-      this.headerEl.addClass('unfold');
-    }, this));
-
-    doc.on('tap', '.J_CloseSearch', $.proxy(function(e) {
-      this.headerEl.removeClass('unfold');
-    }, this));
-
-    doc.on('click', '.J_ExtraItem', (e) => {
+    doc.on('click', '.fn', (e) => {
       var curEl = $(e.currentTarget);
-
-      if (curEl.hasClass('add')) {
-
-        this._tips(e);
-      }
-
+      this._tips(e);
     });
-
 
     this.subscribe('switch:account', function() {
       setTimeout(function() {
@@ -687,21 +673,19 @@ Base.extend(Option, PageBase, {
     e.stopPropagation();
     var dialog = new Dialog({
       isShow: true,
-      tmpl: `<div class=" dialog-standard" id="J_Dialog">
-               <span class="wrapper-icon"><span class="icon"></span></span>
-               <div class="dialog-content J_Content">
-                   <p class="title"> 您正在使用极速交易模式，须使用限定品种下单。如需更改品种，请切换至专业交易模式</p>
-               </div>
-               <div class="dialog-buttons clearfix">
-                   <span class="dialog-btn   J_DialogConfirm" id="">切换至专业交易</span>
-                   <span class="dialog-btn J_DialogClose ">继续使用</span>
-                   <span class="bar"></span>
-               </div>
+      tmpl: `<div class="dialog J_Dialog dialog-standard" id="J_Dialog">
+                <div class="dialog-content J_Content">
+                  <p class="title">提示</p>
+                  <p> 您正在使用极速交易模式，须使用限定品种下单。如需更改品种，请切换至专业交易模式</p>
+                </div>
+                <div class="dialog-buttons clearfix">
+                  <span class="dialog-btn J_DialogClose ">取消</span>
+                  <span class="dialog-btn   J_DialogConfirm" id="">专业交易</span>
+                </div>
             </div>
             <div class="dialog-mask J_DialogMask"></div>`,
       confirmCallback: function() {
         Cookie.set('tradingUI', 4);
-        
         location.reload();
       }
     });
