@@ -271,6 +271,7 @@ Base.extend(ProTrading, PageBase, {
     var curEl = $(e.target);
     var bdEl = $('.bd');
     if (bdEl.hasClass('unfold') && this._hasEdit()) {
+      window.scrollTo(0, 0);
       this._initDialog();
     } else {
       bdEl.toggleClass('unfold');
