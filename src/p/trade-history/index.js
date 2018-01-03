@@ -34,11 +34,11 @@ Base.extend(TradeHistory, PageBase, {
     this._requires();
     this._bind();
     this._initSticky();
-    this.configStatistics();
-
-    this.prevType = this.isDemo();
     this._getList();
     this._getTotal();
+    this.configStatistics();
+    this.prevType = this.isDemo();
+
     // new LiveSpeech();
   },
 
