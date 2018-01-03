@@ -8,7 +8,6 @@ import Banner from './banner';
 class Home extends Base {
 	constructor(config) {
 		super(config);
-		
 		new Banner();
 		new FloatMsg();
 		new SildeMenu({
