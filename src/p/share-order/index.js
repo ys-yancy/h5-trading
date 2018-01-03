@@ -458,7 +458,7 @@ class ShareOrder extends PageBase {
       // 更新浮动盈亏session.get('group'), [this.orderObject], [this.orderObject.symbol]
       self.getFloatingProfit(session.get('group'), [self.orderObject], [self.orderObject.symbol]).then((floatProfit) => {
         var floatProfitEl = $('.J_FloatProfit.num');
-        floatProfitEl.text(floatProfit.toFixed(2));
+        $('.J_FloatProfit').text(floatProfit.toFixed(2));
 
         if (floatProfit.toFixed(2) > 0) {
           floatProfitEl.addClass('up').removeClass('down');

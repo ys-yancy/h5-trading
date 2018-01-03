@@ -152,46 +152,6 @@ Base.extend(ActualOrder, Base, {
 
 			item.isShowDesc = desc;
 
-			// if (minTime > this.base5DTime.time) {
-			// 	item.isShowDesc = this.base5DTime.desc;
-			// } 
-			// else if (minTime > this.base4DTime.time) {
-			// 	item.isShowDesc = this.base4DTime.desc;
-			// } 
-			// else if (minTime > this.base3DTime.time) {
-			// 	item.isShowDesc = this.base3DTime.desc;
-			// } 
-			// else if (minTime > this.base2DTime.time) {
-			// 	item.isShowDesc = this.base2DTime.desc;
-			// } 
-			// else if (minTime > this.base1DTime.time) {
-			// 	item.isShowDesc = this.base1DTime.desc;
-			// } 
-			// else if ( minTime > this.base12HTime.time ) {
-			// 	item.isShowDesc = this.base12HTime.desc;
-			// } 
-			// else if ( minTime > this.base5HTime.time ) {
-			// 	item.isShowDesc = this.base5HTime.desc;
-			// } 
-			// else if (minTime > this.base60Time.time){
-			// 	item.isShowDesc = this.base60Time.desc;
-			// } 
-			// else if(minTime > this.base30Time.time){
-			// 	item.isShowDesc = this.base30Time.desc;
-			// } 
-			// else if(minTime > this.base15Time.time) {
-			// 	item.isShowDesc = this.base15Time.desc;
-			// } 
-			// else if(minTime > this.base5Time.time) {
-			// 	item.isShowDesc = this.base5Time.desc;
-			// } 
-			// else if (minTime > baseTime) {
-			// 	item.isShowDesc = '刚刚';			
-			// } 
-			// else {
-			// 	item.isShowDesc = false;
-			// }
-
 			item.avatar = item.avatar ? Config.getAvatarPrefix(item.avatar) : getDefaultIconWL();
 
 			return item;
