@@ -18,11 +18,11 @@ export default class BottomAccount extends PageBase {
 
 	init() {
 		this._initAttrs();
-	    this._bind();
-	    this._getAccount();
-
-	    this.getAccountData({ interval: true });
-	    
+		this._bind();
+		// _getAccount() 和 getAccountData({ interval: true }) 调用后面的即可, 如果有问题都调用
+	    // this._getAccount(); 
+		this.getAccountData({ interval: true });
+	  
 	    this.checkOne = false;
 	    this.checkTwo = false;
 	}
