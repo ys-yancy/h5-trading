@@ -23,7 +23,7 @@
         <!-- <span class="lt-item spread J_Spread">8.0</span> -->
         <span class="lt-item spread"><span class="spread-content ui common J_Spread">8.0</span></span>
         <span class="lt-item price J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></span>
-        <span class="lt-item percent <%if(rate > 0){%>up <%}%> J_Percent" data-range="<%= isNaN(price) ? '--' :  (price - item.close_price).toFixed(unit) %>"><%= rate %>%</span>
+        <span class="lt-item percent default-down <%if(rate > 0){%> up <%}%> J_Percent" data-range="<%= isNaN(price) ? '--' :  (price - item.close_price).toFixed(unit) %>"><%= rate %>%</span>
         <div class="action-wrapper clearfix" >
           <span class="up J_UpSymbol ui common btn-setUi" data-symbol="<%= item.policy.symbol %>">置顶</span>
           <span class="del J_DelSymbol ui common btn-del" data-symbol="<%= item.policy.symbol %>">移除</span>
