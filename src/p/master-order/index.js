@@ -21,9 +21,12 @@ function FollowOrder() {
 	this._component = {};
 	
 	this.expertId = new Uri().getParam('expertId');
-
+	
 	if ( Cookie.get('token') ) {
     	this._render().then(() => {
+			// if (!this.cookie.get('token')) {
+			// 	$('.footer').replaceWith('<a>马上注册,就可以开始跟单了!</a>');
+			// }
 			this.init();
 		}, () => {
 			console.log('error')
@@ -268,47 +271,48 @@ Base.extend(FollowOrder, PageBase, {
 		var self = this;
 		this.getAccount().then(function(account) {
         if (! self.profileObject) {
-          self.profileObject = new Object ();
+          self.profileObject = new Object();
         }
 
         self.profileObject.avatar = account.avatar ? Config.getAvatarPrefix(account.avatar) : '';
         self.profileObject.nickname = account.nickname;
-        self.profileObject.expertId = self.expertId;
+		self.profileObject.expertId = self.expertId;
+		
         if (self.isWeixin()) {
-          var share,
-          	desc = '分享';
-         
-          var html = '<span class="followOrder share">分享</span>';
+          	var share,
+				desc = '分享',
+				html = '<span class="followOrder share ui icon"></span>';
+        
+			// $('#J_Header').append(html);
 
-          // $('#J_Header').append(html);
-
-          self.setupWeiXinShare('superior');
-          
+			self.setupWeiXinShare('superior');
+			  
         }else if (Config.isAndroidAPK()) {
 
-          var avatar = self.profileObject.avatar;
-          if (avatar && avatar.indexOf('http') == -1) {
-            avatar = "http:" + avatar;
-          }
-          var nick = self.profileObject.nickname;
+          	var avatar = self.profileObject.avatar;
+          	if (avatar && avatar.indexOf('http') == -1) {
+				// console.log(document.location.protocol)
+            	avatar = "http:" + avatar;
+          	}
+          	var nick = self.profileObject.nickname;
           
-          var title = '我是高手';//分享标题;
-          var desc = getWXHistoricalDesWL(); //'点击查看详情'; 
-          var imgUrl = self.profileObject.avatar || getWXIconWL(); 
-          var wl = Cookie.get('wl'),
-          	wl_url = '/s/master-order.html?expertId=';
+          	var title = '我是高手';//分享标题;
+          	var desc = getWXHistoricalDesWL(); //'点击查看详情'; 
+          	var imgUrl = self.profileObject.avatar || getWXIconWL(); 
+          	var wl = Cookie.get('wl'),
+          		wl_url = '/s/master-order.html?expertId=';
 
-          if ( wl != 'firstbroker' ) {
-              wl_url = '/' + wl + '/s/master-order.html?expertId=';
-          }
+          	if ( wl != 'firstbroker' ) {
+              	wl_url = '/' + wl + '/s/master-order.html?expertId=';
+          	}
 
-          var link = Config.getAndroidSharePrefix() + wl_url + self.profileObject.expertId; // 分享链接
+          	var link = Config.getAndroidSharePrefix() + wl_url + self.profileObject.expertId; // 分享链接
 
-          var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
+          	var l = 'invhero-android:shareOrder?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
-          // 添加分享按钮
-          var html = '<a class="option share" href=' + l + '>分享</a>';
-          // $('#J_Header').append(html);
+          	// 添加分享按钮
+          	var html = '<a class="option share ui icon" href=' + l + '></a>';
+          	$('#J_Header').append(html);
         }
       });
 	},
