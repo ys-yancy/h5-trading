@@ -113,7 +113,26 @@ html, body{
 }
 
 .ui.icon{
-	background: #eae6e6;
+	background: url('../../img/app-icon.png');
+	.background-size(700, 700);
+	&.menu{
+		.background-position(-295, -315);
+	}
+	&.fn.add{
+		.background-position(-200, -315);
+	}
+	&.go-back{
+		.background-position(-105, -315);
+	}
+	&.desc{
+		.background-position(0, -315);
+	}
+	&.add{
+		.background-position(0, -220);
+	}
+	&.minus{
+		.background-position(-95, -220);
+	}
 }
 
 .ui.common.icon.float-msg{
@@ -217,18 +236,70 @@ html, body{
 .ui.common.bottom-nav{
 	background: #222b32;
 	.icon{
-		background: #4A4A4A;
+		background: url('../../img/app-icon.png') 0 0 no-repeat;
+		.background-size(700, 700);
+		border-radius: 0;
 	}
 	.name{
 		color: @footerNameColor;
 	}
-	.active{
+
+	.trade{
 		.icon{
-			background: #fff;
+			.background-position(0, 0);
 		}
+	}
+	.social{
+		.icon{
+			.background-position(-110, 0);
+		}
+	}
+	.foolow{
+		.icon{
+			.background-position(-220, 0);
+		}
+	}
+	.news{
+		.icon{
+			.background-position(-330, 0);
+		}
+	}
+	.my{
+		.icon{
+			.background-position(-440, 0);
+		}
+	}
+
+	.active{
 		.name{
 			color: @footerActiveColor;
-		}	
+		}
+
+		.trade{
+			.icon{
+				.background-position(0, -110);
+			}
+		}
+		.social{
+			.icon{
+				.background-position(-110, -110);
+			}
+		}
+		.foolow{
+			.icon{
+				.background-position(-220, -110);
+			}
+		}
+		.news{
+			.icon{
+				.background-position(-330, -110);
+			}
+		}
+		.my{
+			.icon{
+				.background-position(-440, -110);
+			}
+		}
 	}
 }
 
