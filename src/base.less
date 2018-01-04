@@ -99,7 +99,10 @@
           .font-size(22);
         }
       }
-      &.active{}
+      // &.active .icon{
+      //   animation: bottom-nav-scale .3s ease;
+      //   .scaleanimate();
+      // }
     }
   }
 }
@@ -232,6 +235,55 @@
   }
 }
 
+.scaleanimate() {
+  @keyframes bottom-nav-scale {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(.5);
+  }
+  100%{
+    transform: scale(1);
+  }
+  }
+  
+  @-webkit-keyframes bottom-nav-scale {
+    0%{
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(.5);
+    }
+    100%{
+      transform: scale(1);
+    }
+  }
+  
+  @-moz-keyframes bottom-nav-scale {
+    0%{
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(.5);
+    }
+    100%{
+      transform: scale(.5);
+    }
+  }
+  
+  @-o-keyframes bottom-nav-scale {
+    0%{
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(.5);
+    }
+    100%{
+      transform: scale(1);
+    }
+  }
+}
 
 .reset-placeholder(@color: #9F9F9F) {
   ::-webkit-input-placeholder {
