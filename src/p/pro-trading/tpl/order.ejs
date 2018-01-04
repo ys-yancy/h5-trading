@@ -21,7 +21,7 @@
 <div class="center-item guadan-price" <% if (!data.guadan && !data.edit) {%> style="display:;"<%}%>>
   <% if (!data.edit) { %>
     <div class="slide-left">
-      <span class="icon J_Trusteeship ui radio-w <% if (!data.guadan) {%> close <% }%>"></span>
+      <span class="J_Trusteeship ui radio-w <% if (!data.guadan) {%> close <% }%>"></span>
     </div>
     <div class="err-wrapper">
       <p class="title">挂单开仓价</p>
@@ -40,7 +40,7 @@
     <div class="wrapper">
         <%var hasTakeProfit = data.takeProfit ? parseFloat(data.takeProfit) !== 0 : data.hasTakeProfit%>
         <div class="slide-left">
-          <span id="J_ThuTakeprofit" class="icon ui radio-w J_ThuTakeprofit <% if (!hasTakeProfit) {%> close <% }%>"></span>
+          <span id="J_ThuTakeprofit" class="ui radio-w J_ThuTakeprofit <% if (!hasTakeProfit) {%> close <% }%>"></span>
         </div>
         <p class="title">止盈价格</p>
         <div class="J_MinusTakeprofit minus ui icon"></div>
@@ -52,7 +52,7 @@
     <div class="wrapper">
         <%var hasStopLoss = data.stopLoss ? parseFloat(data.stopLoss) !== 0 : data.hasStopLoss%>
         <div class="slide-left">
-          <span id="J_ThuStopLoss" class="icon ui radio-w J_ThuStopLoss <% if (!hasStopLoss) {%> close <% }%>"></span>
+          <span id="J_ThuStopLoss" class="ui radio-w J_ThuStopLoss <% if (!hasStopLoss) {%> close <% }%>"></span>
         </div>
         <p class="title">止损价格</p>
         <div class="J_MinusStopLoss minus ui icon"></div>
