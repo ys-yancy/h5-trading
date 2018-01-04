@@ -36,7 +36,7 @@ Base.extend(Cat, PageBase, {
 
         formEl.on('submit', $.proxy(this._search, this));
 
-        doc.on('click', '.action', $.proxy(this._action, this));
+        doc.on('tap', '.action', $.proxy(this._action, this));
 
         doc.on('tap', '.J_Link', $.proxy(this._link, this));
 
@@ -63,6 +63,8 @@ Base.extend(Cat, PageBase, {
           message;
 
         e.preventDefault();
+        e.stopPropagation();
+
         this.curItemEl = itemEl;
         this.symbol = symbol;
 
@@ -443,7 +445,8 @@ Base.extend(Cat, PageBase, {
           '<div class="dialog J_Dialog dialog-trade del-dialog " id="J_Dialog">',
           '   <span class="wrapper-icon"><span class="icon"></span></span>',
           '   <div class="dialog-content J_Content">',
-          '        <p class="title">确认删除自选</p>',
+          '        <p class="title">提示</p>',
+          '        <p>确认删除自选吗?</p>',
           '   </div>',
           '   <div class="dialog-buttons clearfix">',
           '       <span class="dialog-btn J_DialogClose">取消</span>',

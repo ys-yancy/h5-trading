@@ -29,7 +29,8 @@ export default class Dialog extends Base{
 
     show(options) {
         let maskEl = this.el.next('.J_DialogMask');
-        $('.dialog-btn', this.el).removeClass('active');   
+        $('.dialog-btn', this.el).removeClass('active');
+        window.scrollTo(0, 0);
         maskEl.show();
         this.el.show();
     }
@@ -89,7 +90,11 @@ export default class Dialog extends Base{
 
         if (!this.isShow) {
             this.hide();
+            return;
         }
+
+        window.scrollTo(0, 0);
+
     }
 
     destroy() {

@@ -139,24 +139,25 @@ nav {
       }
       .action {
         position: absolute;
-        .top(55);
-        .right(30);
-        .width(44);
-        .height(44);
-        background: green;
+        z-index: 2;
+        .top(36.5);
+        .right(0);
+        .width(120);
+        .height(82);
         .icon {
           position: absolute;
-          .top(0);
-          .left(0);
+          .top(19);
+          .right(30);
           .width(44);
           .height(44);
+          background: green;
         }
       }
       &.add {
         .action {
-          background: red;
           .icon {
-          }
+            background: red;
+          } 
         }
       }
     }
