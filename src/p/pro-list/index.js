@@ -514,7 +514,7 @@ Base.extend(ProChart, PageBase, {
         });
 
         if (order && self.orderObject) {
-          floatProfit = (profitOption[order] + commission - swap)
+          floatProfit = (profitOption[order]) // + commission - swap
           floatProfit = floatProfit.toFixed(2);
           self.chart && self.chart.updateProfitPlotLine(floatProfit, bidPrice, order);
         } else {
