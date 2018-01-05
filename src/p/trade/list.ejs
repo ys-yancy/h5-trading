@@ -1,5 +1,5 @@
 <% $.each(data.normal, function(index, item) {%>
-<li class="item J_Item" data-symbol="<%= item.symbol %>">
+<li class="item bd-color J_Item" data-symbol="<%= item.symbol %>">
     <a class="link bd-color clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
         <div class="name-wrapper">
             <p class="tag default-down <% if(item.cmd.indexOf('buy') !== -1) {%> up <%}%>">
@@ -39,10 +39,10 @@
 </li>
 <% }); %>
 <% if (data.guadan.length > 0) {%>
-<li class="guadan">挂单</li>
+<li class="guadan tab-nav ui common">挂单</li>
 <% } %>
 <% $.each(data.guadan, function(index, item) {%>
-<li class="item J_Item" data-symbol="<%= item.symbol %>">
+<li class="item bd-color J_Item" data-symbol="<%= item.symbol %>">
     <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
         
         <div class="name-wrapper">

@@ -1,5 +1,5 @@
 <% $.each(data.list, function(index, item) {%>
-<li class="item J_Item" data-symbol="<%= item.symbol %>">
+<li class="item bd-color J_Item" data-symbol="<%= item.symbol %>">
     <a class="link clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
         <div class="name-wrapper">
             <p class="tag <% if(item.cmd.indexOf('buy') !== -1) {%>lose <%}%>">

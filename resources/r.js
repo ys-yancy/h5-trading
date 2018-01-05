@@ -176,7 +176,7 @@ function getIfShowDLinkWL () {
 
 // 是否显示官微二维码
 function getIfShowWXCodeWL () {
-	return true;
+	return false;
 }
 
 // 官方微信-个人中心
