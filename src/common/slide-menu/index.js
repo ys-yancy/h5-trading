@@ -65,12 +65,12 @@ export default class SlideMenu extends PageBase {
 	}
 
 	_switchAccountReset(controEl) {
-		let defaultType = getSimulatePlate() ? 'demo' : 'real';
-		this.cookie.expire('goType');
-		this.cookie.set('type', defaultType, {
-          	expires: Infinity
-        });
-		controEl.removeClass('real').addClass('demo');
+		// let defaultType = getSimulatePlate() ? 'demo' : 'real';
+		// this.cookie.expire('goType');
+		// this.cookie.set('type', defaultType, {
+        //   	expires: Infinity
+        // });
+		// controEl.removeClass('real').addClass('demo');
 	}
 
 	_switchTradeingUI(e) {
@@ -201,7 +201,7 @@ export default class SlideMenu extends PageBase {
 
 		if (!getSimulatePlate() && !isDemo) {
 			Cookie.expire('real_token');
-	    	Cookie.set('type', 'demo');
+			Cookie.set('type', 'demo');
 	    	window.location.reload();
 	    }
 	}
@@ -218,6 +218,7 @@ export default class SlideMenu extends PageBase {
 	_render() {
 		this.tradingUI = this.initUI;
 		return new Promise((resolve, reject) => {
+			console.log(this.initType)
 			this.render(tmpl, {
 				type: this.initType,
 				phone: Cookie.get('phone'),
