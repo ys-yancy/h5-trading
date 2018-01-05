@@ -219,6 +219,11 @@ export default class SlideMenu extends PageBase {
 		this.tradingUI = this.initUI;
 		return new Promise((resolve, reject) => {
 			console.log(this.initType)
+			setTimeout(() => {
+				
+				console.log(this.initType,  Cookie.get('type'))
+			}, 5000)
+			
 			this.render(tmpl, {
 				type: this.initType,
 				phone: Cookie.get('phone'),
