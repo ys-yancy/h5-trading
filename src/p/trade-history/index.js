@@ -68,6 +68,7 @@ Base.extend(TradeHistory, PageBase, {
     //     e.preventDefault();
     //     e.stopPropagation();
     //   });
+    
     // this.subscribe('switch:account', function() {
     //     setTimeout(function() {
     //         location.reload();

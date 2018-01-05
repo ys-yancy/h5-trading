@@ -25,7 +25,7 @@ export default class SlideMenu extends PageBase {
 
 	_bind() {
 		this.subscribe('get:realToken', this._getRealToken, this);
-
+		this.subscribe('reject:realToken', this._rejectRealToken, this)
 		this.el.on('tap', '.J_SwitchAccount', $.proxy(this._switchAccount, this))
 		this.el.on('tap', '.J_SwitchTradeingUI', $.proxy(this._switchTradeingUI, this));
 
@@ -160,6 +160,13 @@ export default class SlideMenu extends PageBase {
 	_getRealToken() {
 		var curEl = $('.J_Standard', '.J_SwitchAccount');
 		curEl.removeClass('demo').addClass('real');
+	}
+
+	_rejectRealToken() {
+		if ($('body').hasClass('show-slide-menu')) {} else {
+			this.cookie.set('type' ,'demo');
+			location.reload();
+		}
 	}
 
 	_isChangeTdUI() {
