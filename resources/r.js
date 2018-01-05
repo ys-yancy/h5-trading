@@ -56,7 +56,7 @@ function getIsOnlyShowReal() {
 
 // 在微信中是否显示实盘 优先级高于getIsOnlyShowReal
 function getWeiXinIsHasReal() {
-	return false;
+	return true;
 }
 
 // 是否显示在浏览器打开提示

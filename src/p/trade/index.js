@@ -87,8 +87,8 @@ Base.extend(Trade, PageBase, {
 
   _lazyBind: function() {
     this.bottomAccount.on('get:realFloatMargin', this._getFloatMargin, this);
-    // this.bottomAccount.on('toggle:account', this._toggleAccount, this);
-    // this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
+    this.bottomAccount.on('toggle:account', this._toggleAccount, this);
+    this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
   },
 
   _hideFn: function(e) {

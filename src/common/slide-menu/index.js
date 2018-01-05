@@ -11,6 +11,7 @@ import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
 	constructor(config) {
 		super(config);
+		this._checkOnly();
 		this._render().then(() => {
 			this._init();
 		});
@@ -19,7 +20,6 @@ export default class SlideMenu extends PageBase {
 	_init() {
 		this._bind();
 		this._requires();
-		this._checkOnly();
 		this._updateUserInfo();
 	}
 
@@ -65,12 +65,12 @@ export default class SlideMenu extends PageBase {
 	}
 
 	_switchAccountReset(controEl) {
-		// let defaultType = getSimulatePlate() ? 'demo' : 'real';
-		// this.cookie.expire('goType');
-		// this.cookie.set('type', defaultType, {
-        //   	expires: Infinity
-        // });
-		// controEl.removeClass('real').addClass('demo');
+		let defaultType = getSimulatePlate() ? 'demo' : 'real';
+		this.cookie.expire('goType');
+		this.cookie.set('type', defaultType, {
+          	expires: Infinity
+        });
+		controEl.removeClass('real').addClass('demo');
 	}
 
 	_switchTradeingUI(e) {
@@ -191,19 +191,27 @@ export default class SlideMenu extends PageBase {
 		    return;
 		}
 
-		if (Util.isWeixin() && !getWeiXinIsHasReal()) {
-		    Cookie.set('type', 'demo');
-		    return;
-		} else if(getIsOnlyShowReal()){
-		    Cookie.set('type', 'real');
-		    return;
+		if (Util.isWeixin() && !getWeiXinIsHasReal() && !isDemo) {
+			Cookie.expire('goType');
+			Cookie.set('type', 'demo');
+			window.location.reload();
+			return;
 		}
 
+		if (getIsOnlyShowReal() && isDemo) {
+			Cookie.set('type', 'real');
+			window.location.reload();
+			return;
+		}
+		
 		if (!getSimulatePlate() && !isDemo) {
+			Cookie.expire('goType');
 			Cookie.expire('real_token');
 			Cookie.set('type', 'demo');
-	    	window.location.reload();
-	    }
+			window.location.reload();
+			return;
+		}	
+
 	}
 
 	_requires() {
@@ -218,19 +226,13 @@ export default class SlideMenu extends PageBase {
 	_render() {
 		this.tradingUI = this.initUI;
 		return new Promise((resolve, reject) => {
-			console.log(this.initType)
-			setTimeout(() => {
-				
-				console.log(this.initType,  Cookie.get('type'))
-			}, 5000)
-			
 			this.render(tmpl, {
 				type: this.initType,
 				phone: Cookie.get('phone'),
 				tradingUI: this.tradingUI,
 				inviteCode: Cookie.get('inviteCode'),
 				page: this.page,
-				isSwtp: !getSimulatePlate() || getIsOnlyShowReal()
+				isSwtp: !getSimulatePlate() || getIsOnlyShowReal() || !getWeiXinIsHasReal()
 			}, this.el);
 			resolve();
 		})
