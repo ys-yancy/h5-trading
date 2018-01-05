@@ -38,7 +38,8 @@ var entryAll = {
     'recharge': './src/p/recharge/index',
     'extract': './src/p/extract/index',
     'open-account': './src/p/open-account/index',
-    'inbox': './src/p/inbox/index'
+    'inbox': './src/p/inbox/index',
+    'cs': './src/p/cs/index'
 };
 
 module.exports = {

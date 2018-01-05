@@ -1,0 +1,31 @@
+@import '../../base.less';
+@import '../../variable.less';
+header {
+    width: 100%;
+    overflow: hidden;
+    .header-inner {
+        position: relative;
+        height: 44px;
+        line-height: 44px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff !important;;
+        background: #329FD9 !important;
+        .go-back {
+            position: absolute;
+            left: 9px;
+            top:12px;
+            width:25px;
+            height: 22px;
+            background: #ccc;
+        }
+    }
+}
+.other{
+    position: absolute;
+    width: 100%;
+    width: calc(~'100% - 1px');
+    height: 4px;
+    top:  42px;
+    background: #329FD9;
+}
