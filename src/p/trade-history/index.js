@@ -790,7 +790,8 @@ Base.extend(TradeHistory, PageBase, {
       page: 'history'
     }).on('get:bottomAccount', function(bottomAccount) {
       self.bottomAccount = bottomAccount;
-      self._lazyBind();
+      //TODO 暂时先去掉  ， 会出现订单重复的问题
+      // self._lazyBind(); 
       self._setInterval();
     });
     // new CustomerService();

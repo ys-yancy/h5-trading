@@ -53,7 +53,6 @@ Base.extend(Trade, PageBase, {
     this.configStatistics();
     this.kindListData = {};
     this.list = {};
-
     // new LiveSpeech();
   },
 
@@ -73,22 +72,23 @@ Base.extend(Trade, PageBase, {
         e.stopPropagation();
       });
 
-    this.subscribe('switch:account', function() {
-      setTimeout(function() {
-        location.reload();
-      }, 0);
-    });
+    // this.subscribe('switch:account', function() {
+    //   setTimeout(function() {
+    //     location.reload();
+    //   }, 0);
+    // });
 
     // 添加默认微信分享
     if (this.isWeixin()) {
       this.setupWeiXinShare('default_invite');
     }
+
   },
 
   _lazyBind: function() {
     this.bottomAccount.on('get:realFloatMargin', this._getFloatMargin, this);
-    this.bottomAccount.on('toggle:account', this._toggleAccount, this);
-    this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
+    // this.bottomAccount.on('toggle:account', this._toggleAccount, this);
+    // this.bottomAccount.on('toggle:account:error', this._toggleAccountError, this);
   },
 
   _hideFn: function(e) {
