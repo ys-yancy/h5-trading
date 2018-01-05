@@ -9,63 +9,47 @@ require('../../../common/slider/index');
 export default class Banner extends PageBase {
   constructor(config) {
     super(config);
-    this._getData();
+    this._geOwnBanner();
   }
-  _getData() {  
-    var self = this
-    self.ajax({
-      url: '/v1/user/profile/invite_ads/?access_token=' + Cookie.get('token') + "&wl=" + Cookie.get('wl')
-    }).then((data) => {
-      if(data.data == ''){
-        self.ajax({
-          url: '/v1/config/banner'
-        }).then((data) => {
-          self.render(tmpl, data, $('.km-slider-outer'));
-          if (data.data.length > 1) {
-            $('#slider').slider({
-              loop: true,
-              play: true,
-              interval: 15 * 1000,
-              duration: 1000
-            });
-          }
-        })
 
-      }else{
-        var path = getAndroidAvatarUrl() + data.data.substr(8);
-        var data = {};
-        data.data = [path];
-        self.render(tmpl, data, $('.km-slider-outer'));
-
-        if (data.data.length > 1) {
-          $('#slider').slider({
-            loop: true,
-            play: true,
-            interval: 15 * 1000,
-            duration: 1000
-          });
-        }
+  _geOwnBanner() {
+    var self = this;
+    this.ajax({
+      url: '/v1/user/profile/invite_ads/?',
+      data: {
+        access_token: Cookie.get('token'),
+        wl:  Cookie.get('wl')
       }
-    }).fail(function(data){
-
-      self.ajax({
-        url: '/v1/config/banner'
-      }).then((data) => {
-        self.render(tmpl, data, $('.km-slider-outer'));
-
-        if (data.data.length > 1) {
-          $('#slider').slider({
-            loop: true,
-            play: true,
-            interval: 15 * 1000,
-            duration: 1000
-          });
-        }
-      })
-
+    }).then(function(data) {
+      if (data.data) {
+        var path = getAndroidAvatarUrl() + data.data.substr(8);
+        data.data = [path];
+        self._renderSlider(data);
+      } else {
+        self._getConfig();
+      }
+    }).fail(function() {
+      self._getConfig();
     })
+  }
 
+  _getConfig() {
+    self.ajax({
+      url: '/v1/config/banner'
+    }).then((data) => {
+      this._renderSlider(data);
+    })
+  }
 
-    
+  _renderSlider(data) {
+    this.render(tmpl, data, $('.km-slider-outer'));
+    if (data.data.length > 1) {
+      $('#slider').slider({
+        loop: true,
+        play: true,
+        interval: 15 * 1000,
+        duration: 1000
+      });
+    }
   }
 }
