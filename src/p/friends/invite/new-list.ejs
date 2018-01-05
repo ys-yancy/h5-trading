@@ -19,5 +19,13 @@
     </div>
   </li>
   <%}); %>
+  <% if(data.length === 0) {%>
+    <li class="no-friends">
+      <div class="empty">
+        <p>您当前没有好友</p>
+        <p>点击上方“+”去邀请好友</p>
+      </div>
+    </li>
+  <% } %>
 </ul>
 
