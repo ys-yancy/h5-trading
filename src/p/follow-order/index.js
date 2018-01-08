@@ -82,11 +82,15 @@ Base.extend(FollowOrder, Base, {
 
 	},
 
-	_reFollow: function() {
+	_reFollow: function(e) {
+		var curEl = $(e.currentTarget);
+		this._showLoad(curEl);
+
 		this._request('enable').then((data) => {
 			var reFollowEl = $('.J_ReFollow', this.el),
 				isPause = this.exportData.follow_paused == 1;
 			new Toast('启用成功');
+			this._hideLoad();
 			this._toggleBtn(reFollowEl, '.J_CancelFollow');
 			// this.referEl.removeClass('unfollow').addClass('follow');
 
@@ -98,13 +102,17 @@ Base.extend(FollowOrder, Base, {
 		})
 	},
 
-	_cancelFollow: function() {
+	_cancelFollow: function(e) {
+		var curEl = $(e.currentTarget);
+		this._showLoad(curEl);
+
 	    this.dialog = new Dialog({
 		    isShow: true,
 		    tmpl: this.tmpl,
 		    cancleCallback: $.proxy(function() {
 		      	this._request('cancel').then((data) => {
 					var reFollowEl = $('.J_CancelFollow', this.el);
+					this._hideLoad();
 					this._toggleBtn(reFollowEl, '.J_ReFollow');
 					// this.referEl.removeClass('follow').addClass('unfollow');
 					// app.success('您已取消跟单', 1500);
