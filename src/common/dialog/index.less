@@ -11,8 +11,15 @@
 	box-shadow: 0 5px 16px #777777;
 	background: #fff;
 	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-o-transform: translateZ(0);
 	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 	animation: dialogScaleShow .4s ease;
+	-webkit-animation: dialogScaleShow .4s ease;
+	-moz-animation: dialogScaleShow .4s ease;
+	-o-animation: dialogScaleShow .4s ease;
 	.title{
 		.font-size(32);
 		.padding(34, 0);
@@ -40,9 +47,60 @@
 
 @keyframes dialogScaleShow {
     0% {
-      transform: scale(.4);
+	   transform: scale(.4);
+	   -webkit-transform: scale(.4);
+	   -moz-transform: scale(.4);
+	   -o-transform: scale(.4);
     }
     100%{
-      transform: scale(1);
+	   transform: scale(1);
+	   -webkit-transform: scale(1);
+	   -moz-transform: scale(1);
+	   -o-transform: scale(1);
     }
+}
+
+@-moz-keyframes dialogScaleShow {
+	0% {
+		transform: scale(.4);
+		-webkit-transform: scale(.4);
+		-moz-transform: scale(.4);
+		-o-transform: scale(.4);
+	}
+	100%{
+		transform: scale(1);
+		-webkit-transform: scale(1);
+		-moz-transform: scale(1);
+		-o-transform: scale(1);
+	}
+}
+
+@-webkit-keyframes dialogScaleShow {
+	0% {
+		transform: scale(.4);
+		-webkit-transform: scale(.4);
+		-moz-transform: scale(.4);
+		-o-transform: scale(.4);
+	}
+	100%{
+		transform: scale(1);
+		-webkit-transform: scale(1);
+		-moz-transform: scale(1);
+		-o-transform: scale(1);
+	}
+}
+
+@-o-keyframes dialogScaleShow {
+	0% {
+		transform: scale(.4);
+		-webkit-transform: scale(.4);
+		-moz-transform: scale(.4);
+		-o-transform: scale(.4);
+	}
+	100%{
+		transform: scale(1);
+		-webkit-transform: scale(1);
+		-moz-transform: scale(1);
+		-o-transform: scale(1);
+	}
 }
