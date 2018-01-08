@@ -68,6 +68,7 @@
 			.right(30);
 			.cil{
 				display: inline-block;
+				position: relative;
 				.width(70);
 				.height(70);
 				.line-height(70);
@@ -76,6 +77,17 @@
 				background: #ccc;
 				&:last-child{
 					.margin-left(40);
+				}
+				&:after{
+					content: '';
+					position: absolute;
+					display: block;
+					.width(120);
+					.height(120);
+					.top(-30);
+					.right(-15);
+					background: transparent;
+					opacity: 0;
 				}
 			}
 		}
