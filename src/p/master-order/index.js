@@ -195,7 +195,10 @@ Base.extend(FollowOrder, PageBase, {
 	},
 
 	_showFollowAction: function() {
+		this._showFollowLoading('设置跟随资金');
+
 		new FollowAction({
+			parent: this,
 			id: this.expertId,
 			follower_balance_threshold: this.exportData.follower_balance_threshold
 		}).on('follow:order:success', () => {
@@ -211,7 +214,10 @@ Base.extend(FollowOrder, PageBase, {
 	},
 
 	_showFollowActionMore: function() {
+		this._showFollowLoading('跟单参数配置');
+
 		new FollowAction({
+			parent: this,
 			id: this.expertId,
 			isMore: true
 		})
@@ -317,6 +323,16 @@ Base.extend(FollowOrder, PageBase, {
       });
 	},
 
+	_showFollowLoading: function(title) {
+		$('#J_FollowTl').text(title);
+		this.followLoadingEl.show();
+	},
+
+	_hideFollowLoading: function() {
+		this.followLoadingEl.hide();
+		$('#J_FollowTl').text('');
+	},
+
 	_requires: function() {
 		this._component = {
 			TradeCurrent: new TradeCurrent({
@@ -345,6 +361,10 @@ Base.extend(FollowOrder, PageBase, {
 		this.hdEl = $('.hd', '#J_FollowOrder');
 		this.navEl = $('nav', '#J_FollowOrder');
 		this.bdEl = $('.bd', '#J_FollowOrder');
+	},
+
+	attrs: {
+		followLoadingEl: $('#J_FollowLoading')
 	}
 })
 

@@ -39,18 +39,24 @@
 </head>
 <body>
 <header class="header">
-    <div class="header-inner ui commin" id="J_Header">
-        <a class="go-back ui icon" href="./master-list.html">
-            <span class="icon arrow"></span>
-        </a>
+    <div class="header-inner ui common" id="J_Header">
+        <a class="go-back ui icon" href="./master-list.html"></a>
         <h1>高手详情</h1>
     </div>
 </header>
 
-<div class="content ui common content-color" id="J_Content">
-    
+<div class="content ui common content-color" id="J_Content"></div>
+<div class="follow-loading" id="J_FollowLoading" style="display:none;">
+    <div class="header-inner ui common">
+        <h1 id="J_FollowTl">配置</h1>
+    </div>
+    <div class="loading-wrapper">
+        <div class="ui loading" id="J_Loading">
+            <span class="circel"></span>  
+            <span class="loading-text">加载中...</span> 
+        </div>
+    </div>
 </div>
-
 <div class="shareImg" id="J_ShareImg">
     <img src="../img/lead.png" style="width:100%" alt="微信分享请点右上角"/>
 </div>

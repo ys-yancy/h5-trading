@@ -272,13 +272,14 @@ class FollowAction extends PageBase {
 			data.slippage = data.slippage ? data.slippage : 5;
 			data = this._updateDefaultConfig(data);
 			this.el = this.renderTo(tmpl, data, $('body'));
-
+			this.parent._hideFollowLoading();
 		}, (err) => {
 			var errorCode = err.status;
 			if (errorCode === 400) {
 				
 				var defaultConfig = this._updateDefaultConfig();
 				this.el = this.renderTo(tmpl, defaultConfig, $('body'));
+				this.parent._hideFollowLoading();
 			}
 		})
 	}
