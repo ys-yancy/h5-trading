@@ -577,7 +577,7 @@ Base.extend(TradeHistory, PageBase, {
     this.hasNextPage = true;
     this.prevType = this.isDemo();
     this._getTotal();
-    this._getList();
+    // this._getList();
   },
 
   _toggleAccountError: function() {
