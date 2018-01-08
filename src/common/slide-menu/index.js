@@ -120,6 +120,7 @@ export default class SlideMenu extends PageBase {
 		setTimeout(() => {
 			$('body').addClass('show-slide-menu');
 			this.el.addClass('unfold move-x');
+			this.isShowMenu = true;
 		}, 0)
 		
 	}
@@ -130,6 +131,7 @@ export default class SlideMenu extends PageBase {
 			this.el.hide();
 			$('#J_SlideMenuMask').hide();
 			$('body').removeClass('show-slide-menu');
+			this.isShowMenu = false;
 			this._hideNextAction();
 		}, 450)
 	}
@@ -163,7 +165,7 @@ export default class SlideMenu extends PageBase {
 	}
 
 	_rejectRealToken() {
-		if ($('body').hasClass('show-slide-menu')) {} else {
+		if (this.isShowMenu) {} else {
 			this.cookie.set('type' ,'demo');
 			location.reload();
 		}
@@ -240,6 +242,7 @@ export default class SlideMenu extends PageBase {
 
 	defaults() {
 		return {
+			isShowMenu: false,
 			initUI: Cookie.get('tradingUI') || getDefaultTradingUI(),
 			initType: Cookie.get('type'),
 			isChangeUI: false,
