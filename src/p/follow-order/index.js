@@ -38,9 +38,8 @@ function FollowOrder() {
 Base.extend(FollowOrder, Base, {
 	init: function() {
 		this._bind();
-		this._initAttrs();
-		this._initSticky();
 		this._requires();
+		this._initSticky();
 	},
 
 	_bind: function() {
@@ -275,15 +274,13 @@ Base.extend(FollowOrder, Base, {
 		$('nav').sticky();
 	},
 
-	_initAttrs: function() {
-		this.wrapEl = $('#J_FollowOrder');
-		this.hdEl = $('.hd', '#J_FollowOrder');
-		this.navEl = $('nav', '#J_FollowOrder');
-		this.bdEl = $('.bd', '#J_FollowOrder');
-	},
-
 	attrs: {
+		wrapEl: $('#J_FollowOrder'),
+		hdEl: $('.hd', '#J_FollowOrder'),
+		navEl: $('nav', '#J_FollowOrder'),
+		bdEl: $('.bd', '#J_FollowOrder'),
 		followLoadingEl: $('#J_FollowLoading'),
+
 	    tmpl: [
 	    	'<div class="dialog J_Dialog password-dialog " id="J_Dialog">',
 		    '   <div class="dialog-content J_Content">',
