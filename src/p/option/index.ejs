@@ -5,7 +5,6 @@
     <% rate = isNaN(rate) ? '--' : (rate.toFixed(5) * 100).toFixed(3);%>
     <% var price = (bidPrice + askPrice) / 2; %>
     <% var unit = (item.policy.min_quote_unit.toString().length - 2) >= 0 ? item.policy.min_quote_unit.toString().length - 2 : 0; %>
-
 <li class="item default-down <% if(isUp){%> up <%}%>" data-symbol="<%= item.policy.symbol %>" data-symbolname="<%= item.policy.symbol.replace(/\./g, '--') %>">
     <a class="link bd-color link-item clearfix" href= "<%= data.tradeUI %>symbol=<%= item.policy.symbol %>&name=<%= item.policy.name %>&price=<%= (price).toFixed(5) %>&unit=<%= item.policy.min_quote_unit %>&fullRouter=<%= encodeURIComponent(location.href) %>">
         <!-- status 默认是余额不足， break表示违规，simulate表示限模拟，close表示休市 -->
@@ -20,8 +19,7 @@
         </div>
         <span class="lt-item price J_BidPrice"><%= bidPrice === '--' ? '--' : bidPrice.toFixed(unit) %></span>
         <!--<%=Math.abs(askPrice - bidPrice).toFixed(unit)%>-->
-        <!-- <span class="lt-item spread J_Spread">8.0</span> -->
-        <span class="lt-item spread"><span class="spread-content ui common J_Spread">8.0</span></span>
+        <span class="lt-item spread"><span class="spread-content ui common J_Spread"><%= (Math.abs(askPrice - bidPrice) * Math.pow(10, unit)).toFixed(1) %></span></span>
         <span class="lt-item price J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></span>
         <span class="lt-item percent default-down <%if(rate > 0){%> up <%}%> J_Percent" data-range="<%= isNaN(price) ? '--' :  (price - item.close_price).toFixed(unit) %>"><%= rate %>%</span>
         <div class="action-wrapper clearfix" >
