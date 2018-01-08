@@ -114,18 +114,26 @@ Base.extend(FollowOrder, Base, {
 	    })
 	},
 
-	_keepFollow: function() {
+	_keepFollow: function(e) {
+		var curEl = $(e.currentTarget);
+		this._showLoad(curEl);
+
 		this._request('unpause').then((data) => {
 			var keepFollowEl = $('.J_KeepFollow', this.el);
 			new Toast('您已恢复跟随');
+			this._hideLoad();
 			this._toggleBtn(keepFollowEl, '.J_PauseFollow');
 		})
 	},
 
-	_pauseFollow: function() {
+	_pauseFollow: function(e) {
+		var curEl = $(e.currentTarget);
+		this._showLoad(curEl);
+
 		this._request('pause').then((data) => {
 			var pauseFollowEl = $('.J_PauseFollow', this.el);
 			new Toast('您已暂停跟单');
+			this._hideLoad();
 			this._toggleBtn(pauseFollowEl, '.J_KeepFollow');
 		})
 	},
@@ -197,6 +205,15 @@ Base.extend(FollowOrder, Base, {
   			this._component[componentKey].fire('destroy');
   		})
 	  },
+
+	_showLoad: function(curEl) {
+		this.loadEl = curEl;
+		curEl.append('<div class="loading-wrapper"><span>处理中<span class="dialog-load"></span></span></div>')
+	},
+	
+	_hideLoad: function() {
+		$('.loading-wrapper', this.loadEl).remove();
+	},
 	  
 	_showFollowLoading: function(title) {
 		$('#J_FollowTl').text(title);
