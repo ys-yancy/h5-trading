@@ -328,9 +328,9 @@ Base.extend(FollowOrder, PageBase, {
 		this.followLoadingEl.show();
 	},
 
-	_hideFollowLoading: function() {
+	_hideFollowLoading: function(title) {
 		this.followLoadingEl.hide();
-		$('#J_FollowTl').text('');
+		$('#J_FollowTl').text(title);
 	},
 
 	_requires: function() {

@@ -144,7 +144,10 @@ Base.extend(FollowOrder, Base, {
 	},
 
 	_showFollowAction: function() {
+		this._showFollowLoading('设置跟随资金');
+
 		new FollowAction({
+			parent: this,
 			id: this.expertId,
 			follower_balance_threshold: this.exportData.follower_balance_threshold
 		}).on('follow:order:success', () => {
@@ -160,7 +163,9 @@ Base.extend(FollowOrder, Base, {
 	},
 
 	_showFollowActionMore: function() {
+		this._showFollowLoading('跟单参数配置');
 		new FollowAction({
+			parent: this,
 			id: this.expertId,
 			follower_balance_threshold: this.exportData.follower_balance_threshold,
 			isMore: true
@@ -191,7 +196,17 @@ Base.extend(FollowOrder, Base, {
   		Object.keys(this._component).forEach((componentKey, index) => {
   			this._component[componentKey].fire('destroy');
   		})
-  	},
+	  },
+	  
+	_showFollowLoading: function(title) {
+		$('#J_FollowTl').text(title);
+		this.followLoadingEl.show();
+	},
+
+	_hideFollowLoading: function(title) {
+		this.followLoadingEl.hide();
+		$('#J_FollowTl').text(title);
+	},
 
   	destroy: function() {
   		this.el && this.el.off('click');
@@ -251,6 +266,7 @@ Base.extend(FollowOrder, Base, {
 	},
 
 	attrs: {
+		followLoadingEl: $('#J_FollowLoading'),
 	    tmpl: [
 	    	'<div class="dialog J_Dialog password-dialog " id="J_Dialog">',
 		    '   <div class="dialog-content J_Content">',
