@@ -295,13 +295,13 @@ Base.extend(Option, PageBase, {
       oldSymbol.bidPrice = bidPrice;
     }
 
-    // if (askPrice && bidPrice) {
-    //   var spread = Math.abs(askPrice - bidPrice);
-    //   spread = spread.toFixed(minUnit);
-    //   $('.J_Spread', itemEl).text(spread);
-    //   oldSymbol.spread = spread;
-    // }
-    //});
+
+    if (askPrice && bidPrice) {
+      var spread = Math.abs(askPrice - bidPrice);
+      spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
+      $('.J_Spread', itemEl).text(spread);
+      oldSymbol.spread = spread;
+    }
   },
 
   _getData: function() {
@@ -480,12 +480,12 @@ Base.extend(Option, PageBase, {
           oldSymbol.bidPrice = bidPrice;
         }
 
-        // if (askPrice && bidPrice) {
-        //   var spread = Math.abs(askPrice - bidPrice);
-        //   spread = spread.toFixed(minUnit);
-        //   $('.J_Spread', itemEl).text(spread);
-        //   oldSymbol.spread = spread;
-        // }
+        if (askPrice && bidPrice) {
+          var spread = Math.abs(askPrice - bidPrice);
+          spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
+          $('.J_Spread', itemEl).text(spread);
+          oldSymbol.spread = spread;
+        }
       });
 
       setTimeout(function() {

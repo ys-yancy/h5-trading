@@ -389,7 +389,7 @@ function getSymbolUrl() {
 
 //stomp 报价Url
 function getRtpriceSompUrl() {
-	return 'ws://rtprice.firstbkr.com:61613/stomp';
+	return 'wss://rtprice.firstbkr.com:61615/stomp';
 }
 
 //微信credentialUrl
