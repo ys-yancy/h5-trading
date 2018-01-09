@@ -40,11 +40,11 @@ Base.extend(ProChart, PageBase, {
   init: function() {
     this._initAttrs();
     this._bind();
-    this._getOrderList();
+    
     this._initChart();
-    this._initSticky();
-    this._getCurPrice();
     this._getSymbol();
+    this._getCurPrice();
+    this._initSticky();
     this.configStatistics();
   },
 
@@ -295,7 +295,9 @@ Base.extend(ProChart, PageBase, {
         self.closeTime = Util.getTime(data.closeTime) - 60 * 60 * 24 * 1000;
         self._getData();
         self.curState = 'close';
+        return;
       }
+      self._getOrderList();
     })
   },
 
