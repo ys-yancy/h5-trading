@@ -78,20 +78,30 @@ Base.extend(ProChart, PageBase, {
 
   _getOrderList: function() {
     var self = this;
+    var curSymbol = this.symbol || new Uri().getParam('symbol');
+
     this.getCurrentOrderList().then(function(list) {
-        self._cacheData = list;
-        // 只取开仓订单
-        list = list.list;
+      // 只取开仓订单
+      list = list.list;
+      var symbolOrders = [];
 
-        self.render(orderListTmpl, list, $('.J_List'));
-        
-        self._cacheList = self._cacheList || {};
-        for (var i = 0, len = list.length; i < len; i++) {
-            var item = list[i],
-                ticket = item.ticket;
-
-            self._cacheList[ticket] = item;
+      for (var i = 0, len = list.length; i < len; i++) {
+        var item = list[i];
+        if (curSymbol === item.symbol && item.status == 'open') {
+          symbolOrders.push(item);
         }
+      }
+
+      self.render(orderListTmpl, symbolOrders, $('.J_List'));
+
+      self.orderList = symbolOrders;
+      self._cacheList = self._cacheList || {};
+      for (var i = 0, len = symbolOrders.length; i < len; i++) {
+        var item = symbolOrders[i],
+          ticket = item.ticket;
+
+        self._cacheList[ticket] = item;
+      }
     })
   },
 
@@ -492,11 +502,11 @@ Base.extend(ProChart, PageBase, {
   
     try{ 
       var order = this.order,
-        orders = this._cacheData.list,
-        symbols = this._cacheData.symbols,
+        orders = this.orderList,
+        symbols = [this.symbol],
         swap = 0,
         commission = 0;
-      
+
       if (self.orderObject) {
         swap = parseFloat(self.orderObject.swap) || 0;
         commission = parseFloat(this.orderObject.commission);
