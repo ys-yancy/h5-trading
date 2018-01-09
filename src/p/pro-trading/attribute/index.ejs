@@ -13,7 +13,7 @@
       <% } %>
       <!-- <p><span class="strong">1</span>标准手=<span class="strong"><%= data.policy.lot_size %></span><%= data.policy.unit %></p> -->
       <p>交易时间<span class="strong"><%= data.quote.received_time %></span></p>
-      <p>点差<span class="strong">--  --</span></p>
+      <p>点差<span class="strong"><%= data.spread %></span></p>
       <p>最小交易量<span class="strong min"><%= data.policy.min_vol %></span></p>
       <p>最大交易量<span class="strong max"><%= data.policy.max_vol %></span></p>
       <!--手续费有两种建仓（ticketOpen）平仓(ticketClose)-->

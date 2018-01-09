@@ -9,13 +9,15 @@ export default class Attribute extends PageBase {
     super();
 
     this._getCommision(data);
+    this._getSpread(data);
 
     if ((data.policy.category.slice(0, 7) === 'FUTURE_' && data.policy.symbol.indexOf('XNGUSD') == -1) || data.policy.symbol.indexOf('CL.NYMEX') != -1 ) {
       data.future = true;
     }
+
     // 判断是否是有固定保证金品种
     data.isHasFixedMargin = data.policy.margin_is_fixed == '1' ? true : false;
-
+    
     this.renderTo(tmpl, data, $('body'));
     this.el = $('#J_Attribute');
 
@@ -38,6 +40,20 @@ export default class Attribute extends PageBase {
     window.scrollTo(0, 0);
     this.el.show();
     $('.J_DialogMask').show();
+  }
+
+  _getSpread(data) {
+    var askPrice = parseFloat(data.quote.ask_price[0]),
+      bidPrice = parseFloat(data.quote.bid_price[0]),
+      minUnit = data.policy.min_quote_unit.split('.')[1].split('').length;
+
+    if (askPrice && bidPrice) {
+      var spread = Math.abs(askPrice - bidPrice);
+      spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
+      data.spread = spread;
+    } else {
+      data.spread = '-- --';
+    }
   }
 
   _getCommision(data) {
