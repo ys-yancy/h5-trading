@@ -26,7 +26,7 @@ function getPayUrl() {
 		weixin: {
 			url: '/v1/user/pay/deposit_juxin/',
 			openType: 'postForm',
-			img: '11',
+			img: '../img/recharge/weixin-saoma.png',
 			params: {
 				depositType: 'wechat_saoma'
 			}
@@ -34,7 +34,7 @@ function getPayUrl() {
 		weixinWeb: {
 			url: '/v1/user/pay/deposit_juxin/',
 			openType: 'postForm',
-			img: '',
+			img: '../img/recharge/weixin-web.png',
 			params: {
 				depositType: 'wechat_web'
 			}
@@ -42,7 +42,7 @@ function getPayUrl() {
 		zhifubao: {
 			url: '/v1/user/pay/deposit_juxin/',
 			openType: 'postForm',
-			img: '',
+			img: '../img/recharge/zhifubao-saoma.png',
 			params: {
 				depositType: 'alipay_saoma'
 			},
@@ -50,7 +50,7 @@ function getPayUrl() {
 		zhifubaoWeb: {
 			url: '/v1/user/pay/deposit_juxin/',
 			openType: 'postForm',
-			img: '',
+			img: '../img/recharge/zhifubao-web.png',
 			params: {
 				depositType: 'alipay_web'
 			},
