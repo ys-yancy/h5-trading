@@ -125,7 +125,6 @@ Base.extend(Recharge, PageBase, {
         }
 
         $("#J_Charge").val('');
-        $('#J_Bonus').val('');
         $('#J_Bonus').html('-- --');
         
         $('.J_Radio').removeClass('active');
@@ -164,7 +163,7 @@ Base.extend(Recharge, PageBase, {
         $('.J_Submit').removeClass('disable');
 
         var bonus = this._getBonus(val);
-        bonusEl.val(bonus);
+        bonusEl.text(bonus);
         // this._getRate(val);
     },
 
