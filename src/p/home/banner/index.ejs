@@ -1,11 +1,7 @@
 <ul>
-  	<li>
-  		<img class="img" alt=""> 
-  	</li>
-  	<li>
-  		<img class="img" alt=""> 
-  	</li>
-  	<li>
-  		<img class="img" alt=""> 
-  	</li>
+	<% data.forEach(function(item) {%> 
+	<li>
+	 	<img src="<%= item %>" alt="" class="img"> 
+	</li>
+	<% });%>
 </ul>
