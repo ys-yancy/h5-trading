@@ -54,7 +54,7 @@ class Profile extends PageBase {
             if (!following) {
               span = '<span class="allow J_Follow ui common btn-setUi">关注Ta，获取Ta的交易动态</span>';
             } else {
-              span = '<span class="allow J_UnFollow ui btn-dis">已关注</span>';
+              span = '<span class="allow J_UnFollow ui btn-default">已关注</span>';
             }
 
             $(document.body).append(span);
@@ -73,7 +73,7 @@ class Profile extends PageBase {
     doc.on('tap', '.J_Follow', (e) => {
       this._setFollow().then((data) => {
         new Toast('关注成功');
-        $(e.currentTarget).replaceWith('<span class="allow J_UnFollow ui btn-dis">已关注</span>');
+        $(e.currentTarget).replaceWith('<span class="allow J_UnFollow ui btn-default">已关注</span>');
       });
     });
 
