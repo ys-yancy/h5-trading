@@ -476,10 +476,14 @@ Base.extend(Recharge, PageBase, {
         switch(openType) {
             case 'openUrl': 
                 var url = data.post_url + '?' + data.post_data;
+                this.qrComponent && this.qrComponent.hide();
+                $('#J_Qr').hide();
                 location.href = url;
                 break;
             case 'postForm':
                 var url = data.post_url + '?' + data.post_data;
+                this.qrComponent && this.qrComponent.hide();
+                $('#J_Qr').hide();
                 this.postURL(url);
                 break;
             case 'createQr':
@@ -500,7 +504,7 @@ Base.extend(Recharge, PageBase, {
     },
 
     _inieQrConponent: function(url, source) {
-        new ShowQrCode({
+        this.qrComponent = new ShowQrCode({
             el: $('#J_QrContent'),
             qrUrl: url,
             source: source
