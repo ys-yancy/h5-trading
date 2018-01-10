@@ -36,6 +36,7 @@ var entryAll = {
     'client-agreement': './src/p/client-agreement/index',
     'risk-message': './src/p/risk-message/index',
     'recharge': './src/p/recharge/index',
+    'stf-kuaijie-pay/index': './src/p/stf-kuaijie-pay/index',
     'extract': './src/p/extract/index',
     'open-account': './src/p/open-account/index',
     'inbox': './src/p/inbox/index',
