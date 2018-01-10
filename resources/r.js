@@ -16,6 +16,7 @@ function getShowPayWay() {
  * desc: 支付地址 在recharge 把url渲染到元素中去 然后直接在元素中拿
  * @param url 支付接口
  * @param openType 使用哪种方式来处理 Url 中下行的数据， 包括： postForm: 表单提交，openUrl: 直接跳转打开，createRr: 创建二维码，
+ * @param img 用于说明支付方式的图片路径
  * @param 对应支付所需要的特定参数（标识）
  */
 
