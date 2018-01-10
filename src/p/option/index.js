@@ -298,7 +298,7 @@ Base.extend(Option, PageBase, {
 
     if (askPrice && bidPrice) {
       var spreadEl = $('.J_Spread', itemEl);
-      var spread = Math.abs(askPrice - bidPrice);
+      var spread = askPrice - bidPrice;
       spread = (spread / pip).toFixed(1);
       spreadEl.text(spread);
       oldSymbol.spread = spread;
@@ -484,7 +484,7 @@ Base.extend(Option, PageBase, {
 
         if (askPrice && bidPrice) {
           var spreadEl = $('.J_Spread', itemEl);
-          var spread = Math.abs(askPrice - bidPrice);
+          var spread = askPrice - bidPrice;
           // spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
           spread = (spread / pip).toFixed(1);
           spreadEl.text(spread);

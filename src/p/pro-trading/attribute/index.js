@@ -48,7 +48,7 @@ export default class Attribute extends PageBase {
       pip = data.policy.pip;
 
     if (askPrice && bidPrice) {
-      var spread = Math.abs(askPrice - bidPrice);
+      var spread = askPrice - bidPrice;
       spread = (spread / pip).toFixed(1);
       data.spread = spread;
     } else {
