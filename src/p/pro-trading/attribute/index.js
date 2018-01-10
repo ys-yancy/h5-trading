@@ -45,11 +45,11 @@ export default class Attribute extends PageBase {
   _getSpread(data) {
     var askPrice = parseFloat(data.quote.ask_price[0]),
       bidPrice = parseFloat(data.quote.bid_price[0]),
-      minUnit = data.policy.min_quote_unit.split('.')[1].split('').length;
+      pip = data.policy.pip;
 
     if (askPrice && bidPrice) {
       var spread = Math.abs(askPrice - bidPrice);
-      spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
+      spread = (spread / pip).toFixed(1);
       data.spread = spread;
     } else {
       data.spread = '-- --';

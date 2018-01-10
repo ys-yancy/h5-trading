@@ -255,6 +255,7 @@ Base.extend(Option, PageBase, {
   _updatePrice: function(data) {
     var oldSymbol = this.cacheSymbol[data.symbol];
     var minUnit = oldSymbol.minUnit.toString();
+    var pip = oldSymbol.pip;
 
     try {
       var itemEl = $('.item[data-symbol=' + data.symbol + ']');
@@ -295,11 +296,11 @@ Base.extend(Option, PageBase, {
       oldSymbol.bidPrice = bidPrice;
     }
 
-
     if (askPrice && bidPrice) {
+      var spreadEl = $('.J_Spread', itemEl);
       var spread = Math.abs(askPrice - bidPrice);
-      spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
-      $('.J_Spread', itemEl).text(spread);
+      spread = (spread / pip).toFixed(1);
+      spreadEl.text(spread);
       oldSymbol.spread = spread;
     }
   },
@@ -440,6 +441,7 @@ Base.extend(Option, PageBase, {
       $.each(data, function(index, item) {
         var oldSymbol = self.cacheSymbol[item.symbol];
         var minUnit = oldSymbol.minUnit;
+        var pip = oldSymbol.pip;
 
         try {
           var itemEl = $('.item[data-symbol=' + item.symbol + ']');
@@ -481,9 +483,11 @@ Base.extend(Option, PageBase, {
         }
 
         if (askPrice && bidPrice) {
+          var spreadEl = $('.J_Spread', itemEl);
           var spread = Math.abs(askPrice - bidPrice);
-          spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
-          $('.J_Spread', itemEl).text(spread);
+          // spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
+          spread = (spread / pip).toFixed(1);
+          spreadEl.text(spread);
           oldSymbol.spread = spread;
         }
       });
@@ -547,6 +551,7 @@ Base.extend(Option, PageBase, {
         }
 
         cacheSymbol[item.policy.symbol] = {
+          pip: item.policy.pip,
           minUnit: item.policy.min_quote_unit,
           askPrice: item.quote.ask_price[0],
           bidPrice: item.quote.bid_price[0],
