@@ -9,16 +9,46 @@ function getDefaultPayWay() {
 
 // 显示哪几种支付方式
 function getShowPayWay() {
-	return ['weixin', 'zhifubao', 'kuaijie', 'pc']
+	return ['weixin', 'weixinWeb', 'zhifubao', 'zhifubaoWeb', 'pc'] // 'kuaijie',
 }
 
 // 支付地址 在recharge 把url渲染到元素中去 然后直接在元素中拿
 function getPayUrl() {
 	return {
-		weixin: '11111',
-		zhifubao: '222222',
-		kuaijie: '333333',
-		pc: '555555'
+		weixin: {
+			url: '/v1/user/pay/deposit_juxin/',
+			openType: 'postForm',
+			img: '11',
+			params: {
+				depositType: 'wechat_saoma'
+			}
+		},
+		weixinWeb: {
+			url: '/v1/user/pay/deposit_juxin/',
+			openType: 'postForm',
+			img: '',
+			params: {
+				depositType: 'wechat_web'
+			}
+		},
+		zhifubao: {
+			url: '/v1/user/pay/deposit_juxin/',
+			openType: 'postForm',
+			img: '',
+			params: {
+				depositType: 'alipay_saoma'
+			},
+		},
+		zhifubaoWeb: {
+			url: '/v1/user/pay/deposit_juxin/',
+			openType: 'postForm',
+			img: '',
+			params: {
+				depositType: 'alipay_web'
+			},
+		},
+		kuaijie: {},
+		pc: {}
 	}
 }
 

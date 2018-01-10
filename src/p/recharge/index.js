@@ -340,37 +340,110 @@ Base.extend(Recharge, PageBase, {
             return
         }
 
+        // var payConfig = getPayUrl()[pay];
         var _SubmitFn = '_submit_' + pay;
 
         this[_SubmitFn](data);
     },
 
+    _action: function() {
+
+    },
+
     _submit_weixin: function(data) {
         var self = this,
             qrel = $('#J_Qr'),
-            url = getPayUrl()['weixin'];
+            config = getPayUrl()['weixin'],
+            url = config.url,
+            params = $.extend(config.params, data),
+            openType = config.openType;
 
         self.onlyOne = false;
         qrel.show();
-        // self.ajax({
-        //     url: url,
-        //     data: data,
-        //     type: 'POST'
-        // }).then(function(data) {
-        //     self.onlyOne = true;
-        // },function (data) {
-        //     self.onlyOne = true;
-        //     return;
-        // });
-        setTimeout(() => {
-            var url = getWXInviteUrlWL();
-            var imgUrl = this._createQrcode(url, 5, 'Q');
-            this._inieQrConponent(imgUrl, 'weixin')
-        }, 2000)
+        self.ajax({
+            url: url,
+            data: params,
+            type: 'POST'
+        }).then(function(data) {
+            data = data.data;
+            self.onlyOne = true;
+            self._submitAction(openType, data, 'weixin');
+        },function (data) {
+            self.onlyOne = true;
+            new Toast(data.message);
+            return;
+        });
+    },
+
+    _submit_weixinWeb: function(data) {
+        var self = this,
+            config = getPayUrl()['weixinWeb'],
+            url = config.url,
+            params = $.extend(config.params, data),
+            openType = config.openType;
+
+        self.onlyOne = false;
+        self.ajax({
+            url: url,
+            data: params,
+            type: 'POST'
+        }).then(function(data) {
+            data = data.data;
+            self.onlyOne = true;
+            self._submitAction(openType, data, 'weixin');
+        },function (data) {
+            self.onlyOne = true;
+            new Toast(data.message);
+            return;
+        });
     },
 
     _submit_zhifubao: function(data) {
-        console.log(data)
+        var self = this,
+            qrel = $('#J_Qr'),
+            config = getPayUrl()['zhifubao'],
+            url = config.url,
+            params = $.extend(config.params, data),
+            openType = config.openType;
+
+        self.onlyOne = false;
+        qrel.show();
+        self.ajax({
+            url: url,
+            data: params,
+            type: 'POST'
+        }).then(function(data) {
+            data = data.data;
+            self.onlyOne = true;
+            self._submitAction(openType, data, 'zhifubao');
+        },function (data) {
+            self.onlyOne = true;
+            new Toast(data.message);
+            return;
+        });
+    },
+
+    _submit_zhifubaoWeb: function(data) {
+        var self = this,
+            config = getPayUrl()['zhifubao'],
+            url = config.url,
+            params = $.extend(config.params, data),
+            openType = config.openType;
+
+        self.onlyOne = false;
+        self.ajax({
+            url: url,
+            data: params,
+            type: 'POST'
+        }).then(function(data) {
+            data = data.data;
+            self.onlyOne = true;
+            self._submitAction(openType, data, 'zhifubao');
+        },function (data) {
+            self.onlyOne = true;
+            new Toast(data.message);
+            return;
+        });
     },
 
     _submit_kuaijie: function(data) {
@@ -401,6 +474,26 @@ Base.extend(Recharge, PageBase, {
 
     _submit_pc: function(data) {
         
+    },
+
+    _submitAction: function(openType, data, type) {
+        switch(openType) {
+            case 'openUrl': 
+                var url = data.post_url + '?' + data.post_data;
+                location.href = url;
+                break;
+            case 'postForm':
+                var url = data.post_url + '?' + data.post_data;
+                this.postURL(url);
+                break;
+            case 'createQr':
+                var url = data.url;
+                var imgUrl = this._createQrcode(url, 5, 'Q');
+                this._inieQrConponent(imgUrl, type);
+                break;
+            default: 
+                break;
+        }
     },
 
     _showMax: function() {
