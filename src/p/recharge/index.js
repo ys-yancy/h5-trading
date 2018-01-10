@@ -447,12 +447,11 @@ Base.extend(Recharge, PageBase, {
 
     _submit_kuaijie: function(data) {
         var amount_param = 'amount=' + data.amount;
-
-        var url,
+        var url = getPayUrl()['kuaijie'].url,
             back_url = location.href;
         // android机型需要将用户token传递给本地代码
         if ( Config.isAndroidAPK() ) {
-            url = location.origin + '/s/stf-kuaijie-pay/index.html?'+ amount_param + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url) + "&from=androidapp";
+            url = location.origin + url+ amount_param + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url) + "&from=androidapp";
             window.cookie && window.cookie.updateToken(self.cookie.get('token'));
         } 
         //0701 尝试解决白标客户跳转支付链接没有token的问题
@@ -461,7 +460,7 @@ Base.extend(Recharge, PageBase, {
             if (location.pathname.indexOf('/s/') != 0) {
                 wl = location.pathname.substring(1, location.pathname.indexOf('/s/'));
             }
-            url = location.origin + '/' + wl + '/s/stf-kuaijie-pay/index.html?'+ amount_param + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url);
+            url = location.origin + '/' + wl + url + amount_param + "&_r=" + Math.random() + "&src=" + encodeURIComponent(back_url);
         }
 
         window.location.href = url; 
@@ -471,9 +470,7 @@ Base.extend(Recharge, PageBase, {
         console.log(data)
     },
 
-    _submit_pc: function(data) {
-        
-    },
+    _submit_pc: function(data) {},
 
     _submitAction: function(openType, data, type) {
         switch(openType) {

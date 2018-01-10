@@ -9,7 +9,7 @@ function getDefaultPayWay() {
 
 // 显示哪几种支付方式, 与getPayUrl()中对应
 function getShowPayWay() {
-	return ['weixin', 'weixinWeb', 'zhifubao', 'zhifubaoWeb', 'pc'] // 'kuaijie',
+	return ['weixin', 'zhifubao', 'kuaijie', 'pc'] // 'weixinWeb', 'zhifubaoWeb', 
 }
 
 /**
@@ -55,8 +55,13 @@ function getPayUrl() {
 				depositType: 'alipay_web'
 			},
 		},
-		kuaijie: {},
-		pc: {}
+		kuaijie: {
+			url: '/s/stf-kuaijie-pay/juxin.html?',
+			img: '../img/recharge/yinliankuaijie.png'
+		},
+		pc: {
+			img: '../img/recharge/pc-web.png',
+		}
 	}
 }
 
