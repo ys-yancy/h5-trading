@@ -4,7 +4,7 @@
 
 // 默认支付方式
 function getDefaultPayWay() {
-	return 'zhifubao'
+	return 'weixin'
 }
 
 // 显示哪几种支付方式, 与getPayUrl()中对应
