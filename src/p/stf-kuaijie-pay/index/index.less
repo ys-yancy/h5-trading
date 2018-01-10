@@ -1,0 +1,96 @@
+@import '../../../base.less';
+@import '../../../variable.less';
+.reset-placeholder();
+input{
+    -webkit-appearance: none;
+    border-radius: 0;
+    .line-height(66);
+    .font-size(28);
+    .border(1, solid, #7a7a7a);
+    // box-shadow: 1px 1px 1px #7a7a7a inset, -1px -1px 1px #7a7a7a inset;
+}
+header{
+    .width(750);
+    .header-inner{
+        position: relative;
+        .height(88);
+        .line-height(88);
+        .font-size(38);
+        text-align: center;
+        color: #fff;
+        background: #364656;
+        .go-back {
+          position: absolute;
+          .width(44);
+          .height(44);
+          .top(22);
+          .left(30);
+          background: red;
+        }
+    }
+}
+
+.pay-content{
+    .padding(30, 0);
+    .input-wrapper{
+        .padding(20, 60);
+        input{
+            .height(66);
+            .width(630);
+            .padding-left(24);
+        }
+    }
+    .credit-wrapper{
+        .padding(20, 60);
+        input{
+            .width(280);
+            .height(66);
+            .padding-left(24);
+        }
+        .left{
+            .margin-right(15);
+        }
+        .right{
+            float: right;
+        }
+        .cvv2-num{
+            .width(630);
+        }
+    }
+    .code-wrapper{
+        .padding(20, 60);
+        .v-code{
+            .width(340);
+            .height(66);
+            .padding-left(24);
+            vertical-align: bottom;
+        }
+        .get-code{
+            .width(250);
+            .height(68);
+            float: right;
+            vertical-align: bottom;
+            border: none;
+            color: #fff;
+            background: #538cea;
+            &:disabled{
+                background: #C8C8C9;
+            }
+        }
+    }
+    .btn{
+        position: fixed;
+        .bottom(60);
+        .width(630);
+        .height(88);
+        .margin-left(60);
+        .border-radius(5);
+        .font-size(34);
+        border: none;
+        color: #fff;
+        background: #538cea;
+        &:disabled{
+            background: #C8C8C9;
+        }
+    }
+}
