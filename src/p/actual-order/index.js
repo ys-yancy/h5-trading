@@ -5,6 +5,7 @@ var Config = require('../../app/config');
 var Util = require('../../app/util');
 var sticky = require('../../common/sticky');
 var SildeMenu = require('../../common/slide-menu');
+// var LoadingDesc = require('../../common/loading-desc');
 var tmpl = require('./index.ejs');
 
 function ActualOrder() {
@@ -19,6 +20,7 @@ Base.extend(ActualOrder, Base, {
 		this._bind();
 		this._initSticky();
 		this._getData();
+		new LoadingDesc();
 		new SildeMenu({
 	      el: $('#J_SlideMenu'),
 	      page: 'option'
