@@ -20,7 +20,6 @@ Base.extend(ActualOrder, Base, {
 		this._bind();
 		this._initSticky();
 		this._getData();
-		new LoadingDesc();
 		new SildeMenu({
 	      el: $('#J_SlideMenu'),
 	      page: 'option'
