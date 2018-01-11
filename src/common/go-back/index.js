@@ -10,7 +10,7 @@ class GoBack {
         // 优先取src属性
         var goBackUrl = src || from;
         if (goBackUrl) {
-            $('.go-back').attr('href', goBackUrl);
+            $('.go-back').attr('href', decodeURIComponent(goBackUrl));
         }
     }
 
