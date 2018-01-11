@@ -23,6 +23,7 @@
 			</div>
 		</div>
 		<ul class="function-details">
+			<% if(getSimulatePlate()) { %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./recharge.html?src=<%= encodeURIComponent(location.href)%>">
 					<span class="icon ui"></span>
@@ -30,6 +31,7 @@
 					<span class="ft-rt num"></span>
 				</a>
 			</li>
+			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./account.html?src=<%= encodeURIComponent(location.href)%>">
 					<span class="icon ui"></span>
@@ -61,19 +63,19 @@
 					<span class="ft-rt num"></span>
 				</a>
 			</li>
+			<% if(!data.isSwtp) {%>
 			<li class="li-item clearfix">
 				<a class="link-item" href="javascript:void(0);">
 					<span class="icon ui"></span>
 					<span class="desc">切换账户</span>
-					<% if(!data.isSwtp) {%>
 					<div class="ft-rt switch-account J_SwitchAccount clearfix">
 						<span class="lt">模拟</span>
 						<span class="cl ui radio-w J_Standard <%= isDemo  ? 'demo' : 'real' %>"></span>
 						<span class="rt">实盘</span>
 					</div>
-					<% } %>
 				</a>
 			</li>
+			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="javascript:void(0);">
 					<span class="icon ui"></span>
@@ -96,13 +98,13 @@
 
 			<li class="cut-line"></li>
 			<% if (getHelpLink()) { %>
-				<li class="li-item clearfix">
-					<a class="link-item" href="<%= getHelpLink() %>">
-						<span class="icon ui"></span>
-						<span class="desc">使用帮助</span>
-						<span class="ft-rt num"></span>
-					</a>
-				</li>
+			<li class="li-item clearfix">
+				<a class="link-item" href="<%= getHelpLink() %>">
+					<span class="icon ui"></span>
+					<span class="desc">使用帮助</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
 			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item">
