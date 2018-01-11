@@ -2,6 +2,7 @@
 
 var Header = require('../../../common/header');
 var PageBase = require('../../../app/page-base');
+var Uri = require('../../../app/uri');
 var Util = require('../../../app/util');
 var Config = require('../../../app/config');
 var Toast = require('../../../common/toast');
@@ -15,6 +16,7 @@ class Profile extends PageBase {
   constructor() {
     super();
     this._preBind();
+    this._initAttrs();
     this.login().then(function() {
       this.getAccount().then(function(account) {
         this._render(account);
@@ -360,6 +362,14 @@ class Profile extends PageBase {
     }).then((data) => {
       return data.data.permission;
     });
+  }
+
+  _initAttrs() {
+    var urlParams = new Uri().getParams();
+    var linkUrl = urlParams.from;
+    if (linkUrl) {
+      $('.go-back').attr('href', linkUrl);
+    }
   }
 }
 
