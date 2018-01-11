@@ -70,13 +70,33 @@
     </section>
     <script src="../src/lib/zepto.js"></script>
     <script type="text/javascript">
-    	$(".company").text(getWLName());
-      if(getRiskMessageHTMLWL()){
-        $('.risk-message').css('display','block');
-      }
-      if(getClientAgreementHTMLWL()){
-        $('.client-agreement').css('display','block');
-      }
+        $(".company").text(getWLName());
+
+        if(getRiskMessageHTMLWL()){
+            $('.risk-message').css('display','block');
+        }
+
+        if(getClientAgreementHTMLWL()){
+            $('.client-agreement').css('display','block');
+        }
+
+        var linkUrl = getUrlParam('src');
+        if (linkUrl) {
+           $('.go-back').attr('href', decodeURIComponent(linkUrl));
+        }
+
+        function getUrlParam(str) {
+            var search = location.search.substring(1),
+                queryStr;
+
+            queryStr = search.replace(/([^&=]+)=([^&=]+)/g , function(_url, key, value) {
+                if (key == str) {
+                    queryStr = value;
+                }
+                return queryStr;
+            });
+            return queryStr;
+        }
     </script>
 </body>
 </html>
