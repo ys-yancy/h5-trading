@@ -1,0 +1,28 @@
+<form data-type="<%= data.type %>">
+    <section class="input-wrapper">
+        <input type="text" class="bankCode" name="" placeholder="银行卡号">
+    </section>
+    <section class="input-wrapper">
+        <input type="text" class="J_UserName" name="" placeholder="持卡人姓名">
+    </section>
+    <section class="input-wrapper">
+        <input type="text" class="J_UserIdNo" name="" placeholder="持卡人身份证号">
+    </section>
+    <section class="input-wrapper">
+        <input type="text" class="J_Phone" name="" placeholder="银行预留手机号">
+    </section>
+    <% if (data.type === 'credit') { %>
+        <section class="credit-wrapper J_Credit">
+            <input type="text" class="J_Cvv2Num cvv2-num" placeholder="CVV2 (信用卡背面3位数字)">
+        </section>
+        <section class="credit-wrapper clearfix J_Credit">
+            <input type="text" class="J_ThruMonth left" placeholder="有效期(月份)"> /
+            <input type="text" class="J_ThruYear right" placeholder="有效期(年份)">
+        </section>
+    <% } %>
+    <section class="code-wrapper">
+        <input class="v-code J_Vcode" type="text" name="">
+        <input type="button" class="get-code J_GetCode" value="获取验证码">
+    </section>
+    <button class="btn J_SubmitGoPay" disabled>确认支付</button>
+</form>
