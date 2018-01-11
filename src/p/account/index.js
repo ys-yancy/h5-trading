@@ -27,6 +27,7 @@ function Account() {
 
 Base.extend(Account, PageBase, {
     init: function() {
+        this._initAttrs();
         this._setStyle();
         this._checkOnly();
         this._bind();
@@ -189,6 +190,14 @@ Base.extend(Account, PageBase, {
 
         if (!getSimulatePlate()) {
             navEl.show();
+        }
+    },
+
+    _initAttrs: function() {
+        var urlParams = new Uri().getParams();
+        var linkUrl = urlParams.src;
+        if (linkUrl) {
+            $('.go-back').attr('href', linkUrl);
         }
     },
 
