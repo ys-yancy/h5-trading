@@ -3,13 +3,15 @@
 require('../../lib/zepto');
 var PageBase = require('../../app/page-base');
 var Dialog = require('../../common/dialog');
+var GoBack = require('../../common/go-back');
 var Toast = require('../../common/toast');
+
 var tmpl = require('./index.ejs');
 
 class Feedback extends PageBase {
     constructor() {
         super();
-
+        new GoBack();
         this.getToken().then(function() {
             this._bind();
         }.bind(this));

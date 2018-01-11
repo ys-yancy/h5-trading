@@ -3,6 +3,7 @@
 var PageBase = require('../../../app/page-base');
 var config = require('../../../app/config');
 var util = require('../../../app/util');
+var GoBack = require('../../../common/go-back');
 var indexTmpl = require('./index.ejs.html');
 var newTmpl = require('./new-list.ejs');
 require('../../my/common/header');
@@ -11,7 +12,7 @@ class Friends extends PageBase {
   constructor() {
     super();
     this.configStatistics();
-
+    new GoBack();
     this.getToken().then(() => {
       this.getData();
 
