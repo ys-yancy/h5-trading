@@ -1,0 +1,42 @@
+<ul class="clearfix ui common bottom-nav page-count-<%= data.pageCount %>">
+    <% if (data.pages.indexOf('home') !== -1) { %>
+        <li class="<%if (data.page == 'home') {%> <%= 'active' %> <%}%>">
+            <a class="home" href="./home.html">
+                <span class="icon"></span>
+                <span class="name">首页</span>
+            </a>
+        </li>
+    <% } %>
+    <% if (data.pages.indexOf('option') !== -1) { %>
+    <li class="<%if (data.page == 'option') {%> <%= 'active' %> <%}%>">
+        <a class="option" href="./option.html">
+            <span class="icon"></span>
+            <span class="name">交易</span>
+        </a>
+    </li>
+    <% } %>
+    <% if (data.pages.indexOf('master') !== -1) { %>
+    <li class="<%if (data.page == 'master') {%> <%= 'active' %> <%}%>">
+        <a class="master" href="./master-list.html">
+            <span class="icon"></span>
+            <span class="name">跟单</span>
+        </a>
+    </li>
+    <% } %>
+    <% if (data.pages.indexOf('actual') !== -1) { %>
+    <li class="<%if (data.page == 'actual') {%> <%= 'active' %> <%}%>">
+        <a class="actual" href="./actual-order.html">
+            <span class="icon"></span>
+            <span class="name">想法</span>
+        </a>
+    </li>
+    <% } %>
+    <% if (data.pages.indexOf('news') !== -1) { %>
+    <li class="<%if (data.page == 'news') {%> <%= 'active' %> <%}%>">
+        <a class="news" href="./news.html">
+            <span class="icon"></span>
+             <span class="name">资讯</span>
+        </a>
+    </li>
+    <% } %>
+</ul>
