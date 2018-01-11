@@ -80,7 +80,7 @@ class Login extends Base {
 		    noToast: true
 	   	}).then((data) => {
 	   		data = data.data;
-			// Cookie.expire('wl');
+			Cookie.expire('wl');
 		    Cookie.set('token', data.token, {
 		        expires: Infinity
 		    });
