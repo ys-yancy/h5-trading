@@ -304,19 +304,12 @@ function getHelpLink () {
 function getWXCredentialUrl () {
 	return 'https://api.firstbkr.com/v1/weixin/share/package/';
 }
+
 //配置appid
 function getWXAppid () {
 	return 'wxf587c0d17e265b55'
 }
 
-//是否配置自己的appid
-function getSelfAppid () {
-	if ( getWXAppid () == 'wxf587c0d17e265b55' ) {
-		return true
-	}else{
-		return false
-	}
-}
 
 // 是否使用显示授权
 function getUserInfoWX () {

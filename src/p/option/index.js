@@ -725,6 +725,10 @@ Base.extend(Option, PageBase, {
         page: 'option'
       })
     }
+    
+    if (getAllowSearch()) {
+      $('#J_Header').append('<a href="./cat.html?q=" class="fn ui icon add"></a>')
+    }
   },
 
   _initSticky: function() {
@@ -739,12 +743,10 @@ Base.extend(Option, PageBase, {
 
     helpEl.attr('href', link);
 
-    // 对于首次使用用户加红点
     var token = this.cookie.get('token');
-    if (!storage.get(token)) {
-      helpEl.addClass('new');
-
-    }
+    // if (!storage.get(token)) {
+    //   helpEl.addClass('new');
+    // }
   },
 
   _help: function(e) {
