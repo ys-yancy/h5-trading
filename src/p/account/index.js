@@ -3,11 +3,11 @@
 var Base = require('../../app/base');
 var PageBase = require('../../app/page-base');
 var Dialog = require('../../common/dialog');
-var Uri = require('../../app/uri');
 var Util = require('../../app/util');
 var Config = require('../../app/config');
 var Cookie = require('../../lib/cookie');
 var Sticky = require('../../common/sticky');
+var GoBack = require('../../common/go-back');
 var tmpl = require('./index.ejs');
 // var CustomerService = require('../../common/customer-service');
 
@@ -27,7 +27,6 @@ function Account() {
 
 Base.extend(Account, PageBase, {
     init: function() {
-        this._initAttrs();
         this._setStyle();
         this._checkOnly();
         this._bind();
@@ -193,15 +192,8 @@ Base.extend(Account, PageBase, {
         }
     },
 
-    _initAttrs: function() {
-        var urlParams = new Uri().getParams();
-        var linkUrl = urlParams.src;
-        if (linkUrl) {
-            $('.go-back').attr('href', linkUrl);
-        }
-    },
-
     _requires: function() {
+        new GoBack();
         $('nav').sticky();
         
         // 如果是Android内置webview就不显示下载条和抽奖入口
