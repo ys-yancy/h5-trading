@@ -27,12 +27,12 @@ Base.extend(Register, PageBase, {
     _bind: function() {
         var doc = $(document);
 
-        $('.J_Validate').on('change blur', $.proxy(this._change, this));
-        $('form').on('submit', $.proxy(this._submit, this));
         doc.on('tap', '.get-code', $.proxy(this._getCode, this));
-        doc.on('tap', '.get-captcha', $.proxy(this._getCode, this));
-        // doc.on('tap', '.J_StatementCheck', $.proxy(this._checkStatement, this));
+        doc.on('tap', '.get-captcha', $.proxy(this._sedMsg, this));
 
+        $('form').on('submit', $.proxy(this._submit, this));
+        $('.J_Validate').on('change blur', $.proxy(this._change, this));
+       
         // 添加默认微信分享
         if (this.isWeixin()) {
           this.setupWeiXinShare('default_invite');
@@ -49,9 +49,6 @@ Base.extend(Register, PageBase, {
         var error;
         var getCodeEl = $('.get-code');
         var submitEl = $('.submit');
-
-        // this.formEl.submit();
-        // return;
 
         if (curEl.hasClass('tel')) {
             error = validator.validateField({
@@ -131,82 +128,56 @@ Base.extend(Register, PageBase, {
 
     },
 
-    showError: function(wrapperEl, message) {
-        var errorEl = $('.error', wrapperEl);
-        wrapperEl.addClass('error').removeClass('success');
-        if (errorEl.length > 0) {
-            var msgEl = $('p', wrapperEl).text(message);
+    _getCode: function(e) {
+        var telEl = $('.tel'),
+            tel = telEl.val(),
+            curEl = $(e.currentTarget);
+
+        if (!tel) {
+            telEl.trigger('change');
             return;
         }
-        var html = [
-            '<div class="error">',
-            '   <p  class="err">' + message + '</p>',
-            '</div>'
-        ].join('');
-
-        wrapperEl.append(html);
-
-    },
-
-    _getCode: function(e) {
-        var tel = $('.tel').val(),
-            curEl = $(e.currentTarget);
+            
         if (curEl.hasClass('get-code')) {
             $('.code').removeAttr('disabled');
-            if (curEl.hasClass('disable')) {
-                return;
-            }
             this.imageCap._show();
             $('.captcha-text').focus();
         }
+    },
 
-         if (curEl.hasClass('get-captcha')) {
-      var captInput = $('#J_ImageCaptcha .captcha-text' );
-      if (captInput.val().length!==4){
-        $('#captcha-message').html('验证码错误!');
-        $('#J_ImageCaptcha .captcha-text').val('');
-        this.imageCap._show();
-        $('.captcha-text').focus();
-      }else{
-        var _this=this;
-        curEl.addClass('disable');
+    _sedMsg: function(e) {
+        var self = this;
+        var tel = $('.tel').val(),
+            curEl = $(e.currentTarget);
+
+        var captInput = $('#J_ImageCaptcha .captcha-text' ),
+            errorMessageEl = $('#captcha-message'),
+            imegeCode = captInput.val();
+
+        if(imegeCode.length !== 4) {
+            self._showImageMsg(errorMessageEl, captInput, curEl);
+            return;
+        } 
+
         this.ajax({
             url: '/v1/captcha/' + tel,
             type: 'post',
             data: {
                 cc: 86,
-                captcha: $('#J_ImageCaptcha .captcha-text' ).val(),
+                captcha: imegeCode,
                 wl: getWXWL(),
                 _r: Math.random()
-                    //phone: telEl
             }
-        }).then(function(data) { 
-          if(data.data==="image_vcode error"){
-            $('#captcha-message').html('验证码错误!');
-            $('#J_ImageCaptcha .captcha-text').val('');
-            _this.imageCap._show();
-            $('.captcha-text').focus();
-            curEl.removeClass('disable');
-          }else{
-            $('#captcha-message').html('短信已发送!');
-            curEl.addClass('disable');
-            $('.code').removeAttr('disabled');
-            setTimeout(function(){
-              $('#get-captcha').removeClass('disable');
-              _this.imageCap._hide();
-              _this._countdown($('.get-code'));
-            }, 1000);
-          }
+        }).then(function(data) {
+            if (data.status != 200) {
+                self._showImageMsg(errorMessageEl, captInput, curEl);
+                return;
+            }
+            self._hideImageMsg(errorMessageEl, curEl);
            
-        }).fail(function(data){
-            $('#captcha-message').html('验证码错误!');
-            $('#J_ImageCaptcha .captcha-text').val('');
-            _this.imageCap._show();
-            $('.captcha-text').focus();
-            curEl.removeClass('disable');
-        });
-      }
-    }   
+        }).fail(function(data) {
+            self._showImageMsg(errorMessageEl, captInput, curEl);
+        })
     },
 
     _countdown: function(el) {
@@ -232,11 +203,6 @@ Base.extend(Register, PageBase, {
                 }
             }, 1000);
         }
-    },
-
-    hideError: function(wrapperEl) {
-        wrapperEl.removeClass('error').addClass('success');
-
     },
 
     _submit: function(e) {
@@ -450,37 +416,6 @@ Base.extend(Register, PageBase, {
         this.validator = validator;
     },
 
-    _checkStatement: function(e) {
-        var curEl = $(e.currentTarget);
-        var submitEl = $('.submit');
-
-        curEl.toggleClass('checked');
-
-        if (curEl.hasClass('checked')) {
-            curEl.parent().removeClass('error');
-
-            var disable = false;
-
-            $('.wrapper', '#J_Form').each(function(index, item) {
-                item = $(item);
-                if (!item.hasClass('submit-wrapper')) {
-                    if (!$(item).hasClass('success')) {
-                        disable = true;
-                    }
-                }
-
-                if (!$('.J_StatementCheck').hasClass('checked')) {
-                    disable = true;
-                }
-            });
-
-            !disable && submitEl.removeClass('disable');
-        } else {
-
-            submitEl.addClass('disable');
-        }
-    },
-
     _requires: function() {
         this.imageCap = new ImageCaptcha();
     },
@@ -494,6 +429,46 @@ Base.extend(Register, PageBase, {
         var nickname = getDefaultNicknamePrefix() + minite + '' + second + '' + millsecond;
 
         return nickname;
+    },
+
+    hideError: function(wrapperEl) {
+        wrapperEl.removeClass('error').addClass('success');
+
+    },
+
+    showError: function(wrapperEl, message) {
+        var errorEl = $('.error', wrapperEl);
+        wrapperEl.addClass('error').removeClass('success');
+        if (errorEl.length > 0) {
+            var msgEl = $('p', wrapperEl).text(message);
+            return;
+        }
+        var html = [
+            '<div class="error">',
+            '   <p  class="err">' + message + '</p>',
+            '</div>'
+        ].join('');
+
+        wrapperEl.append(html);
+
+    },
+
+    _showImageMsg: function(errorMessageEl, captInput, curEl) {
+        errorMessageEl.html('验证码错误!');
+        captInput.val('');
+        curEl.removeClass('disable');
+        this.imageCap._refresh();
+    },
+
+    _hideImageMsg: function(errorMessageEl, curEl) {
+        errorMessageEl.html('短信已发送!');
+        curEl.addClass('disable');
+        $('.code').removeAttr('disabled');
+        setTimeout(() => {
+            this.imageCap._hide();
+            curEl.removeClass('disable');
+            this._countdown($('.get-code'));
+        }, 1000); 
     },
 
     _initAttrs: function() {

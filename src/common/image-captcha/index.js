@@ -16,9 +16,10 @@ export default class ImageCaptcha extends Base {
 
         var doc = $(document);
 
-        doc.on('tap', '.get-captcha', $.proxy(this._submit, this));
+        
         doc.on('tap', 'img.captcha', $.proxy(this._show, this));
-        doc.on('tap', '.close-captcha', $.proxy(this._hide, this));        
+        doc.on('tap', '.close-captcha', $.proxy(this._hide, this));
+        // doc.on('tap', '.get-captcha', $.proxy(this._submit, this));      
         // this.el.on('touchend', $.proxy(this._end, this));
         // this.el.on('click', $.proxy(this._click, this));
     }
