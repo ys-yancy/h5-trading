@@ -6,17 +6,13 @@ var Validate = require('../../common/validate');
 var Uri = require('../../app/uri');
 var Util = require('../../app/util');
 var Cookie = require('../../lib/cookie');
-var Login = require('../../common/login');
 var Toast = require('../../common/toast');
 var Config = require('../../app/config');
 var ImageCaptcha = require('../../common/image-captcha');
 
 function Register() {
     Register.superclass.constructor.apply(this, arguments);
-    var self = this;
-    // this.getToken().then(function() {
-    self.init();
-    // });
+    this.init();
 }
 
 Base.extend(Register, PageBase, {
@@ -26,10 +22,6 @@ Base.extend(Register, PageBase, {
         this._initValidate();
         this._bind();
         this.configStatistics();
-
-        if (location.search.indexOf('android-guide') != -1) {
-            Cookie.set('source', 'AndroidApp');
-        }
     },
 
     _bind: function() {
@@ -490,7 +482,6 @@ Base.extend(Register, PageBase, {
     },
 
     _requires: function() {
-        this.login = new Login();
         this.imageCap = new ImageCaptcha();
     },
 
