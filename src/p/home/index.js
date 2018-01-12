@@ -14,8 +14,23 @@ class Home extends Base {
 	}
 
 	_init() {
+		this._bind();
 		this._getData();
 		this._requires();
+		this._timeHandler(true);
+	}
+
+	_bind() {
+		var RAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+			function(c) {
+				setTimeout(c, 1 / 60 * 1000);
+			};
+
+		var CAF = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout;
+
+		$(document).on('scroll', () => {
+			RAF(this._timeHandler.bind(this));
+		});
 	}
 
 	_getData() {
@@ -72,6 +87,43 @@ class Home extends Base {
 		maxAutoCountEl.text(data.name);
 	}
 
+	_scrollHeader() {
+	}
+
+	_timeHandler(isLast) {
+		clearTimeout(this.timer);
+
+		var winScrollTop = this.win.scrollTop();
+
+		if (winScrollTop > this.headerHeight) {
+			this.headerEl.addClass('ui');
+			this.titleEl.css({
+				'background': 'transparent',
+				'opacity': '1'
+			});
+		} else {
+			this.opacity = parseInt(winScrollTop / 10) / 10;
+			this.headerEl.removeClass('ui');
+			this.titleEl.css({
+				'background': this.titleElBackground,
+				'opacity': this.opacity
+			});
+		}
+		
+		var typeStr = typeof isLast;
+		if (typeStr == 'boolean' && typeStr != 'number') {
+			return;
+		}
+
+		this.timer = setTimeout(() => {
+			this._timeReduce();
+		}, 1000);
+	}
+
+	_timeReduce() {
+		this._timeHandler(true);
+	}
+
 	_requires() {
 		new Banner();
 		new FloatMsg();
@@ -79,6 +131,17 @@ class Home extends Base {
 			el: $('#J_SlideMenu'),
 			page: 'home'
 		})
+	}
+
+	defaults() {
+		return {
+			win: $(window),
+			headerEl: $('.header-inner'),
+			titleEl: $('.J_Title'),
+			titleElBackground: $('.J_Title').css('backgroundColor'),
+			headerHeight: $('header').height(),
+			opcity: 0
+		}
 	}
 }
 
