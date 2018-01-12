@@ -258,7 +258,7 @@ Base.extend(Login, Base, {
         uuid: uuid,
         nickname: nickname,
         source: Cookie.get('source'),
-        wl: getWXWL() // refer: self.referCode || Cookie.get('referCode')
+        wl: getWXWL()
       }
     }).then(function(data) {
       if (data && data.data) {

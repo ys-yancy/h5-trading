@@ -9,7 +9,6 @@ var Config = require('./config');
 var stomp = require('./stomp');
 var Symbols = require('./symbols');
 var storage = require('./storage');
-// var inviteCode= new require('./uri')().getParam('inviteCode');
 
 var login = new Login();
 window.Cookie = Cookie;

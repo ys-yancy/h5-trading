@@ -197,7 +197,7 @@ export default class Investment extends PageBase {
       this.cookie.set('phone', phone);
 
 
-      var refer = new Uri().getParam('refer') || this.cookie.get('referCode');
+      var refer = this.cookie.get('referCode');
       if (refer) {
         this.ajax({
           url: '/v1/user/refer/',
