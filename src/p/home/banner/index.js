@@ -17,25 +17,31 @@ export default class HomeBanner extends Base {
             data: {
                 wl: getWXWL()
             }
-        }).then(function(data) {
+        }).then((data) => {
             data = data.data;
-            
-            data = data.map(function(item) {
-                if (item.image.indexOf('http') === -1) {
-                    item.image = getNativePlaceUrl() + item.image.substr(8);
-                }
-                return item.image;
-            });
-
-            self.render(tmpl, data, $('.km-slider-outer'));
-            if (data.length > 0) {
-                $('#slider').slider({
-                    loop: true,
-                    play: true,
-                    interval: 10 * 1000,
-                    duration: 1000
-                });
-            }  
+            this._render(data);
         })
+    }
+ 
+    _render(data) {
+        data = this._getSlideData(data);
+        this.render(tmpl, data, $('.km-slider-outer'));
+        if (data.length > 0) {
+            $('#slider').slider({
+                loop: true,
+                play: true,
+                interval: 10 * 1000,
+                duration: 1000
+            });
+        }  
+    }
+
+    _getSlideData(data) {
+        return data.map(function(item) {
+            if (item.image.indexOf('http') === -1) {
+                item.image = getNativePlaceUrl() + item.image.substr(8);
+            }
+            return item.image;
+        });
     }
 }
