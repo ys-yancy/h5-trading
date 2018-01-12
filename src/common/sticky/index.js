@@ -3,7 +3,8 @@ var Sticky = function(config) {
     var nav = $(config.el);
     var self = this;
     nav.css({
-        position: '-webkit-sticky',
+        // position: 'sticky',
+        // position: '-webkit-sticky',
         top: 0,
         zIndex: 10,
         width:'100%'
