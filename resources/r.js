@@ -112,29 +112,9 @@ function getWXDomainWL () {
 	return 'https://t.firstbkr.com/';
 }
 
-//安卓分享域名
-function getWXDomainAodWL () {
-	return 'https://t.firstbkr.com/';
-}
-
 // 微信分享ICON
 function getWXIconWL () {
 	return 'https://t.firstbkr.com/img/firstbkr/share.jpg';
-}
-
-// 微信每日推荐分享标题
-function getWXRecommendTitleWL () {
-	return '壹号金融今日投资推荐 ';
-}
-
-// 微信每日推荐分享描述
-function getWXRecommendDesWL () {
-	return '壹号金融为您汇总最优秀的交易信号, 助您投资收益迅速翻番!';
-}
-
-// 微信每日推荐分享链接
-function getWXRecommendLinkWL () {
-	return 'https://t.firstbkr.com/s/weixin/recommend.html';
 }
 
 // 微信邀请好友图片
@@ -154,16 +134,10 @@ function getWXInviteDesWL () {
 	return '壹号金融，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
-//安卓中微信邀请好友链接, 把source写死在链接里, 只需要提供refer
-function getWXInviteUrlAodWL () {
-	return 'https://t.firstbkr.com/s/my/guides.html?inviteCode=';
-}
-
-// 微信邀请好友链接, 把source写死在链接里, 只需要提供refer
+// 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	// return 'https://t.firstbkr.com/i/';
-	return 'https://t.firstbkr.com/s/my/guides.html?inviteCode=';
+	return 'https://t.firstbkr.com/s/my/register.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
@@ -172,7 +146,7 @@ function getIsNewShareWl() {
 }
 // 新的邀请链接
 function getNewShareWl() {
-	return 'https://dkdr.tonglingdi.cn/subscribe?uid=';
+	return 'https://firstbkr.tonglingdi.cn/subscribe?uid=';
 }
 
 // 微信转发标题
@@ -227,7 +201,6 @@ function getWeiXinWL () {
 	return 'firstbroker';
 }
 
-
 // 官方网站-个人中心
 function getWebsiteWL () {
 	return '';
@@ -265,8 +238,6 @@ function getLoginWL () {
 
 // 使用的交易UI
 function getTradeUI () {
-	// /s/pro-trading.html?symbol=CN.SGX.MINI&name=%E5%AF%8C%E6%97%B6A50.%E8%BF%B7%E4%BD%A0&router=option&price=9536.25000&unit=0.1
-	// ./deal/pro-trading.html?
 	return './pro-trading.html?';
 }
 
@@ -295,15 +266,6 @@ function getWLName () {
 	return '壹号金融';
 }
 
-// 
-function getHelpLink () {
-	return '1212';
-}
-
-// 分享流程官微签名链接
-function getWXCredentialUrl () {
-	return 'https://api.firstbkr.com/v1/weixin/share/package/';
-}
 
 //配置appid
 function getWXAppid () {
@@ -373,6 +335,20 @@ function showServicePhone() {
 	return true;
 }
 
+function getHelpLink () {
+	return '1212';
+}
+
+// 分享流程官微签名链接
+function getWXCredentialUrl () {
+	return 'https://api.firstbkr.com/v1/weixin/share/package/';
+}
+
+//安卓分享前缀
+function getAndroidSharePrefixUrl() {
+	return 'https://t.firstbkr.com';
+}
+
 //正式环境
 function getFormalEnvironmentUrl() {
 	return 'https://api.firstbkr.com';
@@ -381,16 +357,6 @@ function getFormalEnvironmentUrl() {
 //生产服
 function getProduClothedUrl() {
 	return 'https://api.firstbkr.com';
-}
-
-//邀请链接
-function getInviteUrl() {
-	return 'https://t.firstbkr.com/i/';
-}
-
-//安卓分享前缀
-function getAndroidSharePrefixUrl() {
-	return 'https://t.firstbkr.com';
 }
 
 //非微信同步头像前缀
@@ -438,11 +404,6 @@ function getPersonalInfoUrl() {
 	return 'https://weixin.firstbkr.com/api/user/info?openid=';
 }
 
-//微信recommendUrl
-function getRecommendUrl() {
-	return 'https://t.firstbkr.com/s/weixin/recommend.html';
-}
-
 //weixin.js => notifyShareBehavior 中url
 function getIfyShareBehaviorUrl() {
 	return 'https://t.firstbkr.com/s/weixin/share_counter';
@@ -453,11 +414,6 @@ function getIndexOfUrl() {
 	return 't.firstbkr.com';
 }
 
-//抽奖链接(p => activity => autumn => index.ejs)
-function getLotteryUrl() {
-	return 'https://m.firstbkr.com/61/lottery';
-}
-
 //发现页IMG
 function getBannerImgUrl() {
 	return 'https://t.firstbkr.com/img/firstbkr/banner.png';
@@ -466,21 +422,6 @@ function getBannerImgUrl() {
 //pc登录地址
 function getPcLoginUrl() {
 	return 'https://p.firstbkr.com';
-}
-
-//帮助详情页链接
-function getHelpHtmlUrl() {
-	return 'https://weixin.firstbkr.com/help.html';
-}
-
-//微信每日推荐
-function getWxTodayRecommendUrl() {
-	return '//weixin.firstbkr.com/api/today_recommend/add';
-}
-
-// \p\weixin\vip\index.js => 103
-function getWxTodayRed_vipUrl() {
-	return '//weixin.firstbkr.com/api/today_recommend?is_vip=1';
 }
 
 // 微信授权 weixinUrlFirst
@@ -506,9 +447,6 @@ function getRiskMsg() {
 	<p class="first">我方保证遵守以上承诺，如违反上述承诺或有违规行为，给交易市场或相关方造成损失的，我方愿意承担法律责任及相应的经济赔偿责任。兹确认，本申请与承诺中的相关资料和信息为我方自愿填写，我方的上述资料和信息合法、合规、真实、有效。</p>';
 }
 
-function getDaheng(){
-	return ' <p>每月首次出金免手续费；第二次及后续出金单笔须缴纳20美金手续费</p>';
-}
 
 //风险提示内容
 function getRiskMessageHTMLWL() {

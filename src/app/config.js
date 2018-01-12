@@ -34,9 +34,6 @@ var config = {
   // 测试环境
   // ajaxPrefix: 'http://192.168.0.204:8999',
 
-  // 邀请链接
-  invitePrefix: getInviteUrl(),
-
   // 是否为Android客户端
   isAndroidAPK: false,
 
@@ -184,10 +181,6 @@ module.exports = {
     if (window.location.hostname == '192.168.0.178')
       return prod;
     return prod;
-  },
-
-  getInvitePrefix: function() {
-    return config.invitePrefix;
   },
 
   isAndroid: function() {

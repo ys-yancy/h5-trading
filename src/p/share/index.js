@@ -119,14 +119,12 @@ Base.extend(Share, PageBase, {
       else if (Config.isAndroidAPK()) {
         // $('#J_ShowGuide')[0].innerHTML = '通过微信邀请朋友';
 
-        var link,
-          linkIndex = getWXInviteUrlAodWL().indexOf('/i/');
-
+        var link;
         var title = getWXInviteTitleWL();
         var desc = getWXInviteDesWL();
         var imgUrl = getWXInviteImgUrlWl();
 
-        link = getWXInviteUrlAodWL() + Cookie.get('inviteCode');
+        link = getWXInviteUrlWL() + Cookie.get('inviteCode');
 
         if(title.indexOf('%s') != -1 && account && account.nickname) {
           title = title.replace(/%s/, account.nickname);

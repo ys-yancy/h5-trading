@@ -3,7 +3,6 @@ var Toast = require('../common/toast');
 module.exports = {
   credentialUrl: getCredentialUrl(),
   getPersonalInfoUrl: getPersonalInfoUrl(),
-  recommendUrl: getRecommendUrl(),
   isWeixin: function() {
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/MicroMessenger/i) == "micromessenger") {
@@ -162,15 +161,6 @@ module.exports = {
           }
         }
 
-        // 每日分享
-        else if (shareKind == 'recommend') {
-          var myDate = new Date();
-          i = getWXIconWL();
-          t = getWXRecommendTitleWL() + (myDate.getMonth() + 1) + '月' + myDate.getDate() + '日'; // 分享标题
-          d = getWXRecommendDesWL();
-          l = getWXRecommendLinkWL();
-        }
-
         // 个人详情页面
         else if (shareKind == 'profile') {
           // 以 // 开头的情况
@@ -244,7 +234,7 @@ module.exports = {
           i = getWXIconWL();
           t = getWXInviteTitleWL();
           d = getWXInviteDesWL();
-          l = getWXInviteUrlWL() + inviteCode; //window.location.origin + '/i/' + inviteCode; // 分享链接
+          l = getWXInviteUrlWL() + inviteCode;// 分享链接
 
           if ( getIsNewShareWl() ) {
             l = getNewShareWl() + uid;

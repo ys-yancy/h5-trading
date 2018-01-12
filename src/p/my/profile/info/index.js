@@ -70,7 +70,7 @@ export default class Info extends PageBase {
           var title = '我伙呆! ' + data.nick_name + '的投资收益率达到了...'; // 分享标题
           var desc = '全时盈利: ' + data.gross_profit + '美元, 月均收益率: ' + (data.month_rate_of_return * 100).toFixed(2) + '%';
           var imgUrl = data.avatar; //Config.getAndroidSharePrefix() + '/img/share.jpg';
-          var link = getWXDomainAodWL() + '/s/my/profile.html?inviteCode=' + data.inviteCode; // 分享链接
+          var link = getWXDomainWL() + '/s/my/profile.html?inviteCode=' + data.inviteCode; // 分享链接
           // 需要一个新协议shareProfile
           var l = 'invhero-android:shareProfile?title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(desc) + '&imgUrl=' + encodeURIComponent(imgUrl) + '&link=' + encodeURIComponent(link);
 
