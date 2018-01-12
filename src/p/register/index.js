@@ -237,7 +237,7 @@ Base.extend(Register, PageBase, {
                     uuid: Cookie.get('uuid') || Util.guid(),
                     nickname: self._generateNickname(),
                     cc: 86,
-                    source: Cookie.get('source'),
+                    source: self.source,
                     wl: getWXWL()
                 },
                 type: 'post'
@@ -283,10 +283,10 @@ Base.extend(Register, PageBase, {
                     vcode: vcode,
                     password: password,
                     uuid: Cookie.get('uuid') || Util.guid(),
-                    nickname: self._generateNickname() /*$('.name').val()*/ ,
+                    nickname: self._generateNickname(),
                     refer: self.referCode,
                     cc: 86,
-                    source: Cookie.get('source'),
+                    source: self.source,
                     wl: getWXWL()
                 },
                 type: 'post'
@@ -473,27 +473,20 @@ Base.extend(Register, PageBase, {
 
     _initAttrs: function() {
         var params = new Uri().getParams();
-        var url = params.src;
 
+        // 记录用户来源, 优先取微信的from, 其次是我们自己定的source
+        this.source = params.from ? params.from : params.source;
+        this.source = this.source || this.cookie.get('source');
+        this.cookie.set('source', this.source);
+
+        this.referCode = params.inviteCode || this.cookie.get('referCode');
+        this.cookie.set('referCode', this.referCode);
+
+        var url = params.src;
         if (url) {
             $('.go-back', 'header').attr('href', url);
             this.url = url;
         }
-
-        this.referCode = Cookie.get('referCode');
-        if (!this.referCode) {
-          this.referCode = new Uri().getNextPath('/i/', 6);
-          if(!this.referCode){
-            this.referCode=params.referCode;
-          }
-          Cookie.set('referCode', this.referCode);
-        }
-
-
-        var statementEl = $('#J_Statement');
-        var href = statementEl.attr('href');
-
-        statementEl.attr('href', href + '?src=' + encodeURIComponent(location.href));
     },
 
     attrs: {
