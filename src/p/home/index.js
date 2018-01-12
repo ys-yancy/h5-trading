@@ -139,7 +139,7 @@ class Home extends Base {
 			headerEl: $('.header-inner'),
 			titleEl: $('.J_Title'),
 			titleElBackground: $('.J_Title').css('backgroundColor'),
-			headerHeight: $('header').height(),
+			headerHeight: 100,//$('header').height(),
 			opcity: 0
 		}
 	}
