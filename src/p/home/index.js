@@ -37,7 +37,7 @@ class Home extends Base {
 	}
 
 	_updateCommision(data) {
-		var ownCommisionEl = $('J_OwnCommision', '#comsion-content'),
+		var ownCommisionEl = $('.J_OwnCommision', '#comsion-content'),
 			ownInviteNumEl = $('.J_OwnInviteNum', '#comsion-content'),
 			maxCommisionEl = $('.J_MaxCommision', '#comsion-content'),
 			maxUserNameEl = $('.J_MaxUserName', '#comsion-content');
