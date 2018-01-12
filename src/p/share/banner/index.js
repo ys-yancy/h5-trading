@@ -22,7 +22,7 @@ export default class Banner extends PageBase {
       }
     }).then(function(data) {
       if (data.data) {
-        var path = getAndroidAvatarUrl() + data.data.substr(8);
+        var path = getNativePlaceUrl() + data.data.substr(8);
         data.data = [path];
         self._renderSlider(data);
       } else {

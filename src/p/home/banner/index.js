@@ -19,6 +19,11 @@ export default class HomeBanner extends Base {
             }
         }).then(function(data) {
             data = data.data;
+            
+            data = data.map(function(item) {
+                return item.image = getNativePlaceUrl() + item.image.substr(8);
+            });
+
             self.render(tmpl, data, $('.km-slider-outer'));
             if (data.length > 0) {
                 $('#slider').slider({
