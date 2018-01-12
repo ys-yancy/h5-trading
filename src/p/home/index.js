@@ -44,6 +44,8 @@ class Home extends Base {
 		
 			ownCommisionEl.text(data.mark_up_sum);
 			ownInviteNumEl.text(data.invite_num);
+			maxCommisionEl.text(data.max_markup);
+			maxUserNameEl.text(data.max_name);
 	}
 
 	_updateFollow(data) {
@@ -54,6 +56,8 @@ class Home extends Base {
 
 		followProfitEl.text(data.order_profits);
 		followTicketCountEl.text(data.order_count);
+		maxFollowProfitEl.text(data.max_profits);
+		maxFollowNameEl.text(data.name);
 	}
 
 	_updatAutoTrade(data) {
@@ -64,6 +68,8 @@ class Home extends Base {
 
 		autoTradeProfitEl.text(data.order_profits);
 		autoTradeCountEl.text(data.order_count);
+		maxAutoProfitEl.text(data.max_profits);
+		maxAutoCountEl.text(data.name);
 	}
 
 	_requires() {
