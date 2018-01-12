@@ -407,10 +407,9 @@ Base.extend(Login, Base, {
       },
 
       cancleCallback: $.proxy(function() {
-        // 只针对首次提醒领红包到达红包页面但取消登录的情况
-        if (window.location.pathname.indexOf('lottery') != -1)
-          window.location = "./option.html"
-
+        // // 只针对首次提醒领红包到达红包页面但取消登录的情况
+        // if (window.location.pathname.indexOf('lottery') != -1)
+        //   window.location = "./option.html"
         this.fire('cancle:login');
       }, this)
     });
@@ -597,26 +596,23 @@ Base.extend(Login, Base, {
 
     tmpl: [
       '<div class="dialog J_Dialog dialog-login" id="J_Dialog">',
-      '   <div class="dialog-title">登录</div>',
-      '   <span class="close-wrapper J_DialogClose">',
-      '       <span class="dialog-close icon"></span>',
-      '   </span>',
       '   <div class="dialog-content J_Content">',
+      '       <p class="title">登录</p>',
       '       <div class="wrapper">',
       '        <input class="tel" type="text" placeholder="请输入手机号" >',
-      '        <span class="icon phone"></span>',
+      // '        <span class="icon phone"></span>',
       '       </div>',
       '       <div class="wrapper">',
       '        <input class="password" type="password" placeholder="请输入登录密码">',
-      '        <span class="icon lock"></span>',
+      // '        <span class="icon lock"></span>',
       '       </div>',
       '   </div>',
       '   <div class="dialog-buttons clearfix">',
       '       <p class="J_Message message"></p>',
       '       <span id="et_login_cancel" class="dialog-btn J_DialogClose" data-idx="alert0">取消</span>',
       '       <span id="et_login_login" class="dialog-btn J_DialogConfirm" data-idx="alert0">登录</span>',
-      '       <a class="guide" id="J_GoRegister" href="./register.html?src=' + encodeURIComponent(location.href) + '">没有帐号？立即注册</a>',
-      '       <a class="forget J_RecoveryPassword" id="J_GoGetPassWord" href="./recovery-password.html">忘记密码？</a>',
+      // '       <a class="guide" id="J_GoRegister" href="./register.html?src=' + encodeURIComponent(location.href) + '">没有帐号？立即注册</a>',
+      // '       <a class="forget J_RecoveryPassword" id="J_GoGetPassWord" href="./recovery-password.html">忘记密码？</a>',
       '   </div>',
       '</div>',
       '<div class="dialog-mask J_DialogMask"></div>'
@@ -660,12 +656,12 @@ Base.extend(Login, Base, {
   },
 
   _showLoad: function(curEl) {
-    this.loadEl = curEl;
-    curEl.append('<div class="loading-wrapper"><span>处理中<span class="dialog-load"></span></span></div>')
+    // this.loadEl = curEl;
+    // curEl.append('<div class="loading-wrapper"><span>处理中<span class="dialog-load"></span></span></div>')
   },
 
   _hideLoad: function() {
-    $('.loading-wrapper', this.loadEl).remove();
+    // $('.loading-wrapper', this.loadEl).remove();
   },
 });
 

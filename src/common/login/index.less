@@ -1,7 +1,8 @@
 @import '../../variable.less';
 .dialog{
   .dialog-content{
-    .input-wrapper{
+    .input-wrapper,
+    .wrapper{
       .padding-top(30);
       input{
         width: 100%;
@@ -24,6 +25,31 @@
   .message{
     .font-size(20);
     color: red;
+  }
+}
+
+.dialog-login{
+  .wrapper{
+    position: relative;
+    .error{
+      position: absolute;
+      .bottom(-24);
+      .font-size(20);
+      color: red;
+    }
+    &.success{
+      .error{
+        display: none;
+      }
+    }
+  }
+  .dialog-buttons{
+    position: relative;
+    .message{
+      position: absolute;
+      .font-size(20);
+      color: red;
+    }
   }
 }
 
