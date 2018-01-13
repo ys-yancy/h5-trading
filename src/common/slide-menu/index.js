@@ -3,6 +3,7 @@ import './index.css';
 import Config from '../../app/config';
 import PageBase from '../../app/page-base';
 import Util from '../../app/util.js';
+import CheckOpenAccount from '../../common/check-open-account';
 import BottomAccount from '../bottom-account';
 import RedeemCode from './component/redeem-code';
 import UsQrCode from './component/qr-code';
@@ -11,6 +12,8 @@ import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
 	constructor(config) {
 		super(config);
+		new CheckOpenAccount();
+		
 		this._checkOnly();
 		this._render().then(() => {
 			this._init();

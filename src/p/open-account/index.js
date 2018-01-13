@@ -1,6 +1,7 @@
 "use strict";
 
 var Base = require('../../app/base');
+var Uri = require('../../app/uri');
 var PageBase = require('../../app/page-base');
 var Toast = require('../../common/toast');
 var Sticky = require('../../common/sticky');
@@ -15,6 +16,7 @@ Base.extend(OpenAccount, PageBase, {
     _init: function() {
         this._bind();
         this._requires();
+        this._initAttrs();
         this.configStatistics();
     },
 
@@ -287,7 +289,11 @@ Base.extend(OpenAccount, PageBase, {
     },
 
     _initAttrs: function() {
+        this.src = new Uri().getParam('src');
 
+        this.src = src || './home.html';
+
+        $('.go-back').attr('href', this.src);
     }
 });
 
