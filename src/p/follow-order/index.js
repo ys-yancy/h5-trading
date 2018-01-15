@@ -114,6 +114,7 @@ Base.extend(FollowOrder, Base, {
 					var reFollowEl = $('.J_CancelFollow', this.el);
 					this._hideLoad();
 					this._toggleBtn(reFollowEl, '.J_ReFollow');
+					location.href = './followlist-history.html';
 					// this.referEl.removeClass('follow').addClass('unfollow');
 					// app.success('您已取消跟单', 1500);
 				})
