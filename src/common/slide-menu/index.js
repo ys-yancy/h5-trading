@@ -95,10 +95,12 @@ export default class SlideMenu extends PageBase {
                 <div class="dialog-mask J_DialogMask"></div>`,
 			});
 			this.tradingUI = 6;
-      		clEl.addClass('off');
+			clEl.addClass('rapid');
+      		// clEl.addClass('off');
 		} else {
 			this.tradingUI = 4;
-      		clEl.removeClass('off');
+			clEl.removeClass('rapid');
+      		// clEl.removeClass('off');
 		}
 		this.isChangeUI = true;
 		this.cookie.set('tradingUI', this.tradingUI);

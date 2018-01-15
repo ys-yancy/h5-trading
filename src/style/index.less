@@ -14,7 +14,10 @@
 @defaultColor: #65696E; // 次要按钮的颜色(取消)
 @otherColor: #9EA4A7; // 二级tab  tab-nav spread(ooption)
 @otherBgColor: #f8f8f8; // 二级tab  tab-nav spread(ooption)
-@slideTunkColor: #eae6e6; // 开关滑块背景
+@slideTunkColor: #90CAF9; // 开关背景
+@slideActiveTunkColor: #538cea; // 开关滑块背景
+@slideCloseTunkColor: #eae6e6;
+@slideCloseActiveTunkColor: #C6C5C5;
 
 //----------------
 // dialog
@@ -51,15 +54,19 @@
 
 //.ui.sm-bd-rdo
 @smBdRdoColor: #fff;
-@smBdRdoBdColor: @slideTunkColor;
-@smBdRdoBgColor: @slideTunkColor;
+@smBdRdoBdColor: @slideCloseTunkColor;
+@smBdRdoBgColor: @slideCloseTunkColor;
 @smBdRdoCheckColor: #fff;
 @smBdRdoCheckBdColor: @appColor;
 @smBdRdoCheckBgColor: @appColor;
 
 //slider-contro-trunk
 @sliderControTrunkBgColor: @slideTunkColor;
-@sliderControTrunkActiveColor: @appColor;
+@sliderControTrunkActiveColor: @slideActiveTunkColor;
+@sliderControCloseTrunkBgColor: @slideCloseTunkColor;
+@sliderControCloseTrunkActiveColor: @slideCloseActiveTunkColor;
+
+
 
 // tab page header
 @headerColor: #252525;
@@ -337,13 +344,28 @@ html, body{
 	&:before{
 		background-color: @sliderControTrunkActiveColor;
 	}
+	&.close,
+	&.off {
+		background-color: @sliderControCloseTrunkBgColor;
+		&:before{
+			background-color: @sliderControCloseTrunkActiveColor;
+		}
+	}
 }
 .ui.radio-ipt{
 	&:after{
-		background-color: @sliderControTrunkBgColor;
+		background-color: @sliderControCloseTrunkBgColor;
 	}
 	&:before{
-		background-color: @sliderControTrunkActiveColor;
+		background-color: @sliderControCloseTrunkActiveColor;
+	}
+	&:checked{
+		&:after{
+			background-color: @sliderControTrunkBgColor;
+		}
+		&:before{
+			background-color: @sliderControTrunkActiveColor;
+		}
 	}
 }
 
