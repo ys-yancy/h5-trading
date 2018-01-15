@@ -6,6 +6,7 @@ export default class CheckOpenAccount extends Base{
     constructor(config) {
         super(config);
         this._check();
+        location.href = './open-account.html?src=' + encodeURIComponent(location.href);
     }
 
     _check() {

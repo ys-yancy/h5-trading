@@ -167,9 +167,9 @@ Base.extend(OpenAccount, PageBase, {
             return;
         }
 
-        if (!this._validates()) {
-          return;
-        }
+        // if (!this._validates()) {
+        //   return;
+        // }
         var params = this._getParams();
 
         this._showLoad(curEl);
@@ -342,7 +342,11 @@ Base.extend(OpenAccount, PageBase, {
     
         var txt = curEl.text();
         curEl.attr('data-name', txt);
-        curEl.html('<span>处理中<span class="dialog-load"></span></span>');
+        curEl.append('<span>处理中<span class="dialog-load"></span></span>');
+    },
+
+    _hideLoad: function() {
+        $('span', this.loadEl).remove();
     },
 
     _requires: function() {
