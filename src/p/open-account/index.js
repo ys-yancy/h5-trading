@@ -14,10 +14,12 @@ function OpenAccount() {
 
 Base.extend(OpenAccount, PageBase, {
     _init: function() {
+        this._renderBankList();
         this._bind();
         this._requires();
         this._initAttrs();
         this.configStatistics();
+        this.onlyOne = true;
     },
 
     _bind: function() {
@@ -161,20 +163,79 @@ Base.extend(OpenAccount, PageBase, {
     _submit: function(e) {
         var self = this;
         var curEl = $(e.currentTarget);
+        if (!this.onlyOne) {
+            return;
+        }
+
         if (!this._validates()) {
           return;
         }
-        console.log(this._validates())
+        var params = this._getParams();
 
         this._showLoad(curEl);
-        if (this.onlyOne) {
+        
+        this.onlyOne = false;
+        this.ajax({
+            url: '/v1/deposit/user/info/',
+            data: params,
+            type: 'POST'
+        }).then((data) => {
+            console.log(data);
+            this.onlyOne = true;
+            this._hideLoad(curEl);
+            setTimeout(() => {
+                location.href = this.src;
+            }, 1000);
+        }, () => {
+            this.onlyOne = true;
+            this._hideLoad(curEl);
+        })
+    },
 
-        }
+    _renderBankList: function() {
+        this._getSupportBanks().then((list) => {
+            this.renderTo(this.tmpl, list, $('.J_BankList'));
+        })
+    },
+
+    _getSupportBanks: function() {
+        return this.ajax({
+            url: '/v1/user/real/withdraw/',
+            data: {
+                access_token: this.cookie.get('token'),
+                real_token: this.cookie.get('real_token')
+            }
+        }).then((data) => {
+            return data.data.banks;
+        })
     },
 
     _getParams: function() {
-        return {
+        var phoneEl = $('J_UserPhone'),
+            nameEl = $('.J_UserName'),
+            idNoEl = $('.J_UserIdNo'),
+            idFrontEl = $('#J_IdFront'),
+            idReverEl = $('#J_IdRever'),
+            accountNameEl = $('.J_AccountName'),
+            accountBankNoEl = $('.J_AccountBankNo'),
+            bankNameEl = $('.J_BankList'),
+            bankFrontEl = $('#J_BankFront'),
+            bankReverEl = $('#J_BankRever');
 
+        return {
+            access_token: this.cookie.get('token'),
+            phone: phoneEl.val(),
+            true_name: nameEl.val(),
+            id_type: 0,
+            id_no: idNoEl.val(),
+            withdraw_card_user_name: accountNameEl.val(),
+            withdraw_card_bank: bankNameEl.val(),
+            withdraw_card_no: accountBankNoEl.val(),
+            id_front: $('.img', idFrontEl).attr('src'),
+            id_back: $('.img', idReverEl).attr('src'),
+            addr: '',
+            withdraw_card_front: $('.img', bankFrontEl).attr('src'),
+            withdraw_card_back:$('.img', bankReverEl).attr('src')
         }
     },
 
@@ -291,9 +352,17 @@ Base.extend(OpenAccount, PageBase, {
     _initAttrs: function() {
         this.src = new Uri().getParam('src');
 
-        this.src = src || './home.html';
+        this.src = this.src || './home.html';
 
         $('.go-back').attr('href', this.src);
+    },
+
+    attrs: {
+        tmpl: [
+            '<% data.forEach(function(item) { %>',
+                '<option data-code="<%= item.code_name %>" value="<%= item.name %>"><%= item.name %></option>',
+            '<% }) %>'
+        ].join('')
     }
 });
 
