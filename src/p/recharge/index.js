@@ -342,11 +342,21 @@ Base.extend(Recharge, PageBase, {
         // var payConfig = getPayUrl()[pay];
         var _SubmitFn = '_submit_' + pay;
 
+        this._postInfo();
         this[_SubmitFn](data);
     },
 
-    _action: function() {
-
+    _postInfo: function() {
+        this.ajax({
+            url: '/v1/deposit/user/info/true/',
+            data: {
+                access_token: this.cookie.get('token'),
+                true_name: $('#J_UserName').val(),
+                phone: $('#J_UserPhone').val(),
+            },
+            type: 'POST',
+            noToast: true
+        })
     },
 
     _submit_weixin: function(data) {

@@ -14,10 +14,12 @@ function OpenAccount() {
 
 Base.extend(OpenAccount, PageBase, {
     _init: function() {
-        this._renderBankList();
+        
         this._bind();
         this._requires();
         this._initAttrs();
+        this._getUserInfo();
+        this._renderBankList();
         this.configStatistics();
         this.onlyOne = true;
     },
@@ -209,6 +211,24 @@ Base.extend(OpenAccount, PageBase, {
         })
     },
 
+    _getUserInfo: function() {
+        this.ajax({
+            url: '/v1/deposit/user/info/true/',
+            data: {
+                access_token: this.cookie.get('token')
+            }
+        }).then((data) => {
+            data = data.data;
+            if (data == '未找到信息') {
+                $('.J_UserPhone').val(this.cookie.get('phone'));
+                $('.J_UserName').prop('disabled', false);
+            } else {
+                $('.J_UserPhone').val(data.phone);
+                $('.J_UserName').val(data.true_name);
+            }
+        })
+    },
+
     _getParams: function() {
         var phoneEl = $('.J_UserPhone'),
             nameEl = $('.J_UserName'),
@@ -232,7 +252,6 @@ Base.extend(OpenAccount, PageBase, {
             withdraw_card_no: accountBankNoEl.val(),
             id_front: $('.img', idFrontEl).attr('src'),
             id_back: $('.img', idReverEl).attr('src'),
-            addr: '',
             withdraw_card_front: $('.img', bankFrontEl).attr('src'),
             withdraw_card_back:$('.img', bankReverEl).attr('src')
         }
