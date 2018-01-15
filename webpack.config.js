@@ -19,6 +19,7 @@ var entryAll = {
     'master-order': './src/p/master-order/index',
     'followlist': './src/p/followlist/index',
     'follow-order': './src/p/follow-order/index',
+    'followorder-history': './src/p/followorder-history/index',
     'followlist-history': './src/p/followlist-history/index',
     'actual-order': './src/p/actual-order/index',
     'news': './src/p/news/index',
