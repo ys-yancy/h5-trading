@@ -6,15 +6,16 @@ export default class CheckOpenAccount extends Base{
     constructor(config) {
         super(config);
         this._check();
-        // location.href = './open-account.html?src=' + encodeURIComponent(location.href);
     }
 
     _check() {
         this._isNeedOpenAccount().then((data) => {
             // location.href = './open-account.html?src=' + encodeURIComponent(location.href);
-        }, () => {
-            // console.log('no recharge')
-        })
+        }, () => {})
+    }
+
+    _isRechargeSuccess() {
+        return
     }
 
     _isNeedOpenAccount() {
@@ -26,9 +27,13 @@ export default class CheckOpenAccount extends Base{
                 },
                 noToast: true
             }).then((data) => {
-                resolve();
+                if (data.status == 200 && data.data.id_no) {
+                    reject()
+                } else {
+                    resolve();
+                }
             }, () => {
-                reject()
+                resolve();
             })
         })
     }
