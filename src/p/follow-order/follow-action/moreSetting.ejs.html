@@ -9,7 +9,7 @@
 			<%= data.follow_mode == 'follow_amount_ratio' ? 'active' : '' %>">
 			<div class="title">
 				<span class="desc ui tl-color">按跟随资金下单</span>
-				<span class="radio-wrapper ui radio-w  J_Radio <%= data.follow_mode == 'follow_amount_ratio' ? 'active' : '' %>">
+				<span class="radio-wrapper ui radio-w  J_Radio <%= data.follow_mode == 'follow_amount_ratio' ? 'active' : 'off' %>">
 					<span class="radio ui radio-c">
 						<span class="radio-inner"></span>
 					</span>
@@ -26,7 +26,7 @@
 		<div class="set-wrapper fixed-multiple-setting J_FollowMode <%= data.follow_mode == 'fix_volume_ratio' ? 'active' : '' %>">
 			<div class="title">
 				<span class="desc ui tl-color">按固定倍数下单</span>
-				<span class="radio-wrapper ui radio-w J_Radio <%= data.follow_mode == 'fix_volume_ratio' ? ' active' : '' %>">
+				<span class="radio-wrapper ui radio-w J_Radio <%= data.follow_mode == 'fix_volume_ratio' ? ' active' : 'off' %>">
 					<span class="radio ui radio-w">
 						<span class="radio-inner"></span>
 					</span>
