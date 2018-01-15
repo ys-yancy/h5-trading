@@ -167,9 +167,9 @@ Base.extend(OpenAccount, PageBase, {
             return;
         }
 
-        // if (!this._validates()) {
-        //   return;
-        // }
+        if (!this._validates()) {
+          return;
+        }
         var params = this._getParams();
 
         this._showLoad(curEl);
@@ -180,7 +180,6 @@ Base.extend(OpenAccount, PageBase, {
             data: params,
             type: 'POST'
         }).then((data) => {
-            console.log(data);
             this.onlyOne = true;
             this._hideLoad(curEl);
             setTimeout(() => {
@@ -211,7 +210,7 @@ Base.extend(OpenAccount, PageBase, {
     },
 
     _getParams: function() {
-        var phoneEl = $('J_UserPhone'),
+        var phoneEl = $('.J_UserPhone'),
             nameEl = $('.J_UserName'),
             idNoEl = $('.J_UserIdNo'),
             idFrontEl = $('#J_IdFront'),

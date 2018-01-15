@@ -26,7 +26,7 @@ header{
     h3{
         .height(78);
         .line-height(78);
-        .font-size(32);
+        .font-size(30);
         .padding-left(30);
         background: #EDEDED;
     }
@@ -42,10 +42,15 @@ header{
         select{
             -webkit-appearance: none;
             color: #596064;
-            option{
-                text-align: right;
-            }
+            padding-right: 0;
+            text-align: right;
         }
+        select{
+            -webkit-appearance: select;
+            direction: rtl;
+            color: #a9a8a8;
+        }
+
         .right{
             float: right;
             border: none;
@@ -72,6 +77,7 @@ header{
                 z-index: 7;
                 .padding(30);
                 text-align: center;
+                color: #a9a8a8;
                 .icon{
                     display: inline-block;
                     .width(64);
