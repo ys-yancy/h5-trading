@@ -39,7 +39,7 @@ Base.extend(FollowList, Base, {
 
   	_request: function(params) {
   		this.ajax({
-  			url: '/v1/follow/follower/expert/list/',
+  			url: '/v1/follow/follower/current/expert/list/',
   			data: params
   		}).then((data) => {
   			data = data.data;
