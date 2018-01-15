@@ -15,8 +15,8 @@ var FollowAction = require('./follow-action');
 var Dialog = require('../../common/dialog');
 var tmpl = require('./index.ejs');
 
-function FollowOrder() {
-	FollowOrder.superclass.constructor.apply(this, arguments);
+function FollowOrderHistory() {
+	FollowOrderHistory.superclass.constructor.apply(this, arguments);
 	this._component = {};
 	
 	this.expertId = new Uri().getParam('expertId');
@@ -34,7 +34,7 @@ function FollowOrder() {
 	
 }
 
-Base.extend(FollowOrder, Base, {
+Base.extend(FollowOrderHistory, Base, {
 	init: function() {
 		this._bind();
 		this._requires();
@@ -161,4 +161,4 @@ Base.extend(FollowOrder, Base, {
 	}
 })
 
-new FollowOrder();
+new FollowOrderHistory();
