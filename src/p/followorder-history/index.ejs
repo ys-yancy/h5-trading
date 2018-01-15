@@ -1,0 +1,100 @@
+<div class="followorder-history-wrapper" id="J_FollowOrderHis">
+        <div class="hd">
+            <div class="hd-header">
+                <div class="img-wrapper-outer">
+                    <div class="img-wrapper">
+                        <img class="img" src="<%= data.img %>">
+                    </div>
+                </div>
+                <div class="desc-wrapper">
+                    <div class="name-account">
+                        <p class="name"><%= data.name %></p>
+                        <p class="account sm-bd ui">实盘</p>
+                    </div>
+                    <p class="years">
+                        持续投资<span class="num J_Day"><%= data.trade_days %></span>天
+                    </p>
+                </div>
+            </div>
+            <div class="hd-body">
+                <div>
+                    <div class="item left follow-profit">
+                        <p class="desc">跟单盈亏</p>
+                        <p class="num J_FollowProfitNum"><%=  parseFloat(data.profit_sum).toFixed(2) %></p>
+                    </div>
+                    <div class="item center max-profit">
+                        <p class="desc">最大单笔盈利</p>
+                        <p class="num J_MaxProfit"><%= parseFloat(data.max_profit).toFixed(2) %></p>
+                    </div>
+                    <div class="item right max-loss">
+                        <p class="desc">最大单笔亏损</p>
+                        <p class="num J_MaxLoss"><%= parseFloat(data.max_lose).toFixed(2) %></p>
+                    </div>
+                </div>
+                <div>
+                    <div class="item left follow-ticket">
+                        <p class="desc">跟单交易</p>
+                        <p class="num J_FollowTradeNum"><%= parseFloat(data.follow_ticket) %></p>
+                    </div>
+                    <div class="item center profit-ticket">
+                        <p class="desc">盈利交易</p>
+                        <p class="num J_ProfitTrade"><%= parseFloat(data.profit_ticket) %></p>
+                    </div>
+                    <div class="item right loss-ticket">
+                        <p class="desc">亏损交易</p>
+                        <p class="num J_LossTrade"><%= data.lose_ticket %></p>
+                    </div>
+                </div>
+                <div>
+                    <div class="item left average-ticket">
+                        <% var _duration = parseInt(data.avg_ticket_time || 0),_durationDesc = '分钟'; %>
+                        <% _duration = _duration ? _duration / 60 : _duration; %>
+                        <% if(_duration > 60 * 24 * 365) { %>
+                            <% _duration = parseInt(_duration/(60 * 24 * 365));_durationDesc = '年'; %>
+                        <% } else if(_duration > 60 * 24) { %>
+                            <% _duration = parseInt(_duration/(60 * 24));_durationDesc = '天'; %>
+                        <% } else if(_duration > 60) { %>
+                            <% _duration = parseInt(_duration / 60);_durationDesc = '小时'; %>
+                        <% } %>
+                        <p class="desc">平均持仓</p>
+                        <p class="num J_Averageduration"><%= parseInt(_duration) %> <%= _durationDesc %></p>
+                    </div>
+                    <div class="item center average-ticket-volume">
+                        <p class="desc">平均交易量</p>
+                        <p class="num J_AverageThirty"><%= parseFloat(data.avg_ticket_volume) %></p>
+                    </div>
+                    <div class="item right follow-start">
+                        <p class="desc">起始跟随</p>
+                        <p class="num J_AverageTotal"><%= data.start_time.split(' ')[0] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% var isFollow = data.is_follow == 1, isPaused =  data.follow_paused == 1, isWatched = data.already_watched == 1; %>
+            <nav class="ui common nav">
+                <ul class="tab-wrapper">
+                    <li class="item clearfix J_Tab active">历史交易</li>
+                </ul>
+            </nav>
+            <div class="bd">
+                    <div class="follow-content J_ContentFollow" id="J_TradeHistory">
+                        <div class="ui loading" id="J_Loading">
+                            <span class="circel"></span>  
+                            <span class="loading-text">加载中...</span> 
+                        </div>
+                    </div>
+            </div>
+            <div class="footer btn-wrapper">
+                <button class="btn J_ReviseSetting ui btn-reviseSetting">修改配置</button>
+    
+                <button class="btn J_PauseFollow ui btn-pauseFollow <%= isFollow && !isPaused ? '' : 'hidden' %>">
+                    <span class="pau">暂停跟随</span><br/><span class="other">仅接受平仓信号</span>
+                </button>
+                <button class="btn J_KeepFollow ui btn-keepFollow <%= isFollow && isPaused ? '' : 'hidden' %>">继续跟随<br/></button>
+    
+                <button class="btn J_CancelFollow ui btn-cancelFollow <%= !isFollow ? 'hidden' : '' %>">取消跟随</button>
+                <button class="btn J_ReFollow ui btn-reFollow <%= isFollow ? 'hidden' : '' %>">启用跟随</button>
+            </div>
+            <div class="close-btn J_Close"></div>
+        
+    </div>

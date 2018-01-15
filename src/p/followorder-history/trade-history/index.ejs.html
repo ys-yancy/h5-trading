@@ -1,0 +1,53 @@
+<div class="trade-history-inner">
+	<table>
+		<tbody class="list J_List">
+		<% data.forEach(function(item) {%>
+			<% var isUp = item.cmd && item.cmd.indexOf('buy') !== -1 %>
+			<tr class="bd-color">
+				<td class="item name-wrapper">
+					<span class="tag <%= isUp ? 'up' : '' %>"><%= isUp ? '买涨' : '买跌' %></span>
+					<div class="trade-current-center">
+						<p class="name l1-color"><%= item.symbolName %></p>
+						<p class="symbol l2-color"><%= item.symbol %></p>
+					</div>
+				</td>
+				<td class="item detail">
+					<div class="trade-current-top">
+						<p class="desc">盈亏</p>
+						<p class="num J_TradeProfit <%= parseFloat(item.profit) > 0 ? 'up' : 'down' %>">
+							<%= parseFloat(item.profit).toFixed(2) %></p>
+					</div>
+					<div class="trade-current-bottom">
+						<p class="desc">交易量</p>
+						<p class="num J_TardeCurrentVolume"><%= item.volume %></p>
+					</div>
+				</td>
+				<td class="item detail">
+					<div class="trade-current-top">
+						<p class="desc">平仓价格</p>
+						<p class="num J_TardeClosePrice"><%= item.closePrice %></p>
+					</div>
+					<div class="trade-current-bottom">
+						<p class="desc">止盈价格</p>
+						<p class="num J_TardeCurrentTakeProfit"><%= item.takeProfit %></p>
+					</div>
+				</td>
+				<td class="item detail">
+					<div class="trade-current-top">
+						<p class="desc">开仓价格</p>
+						<p class="num J_TardeCurrentOpenPrice"><%= item.openPrice %></p>
+					</div>
+					<div class="trade-current-bottom">
+						<p class="desc">止损价格</p>
+						<p class="num J_TardeCurrentStopLoss"><%= item.stopLoss %></p>
+					</div>
+				</td>
+			</tr>
+		<%})%>
+		<%if(data.length == 0) {%>
+			<tr class="no-list"><td>没有历史订单</td></tr>
+		<%}%>
+		</tbody>
+	</table>
+</div>
+
