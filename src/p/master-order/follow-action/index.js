@@ -135,14 +135,14 @@ class FollowAction extends PageBase {
 		}
 		
 		if ( curEl.hasClass('active') ) {
-			curEl.removeClass('active');
+			curEl.removeClass('active').addClass('off');
 			parentEl.siblings('.J_FollowMode').removeClass('active');
 			parentEl.removeClass('active');
 			return;
 		}
 
-		radios.removeClass('active');
-		curEl.addClass('active');
+		radios.removeClass('active').addClass('off');
+		curEl.addClass('active').removeClass('off');
 		parentEl.siblings('.J_FollowMode').removeClass('active');
 		parentEl.addClass('active');
 		
