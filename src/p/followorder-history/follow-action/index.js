@@ -166,9 +166,12 @@ class FollowAction extends PageBase {
 		this._updateFollowConfig(params).then((data) => {
 			if (data.status == 200) {
 				this._enableFollow().then(() => {
-					this._closeFollowDialog();
+					// this._closeFollowDialog();
 					new Toast('修改成功');
 					this.fire('follow:order:success');
+					setTimeout(() => {
+						location.href = './followlist.html';
+					}, 1500)
 				})
 				// this._closeFollowDialog();
 				// app.success('修改成功', 1500);

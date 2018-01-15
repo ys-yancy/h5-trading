@@ -86,14 +86,7 @@
             </div>
             <div class="footer btn-wrapper">
                 <button class="btn J_ReviseSetting ui btn-reviseSetting">修改配置</button>
-    
-                <button class="btn J_PauseFollow ui btn-pauseFollow <%= isFollow && !isPaused ? '' : 'hidden' %>">
-                    <span class="pau">暂停跟随</span><br/><span class="other">仅接受平仓信号</span>
-                </button>
-                <button class="btn J_KeepFollow ui btn-keepFollow <%= isFollow && isPaused ? '' : 'hidden' %>">继续跟随<br/></button>
-    
-                <button class="btn J_CancelFollow ui btn-cancelFollow <%= !isFollow ? 'hidden' : '' %>">取消跟随</button>
-                <button class="btn J_ReFollow ui btn-reFollow <%= isFollow ? 'hidden' : '' %>">启用跟随</button>
+                <button class="btn J_ReFollow ui btn-setUi common <%= isFollow ? 'hidden' : '' %>">启用跟随</button>
             </div>
             <div class="close-btn J_Close"></div>
         

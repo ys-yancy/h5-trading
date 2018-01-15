@@ -89,15 +89,19 @@ Base.extend(FollowOrder, Base, {
 			var reFollowEl = $('.J_ReFollow', this.el),
 				isPause = this.exportData.follow_paused == 1;
 			new Toast('启用成功');
-			this._hideLoad();
+            this._hideLoad();
 			this._toggleBtn(reFollowEl, '.J_CancelFollow');
-			// this.referEl.removeClass('unfollow').addClass('follow');
-
+            // this.referEl.removeClass('unfollow').addClass('follow');
+            
 			if ( isPause ) {
 				$('.J_KeepFollow', this.el).removeClass('hidden')
 			} else {
 				$('.J_PauseFollow', this.el).removeClass('hidden')
-			}
+            }
+            
+            setTimeout(() => {
+                location.href = './followlist.html';
+            }, 1500)
 		})
 	},
 
@@ -196,8 +200,8 @@ Base.extend(FollowOrder, Base, {
 	},
 
 	_toggleBtn: function(curBtnEl, nextClass) {
-		curBtnEl.addClass('hidden');
-		curBtnEl.siblings(nextClass).removeClass('hidden');
+		// curBtnEl.addClass('hidden');
+		// curBtnEl.siblings(nextClass).removeClass('hidden');
 	},
 
   	_close: function() {
