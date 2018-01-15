@@ -43,42 +43,12 @@ Base.extend(FollowOrder, Base, {
 
 	_bind: function() {
 		var doc = $(document);
-		
-		// this.el.on('click', '.J_Tab', $.proxy(this._switch, this));
-
-		this.el.on('click', '.J_Close', $.proxy(this._close, this));
-
-		this.el.on('click', '.J_Follow', $.proxy(this._showFollowAction, this));
-
 		//更多设置
 		this.el.on('click', '.J_ReviseSetting', $.proxy(this._showFollowActionMore, this))
 
-		//暂停跟随
-		this.el.on('click', '.J_PauseFollow', $.proxy(this._pauseFollow, this));
-		//继续跟随
-		this.el.on('click', '.J_KeepFollow', $.proxy(this._keepFollow, this));
-		//取消跟随
-		this.el.on('click', '.J_CancelFollow', $.proxy(this._cancelFollow, this));
 		// 启用跟随
 		this.el.on('click', '.J_ReFollow',  $.proxy(this._reFollow, this))
 		
-	},
-
-	_switch: function(e) {
-		var curEl = $(e.target),
-			index = curEl.index(),
-			contentEls = $('.J_ContentFollow', this.el),
-			curContentEl = $(contentEls[index]);
-
-		if ( curEl.hasClass('active') ) {
-			return;
-		}
-
-		curEl.siblings('.J_Tab').removeClass('active');
-		contentEls.removeClass('active').hide();
-		curContentEl.addClass('show').show();
-		curEl.addClass('active');
-
 	},
 
 	_reFollow: function(e) {
@@ -90,61 +60,10 @@ Base.extend(FollowOrder, Base, {
 				isPause = this.exportData.follow_paused == 1;
 			new Toast('启用成功');
             this._hideLoad();
-			this._toggleBtn(reFollowEl, '.J_CancelFollow');
-            // this.referEl.removeClass('unfollow').addClass('follow');
-            
-			if ( isPause ) {
-				$('.J_KeepFollow', this.el).removeClass('hidden')
-			} else {
-				$('.J_PauseFollow', this.el).removeClass('hidden')
-            }
             
             setTimeout(() => {
                 location.href = './followlist.html';
             }, 1500)
-		})
-	},
-
-	_cancelFollow: function(e) {
-		var curEl = $(e.currentTarget);
-		this._showLoad(curEl);
-
-	    this.dialog = new Dialog({
-		    isShow: true,
-		    tmpl: this.tmpl,
-		    cancleCallback: $.proxy(function() {
-		      	this._request('cancel').then((data) => {
-					var reFollowEl = $('.J_CancelFollow', this.el);
-					this._hideLoad();
-					this._toggleBtn(reFollowEl, '.J_ReFollow');
-					// this.referEl.removeClass('follow').addClass('unfollow');
-					// app.success('您已取消跟单', 1500);
-				})
-			}, this)
-	    })
-	},
-
-	_keepFollow: function(e) {
-		var curEl = $(e.currentTarget);
-		this._showLoad(curEl);
-
-		this._request('unpause').then((data) => {
-			var keepFollowEl = $('.J_KeepFollow', this.el);
-			new Toast('您已恢复跟随');
-			this._hideLoad();
-			this._toggleBtn(keepFollowEl, '.J_PauseFollow');
-		})
-	},
-
-	_pauseFollow: function(e) {
-		var curEl = $(e.currentTarget);
-		this._showLoad(curEl);
-
-		this._request('pause').then((data) => {
-			var pauseFollowEl = $('.J_PauseFollow', this.el);
-			new Toast('您已暂停跟单');
-			this._hideLoad();
-			this._toggleBtn(pauseFollowEl, '.J_KeepFollow');
 		})
 	},
 
@@ -158,25 +77,6 @@ Base.extend(FollowOrder, Base, {
 			type: 'POST'
 		}).then((data) => {
 			return data
-		})
-	},
-
-	_showFollowAction: function() {
-		this._showFollowLoading('设置跟随资金');
-
-		new FollowAction({
-			parent: this,
-			id: this.expertId,
-			follower_balance_threshold: this.exportData.follower_balance_threshold
-		}).on('follow:order:success', () => {
-			var isPause = this.exportData.follow_paused == 1;
-			var startEl = $('.J_Follow', this.el);
-			startEl.addClass('hidden');
-			if (isPause) {
-				startEl.siblings('.J_Pauseing').removeClass('hidden');
-			} else {
-				startEl.siblings('.J_Following').removeClass('hidden');
-			}
 		})
 	},
 
@@ -199,23 +99,6 @@ Base.extend(FollowOrder, Base, {
 		})
 	},
 
-	_toggleBtn: function(curBtnEl, nextClass) {
-		// curBtnEl.addClass('hidden');
-		// curBtnEl.siblings(nextClass).removeClass('hidden');
-	},
-
-  	_close: function() {
-  		console.log('close');
-
-  		this.destroy();
-  	},
-
-  	_destroycomponent: function() {
-  		Object.keys(this._component).forEach((componentKey, index) => {
-  			this._component[componentKey].fire('destroy');
-  		})
-	  },
-
 	_showLoad: function(curEl) {
 		this.loadEl = curEl;
 		curEl.append('<div class="loading-wrapper"><span>处理中<span class="dialog-load"></span></span></div>')
@@ -234,17 +117,6 @@ Base.extend(FollowOrder, Base, {
 		this.followLoadingEl.hide();
 		$('#J_FollowTl').text(title);
 	},
-
-  	destroy: function() {
-  		this.el && this.el.off('click');
-  		this.el && this.el.hide().remove();
-  		this.placeholdEl && this.placeholdEl.remove();
-  		this._destroycomponent();
-  		this.fire('destroy');
-  		this.off('refresh');
-  		this.off('destroy');
-  		this.el = null;
-  	},
 
 	_render: function() {
 		var data = {
@@ -285,22 +157,7 @@ Base.extend(FollowOrder, Base, {
 		hdEl: $('.hd', '#J_FollowOrder'),
 		navEl: $('nav', '#J_FollowOrder'),
 		bdEl: $('.bd', '#J_FollowOrder'),
-		followLoadingEl: $('#J_FollowLoading'),
-
-	    tmpl: [
-	    	'<div class="dialog J_Dialog password-dialog " id="J_Dialog">',
-		    '   <div class="dialog-content J_Content">',
-		    '       <p class="title">重要提示</p>',
-		    '       <p>',
-		    '          取消跟随后，当前交易中的订单不再跟随高手信号平仓！！ ',
-		    '       </p>',
-		    '   </div>',
-		    '   <div class="dialog-buttons clearfix">',
-		    '       <span class="dialog-btn J_DialogClose" id="J_DialogSetupCancel">我知道了</span>',
-		    '   </div>',
-		    '</div>',
-		    '<div class="dialog-mask J_DialogMask"></div>'
-	    ].join('')
+		followLoadingEl: $('#J_FollowLoading')
 	}
 })
 
