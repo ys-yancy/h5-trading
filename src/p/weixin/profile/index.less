@@ -95,8 +95,8 @@ header{
         .edit {
           display: inline-block;
           .margin-left(30);
-          .width(30);
-          .height(40);
+          .width(44);
+          .height(44);
           vertical-align: middle;
         }
         .nickname{
@@ -123,7 +123,7 @@ header{
         .line-height(48);
         text-align: center;
         .font-size(24);
-        background: #cbb2de;
+        color: #fff;
       }
       .error {
         .font-size(20);
@@ -154,8 +154,15 @@ header{
       .arrow{
         display: inline-block;
         .width(37);
-        .height(37);
+        .height(34);
+        transform: rotate(0);
         float: right;
+        transition: all .3s ease;
+      }
+      &.show{
+        .arrow{
+          transform: rotate(180deg);
+        }
       }
     }
     .auth-bd{
