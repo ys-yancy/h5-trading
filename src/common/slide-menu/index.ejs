@@ -17,16 +17,16 @@
 			</div>
 			<div class="user-other">
 				<% if (getRedemption()) { %>
-					<span class="cil J_ShowRedeemCode">兑换码</span>	
+					<span class="cil J_ShowRedeemCode ui icon redeem-code"></span>	
 				<% } %>
-				<span class="cil J_ShowSelfQrCode">二维码</span>
+				<span class="cil J_ShowSelfQrCode ui icon self-Qr-ode"></span>
 			</div>
 		</div>
 		<ul class="function-details">
 			<% if(getSimulatePlate()) { %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./recharge.html?src=<%= encodeURIComponent(location.href)%>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-recharge"></span>
 					<span class="desc">账户充值</span>
 					<span class="ft-rt num"></span>
 				</a>
@@ -34,21 +34,21 @@
 			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./account.html?src=<%= encodeURIComponent(location.href)%>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-account-profit"></span>
 					<span class="desc">账户资产</span>
 					<span class="ft-rt num J_UserProfit"></span>
 				</a>
 			</li>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./friends/invite.html?src=<%= encodeURIComponent(location.href)%>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-friends"></span>
 					<span class="desc">我的好友</span>
 					<span class="ft-rt num"></span>
 				</a>
 			</li>
 			<li class="li-item clearfix">
 				<a class="link-item">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-msg"></span>
 					<span class="desc">收件箱</span>
 					<span class="ft-rt"></span>
 				</a>
@@ -58,7 +58,7 @@
 
 			<li class="li-item clearfix">
 				<a class="link-item" href="./my/data.html?inviteCode=<%= data.inviteCode %>&from=<%= encodeURIComponent(location.href)%> ">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-invest"></span>
 					<span class="desc">投资分析</span>
 					<span class="ft-rt num"></span>
 				</a>
@@ -66,7 +66,7 @@
 			<% if(!data.isSwtp) {%>
 			<li class="li-item clearfix">
 				<a class="link-item" href="javascript:void(0);">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-switch-account"></span>
 					<span class="desc">切换账户</span>
 					<div class="ft-rt switch-account J_SwitchAccount clearfix">
 						<span class="lt">模拟</span>
@@ -78,7 +78,7 @@
 			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="javascript:void(0);">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-switch-ui"></span>
 					<span class="desc">切换交易页面</span>
 					<div class="ft-rt switch-tradeingUI J_SwitchTradeingUI clearfix">
 						<% var isRapd = data.tradingUI == 6; %>
@@ -91,7 +91,7 @@
 			</li>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./recovery-password.html?src=<%= encodeURIComponent(location.href)%>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-password"></span>
 					<span class="desc">修改密码</span>
 					<span class="ft-rt num"></span>
 				</a>
@@ -101,7 +101,7 @@
 			<% if (getHelpLink()) { %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="<%= getHelpLink() %>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-help"></span>
 					<span class="desc">使用帮助</span>
 					<span class="ft-rt num"></span>
 				</a>
@@ -109,22 +109,29 @@
 			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-scl"></span>
 					<span class="desc">交易学堂</span>
 					<span class="ft-rt num"></span>
 				</a>
 			</li>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./feedback.html?src=<%= encodeURIComponent(location.href)%>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-feedback"></span>
 					<span class="desc">意见反馈</span>
 					<span class="ft-rt num"></span>
 				</a>
 			</li>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./myAbout.html?src=<%= encodeURIComponent(location.href)%>">
-					<span class="icon ui"></span>
+					<span class="icon ui slider-us"></span>
 					<span class="desc">关于我们</span>
+					<span class="ft-rt num"></span>
+				</a>
+			</li>
+			<li class="li-item clearfix">
+				<a class="link-item" href="./cs.html?src=<%= encodeURIComponent(location.href)%>">
+					<span class="icon ui slider-service"></span>
+					<span class="desc">在线客服</span>
 					<span class="ft-rt num"></span>
 				</a>
 			</li>
