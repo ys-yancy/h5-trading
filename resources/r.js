@@ -341,7 +341,7 @@ function showServicePhone() {
 }
 
 function getHelpLink () {
-	return '1212';
+	return '';
 }
 
 // 分享流程官微签名链接
