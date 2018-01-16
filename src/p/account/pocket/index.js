@@ -93,9 +93,9 @@ class Pocket extends PageBase {
     $('.J_List').html('');
     var _requestData = {};
     var curEl =$(e.currentTarget);
-    var curElParentType = $('#J_OptionBanner').attr('data-kind');
-    var curElParentStartTime = $('#J_OptionBanner').attr('data-startTime');
-    var curElParentEndTime = $('#J_OptionBanner').attr('data-endTime');
+    var curElParentType = $('.filters').attr('data-kind');
+    var curElParentStartTime = $('.filters').attr('data-startTime');
+    var curElParentEndTime = $('.filters').attr('data-endTime');
     var ul = $('ul', curEl);
     var index = curEl.index();
     if ( curElParentType ) {
@@ -109,7 +109,7 @@ class Pocket extends PageBase {
       _requestData.params.date_start = curElParentStartTime;
       _requestData.params.date_end = curElParentEndTime;
     }
-    _requestData.desc = $('#J_OptionBanner').attr('data-desc');
+    _requestData.desc = $('.filters').attr('data-desc');
     
     if (!curEl.hasClass('active')) {
       curEl.siblings().removeClass('active');
