@@ -330,6 +330,11 @@ function getDefaultRapidSymbols() {
 	return ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO']; //'XAGUSD.MICRO'
 }
 
+//是否显示在线客服
+function showServicePel() {
+	return true;
+}
+
 //是否显示客服电话
 function showServicePhone() {
 	return true;
