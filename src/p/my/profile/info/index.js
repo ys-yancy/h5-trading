@@ -48,6 +48,8 @@ export default class Info extends PageBase {
         if (!('month_rate_of_return' in data) && ! ('gross_profit' in data)) {
           $('.detail-wrapper').html('<p class="no-auth">Ta的投资数据不允许别人查看</p>');
           $('#J_Data').remove();
+        } else {
+          self._getBottomData();
         }
 
         // 配置分享信息
@@ -81,4 +83,20 @@ export default class Info extends PageBase {
       });
     });
   }
+
+  _getBottomData() {
+    this.ajax({
+      url: '/v1/user/mobtrade/data/',
+      data: {
+        invite_code: this.inviteCode,
+        access_token: this.cookie.get('token') || ''
+      }
+    }).then((data) => {
+      data = data.data[0];
+      $('.J_SelfTicket').text(data.auto_tickets);
+      $('.J_SelfFollow').text(data.follow_tickets);
+      $('.J_Invite').text(data.invite_num);
+    })
+  }
+  
 }
