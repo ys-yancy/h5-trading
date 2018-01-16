@@ -139,7 +139,10 @@ Base.extend(Cat, PageBase, {
   },
 
   _callback: function() {
+    // 这里之后可以优化
+    var iconEl = $('.icon', this.curItemEl);
     this.add ? this.curItemEl.removeClass('add') : this.curItemEl.addClass('add');
+    this.add ? iconEl.addClass('checked') : iconEl.removeClass('checked');
   },
 
   _switch: function(e) {
