@@ -92,6 +92,9 @@ Base.extend(Recharge, PageBase, {
             if (name) {
                 $('#J_UserName').val(name).prop('disabled', true);
             }
+            if (phone && name) {
+                this.noPostInfo = true;
+            }
         })
     },
 
@@ -368,6 +371,10 @@ Base.extend(Recharge, PageBase, {
     },
 
     _postInfo: function() {
+        if ( this.noPostInfo ) {
+            console.log('no post info...');
+            return;
+        }
         this.ajax({
             url: '/v1/deposit/user/info/true/',
             data: {
