@@ -231,7 +231,7 @@ Base.extend(Extract, PageBase, {
     var self = this;
 
     return this.ajax({
-      url: '/v1/user/real/withdraw/',
+      url: '/v1/deposit/user/info/',
       data: {
         access_token: this.cookie.get('token'),
         real_token: realToken
@@ -240,7 +240,6 @@ Base.extend(Extract, PageBase, {
       data = data.data;
       data.phone = self.cookie.get('phone');
       data.min_extract_amount = getMinWithdrawWL();
-      self.cardNo = data.card_no;
       self.render(tmpl, data, $('#J_Content'));
     })
   },
