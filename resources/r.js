@@ -285,7 +285,7 @@ function getUseNewGuide () {
 
 // 新用户引导 - 官微二维码
 function getNewGuideQRCode () {
-	return '../img/firstbkr/no-order.jpg';
+	return '../img/firstbkr/firstbroker_gw_qrcode.jpg';
 }
 
 // 注册赠金
