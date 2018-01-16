@@ -7,12 +7,13 @@ var Config = require('../../app/config');
 var Chart = require('./chart');
 var CandleRefresh = require('../../common/candle-refresh');
 var Progress = require('../../lib/progress');
-var orderTmpl = require('./index.ejs');
-var closeTmpl = require('./close.ejs');
 var Header = require('../../common/header');
 var Core = require('../my/common/core');
 var symbol = require('../../app/symbol');
 var session = require('../../app/session');
+var orderTmpl = require('./index.ejs');
+var closeTmpl = require('./close.ejs');
+var bottomTmpl = require('./bottom-data.ejs');
 require('../my/common/header');
 
 class ShareOrder extends PageBase {
@@ -62,6 +63,7 @@ class ShareOrder extends PageBase {
     this.core.getOrderInfo().then(() => {
       this._getData();
       this._getOrder();
+      this._getTradeData();
     });
 
     this._userInfo();
@@ -359,6 +361,19 @@ class ShareOrder extends PageBase {
         }
       }
     });
+  }
+
+  _getTradeData() {
+    this.ajax({
+      url: '/v1/user/mobtrade/data/',
+      data: {
+        invite_code: this.inviteCode,
+        access_token: this.cookie.get('token') || ''
+      }
+    }).then((data) => {
+      data = data.data[0];
+      this.renderTo(bottomTmpl, data, $('#J_BottomData'))
+    })
   }
 
   _takeProfit(volume) {
