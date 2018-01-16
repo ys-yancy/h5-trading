@@ -34,7 +34,8 @@ Base.extend(Recharge, PageBase, {
         this._bind();
         this._requires();
         this._getData();
-        this._getServicePhone();
+        this._getUserInfo();
+        // this._getServicePhone();
         this.configStatistics();
         this.onlyOne = true;
     },
@@ -74,33 +75,53 @@ Base.extend(Recharge, PageBase, {
         });
     },
 
-    _getServicePhone: function(token) {
+    _getUserInfo: function() {
         var self = this;
-        return this.ajax({
-          url: '/v1/customer_call',
-          data: {
-            access_token: this.cookie.get('token'),
-            _r: Math.random()
-          }
+        return self.ajax({
+            url: '/v1/deposit/user/info/true/',
+            data: {
+                access_token: this.cookie.get('token')
+            },
         }).then(function(data) {
-          var h;
-
-          if ( !data.data.phone ) {
-            $('.phone-wrapper-bottom').hide();
-          }
-
-          if (Config.isAndroidAPK()) {
-            h = 'invhero-android:call?phone=' + data.data.phone;
-          }
-          else {
-            h = 'tel:' + data.data.phone;
-          }
-          // 设置链接
-          $('.J_SPhone').attr('href', h);
-          // 设置text
-          $('.J_SPhone').text(data.data.phone);
-        });
+            data = data.data;
+            var phone = data.phone,
+                name = data.true_name;
+            if (phone) {
+                $('#J_UserPhone').val(phone).prop('disabled', true);
+            }
+            if (name) {
+                $('#J_UserName').val(name).prop('disabled', true);
+            }
+        })
     },
+
+    // _getServicePhone: function(token) {
+    //     var self = this;
+    //     return this.ajax({
+    //       url: '/v1/customer_call',
+    //       data: {
+    //         access_token: this.cookie.get('token'),
+    //         _r: Math.random()
+    //       }
+    //     }).then(function(data) {
+    //       var h;
+
+    //       if ( !data.data.phone ) {
+    //         $('.phone-wrapper-bottom').hide();
+    //       }
+
+    //       if (Config.isAndroidAPK()) {
+    //         h = 'invhero-android:call?phone=' + data.data.phone;
+    //       }
+    //       else {
+    //         h = 'tel:' + data.data.phone;
+    //       }
+    //       // 设置链接
+    //       $('.J_SPhone').attr('href', h);
+    //       // 设置text
+    //       $('.J_SPhone').text(data.data.phone);
+    //     });
+    // },
 
     _fold: function(e) {
         var curEl = $(e.currentTarget);
@@ -565,13 +586,9 @@ Base.extend(Recharge, PageBase, {
     },
 
     _requires: function() {
-        var phone = this.cookie.get('phone');
-
         if (getPayUrlWL()) {
             $('.J_PcUrl').html(getPayUrlWL());
         }
-
-        $('.J_UserPhone').val(phone);
 
         $('#J_Header').sticky();
 
