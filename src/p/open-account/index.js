@@ -19,7 +19,7 @@ Base.extend(OpenAccount, PageBase, {
         this._requires();
         this._initAttrs();
         this._getUserInfo();
-        this._renderBankList();
+        // this._renderBankList();
         this.configStatistics();
         this.onlyOne = true;
     },

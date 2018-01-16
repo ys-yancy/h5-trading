@@ -126,7 +126,7 @@ class Home extends Base {
 
 	_requires() {
 		new Banner();
-		new FloatMsg();
+		// new FloatMsg();
 		new SildeMenu({
 			el: $('#J_SlideMenu'),
 			page: 'home'
