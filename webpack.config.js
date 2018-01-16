@@ -41,7 +41,9 @@ var entryAll = {
     'extract': './src/p/extract/index',
     'open-account': './src/p/open-account/index',
     'inbox': './src/p/inbox/index',
-    'cs': './src/p/cs/index'
+    'cs': './src/p/cs/index',
+    'my-guide/xx/login': './src/p/my-guide/xx/login/index',
+    'my-guide/xx/register': './src/p/my-guide/xx/register/index'
 };
 
 module.exports = {
