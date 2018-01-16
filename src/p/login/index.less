@@ -12,6 +12,11 @@ input {
 
 .reset-placeholder();
 
+.icon{
+    background: url('../../../img/app-icon.png');
+    .background-size(1000, 1000);
+}
+
 .logo-wrapper{
 	.img(750, 500, 250, 250);
 	.img-wrapper,
@@ -40,9 +45,14 @@ input {
 			position: absolute;
 			.top(16);
 			.left(32);
-			.width(34);
+			.width(44);
 			.height(56);
-			background: #2596F1;
+			&.icon-phone{
+                .background-position(-355, -480);
+            }
+            &.icon-password{
+                .background-position(-530, -480);
+            }
 		}
 		.err{
 			display: none;
