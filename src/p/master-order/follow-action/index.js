@@ -185,7 +185,7 @@ class FollowAction extends PageBase {
 			if (data.status == 200) {
 				this._enableFollow().then(() => {
 					this._closeFollowDialog();
-					new Toast('修改成功');
+					new Toast('跟随成功');
 					this.fire('follow:order:success');
 				})
 				// this._closeFollowDialog();
