@@ -1,11 +1,22 @@
-@import '../../base.less';
-@import '../../variable.less';
+@import '../../../../base.less';
+@import '../../../../variable.less';
 
 html,body{
     height: 100%;
 }
+
+body{
+    background: url('../../../../../img/wl/yhb/yhb_bg.jpg');
+    background-size: 100% auto;
+    .min-height(1134);
+}
+
 .ui.set-ui{
     color: #2596F1 !important;
+}
+.icon{
+    background: url('../../../../../img/app-icon.png');
+    .background-size(1000, 1000);
 }
 input {
    -webkit-appearance: none;
@@ -30,9 +41,7 @@ header{
           .width(44);
           .height(44);
           .top(22);
-          background: url('../../../img/app-icon.png');
-          .background-position(-105, -315);
-          .background-size(700, 700);
+          .background-position(-10, -314);
         }
         .go-back{
           .left(30);
@@ -74,9 +83,18 @@ header{
 			position: absolute;
 			.top(16);
 			.left(32);
-			.width(34);
+			.width(44);
 			.height(56);
-			background: #2596F1;
+            // background: #2596F1;
+            &.phone{
+                .background-position(-355, -480);
+            }
+            &.lock{
+                .background-position(-530, -480);
+            }
+            &.msg_code{
+                .background-position(-700, -480);
+            }
 		}
 		.error{
             position: absolute;

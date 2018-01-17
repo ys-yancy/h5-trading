@@ -42,8 +42,8 @@ var entryAll = {
     'open-account': './src/p/open-account/index',
     'inbox': './src/p/inbox/index',
     'cs': './src/p/cs/index',
-    'my-guide/xx/login': './src/p/my-guide/xx/login/index',
-    'my-guide/xx/register': './src/p/my-guide/xx/register/index'
+    'my-guide/yhb/login': './src/p/my-guide/yhb/login/index',
+    'my-guide/yhb/register': './src/p/my-guide/yhb/register/index'
 };
 
 module.exports = {
