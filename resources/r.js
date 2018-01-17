@@ -251,6 +251,19 @@ function getAllowSearch () {
 	return true;
 }
 
+// 是否提供切换UI的功能
+function getHasSwitchTradingUi() {
+	return true;
+}
+
+// 默认交易 UI
+function getDefaultTradingUI() {
+	// 专业交易
+	// return 4;
+	// 极速交易
+	return 6;
+}
+
 // 是否有输入兑换码功能
 function getRedemption() {
 	return true;
@@ -318,18 +331,6 @@ function getMinWithdrawWL() {
 	return 0;
 }
 
-// 是否提供切换UI的功能
-function getHasSwitchTradingUi() {
-	return true;
-}
-
-// 默认交易 UI
-function getDefaultTradingUI() {
-	// 专业交易
-	// return 4;
-	// 极速交易
-	return 6;
-}
 // 急速交易默认品种
 function getDefaultRapidSymbols() {
 	return ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO']; //'XAGUSD.MICRO'
