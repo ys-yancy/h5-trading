@@ -120,8 +120,12 @@ Base.extend(ProChart, PageBase, {
     // }
 
     var chart = this.chart;
-
     chart.updateProfitPlotLine(profit, price, ticket);
+
+    // try {
+    //   this.chartInstance.yAxis[0].removePlotLine('openprice');
+    //   chart.addPlotLine(order.openPrice, 'open');
+    // } catch(e) {}
     
     this.orderObject = order;
     this.order = ticket;
