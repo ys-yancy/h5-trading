@@ -115,6 +115,11 @@ class Profile extends PageBase {
 
     var day = parseInt((Date.now() - Util.getTime(account.created)) / (1000 * 60 * 60 * 24));
     $('.num').text(day);
+
+    var email = account.email;
+    if (email) {
+      $('.J_Email').text(email).show();
+    }
   }
 
   _preview(e) {
