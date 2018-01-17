@@ -77,14 +77,14 @@ Base.extend(MasterList, Base, {
           curEl.siblings().removeClass('active');
           curEl.addClass('active');  
       }
-
       this._getData();
       this._hideFilter();
   },
 
 	_getData: function() {
 		var params = this._getParams();
-  	var source = this._getSource();
+    var source = this._getSource();
+    this._shwLoading();
   	this._request(params, source);
 	},
 
@@ -145,7 +145,11 @@ Base.extend(MasterList, Base, {
     var index = activeEl.index();
     var curSource = this.sourceUrls[index];
 		return curSource;
-	},
+  },
+  
+  _shwLoading: function() {
+    $('.J_List').html(' <li class="ui loading"><span class="circel"></span><span class="loading-text">加载中...</span> </li>');
+  },
 
   _initSticky: function() {
     $('nav').sticky();
