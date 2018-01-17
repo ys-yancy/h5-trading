@@ -43,7 +43,9 @@ var entryAll = {
     'inbox': './src/p/inbox/index',
     'cs': './src/p/cs/index',
     'my-guide/yhb/login': './src/p/my-guide/yhb/login/index',
-    'my-guide/yhb/register': './src/p/my-guide/yhb/register/index'
+    'my-guide/yhb/register': './src/p/my-guide/yhb/register/index',
+    'my-guide/jstzlc/login': './src/p/my-guide/jstzlc/login/index',
+    'my-guide/jstzlc/register': './src/p/my-guide/jstzlc/register/index'
 };
 
 module.exports = {
