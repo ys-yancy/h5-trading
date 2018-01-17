@@ -103,7 +103,7 @@ class Login extends Base {
 
             submitEl.val('登录').removeClass('disable');
 
-      		location.href = './option.html';
+      		location.href = './home.html';
 	   	}, () => {
 	   		submitEl.val('登录').removeClass('disable');
 

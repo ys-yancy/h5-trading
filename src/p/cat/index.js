@@ -21,7 +21,7 @@ function Cat() {
 
 Base.extend(Cat, PageBase, {
   init: function() {
-    this._initTopbar();
+    // this._initTopbar();
     this._bind();
     this._getData();
     this._initDialog();
@@ -43,6 +43,8 @@ Base.extend(Cat, PageBase, {
 
     doc.on('tap', '.J_CloseSearch', $.proxy(function(e) {
       this.headerEl.removeClass('unfold');
+      this.navListEl.removeClass('hidden');
+      this._trigger();
     }, this));
 
     // 添加默认微信分享
@@ -234,13 +236,15 @@ Base.extend(Cat, PageBase, {
       self.render(self.tmpl, data.data, self.navListEl);
       let isInitFlip = self._setNavWidth();
       // self.render(self.contentTmpl, data.data, self.contentEl);
-
-      setTimeout(() => {
-        $('.J_Type').eq(0).trigger('tap').addClass('active');
-        isInitFlip && self._initFlipsnap(parseInt(data.data.length  -5));
-      }, 0);
-      
+      self._trigger();
     });
+  },
+
+  _trigger: function() {
+    setTimeout(() => {
+      $('.J_Type').eq(0).trigger('tap').addClass('active');
+      isInitFlip && self._initFlipsnap(parseInt(data.data.length  -5));
+    }, 0);
   },
 
   _search: function(e) {
@@ -306,7 +310,10 @@ Base.extend(Cat, PageBase, {
           }
           return data;
         },
-        callback: function() {}
+        callback: function() {
+          $('.J_Type').removeClass('active');
+          $('#J_NavList').addClass('hidden');
+        }
       });
     });
   },
