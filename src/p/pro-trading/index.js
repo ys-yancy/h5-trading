@@ -1363,12 +1363,12 @@ Base.extend(ProTrading, PageBase, {
           $('#J_Success').prepend('<a class="dialog-btn share J_Share" href="javascript:">' + btnDesc + '</a>');
 
           $('#J_Success .J_Share').on('click', $.proxy(function() {
-            $('#J_InfoImg').css('display', 'block');
+            $('#J_InfoImg').show();
             // share && share.getInfo();
           }, this));
 
           $('#J_InfoImg').on('click', $.proxy(function() {
-            $('#J_InfoImg').css('display', 'none');
+            $('#J_InfoImg').hide();
           }, this));
 
           self.setupWeiXinShare('order');
