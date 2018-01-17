@@ -183,7 +183,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t.firstbkr.com/img/firstbkr/firstbkr_avatar.png';
+	return 'https://t.firstbkr.com/firstbroker/img/firstbroker/firstbroker_avatar.jpg';
 }
 
 // 是否显示下载链接

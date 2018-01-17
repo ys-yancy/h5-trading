@@ -152,7 +152,7 @@ export default class SlideMenu extends PageBase {
 				phoneEl = $('.J_UserPhone', this.el),
 				nameEl = $('.J_UserName', this.el);
 				
-			let avatarUrl = Config.getAvatarPrefix(account.avatar);
+			let avatarUrl = account.avatar ? Config.getAvatarPrefix(account.avatar) : getDefaultIconWL();
 
 			nameEl.text(account.nickname);
 			phoneEl.text(account.phone);
