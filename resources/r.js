@@ -318,6 +318,11 @@ function getMinWithdrawWL() {
 	return 0;
 }
 
+// 是否提供切换UI的功能
+function getHasSwitchTradingUi() {
+	return true;
+}
+
 // 默认交易 UI
 function getDefaultTradingUI() {
 	// 专业交易

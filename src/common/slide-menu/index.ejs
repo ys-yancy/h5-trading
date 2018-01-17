@@ -76,6 +76,7 @@
 				</a>
 			</li>
 			<% } %>
+			<% if(getHasSwitchTradingUi()) { %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="javascript:void(0);">
 					<span class="icon ui slider-switch-ui"></span>
@@ -89,6 +90,7 @@
 					</div>
 				</a>
 			</li>
+			<% } %>
 			<li class="li-item clearfix">
 				<a class="link-item" href="./recovery-password.html?src=<%= encodeURIComponent(location.href)%>">
 					<span class="icon ui slider-password"></span>
