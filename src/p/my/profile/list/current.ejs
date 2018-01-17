@@ -2,7 +2,7 @@
   <% data.tickets.forEach(function(item, index) { %>
     <li class="item">
       <a class="go-link" href="javascript:void(0);">
-        <p class="tag <%= item.cmd.indexOf('buy') !== -1 ? 'up' : '' %>">
+        <p class="tag <%= item.cmd.indexOf('buy') !== -1 ? 'up' : 'down' %>">
           <%= item.cmd.indexOf('buy') !== -1 ? '买涨' : '买跌' %>
         </p>
         <p class="name"><%= item.symbolName %></p>
@@ -12,7 +12,7 @@
           <span class="profit">挂单</span>
         </p>
         <% } else { %>
-        <p class="num <%= item.profits > 0 ? 'up' : '' %>">
+        <p class="num <%= item.profits > 0 ? 'up' : 'down' %>">
           <span class="small">$</span>
           <span class="profit"><%= (item.profits).toFixed(2) %></span>
         </p>
