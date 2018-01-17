@@ -36,6 +36,16 @@ Base.extend(MasterList, Base, {
       var doc = $(document);
       doc.on('tap', '.J_Fn', $.proxy(this._showFilter, this));
       doc.on('tap', '.J_Item', $.proxy(this._switch, this));
+
+      doc.on('tap', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        var curEl = $(e.target);
+        
+        if (curEl.parents('.fn').length <= 0 && !curEl.hasClass('fn')) {
+          this._hideFilter();
+        }
+      })
   },
 
   _showFilter: function() {
