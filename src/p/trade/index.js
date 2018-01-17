@@ -320,41 +320,41 @@ Base.extend(Trade, PageBase, {
       }
     });
 
-    this._getFollowOrderFloatMarginList();
+    // this._getFollowOrderFloatMarginList();
 
   },
 
-  _getFollowOrderFloatMarginList: function() {
-    var listEl = this.isDemo() ? this.demoListEl : this.listEl;
-    var gendanTitleEls = $('.J_AllProfit', listEl);
+  // _getFollowOrderFloatMarginList: function() {
+  //   var listEl = this.isDemo() ? this.demoListEl : this.listEl;
+  //   var gendanTitleEls = $('.J_AllProfit', listEl);
 
-    gendanTitleEls.each((index, item) => {
-      item = $(item);
-      var orderId = item.attr('data-id'),
-          formateEls = $('.J_Profit'),
-          allProfit = 0;
+  //   gendanTitleEls.each((index, item) => {
+  //     item = $(item);
+  //     var orderId = item.attr('data-id'),
+  //         formateEls = $('.J_Profit'),
+  //         allProfit = 0;
 
-      formateEls.each((index, el) => {
-        el = $(el);
-        var dataId = el.attr('data-id');
-        if ( dataId && orderId == dataId ) {
-          var profit = el.text();
-          profit = parseFloat(profit);
-          allProfit += profit;
-        }
-      })
+  //     formateEls.each((index, el) => {
+  //       el = $(el);
+  //       var dataId = el.attr('data-id');
+  //       if ( dataId && orderId == dataId ) {
+  //         var profit = el.text();
+  //         profit = parseFloat(profit);
+  //         allProfit += profit;
+  //       }
+  //     })
 
-      allProfit = allProfit.toFixed(2);
+  //     allProfit = allProfit.toFixed(2);
 
-      item.text(allProfit);
-      if (allProfit > 0) {
-        item.addClass('up').removeClass('down');
-      } else {
-        item.removeClass('up').addClass('down');
-      }
+  //     item.text(allProfit);
+  //     if (allProfit > 0) {
+  //       item.addClass('up').removeClass('down');
+  //     } else {
+  //       item.removeClass('up').addClass('down');
+  //     }
 
-    })
-  },
+  //   })
+  // },
 
   _getContainer: function() {
     var isDemo = this.isDemo();
