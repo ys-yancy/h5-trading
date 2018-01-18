@@ -310,6 +310,9 @@ Base.extend(Register, PageBase, {
                 Cookie.set('uuid', data.data.uuid, {
                     expires: Infinity
                 });
+                Cookie.set('deposits', data.data.deposits || 0, {
+                    expires: Infinity
+                });
 
                 self.registerErr = false;
 

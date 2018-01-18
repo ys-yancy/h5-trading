@@ -311,6 +311,10 @@ Base.extend(Register, PageBase, {
                     expires: Infinity
                 });
 
+                Cookie.set('deposits', data.data.deposits || 0, {
+                    expires: Infinity
+                });
+
                 self.registerErr = false;
 
                 submitEl.val('注册');

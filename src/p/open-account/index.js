@@ -184,6 +184,9 @@ Base.extend(OpenAccount, PageBase, {
         }).then((data) => {
             this.onlyOne = true;
             this._hideLoad(curEl);
+            this.cookie.set('is_open_account', 1, {
+		        expires: Infinity
+		    });
             setTimeout(() => {
                 location.href = this.src;
             }, 1000);

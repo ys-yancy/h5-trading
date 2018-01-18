@@ -92,7 +92,11 @@ class Login extends Base {
 		    });
 		    Cookie.set('inviteCode', data.invite_code, {
 		        expires: Infinity
-		    });
+			});
+			
+			Cookie.set('deposits', data.deposits, {
+				expires: Infinity
+			});
 
 
 		    if (!Cookie.get('type')) {

@@ -262,6 +262,10 @@ Base.extend(Register, PageBase, {
                     expires: Infinity
                 });
 
+                Cookie.set('deposits', data.data.deposits || 0, {
+                    expires: Infinity
+                });
+
                 self.registerErr = false;
 
                 new Toast('注册成功');

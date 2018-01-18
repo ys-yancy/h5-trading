@@ -94,7 +94,10 @@ class Login extends Base {
 		        expires: Infinity
 		    });
 
-
+			Cookie.set('deposits', data.deposits, {
+		        expires: Infinity
+			});
+			
 		    if (!Cookie.get('type')) {
 		        Cookie.set('type', 'demo', {
 		          	expires: Infinity
