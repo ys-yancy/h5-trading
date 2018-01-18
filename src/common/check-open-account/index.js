@@ -9,7 +9,7 @@ export default class CheckOpenAccount extends PageBase{
     }
 
     _check() {
-        // 先判断入金， 再判断开户
+        // 先判断入金, 再判断开户
         this._isRechargeSuccess().then(() => {
             this._isNeedOpenAccount().then((data) => {
                 location.href = './open-account.html?src=' + encodeURIComponent(location.href);
@@ -24,11 +24,10 @@ export default class CheckOpenAccount extends PageBase{
             if (!isNaN(deposits)) {
                 if (deposits == 1) {
                     resolve();
-                    return;
                 } else {
                     reject();
-                    return;
                 }
+                return;
             }
 
             this.getAccount().then((data) => {
@@ -48,7 +47,7 @@ export default class CheckOpenAccount extends PageBase{
             if (isOpendAccount == 1)
                 reject();
                 return;
-            
+
             this._getUserInfo().then((data) => {
                 if (data.status == 200 && data.data.id_no) {
                     reject()
