@@ -179,6 +179,8 @@ class Profile extends PageBase {
       Cookie.expire('uuid');
       Cookie.expire('inviteCode');
       Cookie.expire('token');
+      Cookie.expire('deposits');
+      Cookie.expire('is_open_account');
 
       window.location = '../option.html';
       // if (Config.isAndroidAPK()) {

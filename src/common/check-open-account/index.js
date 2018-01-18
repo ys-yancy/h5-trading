@@ -47,7 +47,7 @@ export default class CheckOpenAccount extends PageBase{
             if (isOpendAccount == 1)
                 reject();
                 return;
-
+            
             this._getUserInfo().then((data) => {
                 if (data.status == 200 && data.data.id_no) {
                     reject()
