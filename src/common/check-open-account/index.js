@@ -1,22 +1,41 @@
 'use strict';
 
-var Base = require('../../app/base');
+var PageBase = require('../../app/page-base');
 var Cookie = require('../../lib/cookie');
-export default class CheckOpenAccount extends Base{
+export default class CheckOpenAccount extends PageBase{
     constructor(config) {
         super(config);
-        // this._check();
+        this._check();
     }
 
     _check() {
         // 先判断入金， 再判断开户
-        this._isNeedOpenAccount().then((data) => {
-            // location.href = './open-account.html?src=' + encodeURIComponent(location.href);
-        }, () => {})
+        this._isRechargeSuccess().then(() => {
+            this._isNeedOpenAccount().then((data) => {
+                location.href = './open-account.html?src=' + encodeURIComponent(location.href);
+            }, () => {})
+        }, () => {});
     }
 
     _isRechargeSuccess() {
-        return
+        return new Promise((resolve, reject) => {
+            var deposits = Cookie.get('deposits');
+            if (deposits == 1) {
+                resolve();
+                return;
+            } else {
+                reject();
+                return;
+            }
+            this.getAccount().then((data) => {
+                var deposits = data.deposits;
+                if (deposits == 1) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            })
+        })
     }
 
     _isNeedOpenAccount() {
@@ -26,13 +45,7 @@ export default class CheckOpenAccount extends Base{
                 reject();
                 return;
 
-            this.ajax({
-                url: '/v1/deposit/user/info/',
-                data: {
-                    access_token: Cookie.get('token')
-                },
-                noToast: true
-            }).then((data) => {
+            this._getUserInfo().then((data) => {
                 if (data.status == 200 && data.data.id_no) {
                     reject()
                 } else {
@@ -40,7 +53,18 @@ export default class CheckOpenAccount extends Base{
                 }
             }, () => {
                 resolve();
-            })
+            });
         })
     }
+
+    _getUserInfo() {
+        return this.ajax({
+            url: '/v1/deposit/user/info/',
+            data: {
+                access_token: Cookie.get('token')
+            },
+            noToast: true
+        });
+    }
+
 }
