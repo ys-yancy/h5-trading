@@ -114,12 +114,12 @@ function getWXDomainWL () {
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'https://t.firstbkr.com/img/firstbkr/share.jpg';
+	return 'https://t.firstbkr.com/img/firstbroker/share.jpg';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'https://t.firstbkr.com/img/firstbkr/share.jpg'
+	return 'https://t.firstbkr.com/img/firstbroker/share.jpg'
 }
 
 // 微信邀请好友标题
@@ -146,7 +146,7 @@ function getIsNewShareWl() {
 }
 // 新的邀请链接
 function getNewShareWl() {
-	return 'https://firstbkr.tonglingdi.cn/subscribe?uid=';
+	return 'https://firstbroker.tonglingdi.cn/subscribe?uid=';
 }
 
 // 微信转发标题
@@ -183,7 +183,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t.firstbkr.com/firstbroker/img/firstbroker/firstbroker_avatar.jpg';
+	return 'https://t.firstbkr.com/img/firstbroker/firstbroker_avatar.jpg';
 }
 
 // 是否显示下载链接
@@ -298,7 +298,7 @@ function getUseNewGuide () {
 
 // 新用户引导 - 官微二维码
 function getNewGuideQRCode () {
-	return '../img/firstbkr/firstbroker_gw_qrcode.jpg';
+	return '../img/firstbroker/firstbroker_gw_qrcode.jpg';
 }
 
 // 注册赠金
@@ -427,7 +427,7 @@ function getIndexOfUrl() {
 
 //发现页IMG
 function getBannerImgUrl() {
-	return 'https://t.firstbkr.com/img/firstbkr/banner.png';
+	return 'https://t.firstbkr.com/img/firstbroker/banner.png';
 }
 
 //pc登录地址
