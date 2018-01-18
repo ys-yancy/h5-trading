@@ -4,6 +4,7 @@ var PageBase = require('../../../app/page-base');
 var config = require('../../../app/config');
 var util = require('../../../app/util');
 var GoBack = require('../../../common/go-back');
+var Sticky = require('../../../common/sticky');
 var indexTmpl = require('./index.ejs.html');
 var newTmpl = require('./new-list.ejs');
 require('../../my/common/header');
@@ -11,6 +12,7 @@ require('../../my/common/header');
 class Friends extends PageBase {
   constructor() {
     super();
+    this._initSticky();
     this.configStatistics();
     new GoBack();
     this.getToken().then(() => {
@@ -40,9 +42,9 @@ class Friends extends PageBase {
 
   getData() {
     this.ajax({
-      url: '/v1/user/downlines/',
+      url: '/v1/user/downline_friends/',//'/v1/user/downlines/',
       data: {
-        access_token: this.cookie.get('token')
+        access_token: '7948a403-40b2-4c90-befa-2f1619a948d0'//this.cookie.get('token')
       }
     }).then((data) => {
       data = data.data;
@@ -77,7 +79,9 @@ class Friends extends PageBase {
     });
   }
 
-
+  _initSticky() {
+    $('#J_Header').sticky();
+  }
 
   defaults() {
     return {

@@ -1,6 +1,6 @@
 <ul class="">
   <% data.forEach(function(item) {%>
-  <li class="item clearfix">
+  <li class="item clearfix bd-color">
     <div class="img-wrapper-outer">
       <div class="img-wrapper">
         <img class="img" src="<%= item.avatar %>">
@@ -9,13 +9,13 @@
     <div class="info">
       <h2><%= item.nickname %></h2>
       <p>
-        <span class="lev"><%= item.level %></span>
-        <span class="is-recharge">已入金</span>
+        <span class="lev ui sm-bd"><%= item.level %></span>
+        <span class="is-recharge ui sm-bd <%= item.deposits ? 'has' : 'no'%>"><%= item.deposits ? '已入金' : '未入金' %></span>
       </p>
     </div>
     <duv class="detail-wrapper">
       <p class="desc">近30天贡献佣金</p>
-      <p class="num">$100</p>
+      <p class="num">$<%= parseFloat(item.profit_sum).toFixed(2) %></p>
     </div>
   </li>
   <%}); %>

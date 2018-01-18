@@ -42,7 +42,7 @@ header{
 .new-list{
   li{
     .padding(20, 30);
-    .border-bottom(1, solid, #ccc);
+    .border-bottom(1, solid, transparent);
     &.no-friends{
       border: none;
     }
@@ -76,9 +76,13 @@ header{
       .font-size(18);
       .padding(5, 12);
       text-align: center;
-      .border(1, solid, red);
+      .border(1, solid, transparent);
       .border-radius(3);
       .margin-right(20);
+      &.no{
+        color: #b1b1b4;
+        border-color: #b1b1b4 !important;
+      }
     }
   }
   .detail-wrapper{
