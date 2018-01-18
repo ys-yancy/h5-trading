@@ -34,7 +34,7 @@ export default class Banner extends PageBase {
   }
 
   _getConfig() {
-    self.ajax({
+    this.ajax({
       url: '/v1/config/banner'
     }).then((data) => {
       this._renderSlider(data);
