@@ -19,7 +19,7 @@ Base.extend(OpenAccount, PageBase, {
         this._requires();
         this._initAttrs();
         this._getUserInfo();
-        // this._renderBankList();
+        this._renderBankList();
         this.configStatistics();
         this.onlyOne = true;
     },
@@ -201,13 +201,12 @@ Base.extend(OpenAccount, PageBase, {
 
     _getSupportBanks: function() {
         return this.ajax({
-            url: '/v1/user/real/withdraw/',
+            url: '/v1/user/real/withdraw/bank_list/',
             data: {
-                access_token: this.cookie.get('token'),
-                real_token: this.cookie.get('real_token')
+                access_token: this.cookie.get('token')
             }
         }).then((data) => {
-            return data.data.banks;
+            return data.data;
         })
     },
 
