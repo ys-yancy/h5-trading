@@ -246,6 +246,11 @@ function getAllowModify () {
 	return true;
 }
 
+// 是否有经纪日历
+function getHasCalendar() {
+	return true;
+}
+
 // 是否允许搜索品种
 function getAllowSearch () {
 	return false;

@@ -17,6 +17,7 @@ Base.extend(News, Base, {
 		this._bind();
 		this._getData();
 		this._setInterval();
+		this._requires();
 		this._initSticky();
 		new SildeMenu({
 	      el: $('#J_SlideMenu'),
@@ -139,6 +140,13 @@ Base.extend(News, Base, {
 
 	_hideLoading: function() {
 		$('.loading').hide();
+	},
+
+	_requires: function() {
+		if (getHasCalendar()) {
+			$('#nav').show();
+			$('.content').addClass('hasCal');
+		}
 	},
 
 	_initSticky: function() {

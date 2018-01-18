@@ -241,6 +241,11 @@ function getTradeUI () {
 	return './pro-trading.html?';
 }
 
+// 是否有经纪日历
+function getHasCalendar() {
+	return true;
+}
+
 // 是否允许修改订单 (二元交易UI不允许修改订单)
 function getAllowModify () {
 	return true;
