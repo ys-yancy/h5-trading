@@ -242,6 +242,7 @@ Base.extend(Cat, PageBase, {
 
   _trigger: function() {
     setTimeout(() => {
+      let isInitFlip = this._setNavWidth();
       $('.J_Type').eq(0).trigger('tap').addClass('active');
       isInitFlip && self._initFlipsnap(parseInt(data.data.length  -5));
     }, 0);
@@ -300,7 +301,6 @@ Base.extend(Cat, PageBase, {
               var symbol = item.symbol;
 
               item.kw = val;
-
               item.add = optionList.indexOf(symbol) !== -1 ? false : true;
             });
             return {
