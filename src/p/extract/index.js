@@ -7,6 +7,7 @@ var Sticky = require('../../common/sticky');
 var Dialog = require('../../common/dialog');
 var validateIdCard = require('../../lib/validate-idcard');
 var CustomerService = require('../../common/customer-service');
+var CheckOpenAccount = require('../../common/check-open-account');
 var tmpl = require('./new-tmpl.ejs');
 var Config = require('../../app/config');
 var dialogTmpl = require('./dialog.ejs');
@@ -16,6 +17,7 @@ function Extract() {
   var self = this;
   this.login().then(function() {
     self.init();
+    new CheckOpenAccount();
   }, function() {
     location.href = './option.html';
   });

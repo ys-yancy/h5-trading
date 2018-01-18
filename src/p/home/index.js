@@ -4,6 +4,7 @@ import Base from '../../app/base';
 // import BottomNav from '../../common/bottom-nav';
 import SildeMenu from '../../common/slide-menu';
 import FloatMsg from '../../common/float-msg';
+import CheckOpenAccount from '../../common/check-open-account';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 
@@ -11,6 +12,7 @@ class Home extends Base {
 	constructor(config) {
 		super(config);
 		this._init();
+		new CheckOpenAccount();
 	}
 
 	_init() {

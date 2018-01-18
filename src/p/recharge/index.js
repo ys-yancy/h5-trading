@@ -12,6 +12,7 @@ var dialogTmpl = require('./dialog.ejs');
 var payTypeTmpl = require('./pat-type.ejs');
 var dialogErrorTmpl = require('./dialog-error.ejs');
 var CustomerService = require('../../common/customer-service');
+var CheckOpenAccount = require('../../common/check-open-account');
 var Config = require('../../app/config');
 var qrcode = require('../../lib/qrcode');
 var ShowQrCode = require('./component/show-qroce');
@@ -21,6 +22,7 @@ function Recharge() {
     var self = this;
     this.login().then(function() {
         self.init();
+        new CheckOpenAccount();
     }, function() {
         var src = new Uri().getParam('src');
         src = src ? src : './option.html';
