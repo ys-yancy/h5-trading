@@ -144,7 +144,7 @@ Base.extend(News, Base, {
 
 	_requires: function() {
 		if (getHasCalendar()) {
-			$('#nav').show();
+			$('#nav').append(this.tmpl).show();
 			$('.content').addClass('hasCal');
 		}
 	},
@@ -168,6 +168,11 @@ Base.extend(News, Base, {
             var curLink= linkEl.prop('href');
             $('.link').prop('href', curLink + search);
         }
+	},
+
+	attrs: {
+		tmpl: `<a class="left tdlist clearfix color active" href="javascript:void(0)">资讯快递</a>
+    		<a class="right tdlist clearfix color link" href="./calendar.html">经济日历</a>`
 	}
 });
 
