@@ -248,12 +248,12 @@ function getAllowModify () {
 
 // 是否允许搜索品种
 function getAllowSearch () {
-	return true;
+	return false;
 }
 
 // 是否提供切换UI的功能
 function getHasSwitchTradingUi() {
-	return true;
+	return false;
 }
 
 // 默认交易 UI
