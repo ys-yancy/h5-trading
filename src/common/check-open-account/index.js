@@ -20,13 +20,17 @@ export default class CheckOpenAccount extends PageBase{
     _isRechargeSuccess() {
         return new Promise((resolve, reject) => {
             var deposits = Cookie.get('deposits');
-            if (deposits == 1) {
-                resolve();
-                return;
-            } else {
-                reject();
-                return;
+ 
+            if (!isNaN(deposits)) {
+                if (deposits == 1) {
+                    resolve();
+                    return;
+                } else {
+                    reject();
+                    return;
+                }
             }
+
             this.getAccount().then((data) => {
                 var deposits = data.deposits;
                 if (deposits == 1) {
@@ -44,7 +48,7 @@ export default class CheckOpenAccount extends PageBase{
             if (isOpendAccount == 1)
                 reject();
                 return;
-
+            
             this._getUserInfo().then((data) => {
                 if (data.status == 200 && data.data.id_no) {
                     reject()
