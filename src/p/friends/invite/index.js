@@ -44,7 +44,7 @@ class Friends extends PageBase {
     this.ajax({
       url: '/v1/user/downline_friends/',//'/v1/user/downlines/',
       data: {
-        access_token: '7948a403-40b2-4c90-befa-2f1619a948d0'//this.cookie.get('token')
+        access_token: this.cookie.get('token')
       }
     }).then((data) => {
       data = data.data;
