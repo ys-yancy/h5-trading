@@ -1353,11 +1353,15 @@ Base.extend(ProTrading, PageBase, {
         self.profileObject.avatar = account.avatar ? Config.getAvatarPrefix(account.avatar) : '';
         self.profileObject.nickname = account.nickname;
 
+        if (!getShowWeixinShare()) {
+          return;
+        }
+
         if (self.isWeixin()) {
           var share;
-          if (myshow) {
+          // if (myshow) {
             // share = new Share({ ticket: data.ticket });
-          }
+          // }
 
 
           $('#J_Success').prepend('<a class="dialog-btn share J_Share" href="javascript:">' + btnDesc + '</a>');
