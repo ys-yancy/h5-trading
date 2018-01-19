@@ -78,31 +78,35 @@ Base.extend(Option, PageBase, {
   _bind: function() {
     var doc = $(document);
     // doc.on('click', '.J_Percent', $.proxy(this._switchView, this));
-    doc.on('swipeLeft swipeRight', '.link', $.proxy(this._swipeLeft, this));
     doc.on('touchstart', '.link', $.proxy(this._touchLink, this));
     doc.on('click', '.J_UpSymbol', $.proxy(this._upSymbol, this));
     doc.on('click', '.J_DelSymbol', $.proxy(this._delSymbol, this));
+
+    if (getAllowDelete()) {
+      doc.on('swipeLeft swipeRight', '.link', $.proxy(this._swipeLeft, this));
+    }
 
     doc.on('click', '.fn', (e) => {
       var curEl = $(e.currentTarget);
       this._tips(e);
     });
 
-    this.subscribe('switch:account', function() {
-      setTimeout(function() {
-        location.reload();
-      }, 0);
-    });
-
-    this.subscribe('reject:realToken', this._reject, this);
-
-    this.subscribe('get:realToken', this._getRealToken, this);
-
     doc.on('click', '.J_GoShare', (e) => {
       var curEl = $(e.currentTarget);
       var href = curEl.attr('href');
       curEl.attr('href', href + '?src=' + decodeURIComponent(location.href));
     })
+
+    this.subscribe('reject:realToken', this._reject, this);
+
+    this.subscribe('get:realToken', this._getRealToken, this);
+
+    this.subscribe('switch:account', function() {
+      setTimeout(function() {
+        location.reload();
+      }, 0);
+    });
+    
   },
 
   _delSymbol: function(e) {

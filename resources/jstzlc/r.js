@@ -251,6 +251,11 @@ function getHasCalendar() {
 	return true;
 }
 
+// 是否允许删除品种（专业自选页面）
+function getAllowDelete() {
+	return false;
+}
+
 // 是否允许搜索品种
 function getAllowSearch () {
 	return false;
