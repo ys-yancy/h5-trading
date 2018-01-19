@@ -7,7 +7,12 @@ var Sticky = require('../../common/sticky');
 var tmpl = require('./index.ejs');
 function News() {
 	News.superclass.constructor.apply(this, arguments);
-	this.init();
+	
+	if (Cookie.get('token')) {
+		this.init();
+	} else {
+		window.location = getLoginWL();
+	}
 }
 
 Base.extend(News, Base, {

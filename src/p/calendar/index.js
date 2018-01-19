@@ -6,8 +6,12 @@ var Sticky = require('../../common/sticky');
 var SildeMenu = require('../../common/slide-menu');
 var tmpl = require('./index.ejs');
 function Calendar() {
-	Calendar.superclass.constructor.apply(this, arguments);
-	this.init();
+    Calendar.superclass.constructor.apply(this, arguments);
+    if (Cookie.get('token')) {
+		this.init();
+	} else {
+		window.location = getLoginWL();
+	}
 }
 
 Base.extend(Calendar, Base, {
