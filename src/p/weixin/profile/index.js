@@ -200,8 +200,9 @@ class Profile extends PageBase {
       },
       type: 'put'
     }).then(function(data) {
-      $('.J_Upload').attr
-      ('src', img.substring);
+      data = data.data;
+      var avatar = Config.getAvatarPrefix(data.url);
+      $('.J_Upload').attr('src', avatar);
       new Toast('头像更新成功！');
     });
   }
