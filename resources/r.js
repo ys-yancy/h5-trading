@@ -246,10 +246,16 @@ function getTradeUI () {
 	return './pro-trading.html?';
 }
 
+// 计算点差是否除pip
+function getDividePip() {
+	return true;
+}
+
 // 是否有经纪日历
 function getHasCalendar() {
 	return true;
 }
+
 
 // 是否允许删除品种（专业自选页面）
 function getAllowDelete() {

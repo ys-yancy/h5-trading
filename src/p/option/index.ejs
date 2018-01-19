@@ -19,7 +19,8 @@
         </div>
         <span class="lt-item price J_BidPrice"><%= bidPrice === '--' ? '--' : bidPrice.toFixed(unit) %></span>
         <!--<%=(Math.abs(askPrice - bidPrice) * Math.pow(10, (unit - 1))).toFixed(1) %>-->
-        <span class="lt-item spread"><span class="spread-content ui common J_Spread"><%= (Math.abs(askPrice - bidPrice) / parseFloat(item.policy.pip)).toFixed(1) %></span></span>
+        <% var spread = getDividePip() ? (Math.abs(askPrice - bidPrice) / parseFloat(item.policy.pip)).toFixed(1) : Math.abs(askPrice - bidPrice).toFixed(5) %>
+        <span class="lt-item spread"><span class="spread-content ui common J_Spread"><%= spread %></span></span>
         <span class="lt-item price J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></span>
         <span class="lt-item percent default-down <%if(rate > 0){%> up <%}%> J_Percent" data-range="<%= isNaN(price) ? '--' :  (price - item.close_price).toFixed(unit) %>"><%= rate %>%</span>
         <div class="action-wrapper clearfix" >

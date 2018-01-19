@@ -307,7 +307,13 @@ Base.extend(Option, PageBase, {
     if (askPrice && bidPrice) {
       var spreadEl = $('.J_Spread', itemEl);
       var spread = askPrice - bidPrice;
-      spread = (spread / pip).toFixed(1);
+      
+      if (getDividePip()) {
+        spread = (spread / pip).toFixed(1);
+      } else {
+        spread = spread.toFixed(5);
+      }
+
       spreadEl.text(spread);
       oldSymbol.spread = spread;
     }
@@ -494,7 +500,12 @@ Base.extend(Option, PageBase, {
           var spreadEl = $('.J_Spread', itemEl);
           var spread = askPrice - bidPrice;
           // spread = (spread * Math.pow(10, (minUnit - 1))).toFixed(1);
-          spread = (spread / pip).toFixed(1);
+          if (getDividePip()) {
+            spread = (spread / pip).toFixed(1);
+          } else {
+            spread = spread.toFixed(5);
+          }
+  
           spreadEl.text(spread);
           oldSymbol.spread = spread;
         }
