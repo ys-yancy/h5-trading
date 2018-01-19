@@ -258,20 +258,20 @@ function getAllowModify () {
 
 // 是否允许搜索品种
 function getAllowSearch () {
-	return true;
+	return false;
 }
 
 // 是否提供切换UI的功能
 function getHasSwitchTradingUi() {
-	return true;
+	return false;
 }
 
 // 默认交易 UI
 function getDefaultTradingUI() {
 	// 专业交易
-	// return 4;
+	return 4;
 	// 极速交易
-	return 6;
+	// return 6;
 }
 
 // 是否有输入兑换码功能
