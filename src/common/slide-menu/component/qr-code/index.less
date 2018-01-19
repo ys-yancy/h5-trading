@@ -20,7 +20,9 @@
 			}
 		}
 		.us-name{
+			.width(200);
 			.margin-top(20);
+			.line-hide();
 		}
 	}
 	.us-code-wrapper{
@@ -48,10 +50,18 @@
 			}
 		}
 		.us-qr-desc{
-			.line-height(100);
+			.padding(30, 0);
 			text-align: center;
 			.font-size(26);
 			.margin-top(50);
+			vertical-align: bottom;
+			overflow: hidden;
+			.us-name{
+				display: inline-block;
+				.max-width(180);
+				.line-hide();
+				vertical-align: bottom;
+			}
 		}
 	}
 }
