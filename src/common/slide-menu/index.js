@@ -7,6 +7,7 @@ import Util from '../../app/util.js';
 import BottomAccount from '../bottom-account';
 import RedeemCode from './component/redeem-code';
 import UsQrCode from './component/qr-code';
+// import Scroll from './scroll';
 import Dialog from '../dialog';
 import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
@@ -18,6 +19,10 @@ export default class SlideMenu extends PageBase {
 		this._render().then(() => {
 			this._init();
 		});
+
+		// new Scroll('#root-list', {
+		// 	tap: !0
+		// })
 	}
 
 	_init() {
