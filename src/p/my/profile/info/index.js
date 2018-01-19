@@ -52,6 +52,10 @@ export default class Info extends PageBase {
           self._getBottomData();
         }
 
+        if (!getShowWeixinShare()) {
+          return;
+        }
+
         // 配置分享信息
         if (self.isWeixin()) {
           self.profileObject = data;
