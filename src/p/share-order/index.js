@@ -181,7 +181,7 @@ class ShareOrder extends PageBase {
         // circle.animate(0.7)
 
 
-        if (self.isWeixin()) {
+        if (self.isWeixin() && getShowWeixinShare()) {
           var doc = $(document);
 
           self.profileObject = data;
@@ -227,7 +227,7 @@ class ShareOrder extends PageBase {
         // $('#J_Open').css('display', 'block');
         self.render(orderTmpl, data, $('#container-hd'));
 
-        if (self.isWeixin()) {
+        if (self.isWeixin() && getShowWeixinShare()) {
           var doc = $(document);
 
           self.profileObject = data;
