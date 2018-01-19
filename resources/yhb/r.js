@@ -178,12 +178,11 @@ function getAboutUSHTMLWL () {
 			<p>壹号比特币团队在计算机网络技术方面亦颇有建树，在交易系统的构建过程中充分考虑了稳定性、时效性、易用性等多方面因素，力求为投资者提供极致的交易体验。</p><br/>\
 			<p>壹号比特币的使命是让全球每一个人，无论处于何等收入水平，都能够以简易、安全、快捷的方式参与投资全球金融市场。</p><br/>\
 			</div>';
-;
 }
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t-yhb.firstbkr.com/yhb/img/yhb/yhb_avatar.jpg';
+	return 'https://t-yhb.firstbkr.com/yhb/img/wl/yhb/yhb_avatar.png';
 }
 
 // 是否显示下载链接
