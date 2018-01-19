@@ -279,6 +279,11 @@ function getRedemption() {
 	return true;
 }
 
+// 是否显示微信分享入口
+function getShowWeixinShare() {
+	return false;
+}
+
 // 是否使用新的分享流程
 function getUseNewShare () {
 	return true;
