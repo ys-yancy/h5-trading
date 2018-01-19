@@ -75,7 +75,8 @@ class Login extends Base {
 		    data: {
 		        phone: phone,
 		        password: password,
-		        cc: 86
+				cc: 86,
+				wl: getWXWL()
 		    },
 		    noToast: true
 	   	}).then((data) => {
