@@ -11,8 +11,12 @@ var tmpl = require('./index.ejs');
 function ActualOrder() {
 	ActualOrder.superclass.constructor.apply(this, arguments);
 
-	this.curId;
-	this._init();
+	if (Cookie.get('token')) {
+		this.curId;
+		this._init();
+	} else {
+		window.location = getLoginWL();
+	}
 }
 
 Base.extend(ActualOrder, Base, {
