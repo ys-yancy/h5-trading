@@ -1,0 +1,690 @@
+/**
+ * ui 管理整个程序所用的的颜色
+ */
+ @fontColor: #596064;
+ @fontL1Color: #596064;
+ @fontL2Color: #7c919f;
+ @fontL3Color: #acacac;
+ @appColor: #538cea;
+ @redColor: #f7786c;
+ @greenColor: #6cd583;
+ @borderColor: #c8c7cc;
+ @disColor: #C8C8C9;
+ @editColor: #f6ca35; // 修改按钮的颜色
+ @defaultColor: #65696E; // 次要按钮的颜色(取消)
+ @otherColor: #9EA4A7; // 二级tab  tab-nav spread(ooption)
+ @otherBgColor: #f8f8f8; // 二级tab  tab-nav spread(ooption)
+ @slideTunkColor: #90CAF9; // 开关背景
+ @slideActiveTunkColor: #538cea; // 开关滑块背景
+ @slideCloseTunkColor: #eae6e6;
+ @slideCloseActiveTunkColor: #C6C5C5;
+ 
+ //----------------
+ // dialog
+ @dialogBgColor: #fff;
+ @dialogBdColor: #ccc;
+ @dialogShadowColor: #ccc;
+ @dialogBtnBdColor: #ccc;
+ @dialogComBtnBgColor: @appColor;
+ @dialogCelBtnBgColor: #ccc;
+ 
+ @popupColor: #626262;
+ @popupBgColor: #ccc;
+ 
+ // 全局趋向颜色
+ @setUiColor: @appColor;
+ 
+ // ui sm-bd
+ @smColor: @appColor;
+ @smBdColor: @appColor;
+ @smBgColor: #fff;
+ 
+ // ui progress
+ @progressBgColor: @appColor;
+ @progressLineColor: @appColor;
+ 
+ //sm-bd-ipt
+ @smBdIptColor: @fontColor;
+ @smBdIptBdColor: @borderColor;
+ @smBdIptBgColor: @otherBgColor;
+ //sm-bd-ipt disabled
+ @smBdIptDisColor: @fontColor;
+ @smBdIptDisBdColor: @disColor;
+ @smBdIptDisBgColor: @disColor;
+ 
+ //.ui.sm-bd-rdo
+ @smBdRdoColor: #fff;
+ @smBdRdoBdColor: @slideCloseTunkColor;
+ @smBdRdoBgColor: @slideCloseTunkColor;
+ @smBdRdoCheckColor: #fff;
+ @smBdRdoCheckBdColor: @appColor;
+ @smBdRdoCheckBgColor: @appColor;
+ 
+ //slider-contro-trunk
+ @sliderControTrunkBgColor: @slideTunkColor;
+ @sliderControTrunkActiveColor: @slideActiveTunkColor;
+ @sliderControCloseTrunkBgColor: @slideCloseTunkColor;
+ @sliderControCloseTrunkActiveColor: @slideCloseActiveTunkColor;
+ 
+ 
+ 
+ // tab page header
+ @headerColor: #252525;
+ @headerBgColor: #fff;//#F2F2F2;
+ 
+ // nav 
+ @navColor: #676767;
+ @navBgColor: #fff;//#F2F2F2;
+ @navBdColor: #fff;
+ @activeColor: #3583DE;
+ 
+ //tab-nav
+ @tab-navColor: @otherColor;
+ @tab-navBgColor: @otherBgColor;
+ 
+ @contentColor: @fontColor;
+ @contentL1Color: @fontL1Color;
+ @contentL2Color: @fontL2Color;
+ @contentL3Color: @fontL3Color;
+ @contentUpColor: @redColor;
+ @contentDownColor: @greenColor;
+ @contentItemBtColor: @borderColor;
+ 
+ // button
+ // 下单
+ @buttonUpBgColor: @redColor;
+ @buttonDownBgColor: @greenColor;
+ @buttonUnactiveBgColor: @disColor;
+ 
+ // 修改订单
+ @buttonEditBgColor: @appColor;
+ @buttonSubEditBgColor: @defaultColor;
+ 
+ // 次要按钮
+ @buttonDefaultBgColor: @defaultColor;
+ 
+ @buttonDisBgColor: @disColor;
+ @buttonDelBgColor: @defaultColor;
+ 
+ // 当前订单详情
+ @buttonEditOrderBgColor: @editColor;
+ @buttonCloseOrderBgColor: @appColor;
+ 
+ //footer
+ @footerNameColor: #929292;
+ @footerActiveColor: #fe3d35;
+ @import '../../variable.less';
+ 
+ html, body{
+     color: @contentColor;
+ }
+ 
+ .ui.icon{
+     background: url('../../../../img/style/jstzlc/app-icon.png');
+     .background-size(1000, 1000);
+     &.menu{
+         .background-position(-705, -314);
+     }
+     &.fn.add{
+         .background-position(-175, -314);
+     }
+     &.add{
+         .background-position(0, -220);
+     }
+     &.minus{
+         .background-position(-95, -220);
+     }
+     &.fn.sort{
+         display: none;
+     }
+     &.go-back{
+         .background-position(-10, -314);
+     }
+     &.desc{
+         .background-position(-440, -314);
+     }
+     &.search{
+         .background-position(-264, -314);
+     }
+     &.other-chart{
+         .background-position(-528, -314);
+     }
+     &.close{
+         .background-position(-352, -314);
+     }
+     &.share{
+         .background-position(-620, -314);
+     }
+     &.group{
+         .background-position(0, -402);
+     }
+     &.down-arrow{
+         .background-position(-90, -402);
+     }
+     &.down-recharge{
+         .background-position(-528, -754);
+     }
+     &.filter{
+         .background-position(-265, -402);
+     }
+     &.edit{
+         .background-position(-445, -402);
+     }
+     &.pocket{
+         .background-position(-525, -402);
+     }
+     &.submit{
+         .background-position(-615, -400);
+     }
+     &.check{
+         .background-position(-88, -490);
+     }
+     &.checked{
+         .background-position(-175, -490);
+     }
+     &.phone{
+         .background-position(-355, -490);
+     }
+     &.lock{
+         .background-position(-530, -490);
+     }
+     &.msg_code{
+         .background-position(-700, -490);
+     }
+     &.camera{
+         .background-position(-880, -665);
+     }
+     &.float-msg{
+         .background-position(-66, -295);
+     }
+     &.redeem-code{
+         .background-position(-140, -842);
+     }
+     &.self-Qr-ode{
+         .background-position(0, -842);
+     }
+     &.slider-recharge{
+         .background-position(0, -578);
+         &.active{
+             .background-position(-88, -578);
+         }
+     }
+     &.slider-account-profit{
+         .background-position(-176, -578);
+         &.active{
+             .background-position(-263, -578);
+         }
+     }
+     &.slider-friends{
+         .background-position(-353, -578);
+         &.active{
+             .background-position(-441, -578);
+         }
+     }
+     &.slider-msg{
+         .background-position(-528, -578);
+         &.active{
+             .background-position(-616, -578);
+         }
+     }
+     &.slider-invest{
+         .background-position(-704, -578);
+         &.active{
+             .background-position(-791, -578);
+         }
+     }
+     &.slider-service{
+         .background-position(-0, -754);
+         &.active{
+             .background-position(-88, -754);
+         }
+     }
+     &.slider-switch-account{
+         .background-position(-352, -754);
+         &.active{
+             .background-position(-440, -754);
+         }
+     }
+     &.slider-switch-ui{
+         .background-position(-175, -754);
+         &.active{
+             .background-position(-263, -754);
+         }
+     }
+     &.slider-password{
+         .background-position(3, -665);
+         &.active{
+             .background-position(-85, -665);
+         }
+     }
+     &.slider-help{
+         .background-position(-176, -666);
+         &.active{
+             .background-position(-264, -666);
+         }
+     }
+     &.slider-scl{
+         .background-position(-352, -666);
+         &.active{
+             .background-position(-440, -666);
+         }
+     }
+     &.slider-feedback{
+         .background-position(-528, -666);
+         &.active{
+             .background-position(-616, -666);
+         }
+     }
+     &.slider-us{
+         .background-position(-704, -666);
+         &.active{
+             .background-position(-792, -666);
+         }
+     }
+ }
+ 
+ .ui.common.icon.float-msg{
+     background-color: @setUiColor;
+ }
+ 
+ .popup{
+     // background: @popupBgColor;
+     color: @popupColor;
+     a{
+         color: @popupColor;
+     }
+ }
+ 
+ .ui.common.header-inner{
+     color: @headerColor;
+     background: @headerBgColor;
+ }
+ 
+ .ui.common.content-color{
+     color: @contentColor;
+     a{
+         color: @contentColor;
+     }
+     .l1-color{
+         color: @contentL1Color;
+     }
+     .l2-color{
+         color: @contentL2Color;
+     }
+     .l3-color{
+         color: @contentL3Color;
+     }
+     .default-up,
+     .default-up a{
+         color: @contentUpColor;
+     }
+     .default-down,
+     .default-down a{
+         color: @contentDownColor;
+     }
+     .up,
+     .up a{
+         color: @contentUpColor;
+     }
+     .down,
+     .down a{
+         color: @contentDownColor;
+     }
+     .bd-color{
+         border-color: @contentItemBtColor;
+     }
+     .ui.common.circle-list{
+         .cmd{color: @contentColor;}
+         &.up{
+             .border(2, solid, @contentUpColor);
+         }
+         &.down{
+             .border(2, solid, @contentDownColor);
+         }
+         &.active.up{
+             color: #fff;
+             background-color: @contentUpColor;
+             .cmd{color: #fff;}
+         }
+         &.active.down{
+             color: #fff;
+             background-color: @contentDownColor;
+             .cmd{color: #fff;}
+         }
+     }
+     .ui.common.spread-content{
+         color: @otherColor;
+         background: @otherBgColor;
+     }
+ }
+ 
+ 
+ /*
+  * nav,tab-nav相关
+  */
+ .ui.common.nav{
+     background: @navBgColor;
+     border-color: @navBdColor;
+     .color{
+         color: @navColor;
+     }
+     .active:before{
+         color: @activeColor;
+         background: @activeColor;
+     };
+ }
+ 
+ .ui.common.tab-nav{
+     background: @tab-navBgColor;
+     .color{
+        color: @tab-navColor;
+     }
+ }
+ 
+ .ui.common.bottom-nav{
+    background: #fafafa;
+    .border-top(1, solid, #e7e7e7);
+    .icon{
+        background: url('../../../../img/style/jstzlc/app-icon.png') 0 0 no-repeat;
+        .background-size(1000, 1000);
+        border-radius: 0;
+    }
+     .name{
+        color: @footerNameColor;
+     }
+ 
+     .home{
+         .icon{
+             .background-position(0, 0);
+         }
+     }
+     .option{
+         .icon{
+             .background-position(-110, 0);
+         }
+     }
+     .master{
+         .icon{
+             .background-position(-220, 0);
+         }
+     }
+     .actual{
+         .icon{
+             .background-position(-330, 0);
+         }
+     }
+     .news{
+         .icon{
+             .background-position(-440, 0);
+         }
+     }
+ 
+     .active{
+         .name{
+             color: @footerActiveColor;
+         }
+ 
+         .home{
+             .icon{
+                 .background-position(0, -110);
+             }
+         }
+         .option{
+             .icon{
+                 .background-position(-110, -110);
+             }
+         }
+         .master{
+             .icon{
+                 .background-position(-220, -110);
+             }
+         }
+         .actual{
+             .icon{
+                 .background-position(-330, -110);
+             }
+         }
+         .news{
+             .icon{
+                 .background-position(-440, -110);
+             }
+         }
+     }
+ }
+ 
+ 
+ // 小标题（主要跟单）
+ .ui.tl-color{
+     color: #575D62;
+ }
+ 
+ // 小的边关
+ .ui.sm-bd{
+     color: @smColor;
+     background-color: @smBgColor;
+     border-color: @smBdColor !important;
+ }
+ /*
+  * 跟单中的ui（主要）
+  */
+ .ui.sm-bd-ipt{
+     color: @smBdIptColor;
+     background-color: @smBdIptBgColor;
+     border: 1px solid @smBdIptBdColor !important;
+     &:disabled{
+         color: @smBdIptDisColor;
+         background-color: @smBdIptDisBdColor;
+         border-color: @smBdIptDisBgColor !important;
+     }
+ }
+ 
+ .ui.radio-w{
+     background-color: @sliderControTrunkBgColor;
+     &:before{
+         background-color: @sliderControTrunkActiveColor;
+     }
+     &.close,
+     &.off {
+         background-color: @sliderControCloseTrunkBgColor;
+         &:before{
+             background-color: @sliderControCloseTrunkActiveColor;
+         }
+     }
+ }
+ .ui.radio-ipt{
+     &:after{
+         background-color: @sliderControCloseTrunkBgColor;
+     }
+     &:before{
+         background-color: @sliderControCloseTrunkActiveColor;
+     }
+     &:checked{
+         &:after{
+             background-color: @sliderControTrunkBgColor;
+         }
+         &:before{
+             background-color: @sliderControTrunkActiveColor;
+         }
+     }
+ }
+ 
+ .ui.sm-bd-rdo{
+     &:before{
+         color: @smBdRdoColor;
+         border: 1px solid @smBdRdoBdColor;
+         background: @smBdRdoBgColor;
+     }
+     &:checked:before{
+         color: @smBdRdoCheckColor;
+         border: 1px solid @smBdRdoCheckBdColor;
+         background: @smBdRdoCheckBgColor;
+     }
+ }
+ 
+ // other
+ .ui.set-ui{
+     color: @setUiColor;
+     &.import{
+         color: @setUiColor !important;
+     }
+ }
+ 
+ .ui.common.progress {
+     background-color: @progressLineColor;
+     .circle{
+         background-color: @progressBgColor;
+     }
+ }
+ 
+ .ui.pointer.common,
+ .ui.selected-bar.common{
+     background: @setUiColor !important;
+ }
+ 
+ .ui.setValue-controller{
+     background: -webkit-linear-gradient(@setUiColor, @setUiColor) no-repeat, #e7e7e7; 
+     background: linear-gradient(@setUiColor, @setUiColor) no-repeat, #e7e7e7;
+     &::-webkit-slider-thumb{
+         background: @setUiColor !important;
+     }
+ }
+ 
+ .ui.line-w.common{
+     .height(20);
+     background: #f1f1f1;
+ }
+ 
+ .ui.ro-setUi.common{
+     &.active .radio-inner{
+         background-color: @setUiColor;
+     }
+     .radio{
+         border-color: @setUiColor !important;
+     }
+ }
+ 
+ /*
+  * 按钮相关
+  */
+ /*
+  * 其他一些按钮， 背景颜色用的是全局的
+ */
+ 
+ .ui.common.btn-setUi{
+     background-color: @setUiColor;
+ }
+ 
+ // 下单相关
+ .ui.btn-default{
+     background-color: @buttonDefaultBgColor;
+ }
+ .ui.btn-up{
+     background-color: @buttonUpBgColor;
+ }
+ .ui.btn-down{
+     background-color: @buttonDownBgColor;
+ }
+ .ui.btn-edit{
+     background-color: @buttonEditBgColor;
+ }
+ .ui.btn-subEdit{
+     background-color: @buttonSubEditBgColor;
+ }
+ .ui.action.unactive{
+     background-color: @buttonUnactiveBgColor;
+ }
+ 
+ .ui.btn-dis{
+     background-color: @buttonDisBgColor;
+ }
+ 
+ .ui.btn-del{
+     background-color: @buttonDelBgColor;
+ }
+ 
+ .ui.btn-order-edit{
+     background-color: @buttonEditOrderBgColor;
+ }
+ 
+ .ui.btn-order-close{
+     background-color: @buttonCloseOrderBgColor;
+ }
+ 
+ // 跟单相关
+ 
+ .ui.btn-moreSet,
+ .ui.btn-attention,
+ .ui.btn-cancelAttention,
+ .ui.btn-reviseSetting {
+     color: #fff;
+     background: @buttonEditOrderBgColor;
+     border-color: transparent;
+ }
+ 
+ .ui.btn-follow,
+ .ui.btn-pauseing,
+ .ui.btn-keepFollow,
+ .ui.btn-pauseFollow {
+     background: @setUiColor;
+     border-color: transparent;
+ }
+ 
+ .ui.btn-following{
+     background: @buttonDisBgColor;
+     border-color: transparent;
+ }
+ 
+ .ui.btn-reFollow,
+ .ui.btn-cancelFollow {
+     background: @buttonDefaultBgColor;
+ }
+ 
+ .ui.btn-followSettingSubmit{
+     color: #fff;
+     background-color: @setUiColor;
+ }
+ 
+ .ui.btn-start{
+     color: #fff;
+     background-color: @setUiColor;
+     border-color: transparent;
+ }
+ 
+ .ui.btn-follow-recharge{
+     color: #fff;
+     background-color: @setUiColor;
+ }
+ 
+ .ui.common.btn-extract{
+     background-color: @buttonDefaultBgColor;
+ }
+ 
+ .ui.common.btn-recharge{
+     background-color: @setUiColor;
+ }
+ 
+ /*
+  * dialog ui
+ */
+ .dialog{
+     .dialog-btn,
+     a.dialog-btn{
+         color: @setUiColor;
+         &.close,
+         &.J_DialogClose{
+             color: @contentColor;
+         }
+         &.btn-setUi{
+             color: @setUiColor;
+         }
+     }
+ }
+ .pro-popup{
+     .dialog-btn,
+     a.dialog-btn{
+         color: @contentColor;
+         &.share{
+             color: @setUiColor;
+         }
+     }
+ }
