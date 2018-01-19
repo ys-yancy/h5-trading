@@ -284,6 +284,10 @@ Base.extend(FollowOrder, PageBase, {
         self.profileObject.nickname = account.nickname;
 		self.profileObject.expertId = self.expertId;
 		
+		if (!getShowWeixinShare()) {
+			return;
+		}
+
         if (self.isWeixin()) {
           	var share,
 				desc = '分享',
