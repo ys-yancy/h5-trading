@@ -463,6 +463,10 @@ Base.extend(OrderHistory, PageBase, {
         self.profileObject.avatar = account.avatar ? Config.getAvatarPrefix(account.avatar) : '';
         self.profileObject.nickname = account.nickname;
 
+        if (!getShowWeixinShare()) {
+          return;
+        }
+        
         if (self.isWeixin()) {
           var HeadEl = $('#J_Header'),
             shareGuideEl = $('#J_InfoImg'),

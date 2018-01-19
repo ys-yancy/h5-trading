@@ -260,6 +260,10 @@ Base.extend(Order, PageBase, {
       var btnDesc = '分享';
       var myshow = !self.isDemo() && !data.guadan && getUseNewShare();
 
+      if (!getShowWeixinShare()) {
+        return;
+      }
+
       if (self.isWeixin()) {
         var doc = $(document);
         var share;
@@ -389,8 +393,9 @@ Base.extend(Order, PageBase, {
         ifAllowModify: getAllowModify()
       }, $('#footer'));
 
+
       //添加分享按钮的
-      if (self.isWeixin()) {
+      if (self.isWeixin() && getShowWeixinShare()) {
         var doc = $(document);
         var share;
 
@@ -411,7 +416,7 @@ Base.extend(Order, PageBase, {
           $('#J_InfoImg').hide();
         }, this));
 
-      } else if (Config.isAndroidAPK()) {
+      } else if (Config.isAndroidAPK() && getShowWeixinShare()) {
 
         var nick = '我买';
         self.getAccount().then( function ( account ) {
