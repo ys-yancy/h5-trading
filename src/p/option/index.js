@@ -311,7 +311,7 @@ Base.extend(Option, PageBase, {
       if (getDividePip()) {
         spread = (spread / pip).toFixed(1);
       } else {
-        spread = spread.toFixed(5);
+        spread = spread.toFixed(3);
       }
 
       spreadEl.text(spread);
@@ -503,7 +503,7 @@ Base.extend(Option, PageBase, {
           if (getDividePip()) {
             spread = (spread / pip).toFixed(1);
           } else {
-            spread = spread.toFixed(5);
+            spread = spread.toFixed(3);
           }
   
           spreadEl.text(spread);
