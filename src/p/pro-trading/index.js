@@ -1676,11 +1676,13 @@ Base.extend(ProTrading, PageBase, {
       if (price) {
         price.price = self.bidPrice;
         price.unit = unit;
+        
 
         // 定时刷新逻辑
+        //  2018-0-19修改  将_setCacheCurPrice提到外边, 拿到之后先充起来， 减少请求
+        self._setCacheCurPrice(price);
         if (interval) {
-          self._setCacheCurPrice(price);
-
+          // self._setCacheCurPrice(price);
           return price;
         }
 
