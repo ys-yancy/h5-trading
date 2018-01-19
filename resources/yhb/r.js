@@ -245,6 +245,11 @@ function getTradeUI () {
 	return './pro-trading.html?';
 }
 
+// 计算点差是否除pip
+function getDividePip() {
+	return false;
+}
+
 // 是否有经纪日历
 function getHasCalendar() {
 	return false;

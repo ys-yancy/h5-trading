@@ -250,6 +250,11 @@ function getAllowModify () {
 	return true;
 }
 
+// 计算点差是否除pip
+function getDividePip() {
+	return true;
+}
+
 // 是否有经纪日历
 function getHasCalendar() {
 	return true;
