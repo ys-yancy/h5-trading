@@ -109,17 +109,17 @@ function getIsShowOptionWeinixnGuide() {
 
 // 微信分享域名
 function getWXDomainWL () {
-	return 'https://t.firstbkr.com/';
+	return 'https://t-yhb.firstbkr.com/';
 }
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'https://t.firstbkr.com/img/wl/yhb/share.jpg';
+	return 'https://t-yhb.firstbkr.com/img/wl/yhb/share.jpg';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'https://t.firstbkr.com/img/wl/yhb/share.jpg';
+	return 'https://t-yhb.firstbkr.com/img/wl/yhb/share.jpg';
 }
 
 // 微信邀请好友标题
@@ -137,7 +137,7 @@ function getWXInviteDesWL () {
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	return 'https://t.firstbkr.com/yhb/s/my-guide/yhb/register.html?inviteCode=';
+	return 'https://t-yhb.firstbkr.com/yhb/s/my-guide/yhb/register.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
@@ -183,7 +183,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t.firstbkr.com/yhb/img/yhb/yhb_avatar.jpg';
+	return 'https://t-yhb.firstbkr.com/yhb/img/yhb/yhb_avatar.jpg';
 }
 
 // 是否显示下载链接
@@ -233,7 +233,7 @@ function getSPhone() {
 
 // 登录页面链接
 function getLoginWL () {
-	return 'https://t.firstbkr.com/yhb/s/my-guide/yhb/login.html';
+	return 'https://t-yhb.firstbkr.com/yhb/s/my-guide/yhb/login.html';
 }
 
 // 使用的交易UI
@@ -372,7 +372,7 @@ function getWXCredentialUrl () {
 
 //安卓分享前缀
 function getAndroidSharePrefixUrl() {
-	return 'https://t.firstbkr.com';
+	return 'https://t-yhb.firstbkr.com';
 }
 
 //正式环境
@@ -442,7 +442,7 @@ function getIndexOfUrl() {
 
 //发现页IMG
 function getBannerImgUrl() {
-	return 'https://t.firstbkr.com/img/firstbkr/banner.png';
+	return 'https://t-yhb.firstbkr.com/img/firstbkr/banner.png';
 }
 
 //pc登录地址
