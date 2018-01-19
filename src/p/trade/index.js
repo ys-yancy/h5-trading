@@ -9,6 +9,7 @@ var Cookie = require('../../lib/cookie');
 var Login = require('../../common/login');
 var SildeMenu = require('../../common/slide-menu');
 var Check = require('../../common/check');
+var BottomNav = require('../../common/bottom-nav');
 var listTmpl = require('./list.ejs');
 var kindListTmpl = require('./kindList.ejs');
 var listTmpl2 = require('./list2.ejs');
@@ -27,6 +28,10 @@ function Trade() {
   var self = this;
 
   this.getToken().then(() => {
+    new BottomNav({
+      page: 'option'
+    });
+    
     if (self.cookie.get('goType')) {
       self.cookie.set('type', 'real');
     }

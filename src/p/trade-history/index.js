@@ -9,6 +9,7 @@ var Util = require('../../app/util');
 var Sticky = require('../../common/sticky');
 var CustomerService = require('../../common/customer-service');
 var SildeMenu = require('../../common/slide-menu');
+var BottomNav = require('../../common/bottom-nav');
 var listTmpl = require('./list.ejs');
 var kindListTmpl = require('./kindList.ejs');
 var timeListTmpl = require('./timeList.ejs');
@@ -20,12 +21,18 @@ function TradeHistory() {
   TradeHistory.superclass.constructor.apply(this, arguments);
   var self = this;
   this.getToken().then(() => {
+    new BottomNav({
+      page: 'option'
+    });
+    
     if (self.cookie.get('goType')) {
       self.cookie.set('type', 'real');
     }
+    
     return this.getAllSymbolsPrice().then(() => {
       self.init();
     });
+
   });
 }
 

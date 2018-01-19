@@ -5,6 +5,7 @@ var Config = require('../../app/config');
 var Util = require('../../app/util');
 var sticky = require('../../common/sticky');
 var SildeMenu = require('../../common/slide-menu');
+var BottomNav = require('../../common/bottom-nav');
 // var LoadingDesc = require('../../common/loading-desc');
 var tmpl = require('./index.ejs');
 
@@ -14,6 +15,9 @@ function ActualOrder() {
 	if (Cookie.get('token')) {
 		this.curId;
 		this._init();
+		new BottomNav({
+			page: 'actual'
+		});
 	} else {
 		window.location = getLoginWL();
 	}

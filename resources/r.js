@@ -1,3 +1,8 @@
+// app 菜单配置
+function getBottomNavPages() {
+	return ['home', 'option', 'master', 'actual', 'news']
+}
+
 /**
  * 支付配置相关
  */

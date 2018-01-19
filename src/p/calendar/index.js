@@ -4,11 +4,15 @@ var Base = require('../../app/base');
 var Util = require('../../app/util');
 var Sticky = require('../../common/sticky');
 var SildeMenu = require('../../common/slide-menu');
+var BottomNav = require('../../common/bottom-nav');
 var tmpl = require('./index.ejs');
 function Calendar() {
     Calendar.superclass.constructor.apply(this, arguments);
     if (Cookie.get('token')) {
-		this.init();
+        this.init();
+        new BottomNav({
+			page: 'news'
+		});
 	} else {
 		window.location = getLoginWL();
 	}

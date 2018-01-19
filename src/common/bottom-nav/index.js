@@ -6,7 +6,6 @@ var tmpl = require('./index.ejs');
 function BottomNavComponent() {
     BottomNavComponent.superclass.constructor.apply(this, arguments);
     this.init();
-    //getBottomNavPages
 }
 Base.extend(BottomNavComponent, Base, {
     init() {
@@ -20,17 +19,16 @@ Base.extend(BottomNavComponent, Base, {
             var pages = getBottomNavPages();
             config.pages = pages;
             config.pageCount = pages.length;
+            this.render(tmpl, config, $('footer'));
         } catch(e) {
             this.render(tmpl, config, $('footer'));
         }
-
-        this.render(tmpl, config, $('footer'));
 
     },
 
     attrs: {
         defaultConfig: {
-            page: 'option',
+            page: 'home',
             pages: ['home', 'option', 'master', 'actual', 'news'],
             pageCount: 5
         } 

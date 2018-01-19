@@ -1,7 +1,7 @@
 "use strict";
 
 import PageBase from '../../app/page-base';
-// import BottomNav from '../../common/bottom-nav';
+import BottomNav from '../../common/bottom-nav';
 import SildeMenu from '../../common/slide-menu';
 import FloatMsg from '../../common/float-msg';
 import CheckOpenAccount from '../../common/check-open-account';
@@ -15,6 +15,9 @@ class Home extends PageBase {
 			this._init();
 		});
 		new CheckOpenAccount();
+		new BottomNav({
+			page: 'home'
+		});
 	}
 
 	_init() {

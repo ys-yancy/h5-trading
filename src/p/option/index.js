@@ -14,6 +14,7 @@ var BottomAccount = require('../../common/bottom-account');
 var OptionSymbol = require('../../common/option-symbol');
 var Check = require('../../common/check');
 var SildeMenu = require('../../common/slide-menu');
+var BottomNav = require('../../common/bottom-nav');
 const Sound = require('../../common/sound');
 
 var tmpl = require('./index.ejs');
@@ -37,6 +38,9 @@ function Option() {
   if (Cookie.get('token')) {
     this.getAllSymbolsPrice().then(() => {
       self.init();
+      new BottomNav({
+        page: 'option'
+      });
     });
   } else {
     window.location = getLoginWL();

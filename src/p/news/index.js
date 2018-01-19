@@ -3,6 +3,7 @@
 var Base = require('../../app/base');
 var Util = require('../../app/util');
 var SildeMenu = require('../../common/slide-menu');
+var BottomNav = require('../../common/bottom-nav');
 var Sticky = require('../../common/sticky');
 var tmpl = require('./index.ejs');
 function News() {
@@ -10,6 +11,9 @@ function News() {
 	
 	if (Cookie.get('token')) {
 		this.init();
+		new BottomNav({
+			page: 'news'
+		});
 	} else {
 		window.location = getLoginWL();
 	}
