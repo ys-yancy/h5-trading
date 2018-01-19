@@ -270,7 +270,7 @@ Base.extend(Register, PageBase, {
 
                 new Toast('注册成功');
                 setTimeout(function() {
-                    location.href = './option.html';
+                    location.href = '../../home.html';
                 }, 1500);
                 submitEl.val('注册');
             }, function(data) {
