@@ -38,9 +38,9 @@ function Option() {
   if (Cookie.get('token')) {
     this.getAllSymbolsPrice().then(() => {
       self.init();
-      new BottomNav({
-        page: 'option'
-      });
+    });
+    new BottomNav({
+      page: 'option'
     });
   } else {
     window.location = getLoginWL();
