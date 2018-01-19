@@ -604,17 +604,17 @@ Base.extend(Option, PageBase, {
 
       // 获取当前有效的所有直播列表
       // /v1/stream/list/?access_token=token4018&tag=EURUSD
-      self.ajax({
-        url: '/v1/stream/list/',
-        data: {
-          access_token: Cookie.get('token'),
-          tag: account.wl
-        }
-      }).then(function(data) {
-        _self_op.streamlist = data.data;
-        // 直播功能
-        // _self_op.broadcast('get:streamlist', _self_op);
-      });
+      // self.ajax({
+      //   url: '/v1/stream/list/',
+      //   data: {
+      //     access_token: Cookie.get('token'),
+      //     tag: account.wl
+      //   }
+      // }).then(function(data) {
+      //   _self_op.streamlist = data.data;
+      //   // 直播功能
+      //   _self_op.broadcast('get:streamlist', _self_op);
+      // });
 
       // 如果没有weixin.openID且在微信里, 就获取openID
       var hasWeixin = false;

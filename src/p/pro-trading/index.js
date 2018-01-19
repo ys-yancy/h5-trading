@@ -2283,27 +2283,27 @@ Base.extend(ProTrading, PageBase, {
 
       // 获取当前有效的所有直播列表
       // /v1/stream/list/?access_token=token4018&tag=EURUSD
-      self.ajax({
-        url: '/v1/stream/list/',
-        data: {
-          access_token: Cookie.get('token'),
-          tag: data.wl + ',' + self.symbol
-        }
-      }).then(function(data) {
-        if (data.data.length != 0) {
-          if (Cookie.get('live_url') == undefined || Cookie.get('live_status') == 'off') {
-            if (Config.isAndroidAPK()) {
-              Cookie.set('live_url', data.data[0].android_rtmp_play_url);
-            } else {
-              Cookie.set('live_url', data.data[0].hls_play_url);
-            }
-            Cookie.set('live_status', 'off');
-            Cookie.set('live_start', data.data[0].start_time);
-            Cookie.set('live_end', data.data[0].end_time);
-          }
-          // new LiveSpeech();
-        }
-      });
+      // self.ajax({
+      //   url: '/v1/stream/list/',
+      //   data: {
+      //     access_token: Cookie.get('token'),
+      //     tag: data.wl + ',' + self.symbol
+      //   }
+      // }).then(function(data) {
+      //   if (data.data.length != 0) {
+      //     if (Cookie.get('live_url') == undefined || Cookie.get('live_status') == 'off') {
+      //       if (Config.isAndroidAPK()) {
+      //         Cookie.set('live_url', data.data[0].android_rtmp_play_url);
+      //       } else {
+      //         Cookie.set('live_url', data.data[0].hls_play_url);
+      //       }
+      //       Cookie.set('live_status', 'off');
+      //       Cookie.set('live_start', data.data[0].start_time);
+      //       Cookie.set('live_end', data.data[0].end_time);
+      //     }
+      //     new LiveSpeech();
+      //   }
+      // });
 
 
       self.ajax({
