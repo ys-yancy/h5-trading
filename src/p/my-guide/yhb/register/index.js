@@ -362,7 +362,7 @@ Base.extend(Register, PageBase, {
 
         var wl = window.location.pathname.substring(0, window.location.pathname.indexOf('/s/'));
 
-        if (this.isWeixin()) {
+        if (this.isWeixin() && getUserInfoWX()) {
           // 直接去option页面
           var url = '?token=' + Cookie.get('token') + '&ri=' + window.location.origin + wl + '/s/option.html?f=g&s=b';
           url = this.weixinUrlFirst + encodeURIComponent(url) + this.weixinUrlLast;
