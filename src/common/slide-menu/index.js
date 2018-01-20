@@ -7,7 +7,7 @@ import Util from '../../app/util.js';
 import BottomAccount from '../bottom-account';
 import RedeemCode from './component/redeem-code';
 import UsQrCode from './component/qr-code';
-import Scroll from './scroll';
+import IScroll from './iscroll';
 import Dialog from '../dialog';
 import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
@@ -28,6 +28,7 @@ export default class SlideMenu extends PageBase {
 	}
 
 	_bind() {
+
 		this.subscribe('get:realToken', this._getRealToken, this);
 		this.subscribe('reject:realToken', this._rejectRealToken, this)
 		this.el.on('tap', '.J_SwitchAccount', $.proxy(this._switchAccount, this))
@@ -127,7 +128,7 @@ export default class SlideMenu extends PageBase {
 			$('body').addClass('show-slide-menu');
 			this.el.addClass('unfold move-x');
 			this.isShowMenu = true;
-			this._setScrollRootheight();
+			this.iscroll || this._initIscroll();
 		}, 0)
 		
 	}
@@ -230,6 +231,13 @@ export default class SlideMenu extends PageBase {
 
 	}
 
+	_initIscroll() {
+		console.log('init scroll')
+		this.iscroll = new IScroll({
+			wrapper: 'root-wrapper'
+		}).create();
+	}
+
 	_requires() {
 		this.bottomAccount = new BottomAccount({checkOut: true, page: this.page, el: $('#J_BottomBanner')});
 	    this.bottomAccount.show();
@@ -237,11 +245,6 @@ export default class SlideMenu extends PageBase {
 	    this.fire('get:bottomAccount', this.bottomAccount);
 
 		new RedeemCode();
-		
-		this.scollCom = new Scroll({
-			rootListUlId: 'root-list',
-			rootRrapperId: 'root-wrapper'
-		})
 	}
 
 	_render() {
