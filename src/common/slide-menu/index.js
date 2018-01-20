@@ -7,7 +7,7 @@ import Util from '../../app/util.js';
 import BottomAccount from '../bottom-account';
 import RedeemCode from './component/redeem-code';
 import UsQrCode from './component/qr-code';
-// import Scroll from './scroll';
+import Scroll from './scroll';
 import Dialog from '../dialog';
 import tmpl from './index.ejs';
 export default class SlideMenu extends PageBase {
@@ -19,10 +19,6 @@ export default class SlideMenu extends PageBase {
 		this._render().then(() => {
 			this._init();
 		});
-
-		// new Scroll('#root-list', {
-		// 	tap: !0
-		// })
 	}
 
 	_init() {
@@ -39,7 +35,7 @@ export default class SlideMenu extends PageBase {
 
 		$('.J_ShowSlideMenu').on('tap', $.proxy(this._showSlideMenu, this));
 		$('#J_SlideMenuMask').on('tap', $.proxy(this._hideSlideMenu, this));
-		$('#J_SlideMenuMask').on('touchmove', this._preventMove);
+		// $('#J_SlideMenuMask').on('touchmove', this._preventMove);
 		// $('#J_UserDetails').on('touchmove', this._preventMove)
 	}
 
@@ -131,6 +127,7 @@ export default class SlideMenu extends PageBase {
 			$('body').addClass('show-slide-menu');
 			this.el.addClass('unfold move-x');
 			this.isShowMenu = true;
+			this._setScrollRootheight();
 		}, 0)
 		
 	}
@@ -179,6 +176,13 @@ export default class SlideMenu extends PageBase {
 			this.cookie.set('type' ,'demo');
 			location.reload();
 		}
+	}
+
+	_setScrollRootheight () {
+		var m = $("#root-list").height();
+		var g = $("#root-wrapper").height();
+		var h = m - g;
+		h > 0 && this.scollCom && this.scollCom.setScrollRootHeight(h);
 	}
 
 	_isChangeTdUI() {
@@ -232,7 +236,12 @@ export default class SlideMenu extends PageBase {
 	    this.bottomAccount.interval();
 	    this.fire('get:bottomAccount', this.bottomAccount);
 
-	    new RedeemCode();
+		new RedeemCode();
+		
+		this.scollCom = new Scroll({
+			rootListUlId: 'root-list',
+			rootRrapperId: 'root-wrapper'
+		})
 	}
 
 	_render() {
