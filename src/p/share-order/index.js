@@ -364,6 +364,11 @@ class ShareOrder extends PageBase {
   }
 
   _getTradeData() {
+    var footerItem = getBottomNavPages();
+    if (footerItem.indexOf('master') === -1) {
+      return false;
+    }
+    
     this.ajax({
       url: '/v1/user/mobtrade/data/',
       data: {

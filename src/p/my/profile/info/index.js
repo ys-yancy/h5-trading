@@ -35,7 +35,7 @@ export default class Info extends PageBase {
         data = data.data;
         data.avatar = data.avatar ? Config.getAvatarPrefix(data.avatar) : getDefaultIconWL();
         data.inviteCode = self.inviteCode;
-
+        data.isRenderBtData = getBottomNavPages().indexOf('master') !== -1;
         self.render(tmpl, data, self.el);
         // if (!data.month_ror_rank || data.month_ror_rank == 0) {
         //   $('#J_Rank').text('无');
@@ -49,7 +49,9 @@ export default class Info extends PageBase {
           $('.detail-wrapper').html('<p class="no-auth">Ta的投资数据不允许别人查看</p>');
           $('#J_Data').remove();
         } else {
-          self._getBottomData();
+          if (getBottomNavPages().indexOf('master') !== -1) {
+            self._getBottomData();
+          }
         }
 
         if (!getShowWeixinShare()) {

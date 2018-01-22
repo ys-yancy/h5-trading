@@ -18,6 +18,7 @@
   </div>
   <!-- <a href="./data.html?inviteCode=<%= data.inviteCode %>&from=<%= encodeURIComponent(location.href) %>" class="link">数据分析</a> -->
 </div>
+<%if (data.isRenderBtData) { %>
 <div class="bottom-wrapper clearfix" id="J_BtData">
   <div>
     <p class="bt-desc">自主交易</p>
@@ -32,3 +33,4 @@
     <p class="bt-bd"><span class="J_Invite">-- --</span>人</p>
   </div>
 </div>
+<%}%>
