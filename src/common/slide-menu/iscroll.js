@@ -22,7 +22,8 @@ Base.extend(IScroll, Base, {
             disablePointer: false,
             click: false,
             tasp: true,
-            shrinkScrollbars: false
+            shrinkScrollbars: false,
+            useTransition: true
         }
     }
 })
