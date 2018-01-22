@@ -78,8 +78,8 @@ Base.extend(Share, PageBase, {
     var txtOneEl = $('.qr-text-one'),
       txtTwoEl = $('.qr-text-two');
 
-    var text = this.nickName ? '接受 ' + this.nickName + ' 邀请' : '接受邀请';
-    txtOneEl.text(text);
+    var text = this.nickName ? '接受 <span class="name">' + this.nickName + '</span> 邀请' : '接受邀请';
+    txtOneEl.html(text);
     txtTwoEl.text('立即注册 ' + getWLName());
 
     this._createQrImgae(this._createQrcode(this._getShareUrl(), 8, 'Q')).then(function(url) {
