@@ -22,7 +22,7 @@ export default class UsQrCode extends Base {
   _bind() {
     var doc = $(document);
 
-    doc.on('tap', '.J_ShowSelfQrCode', $.proxy(this.showDialog, this));
+    doc.on('touchstart', '.J_ShowSelfQrCode', $.proxy(this.showDialog, this));
 
   }
 
