@@ -70,8 +70,8 @@ export default class UsQrCode extends Base {
     image.className = 'us-qr-img';
     image.onload = function() {
       var canvas = document.createElement("canvas");
-      canvas.width = 400;
-      canvas.height = 400;
+      canvas.width = image.width;
+      canvas.height = image.height;
       canvas.getContext("2d").drawImage(image, 0, 0);
       wrapEl.html($('<img class="us-qr-img"/>').prop('src', canvas.toDataURL("image/png")));
     }
