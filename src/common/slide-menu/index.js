@@ -241,7 +241,7 @@ export default class SlideMenu extends PageBase {
 	_requires() {
 		this.bottomAccount = new BottomAccount({checkOut: true, page: this.page, el: $('#J_BottomBanner')});
 	    this.bottomAccount.show();
-	    this.bottomAccount.interval();
+	    this.noInterval || this.bottomAccount.interval();
 	    this.fire('get:bottomAccount', this.bottomAccount);
 
 		new RedeemCode();

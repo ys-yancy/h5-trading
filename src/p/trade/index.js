@@ -535,6 +535,7 @@ Base.extend(Trade, PageBase, {
                   curprice = price.ask_price[0];
                 }
               }
+
               item.text(curprice);
             } catch (e) {
               console.log(e);
@@ -574,7 +575,8 @@ Base.extend(Trade, PageBase, {
     this.login = new Login();
     this.slideMenu = new SildeMenu({
       el: $('#J_SlideMenu'),
-      page: 'trade'
+      page: 'trade',
+      noInterval: true
     }).on('get:bottomAccount', function(bottomAccount) {
       self.bottomAccount = bottomAccount;
       self._lazyBind();
