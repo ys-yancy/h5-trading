@@ -36,7 +36,7 @@ export default class SlideMenu extends PageBase {
 
 		$('.J_ShowSlideMenu').on('tap', $.proxy(this._showSlideMenu, this));
 		$('#J_SlideMenuMask').on('tap', $.proxy(this._hideSlideMenu, this));
-		// $('#J_SlideMenuMask').on('touchmove', this._preventMove);
+		$('#J_SlideMenuMask').on('touchmove', this._preventMove);
 		// $('#J_UserDetails').on('touchmove', this._preventMove)
 	}
 
