@@ -243,6 +243,7 @@ Base.extend(Extract, PageBase, {
       data.phone = self.cookie.get('phone');
       data.min_extract_amount = getMinWithdrawWL();
       self.render(tmpl, data, $('#J_Content'));
+      self._getExtractableAmount();
     })
   },
 
@@ -274,6 +275,20 @@ Base.extend(Extract, PageBase, {
         }
       }
     });
+  },
+
+  _getExtractableAmount: function() {
+    var self = this;
+    this.ajax({
+      url: '/v1/user/real/withdraw/',
+      data:{
+        access_token: this.cookie.get('token'),
+        real_token: this.cookie.get('real_token')
+      }
+    }).then(function(data) {
+      var extractable_amount = data.data.extractable_amount;
+      $('.J_AvaiableNum').val(extractable_amount);
+    })
   },
 
   _dataURLToBlob: function(dataURL) {
