@@ -44,12 +44,13 @@ export default class CheckOpenAccount extends PageBase{
     _isNeedOpenAccount() {
         return new Promise((resolve, reject) => {
             var isOpendAccount = Cookie.get('is_open_account');
-            if (isOpendAccount == 1)
+
+            if (isOpendAccount == 1) {
                 reject();
                 return;
-            
+            }
             this._getUserInfo().then((data) => {
-                if (data.status == 200 && data.data.id_no) {
+                if (data.data.have_info == 1) {
                     reject()
                 } else {
                     resolve();

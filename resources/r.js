@@ -319,7 +319,7 @@ function getUserInfoWX () {
 
 // 是否使用新用户跟单引导
 function getUseNewFollowGuide () {
-	return true;
+	return false;
 }
 
 // 是否使用新用户引导
