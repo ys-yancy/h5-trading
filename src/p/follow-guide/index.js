@@ -75,6 +75,20 @@ Base.extend(FollowGuide, PageBase, {
 		curContentEl.addClass('show').show();
 		curEl.addClass('active');
 
+		if (curEl.hasClass('current') && !this._component.TradeCurrent) {
+			this._component.TradeCurrent = new TradeCurrent({
+				el: $('#J_TradeCurrent'),
+				id: this.expertId
+			});
+		}
+
+		if (curEl.hasClass('history') && !this._component.TradeHistory) {
+			this._component.TradeHistory = new TradeHistory({
+				el: $('#J_TradeHistory'),
+				id: this.expertId
+			});
+		}
+
 	},
 
 	_request: function(source) {
@@ -148,16 +162,6 @@ Base.extend(FollowGuide, PageBase, {
 
 	_requires: function() {
 		this._component = {
-			TradeCurrent: new TradeCurrent({
-				el: $('#J_TradeCurrent'),
-				id: this.expertId
-			}),
-
-			TradeHistory: new TradeHistory({
-				el: $('#J_TradeHistory'),
-				id: this.expertId
-			}),
-
 			TradeConut: new TradeConut({
 				el: $('#J_TradeCount'),
 				id: this.expertId

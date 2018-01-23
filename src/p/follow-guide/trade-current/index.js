@@ -19,12 +19,7 @@ export default class TradeCurrent extends PageBase{
 	}
 
 	_init() {
-		// this._bind();
 		this._getData();
-	}
-
-	_bind() {
-		// this.subscribe('stomp:price:update', this._updateFollowOrderPrice, this);
 	}
 
 	_getData() {
@@ -53,75 +48,8 @@ export default class TradeCurrent extends PageBase{
 			this._getAllPrices(symbols);
 		})
 
-		this._interval();
+		// this._interval();
 	}
-
-	// _updateFollowOrderPrice(price) {
-	// 	this._update(price);	
-	// }
-
-	// _updateFollowOrderProfit() {
-	// 	var account = this._getAccount();
-	// 	this._getFloatingProfitListAdapter(account).then((profrit) => {
-	// 		if (!profrit) {
-	// 			return;
-	// 		}
-
-	// 		var listEls = $('.J_FollowerOrder', this.el);
-	// 		for ( var i = 0, len = listEls.length; i < len; i++ ) {
-	// 			var curListEl = $(listEls[i]);
-	// 			var ticket = curListEl.attr('data-ticket');
-	// 			var profit = parseFloat(profrit[ticket]).toFixed(2);
-
-	// 			if (profit > 0) {
-	// 				$('.J_TradeCurrentProfit', curListEl).addClass('up');
-	// 			} else {
-	// 				$('.J_TradeCurrentProfit', curListEl).removeClass('up');
-	// 			}
-
-	// 			$('.J_TradeCurrentProfit', curListEl).text(profit);
-	// 		}
-	// 	})
-
-	// 	this.updateProfitController = setTimeout(() => {
-	// 		this._updateFollowOrderProfit();
-	// 	}, 1000);
-	// }
-
-	// _getFloatingProfitListAdapter(account) {
-	// 	var accountAdapter = {
-	// 		real: {
-	// 			currency: 'USD'
-	// 		},
-	// 		demo: {
-	// 			currency: 'USD'
-	// 		}
-	// 	}
-
-	// 	account = account || accountAdapter;
-
-	// 	var symbols = [],
-	// 		orderList = this.orderList;
-	// 	orderList.forEach((item) => {
-	// 		if (symbols.indexOf(item.symbol) === -1) {
-	// 	        symbols.push(item.symbol);
-	// 	    }
-	// 	});
-	// 	return this.getFloatingProfitList(account, orderList, symbols).then((obj) => {
-	// 		if ( orderList.length === 0 ) {
-	// 			return false;
-	// 		}
-	// 		var prices = obj.prices;
-	// 		if (prices && $.isArray(prices) && prices.length > 0) {
-	// 			for (var j = 0, len = prices.length; j < len; j++) {
-	// 				this._update(prices[j]);
-	// 			}
-	// 		}
-
-	// 		return obj.floatList;
-	// 	})
-
-	// }
 
 	_getAllPrices(symbols) {
 		this.getCurrentPrice(symbols, true).then((symbols) => {
