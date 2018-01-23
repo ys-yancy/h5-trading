@@ -41,19 +41,13 @@ Base.extend(FollowGuide, PageBase, {
 	init: function() {
 		this._bind();
 		this._renderGuide4();
-		// this._requires();
 	},
 
 	_bind: function() {
 		var doc = $(document);
+		doc.on('tap', '.J_Tab', $.proxy(this._switch, this));
 
-		doc.on('click', (e) => {
-			var targetEl = $(e.toElement || e.relatedTarget || e.target);
-			//&& !targetEl.hasClass('active')
-			if (targetEl.parents('#J_SidebarInner').length > 0 && this.el) {
-				this._close();
-			}
-		})
+		doc.on('click', '.J_Follow', $.proxy(this._showFollowAction, this));
 
 		doc.on('tap', '.master-item', $.proxy((e) => {
 			var curEl = $(e.currentTarget);
@@ -64,10 +58,6 @@ Base.extend(FollowGuide, PageBase, {
 			}
 
 		}, this))
-
-		doc.on('tap', '.J_Tab', $.proxy(this._switch, this));
-
-		doc.on('click', '.J_Follow', $.proxy(this._showFollowAction, this));
 	},
 
 	_slideNextPage: function() {
