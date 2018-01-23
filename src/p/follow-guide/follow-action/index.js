@@ -298,10 +298,6 @@ class FollowAction extends PageBase {
 
 		return defaultCon;
 	}
-
-	_initAttrs() {
-		
-	}
 }
 
 module.exports = FollowAction;

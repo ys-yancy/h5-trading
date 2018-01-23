@@ -78,12 +78,12 @@ export default class TradeCurrent extends PageBase{
 		}catch(e){}
 	}
 
-	_interval() {
-		clearTimeout(this.getController);
-		this.getController = setTimeout(() => {
-			this._getData();
-			this._interval();
-		}, 1000 * 15)
-	}
+	// _interval() {
+	// 	clearTimeout(this.getController);
+	// 	this.getController = setTimeout(() => {
+	// 		this._getData();
+	// 		this._interval();
+	// 	}, 1000 * 15)
+	// }
 
 }
