@@ -14,8 +14,6 @@ var moreSettingTmpl = require('./moreSetting.ejs.html');
 class FollowAction extends PageBase {
 	constructor(config) {
 		super(config);
-
-
 		this.getAccount().then((data) => {
 			var type = 'real'; //Cookie.get('type');
 			this.account = data.account[type];
@@ -156,11 +154,9 @@ class FollowAction extends PageBase {
 			if ( data.status == 200 ) {
 				this._enableFollow().then(() => {
 					this._closeFollowDialog();
-					new Toast('跟单成功');
 					this.fire('follow:order:success');
+					this.parent._slideNextPage();
 				})
-				// this._closeFollowDialog();
-				// app.success('跟单成功', 1500);
 			}
 		})
 	}
@@ -178,11 +174,9 @@ class FollowAction extends PageBase {
 			if (data.status == 200) {
 				this._enableFollow().then(() => {
 					this._closeFollowDialog();
-					new Toast('跟随成功');
 					this.fire('follow:order:success');
+					this.parent._slideNextPage();
 				})
-				// this._closeFollowDialog();
-				// app.success('修改成功', 1500);
 			}
 		})
 		
@@ -193,9 +187,8 @@ class FollowAction extends PageBase {
 		return this.ajax({
 			url: '/v1/follow/follower/expert/'+ this.id +'/config/',
 			data: params,
-			type: 'POST'
+			type: 'POST',
 		}).then((data) => {
-			new Toast(data.message);
 			return data
 		})
 	}
@@ -265,14 +258,12 @@ class FollowAction extends PageBase {
 			data.slippage = data.slippage ? data.slippage : 5;
 			data = this._updateDefaultConfig(data);
 			this.el = this.renderTo(tmpl, data, $('.J_Guide3Wraper'));
-			this.parent._hideFollowLoading();
 		}, (err) => {
 			var errorCode = err.status;
 			if (errorCode === 400) {
 				
 				var defaultConfig = this._updateDefaultConfig();
 				this.el = this.renderTo(tmpl, defaultConfig, $('.J_Guide3Wraper'));
-				this.parent._hideFollowLoading();
 			}
 		})
 	}
