@@ -15,7 +15,8 @@ var touchSlider = function(options) {
     curIndex: 0, //初始化在哪个panels上，默认0为第一个
     duration: 300, //动画持续时间
     loop: true, //循环播放
-    play: true, //动画自动播放
+    play: true, //动画自动播放,
+    slidePlay: true, // 是都可以活动播放
     interval: 5000, //播放间隔时间，play为true时才有效
     isAdaptWindowChange: true, //是否需要自适应窗口宽度变化（resize/orientationchange），默认支持
     ready: null, //初始化完成后回调函数
@@ -286,7 +287,7 @@ $.extend(touchSlider.prototype, {
     var self = this,
       _panel = self.wrap[0], //外层容器
       navs = self.navs;
-    if (_panel.addEventListener) {
+    if (_panel.addEventListener && self.slidePlay) {
       var events = 'touchstart touchmove touchend webkitTransitionEnd msTransitionEnd oTransitionEnd transitionend'.split(' ');
       for (var p in events) {
         _panel.addEventListener(events[p], self, false);

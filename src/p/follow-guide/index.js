@@ -13,7 +13,7 @@ var TradeHistory = require('./trade-history');
 var FollowAction = require('./follow-action');
 var guide1tmpl = require('./guide-1.ejs');
 var guide2tmpl = require('./guide-2.ejs');
-// var tmpl = require('./index.ejs');
+var guide4tmpl = require('./guide-4.ejs');
 
 function FollowGuide() {
 	FollowGuide.superclass.constructor.apply(this, arguments);
@@ -21,8 +21,9 @@ function FollowGuide() {
 		$('#slider').slider({
 			loop: false,
 			play: false,
-			interval: 10 * 1000,
-			duration: 1000
+			interval: 5 * 1000,
+			duration: 500,
+			slidePlay: false
 		});
 		
     	this._renderGuide1().then(() => {
@@ -39,6 +40,7 @@ function FollowGuide() {
 Base.extend(FollowGuide, PageBase, {
 	init: function() {
 		this._bind();
+		this._renderGuide4();
 		// this._requires();
 	},
 
@@ -157,23 +159,8 @@ Base.extend(FollowGuide, PageBase, {
 		})
 	},
 
-	_render: function() {
-		var data = {
-			access_token: Cookie.get('token'),
-			expert_id: this.expertId
-		}
-
-		return this.ajax({
-			url: '/v1/follow/rank/expert/'+ this.expertId +'/summary/',
-			data: data
-		}).then((data) => {
-			data = data.data[0];
-
-			data.img = data.img ? Config.getAvatarPrefix(data.img) : getDefaultIconWL();
-			data.accountType = Cookie.get('type');
-			this.exportData = data;
-			this.el = this.renderTo(tmpl, data, $('#J_Content'));
-		})
+	_renderGuide4() {
+		this.render(guide4tmpl, {}, $($('.J_Guide4Wraper')));
 	},
 
 	_requires: function() {
