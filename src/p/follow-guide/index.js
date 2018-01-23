@@ -18,14 +18,7 @@ var guide4tmpl = require('./guide-4.ejs');
 function FollowGuide() {
 	FollowGuide.superclass.constructor.apply(this, arguments);
 	if ( Cookie.get('token') ) {
-		$('#slider').slider({
-			loop: false,
-			play: false,
-			interval: 5 * 1000,
-			duration: 500,
-			slidePlay: false
-		});
-		
+		this._initSliderPage();
     	this._renderGuide1().then(() => {
 			this.init();
 		}, () => {
@@ -144,7 +137,7 @@ Base.extend(FollowGuide, PageBase, {
 			data.img = data.img ? Config.getAvatarPrefix(data.img) : getDefaultIconWL();
 			data.accountType = Cookie.get('type');
 			this.exportData = data;
-			this.el = this.render(guide2tmpl, data, $('.J_Guide2Wraper'));
+			this.el = this.renderTo(guide2tmpl, data, $('.J_Guide2Wraper'));
 			this._requires();
 		})
 	},
@@ -170,6 +163,18 @@ Base.extend(FollowGuide, PageBase, {
 				id: this.expertId
 			})
 		}
+	},
+
+	_initSliderPage: function() {
+		$('#slider').slider({
+			loop: false,
+			play: false,
+			interval: 5 * 1000,
+			duration: 500,
+			slidePlay: false
+		});
+
+		$('.km-slider-nav').addClass('ui set-ui-bg');
 	}
 })
 

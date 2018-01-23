@@ -6,6 +6,7 @@
 
 html, body{
     height: 100%;
+    background: #FAFAFA;
 }
 .km-slider-outer {
 	overflow: hidden;
@@ -23,26 +24,23 @@ html, body{
 .km-slider-nav {
     width: 100%;
     .padding(40, 0);
-    background: pink;
     position: fixed;
 	bottom: 0;
     text-align: center;
+    pointer-events: none;
 }
 
 .km-slider-nav span {
 	margin: 0 .4rem 0 0;
 	padding: 0;
 	display: inline-block;
-	background-color: rgba(255, 255, 255, .4);
+    background:transparent;
 	border-radius: 50%;
-	border: 1px solid rgba(0, 0, 0, .16);
 	width: .55rem;
 	height: .55rem;
-	background-color: #fff;
-	opacity: .3;
-	border: 1px solid #333;
+	border: 2px solid #fff;
 	&.sel {
-	  	background: #967bdb;
+        background: #fff;
 	}
 }
 
@@ -59,15 +57,19 @@ html, body{
         text-align: center;
     }
     ul{
-        .padding-top(120);  
+        .padding-top(120);
+        .padding-left(30);
+        .padding-right(30);
         li{
             .height(185);
             .margin-bottom(80);
-            background: green;
         }
     }
     li{
         .border-bottom(1, solid, transparent);
+        background: #fff;
+        box-shadow: 0 2px 6px #CDCDCD;
+        .border-radius(5);
     }
     .tradelist-user{
         .padding(19, 30);
@@ -90,7 +92,7 @@ html, body{
         .font-size(26);
         .item{
           display: inline-block;
-          .width(187);
+          .width(172);
           .padding-left(30);
           .padding-bottom(19);
         }
@@ -108,7 +110,9 @@ html, body{
     .font-size(24);
     .height(880);
     .padding(30, 5);
-    .border(1, solid, red);
+    .border(1, solid, #CDCDCD);
+    box-shadow: 0 2px 6px #CDCDCD;
+    .border-radius(5);
     -webkit-overflow-scrolling: touch;
     margin: 0 auto;
     background: #fff;
@@ -218,17 +222,18 @@ html, body{
     .font-size(24);
     .height(880);
     .padding(30, 5);
-    .border(1, solid, red);
+    .border(1, solid, #CDCDCD);
+    box-shadow: 0 2px 6px #CDCDCD;
+    .border-radius(5);
     -webkit-overflow-scrolling: touch;
     margin: 0 auto;
-    // background: #fff;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .guide-4{
     .padding-top(120);
-   .font-size(36);
+   .font-size(38);
    text-align: center;
    p{
         .line-height(60);
@@ -241,6 +246,7 @@ html, body{
     .bottom(38);
     .font-size(34);
     .right(30);
+    color: #fff;
 }
 
 .btn.J_Follow{
