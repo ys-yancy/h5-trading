@@ -1,0 +1,65 @@
+@import '../../../variable.less';
+.trade-current-inner{
+	width: 100%;
+	.padding-bottom(120);
+	table{
+		width: 100%;
+		tr{
+			td{
+				width: 21%;
+				.height(190);
+				.padding(10, 0);
+				.font-size(24);
+			}
+			.border-bottom(1, solid, #ccc);
+		}
+		.no-list{
+			.height(94);
+			text-align: center;
+			td{
+				.font-size(28);
+			}
+			border: none;
+		}
+	}
+	.name-wrapper{
+		width: 32%;
+		.padding-left(50);
+		.padding-right(10);
+		.tag{
+			position: absolute;
+			.width(80);
+			.line-height(50);
+			.top(30);
+			.left(50);
+			.font-size(28);
+		}
+		.name{
+			.width(180);
+			.font-size(34);
+			.margin-top(30);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.symbol{
+			.font-size(24);
+		}
+	}
+	.detail,
+	.name-wrapper{
+		position: relative;
+		.trade-current-top,
+		.trade-current-bottom{
+			position: absolute;
+			&.trade-current-top{
+				.top(25);
+				.left(0);
+			}
+			&.trade-current-bottom{
+				.left(0);
+				.bottom(25);
+			}
+		}
+	}
+}

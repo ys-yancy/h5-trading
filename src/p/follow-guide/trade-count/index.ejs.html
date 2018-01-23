@@ -1,0 +1,79 @@
+<div class="trade-count-inner">
+	<div class="data-bd">
+		<div class="hd-body">
+			<div>
+				<div class="item left trade-profit">
+					<p class="desc">交易盈亏($)</p>
+					<p class="num J_TradeProfit <%= parseFloat(data.trades_profit)>0 ? 'up' : 'down' %>">
+						<%= parseFloat(data.trades_profit).toFixed(2) %>
+					</p>
+				</div>
+				<div class="item center max-trade-profit">
+					<p class="desc">最大单笔盈利($)</p>
+					<p class="num J_MaxTradeProfit <%= parseFloat(data.max_trade_profit)>0 ? 'up' : 'down' %>">
+						<%= parseFloat(data.max_trade_profit).toFixed(2) %>
+					</p>
+				</div>
+				<div class="item right max-trade-loss">
+					<p class="desc">最大单笔亏损($)</p>
+					<p class="num J_MaxTradeLoss <%= parseFloat(data.max_trade_loss)>0 ? 'up' : 'down' %>">
+						<%= parseFloat(data.max_trade_loss).toFixed(2) %>
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="item left profit-trade">
+					<p class="desc">盈利交易</p>
+					<p class="num J_ProfitTrade"><%= data.profit_trades %></p>
+				</div>
+				<div class="item center loss-trade">
+					<p class="desc">亏损交易</p>
+					<p class="num J_Loss_Trade"><%= data.loss_trades %></p>
+				</div>
+				<div class="item right profit-loss-rate">
+					<p class="desc">盈亏比</p>
+					<p class="num J_ProfitLossRate">
+						<%= parseFloat(data.profit_loss_trade_ratio).toFixed(2) %>
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="item left his-trade">
+					<p class="desc">历史交易</p>
+					<p class="num J_HisTrade"><%= data.historical_tickets %></p>
+				</div>
+				<div class="item center average-duration">
+					<% var _duration = parseFloat(data.avg_duration || 0),_durationDesc = '分钟'; %>
+					<% _duration = _duration ? _duration / 60 : _duration; %>
+					<% if(_duration > 60 * 24 * 365) { %>
+						<% _duration = parseInt(_duration/(60 * 24 * 365));_durationDesc = '年'; %>
+					<% } else if(_duration > 60 * 24) { %>
+						<% _duration = parseInt(_duration/(60 * 24));_durationDesc = '天'; %>
+					<% } else if(_duration > 60) { %>
+						<% _duration = parseInt(_duration / 60);_durationDesc = '小时'; %>
+					<% } %>
+					<p class="desc">平均持仓</p>
+					<p class="num J_Averageduration"><%= _duration %> <%= _durationDesc %></p>
+				</div>
+				<div class="item right follow-avgval">
+					<p class="desc">平均交易量</p>
+					<p class="num J_AverageVal"><%= parseFloat(data.avg_vol).toFixed(2) %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="trade-count-charts-wrapper">
+		<div class="trade-count-charts-inner">
+			<span class="chart-data-desc J_AmountDesc"></span>
+			<div class="trade-count-chart J_TradeCountArea" id="J_TradeCountArea"></div>
+		</div>
+		<div class="trade-count-charts-inner">
+			<span class="chart-data-desc J_ProfitDesc"></span>
+			<div class="trade-count-chart J_TradeCountColumn" id="J_TradeCountColumn"></div>
+		</div>
+		<div class="trade-count-charts-inner">
+			<span class="chart-data-desc J_RetreatDesc"></span>
+			<div class="trade-count-chart J_TradeCountLine" id="J_TradeCountLine"></div>
+		</div>
+	</div>
+</div>

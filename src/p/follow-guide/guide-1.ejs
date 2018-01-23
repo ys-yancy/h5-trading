@@ -1,0 +1,46 @@
+<div class="guide-1">
+    <div class="title">
+        <h2>XX美金已存入你的账户</h2>
+        <h2>用增金进行跟单赚钱吧</h2>
+    </div>
+    <div class="guide-tl">
+        <p>1.从下面列表中</p>
+        <p>选择一个你想要跟随的高手</p>
+    </div>
+    <ul>
+
+        <% data.forEach(function(item, index){ %>
+            <li class="master-item" data-id='<%= item.id %>' expertId=<%= item.id %>">
+                <div class="tradelist-user">
+                        <div class="img-wrapper-outer">
+                            <div class="img-wrapper">
+                                <img class="img" src="<%= item.img %>">
+                            </div>
+                        </div>
+                        <span class="name l1-color"><%= item.name %></span>
+                    </div>
+                    <div class="tradelist-info">
+                        <div id="J_TradelistChart" class="item chart_index_<%= index %> J_TradelistChart"></div>
+                        <div class="item">
+                            <p class="l2-color">收益率</p>
+                            <p class="profit <%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
+                                <%= parseFloat(item.yield_rate).toFixed(2) %> %
+                            </p>
+                        </div>
+                        <div class="item">
+                            <p class="l2-color">跟随人数</p>
+                            <p class="pel">
+                                <%= item.follow_users %>
+                            </p>
+                        </div>
+                        <div class="item">
+                            <p class="l2-color">交易笔数</p>
+                            <p class="ticket">
+                                <%= item.historical_tickets %>
+                            </p>
+                        </div>
+                    </div>
+            </li>
+        <% }) %>
+    </ul>
+</div>
