@@ -156,6 +156,7 @@ class FollowAction extends PageBase {
 					this._closeFollowDialog();
 					this.fire('follow:order:success');
 					this.parent._slideNextPage();
+					Cookie.set('new_follow_guide', 1);
 				})
 			}
 		})
@@ -176,6 +177,7 @@ class FollowAction extends PageBase {
 					this._closeFollowDialog();
 					this.fire('follow:order:success');
 					this.parent._slideNextPage();
+					Cookie.set('new_follow_guide', 1);
 				})
 			}
 		})

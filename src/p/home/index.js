@@ -5,6 +5,7 @@ import BottomNav from '../../common/bottom-nav';
 import SildeMenu from '../../common/slide-menu';
 import FloatMsg from '../../common/float-msg';
 import CheckOpenAccount from '../../common/check-open-account';
+import CheckFollowGuide from '../../common/check-follow-guide';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 
@@ -15,6 +16,7 @@ class Home extends PageBase {
 			this._init();
 		});
 		new CheckOpenAccount();
+		new CheckFollowGuide();
 		new BottomNav({
 			page: 'home'
 		});

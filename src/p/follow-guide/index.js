@@ -52,6 +52,10 @@ Base.extend(FollowGuide, PageBase, {
 			}
 
 		}, this))
+
+		doc.on('tap', '.footer-btn', () => {
+			Cookie.set('new_follow_guide', 1);
+		})
 	},
 
 	_slideNextPage: function() {
