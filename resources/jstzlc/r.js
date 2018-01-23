@@ -315,6 +315,11 @@ function getUserInfoWX () {
 	return false;
 }
 
+// 是否使用新用户首页引导
+function getUseNewHomeGuide() {
+	return false;
+}
+
 // 是否使用新用户跟单引导
 function getUseNewFollowGuide () {
 	return false;
