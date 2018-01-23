@@ -6,6 +6,7 @@ import SildeMenu from '../../common/slide-menu';
 import FloatMsg from '../../common/float-msg';
 import CheckOpenAccount from '../../common/check-open-account';
 // import CheckFollowGuide from '../../common/check-follow-guide';
+// import Guide from './guide';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 
@@ -20,6 +21,11 @@ class Home extends PageBase {
 		new BottomNav({
 			page: 'home'
 		});
+
+		// var new_home_guide = Cookie.get('new_home_guide');
+		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
+		// 	this.guide = new Guide();
+		// }
 	}
 
 	_init() {
