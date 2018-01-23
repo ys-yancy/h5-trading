@@ -325,7 +325,12 @@ function getUseNewFollowGuide () {
 	return false;
 }
 
-// 是否使用新用户引导
+// 是否使用新用户交易引导
+function getUseNewTradeGuide () {
+	return false;
+}
+
+// 是否使用新用户引导(旧的)
 function getUseNewGuide () {
 	return false;
 }

@@ -322,6 +322,10 @@ function getUseNewHomeGuide() {
 	return false;
 }
 
+// 是否使用新用户交易引导
+function getUseNewTradeGuide () {
+	return false;
+}
 
 function getUseNewFollowGuide () {
 	return false;
