@@ -4,8 +4,8 @@ export default class NewGuide extends Base{
     constructor(config) {
         super(config);
 
-        var new_home_guide = Cookie.get('new_trade_guide');
-        if (!getUseNewHomeGuide() || new_home_guide == 1) {
+        var new_trade_guide = Cookie.get('new_trade_guide');
+        if (!getUseNewTradeGuide() || new_trade_guide == 1) {
             return;
         }
 

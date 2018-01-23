@@ -11,7 +11,7 @@ export default class HomeGuide extends Base{
         }
 
         this._show();
-        Cookie.set('nnew_home_guideew', 1);
+        Cookie.set('new_home_guide', 1);
     }
 
     _lazyBind() {
