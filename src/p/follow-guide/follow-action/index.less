@@ -1,21 +1,6 @@
 @import '../../../variable.less';
 .follow-action-outer{
 	.follow-action-inner{
-		.hd{
-			position: relative;
-			.height(88);
-			.line-height(88);
-			.padding-left(30);
-			text-align: center;
-			.font-size(38);
-			.close{
-				position: absolute;
-			    .width(44);
-			    .height(44);
-			    .left(30);		
-			    .bottom(20);
-			}
-		}
 		.bd{
 			section{
 				.padding(20, 30);
@@ -30,6 +15,12 @@
 			.setValue-controller-wrapper{
 				.height(120);
 				.margin(30, 0);
+				.item{
+					.width(80);
+				}
+				input.item{
+					.width(380);
+				}
 			}
 		}
 		.ft{
@@ -40,10 +31,10 @@
 			text-align: center;
 			.btn{
 				display: inline-block;
-				.height(88);
-				.width(330);
-				.line-height(88);
-				.border-radius(5);
+				.height(78);
+				.width(260);
+				.line-height(78);
+				.border-radius(3);
 				.font-size(32);
 				vertical-align: middle;
 				.margin(0, 10);
@@ -213,19 +204,27 @@
 					}
 				}
 			}
+			.setRangeControWrap{
+				.item{
+					.width(80);
+				}
+				input.item{
+					.width(380);
+				}
+			}
 		}
 		.ft{
 			right: 0;
 			bottom: 0;
 			left: 0;
-			.padding(20, 0);
+			.padding(30, 0);
 			text-align: center;
 			.btn{
 				display: inline-block;
-				.height(88);
-				.width(690);
-				.line-height(88);
-				.border-radius(5);
+				.width(578);
+    			.height(78);
+				.line-height(78);
+				.border-radius(4);
 				.font-size(32);
 				border:none;
 				vertical-align: middle;

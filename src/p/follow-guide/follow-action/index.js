@@ -271,7 +271,7 @@ class FollowAction extends PageBase {
 			if (errorCode === 400) {
 				
 				var defaultConfig = this._updateDefaultConfig();
-				this.el = this.render(tmpl, defaultConfig, $('.J_Guide3Wraper'));
+				this.el = this.renderTo(tmpl, defaultConfig, $('.J_Guide3Wraper'));
 				this.parent._hideFollowLoading();
 			}
 		})

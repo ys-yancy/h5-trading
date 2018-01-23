@@ -1,8 +1,4 @@
 <div class="follow-setting-inner">
-	<div class="hd ui header-inner common">
-		<h2>跟单参数配置</h2>
-		<span class="close ui icon J_CloseFollow"></span>
-	</div>
 	<div class="bd">
 		<div class="set-wrapper capital-setting J_FollowMode 
 			<%= data.follow_mode == 'follow_amount_ratio' ? 'active' : '' %>">
@@ -107,8 +103,7 @@
 		<%if (data.isNoMonery) {%>
 			<a class="btn follow-recharge J_FollowRecharge ui btn-follow-recharge" href="./recharge.html">马上增加资金</a>
 		<%} else {%>
-			<button class="btn J_FollowSettingSubmit ui btn-followSettingSubmit">保存并继续跟随</button>
+			<button class="btn J_FollowSettingSubmit ui btn-followSettingSubmit">保存并跟随</button>
 		<%}%>
-		
 	</div>
 </div>
