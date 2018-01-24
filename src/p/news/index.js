@@ -22,12 +22,12 @@ function News() {
 Base.extend(News, Base, {
 	init: function() {
 		this.firstRender = true;
-		this._initAttrs();
 		this._bind();
 		this._getData();
 		this._setInterval();
 		this._requires();
-		this._initSticky();
+		// this._initSticky();
+		this._initAttrs();
 		new SildeMenu({
 	      el: $('#J_SlideMenu'),
 	      page: 'option'
@@ -163,23 +163,30 @@ Base.extend(News, Base, {
   	},
 
 	_initAttrs: function() {
-		this.bdEl = $('.content');
-		this.listContentEl = $('.list', this.bdEl);
-
 		// 需要隐藏表头
 		var search = window.location.search;
         if (search.indexOf('from=iphoneapp') != -1 || search.indexOf('from=androidApp') != -1) {
-        	$('.footer').hide();
-            $('#J_Header').parent().hide();
-            $('nav').css('top', '0');
-            this.bdEl.css('padding-top', '2rem');
-            var linkEl = $('.link');
-            var curLink= linkEl.prop('href');
-            $('.link').prop('href', curLink + search);
+			this._setLink(search);
+			this._hideHeader();
         }
 	},
 
+	_hideHeader: function() {
+		$('footer').hide();
+		$('header').hide();
+		$('nav').css('top', '0');
+		this.bdEl.css('padding-top', '2rem');
+	},
+
+	_setLink: function(search) {
+		var linkEl = $('.link');
+		var curLink= linkEl.prop('href');
+		linkEl.prop('href', curLink + search);
+	},
+
 	attrs: {
+		bdEl: $('.content'),
+		listContentEl: $('.list'),
 		tmpl: `<a class="left tdlist clearfix color active" href="javascript:void(0)">资讯快递</a>
     		<a class="right tdlist clearfix color link" href="./calendar.html">经济日历</a>`
 	}

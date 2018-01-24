@@ -100,16 +100,24 @@ Base.extend(Calendar, Base, {
     _initAttrs:function() {
         // 需要隐藏表头
         var search = window.location.search;
-        if (search.indexOf('from=iphoneapp') != -1 || search.indexOf('from=androidApp') != -1) {
-            $('.footer').hide();
-            $('#J_Header').parent().hide();
-            $('nav').css('top', '0');
-            $('.content').css('padding-top', '2rem');
-            var linkEl = $('.link');
-            var curLink= linkEl.prop('href');
-            $('.link').prop('href', curLink + search);
+        if (search.indexOf('from=iphoneapp') != -1 || search.indexOf('from=androidApp') != -1) { 
+            this._setLink(search);
+			this._hideHeader();
         }
     },
+
+    _hideHeader: function() {
+		$('footer').hide();
+		$('header').hide();
+		$('nav').css('top', '0');
+		$('.content').css('padding-top', '2rem');
+	},
+
+	_setLink: function(search) {
+		var linkEl = $('.link');
+		var curLink= linkEl.prop('href');
+		linkEl.prop('href', curLink + search);
+	},
 
     _initSticky: function() {
     	$('nav').sticky();
