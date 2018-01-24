@@ -115,11 +115,17 @@ Base.extend(News, Base, {
 			start: '0',
 			length: '20',
 			time: Util.getDate(),
-			type: '01',
-			resource: 'jin10',
-			group: 2
+			resource: 'jin10'
+		}
+
+		if (getNewsGroup()) {
+			data.group = getNewsGroup();
 		}
 		return data;
+	},
+
+	_isHasArtical: function() {
+		return !!getNewsGroup();
 	},
 
 	_setLastTime: function(data) {
@@ -142,11 +148,12 @@ Base.extend(News, Base, {
 	},
 
 	_render: function(data, isFirstRender) {
+		var isHasAcl = this._isHasArtical();
 		if (isFirstRender) {
-			this.render(tmpl, {list: data}, this.listContentEl);
+			this.render(tmpl, {list: data, isHasAcl: isHasAcl}, this.listContentEl);
 		} else {
 			this._hideLoading();
-			this.renderTo(tmpl, {list: data}, this.listContentEl);
+			this.renderTo(tmpl, {list: data, isHasAcl: isHasAcl}, this.listContentEl);
 		}
 		
 		this._clearFirst();

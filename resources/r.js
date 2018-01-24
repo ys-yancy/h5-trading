@@ -311,6 +311,13 @@ function getWXAppid () {
 	return 'wxf587c0d17e265b55'
 }
 
+// 新闻列表配置 
+//return {param}
+// 0：代表默认; 
+// 2：可以查看详情;
+function getNewsGroup() {
+	return 2;
+}
 
 // 是否使用显示授权
 function getUserInfoWX () {
