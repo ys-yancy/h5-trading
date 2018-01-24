@@ -82,6 +82,13 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    port: 9999
+    port: 9999,
+    proxy: {
+      '/news_*/*.html': {
+          target: 'https://news.firstbkr.com',
+          changeOrigin: true,
+          secure: false
+      }
+    }
   }
 };
