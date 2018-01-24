@@ -24,6 +24,7 @@ var entryAll = {
     'followlist-history': './src/p/followlist-history/index',
     'actual-order': './src/p/actual-order/index',
     'news': './src/p/news/index',
+    'news-detail': './src/p/news-detail',
     'calendar': './src/p/calendar/index',
     'share-order': './src/p/share-order/index',
     'my/profile/index': './src/p/my/profile/index',
