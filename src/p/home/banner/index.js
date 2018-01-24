@@ -39,7 +39,12 @@ export default class HomeBanner extends Base {
     _getSlideData(data) {
         return data.map(function(item) {
             if (item.image.indexOf('http') === -1) {
-                item.image = getNativePlaceUrl() + item.image.substr(8);
+                if (item.image.indexOf('static') !== -1) {
+                    item.image = getNativePlaceUrl() + item.image.substr(8);
+                } else {
+                    item.image = getNativePlaceUrl() + item.image;
+                }
+                
             }
             return item.image;
         });
