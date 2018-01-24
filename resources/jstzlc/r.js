@@ -314,7 +314,7 @@ function getWXAppid () {
 // 0：代表默认; 
 // 2：可以查看详情;
 function getNewsGroup() {
-	return 2;
+	return 0;
 }
 
 // 是否使用显示授权
