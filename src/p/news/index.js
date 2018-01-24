@@ -82,6 +82,11 @@ Base.extend(News, Base, {
 		}).then((data) => {
 			data = data.data;
 
+			if (!data.length) {
+				this.listContentEl.html('<li class="no-list" style="padding:2rem;text-align:center;">当前没有数据</li>');
+				return;
+			}
+
 			this._setLastTime(data);
 
 			var curId = data[0].id;
@@ -112,6 +117,7 @@ Base.extend(News, Base, {
 			time: Util.getDate(),
 			type: '01',
 			resource: 'jin10',
+			group: 2
 		}
 		return data;
 	},
