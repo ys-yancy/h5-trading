@@ -14,7 +14,7 @@ import Banner from './banner';
 class Home extends PageBase {
 	constructor(config) {
 		super(config);
-		$('.marquee').marquee();
+		
 		this.getAllSymbolsPrice().then(() => {
 			this._init();
 		});
