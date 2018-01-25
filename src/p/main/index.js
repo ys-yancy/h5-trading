@@ -20,20 +20,6 @@ class Home extends PageBase {
 		this.getAllSymbolsPrice().then(() => {
 			this._init();
 		});
-		new CheckOpenAccount();
-		// new CheckFollowGuide();
-		new BottomNav({
-			page: 'home'
-        });
-
-        new Nav({
-            el: $('.nav')
-        })
-        
-        var topmsg = new TopMsg({
-	        el: $('.top-message'),
-	        tags: 'home'
-	    }, 50000);
 
 		// var new_home_guide = Cookie.get('new_home_guide');
 		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
@@ -103,7 +89,22 @@ class Home extends PageBase {
 		new SildeMenu({
 			el: $('#J_SlideMenu'),
 			page: 'home'
-		})
+        });
+        
+        new CheckOpenAccount();
+		// new CheckFollowGuide();
+		new BottomNav({
+			page: 'home'
+        });
+
+        new Nav({
+            el: $('.nav')
+        })
+        
+        var topmsg = new TopMsg({
+	        el: $('.top-message'),
+	        tags: 'home'
+	    }, 50000);
 	}
 
 	defaults() {
