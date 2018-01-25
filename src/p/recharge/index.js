@@ -11,6 +11,7 @@ var tmpl = require('./index.ejs');
 var dialogTmpl = require('./dialog.ejs');
 var payTypeTmpl = require('./pat-type.ejs');
 var dialogErrorTmpl = require('./dialog-error.ejs');
+var Toast = require('../../common/toast');
 var CustomerService = require('../../common/customer-service');
 var CheckOpenAccount = require('../../common/check-open-account');
 var Config = require('../../app/config');
@@ -95,7 +96,7 @@ Base.extend(Recharge, PageBase, {
                 $('#J_UserName').val(name).prop('disabled', true);
             }
             if (phone && name) {
-                this.noPostInfo = true;
+                self.noPostInfo = true;
             }
         })
     },
@@ -402,13 +403,14 @@ Base.extend(Recharge, PageBase, {
         self.ajax({
             url: url,
             data: params,
-            type: 'POST'
+            type: 'GET'
         }).then(function(data) {
             data = data.data;
             self.onlyOne = true;
             self._submitAction(openType, data, 'weixin');
         },function (data) {
             self.onlyOne = true;
+            qrel.hide();
             new Toast(data.message);
             return;
         });
@@ -457,6 +459,7 @@ Base.extend(Recharge, PageBase, {
             self._submitAction(openType, data, 'zhifubao');
         },function (data) {
             self.onlyOne = true;
+            qrel.hide();
             new Toast(data.message);
             return;
         });

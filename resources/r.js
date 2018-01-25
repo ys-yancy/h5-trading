@@ -29,11 +29,12 @@ function getShowPayWay() {
 function getPayUrl() {
 	return {
 		weixin: {
-			url: '/v1/user/pay/deposit_juxin/',
+			url: '/v1/user/pay/depost_fast_wechat/',//'/v1/user/pay/deposit_juxin/',
 			openType: 'postForm',
 			img: '../img/recharge/weixin-saoma.png',
 			params: {
-				depositType: 'wechat_saoma'
+				terminal: 2
+				// depositType: 'wechat_saoma'
 			}
 		},
 		weixinWeb: {
@@ -228,7 +229,7 @@ function getMobilePayTextWL() {
 
 // 最低入金金额
 function getMinDepositWL() {
-	return 100;
+	return 0;
 }
 
 // 获取客服电话
