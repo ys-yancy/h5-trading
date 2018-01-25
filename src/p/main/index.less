@@ -1,0 +1,119 @@
+@import '../../base.less';
+@import '../../variable.less';
+body{
+  .padding-bottom(110);
+  background: #F7F7F7;
+}
+header{
+  .width(750);
+  position: fixed;
+  z-index: 20;
+  .header-inner{
+      .height(88);
+      .line-height(88);
+      .font-size(38);
+      text-align: center;
+      position: relative;
+      h2{
+        background: #fff;
+        opacity: 0;
+      }
+      .show-slide-menu{
+        position: absolute;
+        z-index: 1;
+        .width(44);
+        .height(44);
+        .top(22);
+        .left(30);
+      }
+  }
+}
+
+.main-banner{
+  .width(750);
+  .height(300);
+  img{
+    .width(750);
+    .height(300);
+  }
+}
+.nav{
+    .height(150);
+    .margin-top(30);
+    .border-top(1, solid, #ccc);
+    .border-bottom(1, solid, #ccc);
+    overflow: hidden;
+    background: #fff;
+    .home-nav-item{
+        float: left;
+        .width(250);
+        .padding(30);
+        text-align: center;
+        color: inherit;
+        a{
+            color: inherit;
+        }
+    }
+    .icon{
+        display: block;
+        .width(60);
+        .height(60);
+        margin: 0 auto;
+        background: red;
+    }
+}
+.top-message-wrapper{
+    .width(750);
+    .padding(10, 30);
+    .margin-top(30);
+    .border-top(1, solid, #ccc);
+    .border-bottom(1, solid, #ccc);
+    overflow: hidden;
+    background: #fff;
+    .msg-title{
+        float: left;
+        position: relative;
+        .width(190);
+        .height(54);
+        .line-height(54);
+        vertical-align: bottom;
+        .icon{
+            position: absolute;
+            .width(44);
+            .height(44);
+            .top(5);
+            .right(10);
+            background: red;
+        }
+    }
+    .top-message{
+        float: left;
+        .width(500);
+        overflow: hidden;
+        vertical-align: bottom;
+        li{
+            .width(500);
+        }
+    }
+}
+
+.symbols{
+    .height(160);
+    .margin-top(30);
+}
+
+.master{
+    .height(160);
+    .margin-top(30);
+}
+
+footer {
+    position: fixed;
+    .width(750);
+    .height(100);
+    .footer();
+    bottom: 0;
+    background-color: #EDEDED;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}

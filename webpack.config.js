@@ -5,6 +5,7 @@ var entryAll = {
     'register': './src/p/register/index',
     'recovery-password': './src/p/recovery-password/index',
     'recovery-trade-password': './src/p/recovery-trade-password/index',
+    'main': './src/p/main/index',
     'home': './src/p/home/index',
     'option': './src/p/option/index',
     'rapid': './src/p/rapid/index',
