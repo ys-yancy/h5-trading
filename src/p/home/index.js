@@ -79,6 +79,13 @@ class Home extends PageBase {
 	}
 
 	_updateFollow(data) {
+		var containerEl = $('#J_Master');
+		if (getBottomNavPages().indexOf('master') === -1) {
+			containerEl.remove();
+			return;
+		}
+
+		containerEl.show();
 		var followProfitEl = $('.J_FollowProfit', '#follow-content'),
 			followTicketCountEl = $('.J_FollowTicketCount', '#follow-content'),
 			maxFollowProfitEl = $('.J_MaxFollowProfit', '#follow-content'),
