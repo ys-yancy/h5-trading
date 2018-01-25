@@ -6,6 +6,7 @@ import SildeMenu from '../../common/slide-menu';
 import FloatMsg from '../../common/float-msg';
 import CheckOpenAccount from '../../common/check-open-account';
 // import CheckFollowGuide from '../../common/check-follow-guide';
+import Marquee from '../../common/marquee';
 // import Guide from './guide';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
@@ -13,6 +14,7 @@ import Banner from './banner';
 class Home extends PageBase {
 	constructor(config) {
 		super(config);
+		$('.marquee').marquee();
 		this.getAllSymbolsPrice().then(() => {
 			this._init();
 		});
