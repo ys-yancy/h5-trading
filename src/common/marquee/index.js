@@ -16,6 +16,24 @@ Marquee.prototype = {
 
     },
 
+    _start: function() {
+        var direction = this.config.direction,
+            loop = this.config.loop;
+
+        if (loop === 0) {
+            return;
+        }
+
+        if (loop !== -1) {
+            loop--;
+            this.config.loop = loop;
+        }
+
+        setTimeout(() => {
+            this._animate();
+        }, this.config.duration);
+    },
+
     _animate: function() {
         var direction = this.config.direction;
         switch(direction) {
@@ -39,7 +57,7 @@ Marquee.prototype = {
     _animateVertical: function() {
         var self = this;
         var config = self.config;
-        var children = this._getBaseChildren();
+        var children = this._getAnimeChildren();
         var initTranslateY = this._getinitTransLate(children);
 
         var RAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
@@ -61,10 +79,10 @@ Marquee.prototype = {
 
             self.html.css(_an);
 
-            self._setInterval();
+            self._start();
             
             setTimeout(() => {
-                self._resetPosition();
+                self._resetPos();
             }, config.delay);
         });
     },
@@ -72,7 +90,7 @@ Marquee.prototype = {
     _animateAlign: function() {
         var self = this;
         var config = self.config;
-        var children = this._getBaseChildren();
+        var children = this._getAnimeChildren();
         var initTranslateX = this._getinitTransLate(children);
         var calcAnimateDistance = this._calcAnimateDistance(initTranslateX);
 
@@ -116,7 +134,7 @@ Marquee.prototype = {
             self.html.css(_an);
 
             if (isPause) {
-                self._setInterval();
+                self._start();
             } else {
                 self._animateAlign();
             }
@@ -124,7 +142,7 @@ Marquee.prototype = {
 
         function reset() {
             CAF(_R);
-            self._resetPosition();
+            self._resetPos();
             isPause = true;
             self._animateAlignDistance = undefined;
         }
@@ -138,13 +156,15 @@ Marquee.prototype = {
                 distance = distance * -1;
                 break;
             case 'down':
-                distance = distance - Math.abs(this.initDistance);
+                distance = distance - Math.abs(this.translate);
                 break;
             case 'left':
                 distance = distance;
                 break;
             case 'right':
-                distance = distance - Math.abs(this.initDistance);
+                distance = distance - Math.abs(this.translate);
+                break;
+            default: 
                 break;
         }
 
@@ -186,40 +206,22 @@ Marquee.prototype = {
         return h;
     },
 
-    _setInterval: function() {
-        var direction = this.config.direction,
-            loop = this.config.loop;
-
-        if (loop === 0) {
-            return;
-        }
-
-        if (loop !== -1) {
-            loop--;
-            this.config.loop = loop;
-        }
-
-        setTimeout(() => {
-            this._animate();
-        }, this.config.duration);
-    },
-
-    _resetPosition: function() {
+    _resetPos: function() {
         this._animateAlignDistance = undefined;
         var direction = this.config.direction;
 
         if (direction === 'down' || direction === 'right') {
-            this.html.prepend(this.children);
+            this.rootList.prepend(this.children);
         } else {
-            this.html.append(this.children);
+            this.rootList.append(this.children);
         }
         
-        this.html.css('transitionDuration', '0ms');
-        this.html.css('transform', this.initTransform);
+        this.rootList.css('transitionDuration', '0ms');
+        this.rootList.css('transform', this.initTransform);
     },
 
-    _getBaseChildren: function() {
-        var childrens = this.html.children(),
+    _getAnimeChildren: function() {
+        var childrens = this.rootList.children(),
             length = childrens.length,
             firstChild = childrens.eq(0),
             lastChild = childrens.eq(length - 1);
@@ -234,7 +236,7 @@ Marquee.prototype = {
 
     },
 
-    _calcAnimateStyle: function() {
+    _getAnimateStyle: function() {
         var direction = this.config.direction,
             easing = this.config.easing,
             delay = this.config.delay,
@@ -257,35 +259,35 @@ Marquee.prototype = {
 
     _initStyle: function() {
         var direction = this.config.direction,
-            animateStyle = this._calcAnimateStyle(),
-            initDistance = 0,
+            animateStyle = this._getAnimateStyle(),
+            translate = 0,
             transform = '';
 
         switch(direction) {
             case 'up':
-                initDistance = 0;
-                transform = 'translateY('+ initDistance +'px)';
+                translate = 0;
+                transform = 'translateY('+ translate +'px)';
                 break;
             case 'down':
-                initDistance = this.el.height() - this._calcHeight(this.html);
-                transform = 'translateY('+ initDistance +'px)';
+                translate = this.el.height() - this._calcHeight(this.rootList);
+                transform = 'translateY('+ translate +'px)';
                 break;
             case 'left':
-                initDistance = this._calcWidth(this.html);
-                transform = 'translateX('+ initDistance +'px)';
+                translate = this._calcWidth(this.rootList);
+                transform = 'translateX('+ translate +'px)';
                 break;
             case 'right':
-                initDistance = this._calcWidth(this.html) * -1;
-                transform = 'translateX('+ initDistance +'px)';
+                translate = this._calcWidth(this.rootList) * -1;
+                transform = 'translateX('+ translate +'px)';
                 break;
         }
 
         animateStyle.transform = transform;
 
-        this.html.css(animateStyle);
+        this.rootList.css(animateStyle);
 
         this.initTransform = transform;
-        this.initDistance = initDistance;
+        this.translate = translate;
     },
 
     _parseList: function(list) {
@@ -308,7 +310,7 @@ Marquee.prototype = {
             html += '<li>' + item.content + '</li>';
         }
         wrap.innerHTML = html;
-        this.html = $(wrap);
+        this.rootList = $(wrap);
         this.el.append(wrap);
         this._initStyle();
         this._animate();
