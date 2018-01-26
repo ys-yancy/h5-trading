@@ -12,6 +12,7 @@ import CheckOpenAccount from '../../common/check-open-account';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 import Nav from './nav';
+import HotSymbols from './hot-symbols';
 
 class Home extends PageBase {
 	constructor(config) {
@@ -98,8 +99,12 @@ class Home extends PageBase {
         });
 
         new Nav({
-            el: $('.nav')
-        })
+            el: $('.main-nav')
+		});
+		
+		new HotSymbols({
+			el: $('.main-symbols')
+		})
         
         var topmsg = new TopMsg({
 	        el: $('.top-message'),

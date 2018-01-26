@@ -1,0 +1,22 @@
+<div class="hot-symbols-inner">
+    <div class="hd">
+        <h2 class="hd-name l1-color">热门品种</h2>
+        <a class="hd-more l2-color" href="./option.html?src=main.html">更多</a>
+    </div>
+    <ul class="J_HotSymobls symbol-list">
+        <% $.each(data, function(index, item) {%>
+            <% var bidPrice = parseFloat(item.quote && item.quote.bid_price[0]) || '--'; var askPrice = parseFloat(item.quote && item.quote.ask_price[0]) || '--'; %>
+            <% rate = ((bidPrice+askPrice) / 2 - item.close_price)/item.close_price; var isUp = rate >= 0; %>
+            <% rate = isNaN(rate) ? '--' : (rate.toFixed(5) * 100).toFixed(3);%>
+            <% var price = (bidPrice + askPrice) / 2; %>
+            <% var unit = (item.policy.min_quote_unit.toString().length - 2) >= 0 ? item.policy.min_quote_unit.toString().length - 2 : 0; %>
+            <li class="item default-down <% if(isUp){%> up <%}%>" data-symbol="<%= item.policy.symbol %>" data-symbolname="<%= item.policy.symbol.replace(/\./g, '--') %>">
+                <a href="<%= data.tradeUI %>symbol=<%= item.policy.symbol %>&name=<%= item.policy.name %>&price=<%= (price).toFixed(5) %>&unit=<%= item.policy.min_quote_unit %>&fullRouter=<%= encodeURIComponent(location.href) %>">
+                    <p class="symbol-name l1-color"><%= item.policy.name %></p>
+                    <p class="prices J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></p>
+                    <p class="percent default-down <%if(rate > 0){%> up <%}%> J_Percent"><%= rate %>%</p>
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+</div>
