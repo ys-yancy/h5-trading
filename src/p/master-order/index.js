@@ -10,6 +10,7 @@ var Cookie = require('../../lib/cookie');
 var Uri = require('../../app/uri');
 var Sticky = require('../../common/sticky/');
 var Toast = require('../../common/toast');
+var GoBack = require('../../common/go-back');
 var TradeConut = require('./trade-count');
 var TradeCurrent = require('./trade-current');
 var TradeHistory = require('./trade-history');
@@ -354,6 +355,8 @@ Base.extend(FollowOrder, PageBase, {
 				id: this.expertId
 			})
 		}
+
+		new GoBack();
 	},
 
 	_initSticky: function() {
