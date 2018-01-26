@@ -13,6 +13,7 @@ import Cookie from '../../lib/cookie';
 import Banner from './banner';
 import Nav from './nav';
 import HotSymbols from './hot-symbols';
+import MainMasters from './masters';
 
 class Home extends PageBase {
 	constructor(config) {
@@ -101,15 +102,20 @@ class Home extends PageBase {
         new Nav({
             el: $('.main-nav')
 		});
+
+		var topmsg = new TopMsg({
+	        el: $('.top-message'),
+	        tags: 'home'
+		}, 10 * 1000);
 		
 		new HotSymbols({
 			el: $('.main-symbols')
-		})
+		});
+
+		new MainMasters({
+			el: $('.main-master')
+		});
         
-        var topmsg = new TopMsg({
-	        el: $('.top-message'),
-	        tags: 'home'
-	    }, 50000);
 	}
 
 	defaults() {

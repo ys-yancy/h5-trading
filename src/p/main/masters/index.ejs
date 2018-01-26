@@ -1,0 +1,42 @@
+
+<div class="hd">
+    <h2 class="hd-name l1-color">高手排行</h2>
+    <a class="hd-more l2-color" href="./master-list.html">更多</a>
+</div>
+<ul class="main-master-list">
+    <% data.forEach(function(item, index) {%>
+        <li class="user-follow bd-color J_UserFollow" data-id='<%= item.id %>'>
+            <a href="./master-order.html?expertId=<%= item.id %>&src=<%= encodeURIComponent(location.href)%>">
+                <div class="tradelist-user">
+                    <div class="img-wrapper-outer">
+                        <div class="img-wrapper">
+                            <img class="img" src="<%= item.img %>">
+                        </div>
+                    </div>
+                    <span class="name l1-color"><%= item.name %></span>
+                </div>
+                <div class="tradelist-info">
+                    <div id="J_TradelistChart" class="item chart_index_<%= index %> J_TradelistChart"></div>
+                    <div class="item">
+                        <p class="l2-color">收益率</p>
+                        <p class="profit <%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
+                            <%= parseFloat(item.yield_rate).toFixed(2) %> %
+                        </p>
+                    </div>
+                    <div class="item">
+                        <p class="l2-color">跟随人数</p>
+                        <p class="pel">
+                            <%= item.follow_users %>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <p class="l2-color">交易笔数</p>
+                        <p class="ticket">
+                            <%= item.historical_tickets %>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </li>
+    <%})%>
+</ul>
