@@ -64,6 +64,20 @@ Base.extend(Register, PageBase, {
                 this.hideError(parent);
                 getCodeEl.removeClass('disable');
             }
+        } else if (curEl.hasClass('email')) {
+            error = validator.validateField({
+                name: 'email',
+                display: 'required',
+                rules: 'required|valid_email',
+                value: value
+            });
+            if (error) {
+                this.showError(parent, error.message);
+                getCodeEl.addClass('disable');
+            } else {
+                this.hideError(parent);
+                getCodeEl.removeClass('disable');
+            }
         } else if (curEl.hasClass('password')) {
             if (!curEl.hasClass('repassword')) {
                 error = validator.validateField({
@@ -215,6 +229,7 @@ Base.extend(Register, PageBase, {
         }
 
         var password = $('.password').val(),
+            email = $('.email').val(),
             phone = $('.tel').val(),
             cc = 86,
             vcode = $('.code').val(),
@@ -226,121 +241,67 @@ Base.extend(Register, PageBase, {
 
         self.registerPhone = true;
 
-        // 从android客户端里注册的情况, 需要记录所有信息
-        if (Config.isAndroidAPK()) {
-            this.ajax({
-                url: '/v1/user/create', 
-                data: {
-                    phone: phone,
-                    vcode: vcode,
-                    password: password,
-                    uuid: Cookie.get('uuid') || Util.guid(),
-                    nickname: self._generateNickname(),
-                    cc: 86,
-                    source: self.source,
-                    wl: getWXWL()
-                },
-                type: 'post'
-            }).then(function(data) {
+        this.ajax({
+            url: '/v1/user/create', 
+            data: {
+                phone: phone,
+                email: email,
+                vcode: vcode,
+                password: password,
+                uuid: Cookie.get('uuid') || Util.guid(),
+                nickname: self._generateNickname(),
+                refer: self.referCode,
+                cc: 86,
+                source: self.source,
+                wl: getWXWL()
+            },
+            type: 'post'
+        }).then(function(data) {
 
-                Cookie.set('real_token', data.data.real_token, {
-                    expires: Config.getRealPasswordExpireTime()
-                });
-                Cookie.set('type', 'real');
-                Cookie.set('goType', 'real');
-
-                Cookie.set('phone', $('.tel').val(), {
-                    expires: Infinity
-                });
-                Cookie.set('token', data.data.token, {
-                    expires: Infinity
-                });
-                Cookie.set('inviteCode', data.data.invite_code, {
-                    expires: Infinity
-                });
-                Cookie.set('uuid', data.data.uuid, {
-                    expires: Infinity
-                });
-
-                Cookie.set('deposits', data.data.deposits || 0, {
-                    expires: Infinity
-                });
-
-                self.registerErr = false;
-
-                new Toast('注册成功');
-                setTimeout(function() {
-                    location.href = '../../home.html';
-                }, 1500);
-                submitEl.val('注册');
-            }, function(data) {
-                var parent = submitEl.parent('.wrapper');
-                self.showError(parent, data.message);
-                submitEl.val('注册');
+            Cookie.set('real_token', data.data.real_token, {
+                expires: Config.getRealPasswordExpireTime()
             });
-        }
-        else {
-            this.ajax({
-                url: '/v1/user/create', 
-                data: {
-                    phone: phone,
-                    vcode: vcode,
-                    password: password,
-                    uuid: Cookie.get('uuid') || Util.guid(),
-                    nickname: self._generateNickname(),
-                    refer: self.referCode,
-                    cc: 86,
-                    source: self.source,
-                    wl: getWXWL()
-                },
-                type: 'post'
-            }).then(function(data) {
+            Cookie.set('type', 'real');
+            Cookie.set('goType', 'real');
 
-                Cookie.set('real_token', data.data.real_token, {
-                    expires: Config.getRealPasswordExpireTime()
-                });
-                Cookie.set('type', 'real');
-                Cookie.set('goType', 'real');
-
-                Cookie.set('phone', $('.tel').val(), {
-                    expires: Infinity
-                });
-                Cookie.set('token', data.data.token, {
-                    expires: Infinity
-                });
-                Cookie.set('inviteCode', data.data.invite_code, {
-                    expires: Infinity
-                });
-                Cookie.set('uuid', data.data.uuid, {
-                    expires: Infinity
-                });
-
-                self.registerErr = false;
-
-                submitEl.val('注册');
-
-                // 如果有邀请人就默认帮用户把红包领了
-                if (self.referCode) {
-                    self._getLottery();
-                }
-                // 没有邀请人就直接去option
-                else {
-                    self._goRegister();
-                }
-
-                new Toast('注册成功');
-                setTimeout(function() {
-                    location.href = './option.html';
-                }, 1500);
-                
-            }, function(data) {
-                self.registerErr = true;
-
-                var parent = submitEl.parent('.wrapper');
-                self.showError(parent, data.message);
-                submitEl.val('注册');
+            Cookie.set('phone', $('.tel').val(), {
+                expires: Infinity
             });
-        }
+            Cookie.set('token', data.data.token, {
+                expires: Infinity
+            });
+            Cookie.set('inviteCode', data.data.invite_code, {
+                expires: Infinity
+            });
+            Cookie.set('uuid', data.data.uuid, {
+                expires: Infinity
+            });
+
+            self.registerErr = false;
+
+            submitEl.val('注册');
+
+            // 如果有邀请人就默认帮用户把红包领了
+            if (self.referCode) {
+                self._getLottery();
+            }
+            // 没有邀请人就直接去option
+            else {
+                self._goRegister();
+            }
+
+            new Toast('注册成功');
+            setTimeout(function() {
+                location.href = './option.html';
+            }, 1500);
+            
+        }, function(data) {
+            self.registerErr = true;
+
+            var parent = submitEl.parent('.wrapper');
+            self.showError(parent, data.message);
+            submitEl.val('注册');
+        });
     },
 
     _getLottery() {
@@ -383,6 +344,10 @@ Base.extend(Register, PageBase, {
             display: 'required',
             rules: 'required|callback_tel_number'
         }, {
+            name: 'email',
+            disable: 'required',
+            rules: 'required|valid_email',
+        }, {
             name: 'password',
             rules: 'required'
         }, {
@@ -414,6 +379,7 @@ Base.extend(Register, PageBase, {
                 return false;
             })
             .setMessage('tel_number', '请输入正确的手机号码')
+            .setMessage('valid_email', '请输入正确的邮箱')
             .setMessage('required', '此项为必填项目')
             .setMessage('matches', '两次输入密码不一致');
 
