@@ -353,6 +353,7 @@ Marquee.prototype = {
 
 $.fn.marquee = function(config) {
     config = $.extend({
+        el: this,
         // 展示列表
         list: [{content: '我是内容1'}, {content: '我是内容2'}, {content: '我是内容3'}],
 
@@ -390,8 +391,6 @@ $.fn.marquee = function(config) {
             console.log('marqueeLoaded')
         },
     }, config);
-
-    config.el = this;
 
     return new Marquee(config);
 }
