@@ -319,6 +319,18 @@ Marquee.prototype = {
         this.el.append(wrap);
         this._initStyle();
         this._start();
+    },
+
+    pause: function() {
+
+    },
+
+    resume: function() {
+
+    },
+
+    destroy: function() {
+
     }
 }
 
