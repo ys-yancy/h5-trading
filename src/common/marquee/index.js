@@ -24,6 +24,10 @@ Marquee.prototype = {
             startBroadcastCallback = this.config.startBroadcastCallback,
             marqueeLoadedCallback = this.config.marqueeLoadedCallback;
 
+        if (this.isPause) {
+            return false;
+        }
+
         if (loop === 0) {
             isBroadcastCallback && marqueeLoadedCallback(this.currentSilderEl);
             return;
@@ -96,7 +100,11 @@ Marquee.prototype = {
         
         this.currentSilderEl = children;
 
-        var isPause = false;
+        if (this.isPause) {
+            return false;
+        }
+
+        var isRestart = false;
 
         this._reqAf = requestAnimationFrame(function() {
             var translateX = self._calcAnimateDistance(initTranslateX);
@@ -118,7 +126,7 @@ Marquee.prototype = {
 
             self.rootList.css(_an);
 
-            if (isPause) {
+            if (isRestart) {
                 self._start();
             } else {
                 self._animateAlign();
@@ -128,7 +136,7 @@ Marquee.prototype = {
         function reset() {
             cancelAnimationFrame(self._reqAf);
             self._resetPos();
-            isPause = true;
+            isRestart = true;
             self._animateAlignDistance = undefined;
         }
     },
@@ -312,11 +320,14 @@ Marquee.prototype = {
     },
 
     pause: function() {
-
+        this.isPause = true;
+        clearTimeout(this._startTimer);
+        cancelAnimationFrame(this._reqAf);
     },
 
     resume: function() {
-
+        this.isPause = false;
+        this._start();
     },
 
     destroy: function() {
