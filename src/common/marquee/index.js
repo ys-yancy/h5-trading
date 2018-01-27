@@ -304,16 +304,26 @@ Marquee.prototype = {
     },
 
     _renderHtml: function() {
+        var config = this.config;
         var data = this._parseList(this.list);
 
         var wrap = document.createElement('UL'),
             html = '';
         for (var i = 0, len = data.length; i < len; i++) {
-            var item = data[i];
-            html += '<li>' + item.content + '</li>';
+            var item = data[i],
+                url = item.url;
+            if (url) {
+                html += '<li class="'+ config.itemClass +'"><a href='+ url +'>' + item.content + '</a></li>';
+            } else {
+                html += '<li class="'+ config.itemClass +'">' + item.content + '</li>';
+            }
+            
         }
+
         wrap.innerHTML = html;
+        wrap.className = config.containerClass;
         this.rootList = $(wrap);
+
         this.el.append(wrap);
         this._initStyle();
         this._start();
@@ -354,8 +364,15 @@ Marquee.prototype = {
 $.fn.marquee = function(config) {
     config = $.extend({
         el: this,
+
+        // 容器类名
+        containerClass: 'cm-marquee-outer',
+
+        // 消息类名
+        itemClass: 'cm-marquee-item',
+
         // 展示列表
-        list: [{content: '我是内容1'}, {content: '我是内容2'}, {content: '我是内容3'}],
+        list: [{content: '我是内容1', url: '1111'}, {content: '我是内容2'}, {content: '我是内容3'}],
 
         // 过度效果
         easing: 'cubic-bezier(0.33, 0.66, 0.66, 1)',
