@@ -9,6 +9,7 @@ Marquee.prototype = {
     constructor: Marquee,
 
     _initMarquee: function() {
+        this._requires();
         this._renderHtml();
     },
 
@@ -33,7 +34,7 @@ Marquee.prototype = {
             this.config.loop = loop;
         }
 
-        setTimeout(() => {
+        this._startTimer = setTimeout(() => {
             this._animate();
             isBroadcastCallback && startBroadcastCallback(this.currentSilderEl);
         }, this.config.duration);
@@ -64,15 +65,10 @@ Marquee.prototype = {
         var config = self.config;
         var children = this._getAnimeChildren();
         var initTranslateY = this._getinitTransLate(children);
-
-        var RAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
-            function(c) {
-                setTimeout(c, 1 / 60 * 1000);
-            };
         
         this.currentSilderEl = children;
-          
-        RAF(function() {
+
+        this._reqAf = requestAnimationFrame(function() {
             var translateY = self._calcAnimateDistance(initTranslateY);
 
             var _an = {
@@ -85,6 +81,7 @@ Marquee.prototype = {
             self.rootList.css(_an);
             
             setTimeout(function() {
+                cancelAnimationFrame(self._reqAf);
                 self._resetPos();
                 self._start();
             }, config.delay)    
@@ -96,19 +93,12 @@ Marquee.prototype = {
         var direction = self.config.direction;
         var children = this._getAnimeChildren();
         var initTranslateX = this._getinitTransLate(children);
-
-        var RAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
-            function(c) {
-                setTimeout(c, 1 / 60 * 1000);
-            };
-
-        var CAF = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout;
         
         this.currentSilderEl = children;
 
         var isPause = false;
 
-        var _R = RAF(function() {
+        this._reqAf = requestAnimationFrame(function() {
             var translateX = self._calcAnimateDistance(initTranslateX);
             if (direction === 'left') {
                 if (translateX <= -initTranslateX) {
@@ -136,7 +126,7 @@ Marquee.prototype = {
         });
 
         function reset() {
-            CAF(_R);
+            cancelAnimationFrame(self._reqAf);
             self._resetPos();
             isPause = true;
             self._animateAlignDistance = undefined;
@@ -330,7 +320,23 @@ Marquee.prototype = {
     },
 
     destroy: function() {
+        this.el = null;
+        this.list = null;
+        this.config = null;
+        this.currentSilderEl = null;
+        this._animateAlignDistance = null;
+        this.rootList.remove();
+        clearTimeout(this._startTimer);
+        cancelAnimationFrame(this._reqAf);
+    },
 
+    _requires: function() {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+            function(c) {
+                setTimeout(c, 1 / 60 * 1000);
+            };
+
+        window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout;
     }
 }
 
