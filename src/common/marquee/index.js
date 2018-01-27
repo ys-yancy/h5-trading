@@ -68,16 +68,16 @@ Marquee.prototype = {
         this.children = children;
           
         RAF(function() {
-            var h = self._calcAnimateDistance(initTranslateY);
+            var translateY = self._calcAnimateDistance(initTranslateY);
 
             var _an = {
                 'transitionProperty': '-webkit-transform',
                 'transitionTimingFunction': '',
                 'transitionDuration': config.delay + 'ms',
-                'transform': 'translateY('+ h +'px)'
+                'transform': 'translateY('+ translateY +'px)'
             }
 
-            self.html.css(_an);
+            self.rootList.css(_an);
 
             self._start();
             
@@ -89,10 +89,9 @@ Marquee.prototype = {
 
     _animateAlign: function() {
         var self = this;
-        var config = self.config;
+        var direction = self.config.direction;
         var children = this._getAnimeChildren();
         var initTranslateX = this._getinitTransLate(children);
-        var calcAnimateDistance = this._calcAnimateDistance(initTranslateX);
 
         var RAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
             function(c) {
@@ -106,32 +105,24 @@ Marquee.prototype = {
         var isPause = false;
 
         var _R = RAF(function() {
-            var x = self._animateAlignDistance !== undefined ? self._animateAlignDistance : calcAnimateDistance;
-
-            if (config.direction === 'left') {
-                x = x - config.speed;
-                if (x <= -initTranslateX) {
+            var translateX = self._calcAnimateDistance(initTranslateX);
+            if (direction === 'left') {
+                if (translateX <= -initTranslateX) {
                     reset();
-                } else {
-                    self._animateAlignDistance = x;
                 }
             } else {
-                x = x + config.speed;
-
-                if (x >= initTranslateX) {
+                if (translateX >= initTranslateX) {
                     reset()
-                } else {
-                    self._animateAlignDistance = x;
                 }
             }
-            
+  
             var _an = {
                 'transitionProperty': '-webkit-transform',
                 'transitionTimingFunction': '',
-                'transform': 'translateX('+ x +'px)'
+                'transform': 'translateX('+ translateX +'px)'
             }
 
-            self.html.css(_an);
+            self.rootList.css(_an);
 
             if (isPause) {
                 self._start();
@@ -149,7 +140,8 @@ Marquee.prototype = {
     },
 
     _calcAnimateDistance: function(distance) {
-        var direction = this.config.direction;
+        var direction = this.config.direction,
+            speed = this.config.speed;
 
         switch(direction) {
             case 'up':
@@ -159,10 +151,14 @@ Marquee.prototype = {
                 distance = distance - Math.abs(this.translate);
                 break;
             case 'left':
-                distance = distance;
+                distance = this._animateAlignDistance !== undefined  ? this._animateAlignDistance : distance;
+                distance = distance - speed;
+                this._animateAlignDistance = distance;
                 break;
             case 'right':
-                distance = distance - Math.abs(this.translate);
+                distance = this._animateAlignDistance !== undefined  ? this._animateAlignDistance : distance - Math.abs(this.translate);
+                distance = distance + speed;
+                this._animateAlignDistance = distance;
                 break;
             default: 
                 break;
@@ -207,10 +203,11 @@ Marquee.prototype = {
     },
 
     _resetPos: function() {
-        this._animateAlignDistance = undefined;
         var direction = this.config.direction;
 
-        if (direction === 'down' || direction === 'right') {
+        this._animateAlignDistance = undefined;
+
+        if (direction === 'down') {
             this.rootList.prepend(this.children);
         } else {
             this.rootList.append(this.children);
@@ -228,7 +225,7 @@ Marquee.prototype = {
 
         var direction = this.config.direction;
 
-        if (direction === 'down' || direction === 'right') {
+        if (direction === 'down') {
            return lastChild;
         } else {
             return firstChild;
@@ -293,7 +290,7 @@ Marquee.prototype = {
     _parseList: function(list) {
         var direction = this.config.direction;
 
-        if (direction === 'down' || direction === 'right') {
+        if (direction === 'down') {
             list = list.reverse();
         }
 
@@ -323,7 +320,7 @@ $.fn.marquee = function(config) {
         easing: 'cubic-bezier(0.33, 0.66, 0.66, 1)',
 
         // 滚动方向 up down left right
-        direction: 'left',
+        direction: 'right',
 
         // 过度时间
         delay: 500,

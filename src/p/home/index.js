@@ -7,6 +7,7 @@ import FloatMsg from '../../common/float-msg';
 import CheckOpenAccount from '../../common/check-open-account';
 // import CheckFollowGuide from '../../common/check-follow-guide';
 // import Guide from './guide';
+import Marquee from '../../common/marquee';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 
@@ -29,6 +30,8 @@ class Home extends PageBase {
 		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
 		// 	this.guide = new Guide();
 		// }
+
+		$('.marquee').marquee()
 
 	}
 
