@@ -29,6 +29,7 @@ class Home extends PageBase {
 		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
 		// 	this.guide = new Guide();
 		// }
+		
 	}
 
 	_init() {
