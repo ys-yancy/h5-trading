@@ -18,9 +18,13 @@ Marquee.prototype = {
 
     _start: function() {
         var direction = this.config.direction,
-            loop = this.config.loop;
+            loop = this.config.loop,
+            isBroadcastCallback = this.config.isBroadcastCallback,
+            startBroadcastCallback = this.config.startBroadcastCallback,
+            marqueeLoadedCallback = this.config.marqueeLoadedCallback;
 
         if (loop === 0) {
+            isBroadcastCallback && marqueeLoadedCallback(this.currentSilderEl);
             return;
         }
 
@@ -31,6 +35,7 @@ Marquee.prototype = {
 
         setTimeout(() => {
             this._animate();
+            isBroadcastCallback && startBroadcastCallback(this.currentSilderEl);
         }, this.config.duration);
     },
 
@@ -65,7 +70,7 @@ Marquee.prototype = {
                 setTimeout(c, 1 / 60 * 1000);
             };
         
-        this.children = children;
+        this.currentSilderEl = children;
           
         RAF(function() {
             var translateY = self._calcAnimateDistance(initTranslateY);
@@ -78,12 +83,11 @@ Marquee.prototype = {
             }
 
             self.rootList.css(_an);
-
-            self._start();
             
-            setTimeout(() => {
+            setTimeout(function() {
                 self._resetPos();
-            }, config.delay);
+                self._start();
+            }, config.delay)    
         });
     },
 
@@ -100,7 +104,7 @@ Marquee.prototype = {
 
         var CAF = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout;
         
-        this.children = children;
+        this.currentSilderEl = children;
 
         var isPause = false;
 
@@ -203,18 +207,22 @@ Marquee.prototype = {
     },
 
     _resetPos: function() {
-        var direction = this.config.direction;
+        var direction = this.config.direction,
+            isBroadcastCallback = this.config.isBroadcastCallback,
+            loadBroadcastedCallback = this.config.loadBroadcastedCallback;
 
         this._animateAlignDistance = undefined;
 
         if (direction === 'down') {
-            this.rootList.prepend(this.children);
+            this.rootList.prepend(this.currentSilderEl);
         } else {
-            this.rootList.append(this.children);
+            this.rootList.append(this.currentSilderEl);
         }
         
         this.rootList.css('transitionDuration', '0ms');
         this.rootList.css('transform', this.initTransform);
+
+        isBroadcastCallback && loadBroadcastedCallback(this.currentSilderEl);
     },
 
     _getAnimeChildren: function() {
@@ -310,17 +318,20 @@ Marquee.prototype = {
         this.rootList = $(wrap);
         this.el.append(wrap);
         this._initStyle();
-        this._animate();
+        this._start();
     }
 }
 
 $.fn.marquee = function(config) {
     config = $.extend({
+        // 展示列表
+        list: [{content: '我是内容1'}, {content: '我是内容2'}, {content: '我是内容3'}],
+
         // 过度效果
         easing: 'cubic-bezier(0.33, 0.66, 0.66, 1)',
 
         // 滚动方向 up down left right
-        direction: 'right',
+        direction: 'up',
 
         // 过度时间
         delay: 500,
@@ -331,11 +342,24 @@ $.fn.marquee = function(config) {
         //间隔时间
         duration: 2000,
 
-        // 循环次数, 现在没用到
+        // 循环次数, -1代表无限循环
         loop: -1,
-        
-        // 展示列表
-        list: [{content: '我是内容1'}, {content: '我是内容2'}, {content: '我是内容3'}]
+
+        // 是否触发回调
+        isBroadcastCallback: false,
+
+        // 信息播放完前回调
+        startBroadcastCallback: function() {
+            console.log('startBroadcast')
+        },
+        // 当前信息播放完毕回调
+        loadBroadcastedCallback: function() {
+            console.log('loadBroadcasted')
+        },
+        // marquue 播报完毕回调 // looo = -1是不会触发
+        marqueeLoadedCallback: function() {
+            console.log('marqueeLoaded')
+        },
     }, config);
 
     config.el = this;
