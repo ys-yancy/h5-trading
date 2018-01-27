@@ -371,6 +371,9 @@ $.fn.marquee = function(config) {
         // 消息类名
         itemClass: 'cm-marquee-item',
 
+        //当前消息类名, //目前不管用
+        activeItemClass: 'cm-marquee-active-item',
+
         // 展示列表
         list: [{content: '我是内容1', url: '1111'}, {content: '我是内容2'}, {content: '我是内容3'}],
 
