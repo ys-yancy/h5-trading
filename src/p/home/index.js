@@ -10,6 +10,8 @@ import CheckOpenAccount from '../../common/check-open-account';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 
+import app from '../../app/load-lang';
+
 class Home extends PageBase {
 	constructor(config) {
 		super(config);
