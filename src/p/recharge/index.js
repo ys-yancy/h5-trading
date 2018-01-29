@@ -603,9 +603,17 @@ Base.extend(Recharge, PageBase, {
             $('.J_PcUrl').html(getPayUrlWL());
         }
 
+       
+        this.renderTo(payTypeTmpl, getShowPayWay(), $('.select-content'));
+
+        if (getDefaultPayWay() == 'pc') {
+            $('#J_CommonContent').hide();
+            $('footer').hide();
+            $('#J_PcContent').show();
+        }
+
         $('#J_Header').sticky();
 
-        this.renderTo(payTypeTmpl, getShowPayWay(), $('.select-content'));
         this._lazyBind(); 
     },
 
