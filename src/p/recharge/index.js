@@ -23,7 +23,7 @@ function Recharge() {
     var self = this;
     this.login().then(function() {
         self.init();
-        new CheckOpenAccount();
+        self.checkOpenAccount = new CheckOpenAccount();
     }, function() {
         var src = new Uri().getParam('src');
         src = src ? src : './option.html';
@@ -550,7 +550,8 @@ Base.extend(Recharge, PageBase, {
         this.qrComponent = new ShowQrCode({
             el: $('#J_QrContent'),
             qrUrl: url,
-            source: source
+            source: source,
+            parent: this
         })
     },
 

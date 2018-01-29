@@ -8,6 +8,10 @@ export default class CheckOpenAccount extends PageBase{
         this._check();
     }
 
+    check() {
+        this._check();
+    }
+
     _check() {
         // 先判断入金, 再判断开户
         this._isRechargeSuccess().then(() => {
