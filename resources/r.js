@@ -189,6 +189,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
+	// 这个链接有wl   之后应该去掉  因为在之后的版本中  firstbroker不是白标
 	return 'https://t.firstbkr.com/img/wl/firstbroker/firstbroker_avatar.jpg';
 }
 
