@@ -81,9 +81,9 @@ Base.extend(News, Base, {
 			data: params
 		}).then((data) => {
 			data = data.data;
-
+			
 			if (!data.length) {
-				this.listContentEl.html('<li class="no-list" style="padding:2rem;text-align:center;">当前没有数据</li>');
+				// this.listContentEl.html('<li class="no-list" style="padding:2rem;text-align:center;">当前没有数据</li>');
 				return;
 			}
 
