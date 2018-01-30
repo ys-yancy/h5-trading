@@ -607,9 +607,10 @@ Base.extend(Recharge, PageBase, {
         this.renderTo(payTypeTmpl, getShowPayWay(), $('.select-content'));
 
         if (getDefaultPayWay() == 'pc') {
-            $('#J_CommonContent').hide();
-            $('footer').hide();
             $('#J_PcContent').show();
+        } else {
+            $('footer').show();
+            $('#J_CommonContent').show();
         }
 
         $('#J_Header').sticky();
