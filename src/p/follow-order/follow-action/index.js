@@ -287,8 +287,9 @@ class FollowAction extends PageBase {
 			open_order_weixin_notify: 1,
 			close_order_weixin_notify: 1
 		}
-		defaultCon = defaultCon ? defaultCon : defaultConfig;
-
+		// defaultCon = defaultCon ? defaultCon : defaultConfig;
+		defaultCon = $.extend(defaultConfig, defaultCon || {});
+		
 		if (this.follower_balance_threshold > freeMargin) {
 			defaultCon.isNoMonery = true;
 			defaultCon.minMonery = parseInt(this.follower_balance_threshold - freeMargin);
