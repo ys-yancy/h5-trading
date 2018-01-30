@@ -458,16 +458,13 @@ Base.extend(Trade, PageBase, {
         var margin = parseFloat(data.account[type].margin);
         var bait = parseFloat(data.account[type].bait ? data.account[type].bait : 0);
         var bonus = parseFloat(data.account[type].bonus ? data.account[type].bonus : 0);
-  
+        var untriggeredBonus = parseFloat(data.account[type].untriggered_bonus ? data.account[type].untriggered_bonus : 0);
+
         var rate;
         if (data.margin == 0) {
           rate = '--';
-        }
-        else if (bonus < margin) {
-          rate = ((freeMargin + margin) / margin * 100).toFixed(2);
-        }
-        else if (bonus >= margin) {
-          rate = ((freeMargin + margin * 2 - bonus)/margin * 100).toFixed(2);
+        } else {
+          rate = (( freeMargin + margin - Math.max(margin, untriggeredBonus) + margin ) / margin * 100).toFixed(2);
         }
         
         var tmplData = {
