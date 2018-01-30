@@ -73,7 +73,7 @@ function getPayUrl() {
 
 //选择引用那套皮肤
 function getAppUi() {
-	return 'index.css';
+	return 'jstzlc/index.css';
 }
 
 // highcharts 的 ui
