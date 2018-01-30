@@ -110,6 +110,7 @@ class FollowAction extends PageBase {
 	}
 
 	_showMoreSetting() {
+		console.log(this.config_follow_action)
 		// 这里应该有一个异步
 		this.render(moreSettingTmpl, this.config_follow_action, this.el);
 		this._initMoreSettingCapitalRange();
@@ -297,8 +298,9 @@ class FollowAction extends PageBase {
 			open_order_weixin_notify: 1,
 			close_order_weixin_notify: 1
 		}
-		defaultCon = defaultCon ? defaultCon : defaultConfig;
-
+		
+		defaultCon = $.extend(defaultConfig, defaultCon || {});
+		
 		if (this.follower_balance_threshold > freeMargin) {
 			defaultCon.isNoMonery = true;
 			defaultCon.minMonery = parseInt(this.follower_balance_threshold - freeMargin);
