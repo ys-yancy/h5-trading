@@ -9,12 +9,12 @@ function getBottomNavPages() {
 
 // 默认支付方式
 function getDefaultPayWay() {
-	return 'pc'
+	return 'weixin'
 }
 
 // 显示哪几种支付方式, 与getPayUrl()中对应
 function getShowPayWay() {
-	return ['pc'] //'weixin', 'zhifubao',  'weixinWeb', 'zhifubaoWeb', 'kuaijie',
+	return ['weixin', 'zhifubao', 'pc'] //  'weixinWeb', 'zhifubaoWeb', 'kuaijie',
 }
 
 /**
