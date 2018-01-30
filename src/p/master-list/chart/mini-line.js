@@ -116,7 +116,7 @@ Base.extend(CreateMiniLineBasisc, Base, {
             formatter: function(e) {
               return '<p>&nbsp;' + this.point.options['y'] + '&nbsp;</p>'
             },
-            backgroundColor: '#3AB9E6',
+            backgroundColor: 'rgba(0,0,0,.6)',
             borderWidth: 0,
             borderRadius: 0,
             shadow: false,
