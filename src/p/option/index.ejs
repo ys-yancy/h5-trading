@@ -17,10 +17,10 @@
             <p class="name l1-color J_SymbolName"><%= item.policy.name %></p>
             <p class="l2-color"><%= item.policy.symbol %></p>
         </div>
-        <span class="lt-item price J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></span>
+        <span class="lt-item price J_BidPrice"><%= bidPrice === '--' ? '--' : bidPrice.toFixed(unit) %></span>
         <% var spread = getDividePip() ? (Math.abs(askPrice - bidPrice) / parseFloat(item.policy.pip)).toFixed(1) : Math.abs(askPrice - bidPrice).toFixed(3) %>
         <span class="lt-item spread"><span class="spread-content ui common J_Spread"><%= spread %></span></span>
-        <span class="lt-item price J_BidPrice"><%= bidPrice === '--' ? '--' : bidPrice.toFixed(unit) %></span>
+        <span class="lt-item price J_AskPrice"><%= askPrice === '--' ? '--' : askPrice.toFixed(unit) %></span>
         <span class="lt-item percent default-down <%if(rate > 0){%> up <%}%> J_Percent" data-range="<%= isNaN(price) ? '--' :  (price - item.close_price).toFixed(unit) %>"><%= rate %>%</span>
         <div class="action-wrapper clearfix" >
           <span class="up J_UpSymbol ui common btn-setUi" data-symbol="<%= item.policy.symbol %>">置顶</span>
