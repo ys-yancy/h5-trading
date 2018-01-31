@@ -165,11 +165,9 @@ Base.extend(Recharge, PageBase, {
 
         tabContentEls.hide();
         if (parentEl.hasClass('pay-pc')) {
-            $('#J_PcContent').show();
-            footerEl.hide();
+            this._showContent(true);
         } else {
-            $('#J_CommonContent').show();
-            footerEl.show();
+            this._showContent();
         }
         
         var pay = parentEl.attr('data-pay');
@@ -539,6 +537,15 @@ Base.extend(Recharge, PageBase, {
         }
     },
 
+    _showContent: function(isPc) {
+        if (isPc) {
+            $('#J_PcContent').show();
+        } else {
+            $('footer').show();
+            $('#J_CommonContent').show();
+        }
+    },
+
     _showMax: function() {
         var dialog = new Dialog({
             isShow: true,
@@ -607,10 +614,9 @@ Base.extend(Recharge, PageBase, {
         this.renderTo(payTypeTmpl, getShowPayWay(), $('.select-content'));
 
         if (getDefaultPayWay() == 'pc') {
-            $('#J_PcContent').show();
+            this._showContent(true);
         } else {
-            $('footer').show();
-            $('#J_CommonContent').show();
+            this._showContent();
         }
 
         $('#J_Header').sticky();
