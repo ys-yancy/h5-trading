@@ -28,7 +28,7 @@ Base.extend(ShowQrCode, Base, {
 
 	hide: function() {
 		this.wrapEl.hide();
-		this.parent.checkOpenAccount.check();
+		// this.parent.checkOpenAccount.check();
 		this.el.html('<div class="loading-wrapper">\
 			<div class="ui loading" id="J_Loading">\
                 <span class="circel"></span>\
