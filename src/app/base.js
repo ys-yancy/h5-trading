@@ -1,6 +1,7 @@
 var CustomEvent = require('./event');
 var Tpl = require('./render');
 var Io = require('./io');
+// var Api = require('./api');
 var extend = require('./extend');
 var Weixin = require('./weixin');
 var Statistics = require('./statistics');
@@ -35,6 +36,7 @@ Base.extend = extend;
 $.extend(Base.prototype, Tpl);
 $.extend(Base.prototype, CustomEvent);
 $.extend(Base.prototype, Io);
+// $.extend(Base.prototype, Api);
 $.extend(Base.prototype, Weixin);
 $.extend(Base.prototype, Statistics);
 

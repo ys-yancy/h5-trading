@@ -1,0 +1,14 @@
+{
+    "status": 200,
+
+    "lang": "zh-CN",
+
+    "message": "success",
+
+    "data": {
+        "api1": "www.baidu.com",
+        "api2": "www.baidu.com",
+        "api3": "www.baidu.com",
+        "api4": "www.baidu.com"
+    }
+}
