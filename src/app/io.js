@@ -145,20 +145,13 @@ module.exports = {
     "1607": "系统当前不允许出金, 请联系客服"
   },
 
-  groupPriceUrl: getGroupPriceUrl(),
+  // groupPriceUrl: getGroupPriceUrl(),
 
   priceUrl: getPriceUrl(),
-  candleUrl: getCandleUrl(),
-  // 新生产服
-  weixinUrlFirst: getWeixinUrlFirst(),
-
-  // 老生产服
-  // weixinUrlFirst: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + Config.getDefaultAppId()+ '&redirect_uri=http%3a%2f%2fweixin.invhero.com%2fweixin%2fauthorization_callback',
-
-  // 测试服接口版本
-  // weixinUrlFirst: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+Config.getDefaultAppId()+'&redirect_uri=http%3a%2f%2fapitest.invhero.com%2fv1%2fweixin%2fauthorization%2fcallback%2f',
   
+  candleUrl: getCandleUrl(),
 
+  weixinUrlFirst: getWeixinUrlFirst(),
 
   // 静默授权版本
   weixinUrlLast: '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect',

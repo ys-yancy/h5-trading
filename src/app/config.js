@@ -26,13 +26,7 @@ var config = {
   // ajax请求前缀
 
   // 正式环境
-  ajaxPrefix: getFormalEnvironmentUrl(),
-
-  // 测试环境
-  // ajaxPrefix: 'http://210.72.229.191:8100',
-
-  // 测试环境
-  // ajaxPrefix: 'http://192.168.0.204:8999',
+  // ajaxPrefix: getFormalEnvironmentUrl(),
 
   // 是否为Android客户端
   isAndroidAPK: false,
@@ -157,7 +151,7 @@ module.exports = {
   },
 
   getAjaxPrefix: function() {
-    // return config.ajaxPrefix;
+
     // 这样就不需要总是在提交的时候来回改了。;
     var dev = 'http://45.121.52.91:8100';
     // var dev = 'http://api-normal.thetradestar.com';

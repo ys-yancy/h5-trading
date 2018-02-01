@@ -476,11 +476,6 @@ function getBannerImgUrl() {
 	return 'https://t-yhb.firstbkr.com/img/firstbkr/banner.png';
 }
 
-//pc登录地址
-function getPcLoginUrl() {
-	return 'https://p.firstbkr.com';
-}
-
 // 微信授权 weixinUrlFirst
 function getWeixinUrlFirst() {
 	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=https%3a%2f%2fapi.firstbkr.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';

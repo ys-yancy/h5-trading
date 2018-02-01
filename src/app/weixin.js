@@ -2,7 +2,7 @@ var Toast = require('../common/toast');
 
 module.exports = {
   credentialUrl: getCredentialUrl(),
-  getPersonalInfoUrl: getPersonalInfoUrl(),
+  // getPersonalInfoUrl: getPersonalInfoUrl(),
   isWeixin: function() {
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/MicroMessenger/i) == "micromessenger") {

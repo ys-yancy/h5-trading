@@ -218,11 +218,6 @@ function getWXWL() {
 	return 'firstbroker';
 }
 
-// pc支付页面
-function getPayUrlWL() {
-	return 'https://p.firstbkr.com';
-}
-
 // 移动支付页面说明
 function getMobilePayTextWL() {
 	return '壹号金融通过多家三方支付公司合作，确保您的账户与资金安全。'  ;
@@ -399,9 +394,9 @@ function getHelpLink () {
 	return '';
 }
 
-// 分享流程官微签名链接
-function getWXCredentialUrl () {
-	return 'https://api.firstbkr.com/v1/weixin/share/package/';
+// pc支付页面
+function getPayUrlWL() {
+	return 'https://p.firstbkr.com';
 }
 
 //安卓分享前缀
@@ -410,9 +405,9 @@ function getAndroidSharePrefixUrl() {
 }
 
 //正式环境
-function getFormalEnvironmentUrl() {
-	return 'https://api.firstbkr.com';
-}
+// function getFormalEnvironmentUrl() {
+// 	return 'https://api.firstbkr.com';
+// }
 
 //生产服
 function getProduClothedUrl() {
@@ -430,9 +425,9 @@ function getNativePlaceUrl() {
 }
 
 //获取价格（group  v1）
-function getGroupPriceUrl() {
-	return 'https://price.firstbkr.com/v1/price/current';
-}
+// function getGroupPriceUrl() {
+// 	return 'https://price.firstbkr.com/v1/price/current';
+// }
 
 //获取价格(v2)
 function getPriceUrl() {
@@ -454,34 +449,19 @@ function getRtpriceSompUrl() {
 	return 'wss://rtprice.firstbkr.com:61615/stomp';
 }
 
-//微信credentialUrl
+//微信分享配置
 function getCredentialUrl() {
 	return 'https://api.firstbkr.com/v1/weixin/share/package/';
 }
 
 //微信PersonalInfoUrl
-function getPersonalInfoUrl() {
-	return 'https://weixin.firstbkr.com/api/user/info?openid=';
-}
+// function getPersonalInfoUrl() {
+// 	return 'https://weixin.firstbkr.com/api/user/info?openid=';
+// }
 
-//weixin.js => notifyShareBehavior 中url
+//微信分享成功
 function getIfyShareBehaviorUrl() {
 	return 'https://t.firstbkr.com/s/weixin/share_counter';
-}
-
-//frame.js => 147
-function getIndexOfUrl() {
-	return 't.firstbkr.com';
-}
-
-//发现页IMG
-function getBannerImgUrl() {
-	return 'https://t.firstbkr.com/img/firstbroker/banner.png';
-}
-
-//pc登录地址
-function getPcLoginUrl() {
-	return 'https://p.firstbkr.com';
 }
 
 // 微信授权 weixinUrlFirst

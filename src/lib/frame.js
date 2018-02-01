@@ -144,9 +144,9 @@
             var _ref;
             return;
 
-            if (location.host.indexOf(getIndexOfUrl()) !== -1) {
-                return;
-            }
+            // if (location.host.indexOf('') !== -1) {
+            //     return;
+            // }
             return typeof window !== "undefined" && window !== null ? (_ref = window.console) != null ? _ref.log(message) : void 0 : void 0;
         };
 
