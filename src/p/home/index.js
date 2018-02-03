@@ -15,7 +15,7 @@ import app from '../../app/load-lang';
 class Home extends PageBase {
 	constructor(config) {
 		super(config);
-		
+
 		this.getAllSymbolsPrice().then(() => {
 			this._init();
 		});
