@@ -307,12 +307,22 @@ Base.extend(ProChart, PageBase, {
       self.curState = '';
       if (data.type === 'close') {
         self.closeTime = Util.getTime(data.closeTime) - 60 * 60 * 24 * 1000;
-        self._getData();
         self.curState = 'close';
+        self._getData();
+        self._setCloseStatus();
         return;
       }
       self._getOrderList();
     })
+  },
+
+  _setCloseStatus: function() {
+    // 休市
+    $('.J_List').html(
+      `<li class="close-order-item">
+        <span class="close-order-text-item">当前品种休市</span>
+      </li>`
+    )
   },
 
   _getNowDateFormate: function(now) {

@@ -7,3 +7,8 @@
         </li>
     <% } %>
 <% }) %>
+<%if(data.length == 0) {%>
+    <li class="no-order-item">
+        <span class="no-order-text-item">暂无相关订单</span>
+    </li>
+<%}%>
