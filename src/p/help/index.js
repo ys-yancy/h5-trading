@@ -4,22 +4,22 @@
 import Base from '../../app/base';
 import Cookie from '../../lib/cookie';
 import GoBack from '../../common/go-back';
+import Header from '../../common/header';
 
 class Help extends Base {
     constructor(config) {
         super(config);
 
+        this._requires();
         this._getData();
-        
-        new GoBack();
     }
 
     _getData() {
         this.ajax({
-            url: 'http://122.70.128.232:8100/v1/article/title_list/',
+            url: '/v1/article/title_list/',
             data: {
                 type: 'help',
-                access_token: 'token5069'//Cookie.get('token')
+                access_token: Cookie.get('token')
             },
             unjoin: true
         }).then(data => {
@@ -28,13 +28,18 @@ class Help extends Base {
         })
     }
 
+    _requires() {
+        new GoBack();
+        new Header()
+    }
+
     defaults() {
         return {
             containerEl: $('.J_Content'),
             tmpl: [
                 '<%data.forEach(function(item) {%>',
                     '<li class="item">',
-                        '<a class="bd-color" href="./help-detail.html?article-id=<%=item.article_id%>&src=<%= encodeURIComponent(location.href) %>">',
+                        '<a class="bd-color" href="./help-detail.html?article-id=<%=item.article_id%>">',
                             '<span class="item-title">',
                                 '<%= item.title %>',
                             '</span>',

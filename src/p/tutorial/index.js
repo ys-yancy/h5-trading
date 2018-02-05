@@ -4,28 +4,32 @@
 import Base from '../../app/base';
 import Cookie from '../../lib/cookie';
 import GoBack from '../../common/go-back';
+import Header from '../../common/header';
 
 class Tutorial extends Base {
     constructor(config) {
         super(config);
 
-        this._getData();
-        
-        new GoBack();
+        this._requires();
+        this._getData();  
     }
 
     _getData() {
         this.ajax({
-            url: 'http://122.70.128.232:8100/v1/article/title_list/',
+            url: '/v1/article/title_list/',
             data: {
                 type: 'tutorial',
-                access_token: 'token5069'//Cookie.get('token')
-            },
-            unjoin: true
+                access_token: Cookie.get('token')
+            }
         }).then(data => {
             data = data.data;
             this.render(this.tmpl, data, this.containerEl);
         })
+    }
+
+    _requires() {
+        new GoBack();
+        new Header();
     }
 
     defaults() {
@@ -34,7 +38,7 @@ class Tutorial extends Base {
             tmpl: [
                 '<%data.forEach(function(item) {%>',
                     '<li class="item">',
-                        '<a class="bd-color" href="./tutorial-detail.html?article-id=<%=item.article_id%>&src=<%= encodeURIComponent(location.href) %>">',
+                        '<a class="bd-color" href="./tutorial-detail.html?article-id=<%=item.article_id%>">',
                             '<span class="item-title">',
                                 '<%= item.title %>',
                             '</span>',

@@ -8,14 +8,21 @@ class HelpDetail extends Base{
     constructor(config){
         super(config);
 
+        this._bind();
         this._getData();
+    }
+
+    _bind() {
+        $('.go-back').on('tap', () => {
+            window.history.go(-1);
+        })
     }
 
     _getData() {
         this.ajax({
-            url: 'http://122.70.128.232:8100/v1/article/detail/',
+            url: '/v1/article/detail/',
             data: {
-                access_token: 'token6062',
+                access_token: Cookie.get('token'),
                 article_id: new Uri().getParam('article-id'),
                 type: 'help'
             },
