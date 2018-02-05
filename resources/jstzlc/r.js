@@ -387,8 +387,9 @@ function showServicePhone() {
 	return true;
 }
 
+// 是否有使用帮助
 function getHelpLink () {
-	return '';
+	return true;
 }
 
 // pc支付页面
