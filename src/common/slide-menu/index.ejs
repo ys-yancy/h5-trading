@@ -103,7 +103,7 @@
 				<li class="cut-line"></li>
 				<% if (getHelpLink()) { %>
 				<li class="li-item clearfix">
-					<a class="link-item" href="<%= getHelpLink() %>">
+					<a class="link-item" href="./help.html?src=<%= encodeURIComponent(location.href)%>">
 						<span class="icon ui slider-help"></span>
 						<span class="desc">使用帮助</span>
 						<span class="ft-rt num"></span>
@@ -111,7 +111,7 @@
 				</li>
 				<% } %>
 				<li class="li-item clearfix">
-					<a class="link-item">
+					<a class="link-item" href="./tutorial.html?src=<%= encodeURIComponent(location.href)%>">
 						<span class="icon ui slider-scl"></span>
 						<span class="desc">交易学堂</span>
 						<span class="ft-rt num"></span>
