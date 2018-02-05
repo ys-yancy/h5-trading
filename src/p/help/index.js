@@ -34,7 +34,7 @@ class Help extends Base {
             tmpl: [
                 '<%data.forEach(function(item) {%>',
                     '<li class="item bd-color">',
-                        '<a href="./help.html?article-id=<%=item.article_id%>&src=<%= encodeURIComponent(location.href) %>">',
+                        '<a href="./help-detail.html?article-id=<%=item.article_id%>&src=<%= encodeURIComponent(location.href) %>">',
                             '<span class="item-title">',
                                 '<%= item.title %>',
                             '</span>',
