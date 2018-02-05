@@ -33,8 +33,8 @@ class Help extends Base {
             containerEl: $('.J_Content'),
             tmpl: [
                 '<%data.forEach(function(item) {%>',
-                    '<li class="item bd-color">',
-                        '<a href="./help-detail.html?article-id=<%=item.article_id%>&src=<%= encodeURIComponent(location.href) %>">',
+                    '<li class="item">',
+                        '<a class="bd-color" href="./help-detail.html?article-id=<%=item.article_id%>&src=<%= encodeURIComponent(location.href) %>">',
                             '<span class="item-title">',
                                 '<%= item.title %>',
                             '</span>',
