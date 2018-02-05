@@ -25,8 +25,7 @@ class HelpDetail extends Base{
                 access_token: Cookie.get('token'),
                 article_id: new Uri().getParam('article-id'),
                 type: 'help'
-            },
-            unjoin: true
+            }
         }).then(data => {
             data = data.data;
             this._setTitle(data.title);

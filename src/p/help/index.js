@@ -20,8 +20,7 @@ class Help extends Base {
             data: {
                 type: 'help',
                 access_token: Cookie.get('token')
-            },
-            unjoin: true
+            }
         }).then(data => {
             data = data.data;
             this.render(this.tmpl, data, this.containerEl);
