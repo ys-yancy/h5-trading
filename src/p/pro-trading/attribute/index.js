@@ -43,7 +43,6 @@ export default class Attribute extends PageBase {
   }
 
   _getSpread(data) {
-    console.log(data)
     var askPrice = parseFloat(data.quote.ask_price[0]),
       bidPrice = parseFloat(data.quote.bid_price[0]),
       pip = data.policy.pip;
