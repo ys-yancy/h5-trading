@@ -245,9 +245,9 @@ function getDividePip() {
 	return false;
 }
 
-// 是否有经纪日历
-function getHasCalendar() {
-	return false;
+// 获取资讯相关nav配置
+function getNewsNavList() {
+	return ['news']; //, 'market', 'calendar'
 }
 
 // 是否允许删除品种（专业自选页面）
