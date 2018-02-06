@@ -52,7 +52,7 @@ var config = {
   lever: 40,
 
   //滑动验证nc_appkey
-  nc_appkey: 'FFFF00000000016863B4',
+  nc_appkey: 'FFFF00000000017A61B3',
 
   // 目标盈利 与 投资额度关系  目标盈利 = 投资额度 * profitIndex
   profitIndex: 1,

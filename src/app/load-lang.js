@@ -1,6 +1,8 @@
 /**
  * 加载语言组件
- * 优先使用localstorage 其次 globalCachedLang
+ * 优先使用localstorage 其次 globalCachedLang TODO：那个优先暂时不确定
+ * 获取语言应该调取get：方法， 不应该注入到每个实例中
+ * 之后可以考虑用service worker 加缓存
  */
 'use strict';
  var Tpl = require('./render');
