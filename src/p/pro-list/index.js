@@ -530,9 +530,15 @@ Base.extend(ProChart, PageBase, {
       this.getFloatingProfit(self.account, orders, symbols).then(function(floatProfit, profitOption) {
         $('li.item', '.J_List').each(function(index, item){
           item = $(item);
-          var profitEl = $('.J_Profit', item);
-          var ticket = item.attr('data-ticket');
-          profitEl.text(profitOption[ticket].toFixed(2));
+          var profitEl = $('.J_Profit', item),
+            ticket = item.attr('data-ticket'),
+            profit = profitOption[ticket].toFixed(2);
+            
+          profitEl.text(profit);
+
+          // 刷新缓存订单的profit
+          self._cacheList[ticket].profit =  profit;
+
           if (profitOption[ticket] > 0) {
             item.removeClass('down').addClass('up');
           } else {
