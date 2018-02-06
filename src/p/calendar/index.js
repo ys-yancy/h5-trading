@@ -21,6 +21,7 @@ function Calendar() {
 Base.extend(Calendar, Base, {
 
 	init: function() {
+        this._requires();
 		this._getData();
         this._initAttrs();
 		// this._initSticky();
@@ -97,6 +98,18 @@ Base.extend(Calendar, Base, {
        
     },
 
+    _requires: function() {
+		var navList = getNewsNavList();
+		if (navList.length > 1) {
+			var navEl = $('#nav'),
+				navClassName = 'nav-' + navList.length;
+
+			this.render(this.tmpl, navList, navEl);
+			navEl.addClass(navClassName).show();
+			$('.content').addClass('hasNav');
+		}
+	},
+
     _initAttrs:function() {
         // 需要隐藏表头
         var search = window.location.search;
@@ -141,7 +154,18 @@ Base.extend(Calendar, Base, {
                 weightiness: '',
                 dataTypeName: '',
                 countryName: ''
-            }
+            },
+            tmpl: [
+                '<%if (data.length > 1) {%>',
+                    '<% if (data.indexOf("news") != -1) {%>',
+                        '<a class="left tdlist clearfix color" href="./news.html">资讯快递</a>',
+                    '<%}%>',
+                    '<a class="right tdlist clearfix color link active" href="javascript:void(0)">经济日历</a>',
+                    '<% if (data.indexOf("market") != -1) {%>',
+                        '<a class="right tdlist clearfix color link" href="./market.html">市场分析</a>',
+                    '<%}%>',
+                '<%}%>'
+            ].join('')
         }
     }
 });

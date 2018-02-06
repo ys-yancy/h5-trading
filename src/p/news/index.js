@@ -36,7 +36,7 @@ Base.extend(News, Base, {
 
 	_bind: function() {
 		this.noScroll = true;
-	    $(window).on('scroll', _.bind(this.getData, this))
+		$(window).on('scroll', _.bind(this.getData, this))
   	},
 
   	getData: function() {
@@ -165,14 +165,19 @@ Base.extend(News, Base, {
 	},
 
 	_requires: function() {
-		if (getHasCalendar()) {
-			$('#nav').append(this.tmpl).show();
-			$('.content').addClass('hasCal');
+		var navList = getNewsNavList();
+		if (navList.length > 1) {
+			var navEl = $('#nav'),
+				navClassName = 'nav-' + navList.length;
+
+			this.render(this.tmpl, navList, navEl);
+			navEl.addClass(navClassName).show();
+			$('.content').addClass('hasNav');
 		}
 	},
 
 	_initSticky: function() {
-    	// $('nav').sticky();
+		// $('nav').sticky();
   	},
 
 	_initAttrs: function() {
@@ -200,8 +205,17 @@ Base.extend(News, Base, {
 	attrs: {
 		bdEl: $('.content'),
 		listContentEl: $('.list'),
-		tmpl: `<a class="left tdlist clearfix color active" href="javascript:void(0)">资讯快递</a>
-    		<a class="right tdlist clearfix color link" href="./calendar.html">经济日历</a>`
+		tmpl: [
+			'<%if (data.length > 1) {%>',
+				'<a class="left tdlist clearfix color active" href="javascript:void(0)">资讯快递</a>',
+				'<% if (data.indexOf("calendar") != -1) {%>',
+					'<a class="right tdlist clearfix color link" href="./calendar.html">经济日历</a>',
+				'<%}%>',
+				'<% if (data.indexOf("market") != -1) {%>',
+					'<a class="right tdlist clearfix color link" href="./market.html">市场分析</a>',
+				'<%}%>',
+			'<%}%>'
+		].join('')
 	}
 });
 

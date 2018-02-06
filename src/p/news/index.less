@@ -76,6 +76,16 @@ nav {
       }
     }
   }
+  &.nav-3{
+    a{
+      .width(250);
+      &.active {
+        &:before {
+            .width(250);
+          }
+        }
+    }
+  }
 }
 
 .content{
@@ -83,7 +93,7 @@ nav {
   overflow-x: hidden;
   overflow-y: scroll;
   .font-size(28);
-  &.hasCal{
+  &.hasNav{
     .padding-top(170);
   }
   .list{
