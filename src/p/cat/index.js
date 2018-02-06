@@ -291,7 +291,8 @@ Base.extend(Cat, PageBase, {
         },
         parse: function(data, params) {
           if (data && data.data) {
-            var hasNextPage = true;
+            var hasNextPage = true,
+              symbols = [];
 
             if (data.data.length === 0 || data.data.length < count) {
               hasNextPage = false;
@@ -302,7 +303,14 @@ Base.extend(Cat, PageBase, {
 
               item.kw = val;
               item.add = optionList.indexOf(symbol) !== -1 ? false : true;
+              if (symbol.indexOf('.MICRO') === -1) {
+                symbols.push(item)
+              }
+
             });
+
+            data.data = symbols;
+            
             return {
               data: data.data,
               hasNextPage: hasNextPage
@@ -370,7 +378,8 @@ Base.extend(Cat, PageBase, {
       },
       parse: function(data, params) {
         if (data && data.data) {
-          var hasNextPage = true;
+          var hasNextPage = true,
+            symbols = [];
 
           if (data.data.length === 0 || data.data.length < count) {
             hasNextPage = false;
@@ -380,8 +389,14 @@ Base.extend(Cat, PageBase, {
             var symbol = item.policy.symbol;
 
             item.add = optionList.indexOf(symbol) !== -1 ? false : true;
+
+            if (symbol.indexOf('.MICRO') === -1) {
+              symbols.push(item)
+            }
           });
 
+          data.data = symbols;
+          
           return {
             data: data.data,
             hasNextPage: hasNextPage
