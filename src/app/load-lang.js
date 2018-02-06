@@ -1,5 +1,6 @@
 /**
  * 加载语言组件
+ * 优先使用localstorage 其次 globalCachedLang
  */
 'use strict';
  var Tpl = require('./render');
@@ -10,9 +11,7 @@ var globalCachedLang = null;
 var globalGetLangReqSent = false;
 
 module.exports = {
-    getAppLang: function(tmpl) {
-        var self = this;
-
+    initAppLang: function(tmpl) {
         if (globalCachedLang != null) {
             console.log("globalCachedLang != null");
             var d = new $.Deferred();
@@ -36,7 +35,9 @@ module.exports = {
         }).then(function(data) {
 
             if (tmpl) {
-                Tpl.render(tmpl, data, $('body'));
+                var html = Tpl.render(tmpl, data);
+
+                $('body').prepend(html);
             }
 
             globalCachedLang = data;
@@ -51,7 +52,11 @@ module.exports = {
         })
     },
 
-    setAppLang: function(lang) {
+    get: function() {
+
+    },
+
+    set: function(lang) {
         if (lang) {
             storage.get('app_lang', lang);
         }

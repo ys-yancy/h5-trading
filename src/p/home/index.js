@@ -1,21 +1,20 @@
 "use strict";
 
 import PageBase from '../../app/page-base';
+// import loadLangJs from '../../app/load-lang';
 import BottomNav from '../../common/bottom-nav';
 import SildeMenu from '../../common/slide-menu';
 import FloatMsg from '../../common/float-msg';
 import CheckOpenAccount from '../../common/check-open-account';
-// import CheckFollowGuide from '../../common/check-follow-guide';
-// import Guide from './guide';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
-
-import app from '../../app/load-lang';
+import html from './html.ejs';
+// import CheckFollowGuide from '../../common/check-follow-guide';
+// import Guide from './guide';
 
 class Home extends PageBase {
 	constructor(config) {
 		super(config);
-
 		this.getAllSymbolsPrice().then(() => {
 			this._init();
 		});
@@ -24,7 +23,6 @@ class Home extends PageBase {
 		new BottomNav({
 			page: 'home'
 		});
-
 		// var new_home_guide = Cookie.get('new_home_guide');
 		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
 		// 	this.guide = new Guide();
@@ -135,7 +133,7 @@ class Home extends PageBase {
 				'opacity': this.opacity
 			});
 		}
-		
+
 		var typeStr = typeof isLast;
 		if (typeStr == 'boolean' && typeStr != 'number') {
 			return;
@@ -172,3 +170,10 @@ class Home extends PageBase {
 }
 
 new Home();
+/**
+ * 先加载语言再初始化实例
+ * 为之后多语言做准备
+ */
+// loadLangJs.initAppLang(html).then((data) => {
+// 	new Home();
+// })
