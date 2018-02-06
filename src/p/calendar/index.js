@@ -21,8 +21,8 @@ function Calendar() {
 Base.extend(Calendar, Base, {
 
 	init: function() {
+        this._getData();
         this._requires();
-		this._getData();
         this._initAttrs();
 		// this._initSticky();
         new SildeMenu({
@@ -128,7 +128,8 @@ Base.extend(Calendar, Base, {
 
 	_setLink: function(search) {
 		var linkEl = $('.link');
-		var curLink= linkEl.prop('href');
+        var curLink= linkEl.prop('href');
+        console.log(linkEl)
 		linkEl.prop('href', curLink + search);
 	},
 
@@ -158,9 +159,9 @@ Base.extend(Calendar, Base, {
             tmpl: [
                 '<%if (data.length > 1) {%>',
                     '<% if (data.indexOf("news") != -1) {%>',
-                        '<a class="left tdlist clearfix color" href="./news.html">资讯快递</a>',
+                        '<a class="left tdlist clearfix color link" href="./news.html">资讯快递</a>',
                     '<%}%>',
-                    '<a class="right tdlist clearfix color link active" href="javascript:void(0)">经济日历</a>',
+                    '<a class="right tdlist clearfix color active" href="javascript:void(0)">经济日历</a>',
                     '<% if (data.indexOf("market") != -1) {%>',
                         '<a class="right tdlist clearfix color link" href="./market.html">市场分析</a>',
                     '<%}%>',
