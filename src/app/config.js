@@ -106,14 +106,16 @@ var config = {
   rapidDefaultInv: 5, // rapid 默认交易量
 
   cacheTime: 100, // 价格缓存时间
-  openCache: location.pathname.indexOf('option.html') !== -1 || location.pathname.indexOf('trade-history.html') !== -1, // 是否开启价格缓存
 
+  openCache: location.pathname.indexOf('option.html') !== -1 || location.pathname.indexOf('trade-history.html') !== -1, // 是否开启价格缓存
 
   expiredTime: 30 * 1000, // 价格30s过期
 
   commissionRate: 0.15, // 佣金比例, 需要后台配置计算好
   //defaultRapidSymbols: ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'XAGUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO'] // rapid 默认品种
-  defaultRapidSymbols: getDefaultRapidSymbols()
+  defaultRapidSymbols: getDefaultRapidSymbols(),
+
+  remindTime: 10 * 1000, // 首页智能提醒获取频率
 };
 
 
@@ -251,7 +253,6 @@ module.exports = {
 
   // 开启缓存
   openCache() {
-
     return config.openCache;
   },
 
@@ -266,6 +267,10 @@ module.exports = {
   getDefaultRapidSymbols() {
     return config.defaultRapidSymbols;
     // return getDefaultRapidSymbols();
+  },
+
+  getRemindTime: function() {
+    return config.remindTime;
   },
 
   getAliyunAppkey() {

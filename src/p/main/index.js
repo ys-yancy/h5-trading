@@ -3,7 +3,7 @@
 import PageBase from '../../app/page-base';
 import BottomNav from '../../common/bottom-nav';
 import SildeMenu from '../../common/slide-menu';
-import FloatMsg from '../../common/float-msg';
+import RemindMe from '../../common/remind-me';
 import TopMsg from '../../common/top-msg';
 import CheckOpenAccount from '../../common/check-open-account';
 // import CheckFollowGuide from '../../common/check-follow-guide';
@@ -87,7 +87,7 @@ class Home extends PageBase {
 
 	_requires() {
 		new Banner();
-		// new FloatMsg();
+		// new RemindMe();
 		new SildeMenu({
 			el: $('#J_SlideMenu'),
 			page: 'home'
