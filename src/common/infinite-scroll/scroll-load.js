@@ -38,7 +38,8 @@ Base.extend(ScrollLoad, Base, {
     },
 
     destroy: function() {
-        win.off();
+        win.off('scroll', this.scrollFn);
+        win.off('resize', this.resizeFn);
     },
 
     resetLoading: function() {
