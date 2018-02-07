@@ -150,7 +150,7 @@ class Home extends PageBase {
 
 	_requires() {
 		new Banner();
-		new RemindMe();
+		// new RemindMe();
 		new SildeMenu({
 			el: $('#J_SlideMenu'),
 			page: 'home'
