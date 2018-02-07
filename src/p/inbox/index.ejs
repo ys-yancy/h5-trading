@@ -1,0 +1,16 @@
+<% data.forEach(function(item) {%>
+    <li class="info-item bd-color">
+        <% var url = item.url %>
+        <% url = url ? "./inbox-detail.html?id=" + item.id + "&content_url="+ encodeURIComponent(url) : "javascript:void(0);" %>
+        <a href="<%= url %>">
+            <div class="top">
+                <h2 class="l1-color"><%= item.title %></h2>
+                <% var itime = item.itime.split(' ')[0] %>
+                <span class="time"><%= itime.replace(/-/g, '/') %></span>
+            </div>
+            <div class="bottom">
+                <p class="info-content"><%= item.content %></p>
+            </div>
+        </a>
+    </li>
+<%}) %>
