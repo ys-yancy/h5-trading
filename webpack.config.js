@@ -44,6 +44,7 @@ var entryAll = {
     'extract': './src/p/extract/index',
     'open-account': './src/p/open-account/index',
     'inbox': './src/p/inbox/index',
+    'inbox-detail': './src/p/inbox-detail/index',
     'cs': './src/p/cs/index',
     'help': './src/p/help/index',
     'help-detail': './src/p/help-detail/index',
