@@ -38,6 +38,7 @@ Base.extend(ScrollLoad, Base, {
     },
 
     destroy: function() {
+        win.off();
     },
 
     resetLoading: function() {

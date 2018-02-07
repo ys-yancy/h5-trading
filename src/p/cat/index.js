@@ -259,6 +259,8 @@ Base.extend(Cat, PageBase, {
       location.reload();
       return;
     }
+    
+    this.initInfinite && this.initInfinite._destory();
 
     var self = this,
       token = Cookie.get('token');
