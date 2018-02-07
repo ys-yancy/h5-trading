@@ -44,6 +44,7 @@
         <div class="header-inner ui common" id="J_Header">
             <a class="go-back ui icon" href="./option.html?"></a>
             <h1>收件箱</h1>
+            <span class="ui icon edit J_Edit"></span>
         </div>
     </header>
      <nav class="ui nav common">
@@ -56,10 +57,19 @@
            <li class="nav-item J_Item">公告</li>
         </ul>
     </nav>
-    <section class="content ui common content-color">
-        <ul id="J_Container">
+    <section class="content">
+        <ul class="content-ul ui common content-color" id="J_Container">
             
         </ul>
+        <div class="edit-wrapper" id="J_EditWrapper">
+            <div class="left">
+                <span class="ui icon check J_AllCheck"></span>
+                <span class="desc">全选</span>
+            </div>
+            <div class="right">
+                <a class="btn ui btn-setUi common J_AllSel" href="javascript:void(0);">删除</a>
+            </div>
+        </div>
         <div class="ui loading" id="J_Loading">
             <span class="circel"></span>  
             <span class="loading-text">加载中...</span> 

@@ -30,6 +30,10 @@ class Inbox extends Base {
         var doc = $(document);
 
         doc.on('touchstart', '.J_Item', $.proxy(this._switch, this));
+        doc.on('touchstart', '.J_Edit', $.proxy(this._edit, this));
+        doc.on('touchstart', '.J_Check', $.proxy(this._check, this));
+        doc.on('touchstart', '.J_AllCheck', $.proxy(this._checkAll, this));
+        doc.on('touchstart', '.J_AllSel', $.proxy(this._del, this));
     }
 
     _switch(e) {
@@ -44,8 +48,63 @@ class Inbox extends Base {
         curEl.siblings().removeClass('active');
         curEl.addClass('active');
         this.contentEl.html('');
+        this._hideEditMode();
         this.initInfinite && this.initInfinite._destory(this.initInfinite);
         this.initInfinite = this._initInfinite(type);
+    }
+
+    _edit(e) {
+        var curEl = $(e.currentTarget);
+        if (curEl.hasClass('active')) {
+            this._hideEditMode(curEl);
+            return;
+        }
+        this.editEl.addClass('unfold');
+        this.contentEl.addClass('unfold');
+        curEl.addClass('active')
+            .removeClass('icon')
+            .text('取消');
+    }
+
+    _hideEditMode(curEl) {
+        curEl = curEl || $('.J_Edit');
+        this.editEl.removeClass('unfold');
+        this.contentEl.removeClass('unfold');
+        curEl.addClass('icon')
+            .removeClass('active')
+            .text('');
+    }
+    
+    _check(e) {
+        var curEl = $(e.currentTarget),
+            parentEl = curEl.parents('.info-item');
+        
+        if (curEl.hasClass('checked')) {
+            curEl.removeClass('checked');
+            parentEl.removeClass('checked');
+            return;
+        }
+
+        curEl.addClass('checked');
+        parentEl.addClass('checked');
+    }
+
+    _checkAll(e) {
+        var curEl = $(e.currentTarget),
+            checkEls = $('.check', this.contentEl);
+        
+        if (curEl.hasClass('checked')) {
+            curEl.removeClass('checked');
+            checkEls.removeClass('checked');
+            return;
+        }
+
+        curEl.addClass('checked');
+        checkEls.addClass('checked');
+    }
+
+    _del() {
+        console.log(111111111111)
     }
 
     _initInfinite(type) {
@@ -105,6 +164,8 @@ class Inbox extends Base {
 
     defaults() {
         return {
+            editEl: $('#J_EditWrapper'),
+
             contentEl: $('#J_Container'),
 
             emptyTmpl: '<li class="empty">当前没有消息</li>',

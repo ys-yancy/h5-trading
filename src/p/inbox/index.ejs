@@ -1,9 +1,15 @@
 <% data.forEach(function(item) {%>
-    <li class="info-item bd-color">
+    <li class="info-item bd-color" data-id="<%= item.id %>">
+        <div class="radio">
+            <span class="icon-radio ui icon check J_Check"></span>
+        </div>
         <% var url = item.url %>
         <% url = url ? "./inbox-detail.html?id=" + item.id + "&content_url="+ encodeURIComponent(url) : "javascript:void(0);" %>
         <a href="<%= url %>">
             <div class="top">
+                <%if (item.already_read == 0) {%>
+                    <span class="dot ui set-ui-bg"></span>
+                <%}%>
                 <h2 class="l1-color"><%= item.title %></h2>
                 <% var itime = item.itime.split(' ')[0] %>
                 <span class="time"><%= itime.replace(/-/g, '/') %></span>
