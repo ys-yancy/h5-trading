@@ -115,7 +115,7 @@ var config = {
   //defaultRapidSymbols: ['XTIUSD.MICRO', 'XAUUSD.MICRO', 'XAGUSD.MICRO', 'EURUSD.MICRO', 'GBPUSD.MICRO'] // rapid 默认品种
   defaultRapidSymbols: getDefaultRapidSymbols(),
 
-  remindTime: 10 * 1000, // 首页智能提醒获取频率
+  remindTime: 30 * 1000, // 首页智能提醒获取频率
 };
 
 
