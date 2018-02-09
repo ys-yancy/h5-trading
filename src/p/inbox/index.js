@@ -110,7 +110,7 @@ class Inbox extends Base {
     _initInfinite(type) {
         var limit = 20,
             params = {
-                access_token: 'token6066',//Cookie.get('token'),
+                access_token: Cookie.get('token'),
                 type: type,
                 start: 0,
                 limit: limit
@@ -128,7 +128,6 @@ class Inbox extends Base {
             url: url,
             tmpl: tmpl,
             emptyTmpl: this.emptyTmpl,
-            unjoin: true,
             infinite: true,
             beforeRequest: function(params) {
                 return {
@@ -155,7 +154,7 @@ class Inbox extends Base {
     }
 
     _getUrl() {
-        return 'http://122.70.128.232:8100/v1/user/inbox/message/list/';
+        return '/v1/user/inbox/message/list/';
     }
 
     _initSticky() {
