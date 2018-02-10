@@ -5,7 +5,7 @@
         </div>
         <% var url = item.url %>
         <% url = url ? "./inbox-detail.html?id=" + item.id + "&content_url="+ encodeURIComponent(url) : "javascript:void(0);" %>
-        <a href="<%= url %>">
+        <a href="javascript:void(0);">
             <div class="top">
                 <%if (item.already_read == 0) {%>
                     <span class="dot ui set-ui-bg"></span>
