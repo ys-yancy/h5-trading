@@ -455,7 +455,7 @@ Base.extend(Cat, PageBase, {
 
     contentEl: $('#J_Container'),
 
-    emptyTmpl: '<li class="empty">你还没有交易信息</li>',
+    emptyTmpl: '<li class="empty">暂无相关信息</li>',
 
     tmpl: [
         '<% $.each(data, function(index, item) {%>',
