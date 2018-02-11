@@ -14,8 +14,8 @@ export default class CheckOpenAccount extends PageBase{
 
     _check() {
         // 先判断入金, 再判断开户
-        this._isRechargeSuccess().then(() => {
-            this._isNeedOpenAccount().then((data) => {
+        this._isNeedOpenAccount().then(() => {
+            this._isRechargeSuccess().then((data) => {
                 location.href = './open-account.html?src=' + encodeURIComponent(location.href);
             }, () => {})
         }, () => {});
@@ -24,9 +24,10 @@ export default class CheckOpenAccount extends PageBase{
     _isRechargeSuccess() {
         return new Promise((resolve, reject) => {
             var deposits = Cookie.get('deposits');
- 
+            
+            // 只要入过金，并且没有开过户，就应该去开户
             if (!isNaN(deposits)) {
-                if (deposits == 1) {
+                if (deposits > 0) {
                     resolve();
                 } else {
                     reject();
@@ -36,7 +37,7 @@ export default class CheckOpenAccount extends PageBase{
 
             this.getAccount().then((data) => {
                 var deposits = data.deposits;
-                if (deposits == 1) {
+                if (deposits > 0) {
                     resolve();
                 } else {
                     reject();
