@@ -155,16 +155,16 @@ module.exports = {
   getAjaxPrefix: function() {
 
     // 这样就不需要总是在提交的时候来回改了。;
-    var dev = 'http://45.121.52.91:8100';
+    var dev = 'http://122.70.128.232:8100';
     // var dev = 'http://api-normal.thetradestar.com';
 
     var prod = getProduClothedUrl();
-    return prod;
+
     if (window.location.host.indexOf('my.h5') !== -1) {
       return dev;
     } else if (window.location.origin == 'file://')
       return prod;
-    if (window.location.hostname == 'waibao.invhero.com')
+    if (window.location.hostname == 'h5-test.invhero.com')
       return dev;
     if (window.location.hostname == '45.121.52.91')
       return dev;

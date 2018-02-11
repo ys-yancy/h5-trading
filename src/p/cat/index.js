@@ -236,6 +236,7 @@ Base.extend(Cat, PageBase, {
       self.render(self.tmpl, data.data, self.navListEl);
       let isInitFlip = self._setNavWidth();
       // self.render(self.contentTmpl, data.data, self.contentEl);
+      self.typeLength = data.data.length;
       self._trigger();
     });
   },
@@ -244,7 +245,7 @@ Base.extend(Cat, PageBase, {
     setTimeout(() => {
       let isInitFlip = this._setNavWidth();
       $('.J_Type').eq(0).trigger('tap').addClass('active');
-      isInitFlip && self._initFlipsnap(parseInt(data.data.length  -5));
+      isInitFlip && this._initFlipsnap(parseInt(this.typeLength  -5));
     }, 0);
   },
 
