@@ -71,6 +71,11 @@ function getPayUrl() {
 	}
 }
 
+// 获取出金接口
+function getRealWithdrawUrl() {
+	return '/v2/user/real/withdraw/';
+}
+
 //选择引用那套皮肤
 function getAppUi() {
 	return 'index.css';

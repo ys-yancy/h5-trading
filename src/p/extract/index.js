@@ -185,20 +185,27 @@ Base.extend(Extract, PageBase, {
         });
   
         this.ajax({
-          url: '/v1/user/real/withdraw/manually/',
+          url: getRealWithdrawUrl(),
           data: params,
           type: 'post'
         }).then((data) => {
+          this.onlyOne = false;
           this._showDialog('success');
+          this._hideLoad();
+          window.location.reload();
         }).fail((data) => {
+          this.onlyOne = false;
           this._showDialog('fail');
+          this._hideLoad();
         });
       });
     }
   },
 
   _getParams: function() {
-    
+    return {
+      amount: $('#J_ExtractIpt').val()
+    }
   },
 
   _validates: function() {
@@ -396,6 +403,12 @@ Base.extend(Extract, PageBase, {
     var txt = curEl.text();
     curEl.attr('data-name', txt);
     curEl.html('<span>处理中<span class="dialog-load"></span></span>');
+  },
+
+  _hideLoad: function() {
+    var curEl = this.loadEl;
+    $('.dialog-load', curEl).remove();
+    curEl.text( curEl.attr('data-name'));
   },
 
   _requires: function() {
