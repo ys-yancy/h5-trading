@@ -4,7 +4,10 @@
             <span class="icon-radio ui icon check J_Check"></span>
         </div>
         <% var url = item.url %>
+        <!-- 
         <% url = url ? "./inbox-detail.html?id=" + item.id + "&content_url="+ encodeURIComponent(url) : "javascript:void(0);" %>
+        -->
+        <% url =  "./inbox-detail.html?id=" + item.id + "&content_url="+ encodeURIComponent(url) %>
         <a href="<%= url %>">
             <div class="top">
                 <%if (item.already_read == 0) {%>
