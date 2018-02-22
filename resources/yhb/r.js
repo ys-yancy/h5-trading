@@ -275,6 +275,11 @@ function getHasSwitchTradingUi() {
 	return false;
 }
 
+// 开平仓是否有二次确认
+function getConfirmOrder() {
+	return true;
+}
+
 // 默认交易 UI
 function getDefaultTradingUI() {
 	// 专业交易
