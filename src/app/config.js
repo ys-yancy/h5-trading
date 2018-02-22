@@ -171,7 +171,7 @@ module.exports = {
     if (window.location.hostname == 'localhost')
       return prod;
     if (window.location.hostname == '192.168.2.106')
-      return prod;
+      return dev;
     if (window.location.hostname == '127.0.0.1')
       return dev;
     if (window.location.hostname == '192.168.0.178')
