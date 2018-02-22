@@ -148,7 +148,7 @@ function getWXInviteDesWL () {
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	return 'https://t.firstbkr.com/s/my/register.html?inviteCode=';
+	return 'https://t-firstbroker.firstbkr.com/s/register.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
