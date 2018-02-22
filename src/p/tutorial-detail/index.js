@@ -13,8 +13,9 @@ class HelpDetail extends Base{
     }
 
     _bind() {
-        $('.go-back').on('tap', () => {
+        $('.go-back').on('touchend', () => {
             window.history.go(-1);
+            return false;
         })
     }
 
