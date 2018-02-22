@@ -1,0 +1,64 @@
+@import '../../base.less';
+@import '../../variable.less';
+.rotateanimate();
+header{
+  .width(750);
+  .header-inner{
+    position: relative;
+      .height(88);
+      .line-height(88);
+      .font-size(38);
+      text-align: center;
+      position: relative;
+      .go-back{
+        position: absolute;
+        .width(44);
+        .height(44);
+        .top(22);
+        .left(30);
+      }
+  }
+}
+
+.inbox-settings-page-container{
+    .font-size(28);
+    .item{
+        .padding(30);
+        .border-bottom(1, solid, #ccc);
+    }
+    .radio-wrapper{
+        position: relative;
+        float: right;
+        .width(78);
+        .height(44);
+        .border-radius(50);
+        .margin-top(-40);
+        &:before{
+        display: inline-block;
+        position: absolute;
+        content: "";
+        .top(0);
+        right: 0;
+        .width(44);
+        .height(44);
+        .border-radius(50);
+        }
+        &.off:before{
+        right: auto;
+        left: 0;
+        }
+    }
+}
+
+.loading{
+  position: absolute;
+  .width(120);
+  .loading(60, 120, #ccc, #fff);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  .margin-top(240);
+  text-align: center;
+}
