@@ -55,6 +55,8 @@ class Inbox extends Base {
 
     _edit(e) {
         var curEl = $(e.currentTarget);
+        // var setEl = $('.settings');
+        
         if (curEl.hasClass('active')) {
             this._hideEditMode(curEl);
             return;
@@ -64,9 +66,13 @@ class Inbox extends Base {
         curEl.addClass('active')
             .removeClass('icon')
             .text('取消');
+
+        // setEl.hide();
     }
 
     _hideEditMode(curEl) {
+        var setEl = $('.settings');
+        // setEl.show();
         curEl = curEl || $('.J_Edit');
         this.editEl.removeClass('unfold');
         this.contentEl.removeClass('unfold');

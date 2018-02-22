@@ -11,7 +11,8 @@ header{
       text-align: center;
       position: relative;
       .go-back,
-      .edit {
+      .edit,
+      .settings {
         position: absolute;
         .width(44);
         .height(44);
@@ -22,13 +23,19 @@ header{
         .left(30);
       }
       .edit{
-          .right(30);
+          .right(90);
           .font-size(30);
           text-align: right;
           &.active{
               .width(80);
+            //   .right(30);
               color: #616161;
+              background: inherit;
+              z-index: 100;
           }
+      }
+      .settings{
+        .right(30);
       }
   }
 }
