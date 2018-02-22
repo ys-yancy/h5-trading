@@ -50,7 +50,7 @@ Base.extend(InboxSettings, Base, {
 
     _getParams(index, val) {
         var params = {
-            access_token: 'token6066'//Cookie.get('token')
+            access_token: Cookie.get('token')
         };
 
         switch(index) {
@@ -82,7 +82,7 @@ Base.extend(InboxSettings, Base, {
 
     _render() {
         this.ajax({
-            url: '/v1/user/push_config/?access_token=token6066'
+            url: '/v1/user/push_config/?access_token=' + Cookie.get('token')
         }).then((data) => {
             data = data.data;
             this.render(this.tmpl, data, this.containerEl);
