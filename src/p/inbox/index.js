@@ -91,20 +91,57 @@ class Inbox extends Base {
 
     _checkAll(e) {
         var curEl = $(e.currentTarget),
-            checkEls = $('.check', this.contentEl);
+            checkEls = $('.check', this.contentEl),
+            infoItems = $('.info-item', this.contentEl);
         
         if (curEl.hasClass('checked')) {
             curEl.removeClass('checked');
             checkEls.removeClass('checked');
+            infoItems.removeClass('checked');
             return;
         }
 
         curEl.addClass('checked');
         checkEls.addClass('checked');
+        infoItems.addClass('checked');
     }
 
     _del() {
-        console.log(111111111111)
+        var params = this._getDelParams();
+
+        if (!params.ids) {
+            return;
+        }
+
+        this.ajax({
+            url: '/v1/user/inbox/message/delete/',
+            data: params,
+            type: 'POST'
+        }).then((data) => {
+            this.checkedEls.remove();
+            this.checkedEls = null;
+            this._hideEditMode();
+        })
+    }
+
+    _getDelParams() {
+        var checkedEls = $('.info-item.checked');
+        var ids = [];
+        for (var i = 0, len = checkedEls.length; i < len; i++) {
+            var item = $(checkedEls[i]),
+                id = item.attr('data-id');
+
+            if (id != null || id != '' || id != undefined) {
+                ids.push(id);
+            }
+        }
+
+        this.checkedEls = checkedEls;
+
+        return {
+            access_token: Cookie.get('token'),
+            ids: ids.join(',')
+        }
     }
 
     _initInfinite(type) {
