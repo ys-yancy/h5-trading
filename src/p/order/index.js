@@ -158,11 +158,15 @@ Base.extend(Order, PageBase, {
         return;
       }
 
-      self.comfirmOrder = self.comfirmOrder || new ComfirmOrder();
+      var hasConfirmOrder = getConfirmOrder();
 
-      self.comfirmOrder.show();
+      if (hasConfirmOrder) {
+        self.comfirmOrder = self.comfirmOrder || new ComfirmOrder();
 
-      self.comfirmOrder.off('confirm:order');
+        self.comfirmOrder.show();
+
+        self.comfirmOrder.off('confirm:order');
+      }  
 
       if (!this.isDemo()) {
         this.getRealToken().then(function(realToken, readLocal) {
@@ -170,17 +174,25 @@ Base.extend(Order, PageBase, {
             return;
           }
 
-          self.comfirmOrder.on('confirm:order', () => {
-            self.comfirmOrder.hide();
-            self._unwinding(realToken);
-          });
-          
+          if (hasConfirmOrder) {
+            self.comfirmOrder.on('confirm:order', () => {
+              self.comfirmOrder.hide();
+              self._unwinding(realToken);
+            });
+            return;
+          }
+
+          self._unwinding(realToken);
         });
       } else {
-        self.comfirmOrder.on('confirm:order', () => {
-          self.comfirmOrder.hide();
-          self._unwinding(null);
-        });
+        if (hasConfirmOrder) {
+          self.comfirmOrder.on('confirm:order', () => {
+            self.comfirmOrder.hide();
+            self._unwinding(null);
+          });
+          return;
+        }
+        self._unwinding(null);
       }
     }
   },

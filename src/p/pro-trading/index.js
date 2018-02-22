@@ -1172,16 +1172,22 @@ Base.extend(ProTrading, PageBase, {
       return;
     }
 
-    this.comfirmOrder = this.comfirmOrder || new ComfirmOrder();
+    if (getConfirmOrder()) {
+      this.comfirmOrder = this.comfirmOrder || new ComfirmOrder();
 
-    this.comfirmOrder.show();
+      this.comfirmOrder.show();
 
-    this.comfirmOrder.off('confirm:order');
+      this.comfirmOrder.off('confirm:order');
 
-    this.comfirmOrder.on('confirm:order', () => {
-      this.comfirmOrder.hide();
-      this._addOrder(params, up, curEl);
-    })
+      this.comfirmOrder.on('confirm:order', () => {
+        this.comfirmOrder.hide();
+        this._addOrder(params, up, curEl);
+      });
+
+      return;
+    }
+
+    this._addOrder(params, up, curEl);
   },
 
   _validate: function(up, cmd) {
