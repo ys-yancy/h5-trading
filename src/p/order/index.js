@@ -12,6 +12,7 @@ var Cookie = require('../../lib/cookie');
 var Config = require('../../app/config');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
+var ComfirmOrder = require('../../common/confirm-order');
 var Check = require('../../common/check');
 const Sound = require('../../common/sound');
 var Popup = require('./popup/index');
@@ -157,16 +158,29 @@ Base.extend(Order, PageBase, {
         return;
       }
 
+      self.comfirmOrder = self.comfirmOrder || new ComfirmOrder();
+
+      self.comfirmOrder.show();
+
+      self.comfirmOrder.off('confirm:order');
+
       if (!this.isDemo()) {
         this.getRealToken().then(function(realToken, readLocal) {
           if (!readLocal) {
             return;
           }
 
-          self._unwinding(realToken);
+          self.comfirmOrder.on('confirm:order', () => {
+            self.comfirmOrder.hide();
+            self._unwinding(realToken);
+          });
+          
         });
       } else {
-        this._unwinding(null);
+        self.comfirmOrder.on('confirm:order', () => {
+          self.comfirmOrder.hide();
+          self._unwinding(null);
+        });
       }
     }
   },

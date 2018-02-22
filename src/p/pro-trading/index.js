@@ -16,6 +16,7 @@ var TimeChart = require('../rapid/component/chart/time-new');
 var Sticky = require('../../common/sticky');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
+var ComfirmOrder = require('../../common/confirm-order');
 // var LiveSpeech = require('../../common/live-speech');
 // var OptionBanner = require('./option-banner');
 var infoTmpl = require('./tpl/info.ejs');
@@ -1171,7 +1172,16 @@ Base.extend(ProTrading, PageBase, {
       return;
     }
 
-    this._addOrder(params, up, curEl);
+    this.comfirmOrder = this.comfirmOrder || new ComfirmOrder();
+
+    this.comfirmOrder.show();
+
+    this.comfirmOrder.off('confirm:order');
+
+    this.comfirmOrder.on('confirm:order', () => {
+      this.comfirmOrder.hide();
+      this._addOrder(params, up, curEl);
+    })
   },
 
   _validate: function(up, cmd) {
