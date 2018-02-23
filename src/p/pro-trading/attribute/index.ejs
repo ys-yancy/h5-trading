@@ -19,8 +19,8 @@
       <!--手续费有两种建仓（ticketOpen）平仓(ticketClose)-->
       <p>每标准手手续费<span class="strong">建仓(<%= data.ticketOpen %>)平仓(<%= data.ticketClose %>)</span></p>
 
-      <p>每标准手隔夜利息<span class="strong">买跌(
-        <%= data.policy.short_swap ? parseFloat(data.policy.short_swap).toFixed(2) : '无' %>)
+      <p>每标准手隔夜利息<span class="strong">
+      买跌(<%= data.policy.short_swap ? parseFloat(data.policy.short_swap).toFixed(2) : '无' %>)
       买涨(<%= data.policy.long_swap ? parseFloat(data.policy.long_swap).toFixed(2) : '无' %>)</span></p>
       <!-- <div class="wrapper time">
         <p>最近休市时间</p>
