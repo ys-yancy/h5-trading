@@ -24,14 +24,10 @@ export default class CheckOpenAccount extends PageBase{
     _isRechargeSuccess() {
         return new Promise((resolve, reject) => {
             var deposits = Cookie.get('deposits');
-            
+
             // 只要入过金，并且没有开过户，就应该去开户
-            if (!isNaN(deposits)) {
-                if (deposits > 0) {
-                    resolve();
-                } else {
-                    reject();
-                }
+            if (!isNaN(deposits) && deposits > 0) {
+                resolve();
                 return;
             }
 
@@ -54,6 +50,7 @@ export default class CheckOpenAccount extends PageBase{
                 reject();
                 return;
             }
+
             this._getUserInfo().then((data) => {
                 if (data.data.have_info == 1) {
                     reject()
