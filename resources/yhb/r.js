@@ -479,7 +479,8 @@ function getWeixinUrlFirst() {
 
 //百度统计代码
 function getBaiduCodeScript() {
-	return '<script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a8ffcb5e37d87812824192f2af23e6ee";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>';
+	return '';
+	//return '<script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a8ffcb5e37d87812824192f2af23e6ee";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>';
 }
 
 //高风险揭示协议
