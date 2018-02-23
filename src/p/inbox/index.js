@@ -29,11 +29,11 @@ class Inbox extends Base {
     _bind() {
         var doc = $(document);
 
-        doc.on('touchstart', '.J_Item', $.proxy(this._switch, this));
-        doc.on('touchstart', '.J_Edit', $.proxy(this._edit, this));
-        doc.on('touchstart', '.J_Check', $.proxy(this._check, this));
-        doc.on('touchstart', '.J_AllCheck', $.proxy(this._checkAll, this));
-        doc.on('touchstart', '.J_AllSel', $.proxy(this._del, this));
+        doc.on('touchend', '.J_Item', $.proxy(this._switch, this));
+        doc.on('touchend', '.J_Edit', $.proxy(this._edit, this));
+        doc.on('touchend', '.J_Check', $.proxy(this._check, this));
+        doc.on('touchend', '.J_AllCheck', $.proxy(this._checkAll, this));
+        doc.on('touchend', '.J_AllSel', $.proxy(this._del, this));
     }
 
     _switch(e) {
@@ -55,11 +55,11 @@ class Inbox extends Base {
 
     _edit(e) {
         var curEl = $(e.currentTarget);
-        // var setEl = $('.settings');
+        var setEl = $('.settings');
         
         if (curEl.hasClass('active')) {
             this._hideEditMode(curEl);
-            return;
+            return false;
         }
         this.editEl.addClass('unfold');
         this.contentEl.addClass('unfold');
@@ -67,12 +67,13 @@ class Inbox extends Base {
             .removeClass('icon')
             .text('取消');
 
-        // setEl.hide();
+        setEl.hide();
+        return false;
     }
 
     _hideEditMode(curEl) {
         var setEl = $('.settings');
-        // setEl.show();
+        setEl.show();
         curEl = curEl || $('.J_Edit');
         this.editEl.removeClass('unfold');
         this.contentEl.removeClass('unfold');
