@@ -32,8 +32,13 @@
             </li>
             -->
             <li>
-                <p class="name">交易量</p>
-                <p class="J_Formate"><%= item.volume %></p>
+                <% if (item.ui == 6) { %>
+                    <p class="name">投入金额</p>
+                    <p class="J_Formate"><%= item.margin %></p>
+                <%} else {%>
+                    <p class="name">交易量</p>
+                    <p class="J_Formate"><%= item.volume %></p>
+                <% } %>
             </li>
             <li>
                 <p class="name">止盈价格</p>
