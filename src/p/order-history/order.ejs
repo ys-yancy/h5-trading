@@ -76,6 +76,15 @@
             </div>
         </li>
 
+        <% if(data.ui == 6) {%>
+            <li class="item clearfix"> 
+                <div>
+                    <span class="name">投入金额</span>
+                    <span><%= data.margin %></span>
+                </div>
+            </li>
+        <% } %>
+        
         <li class="item clearfix time-wrapper">
             <div>
                 <span class="name">开仓时间</span>
