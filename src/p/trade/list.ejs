@@ -1,3 +1,4 @@
+<!-- <% var tradingui = Cookie.get('tradingUI') %> -->
 <% $.each(data.normal, function(index, item) {%>
 <li class="item bd-color J_Item" data-symbol="<%= item.symbol %>">
     <a class="link bd-color clearfix" href="./order.html?order=<%= item.ticket %>&symbol=<%= item.symbol %>&name=<%= encodeURIComponent(item.symbolName) %>&router=trade&unit=<%= item.mini_quote_unit %>">
@@ -23,8 +24,13 @@
                 <p class="J_Formate"><%= item.openPrice %></p>
             </li>
             <li>
-                <p class="name">交易量</p>
-                <p class="J_Formate"><%= item.volume %></p>
+                <% if (item.ui == 6) { %>
+                    <p class="name">投入金额</p>
+                    <p class="J_Formate"><%= item.margin %></p>
+                <%} else {%>
+                    <p class="name">交易量</p>
+                    <p class="J_Formate"><%= item.volume %></p>
+                <% } %>
             </li>
             <li>
                 <p class="name">止盈价格</p>
