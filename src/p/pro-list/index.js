@@ -15,6 +15,7 @@ var Chart = require('../../common/chart');
 var Sticky = require('../../common/sticky');
 var CandleRefresh = require('../../common/candle-refresh');
 var MarqueeTitle = require('../../common/marquee-title');
+var ComfirmOrder = require('../../common/confirm-order');
 var TimeChart = require('./compontent/chart/time');
 var navTmpl = require('./tmpl/nav.ejs');
 var infoTmpl = require('../pro-trading/tpl/info.ejs');
@@ -138,18 +139,53 @@ Base.extend(ProChart, PageBase, {
     var curEl = $(e.currentTarget);
     var ticket = curEl.attr('data-ticket');
     
-    if (!this.isDemo()) {
-        this.getRealToken().then(function(realToken, readLocal) {
-            if (!readLocal) {
-                return;
-            }
+    var hasConfirmOrder = this._hasConfirmOrder();
 
+    if (hasConfirmOrder) {
+      self.comfirmOrder = self.comfirmOrder || new ComfirmOrder();
+
+      self.comfirmOrder.show();
+
+      self.comfirmOrder.off('confirm:order');
+    }  
+
+    if (!this.isDemo()) {
+      this.getRealToken().then(function(realToken, readLocal) {
+        if (!readLocal) {
+          return;
+        }
+        if (hasConfirmOrder) {
+          self.comfirmOrder.on('confirm:order', () => {
+            self.comfirmOrder.hide();
             self._unwinding(realToken);
-        });
+          });
+          return;
+        }
+
+        self._unwinding(realToken);
+      });
     } else {
-        this._unwinding(null,);
+      if (hasConfirmOrder) {
+        self.comfirmOrder.on('confirm:order', () => {
+          self.comfirmOrder.hide();
+          self._unwinding(null);
+        });
+        return;
+      }
+      self._unwinding(null);
     }
 
+  },
+
+  _hasConfirmOrder: function() {
+    var hasCom = false;
+    var openConfirmOrder = Cookie.get('has_confirm_order');
+
+    if (openConfirmOrder == 1) {
+      hasCom = true;
+    }
+
+    return hasCom
   },
 
   _unwinding: function(realToken) {
