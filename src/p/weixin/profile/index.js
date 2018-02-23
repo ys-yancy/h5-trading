@@ -119,7 +119,8 @@ class Profile extends PageBase {
 
     var email = account.email;
     if (email) {
-      $('.J_Email').text(email).show();
+      $('.email').text(email);
+      $('.J_Email').show();
     }
   }
 
