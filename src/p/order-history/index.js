@@ -681,7 +681,7 @@ Base.extend(OrderHistory, PageBase, {
   attrs: {
     containerEl: $('#J_Container'),
     chartContainerEl: $('#J_ChartWrapper'),
-    types: ['m1', 'm5', 'm15', 'm30', 'h1', 'd1']
+    types: ['m1', 'm5', 'm15', 'm30', 'h1', 'h4', 'd1']
   }
 });
 
