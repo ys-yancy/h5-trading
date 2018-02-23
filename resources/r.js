@@ -92,7 +92,7 @@ function getChartUi() {
 		downPlotLinebackground: '#6cd583',
 		openPlotLineBackground: '#548DEB',
 		closePlotLineBackground: '#F7CB38',
-		tooltipBackground: 'rgba(22,14,27,0.85)',
+		tooltipBackground: 'rgba(22,14,27,0.65)',
 		areaColor: '#F7CB38',
 		otherChartColor: 'rgba(84,141,235,.3)'
 	}

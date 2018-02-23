@@ -53,6 +53,7 @@ class Profile extends PageBase {
     doc.on('tap', '.J_Save', $.proxy(this._saveNickname, this));
     doc.on('tap', '.J_ShwoAuthContent', $.proxy(this._shwoAuthContent, this));
     doc.on('tap', '.J_Logout', $.proxy(this._logout, this));
+    $('.J_ConfirmOrder').on('click', $.proxy(this._setComOrder, this));
     $('.J_Data').on('click', $.proxy(this._setData, this));
     $('.J_Order').on('click', $.proxy(this._setOrder, this));
     $('.J_History').on('click', $.proxy(this._setHistory, this));
@@ -250,6 +251,23 @@ class Profile extends PageBase {
     });
   }
 
+  _setComOrder() {
+    var openConfirmEl = $('.J_ConfirmOrder');
+    var openConfirmOrder = Cookie.get('has_confirm_order');
+
+    openConfirmOrder = openConfirmOrder == 1 ? 0 : 1;
+
+    Cookie.set('has_confirm_order', openConfirmOrder);
+
+    if (openConfirmOrder == 1) {
+      openConfirmEl.removeClass('off');
+      return;
+    }
+
+    openConfirmEl.addClass('off');
+    return;
+  }
+
   _setQuan(e) {
     var curEl = $(e.currentTarget);
     if (curEl.attr('data-permission') == 1) {
@@ -373,11 +391,18 @@ class Profile extends PageBase {
   }
 
   _initAttrs() {
+    var openConfirmEl = $('.J_ConfirmOrder');
+    var openConfirmOrder = Cookie.get('has_confirm_order');
     var urlParams = new Uri().getParams();
     var linkUrl = urlParams.from;
     if (linkUrl) {
       $('.go-back').attr('href', linkUrl);
     }
+
+    if (openConfirmOrder == 1) {
+      openConfirmEl.removeClass('off');
+    }
+
   }
 }
 

@@ -205,7 +205,7 @@ Base.extend(Chart, Base, {
       }],
 
       tooltip: {
-        enabled: false,
+        // enabled: false,
         useHTML: true,
         formatter: function(e) {
           return [
@@ -219,7 +219,7 @@ Base.extend(Chart, Base, {
         },
 
         backgroundColor: self.ui.tooltipBackground || 'rgba(22,14,27,0.85)',
-        borderColor: '#2f2543'
+        borderColor: 'transparent'//'#2f2543'
       }
     });
 
