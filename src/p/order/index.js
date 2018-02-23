@@ -285,14 +285,21 @@ Base.extend(Order, PageBase, {
       type: 'post',
       data: data
     }).then(function(data) {
+      var profit = data.data.profit,
+        swap = data.data.swap,
+        commission = data.data.commission;
+
+      profit = parseFloat(profit) + parseFloat(swap) + parseFloat(commission);
+      profit = profit.toFixed(2);
+
       new Popup({
         name: self.name,
-        profit: data.data.profit,
+        profit:profit,
         price: data.data.closePrice
       });
 
       // 更新订单数据
-      self.orderObject.profit = data.data.profit;
+      self.orderObject.profit = profit;
 
       var btnDesc = '分享';
       var myshow = !self.isDemo() && !data.guadan && getUseNewShare();
