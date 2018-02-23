@@ -1172,7 +1172,7 @@ Base.extend(ProTrading, PageBase, {
       return;
     }
 
-    if (getConfirmOrder()) {
+    if (this._hasConfirmOrder()) {
       this.comfirmOrder = this.comfirmOrder || new ComfirmOrder();
 
       this.comfirmOrder.show();
@@ -1188,6 +1188,17 @@ Base.extend(ProTrading, PageBase, {
     }
 
     this._addOrder(params, up, curEl);
+  },
+
+  _hasConfirmOrder: function() {
+    var hasCom = false;
+    var openConfirmOrder = Cookie.get('has_confirm_order');
+
+    if (openConfirmOrder == 1) {
+      hasCom = true;
+    }
+
+    return hasCom
   },
 
   _validate: function(up, cmd) {

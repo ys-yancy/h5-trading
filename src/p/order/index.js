@@ -158,7 +158,7 @@ Base.extend(Order, PageBase, {
         return;
       }
 
-      var hasConfirmOrder = getConfirmOrder();
+      var hasConfirmOrder = this._hasConfirmOrder();
 
       if (hasConfirmOrder) {
         self.comfirmOrder = self.comfirmOrder || new ComfirmOrder();
@@ -195,6 +195,17 @@ Base.extend(Order, PageBase, {
         self._unwinding(null);
       }
     }
+  },
+
+  _hasConfirmOrder: function() {
+    var hasCom = false;
+    var openConfirmOrder = Cookie.get('has_confirm_order');
+
+    if (openConfirmOrder == 1) {
+      hasCom = true;
+    }
+
+    return hasCom
   },
 
   _removeOrder: function() {
