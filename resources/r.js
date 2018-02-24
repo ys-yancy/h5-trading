@@ -125,12 +125,12 @@ function getWXDomainWL () {
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'https://t.firstbkr.com/img/firstbroker/share.jpg';
+	return 'https://t-firstbroker.firstbkr.com/img/firstbroker/share.jpg';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'https://t.firstbkr.com/img/firstbroker/share.jpg'
+	return 'https://t-firstbroker.firstbkr.com/img/firstbroker/share.jpg'
 }
 
 // 微信邀请好友标题
@@ -196,7 +196,7 @@ function getAboutUSHTMLWL () {
 // 默认头像
 function getDefaultIconWL () {
 	// 这个链接有wl   之后应该去掉  因为在之后的版本中  firstbroker不是白标
-	return 'https://t.firstbkr.com/img/wl/firstbroker/firstbroker_avatar.jpg';
+	return 'https://t-firstbroker.firstbkr.com/img/firstbroker/firstbrk_avatar.png';
 }
 
 // 是否显示下载链接
