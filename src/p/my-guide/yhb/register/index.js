@@ -329,7 +329,7 @@ Base.extend(Register, PageBase, {
 
         if (this.isWeixin() && getUserInfoWX()) {
           // 直接去option页面
-          var url = '?token=' + Cookie.get('token') + '&ri=' + window.location.origin + wl + '/s/option.html?f=g&s=b';
+          var url = '?token=' + Cookie.get('token') + '&wl=' + getWXWL() + '&ri=' + window.location.origin + wl + '/s/option.html?f=g&s=b';
           url = this.weixinUrlFirst + encodeURIComponent(url) + this.weixinUrlLast;
           window.location = url;
         }
