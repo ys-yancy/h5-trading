@@ -25,7 +25,7 @@ class Pocket extends PageBase {
     }
 
     this.flipsnap = Flipsnap('.flipsnap', {
-      maxPoint: 4,
+      maxPoint: 3,
       distance: ($('.flipsnap').width() - $(window).width()) / 4
     });
 
@@ -77,7 +77,6 @@ class Pocket extends PageBase {
           this.onlyOne = false;
           var index = $('.active').index();
           self.pageNum+=1;
-          console.log(111111111)
           this._getData(index, self.requestData);
         }
       }
