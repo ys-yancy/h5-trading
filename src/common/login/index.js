@@ -500,7 +500,8 @@ Base.extend(Login, Base, {
       }, function() {
         var wl = window.location.pathname.substring(0, window.location.pathname.indexOf('/s/'));
 
-        var t = '交易密码错误! <a href="' + window.location.origin + wl + '/s/recovery-trade-password.html?src=' + encodeURIComponent(window.location.href) + '">点此重置><a>';
+        //<a href="' + window.location.origin + wl + '/s/recovery-trade-password.html?src=' + encodeURIComponent(window.location.href) + '">点此重置><a>
+        var t = '交易密码错误!';
 
         $('.message', dialogEl)
           .html(t)
@@ -624,6 +625,7 @@ Base.extend(Login, Base, {
       '       <p class="title">为保证您的实盘账户资金安全,请输入交易密码</p>',
       '       <div class="input-wrapper">',
       '           <input id="J_TradePassword" type="tel" placeholder="请输入交易密码">',
+      '           <p class="message" style="float:left;color:red;font-size:.35rem">',
       '       </div>',
       '   </div>',
       '   <div class="dialog-buttons clearfix">',
