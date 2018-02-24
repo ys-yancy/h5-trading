@@ -329,7 +329,7 @@ function getNewsGroup() {
 
 // 是否使用显示授权
 function getUserInfoWX () {
-	return false;
+	return true;
 }
 
 // 是否使用新用户首页引导
