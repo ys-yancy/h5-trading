@@ -136,13 +136,14 @@ function getWXInviteImgUrlWl () {
 // 微信邀请好友标题
 // 0526更新
 function getWXInviteTitleWL () {
-	return '%s 在壹号金融赚的太嗨，送美金给你，注册后立即到账！';
+	// return '%s 在壹号金融赚的太嗨，送美金给你，注册后立即到账！';
+	return '注册壹号金融即送100美元交易本金 ,玩赚市场，让您的收益节节高！'
 }
 
 // 微信邀请好友描述
 // 0526更新
 function getWXInviteDesWL () {
-	return '壹号金融，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '注册壹号金融即送100美元交易本金 ,玩赚市场，让您的收益节节高！';
 }
 
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
@@ -163,22 +164,22 @@ function getNewShareWl() {
 // 微信转发标题
 // 0526更新
 function getWXRepostTitleWL () {
-	return ' 在壹号金融赚的太嗨，送美金给你，注册后立即到账！';
+	return ' 壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
 }
 
 // 微信转发描述
 function getWXRepostDesWL () {
-	return '壹号金融，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
 }
 
 // 微信当前订单描述
 function getWXCurrentDesWL () {
-	return '壹号金融，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
 }
 
 // 微信历史订单描述
 function getWXHistoricalDesWL () {
-	return '壹号金融，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
 }
 
 // 关于我们内容
