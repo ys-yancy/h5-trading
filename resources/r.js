@@ -137,7 +137,7 @@ function getWXInviteImgUrlWl () {
 // 0526更新
 function getWXInviteTitleWL () {
 	// return '%s 在壹号金融赚的太嗨，送美金给你，注册后立即到账！';
-	return '注册壹号金融即送100美元交易本金 ,玩赚市场，让您的收益节节高！'
+	return ' 注册壹号金融即送100美元交易本金, 玩赚市场, 让您的收益节节高！';
 }
 
 // 微信邀请好友描述
@@ -164,7 +164,7 @@ function getNewShareWl() {
 // 微信转发标题
 // 0526更新
 function getWXRepostTitleWL () {
-	return ' 注册壹号金融即送100美元交易本金 ,玩赚市场，让您的收益节节高！';
+	return ' 注册壹号金融即送100美元交易本金, 玩赚市场, 让您的收益节节高！';
 }
 
 // 微信转发描述
@@ -300,7 +300,7 @@ function getRedemption() {
 
 // 是否显示微信分享入口
 function getShowWeixinShare() {
-	return false;
+	return true;
 }
 
 // 是否使用新的分享流程
