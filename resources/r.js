@@ -143,7 +143,7 @@ function getWXInviteTitleWL () {
 // 微信邀请好友描述
 // 0526更新
 function getWXInviteDesWL () {
-	return '注册壹号金融即送100美元交易本金 ,玩赚市场，让您的收益节节高！';
+	return '壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
 }
 
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
@@ -164,7 +164,7 @@ function getNewShareWl() {
 // 微信转发标题
 // 0526更新
 function getWXRepostTitleWL () {
-	return ' 壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
+	return ' 注册壹号金融即送100美元交易本金 ,玩赚市场，让您的收益节节高！';
 }
 
 // 微信转发描述
