@@ -25,7 +25,7 @@ class Pocket extends PageBase {
     }
 
     this.flipsnap = Flipsnap('.flipsnap', {
-      maxPoint: 3,
+      maxPoint: 2,
       distance: ($('.flipsnap').width() - $(window).width()) / 4
     });
 

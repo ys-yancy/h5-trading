@@ -14,7 +14,10 @@
 <% data.forEach(function(item, index) { %>
 <li class="item">
   <% var len = item.update_at.length; %>
-  <p class="time"><%= item.update_at.substring(0, len - 3) %></p>
+  <p class="time">
+    <%= item.update_at.substring(0, len - 3) %>
+    <span class="symbol-info"><%= item.trade_direction && item.trade_direction.indexOf('buy') !== -1 ? '买涨' : '买跌' %> <%= item.symbol_name %></span>
+  </p>
   <div class="clearfix">
     <div class="left l1-color">
       <span class="tag">$</span>
@@ -27,14 +30,14 @@
       <span class="circle <% if (item.confirmed == 0 || item.confirmed == -1) {%> empty <%} %>"></span>
     </div>
     <p class="amount clearfix">名义交易量($)：<%= item.trade_notional_amount %>
-      <span class="symbol-info"><%= item.trade_direction && item.trade_direction.indexOf('buy') !== -1 ? '买涨' : '买跌' %> <%= item.symbol_name %></span>
+      <!-- <span class="symbol-info"><%= item.trade_direction && item.trade_direction.indexOf('buy') !== -1 ? '买涨' : '买跌' %> <%= item.symbol_name %></span> -->
     </p>
   </div>
 </li>
 <% }); %>
 
 <% if (data.length === 0) {%>
-  <!-- '您还没有朋友赚奖金记录', -->
-<% var descArr = ['您还没有任何资金记录', '您还没有交易盈亏记录', '您还没有出金记录', '您还没有入金记录', '您还没有奖金记录', '您还没有佣金记录', '您还没有红包领取记录']; %>
+  <!-- '您还没有朋友赚奖金记录','您还没有红包领取记录' -->
+<% var descArr = ['您还没有任何资金记录', '您还没有交易盈亏记录', '您还没有出金记录', '您还没有入金记录', '您还没有奖金记录', '您还没有佣金记录']; %>
 <li class="no-content"><%= descArr[data.indexVal] %></li>
 <% } %>
