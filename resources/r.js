@@ -316,7 +316,7 @@ function getWLName () {
 
 //配置appid
 function getWXAppid () {
-	return 'wxf587c0d17e265b55'
+	return 'wx7c747e7e240e09e2'
 }
 
 // 新闻列表配置 
