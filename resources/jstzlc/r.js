@@ -179,6 +179,20 @@ function getWXHistoricalDesWL () {
 	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
+function getActiveTitle() {
+	return '正月十五闹元宵 猜灯谜 领奖金'
+}
+
+function getActiveContent() {
+	return '<p class="active-tm">活动日期：2018年2月27日至2018年3月2日</p>\
+			<p>活动规则：</p>\
+			<p>1.注册成为壹号金融客户；</p>\
+			<p>2.每天下午3点，将在收件箱-公告中发送灯谜信息；</p>\
+			<p>3.将猜出的灯谜信息输入到兑换码中兑换奖金，奖金金额1-10美金随机发放；</p>\
+			<p>4.兑换码奖金为抗亏赠金，做够名义交易量即可转化；</p>\
+			<p>5.如有问题，请详询在线客服或加客服微信：lisa866866</p>'
+}
+
 // 关于我们内容
 function getAboutUSHTMLWL () {
 	return '<div class="bd">\

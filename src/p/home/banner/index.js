@@ -2,12 +2,17 @@
 require('./index.css');
 import Base from '../../../app/base';
 import tmpl from './index.ejs';
+import Dialog from '../../../common/dialog';
 import '../../../common/slider';
 
 export default class HomeBanner extends Base {
 	constructor(config) {
         super(config);
         this._getData();
+    }
+
+    _lazyBind() {
+        $('#slider').on('touchend', $.proxy(this._showActiveContent, this));
     }
 
     _getData() {
@@ -20,6 +25,7 @@ export default class HomeBanner extends Base {
         }).then((data) => {
             data = data.data;
             this._render(data);
+            this._lazyBind();
         })
     }
  
@@ -48,5 +54,29 @@ export default class HomeBanner extends Base {
             }
             return item;
         });
+    }
+
+    _showActiveContent() {
+        this.doalog ? this.doalog.show()
+            : (this.doalog = new Dialog({
+                isShow: true,
+                tmpl: this.render(this.tmpl)
+            }))
+    }
+
+    defaults() {
+        return {
+            tmpl: `<div class="dialog dialog-active-content" id="J_Dialog">
+                <span class="wrapper-icon"><span class="icon"></span></span>
+                <div class="dialog-content">
+                    <p class="title"><%= getActiveTitle() %></p>
+                    <div class="content J_Content"><%= getActiveContent() %></div>
+                </div>
+                <div class="dialog-buttons clearfix">
+                    <span class="dialog-btn J_DialogClose close" id="J_DialogSetupCancel">我知道了</span>
+                </div>
+            </div>
+            <div class="dialog-mask J_DialogMask"></div>`,
+        }
     }
 }
