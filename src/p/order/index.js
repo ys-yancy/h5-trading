@@ -20,9 +20,9 @@ var infoTmpl = require('./tpl/info.ejs');
 var orderTmpl = require('./tpl/order.ejs');
 var actionTmpl = require('./tpl/action.ejs');
 var closeTmpl = require('./tpl/close.ejs');
+var Share = require('../pro-trading/share');
 
 // var TopMsg = require('../../common/top-msg');
-// var Share = require('../pro-trading/share');
 // var LiveSpeech = require('../../common/live-speech');
 
 
@@ -313,9 +313,9 @@ Base.extend(Order, PageBase, {
         var doc = $(document);
         var share;
 
-        // if (myshow) {
-        //   share = new Share({ ticket: self.order, type: 'order' });
-        // }
+        if (myshow) {
+          share = new Share({ ticket: self.order, type: 'order' });
+        }
 
         $('#J_Success').append('<a class="dialog-btn share J_Share" href="javascript:">' + btnDesc + '</a>');
 
@@ -347,13 +347,13 @@ Base.extend(Order, PageBase, {
         // 添加分享按钮
         $('#J_Success').append('<a class="dialog-btn share J_Share" href="' + l + '">' + btnDesc + '</a>');
 
-        // $('#J_Success .share').on('click', function() {
-          // var share;
-          // if (myshow) {
-          //   share = new Share({ ticket: self.order, type: 'order' });
-          //   share && share.getInfo();
-          // }
-        // });
+        $('#J_Success .share').on('click', function() {
+          var share;
+          if (myshow) {
+            share = new Share({ ticket: self.order, type: 'order' });
+            // share && share.getInfo();
+          }
+        });
       } else {
         $('.dialog-trade').css('height', '12rem');
       }

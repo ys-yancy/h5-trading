@@ -13,8 +13,7 @@ var MarqueeTitle = require('../../common/marquee-title');
 
 var infoTmpl = require('./info.ejs');
 var orderTmpl = require('./order.ejs');
-
-// var Share = require('../pro-trading/share');
+var Share = require('../pro-trading/share');
 
 
 function OrderHistory() {
@@ -471,11 +470,11 @@ Base.extend(OrderHistory, PageBase, {
           var HeadEl = $('#J_Header'),
             shareGuideEl = $('#J_InfoImg'),
             html = '<span class="icon ui share"></span>';
-          // var share;
-          // if (myshow) {
-          //   desc = '分享订单';
-            // share = new Share({ ticket: self.order, type: 'order' });
-          // }
+          var share;
+          if (myshow) {
+            // desc = '分享订单';
+            share = new Share({ ticket: self.order, type: 'order' });
+          }
 
           HeadEl.append(html);
 
@@ -515,13 +514,13 @@ Base.extend(OrderHistory, PageBase, {
           // 添加分享按钮
           var html = '<a class="ui icon share" href=' + l + '></a>';
           $('#J_Header').append(html);
-          // $('#J_Header .share').on('click', function() {
-            // var share;
-            // if (myshow) {
-              // share = new Share({ ticket: self.order, type: 'order' });
+          $('#J_Header .share').on('click', function() {
+            var share;
+            if (myshow) {
+              share = new Share({ ticket: self.order, type: 'order' });
               // share && share.getInfo();
-            // }
-          // });
+            }
+          });
         }
       });
 

@@ -10,7 +10,7 @@ export default class Share extends PageBase {
   constructor(config) {
     super(config);
 
-    $('.wrapper-share-money').remove();
+    // $('.wrapper-share-money').remove();
 
     if (this.isDemo()) {
       return;
@@ -68,24 +68,21 @@ export default class Share extends PageBase {
         invite: this.cookie.get('inviteCode')
       }
     }).then((data) => {
-      // alert(JSON.stringify(data));
-      // alert(data.data.rewarded);
-      if (data.data.rewarded >= 1) {
-        this.el && this.el.remove();
-        // console.log(data);
-        this.el = this.renderTo(tmpl, {
-          result: true,
-          amount: data.data.amount,
-          type: 'order'
-        }, $('body'));
-        this._reBind();
-      } else {
-        if (showGuide) {
-          this.el && this.el.remove();
-          this.el = this.renderTo(tmpl, { result: false }, $('body'));
-          this._reBind();
-        }
-      }
+      // if (data.data.rewarded >= 1) {
+        // this.el && this.el.remove();
+        // this.el = this.renderTo(tmpl, {
+        //   result: true,
+        //   amount: data.data.amount,
+        //   type: 'order'
+        // }, $('body'));
+        // this._reBind();
+      // } else {
+        // if (showGuide) {
+          // this.el && this.el.remove();
+          // this.el = this.renderTo(tmpl, { result: false }, $('body'));
+          // this._reBind();
+        // }
+      // }
 
       return data.data;
     });
@@ -106,9 +103,9 @@ export default class Share extends PageBase {
       }
     }).then((data) => {
       // alert(JSON.stringify(data));
-      this.el && this.el.remove();
-      this.el = this.renderTo(tmpl, { result: true, amount: data.data.amount }, $('body'));
-      this._reBind();
+      // this.el && this.el.remove();
+      // this.el = this.renderTo(tmpl, { result: true, amount: data.data.amount }, $('body'));
+      // this._reBind();
     });
   }
 }

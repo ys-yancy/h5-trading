@@ -27,11 +27,11 @@ var navTmpl = require('./tpl/nav.ejs');
 var Popup = require('./popup/index');
 var Attribute = require('./attribute/index');
 const Sound = require('../../common/sound');
+var Share = require('./share');
 // 这些功能暂时不确定
 // var Investment = require('./invest/index');
-// var Share = require('./share');
+
 // var Guide = require('./guide');
-// require('./share');
 
 function ProTrading() {
   ProTrading.superclass.constructor.apply(this, arguments);
@@ -1386,9 +1386,9 @@ Base.extend(ProTrading, PageBase, {
 
         if (self.isWeixin()) {
           var share;
-          // if (myshow) {
-            // share = new Share({ ticket: data.ticket });
-          // }
+          if (myshow) {
+            share = new Share({ ticket: data.ticket });
+          }
 
 
           $('#J_Success').prepend('<a class="dialog-btn share J_Share" href="javascript:">' + btnDesc + '</a>');
@@ -1424,10 +1424,10 @@ Base.extend(ProTrading, PageBase, {
 
           $('#J_Success .J_Share').on('click', function() {
             var share;
-            // if (myshow) {
-            //   share = new Share({ ticket: data.ticket });
-            //   share && share.getInfo();
-            // }
+            if (myshow) {
+              share = new Share({ ticket: data.ticket });
+              // share && share.getInfo();
+            }
           });
 
         } else {
