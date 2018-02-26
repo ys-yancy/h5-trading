@@ -624,7 +624,7 @@ Base.extend(Login, Base, {
       '   <div class="dialog-content J_Content">',
       '       <p class="title">为保证您的实盘账户资金安全,请输入交易密码</p>',
       '       <div class="input-wrapper">',
-      '           <input id="J_TradePassword" type="tel" placeholder="请输入交易密码">',
+      '           <input id="J_TradePassword" type="password" placeholder="请输入交易密码">',
       '           <p class="message" style="float:left;color:red;font-size:.35rem">',
       '       </div>',
       '   </div>',
