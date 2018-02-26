@@ -184,7 +184,7 @@ function getActiveTitle() {
 }
 
 function getActiveContent() {
-	return '<p class="active-tm">活动日期：2018年2月27日至2018年3月2日</p>\
+	return '<p class="active-tm" style="margin-bottom:12px;">活动日期：2018年2月27日至2018年3月2日</p>\
 			<p>活动规则：</p>\
 			<p>1.注册成为壹号金融客户；</p>\
 			<p>2.每天下午3点，将在收件箱-公告中发送灯谜信息；</p>\
