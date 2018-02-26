@@ -199,9 +199,10 @@ Base.extend(Order, PageBase, {
 
   _hasConfirmOrder: function() {
     var hasCom = false;
+    var tradingUi = Cookie.get('tradingUI');
     var openConfirmOrder = Cookie.get('has_confirm_order');
 
-    if (openConfirmOrder == 1) {
+    if (openConfirmOrder == 1 && tradingUi != 6) {
       hasCom = true;
     }
 
