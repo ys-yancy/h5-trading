@@ -46,7 +46,7 @@ export default class HomeBanner extends Base {
                 }
                 
             }
-            return item.image;
+            return item;
         });
     }
 }

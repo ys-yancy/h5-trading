@@ -3,7 +3,7 @@
 import Base from '../../app/base';
 import Uri from '../../app/uri';
 import Cookie from '../../lib/cookie';
-
+import GoBack from '../../common/go-back';
 
 class InboxDetail extends Base {
     constructor(config) {
@@ -11,6 +11,7 @@ class InboxDetail extends Base {
 
         this._initAttrs();
         this._readContent();
+        new GoBack();
     }
 
     _readContent() {
