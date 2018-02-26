@@ -970,30 +970,48 @@ Base.extend(PageBase, Base, {
 
 
     if (stopLoss != 0) {
+
+      // if (symbol.cmd) {
+      //   if (symbol.cmd.indexOf('buy') != -1) {
+      //     stoploss_price_delta = stopLoss - openPrice;
+      //   } else {
+      //     stoploss_price_delta = openPrice - stopLoss;
+      //   }
+      // } else {
+      //   stoploss_price_delta = stopLoss - openPrice;
+      //   if (stoploss_price_delta > 0) {
+      //     stoploss_price_delta = 0 - stoploss_price_delta;
+      //   }
+      // }
+
       stoploss_price_delta = stopLoss - openPrice;
+
       if (stoploss_price_delta > 0) {
         stoploss_price_delta = 0 - stoploss_price_delta;
       }
-      /*
-      if (symbol.cmd == 'buy') {
-          stoploss_price_delta = stopLoss - openPrice;
-      } else {
-          stoploss_price_delta = openPrice - stopLoss;
-      }
-      */
     }
+
     if (takeProfit != 0) {
+      
+      // if(symbol.cmd) {
+      //   if (symbol.cmd.indexOf('buy') != -1) {
+      //     takeprofit_price_delta = takeProfit - openPrice;
+      //   } else {
+      //     takeprofit_price_delta = openPrice - takeProfit;
+      //   }
+      // } else {
+      //   takeprofit_price_delta = takeProfit - openPrice;
+
+      //   if (takeprofit_price_delta < 0) {
+      //     takeprofit_price_delta = 0 - takeprofit_price_delta;
+      //   }
+      // }
+
       takeprofit_price_delta = takeProfit - openPrice;
+
       if (takeprofit_price_delta < 0) {
         takeprofit_price_delta = 0 - takeprofit_price_delta;
       }
-      /*
-      if (symbol.cmd == 'buy') {
-          takeprofit_price_delta = takeProfit - openPrice;
-      } else {
-          takeprofit_price_delta = openPrice - takeProfit;
-      }
-      */
     }
 
 

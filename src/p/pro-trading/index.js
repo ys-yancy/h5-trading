@@ -2421,6 +2421,8 @@ Base.extend(ProTrading, PageBase, {
       self.cmd = data.cmd;
       self.orderObject = data;
 
+      // 在这里为symbolValue.cmd赋值，为之后计算目标盈利做准备
+      self.symbolValue.cmd = data.cmd;
 
       var guadan = false;
       self.open = false;
