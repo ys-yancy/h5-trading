@@ -376,7 +376,7 @@ Base.extend(OpenAccount, PageBase, {
     _initAttrs: function() {
         this.src = new Uri().getParam('src');
 
-        this.src = this.src || './home.html';
+        this.src = this.src || './' + getHomeUrl();
 
         $('.go-back').attr('href', this.src);
     },
