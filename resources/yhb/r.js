@@ -144,6 +144,11 @@ function getWXInviteDesWL () {
 	return '壹号比特币，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
+// 获取首页登录链接
+function getHomeUrl() {
+	return 'home.html'
+}
+
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
