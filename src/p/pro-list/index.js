@@ -130,6 +130,8 @@ Base.extend(ProChart, PageBase, {
     
     this.orderObject = order;
     this.order = ticket;
+    this.orderUi = order.ui;
+
     curEl.siblings().removeClass('active');
     curEl.addClass('active');
   },
@@ -179,7 +181,7 @@ Base.extend(ProChart, PageBase, {
 
   _hasConfirmOrder: function() {
     var hasCom = false;
-    var tradingUi = Cookie.get('tradingUI');
+    var tradingUi = this.orderUi;
     var openConfirmOrder = Cookie.get('has_confirm_order');
 
     if (openConfirmOrder == 1 && tradingUi != 6) {
