@@ -118,7 +118,6 @@
 			background: #DCDCDC;
 		}
 		.desc{
-			display: inline-block;
 			float: left;
 			.height(44);
 			.line-height(44);
@@ -131,7 +130,20 @@
 		}
 		.ft-rt{
 			float: right;
-			.font-size(28);
+			.font-size(24);
+			&.inbox-count{
+				display: none;
+				.min-width(30);
+				.padding(0, 3);
+				.border-radius(10);
+				text-align: center;
+				.margin-top(10);
+				color: #fff;
+				background: #D0021B;
+				&.show{
+					display: inline-block;
+				}
+			}
 		}
 		.num{
 			.min-width(150);

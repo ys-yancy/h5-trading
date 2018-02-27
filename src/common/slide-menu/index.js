@@ -144,6 +144,24 @@ export default class SlideMenu extends PageBase {
 		}, 450)
 	}
 
+	_showIconRemind() {
+
+		if (this.remindEl) {
+			this.remindEl.show();
+			return;
+		}
+
+		var remindEl = document.createElement('SPAN');
+		remindEl.className = 'inbox-remind-circle show';
+		remindEl.style.cssText = 'position:absolute;width:.3rem;height:.3rem;top:-.05rem;right:-.05rem;border-radius:50%;background:#D0021B;';
+		$('.J_ShowSlideMenu').append(remindEl);
+		this.remindEl = $(remindEl);
+	}
+
+	_hideIconRemind() {
+		this.remindEl && this.remindEl.hide();
+	}
+
 	_preventMove(e) {
 		e.preventDefault();
 		return false;
