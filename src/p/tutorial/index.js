@@ -11,7 +11,8 @@ class Tutorial extends Base {
         super(config);
 
         this._requires();
-        this._getData();  
+        this._getData();
+        this._initAttrs();
     }
 
     _getData() {
@@ -30,6 +31,16 @@ class Tutorial extends Base {
     _requires() {
         new GoBack();
         new Header();
+    }
+
+    _initAttrs() {
+        var backEl = $('.go-back');
+        var params = new Uri().getParams();
+        var backUrl = params.from || params.src;
+
+        if (!backUrl) {
+            backEl.attr('href', './' + getHomeUrl());
+        }
     }
 
     defaults() {
