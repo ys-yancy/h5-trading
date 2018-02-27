@@ -2,6 +2,7 @@
 'use strict';
 
 import Base from '../../app/base';
+import Uri from '../../app/uri';
 import Cookie from '../../lib/cookie';
 import GoBack from '../../common/go-back';
 import Header from '../../common/header';
@@ -12,6 +13,7 @@ class Help extends Base {
 
         this._requires();
         this._getData();
+        this._initAttrs();
     }
 
     _getData() {
@@ -29,7 +31,17 @@ class Help extends Base {
 
     _requires() {
         new GoBack();
-        new Header()
+        new Header();
+    }
+
+    _initAttrs() {
+        var backEl = $('.go-back');
+        var params = new Uri().getParams();
+        var backUrl = params.from || params.src;
+
+        if (!backUrl) {
+            backEl.attr('href', './' + getHomeUrl());
+        }
     }
 
     defaults() {
