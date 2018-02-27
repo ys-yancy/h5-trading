@@ -1,7 +1,7 @@
 <ul class="clearfix ui common bottom-nav page-count-<%= data.pageCount %>">
     <% if (data.pages.indexOf('home') !== -1) { %>
         <li class="<%if (data.page == 'home') {%> <%= 'active' %> <%}%>">
-            <a class="home" href="./home.html">
+            <a class="home" href="./<%= getHomeUrl() %>">
                 <span class="icon"></span>
                 <span class="name">首页</span>
             </a>

@@ -146,6 +146,11 @@ function getWXInviteDesWL () {
 	return '壹号金融为您提供全球交易品种、低交易成本、智能化跟单系统、全方位资金安全保障、随时随地，畅快交易！';
 }
 
+// 获取首页登录链接
+function getHomeUrl() {
+	return 'home.html'
+}
+
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
