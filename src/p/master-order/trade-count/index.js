@@ -8,7 +8,7 @@ var Base = require('../../../app/base');
 var Util = require('../../../app/util');
 var Cookie = require('../../../lib/cookie');
 var CreateAreaBasisc = require('../../../common/chart/area-basic');
-var CreateLineBasisc = require('../../../common/chart/line-basic');
+// var CreateLineBasisc = require('../../../common/chart/line-basic');
 var CreateColumnBasisc = require('../../../common/chart/column-basic');
 var ChartDesc = require('./chartDesc');
 
@@ -26,7 +26,7 @@ export default class TradeCount extends Base {
 		this._bind();
 		this._initAttrs();
 		this._initAreaChart();
-		this._initLineChart();
+		// this._initLineChart();
 		this._initColumnChart();
 	}
 
