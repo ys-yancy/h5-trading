@@ -295,7 +295,7 @@ Base.extend(Register, PageBase, {
 
             new Toast('注册成功');
             setTimeout(function() {
-                location.href = '../../home.html';
+                location.href = '../../' + getHomeUrl();
             }, 1500);
             
         }, function(data) {
