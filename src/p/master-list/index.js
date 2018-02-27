@@ -9,7 +9,7 @@ var Cookie = require('../../lib/cookie');
 var Sticky = require('../../common/sticky');
 var SildeMenu = require('../../common/slide-menu');
 var BottomNav = require('../../common/bottom-nav');
-var CreateMiniChart = require('./chart/mini-line');
+// var CreateMiniChart = require('./chart/mini-line');
 var tmpl = require('./index.ejs.html');
 
 function MasterList() {
@@ -103,19 +103,23 @@ Base.extend(MasterList, Base, {
   			url: '/v1/follow/rank/expert/profit/'+ source +'/',
   			data: params
   		}).then((data) => {
-  			data = data.data;
-  			this._render(data);
+        data = data.data;
+  			this._render({
+          data: data,
+          sourceparm: this.sourceparm,
+          sourceDesc: this.sourceDesc
+        });
   		})
   },
 
 	_render: function(data) {
-    data = data.map((item) => {
+    data.data = data.data.map((item) => {
         item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultAvatarUrl();
         return item;
     })
-
+    console.log(data)
 		this.render(tmpl, data, $('.J_List'));
-		this._renderCharts(data);
+		// this._renderCharts(data);
 	},
 
 	_renderCharts: function(data) {
@@ -148,6 +152,8 @@ Base.extend(MasterList, Base, {
     var activeEl = $('.active', this.category);
     var index = activeEl.index();
     var curSource = this.sourceUrls[index];
+    this.sourceparm = this.sourceparms[index];
+    this.sourceDesc = this.sourceDescs[index];
 		return curSource;
   },
   
@@ -161,7 +167,9 @@ Base.extend(MasterList, Base, {
 
 	defaults: function() {
 		return {
-			sourceUrls: ['yield_rate','yield_rate_7days', 'yield_rate_30days', 'yield_rate_30days_loss']
+      sourceUrls: ['yield_rate','yield_rate_7days', 'yield_rate_30days', 'yield_rate_30days_loss'],
+      sourceparms: ['yield_rate','yield_7days', 'yield_30days', 'yield_30days_loss'],
+      sourceDescs: ['累计盈利','近7日收益', '近30日收益', '近30日亏损']
 		}
 	}	
 })
