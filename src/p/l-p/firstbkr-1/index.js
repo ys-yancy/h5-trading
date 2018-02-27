@@ -294,17 +294,14 @@ Base.extend(Register, PageBase, {
                 self._goRegister();
             }
 
-            new Toast('注册成功');
-            setTimeout(function() {
-                location.href = './option.html';
-            }, 1500);
+            new Toast('领取成功');
             
         }, function(data) {
             self.registerErr = true;
 
             var parent = submitEl.parent('.wrapper');
             self.showError(parent, data.message);
-            submitEl.val('注册');
+            submitEl.val('领取 100 美金');
         });
     },
 
@@ -336,7 +333,7 @@ Base.extend(Register, PageBase, {
         }
         // 直接跳转版本 
         else {
-          window.location = window.location.origin + wl + '/s/option.html';
+          window.location = window.location.origin + wl + '/s/home.html';
         }
     },
 
