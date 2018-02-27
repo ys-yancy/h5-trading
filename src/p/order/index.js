@@ -199,7 +199,7 @@ Base.extend(Order, PageBase, {
 
   _hasConfirmOrder: function() {
     var hasCom = false;
-    var tradingUi = Cookie.get('tradingUI');
+    var tradingUi = this.orderUi;
     var openConfirmOrder = Cookie.get('has_confirm_order');
 
     if (openConfirmOrder == 1 && tradingUi != 6) {
@@ -418,7 +418,7 @@ Base.extend(Order, PageBase, {
       self.unit = data.data.mini_quote_unit;
       self.render(orderTmpl, data.data, $('#J_Container'));
       self.guadan = sta == 'pending';
-
+      self.orderUi = data.data.ui;
 
       //读到订单数据就先显示按钮, 之后再根据状态调整
 

@@ -121,7 +121,6 @@ export default class Order extends Base {
       }
       params.volume = this.props.progress.investNum() / (pipValue * this.symbolValue.policy.default_takeprofit);
 
-
       // if (this.props.symbolValue.policy.min_quote_unit < 1) {
       //   var val = 1 / this.props.symbolValue.policy.min_quote_unit;
       //   params.volume = parseInt(params.volume * val) / val
