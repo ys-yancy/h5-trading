@@ -117,7 +117,7 @@ Base.extend(MasterList, Base, {
         item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultAvatarUrl();
         return item;
     })
-    console.log(data)
+
 		this.render(tmpl, data, $('.J_List'));
 		// this._renderCharts(data);
 	},
