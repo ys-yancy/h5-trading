@@ -27,8 +27,7 @@ export default class SortProfit extends Base {
                 item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultIconWL();
                 return item;
             })
-            
-            console.log(data)
+
             this.render(tmpl, data, this.el);
         }) 
     }
