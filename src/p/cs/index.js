@@ -3,10 +3,10 @@
 var Base = require('../../app/base');
 var PageBase = require('../../app/page-base');
 var Cookie = require('../../lib/cookie');
-var Toast = require('../../common/toast');
 var Config = require('../../app/config');
 var Uri = require('../../app/uri');
-
+var Toast = require('../../common/toast');
+var GoBack = require('../../common/go-back');
 function Cs() {
     Cs.superclass.constructor.apply(this, arguments);
     var self = this;
@@ -20,6 +20,7 @@ Base.extend(Cs, PageBase, {
         this._bind();
         this._initAttrs();
         this.configStatistics();
+        new GoBack();
     },
 
     _bind: function() {
