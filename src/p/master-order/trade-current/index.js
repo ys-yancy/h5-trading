@@ -134,7 +134,7 @@ export default class TradeCurrent extends PageBase{
 	_update(priceObj) {
 		try{
 			var symbol = priceObj.symbol.replace(/\./g, '-');
-			var priceEls = $('.J_TardeCurrentPrice[data-symbol='+ priceObj.symbol +']', this.el);
+			var priceEls = $('.J_TardeCurrentPrice[data-symbol='+ symbol +']', this.el);
 			
 			$.each(priceEls, function (index, item) {
 				var item = $(item),
@@ -145,9 +145,12 @@ export default class TradeCurrent extends PageBase{
 				} else {
 					cur_price = priceObj.ask_price[0];
 				}
+
 				item.text(cur_price)
 			})
-		}catch(e){}
+		}catch(e){
+			
+		}
 	}
 
 	_interval() {
