@@ -99,12 +99,11 @@ export default class Dialog extends Base{
 
     destroy() {
         let diaMaskEl = this.el.next('.J_DialogMask');
-        this.el.remove();
         this.el.off('click', '.J_DialogClose', $.proxy(this.close, this));
         this.el.off('click', '.J_DialogConfirm', $.proxy(this.confirm, this));
-        diaMaskEl.off('touchmove', function(e) {
-            e.preventDefault();
-        });
+        diaMaskEl.off('touchmove', function(e) {e.preventDefault();});
+        this.el.remove();
+        diaMaskEl.remove();
     }
 
     defaults() {

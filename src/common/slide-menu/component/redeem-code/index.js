@@ -76,11 +76,11 @@ export default class RedeemCode extends Base {
       }).then((data) => {
         self.onlyOne = true;
         data = data.data;
-  
+
         this.dialog.destroy();
         self.checkRe = false;
-        new Toast('兑换成功');
-        console.log(data);
+        new Toast('兑换成功, ' + data.amount + '美元已入账！');
+
       }, (data) => {
         self.onlyOne = true;
         var message = data.message || '请输入正确的兑换码';
