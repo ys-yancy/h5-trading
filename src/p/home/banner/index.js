@@ -25,7 +25,7 @@ export default class HomeBanner extends Base {
         }).then((data) => {
             data = data.data;
             this._render(data);
-            this._lazyBind();
+            !getActiveTitle() || this._lazyBind();
         })
     }
  

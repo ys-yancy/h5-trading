@@ -113,7 +113,7 @@ class Home extends PageBase {
 			el: $('.main-symbols')
 		});
 
-		if (getBottomNavPages().indexOf('master') !== -1) {
+		if (getBottomNavPages().indexOf('master') === -1) {
 			new SortProfit({
 				el: $('.main-master')
 			})
