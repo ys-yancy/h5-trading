@@ -64,7 +64,7 @@ export default class HomeGuide extends Base{
 
     defaults() {
         return {
-            firstUrl: '../../../',
+            firstUrl: '../../../../img/111.png',
             secondUrl: '../../../11',
         }
     }
