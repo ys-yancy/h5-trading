@@ -404,6 +404,10 @@ class Profile extends PageBase {
       openConfirmEl.removeClass('off');
     }
 
+    if (getDefaultTradingUI() == 6 && !getHasSwitchTradingUi()) {
+      $('.confirm-order').remove();
+    }
+
   }
 }
 
