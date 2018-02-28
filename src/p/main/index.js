@@ -106,7 +106,7 @@ class Home extends PageBase {
 
 		var topmsg = new TopMsg({
 	        el: $('.top-message'),
-	        tags: 'home'
+	        tags: ''
 		}, 10 * 1000);
 		
 		new HotSymbols({
