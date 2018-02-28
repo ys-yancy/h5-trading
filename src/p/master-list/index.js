@@ -114,7 +114,7 @@ Base.extend(MasterList, Base, {
 
 	_render: function(data) {
     data.data = data.data.map((item) => {
-        item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultAvatarUrl();
+        item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultIconWL();
         return item;
     })
 

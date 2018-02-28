@@ -14,6 +14,7 @@ import Banner from './banner';
 import Nav from './nav';
 import HotSymbols from './hot-symbols';
 import MainMasters from './masters';
+import SortProfit from './sort-profit';
 
 class Home extends PageBase {
 	constructor(config) {
@@ -112,10 +113,15 @@ class Home extends PageBase {
 			el: $('.main-symbols')
 		});
 
-		new MainMasters({
-			el: $('.main-master')
-		});
-        
+		if (getBottomNavPages().indexOf('master') !== -1) {
+			new SortProfit({
+				el: $('.main-master')
+			})
+		} else {
+			new MainMasters({
+				el: $('.main-master')
+			});
+		}
 	}
 
 	defaults() {

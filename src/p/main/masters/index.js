@@ -4,7 +4,7 @@ import Config from '../../../app/config';
 import Cookie from '../../../lib/cookie';
 
 // 引入的是master-list中的chart组件
-import CreateMiniChart from '../../master-list/chart/mini-line';
+// import CreateMiniChart from '../../master-list/chart/mini-line';
 
 import tmpl from './index.ejs';
 
@@ -29,12 +29,12 @@ export default class MainMasters extends Base {
             }
 
             data = data.map((item) => {
-                item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultAvatarUrl();
+                item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultIconWL();
                 return item;
             })
         
             this.render(tmpl, data, this.el);
-            this._renderCharts(data);
+            // this._renderCharts(data);
         }) 
     }
 

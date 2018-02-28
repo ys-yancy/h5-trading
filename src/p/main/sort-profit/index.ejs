@@ -1,0 +1,27 @@
+
+<div class="hd">
+    <h2 class="hd-name sort-profit-hd-name">盈利榜单&nbsp;&nbsp;TOP</h2>
+    <!-- <a class="hd-more l2-color" href="">更多</a> -->
+</div>
+<ul class="main-master-list">
+    <% data.forEach(function(item, index) {%>
+        <li class="sort-profit-item bd-color clearfix">
+            <a href="javascript:void(0);">
+                
+                <%if (index > 2) {%>
+                    <span class="sort rank-<%= item.rank %>"><%= item.rank %></span>
+                <%} else {%>
+                    <span class="sort rank-<%= item.rank %>"></span>
+                <% } %>
+                <div class="img-wrapper-outer">
+                    <div class="img-wrapper">
+                      <img class="img" src="<%= item.avatar %>" alt="">
+                    </div>
+                </div>
+                <span class="nickname"><%= item.nickname %></span>
+                <span class="profit"><%= item.profit.toFixed(2) %></span>
+                <span class="tag">$</span>
+            </a>
+        </li>
+    <%})%>
+</ul>

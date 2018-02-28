@@ -16,7 +16,15 @@
                     <span class="name l1-color"><%= item.name %></span>
                 </div>
                 <div class="tradelist-info">
-                    <div id="J_TradelistChart" class="item chart_index_<%= index %> J_TradelistChart"></div>
+                    <!-- <div id="J_TradelistChart" class="item chart_index_<%= index %> J_TradelistChart"></div>
+                     -->
+                    <div class="item">
+                        <!-- <p class="l2-color"><%= data.sourceDesc %></p> -->
+                        <p class="l2-color">累计盈利</p>
+                        <p class="all-profit <%= parseFloat(item.yield_rate || 0).toFixed(2) > 0 ? 'up' : 'down' %>">
+                            <%= parseFloat(item.yield).toFixed(2) %>
+                        </p>
+                    </div>
                     <div class="item">
                         <p class="l2-color">收益率</p>
                         <p class="profit <%= parseFloat(item.yield_rate).toFixed(2) > 0 ? 'up' : 'down' %>">
