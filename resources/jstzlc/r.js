@@ -145,7 +145,7 @@ function getWXInviteDesWL () {
 
 // 获取首页登录链接
 function getHomeUrl() {
-	return 'home.html'
+	return 'main.html'
 }
 
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
