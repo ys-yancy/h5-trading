@@ -23,6 +23,7 @@ class Home extends PageBase {
 		new BottomNav({
 			page: 'home'
 		});
+
 		// var new_home_guide = Cookie.get('new_home_guide');
 		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
 		// 	this.guide = new Guide();

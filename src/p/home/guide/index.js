@@ -23,7 +23,7 @@ export default class HomeGuide extends Base{
         this.imgEl.on('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-
+            
             if (this.ishide) {
                 this._hide();
             }
@@ -64,8 +64,8 @@ export default class HomeGuide extends Base{
 
     defaults() {
         return {
-            firstUrl: '../../../',
-            secondUrl: '../../../11',
+            firstUrl: '../../../../img/111.jpg',
+            secondUrl: '',
         }
     }
 }
