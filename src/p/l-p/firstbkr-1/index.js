@@ -313,9 +313,9 @@ Base.extend(Register, PageBase, {
           data: {
             access_token: Cookie.get('token')
           }
-        }).then(() => {
-          this._goRegister();
         });
+        
+        this._goRegister();
     },
 
     _goRegister() {
