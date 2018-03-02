@@ -14,9 +14,9 @@ export default class SortProfit extends Base {
 
     _getData() {
         this.ajax({
-            // 15: 最近15个自然日
+            // 15: 最近15个自然日,0代表全部
             // 10: 一次返回10个人
-            url: '/v1/rank/user_profit/15/10',
+            url: '/v1/rank/user_profit/0/10',
             data: {
                 wl: getWXWL()
             }
