@@ -189,7 +189,7 @@ function getWXHistoricalDesWL () {
 }
 
 function getActiveTitle() {
-	return '正月十五闹元宵 猜灯谜 领奖金'
+	return false
 }
 
 function getActiveContent() {

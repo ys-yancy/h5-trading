@@ -310,6 +310,7 @@ Base.extend(Register, PageBase, {
         this.ajax({
           url: '/v1/hongbao/use/',
           type: 'post',
+          noToast: true,
           data: {
             access_token: Cookie.get('token')
           }
