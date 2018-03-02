@@ -24,7 +24,7 @@ export default class SortProfit extends Base {
             data = data.data;
 
             data = data.map((item) => {
-                item.img = item.img ? Config.getAvatarPrefix(item.img) : getDefaultIconWL();
+                item.avatar = item.avatar ? Config.getAvatarPrefix(item.avatar) : getDefaultIconWL();
                 return item;
             })
 
