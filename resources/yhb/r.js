@@ -247,7 +247,7 @@ function getMobilePayTextWL() {
 
 // 最低入金金额
 function getMinDepositWL() {
-	return 100;
+	return 1;
 }
 
 // 获取客服电话
@@ -399,7 +399,7 @@ function getWXIDWL () {
 
 // 最低出金金额
 function getMinWithdrawWL() {
-	return 0;
+	return 100;
 }
 
 // 急速交易默认品种
