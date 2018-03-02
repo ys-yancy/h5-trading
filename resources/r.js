@@ -251,7 +251,7 @@ function getMobilePayTextWL() {
 
 // 最低入金金额
 function getMinDepositWL() {
-	return 1;
+	return 10;
 }
 
 // 获取客服电话
