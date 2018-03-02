@@ -25,6 +25,7 @@ export default class SlideMenu extends PageBase {
 		this._bind();
 		this._requires();
 		this._updateUserInfo();
+		this._getInboxRemind();
 	}
 
 	_bind() {
@@ -144,17 +145,25 @@ export default class SlideMenu extends PageBase {
 		}, 450)
 	}
 
-	_showIconRemind() {
+	_showIconRemind(unReadyCount) {
 
-		if (this.remindEl) {
-			this.remindEl.show();
+		if (unReadyCount <= 0) {
 			return;
 		}
+
+		
+
+		// if (this.remindEl) {
+		// 	this.remindEl.show();
+		// 	return;
+		// }
 
 		var remindEl = document.createElement('SPAN');
 		remindEl.className = 'inbox-remind-circle show';
 		remindEl.style.cssText = 'position:absolute;width:.3rem;height:.3rem;top:-.05rem;right:-.05rem;border-radius:50%;background:#D0021B;';
 		$('.J_ShowSlideMenu').append(remindEl);
+		$('#J_InboxCount').addClass('show').text(unReadyCount);
+
 		this.remindEl = $(remindEl);
 	}
 
@@ -182,6 +191,24 @@ export default class SlideMenu extends PageBase {
 				avatar: avatarUrl,
 				name: account.nickname
 			})
+		})
+	}
+
+	_getInboxRemind() {
+		this.ajax({
+			url: '/v1/user/inbox/message/number/',
+			noToast: true,
+			data: {
+				access_token: Cookie.get('token')
+			}
+		}).then((data) => {
+			data = data.data[0];
+			var unReadNum = data.unread_num;
+
+			if (unReadNum && unReadNum > 0) {
+				this._showIconRemind(unReadNum);
+			}
+			
 		})
 	}
 
