@@ -9,18 +9,18 @@ function getBottomNavPages() {
 
 // 默认支付方式
 function getDefaultPayWay() {
-	return 'pc'
+	return 'weixin'
 }
 
 // 显示哪几种支付方式, 与getPayUrl()中对应
 function getShowPayWay() {
-	return ['pc'] //'weixin', 'zhifubao',  'weixinWeb', 'zhifubaoWeb', 'kuaijie',
+	return ['weixin', 'pc'] //, 'zhifubao',  'weixinWeb', 'zhifubaoWeb', 'kuaijie',
 }
 
 /**
  * desc: 支付地址 在recharge 把url渲染到元素中去 然后直接在元素中拿
  * @param url 支付接口
- * @param openType 使用哪种方式来处理 Url 中下行的数据， 包括： postForm: 表单提交，openUrl: 直接跳转打开，createRr: 创建二维码，
+ * @param openType 使用哪种方式来处理 Url 中下行的数据， 包括： postForm: 表单提交，openUrl: 直接跳转打开，createRr: 创建二维码，showImg
  * @param img 用于说明支付方式的图片路径
  * @param 对应支付所需要的特定参数（标识）
  * 对于快捷支付而言，是该是打开html的路径
@@ -29,11 +29,12 @@ function getShowPayWay() {
 function getPayUrl() {
 	return {
 		weixin: {
-			url: '/v1/user/pay/depost_fast_wechat/',//'/v1/user/pay/deposit_juxin/',
-			openType: 'postForm',
+			url: '/v1/user/pay/depost_daddy_wechat/new/',//'/v1/user/pay/deposit_juxin/',
+			openType: 'showImg',
 			img: '../img/recharge/weixin-saoma.png',
 			params: {
-				terminal: 2
+				terminal: 2,
+				channel: 'weixin'
 				// depositType: 'wechat_saoma'
 			}
 		},

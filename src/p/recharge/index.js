@@ -532,6 +532,10 @@ Base.extend(Recharge, PageBase, {
                 var imgUrl = this._createQrcode(url, 5, 'Q');
                 this._inieQrConponent(imgUrl, type);
                 break;
+            case 'showImg':
+                var url = data.wechat_url;
+                this._inieQrConponent(url, type, true);
+                break;
             default: 
                 break;
         }
@@ -553,11 +557,12 @@ Base.extend(Recharge, PageBase, {
         });
     },
 
-    _inieQrConponent: function(url, source) {
+    _inieQrConponent: function(url, source, isShowImg) {
         this.qrComponent = new ShowQrCode({
             el: $('#J_QrContent'),
             qrUrl: url,
             source: source,
+            isShowImg: isShowImg,
             parent: this
         })
     },

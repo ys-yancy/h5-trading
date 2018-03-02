@@ -22,7 +22,8 @@ Base.extend(ShowQrCode, Base, {
 	show: function() {
 		this.render(tmpl, {
 			url: this.qrUrl,
-			s: this.source
+			s: this.source,
+			isShowImg: this.isShowImg
 		}, this.el);
 	},
 

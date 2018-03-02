@@ -1,14 +1,21 @@
-<ul>
-	<li class="bd-color-1"><span class="name">商品名称</span><span class="desc">账户入金</span></li>
-	<li class="bd-color-1"><span class="name">订单金额($)</span><span class="desc">1212</span></li>
-</ul>
-<div class="qr-img-wrapper-outer">
-	<div class="qr-img-wrapper">
-		<img class="img" id="J_Qrode" src="<%= data.url %>">
+
+<% if (data.isShowImg) {%>
+	<div class="recharge-img-wrapper">
+		<img class="recharge-img" src="<%= data.url %>" alt="">
 	</div>
-</div>
-<div class="qr-desc">
-	<p>支付步骤：</p>
-	<p>1.我是支付说明</p>
-	<p>2.我是支付说明</p>
-</div>
+<% } else {%>
+	<ul>
+		<li class="bd-color-1"><span class="name">商品名称</span><span class="desc">账户入金</span></li>
+		<li class="bd-color-1"><span class="name">订单金额($)</span><span class="desc">1212</span></li>
+	</ul>
+	<div class="qr-img-wrapper-outer">
+		<div class="qr-img-wrapper">
+			<img class="img" id="J_Qrode" src="<%= data.url %>">
+		</div>
+	</div>
+	<div class="qr-desc">
+		<p>支付步骤：</p>
+		<p>1.我是支付说明</p>
+		<p>2.我是支付说明</p>
+	</div>
+<% } %>

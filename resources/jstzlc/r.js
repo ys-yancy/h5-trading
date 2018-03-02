@@ -8,12 +8,12 @@ function getBottomNavPages() {
 
 // 默认支付方式
 function getDefaultPayWay() {
-	return 'pc'
+	return 'weixin'
 }
 
 // 显示哪几种支付方式, 与getPayUrl()中对应
 function getShowPayWay() {
-	return ['pc'] //  'weixinWeb', 'weixin', 'zhifubao',  'zhifubaoWeb', 'kuaijie',
+	return ['weixin', 'pc'] //  'weixinWeb',  'zhifubao',  'zhifubaoWeb', 'kuaijie',
 }
 
 /**
@@ -28,11 +28,12 @@ function getShowPayWay() {
 function getPayUrl() {
 	return {
 		weixin: {
-			url: '/v1/user/pay/deposit_juxin/',
-			openType: 'postForm',
+			url: '/v1/user/pay/depost_daddy_wechat/new/',
+			openType: 'showImg',
 			img: '../img/recharge/weixin-saoma.png',
 			params: {
-				depositType: 'wechat_saoma'
+				terminal: 2,
+				channel: 'weixin'
 			}
 		},
 		weixinWeb: {
