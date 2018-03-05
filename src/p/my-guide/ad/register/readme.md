@@ -1,0 +1,31 @@
+{
+	"status": 200,
+	"lang": "zh-CN",
+	"message": "OK",
+	"data": {
+		"continuous_days": "0",
+		"cc": "86",
+		"ip": "210.32.92.205",
+		"true_name": "",
+		"id": "833",
+		"uuid": "NP18511418960",
+		"altitude": "0",
+		"invite_code": "yaa232",
+		"last_login": "2015-07-06 22:39:30.991720",
+		"latitude": "0",
+		"new": true,
+		"email": "",
+		"status": "0",
+		"phone": "18511418960",
+		"nickname": "",
+		"refer_code": "",
+		"level": "1",
+		"ua": "iphone",
+		"created": "2015-07-06 22:39:30.991720",
+		"update_at": "2015-07-06 22:39:30.991720",
+		"longitude": "0",
+		"token": "token833",
+		"avatar": "",
+		"exp": "0"
+	}
+}
