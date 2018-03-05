@@ -290,7 +290,7 @@ Base.extend(Order, PageBase, {
         swap = data.data.swap,
         commission = data.data.commission;
 
-      profit = parseFloat(profit) + parseFloat(swap) + parseFloat(commission);
+      profit = parseFloat(profit) - Math.abs(swap) - Math.abs(commission);
       profit = profit.toFixed(2);
 
       new Popup({
