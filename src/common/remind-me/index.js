@@ -134,7 +134,7 @@ Base.extend(RemindMe, Base, {
     },
 
     attrs: {
-        tmpl: `<div class="dialog dialog-float-msg" id="J_Dialog">
+        tmpl: `<div class="dialog dialog-float-msg remind-me-wrapper" id="J_Dialog">
                 <span class="wrapper-icon"><span class="icon"></span></span>
                 <div class="dialog-content">
                     <p class="title">提示</p>
