@@ -57,8 +57,8 @@ var entryAll = {
     'my-guide/jstzlc/register': './src/p/my-guide/jstzlc/register/index',
     'my-guide/tl/login': './src/p/my-guide/tl/login/index',
     'my-guide/tl/register': './src/p/my-guide/tl/register/index',
-    'my-guide/ad/login': './src/p/my-guide/ad/login/index',
-    'my-guide/ad/register': './src/p/my-guide/ad/register/index',
+    'my-guide/admins/login': './src/p/my-guide/admins/login/index',
+    'my-guide/admins/register': './src/p/my-guide/admins/register/index',
     'l-p/firstbkr-1': './src/p/l-p/firstbkr-1/index'
 };
 

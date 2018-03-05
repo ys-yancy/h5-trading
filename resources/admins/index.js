@@ -77,7 +77,7 @@ function getRealWithdrawUrl() {
 
 //选择引用那套皮肤
 function getAppUi() {
-	return 'tl/index.css';
+	return 'admins/index.css';
 }
 
 // highcharts 的 ui
@@ -119,17 +119,17 @@ function getIsShowOptionWeinixnGuide() {
 
 // 微信分享域名
 function getWXDomainWL () {
-	return 'https://t-tl.firstbkr.com/';
+	return 'https://t-admins.firstbkr.com/';
 }
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'https://t-tl.firstbkr.com/img/wl/tl/share.jpg';
+	return 'https://t-admins.firstbkr.com/img/wl/admins/share.jpg';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'https://t-tl.firstbkr.com/img/wl/tl/share.jpg';
+	return 'https://t-admins.firstbkr.com/img/wl/admins/share.jpg';
 }
 
 // 微信邀请好友标题
@@ -152,7 +152,7 @@ function getHomeUrl() {
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	return 'https://t-tl.firstbkr.com/tl/s/my-guide/tl/register.html?inviteCode=';
+	return 'https://t-admins.firstbkr.com/admins/s/my-guide/admins/register.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
@@ -206,7 +206,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t-tl.firstbkr.com/tl/img/wl/tl/tl_avatar.png';
+	return 'https://t-admins.firstbkr.com/admins/img/wl/admins/admins_avatar.png';
 }
 
 // 是否显示下载链接
@@ -221,7 +221,7 @@ function getIfShowWXCodeWL () {
 
 // 官方微信-个人中心
 function getWeiXinWL () {
-	return 'tl';
+	return 'admins';
 }
 
 // 官方网站-个人中心
@@ -231,7 +231,7 @@ function getWebsiteWL () {
 
 // 白标标识
 function getWXWL() {
-	return 'tl';
+	return 'admins';
 }
 
 // 移动支付页面说明
@@ -251,7 +251,7 @@ function getSPhone() {
 
 // 登录页面链接
 function getLoginWL () {
-	return 'https://t-tl.firstbkr.com/tl/s/my-guide/tl/login.html';
+	return 'https://t-admins.firstbkr.com/admins/s/my-guide/admins/login.html';
 }
 
 // 使用的交易UI
@@ -363,7 +363,7 @@ function getUseNewGuide () {
 
 // 新用户引导 - 官微二维码
 function getNewGuideQRCode () {
-	return '../img/wl/tl/tl_gw_qrcode.jpg';
+	return '../img/wl/admins/admins_gw_qrcode.jpg';
 }
 
 // 注册赠金
@@ -423,7 +423,7 @@ function getPayUrlWL() {
 
 //安卓分享前缀
 function getAndroidSharePrefixUrl() {
-	return 'https://t-tl.firstbkr.com';
+	return 'https://t-admins.firstbkr.com';
 }
 
 //正式环境
