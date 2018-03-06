@@ -125,7 +125,7 @@ class Home extends PageBase {
 	_initGuide() {
 		var new_home_guide = Cookie.get('new_home_guide');
 
-		if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
+		if (getUseNewHomeGuide() && !new_home_guide || (new_home_guide && new_home_guide != 1)) {
 			new Guide();
 		}
 	}

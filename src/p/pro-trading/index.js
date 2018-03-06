@@ -31,7 +31,7 @@ var Share = require('./share');
 // 这些功能暂时不确定
 // var Investment = require('./invest/index');
 
-// var Guide = require('./guide');
+var Guide = require('./guide');
 
 function ProTrading() {
   ProTrading.superclass.constructor.apply(this, arguments);
@@ -46,7 +46,8 @@ function ProTrading() {
       new Sound();
       var newUser = self.cookie.get('new');
 
-      if (!newUser || (newUser && newUser != 2)) {
+      if (getUseNewTradeGuide() && !newUser || (newUser && newUser != 2)) {
+        new Guide();
         // self.guide = new Guide();
       }
 
@@ -1363,7 +1364,7 @@ Base.extend(ProTrading, PageBase, {
 
       $('.guide-wrapper').remove();
 
-      this.guide && this.guide.showResult();
+      // this.guide && this.guide.showResult();
 
       var doc = $(document);
       var btnDesc = '分享';

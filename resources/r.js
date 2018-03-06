@@ -354,7 +354,7 @@ function getUserInfoWX () {
 
 // 是否使用新用户首页引导
 function getUseNewHomeGuide() {
-	return true;
+	return false;
 }
 
 // 是否使用新用户交易引导
@@ -366,7 +366,7 @@ function getUseNewFollowGuide () {
 	return false;
 }
 
-// 是否使用新用户引导
+// 是否使用新用户引导 目前只有option。html用
 function getUseNewGuide () {
 	return false;
 }
