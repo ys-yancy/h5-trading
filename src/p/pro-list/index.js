@@ -22,6 +22,7 @@ var infoTmpl = require('../pro-trading/tpl/info.ejs');
 var orderListTmpl = require('./tmpl/orderList.ejs');
 
 const Sound = require('../../common/sound');
+var Guide = require('./compontent/guide');
 
 function ProChart() {
   ProChart.superclass.constructor.apply(this, arguments);
@@ -34,6 +35,7 @@ function ProChart() {
       self.init();
       new Sound();
     });
+    this._initGuide();
   });
 }
 
@@ -74,6 +76,13 @@ Base.extend(ProChart, PageBase, {
     // 添加默认微信分享
     if (this.isWeixin()) {
       this.setupWeiXinShare('default_invite');
+    }
+  },
+
+  _initGuide: function() {
+    var newUser = this.cookie.get('new_pro_list_guide');
+    if (getUseNewProListGuide() && !newUser || (newUser && newUser != 1)) {
+      new Guide();
     }
   },
 
