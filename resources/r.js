@@ -366,7 +366,7 @@ function getUseNewFollowGuide () {
 	return false;
 }
 
-// 是否使用新用户引导 目前只有option。html用
+// 是否使用新用户引导 目前只有option.html用
 function getUseNewGuide () {
 	return false;
 }
