@@ -362,6 +362,11 @@ function getUseNewTradeGuide () {
 	return false;
 }
 
+// 是否使用新用户寸头引导
+function getUseNewProListGuide () {
+	return false;
+}
+
 function getUseNewFollowGuide () {
 	return false;
 }
