@@ -11,11 +11,11 @@ export default class Guide {
   constructor() {
 
     // 如果r文件设置了不使用新引导流程, 那就不使用
-    if (!getUseNewTradeGuide() || Cookie.get('new') == 2) {
+    if (!getUseNewTradeGuide() || Cookie.get('new_trade_guide') == 2) {
       return;
     }
     this._show();
-    Cookie.set('new', 2);
+    Cookie.set('new_trade_guide', 2);
   }
 
   _show() {

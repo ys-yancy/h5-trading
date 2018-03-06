@@ -44,7 +44,7 @@ function ProTrading() {
       }
       self.init();
       new Sound();
-      var newUser = self.cookie.get('new');
+      var newUser = self.cookie.get('new_trade_guide');
 
       if (getUseNewTradeGuide() && !newUser || (newUser && newUser != 2)) {
         new Guide();
