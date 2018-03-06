@@ -8,7 +8,7 @@ import TopMsg from '../../common/top-msg';
 import CheckOpenAccount from '../../common/check-open-account';
 // import CheckFollowGuide from '../../common/check-follow-guide';
 // import Marquee from '../../common/marquee';
-// import Guide from './guide';
+import Guide from './guide';
 import Cookie from '../../lib/cookie';
 import Banner from './banner';
 import Nav from './nav';
@@ -24,14 +24,11 @@ class Home extends PageBase {
 			this._init();
 		});
 
+		this._initGuide();
+
 		new BottomNav({
 			page: 'home'
-        });
-		// this.guide = new Guide();
-		// var new_home_guide = Cookie.get('new_home_guide');
-		// if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
-		// 	this.guide = new Guide();
-		// }
+		});
 	}
 
 	_init() {
@@ -122,6 +119,14 @@ class Home extends PageBase {
 			new MainMasters({
 				el: $('.main-master')
 			});
+		}
+	}
+
+	_initGuide() {
+		var new_home_guide = Cookie.get('new_home_guide');
+
+		if (!new_home_guide || (new_home_guide && new_home_guide != 1)) {
+			new Guide();
 		}
 	}
 
