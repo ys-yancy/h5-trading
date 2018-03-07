@@ -276,7 +276,7 @@ function getNewsNavList() {
 
 // 是否允许删除品种（专业自选页面）
 function getAllowDelete() {
-	return false;
+	return true;
 }
 
 // 是否允许搜索品种
