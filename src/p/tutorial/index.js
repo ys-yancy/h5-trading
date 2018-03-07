@@ -2,6 +2,7 @@
 'use strict';
 
 import Base from '../../app/base';
+import Uri from '../../app/uri';
 import Cookie from '../../lib/cookie';
 import GoBack from '../../common/go-back';
 import Header from '../../common/header';
