@@ -77,7 +77,7 @@ function getRealWithdrawUrl() {
 
 //选择引用那套皮肤
 function getAppUi() {
-	return 'admins/index.css';
+	return 'index.css';
 }
 
 // highcharts 的 ui
@@ -119,29 +119,29 @@ function getIsShowOptionWeinixnGuide() {
 
 // 微信分享域名
 function getWXDomainWL () {
-	return 'https://t-admins.firstbkr.com/';
+	return 'http://t-admins.fxadm.com/';
 }
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'https://t-admins.firstbkr.com/img/wl/admins/share.jpg';
+	return 'http://t-admins.fxadm.com/img/wl/admins/share.jpg';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'https://t-admins.firstbkr.com/img/wl/admins/share.jpg';
+	return 'http://t-admins.fxadm.com/img/wl/admins/share.jpg';
 }
 
 // 微信邀请好友标题
 // 0526更新
 function getWXInviteTitleWL () {
-	return '%s 在极速投资理财赚的太嗨，送美金给你，注册后立即到账！';
+	return '%s 在ADMINS赚的太嗨，送美金给你，注册后立即到账！';
 }
 
 // 微信邀请好友描述
 // 0526更新
 function getWXInviteDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return 'ADMINS，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 // 获取首页登录链接
@@ -152,7 +152,7 @@ function getHomeUrl() {
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	return 'https://t-admins.firstbkr.com/admins/s/my-guide/admins/register.html?inviteCode=';
+	return 'http://t-admins.fxadm.com/admins/s/my-guide/admins/register.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
@@ -161,28 +161,28 @@ function getIsNewShareWl() {
 }
 // 新的邀请链接
 function getNewShareWl() {
-	return 'https://firstbkr.tonglingdi.cn/subscribe?uid=';
+	return 'http://fxadm.tonglingdi.cn/subscribe?uid=';
 }
 
 // 微信转发标题
 // 0526更新
 function getWXRepostTitleWL () {
-	return ' 在极速投资理财赚的太嗨，送美金给你，注册后立即到账！';
+	return ' 在ADMINS赚的太嗨，送美金给你，注册后立即到账！';
 }
 
 // 微信转发描述
 function getWXRepostDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return 'ADMINS，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 // 微信当前订单描述
 function getWXCurrentDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return 'ADMINS，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 // 微信历史订单描述
 function getWXHistoricalDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return 'ADMINS，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 function getActiveTitle() {
@@ -196,17 +196,17 @@ function getActiveContent() {
 // 关于我们内容
 function getAboutUSHTMLWL () {
 	return '<div class="bd">\
-			<p>目前，极速投资理财已经支持全球20个交易所的近8000个品种，所有品种通过单一交易账户便可访问。</p><br/>\
-			<p>极速投资理财团队在金融领域拥有多年从业经验并掌握大量行业资源，在创立之初就确立了“为大众用户提供最优惠、性价比最高的交易服务”的宗旨，并一直坚定地奉行这一宗旨，致力于在股票、期货、外汇、贵金属及其他各类市场中寻求最优秀的流动性。</p><br/>\
-			<p>极速投资理财团队在计算机网络技术方面亦颇有建树，在交易系统的构建过程中充分考虑了稳定性、时效性、易用性等多方面因素，力求为投资者提供极致的交易体验。</p><br/>\
-			<p>极速投资理财的使命是让全球每一个人，无论处于何等收入水平，都能够以简易、安全、快捷的方式参与投资全球金融市场。</p><br/>\
+			<p>目前，ADMINS已经支持全球20个交易所的近8000个品种，所有品种通过单一交易账户便可访问。</p><br/>\
+			<p>ADMINS团队在金融领域拥有多年从业经验并掌握大量行业资源，在创立之初就确立了“为大众用户提供最优惠、性价比最高的交易服务”的宗旨，并一直坚定地奉行这一宗旨，致力于在股票、期货、外汇、贵金属及其他各类市场中寻求最优秀的流动性。</p><br/>\
+			<p>ADMINS团队在计算机网络技术方面亦颇有建树，在交易系统的构建过程中充分考虑了稳定性、时效性、易用性等多方面因素，力求为投资者提供极致的交易体验。</p><br/>\
+			<p>ADMINS的使命是让全球每一个人，无论处于何等收入水平，都能够以简易、安全、快捷的方式参与投资全球金融市场。</p><br/>\
 			</div>';
 ;
 }
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t-admins.firstbkr.com/admins/img/wl/admins/admins_avatar.png';
+	return 'http://t-admins.fxadm.com/admins/img/wl/admins/admins_avatar.png';
 }
 
 // 是否显示下载链接
@@ -236,7 +236,7 @@ function getWXWL() {
 
 // 移动支付页面说明
 function getMobilePayTextWL() {
-	return '极速投资理财通过多家三方支付公司合作，确保您的账户与资金安全。'  ;
+	return 'ADMINS通过多家三方支付公司合作，确保您的账户与资金安全。'  ;
 }
 
 // 最低入金金额
@@ -251,7 +251,7 @@ function getSPhone() {
 
 // 登录页面链接
 function getLoginWL () {
-	return 'https://t-admins.firstbkr.com/admins/s/my-guide/admins/login.html';
+	return 'http://t-admins.fxadm.com/admins/s/my-guide/admins/login.html';
 }
 
 // 使用的交易UI
@@ -319,7 +319,7 @@ function getUseNewShare () {
 
 // 白标商家名称
 function getWLName () {
-	return '极速投资理财';
+	return 'ADMINS';
 }
 
 
@@ -388,7 +388,7 @@ function getDefaultVolume() {
 
 // 默认昵称前缀, 要带一个空格
 function getDefaultNicknamePrefix () {
-	return '极速投资理财_';
+	return 'ADMINS_';
 }
 
 // 官微 profile 页面 ID
@@ -408,7 +408,7 @@ function getDefaultRapidSymbols() {
 
 //是否显示在线客服
 function showServicePel() {
-	return true;
+	return false;
 }
 
 //是否显示客服电话
@@ -423,77 +423,77 @@ function getHelpLink () {
 
 // pc支付页面
 function getPayUrlWL() {
-	return 'https://p.firstbkr.com';
+	return 'http://p.fxadm.com';
 }
 
 //安卓分享前缀
 function getAndroidSharePrefixUrl() {
-	return 'https://t-admins.firstbkr.com';
+	return 'http://t-admins.fxadm.com';
 }
 
 //正式环境
 // function getFormalEnvironmentUrl() {
-// 	return 'https://api.firstbkr.com';
+// 	return 'http://api.fxadm.com';
 // }
 
 //生产服
 function getProduClothedUrl() {
-	return 'https://api.firstbkr.com';
+	return 'http://api.fxadm.com';
 }
 
 //非微信同步头像前缀
 function getAndroidAvatarUrl() {
-	return 'https://static.firstbkr.com/'
+	return 'http://static.fxadm.com/'
 }
 
 //本地(其他)头像前缀
 function getNativePlaceUrl() {
-	return 'https://static.firstbkr.com/';
+	return 'http://static.fxadm.com/';
 }
 
 //获取价格（group  v1）
 // function getGroupPriceUrl() {
-// 	return 'https://price.firstbkr.com/v1/price/current';
+// 	return 'http://price.fxadm.com/v1/price/current';
 // }
 
 //获取价格(v2)
 function getPriceUrl() {
-	return 'https://price.firstbkr.com/v2/price/current';
+	return 'http://price.fxadm.com/v2/price/current';
 }
 
 //蜡烛图url
 function getCandleUrl() {
-	return 'https://price.firstbkr.com/v3/price/candle';
+	return 'http://price.fxadm.com/v3/price/candle';
 }
 
 //获取Symbols
 function getSymbolUrl() {
-	return 'https://price.firstbkr.com/v2/symbol/snapshot?'
+	return 'http://price.fxadm.com/v2/symbol/snapshot?'
 }
 
 //stomp 报价Url
 function getRtpriceSompUrl() {
-	return 'wss://rtprice.firstbkr.com:61615/stomp';
+	return 'ws://rtprice.fxadm.com:61613/stomp';
 }
 
 //微信credentialUrl
 function getCredentialUrl() {
-	return 'https://api.firstbkr.com/v1/weixin/share/package/';
+	return 'http://api.fxadm.com/v1/weixin/share/package/';
 }
 
 //微信PersonalInfoUrl
 // function getPersonalInfoUrl() {
-// 	return 'https://weixin.firstbkr.com/api/user/info?openid=';
+// 	return 'http://weixin.fxadm.com/api/user/info?openid=';
 // }
 
 //weixin.js => notifyShareBehavior 中url
 function getIfyShareBehaviorUrl() {
-	return 'https://t.firstbkr.com/s/weixin/share_counter';
+	return 'http://t.fxadm.com/s/weixin/share_counter';
 }
 
 // 微信授权 weixinUrlFirst
 function getWeixinUrlFirst() {
-	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=https%3a%2f%2fapi.firstbkr.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
+	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=http%3a%2f%2fapi.fxadm.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
 }
 
 //百度统计代码
@@ -504,8 +504,8 @@ function getBaiduCodeScript() {
 
 //高风险揭示协议
 function getRiskMsg() {
-	return '<p>尊敬的极速投资理财客户:</p>\
-	<p class="first">极速投资理财交易平台的电子交易业务是一种潜在收益和潜在风险较高的投资业务,对投资者的风险承受能力、理解风险程度、风险控制能力以及投资经验有较高的要求。</p>\
+	return '<p>尊敬的ADMINS客户:</p>\
+	<p class="first">ADMINS交易平台的电子交易业务是一种潜在收益和潜在风险较高的投资业务,对投资者的风险承受能力、理解风险程度、风险控制能力以及投资经验有较高的要求。</p>\
 	<p>1. 交易客户有义务保管好交易账号、密码，避免泄露，因保管不善导致交易账号、密码泄露而引起的风险由交易客户自行承担。</p>\
 	<p>2. 交易客户应亲自进行交易活动，切勿委托任何机构或个人进行代理交易活动，因信任他人而产生的风险由交易客户自行承担。</p>\
 	<p>3. 任何保证获利、零风险等宣传均属虚假承诺，因轻信此类信息产生的风险由交易客户自行承担。</p>\

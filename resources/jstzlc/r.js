@@ -77,7 +77,7 @@ function getRealWithdrawUrl() {
 
 //选择引用那套皮肤
 function getAppUi() {
-	return 'jstzlc/index.css';
+	return 'index.css';
 }
 
 // highcharts 的 ui
