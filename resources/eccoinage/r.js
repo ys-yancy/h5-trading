@@ -414,7 +414,7 @@ function getDefaultRapidSymbols() {
 
 //是否显示在线客服
 function showServicePel() {
-	return true;
+	return false;
 }
 
 //是否显示客服电话
