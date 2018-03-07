@@ -77,7 +77,7 @@ function getRealWithdrawUrl() {
 
 //选择引用那套皮肤
 function getAppUi() {
-	return 'tl/index.css';
+	return 'index.css';
 }
 
 // highcharts 的 ui
@@ -135,13 +135,13 @@ function getWXInviteImgUrlWl () {
 // 微信邀请好友标题
 // 0526更新
 function getWXInviteTitleWL () {
-	return '%s 在极速投资理财赚的太嗨，送美金给你，注册后立即到账！';
+	return '%s 在天汇赚的太嗨，送美金给你，注册后立即到账！';
 }
 
 // 微信邀请好友描述
 // 0526更新
 function getWXInviteDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '天汇，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 // 获取首页登录链接
@@ -167,22 +167,22 @@ function getNewShareWl() {
 // 微信转发标题
 // 0526更新
 function getWXRepostTitleWL () {
-	return ' 在极速投资理财赚的太嗨，送美金给你，注册后立即到账！';
+	return ' 在天汇赚的太嗨，送美金给你，注册后立即到账！';
 }
 
 // 微信转发描述
 function getWXRepostDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '天汇，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 // 微信当前订单描述
 function getWXCurrentDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '天汇，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 // 微信历史订单描述
 function getWXHistoricalDesWL () {
-	return '极速投资理财，注册就送美金助你投资全球，盈利分分钟可提现！';
+	return '天汇，注册就送美金助你投资全球，盈利分分钟可提现！';
 }
 
 function getActiveTitle() {
@@ -196,10 +196,10 @@ function getActiveContent() {
 // 关于我们内容
 function getAboutUSHTMLWL () {
 	return '<div class="bd">\
-			<p>目前，极速投资理财已经支持全球20个交易所的近8000个品种，所有品种通过单一交易账户便可访问。</p><br/>\
-			<p>极速投资理财团队在金融领域拥有多年从业经验并掌握大量行业资源，在创立之初就确立了“为大众用户提供最优惠、性价比最高的交易服务”的宗旨，并一直坚定地奉行这一宗旨，致力于在股票、期货、外汇、贵金属及其他各类市场中寻求最优秀的流动性。</p><br/>\
-			<p>极速投资理财团队在计算机网络技术方面亦颇有建树，在交易系统的构建过程中充分考虑了稳定性、时效性、易用性等多方面因素，力求为投资者提供极致的交易体验。</p><br/>\
-			<p>极速投资理财的使命是让全球每一个人，无论处于何等收入水平，都能够以简易、安全、快捷的方式参与投资全球金融市场。</p><br/>\
+			<p>目前，天汇已经支持全球20个交易所的近8000个品种，所有品种通过单一交易账户便可访问。</p><br/>\
+			<p>天汇团队在金融领域拥有多年从业经验并掌握大量行业资源，在创立之初就确立了“为大众用户提供最优惠、性价比最高的交易服务”的宗旨，并一直坚定地奉行这一宗旨，致力于在股票、期货、外汇、贵金属及其他各类市场中寻求最优秀的流动性。</p><br/>\
+			<p>天汇团队在计算机网络技术方面亦颇有建树，在交易系统的构建过程中充分考虑了稳定性、时效性、易用性等多方面因素，力求为投资者提供极致的交易体验。</p><br/>\
+			<p>天汇的使命是让全球每一个人，无论处于何等收入水平，都能够以简易、安全、快捷的方式参与投资全球金融市场。</p><br/>\
 			</div>';
 ;
 }
@@ -236,7 +236,7 @@ function getWXWL() {
 
 // 移动支付页面说明
 function getMobilePayTextWL() {
-	return '极速投资理财通过多家三方支付公司合作，确保您的账户与资金安全。'  ;
+	return '天汇通过多家三方支付公司合作，确保您的账户与资金安全。'  ;
 }
 
 // 最低入金金额
@@ -276,7 +276,7 @@ function getNewsNavList() {
 
 // 是否允许删除品种（专业自选页面）
 function getAllowDelete() {
-	return false;
+	return true;
 }
 
 // 是否允许搜索品种
@@ -319,7 +319,7 @@ function getUseNewShare () {
 
 // 白标商家名称
 function getWLName () {
-	return '极速投资理财';
+	return '天汇';
 }
 
 
@@ -388,7 +388,7 @@ function getDefaultVolume() {
 
 // 默认昵称前缀, 要带一个空格
 function getDefaultNicknamePrefix () {
-	return '极速投资理财_';
+	return '天汇_';
 }
 
 // 官微 profile 页面 ID
@@ -408,7 +408,7 @@ function getDefaultRapidSymbols() {
 
 //是否显示在线客服
 function showServicePel() {
-	return true;
+	return false;
 }
 
 //是否显示客服电话
@@ -504,8 +504,8 @@ function getBaiduCodeScript() {
 
 //高风险揭示协议
 function getRiskMsg() {
-	return '<p>尊敬的极速投资理财客户:</p>\
-	<p class="first">极速投资理财交易平台的电子交易业务是一种潜在收益和潜在风险较高的投资业务,对投资者的风险承受能力、理解风险程度、风险控制能力以及投资经验有较高的要求。</p>\
+	return '<p>尊敬的天汇客户:</p>\
+	<p class="first">天汇交易平台的电子交易业务是一种潜在收益和潜在风险较高的投资业务,对投资者的风险承受能力、理解风险程度、风险控制能力以及投资经验有较高的要求。</p>\
 	<p>1. 交易客户有义务保管好交易账号、密码，避免泄露，因保管不善导致交易账号、密码泄露而引起的风险由交易客户自行承担。</p>\
 	<p>2. 交易客户应亲自进行交易活动，切勿委托任何机构或个人进行代理交易活动，因信任他人而产生的风险由交易客户自行承担。</p>\
 	<p>3. 任何保证获利、零风险等宣传均属虚假承诺，因轻信此类信息产生的风险由交易客户自行承担。</p>\
