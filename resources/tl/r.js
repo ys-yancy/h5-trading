@@ -119,17 +119,17 @@ function getIsShowOptionWeinixnGuide() {
 
 // 微信分享域名
 function getWXDomainWL () {
-	return 'https://t-tl.fxtlc.com/';
+	return 'http://t-tl.fxtlc.com/';
 }
 
 // 微信分享ICON
 function getWXIconWL () {
-	return 'https://t-tl.fxtlc.com/img/wl/tl/share.jpg';
+	return 'http://t-tl.fxtlc.com/img/wl/tl/share.jpg';
 }
 
 // 微信邀请好友图片
 function getWXInviteImgUrlWl () {
-	return 'https://t-tl.fxtlc.com/img/wl/tl/share.jpg';
+	return 'http://t-tl.fxtlc.com/img/wl/tl/share.jpg';
 }
 
 // 微信邀请好友标题
@@ -152,7 +152,7 @@ function getHomeUrl() {
 // 邀请好友链接, 把source写死在链接里, 只需要提供refer
 // 0526更新
 function getWXInviteUrlWL () {
-	return 'https://t-tl.fxtlc.com/tl/s/my-guide/tl/register.html?inviteCode=';
+	return 'http://t-tl.fxtlc.com/tl/s/my-guide/tl/register.html?inviteCode=';
 }
 
 // 是否启用新的邀请链接
@@ -161,7 +161,7 @@ function getIsNewShareWl() {
 }
 // 新的邀请链接
 function getNewShareWl() {
-	return 'https://firstbkr.tonglingdi.cn/subscribe?uid=';
+	return 'http://firstbkr.tonglingdi.cn/subscribe?uid=';
 }
 
 // 微信转发标题
@@ -206,7 +206,7 @@ function getAboutUSHTMLWL () {
 
 // 默认头像
 function getDefaultIconWL () {
-	return 'https://t-tl.fxtlc.com/tl/img/wl/tl/tl_avatar.png';
+	return 'http://t-tl.fxtlc.com/tl/img/wl/tl/tl_avatar.png';
 }
 
 // 是否显示下载链接
@@ -251,7 +251,7 @@ function getSPhone() {
 
 // 登录页面链接
 function getLoginWL () {
-	return 'https://t-tl.fxtlc.com/tl/s/my-guide/tl/login.html';
+	return 'http://t-tl.fxtlc.com/tl/s/my-guide/tl/login.html';
 }
 
 // 使用的交易UI
@@ -423,52 +423,52 @@ function getHelpLink () {
 
 // pc支付页面
 function getPayUrlWL() {
-	return 'https://p.fxtlc.com';
+	return 'http://p.fxtlc.com';
 }
 
 //安卓分享前缀
 function getAndroidSharePrefixUrl() {
-	return 'https://t-tl.fxtlc.com';
+	return 'http://t-tl.fxtlc.com';
 }
 
 //正式环境
 // function getFormalEnvironmentUrl() {
-// 	return 'https://api.fxtlc.com';
+// 	return 'http://api.fxtlc.com';
 // }
 
 //生产服
 function getProduClothedUrl() {
-	return 'https://api.fxtlc.com';
+	return 'http://api.fxtlc.com';
 }
 
 //非微信同步头像前缀
 function getAndroidAvatarUrl() {
-	return 'https://static.fxtlc.com/'
+	return 'http://static.fxtlc.com/'
 }
 
 //本地(其他)头像前缀
 function getNativePlaceUrl() {
-	return 'https://static.fxtlc.com/';
+	return 'http://static.fxtlc.com/';
 }
 
 //获取价格（group  v1）
 // function getGroupPriceUrl() {
-// 	return 'https://price.fxtlc.com/v1/price/current';
+// 	return 'http://price.fxtlc.com/v1/price/current';
 // }
 
 //获取价格(v2)
 function getPriceUrl() {
-	return 'https://price.fxtlc.com/v2/price/current';
+	return 'http://price.fxtlc.com/v2/price/current';
 }
 
 //蜡烛图url
 function getCandleUrl() {
-	return 'https://price.fxtlc.com/v3/price/candle';
+	return 'http://price.fxtlc.com/v3/price/candle';
 }
 
 //获取Symbols
 function getSymbolUrl() {
-	return 'https://price.fxtlc.com/v2/symbol/snapshot?'
+	return 'http://price.fxtlc.com/v2/symbol/snapshot?'
 }
 
 //stomp 报价Url
@@ -478,22 +478,22 @@ function getRtpriceSompUrl() {
 
 //微信credentialUrl
 function getCredentialUrl() {
-	return 'https://api.fxtlc.com/v1/weixin/share/package/';
+	return 'http://api.fxtlc.com/v1/weixin/share/package/';
 }
 
 //微信PersonalInfoUrl
 // function getPersonalInfoUrl() {
-// 	return 'https://weixin.fxtlc.com/api/user/info?openid=';
+// 	return 'http://weixin.fxtlc.com/api/user/info?openid=';
 // }
 
 //weixin.js => notifyShareBehavior 中url
 function getIfyShareBehaviorUrl() {
-	return 'https://t.fxtlc.com/s/weixin/share_counter';
+	return 'http://t.fxtlc.com/s/weixin/share_counter';
 }
 
 // 微信授权 weixinUrlFirst
 function getWeixinUrlFirst() {
-	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=https%3a%2f%2fapi.fxtlc.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
+	return 'http://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=http%3a%2f%2fapi.fxtlc.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
 }
 
 //百度统计代码
