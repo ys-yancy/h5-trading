@@ -59,6 +59,8 @@ var entryAll = {
     'my-guide/tl/register': './src/p/my-guide/tl/register/index',
     'my-guide/admins/login': './src/p/my-guide/admins/login/index',
     'my-guide/admins/register': './src/p/my-guide/admins/register/index',
+    'my-guide/eccoinage/login': './src/p/my-guide/eccoinage/login/index',
+    'my-guide/eccoinage/register': './src/p/my-guide/eccoinage/register/index',
     'l-p/firstbkr-1': './src/p/l-p/firstbkr-1/index'
 };
 
