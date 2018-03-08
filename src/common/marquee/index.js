@@ -220,7 +220,7 @@ Marquee.prototype = {
         this.rootList.css('transitionDuration', '0ms');
         this.rootList.css('transform', this.initTransform);
 
-        isBroadcastCallback && loadBroadcastedCallback(this.currentSilderEl);
+        isBroadcastCallback && loadBroadcastedCallback(this.currentSilderEl, this.list);
     },
 
     _getAnimeChildren: function() {
@@ -313,9 +313,9 @@ Marquee.prototype = {
             var item = data[i],
                 url = item.url;
             if (url) {
-                html += '<li class="'+ config.itemClass +'"><a href='+ url +'>' + item.content + '</a></li>';
+                html += '<li class="'+ config.itemClass +'" data-repeat='+ item.repeat +' data-index='+ i +'><a href='+ url +'>' + item.content + '</a></li>';
             } else {
-                html += '<li class="'+ config.itemClass +'">' + item.content + '</li>';
+                html += '<li class="'+ config.itemClass +'" data-repeat='+ item.repeat +' data-index='+ i +'>' + item.content + '</li>';
             }
             
         }
@@ -325,6 +325,7 @@ Marquee.prototype = {
         this.rootList = $(wrap);
 
         this.el.append(wrap);
+        this.list = data;
         this._initStyle();
         this._start();
     },
@@ -375,7 +376,7 @@ $.fn.marquee = function(config) {
         activeItemClass: 'cm-marquee-active-item',
 
         // 展示列表
-        list: [{content: '我是内容1', url: '1111'}, {content: '我是内容2'}, {content: '我是内容3'}],
+        list: [],
 
         // 过度效果
         easing: 'cubic-bezier(0.33, 0.66, 0.66, 1)',
@@ -420,5 +421,5 @@ if (typeof define === 'function' && define.amd) {
         return Marquee;
     });
 } else if (typeof module != 'undefined' && module.exports) {
-    module.exports = Marquee;
+    
 }
