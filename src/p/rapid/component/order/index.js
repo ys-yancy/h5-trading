@@ -119,6 +119,7 @@ export default class Order extends Base {
         new Toast('账户可投资金不足');
         return;
       }
+      params.bet = this.props.progress.investNum();
       params.volume = this.props.progress.investNum() / (pipValue * this.symbolValue.policy.default_takeprofit);
 
       // if (this.props.symbolValue.policy.min_quote_unit < 1) {
