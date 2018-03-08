@@ -493,7 +493,7 @@ function getIfyShareBehaviorUrl() {
 
 // 微信授权 weixinUrlFirst
 function getWeixinUrlFirst() {
-	return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=http%3a%2f%2fapi.fxadm.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
+	return 'http://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=http%3a%2f%2fapi.fxadm.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
 }
 
 //百度统计代码

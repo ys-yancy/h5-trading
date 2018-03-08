@@ -479,7 +479,7 @@ function getSymbolUrl() {
 
 //stomp 报价Url
 function getRtpriceSompUrl() {
-	return 'wss://rtprice.eccoinage.com:61615/stomp';
+	return 'ws://rtprice.eccoinage.com:61613/stomp';
 }
 
 //微信credentialUrl
@@ -499,7 +499,7 @@ function getIfyShareBehaviorUrl() {
 
 // 微信授权 weixinUrlFirst
 function getWeixinUrlFirst() {
-	return 'http://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=https%3a%2f%2fapi.eccoinage.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
+	return 'http://open.weixin.qq.com/connect/oauth2/authorize?appid='+getWXAppid ()+'&redirect_uri=http%3a%2f%2fapi.eccoinage.com%2fv1%2fweixin%2fauthorization%2fcallback%2f';
 }
 
 //百度统计代码

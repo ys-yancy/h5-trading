@@ -473,7 +473,7 @@ function getSymbolUrl() {
 
 //stomp 报价Url
 function getRtpriceSompUrl() {
-	return 'wss://rtprice.fxtlc.com:61615/stomp';
+	return 'ws://rtprice.fxtlc.com:61613/stomp';
 }
 
 //微信credentialUrl
