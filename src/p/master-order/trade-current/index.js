@@ -44,6 +44,9 @@ export default class TradeCurrent extends PageBase{
 			// var symbols = [];
 			var now_date = Date.now();
 
+			var name = $('.name', '.hd-header').text(),
+				avatar = $('.img', '.hd-header').attr('src');
+	
 			for ( var i = 0; i < data.length; i++ ) {
 				var item = data[i];
 				// var symbol = item.symbol;
@@ -65,7 +68,8 @@ export default class TradeCurrent extends PageBase{
 				}
 	
 				item.isShowDesc = desc;
-	
+				item.nickname = name;
+				item.avatar = avatar;
 				item.avatar = item.avatar ? Config.getAvatarPrefix(item.avatar) : getDefaultIconWL();
 				
 				// if (symbols.indexOf(symbol) === -1) {
