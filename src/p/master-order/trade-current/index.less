@@ -63,3 +63,93 @@
 		}
 	}
 }
+
+.actual-order-wrapper{
+	.padding-bottom(124);
+	.order-item{
+	  .padding(30);
+	  .border-bottom(1, solid, #ccc);
+	  &.now{
+		background: #BEC3C7;
+	  }
+	  .user-info{
+		position: relative;
+		.padding-bottom(15);
+		.margin-bottom(10);
+		overflow: hidden;
+		.img-wrapper-outer{
+		 .margin-right(20);
+		  float: left;
+		  overflow: hidden;
+		  background: #fff;
+		  .img-wrapper{
+			.width(80);
+			.height(80);
+			.border-radius(50%);
+		  }
+		  .img{
+			width: 100%;
+			height: 100%;
+			.border-radius(50%);
+		  }
+		}
+		.name-attent{
+		  position: relative;
+		  p{
+			.line-height(35);
+			&.name{
+			}
+			&.attent{
+			  display: none;
+			  position: absolute;
+			  .top(44);
+			  .padding(0, 5);
+			  .left(98);
+			  .font-size(20);
+			  text-align: center;
+			  color: #FF3300;
+			  border:.5px solid #FF3300;
+			  &.no{
+				display: none;
+			  }
+			}
+		  }
+		}
+		.desc-time{
+		  position: absolute;
+		  .font-size(24);
+		  .top(0);
+		  .right(0);
+		}
+	  }
+	  .create-time {
+		.font-size(24);
+	  }
+	  .symbol-info,
+	  .price-info{
+		text-align: left;
+		p{
+		  display: inline-block;
+		}
+		.left{
+		  float: left;
+		}
+		.right{
+		  float: right;
+		}
+		.tag{
+		  .margin-right(10);
+		}
+		&.price-info{
+		  .font-size(26);
+		  text-align: center;
+		  .padding-top(15);
+		}
+	  }
+	}
+	.no-list{
+	  .width(750);
+	  .padding(40, 0);
+	  text-align: center;
+	}
+}

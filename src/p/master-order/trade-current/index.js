@@ -7,7 +7,9 @@ require('./index.css');
 var PageBase = require('../../../app/page-base');
 var Config = require('../../../app/config');
 var Cookie = require('../../../lib/cookie');
+var Util = require('../../../app/util');
 var tmpl = require('./index.ejs');
+var tmpl2 = require('./index-2.ejs');
 
 export default class TradeCurrent extends PageBase{
 	constructor(config) {
@@ -39,21 +41,45 @@ export default class TradeCurrent extends PageBase{
 			data = data.data;
 
 			data = data.reverse(); // 倒排一下
-			var symbols = [];
+			// var symbols = [];
+			var now_date = Date.now();
+
 			for ( var i = 0; i < data.length; i++ ) {
-				var symbol = data[i].symbol;
-				if (symbols.indexOf(symbol) === -1) {
-					symbols.push(symbol)
+				var item = data[i];
+				// var symbol = item.symbol;
+
+				var desc = '刚刚';
+				var item_time = Util.getTime(item.openTime);
+				var minTime = now_date - item_time;
+				var seconds = Math.floor(minTime / 1000);  // 秒
+				var minutes = Math.floor(minTime / (1000 * 60));  // 分钟
+				var hours = Math.floor(minTime / (1000 * 3600));  // 小时
+				var days = Math.floor(minTime / (1000 * 3600 * 24));  // 天
+	
+				if (hours > 24) {
+					desc = days + '日前';
+				} else if (minutes > 60) {
+					desc = hours + '小时前';
+				} else if (seconds > 60) {
+					desc = minutes + '分钟前';
 				}
+	
+				item.isShowDesc = desc;
+	
+				item.avatar = item.avatar ? Config.getAvatarPrefix(item.avatar) : getDefaultIconWL();
+				
+				// if (symbols.indexOf(symbol) === -1) {
+				// 	symbols.push(symbol)
+				// }
 			}
 
 			this.orderList = data;
-			this.render(tmpl, data, this.el);
+			this.render(tmpl2, data, this.el);
 
-			this._getAllPrices(symbols);
+			// this._getAllPrices(symbols);
 		})
 
-		this._interval();
+		// this._interval();
 	}
 
 	// _updateFollowOrderPrice(price) {
