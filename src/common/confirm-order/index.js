@@ -34,7 +34,7 @@ export default class ConfirmOrder extends Base{
                    <span class="wrapper-icon"><span class="icon"></span></span>
                    <div class="dialog-content J_Content">
                        <p class="title">提示</p>
-                       <div class="desc">您确定要执行该操作码？</div>
+                       <div class="desc">您确定要执行该操作吗？</div>
                    </div>
                    <div class="dialog-buttons clearfix">
                        <span class="dialog-btn J_DialogClose">取消</span>
