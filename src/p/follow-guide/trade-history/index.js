@@ -29,6 +29,9 @@ export default class TradeHistroy extends Base{
 		}).then((data) => {
 			data = data.data;
 			data = data.reverse(); // 倒排一下
+			if (data.length > 20) {
+				data.length = 20;
+			}
 			this.render(tmpl, data, this.el);
 		})
 	}

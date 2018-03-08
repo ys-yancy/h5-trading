@@ -7,7 +7,6 @@ var Cookie = require('../../lib/cookie');
 var Uri = require('../../app/uri');
 var Sticky = require('../../common/sticky/');
 var Toast = require('../../common/toast');
-var CreateMiniChart = require('../master-list/chart/mini-line');
 var TradeConut = require('./trade-count');
 var TradeCurrent = require('./trade-current');
 var TradeHistory = require('./trade-history');
@@ -137,7 +136,6 @@ Base.extend(FollowGuide, PageBase, {
             data = data.data;
             data.length = 2;
 			this.render(guide1tmpl, data, $('.J_Guide1Wraper'));
-			this._renderCharts(data);
         })
     },
 
@@ -164,27 +162,6 @@ Base.extend(FollowGuide, PageBase, {
 
 	_renderGuide4() {
 		this.render(guide4tmpl, {}, $($('.J_Guide4Wraper')));
-	},
-
-	_renderCharts: function(data) {
-		var chartWraperEls = $('.J_TradelistChart', $('.J_Guide1Wraper'));
-
-		for ( var i = 0, len = data.length; i < len; i++ ) {
-			var list = [], profitList = data[i].profit_history || [];
-			var chartWraperEl = chartWraperEls[i];
-     
-			for ( var j = 0, le = profitList.length; j < le; j++ ) {
-				if (!isNaN(parseFloat(profitList[j].amount))) {
-					list.push(parseFloat(profitList[j].amount))
-				}
-			}
-
-			new CreateMiniChart({
-				el: chartWraperEl,
-				chartName: 'trade-list-charts-rate',
-				data: list
-			})
-		}
 	},
 
 	_requires: function() {

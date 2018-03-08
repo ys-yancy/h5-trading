@@ -62,7 +62,7 @@ export default class TradeCurrent extends PageBase{
 	_update(priceObj) {
 		try{
 			var symbol = priceObj.symbol.replace(/\./g, '-');
-			var priceEls = $('.J_TardeCurrentPrice[data-symbol='+ priceObj.symbol +']', this.el);
+			var priceEls = $('.J_TardeCurrentPrice[data-symbol='+ symbol +']', this.el);
 			
 			$.each(priceEls, function (index, item) {
 				var item = $(item),
