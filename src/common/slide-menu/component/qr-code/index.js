@@ -84,7 +84,7 @@ export default class UsQrCode extends Base {
     if ( getIsNewShareWl() ) {
       url = getNewShareWl() + Cookie.get('uid');
     }
-    var imgEl = this._createQrcode(url, 8, 'Q');
+    var imgEl = this._createQrcode(url, 9, 'Q');
     this._renderQr(imgEl);
   }
 

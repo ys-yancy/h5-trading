@@ -121,7 +121,7 @@ function getIsShowOptionWeinixnGuide() {
 
 // 微信分享域名
 function getWXDomainWL () {
-	return 'https://t.firstbkr.com/';
+	return 'https://t-firstbroker.firstbkr.com/';
 }
 
 // 微信分享ICON
