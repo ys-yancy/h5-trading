@@ -13,7 +13,7 @@ function getDefaultPayWay() {
 
 // 显示哪几种支付方式, 与getPayUrl()中对应
 function getShowPayWay() {
-	return ['weixin', 'pc'] //  'weixinWeb',  'zhifubao',  'zhifubaoWeb', 'kuaijie',
+	return ['pc'] //  'weixinWeb', 'weixin', 'zhifubao',  'zhifubaoWeb', 'kuaijie',
 }
 
 /**
