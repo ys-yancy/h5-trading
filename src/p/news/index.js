@@ -114,7 +114,7 @@ Base.extend(News, Base, {
 		var data = {
 			start: '0',
 			length: '20',
-			time: Util.getDate(),
+			time: getNewsHasTime() ? Util.getDate() : '',
 			resource: 'jin10'
 		}
 

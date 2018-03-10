@@ -285,6 +285,11 @@ function getAllowModify () {
 	return true;
 }
 
+// 财经日历是否需要time参数
+function getNewsHasTime() {
+	return false;
+}
+
 // 是否允许搜索品种
 function getAllowSearch () {
 	return false;

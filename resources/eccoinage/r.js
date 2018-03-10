@@ -275,6 +275,11 @@ function getNewsNavList() {
 	return ['news']; //, 'market', 'calendar'
 }
 
+// 财经日历是否需要time参数
+function getNewsHasTime() {
+	return false
+}
+
 // 是否允许删除品种（专业自选页面）
 function getAllowDelete() {
 	return false;
