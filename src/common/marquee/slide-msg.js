@@ -31,27 +31,36 @@ export default class SlideMsg extends Base{
     }
 
     _initMarquee(data) {
-        this.el.marquee({
+        this.marqueeController = this.el.marquee({
             list: data.data,
             duration: 3 * 1000,
             isBroadcastCallback: true,
-            loadBroadcastedCallback: this._broadAfterCalback
+            loadBroadcastedCallback: this._broadAfterCalback,
+            startBroadcastCallback: this._broadBeforeCalback.bind(this),
         });
     }
 
     _broadAfterCalback(item, list) {
         var index = item.attr('data-index'),
             repeat = item.attr('data-repeat');
-        
+
         if (!isNaN(repeat) && repeat > 0) {
             repeat--;
             if (repeat < 1) {
                 list.splice(index, 1);
                 item.remove();
-                return;
+            } else {
+                item.attr('data-repeat', repeat);
             }
-
-            item.attr('data-repeat', repeat);
         }
+    }
+
+    _broadBeforeCalback(item, list) {
+        (list.length <= 1) && this._pause();
+    }
+
+    _pause() {
+        var mce = this.marqueeController;
+        mce.pause()
     }
 }

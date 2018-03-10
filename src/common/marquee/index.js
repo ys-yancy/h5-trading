@@ -40,7 +40,7 @@ Marquee.prototype = {
 
         this._startTimer = setTimeout(() => {
             this._animate();
-            isBroadcastCallback && startBroadcastCallback(this.currentSilderEl);
+            isBroadcastCallback && startBroadcastCallback(this.currentSilderEl, this.list);
         }, this.config.duration);
     },
 
