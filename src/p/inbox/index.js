@@ -34,6 +34,7 @@ class Inbox extends Base {
         doc.on('touchend', '.J_Check', $.proxy(this._check, this));
         doc.on('touchend', '.J_AllCheck', $.proxy(this._checkAll, this));
         doc.on('touchend', '.J_AllSel', $.proxy(this._del, this));
+        doc.on('touchend', '.J_Readed', $.proxy(this._readed, this));
     }
 
     _switch(e) {
@@ -127,6 +128,23 @@ class Inbox extends Base {
         }).then((data) => {
             this.checkedEls.remove();
             this.checkedEls = null;
+            this._hideEditMode();
+        })
+    }
+
+    _readed() {
+        var params = this._getDelParams();
+
+        if (!params.ids) {
+            return;
+        }
+
+        this.ajax({
+            url: '/v1/user/inbox/message/delete/',
+            data: params,
+            type: 'POST'
+        }).then((data) => {
+            $('.dot', this.checkedEls).remove();
             this._hideEditMode();
         })
     }
