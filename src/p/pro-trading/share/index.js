@@ -4,7 +4,7 @@ require('./index.css');
 
 var tmpl = require('./index.ejs');
 var PageBase = require('../../../app/page-base');
-
+var Toast = require('../../../common/toast');
 
 export default class Share extends PageBase {
   constructor(config) {
@@ -106,6 +106,7 @@ export default class Share extends PageBase {
       // this.el && this.el.remove();
       // this.el = this.renderTo(tmpl, { result: true, amount: data.data.amount }, $('body'));
       // this._reBind();
+      new Toast('分享成功,' + data.data.amount + '美元已入账');
     });
   }
 }
