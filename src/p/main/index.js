@@ -4,8 +4,8 @@ import PageBase from '../../app/page-base';
 import BottomNav from '../../common/bottom-nav';
 import SildeMenu from '../../common/slide-menu';
 import RemindMe from '../../common/remind-me';
-// import TopMsg from '../../common/top-msg';
-import SlideMsg from '../../common/marquee/slide-msg';
+import TopMsg from '../../common/top-msg';
+// import SlideMsg from '../../common/marquee/slide-msg';
 import CheckOpenAccount from '../../common/check-open-account';
 // import CheckFollowGuide from '../../common/check-follow-guide';
 // import Marquee from '../../common/marquee';
@@ -103,13 +103,13 @@ class Home extends PageBase {
             el: $('.main-nav')
 		});
 
-		new SlideMsg({
-			el: $('#J_SlideMsg')
-		});
-		// var topmsg = new TopMsg({
-	    //     el: $('.top-message'),
-	    //     tags: ''
-		// }, 10 * 1000);
+		// new SlideMsg({
+		// 	el: $('#J_SlideMsg')
+		// });
+		var topmsg = new TopMsg({
+	        el: $('.top-message'),
+	        tags: ''
+		}, 10 * 1000);
 		
 		new HotSymbols({
 			el: $('.main-symbols')
