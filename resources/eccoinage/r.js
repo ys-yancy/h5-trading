@@ -1,6 +1,6 @@
 // app 菜单配置
 function getBottomNavPages() {
-	return ['home', 'option', 'actual', 'news']
+	return ['home', 'option', 'master', 'actual', 'news']
 }
 
 /**
@@ -297,7 +297,7 @@ function getAllowSearch () {
 
 // 是否提供切换UI的功能
 function getHasSwitchTradingUi() {
-	return false;
+	return true;
 }
 
 // 开平仓是否有二次确认
