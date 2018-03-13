@@ -86,7 +86,7 @@ Base.extend(Option, PageBase, {
     doc.on('click', '.J_UpSymbol', $.proxy(this._upSymbol, this));
     doc.on('click', '.J_DelSymbol', $.proxy(this._delSymbol, this));
 
-    if (getAllowDelete() || Cookie.get('tradingUI') != 6) {
+    if (getAllowDelete() && Cookie.get('tradingUI') != 6) {
       doc.on('swipeLeft swipeRight', '.link', $.proxy(this._swipeLeft, this));
     }
 
