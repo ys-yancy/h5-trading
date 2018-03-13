@@ -358,17 +358,17 @@ function getUserInfoWX () {
 
 // 是否使用新用户首页引导
 function getUseNewHomeGuide() {
-	return false;
+	return true;
 }
 
 // 是否使用新用户交易引导
 function getUseNewTradeGuide () {
-	return false;
+	return true;
 }
 
 // 是否使用新用户寸头引导
 function getUseNewProListGuide () {
-	return false;
+	return true;
 }
 
 function getUseNewFollowGuide () {
