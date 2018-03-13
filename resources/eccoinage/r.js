@@ -282,7 +282,7 @@ function getNewsHasTime() {
 
 // 是否允许删除品种（专业自选页面）
 function getAllowDelete() {
-	return false;
+	return true;
 }
 
 // 是否允许修改订单 (二元交易UI不允许修改订单)
@@ -292,7 +292,7 @@ function getAllowModify () {
 
 // 是否允许搜索品种
 function getAllowSearch () {
-	return false;
+	return true;
 }
 
 // 是否提供切换UI的功能
