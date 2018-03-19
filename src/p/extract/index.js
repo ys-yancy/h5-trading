@@ -247,6 +247,12 @@ Base.extend(Extract, PageBase, {
       }
     }).then(function(data) {
       data = data.data;
+
+      if (data.have_info == 0) {
+        location.href = './open-account.html?src=' + encodeURIComponent(location.href);
+        return;
+      }
+
       data.phone = self.cookie.get('phone');
       data.min_extract_amount = getMinWithdrawWL();
       self.render(tmpl, data, $('#J_Content'));
