@@ -608,6 +608,19 @@ Base.extend(Recharge, PageBase, {
         if (window.location.href.indexOf('from=iphoneapp') != -1 || window.location.href.indexOf('from=androidApp') != -1) {
             $('#J_Header').parent().css("display","none");
         }
+
+        if (showServicePel()) {
+            $('.J_CsDesc').html(
+                `
+                <a href="./cs.html?src=./recharge.html" class="cs-item">
+                    <span class="cs-icon">
+                        <img src="../../../../img/cs.jpg" alt="">
+                    </span>
+                    <span class="cs-desc">详情咨询在线客服</span> 
+                </a>
+                `
+            )
+        }
     },
 
     _requires: function() {
