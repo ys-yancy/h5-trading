@@ -1,15 +1,15 @@
 "use strict";
 
 var Base = require('../../app/base');
+var Config = require('../../app/config');
 var PageBase = require('../../app/page-base');
 var Toast = require('../../common/toast');
 var Sticky = require('../../common/sticky');
 var Dialog = require('../../common/dialog');
-var validateIdCard = require('../../lib/validate-idcard');
 var CustomerService = require('../../common/customer-service');
 var CheckOpenAccount = require('../../common/check-open-account');
+var validateIdCard = require('../../lib/validate-idcard');
 var tmpl = require('./new-tmpl.ejs');
-var Config = require('../../app/config');
 var dialogTmpl = require('./dialog.ejs');
 
 function Extract() {
