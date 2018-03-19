@@ -104,12 +104,12 @@ function getSimulatePlate() {
 
 // 是否只显示实盘
 function getIsOnlyShowReal() {
-	return false;
+	return true;
 }
 
 // 是否提供入金入口
 function getHasRecharge() {
-	return true;
+	return false;
 }
 
 // 在微信中是否显示实盘 优先级高于getIsOnlyShowReal
