@@ -107,6 +107,11 @@ function getIsOnlyShowReal() {
 	return false;
 }
 
+// 是否提供入金入口
+function getHasRecharge() {
+	return true;
+}
+
 // 在微信中是否显示实盘 优先级高于getIsOnlyShowReal
 function getWeiXinIsHasReal() {
 	return true;

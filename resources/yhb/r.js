@@ -103,6 +103,11 @@ function getSimulatePlate() {
 	return true;
 }
 
+// 是否提供入金入口
+function getHasRecharge() {
+	return true;
+}
+
 // 是否只显示实盘
 function getIsOnlyShowReal() {
 	return false;

@@ -190,6 +190,11 @@ Base.extend(Account, PageBase, {
         if (!getSimulatePlate()) {
             navEl.show();
         }
+
+        if (!getHasRecharge()) {
+            $('.recharge').hide();
+            $('.extract').addClass('only-one');
+        }
     },
 
     _requires: function() {
