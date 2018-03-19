@@ -52,6 +52,7 @@ export default class CheckOpenAccount extends PageBase{
             }
 
             this._getUserInfo().then((data) => {
+                this.broadcast('get:user:open-account', data);
                 if (data.data.have_info == 1) {
                     reject()
                 } else {

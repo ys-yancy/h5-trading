@@ -27,8 +27,8 @@ Base.extend(Extract, PageBase, {
   init: function() {
     this._bind();
     this._requires();
-    this._getData();
     this.configStatistics();
+    // this._getData();
     // this._getServicePhone();
 
     this.onlyOne = false;
@@ -36,6 +36,8 @@ Base.extend(Extract, PageBase, {
 
   _bind: function() {
     var doc = $(document);
+
+    this.subscribe('get:user:open-account', this._getUserOpenAccount, this);
 
     doc.on('blur', '#J_ExtractIpt', $.proxy(this._validateNum, this));
     doc.on('click', '.J_Submit', $.proxy(this._submit, this));
@@ -228,25 +230,11 @@ Base.extend(Extract, PageBase, {
     return pass;
   },
 
-  _getData: function() {
+  _getUserOpenAccount: function(data) {
     var self = this;
+    data = data.data;
 
     this.getRealToken(true).then(function(realToken) {
-      return self._getWithDraw(realToken);
-    });
-  },
-
-  _getWithDraw: function(realToken) {
-    var self = this;
-
-    return this.ajax({
-      url: '/v1/deposit/user/info/',
-      data: {
-        access_token: this.cookie.get('token'),
-        real_token: realToken
-      }
-    }).then(function(data) {
-      data = data.data;
 
       if (data.have_info == 0) {
         location.href = './open-account.html?src=' + encodeURIComponent(location.href);
@@ -257,8 +245,40 @@ Base.extend(Extract, PageBase, {
       data.min_extract_amount = getMinWithdrawWL();
       self.render(tmpl, data, $('#J_Content'));
       self._getExtractableAmount();
-    })
+    });
   },
+
+  // _getData: function() {
+  //   var self = this;
+
+  //   this.getRealToken(true).then(function(realToken) {
+  //     return self._getWithDraw(realToken);
+  //   });
+  // },
+
+  // _getWithDraw: function(realToken) {
+  //   var self = this;
+
+  //   return this.ajax({
+  //     url: '/v1/deposit/user/info/',
+  //     data: {
+  //       access_token: this.cookie.get('token'),
+  //       real_token: realToken
+  //     }
+  //   }).then(function(data) {
+  //     data = data.data;
+
+  //     if (data.have_info == 0) {
+  //       location.href = './open-account.html?src=' + encodeURIComponent(location.href);
+  //       return;
+  //     }
+
+  //     data.phone = self.cookie.get('phone');
+  //     data.min_extract_amount = getMinWithdrawWL();
+  //     self.render(tmpl, data, $('#J_Content'));
+  //     self._getExtractableAmount();
+  //   })
+  // },
 
   _getServicePhone: function(token) {
     var self = this;
