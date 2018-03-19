@@ -17,7 +17,7 @@ export default class Attribute extends PageBase {
 
     // 判断是否是有固定保证金品种
     data.isHasFixedMargin = data.policy.margin_is_fixed == '1' ? true : false;
-    
+    console.log(data)
     this.renderTo(tmpl, data, $('body'));
     this.el = $('#J_Attribute');
 
