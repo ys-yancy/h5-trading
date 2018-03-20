@@ -11,7 +11,7 @@
       <%} else {%>
         <p>杠杆<span class="strong"><%= data.leverage %></span>倍</p>
       <% } %>
-      <p>1标准手=<span class="strong"><%= data.policy.lot_size %> <%= data.policy.unit %></span></p>
+      <p>1标准手<span class="strong"><%= data.policy.lot_size %> <%= data.policy.unit %></span></p>
       <p>休市时间<span class="strong close-time"><%= data.close_time[0] && data.close_time[0].start %><br/><%= data.close_time[0] && data.close_time[0].end %></span></p>
       <p>点差<span class="strong"><%= data.spread %></span></p>
       <p>最小交易量<span class="strong min"><%= data.policy.min_vol %></span></p>
