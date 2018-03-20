@@ -176,6 +176,7 @@ Base.extend(Account, PageBase, {
 
     _checkOnly: function() {
         var navEl = $('nav');
+
         //  在微信中是否是现实实盘
         if (Util.isWeixin() && getWeiXinIsHasReal()) { 
             if (getIsOnlyShowReal()) {
@@ -187,8 +188,10 @@ Base.extend(Account, PageBase, {
             navEl.show(); 
         }
 
-        if (!getSimulatePlate()) {
-            navEl.show();
+        if ((!getSimulatePlate()) || getIsOnlyShowReal()) {
+            navEl.hide();
+        } else {
+            navEl.show();   
         }
 
         if (!getHasRecharge()) {
