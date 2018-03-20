@@ -33,7 +33,7 @@ Base.extend(OpenAccount, PageBase, {
         doc.on('blur', '.J_UserIdNo', $.proxy(this._vaildateUserId, this));
         doc.on('blur', '.J_AccountName', $.proxy(this._vaildateAccountNameName, this));
         doc.on('blur', '.J_AccountBankNo', $.proxy(this._vaildateBankId, this));
-
+        doc.on('blur', '.J_OpenName', $.proxy(this._vaildateOpenName, this));
         doc.on('tap', '.J_Submit', $.proxy(this._submit, this));
 
         // 添加默认微信分享
@@ -70,6 +70,11 @@ Base.extend(OpenAccount, PageBase, {
         var curEl = $(e.currentTarget);
 
         this._validate(curEl, 'bankId');
+    },
+
+    _vaildateOpenName: function(e) {
+        var curEl = $(e.currentTarget);
+        this._validate(curEl, 'empty');
     },
 
     _validate: function(curEl, type) {
@@ -133,8 +138,8 @@ Base.extend(OpenAccount, PageBase, {
     _validates: function() {
         var self = this;
         
-        var els = ['.J_UserPhone', '.J_UserName', '.J_UserIdNo', '.J_AccountName', '.J_AccountBankNo', '.J_ImgWrapper'];
-        var types = ['empty', 'empty', 'cardId', 'empty',  'bankId', 'img'];
+        var els = ['.J_UserPhone', '.J_UserName', '.J_UserIdNo', '.J_AccountName', '.J_AccountBankNo', '.J_OpenName', '.J_ImgWrapper'];
+        var types = ['empty', 'empty', 'cardId', 'empty',  'bankId', 'empty', 'img'];
         var pass = true;
     
         for (var i = 0, len = els.length; i < len; i++) {
@@ -172,10 +177,11 @@ Base.extend(OpenAccount, PageBase, {
         if (!this._validates()) {
           return;
         }
+        
         var params = this._getParams();
 
         this._showLoad(curEl);
-        
+
         this.onlyOne = false;
         this.ajax({
             url: '/v1/deposit/user/info/',
@@ -240,6 +246,7 @@ Base.extend(OpenAccount, PageBase, {
             accountNameEl = $('.J_AccountName'),
             accountBankNoEl = $('.J_AccountBankNo'),
             bankNameEl = $('.J_BankList'),
+            openNameEl = $('.J_OpenName'),
             bankFrontEl = $('#J_BankFront'),
             bankReverEl = $('#J_BankRever');
 
@@ -252,9 +259,11 @@ Base.extend(OpenAccount, PageBase, {
             withdraw_card_user_name: accountNameEl.val(),
             withdraw_card_bank: bankNameEl.val(),
             withdraw_card_no: accountBankNoEl.val(),
+            withdraw_card_bank_branch: openNameEl.val(),
             id_front: $('.img', idFrontEl).attr('src'),
             id_back: $('.img', idReverEl).attr('src'),
-            withdraw_card_front: $('.img', bankFrontEl).attr('src'),
+            withdraw_card_front: $('.img', 
+            bankFrontEl).attr('src'),
             withdraw_card_back:$('.img', bankReverEl).attr('src')
         }
     },
