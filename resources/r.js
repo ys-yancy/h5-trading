@@ -392,12 +392,12 @@ function getNewGuideQRCode () {
 
 // 注册赠金
 function getRegBonus() {
-	return 5;
+	return 100;
 }
 
 // 受邀注册赠金
 function getInviteRegBonus () {
-	return 5;
+	return 0;
 }
 
 //默认交易量, 使用可用保证金的10%算
