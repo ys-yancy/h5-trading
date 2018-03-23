@@ -1,0 +1,16 @@
+<div class="pay-wrapper">
+    <% data.forEach(function(item) { %>
+        <% var _className = item == getDefaultPayWay() ? 'active' : '' %>
+        <div class="pay-item pay-<%= item %> <%= _className %>" data-pay="<%= item %>">
+            <span class="radio-wrapper ui ro-setUi common J_Radio <%= _className %>">
+                <span class="radio ">
+                    <span class="radio-inner"></span>
+                </span>
+            </span>
+            <div class="icon-desc">
+                <img src="<%= getPayUrl()[item].img %>">
+            </div>
+        </div>
+    <% }) %>
+    <span class="fold J_Fold ui icon down-recharge"></span>
+</div>
