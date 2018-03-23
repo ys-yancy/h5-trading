@@ -51,6 +51,7 @@ var entryAll = {
     'help-detail': './src/p/help-detail/index',
     'tutorial': './src/p/tutorial/index',
     'tutorial-detail': './src/p/tutorial-detail/index',
+    'middle-pay': './src/p/middle-pay/index',
     'my-guide/yhb/login': './src/p/my-guide/yhb/login/index',
     'my-guide/yhb/register': './src/p/my-guide/yhb/register/index',
     'my-guide/jstzlc/login': './src/p/my-guide/jstzlc/login/index',
