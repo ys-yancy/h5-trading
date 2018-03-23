@@ -6,6 +6,7 @@ var PageBase = require('../../../app/page-base');
 var Uri = require('../../../app/uri');
 var Sticky = require('../../../common/sticky');
 var CheckOpenAccount = require('../../../common/check-open-account');
+var PayType = require('../common/pay-type/index');
 
 function Recharge() {
     Recharge.superclass.constructor.apply(this, arguments);
@@ -22,7 +23,8 @@ function Recharge() {
 
 Base.extend(Recharge, PageBase, {
     init: function() {
-        console.log(111111111111)
+        this._initAttrs();
+        this._requires();
     },
 
     _initAttrs: function() {
@@ -58,18 +60,11 @@ Base.extend(Recharge, PageBase, {
             $('.J_PcUrl').html(getPayUrlWL());
         }
 
-       
-        this.renderTo(payTypeTmpl, getShowPayWay(), $('.select-content'));
-
-        if (getDefaultPayWay() == 'pc') {
-            this._showContent(true);
-        } else {
-            this._showContent();
-        }
-
         $('#J_Header').sticky();
 
-        this._lazyBind(); 
+        new PayType({
+            el: $('.select-content')
+        })
     }
 });
 
