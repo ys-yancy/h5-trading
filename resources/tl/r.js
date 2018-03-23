@@ -6,6 +6,11 @@ function getBottomNavPages() {
  * 支付配置相关
  */
 
+// 是否使用新的支付方案
+function getUseNewPayWy() {
+	return false
+}
+
 // 默认支付方式
 function getDefaultPayWay() {
 	return 'pc'
