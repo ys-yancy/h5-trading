@@ -44,7 +44,7 @@ Base.extend(Recharge, PageBase, {
         if (showServicePel()) {
             $('.J_CsDesc').html(
                 `
-                <a href="./cs.html?src=./recharge.html" class="cs-item">
+                <a href="../cs.html?src=./pay-items/pc-pay.html" class="cs-item">
                     <span class="cs-icon">
                         <img src="../../../../img/cs.jpg" alt="">
                     </span>
