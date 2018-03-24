@@ -86,10 +86,8 @@ export default class PayType extends Base {
         var defaultPay = new Uri().getParam('defaultPay');
 
         this._getPays().then(function(pays) {
-            console.log(pays)
             pays = [
-                {enable_pc: 1, code: "depost_weixin_saoma", enable_h5: 0, name: null},
-                {enable_pc: 1, code: "depost_zhifubao_saoma", enable_h5: 0, name: null}
+                {enable_pc: 1, code: "depost_pc", enable_h5: 0, name: null}
             ];
 
             self.renderTo(tmpl, {

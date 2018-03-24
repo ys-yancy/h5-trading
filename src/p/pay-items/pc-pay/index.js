@@ -28,7 +28,8 @@ Base.extend(Recharge, PageBase, {
     },
 
     _initAttrs: function() {
-        var url = new Uri().getParam('src');
+        var urlParams = new Uri().getParams();
+        var url = urlParams.src;
 
         if (url) {
             $('.go-back').attr('href', url);
@@ -42,9 +43,11 @@ Base.extend(Recharge, PageBase, {
         }
 
         if (showServicePel()) {
+            var encodeUrl = './pay-items/pc-pay.html?' + $.param(urlParams);
+            encodeUrl = encodeURIComponent(encodeUrl);
             $('.J_CsDesc').html(
                 `
-                <a href="../cs.html?src=./pay-items/pc-pay.html" class="cs-item">
+                <a href="../cs.html?src=${encodeUrl}" class="cs-item">
                     <span class="cs-icon">
                         <img src="../../../../img/cs.jpg" alt="">
                     </span>
