@@ -79,7 +79,7 @@ export default class PayType extends Base {
         }).then(function (data) {
             data = data.data;
             data.push({
-                code: "deposit_pc", 
+                code: "pc-pay", 
                 img: 'pc-web.png'
             })
             return data;
