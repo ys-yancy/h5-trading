@@ -16,7 +16,7 @@ function Recharge() {
         self.checkOpenAccount = new CheckOpenAccount();
     }, function() {
         var src = new Uri().getParam('src');
-        src = src ? src : './option.html';
+        src = src ? src : '../option.html';
         location.href = src;
     });
 }

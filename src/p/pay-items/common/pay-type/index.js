@@ -21,6 +21,7 @@ export default class PayType extends Base {
             var curEl = $(e.currentTarget);
 
             if (curEl.hasClass('active')) {
+                $('.J_Fold').trigger('click');
                 return false;
             }
 
@@ -29,7 +30,6 @@ export default class PayType extends Base {
 
             curEl.addClass('active');
             $('.J_Radio', curEl).addClass('active');
-            
             $('.J_Fold').trigger('click');
         });
     }
