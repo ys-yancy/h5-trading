@@ -74,7 +74,7 @@ export default class PayType extends Base {
             url: '/v1/user/pay/channel/list/',
             data: {
                 access_token: Cookie.get('token'),
-                env: 'pc'
+                env: 'h5'
             }
         }).then(function (data) {
             return data.data;
@@ -86,6 +86,7 @@ export default class PayType extends Base {
         var defaultPay = new Uri().getParam('defaultPay');
 
         this._getPays().then(function(pays) {
+            console.log(pays)
             pays = [
                 {enable_pc: 1, code: "depost_weixin_saoma", enable_h5: 0, name: null},
                 {enable_pc: 1, code: "depost_zhifubao_saoma", enable_h5: 0, name: null}
