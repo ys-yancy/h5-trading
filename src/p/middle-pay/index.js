@@ -24,7 +24,7 @@ class MiddlePay extends Base{
                 return;
             }
 
-            location.href = './pay-items/pc-pay.html';
+            location.href = './pay-items/pc-pay.html?defaultPay=pc-pay';
         }) 
     }
 
