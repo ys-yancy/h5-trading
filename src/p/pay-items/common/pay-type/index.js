@@ -2,6 +2,7 @@
 
 var Base = require('../../../../app/base');
 var Uri = require('../../../../app/uri');
+var Cookie = require('../../../../lib/cookie');
 var tmpl = require('./index.ejs');
 export default class PayType extends Base {
     constructor(config) {
@@ -18,7 +19,8 @@ export default class PayType extends Base {
         this.el.on('click', '.J_Fold', $.proxy(this._fold, this));
 
         this.el.on('click', '.pay-item', (e) => {
-            var curEl = $(e.currentTarget);
+            var curEl = $(e.currentTarget),
+                codeToUrl = curEl.attr('data-code');
 
             if (curEl.hasClass('active')) {
                 $('.J_Fold').trigger('click');
@@ -30,7 +32,10 @@ export default class PayType extends Base {
 
             curEl.addClass('active');
             $('.J_Radio', curEl).addClass('active');
+
             $('.J_Fold').trigger('click');
+
+            this._linkToPay(codeToUrl);
         });
     }
 
@@ -46,12 +51,52 @@ export default class PayType extends Base {
         }
     }
 
+    _linkToPay(htmlCode) {
+        if (htmlCode) {
+            var serializeUrl = this._serializeUrl(htmlCode);
+            location.href = './' + htmlCode + '.html?' + serializeUrl;
+        }
+    }
+
+    _serializeUrl(defaultPay) {
+        var urlParams = new Uri().getParams();
+
+        if (defaultPay) {
+            urlParams.defaultPay = defaultPay;
+        }
+        
+        return $.param(urlParams);
+    }
+
+    _getPays() {
+        var self = this;
+        return this.ajax({
+            url: '/v1/user/pay/channel/list/',
+            data: {
+                access_token: Cookie.get('token'),
+                env: 'pc'
+            }
+        }).then(function (data) {
+            return data.data;
+        })
+    }
+
     _render() {
+        var self = this;
         var defaultPay = new Uri().getParam('defaultPay');
-        this.renderTo(tmpl, {
-            config: getShowPayWay(),
-            defaultPay: defaultPay
-        }, this.el);
-        this._lazyBind();
+
+        this._getPays().then(function(pays) {
+            pays = [
+                {enable_pc: 1, code: "depost_weixin_saoma", enable_h5: 0, name: null},
+                {enable_pc: 1, code: "depost_zhifubao_saoma", enable_h5: 0, name: null}
+            ];
+
+            self.renderTo(tmpl, {
+                pays: pays,
+                defaultPay: defaultPay,
+            }, self.el);
+
+            self._lazyBind();
+        })    
     }
 }

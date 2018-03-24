@@ -1,7 +1,7 @@
 <div class="pay-wrapper">
-    <% data.config.forEach(function(item) { %>
-        <% var _className = item == getDefaultPayWay() ? 'active' : '' %>
-        <div class="pay-item pay-<%= item %> <%= _className %>" data-pay="<%= item %>">
+    <% data.pays.forEach(function(item) { %>
+        <% var _className = item.code == data.defaultPay ? 'active' : '' %>
+        <div class="pay-item pay-<%= item.code %> <%= _className %>" data-code="<%= item.code %>">
             <span class="radio-wrapper ui ro-setUi common J_Radio <%= _className %>">
                 <span class="radio ">
                     <span class="radio-inner"></span>
