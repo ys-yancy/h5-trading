@@ -30,7 +30,10 @@ class MiddlePay extends Base{
                 img: 'pc-web.png'
             })
 
-            location.href = './pay-items/'+ data[0].code +'.html?defaultPay=' + data[0].code;
+            var urlParams = new Uri().getParams();
+
+            location.href = './pay-items/'+ data[0].code +'.html?defaultPay=' + data[0].code + 
+                '&' + $.param(urlParams);
         }) 
     }
 

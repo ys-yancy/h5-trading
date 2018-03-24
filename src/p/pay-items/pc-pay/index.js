@@ -23,18 +23,8 @@ function Recharge() {
 
 Base.extend(Recharge, PageBase, {
     init: function() {
-        this._bind();
         this._initAttrs();
         this._requires();
-    },
-
-    _bind: function() {
-        var doc = $(document);
-
-        doc.on('touchend', '.J_Goback', () => {
-            window.history.go(-1);
-            return false;
-        })
     },
 
     _initAttrs: function() {
