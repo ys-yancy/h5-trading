@@ -19,12 +19,18 @@ class MiddlePay extends Base{
             }
         }).then(function(data) {
             data = data.data;
-            if (!data || data.length <= 0) {
-                document.body.innerHTML += self.tmpl;
-                return;
-            }
 
-            location.href = './pay-items/pc-pay.html?defaultPay=pc-pay';
+            // if (!data || data.length <= 0) {
+            //     document.body.innerHTML += self.tmpl;
+            //     return;
+            // }
+
+            data.push({
+                code: "pc-pay", 
+                img: 'pc-web.png'
+            })
+
+            location.href = './pay-items/'+ data[0].code +'.html?defaultPay=' + data[0].code;
         }) 
     }
 
