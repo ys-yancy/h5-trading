@@ -73,7 +73,11 @@ Base.extend(Recharge, PageBase, {
 
         new PayType({
             el: $('.select-content')
-        })
+        });
+
+        if (getPayUrlWL()) {
+            $('.J_PcUrl').html(getPayUrlWL());
+        }
     }
 });
 

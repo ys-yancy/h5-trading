@@ -77,7 +77,12 @@ export default class PayType extends Base {
                 env: 'h5'
             }
         }).then(function (data) {
-            return data.data;
+            data = data.data;
+            data.push({
+                code: "deposit_pc", 
+                img: 'pc-web.png'
+            })
+            return data;
         })
     }
 
@@ -86,10 +91,6 @@ export default class PayType extends Base {
         var defaultPay = new Uri().getParam('defaultPay');
 
         this._getPays().then(function(pays) {
-            pays = [
-                {enable_pc: 1, code: "depost_pc", enable_h5: 0, name: null}
-            ];
-
             self.renderTo(tmpl, {
                 pays: pays,
                 defaultPay: defaultPay,
