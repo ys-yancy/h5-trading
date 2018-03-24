@@ -47,7 +47,11 @@ export default class PayType extends Base {
     }
 
     _render() {
-        this.renderTo(tmpl, getShowPayWay(), this.el);
+        var defaultPay = new Uri().getParam('defaultPay');
+        this.renderTo(tmpl, {
+            config: getShowPayWay(),
+            defaultPay: defaultPay
+        }, this.el);
         this._lazyBind();
     }
 }

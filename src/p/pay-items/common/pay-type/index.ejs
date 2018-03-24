@@ -1,5 +1,5 @@
 <div class="pay-wrapper">
-    <% data.forEach(function(item) { %>
+    <% data.config.forEach(function(item) { %>
         <% var _className = item == getDefaultPayWay() ? 'active' : '' %>
         <div class="pay-item pay-<%= item %> <%= _className %>" data-pay="<%= item %>">
             <span class="radio-wrapper ui ro-setUi common J_Radio <%= _className %>">
@@ -8,7 +8,7 @@
                 </span>
             </span>
             <div class="icon-desc">
-                <img src="<%= getPayUrl()[item].img %>">
+                <img src="../../../../../img/recharge/weixin-saoma.png">
             </div>
         </div>
     <% }) %>
