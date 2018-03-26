@@ -39,7 +39,7 @@ Base.extend(Recharge, PageBase, {
 
         // 需要隐藏表头
         if (window.location.href.indexOf('from=iphoneapp') != -1 || window.location.href.indexOf('from=androidApp') != -1) {
-            $('#J_Header').parent().css("display","none");
+            $('#J_Header').parent().hide();
         }
 
         if (showServicePel()) {
@@ -59,15 +59,17 @@ Base.extend(Recharge, PageBase, {
     },
 
     _requires: function() {
-        $('#J_Header').sticky();
+        var pcPayUrl = getPayUrlWL();
+
+        if (pcPayUrl) {
+            $('.J_PcUrl').html(pcPayUrl);
+        }
 
         new PayType({
             el: $('.select-content')
         });
 
-        if (getPayUrlWL()) {
-            $('.J_PcUrl').html(getPayUrlWL());
-        }
+        $('#J_Header').sticky();
     }
 });
 
