@@ -262,8 +262,7 @@ Base.extend(OpenAccount, PageBase, {
             withdraw_card_bank_branch: openNameEl.val(),
             id_front: $('.img', idFrontEl).attr('src'),
             id_back: $('.img', idReverEl).attr('src'),
-            withdraw_card_front: $('.img', 
-            bankFrontEl).attr('src'),
+            withdraw_card_front: $('.img', bankFrontEl).attr('src'),
             withdraw_card_back:$('.img', bankReverEl).attr('src')
         }
     },
